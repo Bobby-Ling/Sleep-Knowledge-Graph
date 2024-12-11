@@ -12,8 +12,10 @@ from dataclasses import dataclass
 from pathlib import Path
 import tiktoken
 
-from chat_manager import PoeChatManager, ChatSession
-from prompts_template import INIT_MSG, INSTRUCT_MSG, COMMAND_TEMPLATE, PREPROCESS_INIT_MSG, PREPROCESS_MSG
+from chat_session_interfce import ChatSessionInterface
+from poe_chat_manager import PoeChatManager, PoeChatSession
+from qianfan_chat import QianfanChatSession
+from prompts_template import API_COMMAND_MSG, API_PAYLOAD_TEMPLATE, INIT_MSG, INSTRUCT_MSG, COMMAND_TEMPLATE, PREPROCESS_INIT_MSG, PREPROCESS_MSG
 
 def retry_on_exception(max_retries: Optional[int] = None, retry_interval: float = 1.0):
     """
@@ -59,20 +61,21 @@ class ProcessingState:
     completed: bool         # 是否处理完成
     cypher_file: str = ""
 
-class DummyChatSession:
-    def __init__(self):
-        self.chat_manager = {}
-        pass
-    def send_message(self, message: str) -> str:
+class DummyChatSession(ChatSessionInterface):
+    # @override
+    def _process_message(self, message: str) -> str:
         return f"Response for: {message[:50]}..."
+    # @override
+    def update_connection(self):
+        pass
 
 LOGGER_NAME = "process"
 
 class BatchProcessor:
     def __init__(self,
                  input_dir: str,
-                 chat_session: ChatSession,
-                 preprocess_session: ChatSession,
+                 chat_session: ChatSessionInterface,
+                 preprocess_session: ChatSessionInterface,
                  state_file: str = "processing_state.json",
                  log_level = logging.INFO,
                  cypher_dir: str = "cyphers",
@@ -204,7 +207,8 @@ class BatchProcessor:
                     preprocessed_content = self.preprocess_session.send_message(PREPROCESS_MSG.format(content))
                     self.logger.info(f"[preprocessed_content]: \n{preprocessed_content}")
 
-                    message = COMMAND_TEMPLATE.format(original_file, block_path, preprocessed_content)
+                    # message = COMMAND_TEMPLATE.format(original_file, block_path, preprocessed_content)
+                    message = API_COMMAND_MSG + API_PAYLOAD_TEMPLATE.format(original_file, block_path, preprocessed_content)
                     self.logger.info(f"[message]: {message}")
 
                     response = self.chat_session.send_message(message)
@@ -220,11 +224,11 @@ class BatchProcessor:
                         )
                     )
 
-                    time.sleep(0 if self.dry_run else random.uniform(0, 1))
+                    # time.sleep(0 if self.dry_run else random.uniform(0, 1))
                     return response
                 except Exception as e:
                     if not self.dry_run:
-                        self.chat_session.chat_manager.update_tokens()
+                        self.chat_session.update_connection()
                     if attempt < self.retry_times - 1:
                         self.logger.warning(f"Attempt {attempt + 1} failed for {block_path}: {e}")
                         time.sleep(self.retry_delay)
@@ -364,7 +368,7 @@ class BatchProcessor:
             self.logger.error(f"Processing interrupted: {e}")
             self.save_state()
             if not self.dry_run:
-                self.chat_session.chat_manager.update_tokens()
+                self.chat_session.update_connection()
             raise
 
         finally:
@@ -447,6 +451,24 @@ class BatchProcessor:
 if __name__ == "__main__":
     DRY_RUN = False
     if not DRY_RUN:
+        session = QianfanChatSession()
+        preprocess_session = session
+        pass
+        """
+        preprocess_bot_name = "gpt4_o_mini"
+        bot_name = "gpt4_o_mini"
+        chat_manager = PoeChatManager(tokens={}, log_level=logging.INFO, dry_run=False)
+
+        preprocess_session = chat_manager.create_session(bot_name=preprocess_bot_name, initial_message=PREPROCESS_INIT_MSG)
+        # preprocess_session = chat_manager.get_session(bot_name=bot_name, chat_code='2y405esrum7wlw8cria')
+
+        session = chat_manager.create_session(bot_name=bot_name, initial_message=INIT_MSG)
+        # session = chat_manager.get_session(bot_name=bot_name, chat_code='2y406tqjs31ldhr5zzs')
+        # session.send_message(INSTRUCT_MSG)
+        """
+        pass
+
+        """
         # gql_POST
         tokens = {}
         preprocess_bot_name = "Assistant"
@@ -460,6 +482,8 @@ if __name__ == "__main__":
         # session = chat_manager.create_session(bot_name=bot_name, initial_message=INIT_MSG)
         session = chat_manager.get_session(bot_name=bot_name, chat_code='2y406tqjs31ldhr5zzs')
         # session.send_message(INSTRUCT_MSG)
+        
+        """
 
 
     processor = BatchProcessor(

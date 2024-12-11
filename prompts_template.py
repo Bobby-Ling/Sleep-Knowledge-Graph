@@ -261,14 +261,15 @@ COMMAND_TEMPLATE = """
 
 API_COMMAND_MSG = f"""
 [背景信息]
-我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行**实体识别、关系抽取和知识规则构建**, 使其输出可供neo4j直接导入.
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
 [命令]
 [CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
-请参考[示例输出]依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
 [详细补充需求]
-输出的Cypher语句不要分号, 不需要其他任何内容, 以便最后可以汇总直接导入neo4j数据库;
-如果当前块没有之前[CYPHER_SCHEMA]中的关系或者无法提取, 则返回"// 空";
-注意, 我将会直接将你生成的语句导入neo4j, 因此请务必保证语法正确性.
+输出的Cypher语句不要分号, 不需要转义, 不需要其他任何内容, 以便最后可以汇总直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出"// 空"(不含引号)
 [CYPHER_SCHEMA]
 {CYPHER_SCHEMA}
 [关系抽取说明]
@@ -276,13 +277,11 @@ API_COMMAND_MSG = f"""
 以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
 请尽你可能抽取全部关系
 [示例输出]
-"
 MERGE (d1:Disease {{name: "阻塞性睡眠呼吸暂停低通气综合征", short_name: "OSAHS"}})
 MERGE (c1:Disease {{name: "高血压"}})
 MERGE (c2:Disease {{name: "糖尿病"}})
 MERGE (c1)-[:COMPLICATION_OF]->(d1)
 MERGE (c2)-[:COMPLICATION_OF]->(d1)
-"
 """
 
 API_PAYLOAD_TEMPLATE = """

@@ -3,31 +3,30 @@ import logging
 import os
 from datetime import datetime
 from time import sleep
+# from typing import override
 from poe_api_wrapper import PoeApi
 import cookie
+from chat_session_interfce import ChatSessionInterface
 
 LOG_FORMAT = '%(asctime)s - %(levelname)s - %(message)s'
 # LOG_FORMAT = '%(message)s'
 
-class ChatSession:
-    def __init__(self, chat_manager: 'PoeChatManager', bot_name: str, chat_code: str, chat_id: int = None, title: str = None, dry_run: bool = False):
+class PoeChatSession(ChatSessionInterface):
+    def __init__(self, chat_manager: 'PoeChatManager', bot_name: str, chat_code: str,
+                 chat_id: int = None, title: str = None, dry_run: bool = False):
+        super().__init__()
         self.chat_manager = chat_manager
         self.bot_name = bot_name
         self.chat_code = chat_code
         self.chat_id = chat_id
         self.title = title
         self.dry_run = dry_run
-        self.logger = logging.getLogger(__name__)
 
-    def send_message(self, message: str) -> str:
-        """在当前会话中发送消息并获取响应"""
-        self.logger.info(f"向会话 {self.title or self.chat_code} 发送消息:")
-        self.logger.info(f'{message}')
-
+    # @override
+    def _process_message(self, message: str) -> str:
+        """实现实际的消息处理逻辑"""
         if self.dry_run:
-            response = f"Response for: {message[:50]}..."
-            self.logger.info("Dry run mode, returning mock response")
-            return response
+            return f"Response for: {message[:50]}..."
 
         response_text = ""
         for chunk in self.chat_manager.client.send_message(
@@ -37,12 +36,13 @@ class ChatSession:
                 chatId=self.chat_id
             ):
             chunk_response = chunk["response"]
-            self.logger.info(chunk_response)
             response_text += chunk_response
 
-        self.logger.info("消息发送完成!")
-        self.logger.info(f"响应: \n{response_text}")
         return response_text
+
+    # @override
+    def update_connection(self) -> None:
+        self.chat_manager.update_tokens()
 
 class PoeChatManager:
     def __init__(self, tokens: dict, log_level=logging.INFO, dry_run: bool = False):
@@ -91,7 +91,7 @@ class PoeChatManager:
     def update_tokens(self):
         self.client.tokens.update(get_token_from_browser_cookies())
 
-    def get_session_by_title(self, bot_name: str, chat_title: str) -> ChatSession:
+    def get_session_by_title(self, bot_name: str, chat_title: str) -> PoeChatSession:
         """
         根据会话标题查找并返回现有会话
         :param bot_name: 机器人名称
@@ -100,14 +100,14 @@ class PoeChatManager:
         """
         if self.dry_run:
             self.logger.info(f"Dry run: 模拟查找会话: {chat_title}")
-            return ChatSession(self, bot_name, "dry_run_code", 0, chat_title, self.dry_run)
+            return PoeChatSession(self, bot_name, "dry_run_code", 0, chat_title, self.dry_run)
 
         existing_chats = self.client.get_chat_history(bot=bot_name)['data']
 
         for chat in existing_chats.get(bot_name, []):
             if chat['title'] == chat_title:
                 self.logger.info(f"找到已有会话: {chat_title} (chatCode: {chat['chatCode']})")
-                return ChatSession(
+                return PoeChatSession(
                     self,
                     bot_name,
                     chat['chatCode'],
@@ -119,7 +119,7 @@ class PoeChatManager:
         self.logger.info(f"未找到匹配的会话: {chat_title}")
         return None
 
-    def create_session(self, bot_name: str, initial_message: str = "Hello! Let's start a new conversation.") -> ChatSession:
+    def create_session(self, bot_name: str, initial_message: str = "Hello! Let's start a new conversation.") -> PoeChatSession:
         """
         创建一个新的会话
         :param bot_name: 机器人名称
@@ -130,7 +130,7 @@ class PoeChatManager:
 
         if self.dry_run:
             self.logger.info("Dry run: 模拟创建新会话")
-            return ChatSession(
+            return PoeChatSession(
                 self,
                 bot_name,
                 "dry_run_code",
@@ -148,9 +148,9 @@ class PoeChatManager:
         chat_title = response['title']
 
         self.logger.info(f"新会话已创建: {chat_title} (chatCode: {chat_code})")
-        return ChatSession(self, bot_name, chat_code, chat_id, chat_title, self.dry_run)
+        return PoeChatSession(self, bot_name, chat_code, chat_id, chat_title, self.dry_run)
 
-    def get_session(self, bot_name: str, chat_code: str = None, chat_id: int = None) -> ChatSession:
+    def get_session(self, bot_name: str, chat_code: str = None, chat_id: int = None) -> PoeChatSession:
         """
         通过chatCode或chatId获取指定会话
         :param bot_name: 机器人名称
@@ -163,12 +163,12 @@ class PoeChatManager:
 
         if self.dry_run:
             self.logger.info(f"Dry run: 模拟获取会话 (code: {chat_code}, id: {chat_id})")
-            return ChatSession(self, bot_name, chat_code or "dry_run_code", chat_id or 0, dry_run=self.dry_run)
+            return PoeChatSession(self, bot_name, chat_code or "dry_run_code", chat_id or 0, dry_run=self.dry_run)
 
-        return ChatSession(self, bot_name, chat_code, chat_id, dry_run=self.dry_run)
+        return PoeChatSession(self, bot_name, chat_code, chat_id, dry_run=self.dry_run)
 
     def get_or_create_session(self, bot_name: str, chat_title: str = None,
-                              initial_message: str = "Hello! Let's start a new conversation.") -> ChatSession:
+                              initial_message: str = "Hello! Let's start a new conversation.") -> PoeChatSession:
         """
         获取现有会话或创建新会话
         :param bot_name: 机器人名称
@@ -199,6 +199,6 @@ if __name__ == "__main__":
     chat_manager = PoeChatManager(tokens={}, dry_run=False)
 
     bot_name = "Assistant"
-    # session: ChatSession = chat_manager.create_session(bot_name=bot_name)
-    session: ChatSession = chat_manager.get_session(bot_name=bot_name, chat_code='2y4g7f88bxx78imgmzv')
-    response = session.send_message("how are you?")
+    session: PoeChatSession = chat_manager.create_session(bot_name=bot_name)
+    # session: PoeChatSession = chat_manager.get_session(bot_name=bot_name, chat_code='2y4g7f88bxx78imgmzv')
+    response = session.send_message(f"how are you? (at {datetime.now().strftime('%Y%m%d_%H%M%S')})")
