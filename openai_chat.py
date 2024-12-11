@@ -20,7 +20,7 @@ class OpenAIChatSession(ChatSessionInterface):
 
     # @override
     def _process_message(self, message: str) -> str:
-        completion = client.chat.completions.create(
+        completion = self.client.chat.completions.create(
             model=self.model,
             messages=[
                 {"role": "user", "content": message}
