@@ -3,6 +3,7 @@ from datetime import datetime
 import os
 import json
 import textwrap
+import threading
 import toml
 import logging
 import random
@@ -11,8 +12,15 @@ from typing import Any, List, Dict, Optional, Tuple
 from dataclasses import dataclass
 from pathlib import Path
 import tiktoken
+import concurrent.futures
+from queue import Empty, Queue
+from threading import Lock, Event, RLock
+import asyncio
+from concurrent.futures import ThreadPoolExecutor
 
 from chat_session_interfce import ChatSessionInterface
+from openai_chat import OpenAIChatSession
+import openai_chat
 from poe_chat_manager import PoeChatManager, PoeChatSession
 from qianfan_chat import QianfanChatSession
 from prompts_template import API_COMMAND_MSG, API_PAYLOAD_TEMPLATE, INIT_MSG, INSTRUCT_MSG, COMMAND_TEMPLATE, PREPROCESS_INIT_MSG, PREPROCESS_MSG
@@ -71,6 +79,14 @@ class DummyChatSession(ChatSessionInterface):
 
 LOGGER_NAME = "process"
 
+@dataclass
+class ParallelConfig:
+    """并行处理配置"""
+    enabled: bool = False           # 是否启用并行处理
+    max_workers: int = 3           # 最大工作线程数
+    queue_size: int = 100         # 消息队列大小
+    batch_size: int = 5           # 批处理大小
+
 class BatchProcessor:
     def __init__(self,
                  input_dir: str,
@@ -82,7 +98,9 @@ class BatchProcessor:
                  save_interval: int = 5,
                  retry_times: int = 5,
                  retry_delay: int = 5,
-                 dry_run: bool = False):
+                 dry_run: bool = False,
+                 parallel_config: Optional[ParallelConfig] = None):
+
         self.input_dir = Path(input_dir)
         self.chat_session = chat_session
         self.preprocess_session = preprocess_session
@@ -92,6 +110,17 @@ class BatchProcessor:
         self.retry_delay = retry_delay
         self.cypher_dir = Path(cypher_dir)
         self.dry_run = dry_run
+        self.parallel_config = parallel_config or ParallelConfig()
+
+        # 并行处理相关的属性
+        self.message_queue = Queue(maxsize=self.parallel_config.queue_size) if self.parallel_config.enabled else None
+        self.save_lock = Lock()
+        self.state_lock = RLock()
+        self.stop_event = Event()
+
+        # 线程池
+        self.executor = (ThreadPoolExecutor(max_workers=self.parallel_config.max_workers)
+                        if self.parallel_config.enabled else None)
 
         # LLM价格配置 (每1K tokens的美元价格)
         self.price_config = {
@@ -149,16 +178,17 @@ class BatchProcessor:
 
     def save_state(self):
         """保存处理状态"""
-        state_dict = {
-            k: {
-                **{key: value for key, value in vars(v).items() if key != 'message_pairs'},
-                'message_pairs': [vars(pair) for pair in v.message_pairs]
+        with self.save_lock:  # 使用锁确保并发安全
+            state_dict = {
+                k: {
+                    **{key: value for key, value in vars(v).items() if key != 'message_pairs'},
+                    'message_pairs': [vars(pair) for pair in v.message_pairs]
+                }
+                for k, v in self.state.items()
             }
-            for k, v in self.state.items()
-        }
-        with open(self.state_file, 'w', encoding='utf-8') as f:
-            json.dump(state_dict, f, ensure_ascii=False, indent=2)
-        self.logger.info("Saved current processing state")
+            with open(self.state_file, 'w', encoding='utf-8') as f:
+                json.dump(state_dict, f, ensure_ascii=False, indent=2)
+            self.logger.info("Saved current processing state")
 
     def get_all_files(self) -> Dict[str, List[str]]:
         """获取所有需要处理的文件及其分块"""
@@ -239,27 +269,338 @@ class BatchProcessor:
             self.logger.error(f"Error processing {block_path}: {e}")
             raise
 
-    def save_responses(self, file_name: str):
-        """保存单个文件的所有响应，支持JSON和TOML格式"""
-        state = self.state[file_name]
-        if not state.message_pairs:
+    async def process_message_async(self, original_file: str, block_path: str) -> Optional[str]:
+        """异步处理单个消息"""
+        try:
+            response = await asyncio.get_event_loop().run_in_executor(
+                self.executor,
+                self.process_block,
+                original_file,
+                block_path
+            )
+            return response
+        except Exception as e:
+            self.logger.error(f"Error processing message async {block_path}: {e}")
+            raise
+
+    async def process_batch_async(self, batch: List[Tuple[str, str]]) -> List[Optional[str]]:
+        """异步处理一批消息"""
+        tasks = []
+        for original_file, block_path in batch:
+            task = self.process_message_async(original_file, block_path)
+            tasks.append(task)
+
+        responses = await asyncio.gather(*tasks, return_exceptions=True)
+        return responses
+
+    def parallel_processor(self):
+        """并行处理工作线程"""
+        while not self.stop_event.is_set():
+            try:
+                batch = []
+                # 收集一批待处理的消息
+                for _ in range(self.parallel_config.batch_size):
+                    try:
+                        item = self.message_queue.get(timeout=1)
+                        batch.append(item)
+                    except Empty:
+                        break
+
+                if not batch:
+                    continue
+
+                # 异步处理这一批消息
+                loop = asyncio.new_event_loop()
+                asyncio.set_event_loop(loop)
+                try:
+                    responses = loop.run_until_complete(self.process_batch_async(batch))
+
+                    # 更新处理状态
+                    with self.state_lock:
+                        for (original_file, block_path), response in zip(batch, responses):
+                            if isinstance(response, Exception):
+                                self.logger.error(f"Error processing {block_path}: {response}")
+                                continue
+
+                            if response:
+                                state = self.state[original_file]
+                                state.processed_blocks += 1
+
+                                # 定期保存
+                                if state.processed_blocks % self.save_interval == 0:
+                                    # with self.save_lock:
+                                    self.save_state()
+                                    self.save_responses(original_file)
+                finally:
+                    loop.close()
+
+            except Exception as e:
+                self.logger.error(f"Error in parallel processor: {e}")
+
+        self.logger.info("Parallel processor stopped")
+
+    def prepare_parallel_processing(self):
+        """准备并行处理环境"""
+        if not self.parallel_config.enabled:
             return
 
-        base_path = self.input_dir / file_name
+        # 启动工作线程
+        self.workers = []
+        for _ in range(self.parallel_config.max_workers):
+            worker = threading.Thread(target=self.parallel_processor)
+            worker.daemon = True
+            worker.start()
+            self.workers.append(worker)
 
-        # 1. 保存JSON格式
-        json_data = {
-            "metadata": {
-                "file_name": file_name,
-                "processed_at": datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
-                "total_pairs": len(state.message_pairs)
-            },
-            "message_pairs": [vars(pair) for pair in state.message_pairs]
-        }
+    def cleanup_parallel_processing(self):
+        """清理并行处理资源"""
+        if not self.parallel_config.enabled:
+            return
 
-        json_file = f"{base_path}.responses.json"
-        with open(json_file, 'w', encoding='utf-8') as f:
-            json.dump(json_data, f, ensure_ascii=False, indent=2)
+        self.stop_event.set()
+        for worker in self.workers:
+            worker.join()
+
+        if self.executor:
+            self.executor.shutdown()
+
+    def _get_queue_status(self) -> str:
+        """获取队列状态信息"""
+        if not self.parallel_config.enabled:
+            return "Sequential mode - No queue"
+
+        queue_size = self.message_queue.qsize()
+        queue_maxsize = self.message_queue.maxsize
+        return f"Queue: {queue_size}/{queue_maxsize} ({(queue_size/queue_maxsize)*100:.1f}% full)"
+
+    def _print_progress_summary(self, all_files: Dict[str, List[str]], force_full_stats: bool = False):
+        """打印处理进度摘要"""
+        total_files = len(all_files)
+        completed_files = sum(1 for state in self.state.values() if state.completed)
+        total_blocks = sum(len(state.block_files) for state in self.state.values())
+        processed_blocks = sum(state.processed_blocks for state in self.state.values())
+
+        self.logger.info("\n=== Progress Summary ===")
+        self.logger.info(f"Files: {completed_files}/{total_files} completed")
+        self.logger.info(f"Blocks: {processed_blocks}/{total_blocks} ({(processed_blocks/total_blocks)*100:.1f}% complete)")
+        self.logger.info(f"Processing rate: {self._get_processing_rate()}")
+
+        if self.parallel_config.enabled:
+            self.logger.info(f"Active workers: {self.executor._work_queue.qsize()}/{self.parallel_config.max_workers}")
+            self.logger.info(self._get_queue_status())
+
+        # 如果强制输出完整统计，则调用完整统计方法
+        if force_full_stats:
+            self._print_processing_statistics(all_files)
+
+    def _print_processing_statistics(self, all_files):
+        """打印处理统计信息"""
+        encoding = tiktoken.get_encoding("cl100k_base")
+
+        # 计算所有消息的token数
+        total_prompt_tokens = 0
+        total_completion_tokens = 0
+        total_cost = 0
+
+        # 获取当前使用的模型
+        model_name = getattr(self.chat_session, 'bot_name', 'claude-3-sonnet').lower()
+
+        # 找到匹配的价格配置
+        price_config = None
+        for model_key, config in self.price_config.items():
+            if model_key in model_name:
+                price_config = config
+                break
+
+        if not price_config:
+            price_config = self.price_config["claude-3-sonnet"]
+
+        # 统计每个文件的token使用情况
+        file_stats = {}
+        for file_name, state in self.state.items():
+            file_prompt_tokens = 0
+            file_completion_tokens = 0
+
+            for pair in state.message_pairs:
+                prompt_tokens = len(encoding.encode(pair.message))
+                completion_tokens = len(encoding.encode(pair.response))
+
+                file_prompt_tokens += prompt_tokens
+                file_completion_tokens += completion_tokens
+
+            total_prompt_tokens += file_prompt_tokens
+            total_completion_tokens += file_completion_tokens
+
+            file_cost = (file_prompt_tokens / 1000 * price_config["prompt"] +
+                        file_completion_tokens / 1000 * price_config["completion"])
+            total_cost += file_cost
+
+            file_stats[file_name] = {
+                "prompt_tokens": file_prompt_tokens,
+                "completion_tokens": file_completion_tokens,
+                "total_tokens": file_prompt_tokens + file_completion_tokens,
+                "cost": file_cost
+            }
+
+        # 输出最终处理统计
+        total_files = len(all_files)
+        completed_files = sum(1 for state in self.state.values() if state.completed)
+        total_blocks = sum(len(state.block_files) for state in self.state.values())
+        processed_blocks = sum(state.processed_blocks for state in self.state.values())
+
+        self.logger.info("\n=== Processing Summary ===")
+        self.logger.info(f"Total files: {total_files}")
+        self.logger.info(f"Completed files: {completed_files}")
+        self.logger.info(f"Total blocks: {total_blocks}")
+        self.logger.info(f"Processed blocks: {processed_blocks}")
+        self.logger.info(f"Completion rate: {(processed_blocks/total_blocks)*100:.2f}%")
+
+        self.logger.info("\n=== Token Usage ===")
+        self.logger.info(f"Model: {model_name}")
+        self.logger.info(f"Total prompt tokens: {total_prompt_tokens:,}")
+        self.logger.info(f"Total completion tokens: {total_completion_tokens:,}")
+        self.logger.info(f"Total tokens: {total_prompt_tokens + total_completion_tokens:,}")
+        self.logger.info(f"Estimated cost: ${total_cost:.4f}")
+
+        self.logger.info("\n=== Per File Statistics ===")
+        for file_name, stats in file_stats.items():
+            self.logger.info(f"{file_name}:")
+            self.logger.info(f"  Prompt tokens: {stats['prompt_tokens']:,}")
+            self.logger.info(f"  Completion tokens: {stats['completion_tokens']:,}")
+            self.logger.info(f"  Total tokens: {stats['total_tokens']:,}")
+            self.logger.info(f"  Cost: ${stats['cost']:.4f}")
+    @retry_on_exception(max_retries=10, retry_interval=2.0)
+    def process_all(self):
+        """处理所有文件"""
+        all_files = self.get_all_files()
+        self.logger.info(f"Found {len(all_files)} files to process")
+
+        try:
+            # 初始化新文件的状态
+            self._initialize_files_state(all_files)
+
+            if self.parallel_config.enabled:
+                self._process_all_parallel(all_files)
+            else:
+                self._process_all_sequential(all_files)
+
+        except Exception as e:
+            self.logger.error(f"Processing interrupted: {e}")
+            self.save_state()
+            if not self.dry_run:
+                self.chat_session.update_connection()
+            raise
+
+        finally:
+            self._print_processing_statistics(all_files)
+
+    def _initialize_files_state(self, all_files):
+        """初始化文件处理状态"""
+        for original_file, block_files in all_files.items():
+            if original_file not in self.state:
+                cypher_file = str(self.cypher_dir / f"{Path(original_file).stem}.cypher")
+                self.state[original_file] = ProcessingState(
+                    file_name=original_file,
+                    block_files=block_files,
+                    processed_blocks=0,
+                    message_pairs=[],
+                    completed=False,
+                    cypher_file=cypher_file
+                )
+
+                if not self.dry_run:
+                    self._initialize_cypher_file(original_file, cypher_file)
+
+    def _initialize_cypher_file(self, original_file: str, cypher_file: str):
+        """初始化cypher文件"""
+        with open(cypher_file, 'w', encoding='utf-8') as f:
+            f.write(f"// Cypher statements for {original_file}\n")
+            f.write(f"// Generated at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+            f.write("// Source: Knowledge Graph Generation from Medical Literature\n")
+            f.write("// Each statement ends with a semicolon\n\n")
+
+    def _process_all_sequential(self, all_files):
+        """顺序处理所有文件"""
+        for original_file, state in self.state.items():
+            if state.completed:
+                self.logger.info(f"Skipping completed file: {original_file}")
+                continue
+
+            self.logger.info(f"Processing {original_file}")
+
+            for i in range(state.processed_blocks, len(state.block_files)):
+                block_path = state.block_files[i]
+                self.logger.info(f"Processing block {i + 1}/{len(state.block_files)}: {block_path}")
+
+                response = self.process_block(original_file, block_path)
+                if response:
+                    state.processed_blocks = i + 1
+
+                    if (i + 1) % self.save_interval == 0:
+                        self.logger.info(f"Periodic save at block {i + 1}")
+                        self.save_state()
+                        self.save_responses(original_file)
+
+            state.completed = True
+            self.save_state()
+            self.save_responses(original_file)
+
+    def _process_all_parallel(self, all_files):
+        """并行处理所有文件"""
+        try:
+            # 准备并行处理环境
+            self.prepare_parallel_processing()
+
+            # 提交所有任务到队列
+            for original_file, state in self.state.items():
+                if state.completed:
+                    self.logger.info(f"Skipping completed file: {original_file}")
+                    continue
+
+                self.logger.info(f"Queueing {original_file} for processing")
+
+                for i in range(state.processed_blocks, len(state.block_files)):
+                    block_path = state.block_files[i]
+                    self.message_queue.put((original_file, block_path))
+
+            # 等待所有任务完成
+            self.message_queue.join()
+
+            # 标记所有文件为完成
+            with self.state_lock:
+                for state in self.state.values():
+                    if state.processed_blocks == len(state.block_files):
+                        state.completed = True
+                        self.save_responses(state.file_name)
+
+            self.save_state()
+
+        finally:
+            # 清理并行处理资源
+            self.cleanup_parallel_processing()
+
+    def save_responses(self, file_name: str):
+        """保存单个文件的所有响应，支持JSON和TOML格式"""
+        with self.save_lock:  # 使用锁确保并发安全
+            state = self.state[file_name]
+            if not state.message_pairs:
+                return
+
+            base_path = self.input_dir / file_name
+
+            # 保存JSON格式
+            json_data = {
+                "metadata": {
+                    "file_name": file_name,
+                    "processed_at": datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+                    "total_pairs": len(state.message_pairs)
+                },
+                "message_pairs": [vars(pair) for pair in state.message_pairs]
+            }
+
+            json_file = f"{base_path}.responses.json"
+            with open(json_file, 'w', encoding='utf-8') as f:
+                json.dump(json_data, f, ensure_ascii=False, indent=2)
         self.logger.info(f"Saved responses as JSON to {json_file}")
 
         # 2. 保存TOML格式
@@ -307,152 +648,27 @@ class BatchProcessor:
                     f.write(f"// Processed at {pair.timestamp}\n\n")
 
             self.logger.info(f"Appended {len(new_responses)} Cypher statements to {state.cypher_file}")
-
-    @retry_on_exception(max_retries=10, retry_interval=2.0)
-    def process_all(self):
-        """处理所有文件"""
-        all_files = self.get_all_files()
-        self.logger.info(f"Found {len(all_files)} files to process")
-
-        try:
-            # 初始化新文件的状态
-            for original_file, block_files in all_files.items():
-                if original_file not in self.state:
-                    cypher_file = str(self.cypher_dir / f"{Path(original_file).stem}.cypher")
-                    self.state[original_file] = ProcessingState(
-                        file_name=original_file,
-                        block_files=block_files,
-                        processed_blocks=0,
-                        message_pairs=[],
-                        completed=False,
-                        cypher_file=cypher_file
-                    )
-
-                    if not self.dry_run:
-                        with open(cypher_file, 'w', encoding='utf-8') as f:
-                            f.write(f"// Cypher statements for {original_file}\n")
-                            f.write(f"// Generated at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
-                            f.write("// Source: Knowledge Graph Generation from Medical Literature\n")
-                            f.write("// Each statement ends with a semicolon\n\n")
-
-            # 处理每个文件
-            for original_file, state in self.state.items():
-                if state.completed:
-                    self.logger.info(f"Skipping completed file: {original_file}")
-                    continue
-
-                self.logger.info(f"Processing {original_file}")
-
-                for i in range(state.processed_blocks, len(state.block_files)):
-                    block_path = state.block_files[i]
-                    self.logger.info(f"Processing block {i + 1}/{len(state.block_files)}: {block_path}")
-
-                    response = self.process_block(original_file, block_path)
-                    if response:
-                        state.processed_blocks = i + 1
-
-                        if (i + 1) % self.save_interval == 0:
-                            self.logger.info(f"Periodic save at block {i + 1}")
-                            self.save_state()
-                            self.save_responses(original_file)
-
-                state.completed = True
-                self.save_state()
-                self.save_responses(original_file)
-
-                self.logger.info(f"Completed processing {original_file}")
-                self.logger.info(f"Total blocks processed: {len(state.block_files)}")
-                self.logger.info(f"Total message pairs: {len(state.message_pairs)}")
-
-        except Exception as e:
-            self.logger.error(f"Processing interrupted: {e}")
-            self.save_state()
-            if not self.dry_run:
-                self.chat_session.update_connection()
-            raise
-
-        finally:
-            encoding = tiktoken.get_encoding("cl100k_base")
-
-            # 计算所有消息的token数
-            total_prompt_tokens = 0
-            total_completion_tokens = 0
-            total_cost = 0
-
-            # 获取当前使用的模型
-            model_name = getattr(self.chat_session, 'bot_name', 'claude-3-sonnet').lower()
-
-            # 找到匹配的价格配置
-            price_config = None
-            for model_key, config in self.price_config.items():
-                if model_key in model_name:
-                    price_config = config
-                    break
-
-            if not price_config:
-                price_config = self.price_config["claude-3-sonnet"]
-
-            # 统计每个文件的token使用情况
-            file_stats = {}
-            for file_name, state in self.state.items():
-                file_prompt_tokens = 0
-                file_completion_tokens = 0
-
-                for pair in state.message_pairs:
-                    prompt_tokens = len(encoding.encode(pair.message))
-                    completion_tokens = len(encoding.encode(pair.response))
-
-                    file_prompt_tokens += prompt_tokens
-                    file_completion_tokens += completion_tokens
-
-                total_prompt_tokens += file_prompt_tokens
-                total_completion_tokens += file_completion_tokens
-
-                file_cost = (file_prompt_tokens / 1000 * price_config["prompt"] +
-                            file_completion_tokens / 1000 * price_config["completion"])
-                total_cost += file_cost
-
-                file_stats[file_name] = {
-                    "prompt_tokens": file_prompt_tokens,
-                    "completion_tokens": file_completion_tokens,
-                    "total_tokens": file_prompt_tokens + file_completion_tokens,
-                    "cost": file_cost
-                }
-
-            # 输出最终处理统计
-            total_files = len(all_files)
-            completed_files = sum(1 for state in self.state.values() if state.completed)
-            total_blocks = sum(len(state.block_files) for state in self.state.values())
-            processed_blocks = sum(state.processed_blocks for state in self.state.values())
-
-            self.logger.info("\n=== Processing Summary ===")
-            self.logger.info(f"Total files: {total_files}")
-            self.logger.info(f"Completed files: {completed_files}")
-            self.logger.info(f"Total blocks: {total_blocks}")
-            self.logger.info(f"Processed blocks: {processed_blocks}")
-            self.logger.info(f"Completion rate: {(processed_blocks/total_blocks)*100:.2f}%")
-
-            self.logger.info("\n=== Token Usage ===")
-            self.logger.info(f"Model: {model_name}")
-            self.logger.info(f"Total prompt tokens: {total_prompt_tokens:,}")
-            self.logger.info(f"Total completion tokens: {total_completion_tokens:,}")
-            self.logger.info(f"Total tokens: {total_prompt_tokens + total_completion_tokens:,}")
-            self.logger.info(f"Estimated cost: ${total_cost:.4f}")
-
-            self.logger.info("\n=== Per File Statistics ===")
-            for file_name, stats in file_stats.items():
-                self.logger.info(f"{file_name}:")
-                self.logger.info(f"  Prompt tokens: {stats['prompt_tokens']:,}")
-                self.logger.info(f"  Completion tokens: {stats['completion_tokens']:,}")
-                self.logger.info(f"  Total tokens: {stats['total_tokens']:,}")
-                self.logger.info(f"  Cost: ${stats['cost']:.4f}")
-
 # %%
 if __name__ == "__main__":
     DRY_RUN = False
+    ENABLE_PARALLEL = True  # 新增并行处理开关
+
+    # 配置并行处理参数
+    parallel_config = ParallelConfig(
+        enabled=ENABLE_PARALLEL,
+        max_workers=10,
+        queue_size=10,
+        batch_size=10
+    ) if ENABLE_PARALLEL else None
+
     if not DRY_RUN:
+        session = OpenAIChatSession(openai_chat.client1)
+        preprocess_session = OpenAIChatSession(openai_chat.client2)
+
+        """         
         session = QianfanChatSession()
-        preprocess_session = session
+        preprocess_session = session 
+        """
         pass
         """
         preprocess_bot_name = "gpt4_o_mini"
@@ -490,7 +706,8 @@ if __name__ == "__main__":
         input_dir="dataset",
         preprocess_session=DummyChatSession() if DRY_RUN else preprocess_session,
         chat_session=DummyChatSession() if DRY_RUN else session,
-        save_interval=5
+        save_interval=5,
+        parallel_config=parallel_config
     )
 
     try:

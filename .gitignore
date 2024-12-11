@@ -7,4 +7,5 @@
 /Google/
 processing_state*.json
 __pycache__/
+/test/
 *.log

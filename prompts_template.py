@@ -266,11 +266,10 @@ API_COMMAND_MSG = f"""
 [CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
 请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
 [详细补充需求]
-输出的Cypher语句不要分号, 不需要转义, 不需要其他任何内容, 以便最后可以汇总直接导入neo4j数据库;
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
 请保证你生成的语句可以多次执行而不出现重复定义问题;
 请保证语法正确性;
 请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出"// 空"(不含引号)
-[CYPHER_SCHEMA]
 {CYPHER_SCHEMA}
 [关系抽取说明]
 抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
