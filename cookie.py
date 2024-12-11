@@ -187,8 +187,8 @@ def main():
 # if __name__ == "__main__":
 #     main()
 
-def get_token_from_browser_cookies():
-    cookie_extractor = CookieExtractor(base_url="poe.com", headless=True)
+def get_token_from_browser_cookies(headless=True):
+    cookie_extractor = CookieExtractor(base_url="poe.com", headless=headless)
 
     _, tokens = cookie_extractor.get_cookies(['p-b', 'p-lat', '__cf_bm', 'cf_clearance'])
     # tokens = cookie_extractor.get_cookies()
@@ -201,4 +201,4 @@ def get_token_from_browser_cookies():
 # 使用示例
 if __name__ == "__main__":
     # monitor_browser_cookies()
-    get_token_from_browser_cookies()
+    get_token_from_browser_cookies(True)

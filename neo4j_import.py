@@ -1,4 +1,5 @@
 # %%
+import json
 import os
 import logging
 from neo4j import GraphDatabase
@@ -11,8 +12,11 @@ logging.basicConfig(
     handlers=[logging.StreamHandler()]
 )
 
+URI = "neo4j+s://78717f6d.databases.neo4j.io:7687"
+USER = "neo4j"
+PASSWORD = "v6_ajT8EJU_naZWZjijqP7rySyaOYK7hl9oKJw74TQg"
 class Neo4jImporter:
-    def __init__(self, uri, user, password):
+    def __init__(self, uri = URI, user = USER, password = PASSWORD):
         self.logger = logging.getLogger(self.__class__.__name__)
         try:
             self.driver = GraphDatabase.driver(uri, auth=(user, password))
@@ -24,7 +28,20 @@ class Neo4jImporter:
     def close(self):
         self.driver.close()
         self.logger.info("Closed connection to Neo4j database.")
-
+    def execute(self, query: str):
+        """执行单条 Cypher 查询并返回结果。"""
+        self.logger.info("Executing query: %s", query)
+        with self.driver.session() as session:
+            try:
+                result = session.run(query)
+                # 将结果转换为列表（或其他合适的格式）
+                # result_list = [record for record in result]
+                # self.logger.info("Query executed successfully, returned %d records.", len(result_list))
+                # return result_list
+                return result.single().data()
+            except CypherSyntaxError as e:
+                self.logger.error("Query failed: %s", e)
+                return {"error": str(e)}
     def import_cypher(self, cypher: str):
         """导入单条或多条 Cypher 语句（可以是分号分隔的字符串）。"""
         self.logger.info("Starting to import Cypher...")
@@ -98,22 +115,40 @@ class Neo4jImporter:
             successful_files, failed_files
         )
         return total_results
-
+# %%
+importer = Neo4jImporter(URI, USER, PASSWORD)
 # %%
 if __name__ == "__main__":
-    URI = "neo4j+s://78717f6d.databases.neo4j.io:7687"
-    USER = "neo4j"
-    PASSWORD = "v6_ajT8EJU_naZWZjijqP7rySyaOYK7hl9oKJw74TQg"
-
-    importer = Neo4jImporter(URI, USER, PASSWORD)
-
-    # # 从字符串导入
-    # cypher_script = """
-    # CREATE (n:TestNode {name: 'Node1'});
-    # CREATE (n:TestNode {name: 'Node2'});
-    # """
-    # result = importer.import_cypher(cypher_script)
-    # logging.info("Result: %s", result)
+    # 从字符串导入
+    # importer.import_cypher("MATCH (n) DETACH DELETE n;")
+    cypher_script = """
+    MERGE (d:Disease {name: "阻塞性睡眠呼吸暂停低通气综合征", description: "OSAHS"})
+    MERGE (t1:Treatment {name: "体质量管理", type: "非药物", description: "包括饮食控制和适度的体育锻炼, 旨在减轻体质量. "})
+    MERGE (t2:Treatment {name: "生活方式改变", type: "非药物", description: "包括戒烟、限制酒精摄入、避免晚餐过量饮食、规律作息和改进睡眠环境等. "})
+    MERGE (t3:Treatment {name: "持续气道正压通气(CPAP)", type: "药物", description: "通过面罩或鼻罩提供气道正压, 防止气道坍塌, 确保患者在夜间呼吸通畅. "})
+    MERGE (t4:Treatment {name: "自动调节压力正压通气(APAP)", type: "药物", description: "可以根据患者的呼吸情况进行调整, 以提供更个性化的治疗. "})
+    MERGE (d)-[:TREATED_BY]->(t1)
+    MERGE (d)-[:TREATED_BY]->(t2)
+    MERGE (d)-[:TREATED_BY]->(t3)
+    MERGE (d)-[:TREATED_BY]->(t4);
+    """
+    result = importer.import_cypher(cypher_script)
+    logging.info("Result: %s", result)
+    result = importer.execute("""
+MATCH (d:Disease {name: "阻塞性睡眠呼吸暂停低通气综合征"})-[:TREATED_BY]->(t:Treatment)
+WITH d, 
+     COLLECT(CASE WHEN t.type = '药物' THEN t.name END) as drug_treatments,
+     COLLECT(CASE WHEN t.type = '非药物' THEN t.name END) as non_drug_treatments,
+     COLLECT(CASE WHEN t.type = '药物' THEN t.description END) as drug_descriptions,
+     COLLECT(CASE WHEN t.type = '非药物' THEN t.description END) as non_drug_descriptions
+RETURN d.name as DiseaseName,
+       d.description as DiseaseDescription,
+       [x IN drug_treatments WHERE x IS NOT NULL] as DrugTreatments,
+       [x IN drug_descriptions WHERE x IS NOT NULL] as DrugTreatmentDescriptions,
+       [x IN non_drug_treatments WHERE x IS NOT NULL] as NonDrugTreatments,
+       [x IN non_drug_descriptions WHERE x IS NOT NULL] as NonDrugTreatmentDescriptions
+                              """)
+    logging.info("Result: \n%s", json.dumps(result, indent=4, ensure_ascii=False))
 
     # # 从文件导入
     # file_path = "path/to/cypher_file.cql"
@@ -124,11 +159,13 @@ if __name__ == "__main__":
     #     logging.error("Failed to import file: %s", e)
 
     # 从目录导入
-    directory_path = "cyphers"
-    try:
-        dir_result = importer.import_from_directory(directory_path)
-        logging.info("Directory import result: %s", dir_result)
-    except Exception as e:
-        logging.error("Failed to import directory: %s", e)
+    # directory_path = "cyphers"
+    # try:
+    #     dir_result = importer.import_from_directory(directory_path)
+    #     logging.info("Directory import result: %s", dir_result)
+    # except Exception as e:
+    #     logging.error("Failed to import directory: %s", e)
 
-    importer.close()
+    # importer.close()
+
+# %%

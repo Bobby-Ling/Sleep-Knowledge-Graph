@@ -199,5 +199,6 @@ if __name__ == "__main__":
     chat_manager = PoeChatManager(tokens={}, dry_run=False)
 
     bot_name = "Assistant"
-    session: ChatSession = chat_manager.get_session(bot_name=bot_name, chat_code='2wdaov98l5gqx9kfse1')
+    # session: ChatSession = chat_manager.create_session(bot_name=bot_name)
+    session: ChatSession = chat_manager.get_session(bot_name=bot_name, chat_code='2y4g7f88bxx78imgmzv')
     response = session.send_message("how are you?")

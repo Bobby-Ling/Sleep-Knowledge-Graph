@@ -2,6 +2,7 @@
 from datetime import datetime
 import os
 import json
+import textwrap
 import toml
 import logging
 import random
@@ -12,7 +13,7 @@ from pathlib import Path
 import tiktoken
 
 from chat_manager import PoeChatManager, ChatSession
-from prompts_template import INIT_MSG, INSTRUCT_MSG, COMMAND_TEMPLATE
+from prompts_template import INIT_MSG, INSTRUCT_MSG, COMMAND_TEMPLATE, PREPROCESS_INIT_MSG, PREPROCESS_MSG
 
 def retry_on_exception(max_retries: Optional[int] = None, retry_interval: float = 1.0):
     """
@@ -43,6 +44,7 @@ def retry_on_exception(max_retries: Optional[int] = None, retry_interval: float 
 @dataclass
 class MessagePair:
     """消息对"""
+    content: str          # 原始文本块
     message: str           # 发送的消息
     response: str         # 收到的响应
     timestamp: str        # 处理时间戳
@@ -64,19 +66,23 @@ class DummyChatSession:
     def send_message(self, message: str) -> str:
         return f"Response for: {message[:50]}..."
 
+LOGGER_NAME = "process"
+
 class BatchProcessor:
     def __init__(self,
                  input_dir: str,
                  chat_session: ChatSession,
+                 preprocess_session: ChatSession,
                  state_file: str = "processing_state.json",
-                 log_file: str = "processing.log",
+                 log_level = logging.INFO,
                  cypher_dir: str = "cyphers",
                  save_interval: int = 5,
-                 retry_times: int = 3,
+                 retry_times: int = 5,
                  retry_delay: int = 5,
                  dry_run: bool = False):
         self.input_dir = Path(input_dir)
         self.chat_session = chat_session
+        self.preprocess_session = preprocess_session
         self.state_file = state_file
         self.save_interval = save_interval
         self.retry_times = retry_times
@@ -93,18 +99,21 @@ class BatchProcessor:
             "gpt-3.5-turbo": {"prompt": 0.0005, "completion": 0.0015}
         }
 
-        self.logger = logging.getLogger(__name__)
+        self.logger = logging.getLogger(LOGGER_NAME)
         self.cypher_dir.mkdir(exist_ok=True)
-        self.setup_logging(log_file)
+        self.setup_logging(log_level)
         self.state: Dict[str, ProcessingState] = {}
         self.load_state()
 
-    def setup_logging(self, log_file: str):
+    def setup_logging(self, log_level):
         """设置日志"""
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        log_file = f'logs/processing_{timestamp}.log'
+
         self.logger.setLevel(logging.INFO)
 
         console_handler = logging.StreamHandler()
-        console_handler.setLevel(logging.INFO)
+        console_handler.setLevel(log_level)
 
         file_handler = logging.FileHandler(log_file, encoding='utf-8')
         file_handler.setLevel(logging.INFO)
@@ -127,7 +136,7 @@ class BatchProcessor:
                     # 转换message_pairs
                     message_pairs = [
                         MessagePair(**pair) if isinstance(pair, dict) else
-                        MessagePair(pair[0], pair[1], datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+                        MessagePair(pair[0], pair[1], pair[2], datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
                         for pair in v.pop('message_pairs', [])
                     ]
                     self.state[k] = ProcessingState(**v, message_pairs=message_pairs)
@@ -178,6 +187,7 @@ class BatchProcessor:
                 # 创建消息对
                 self.state[original_file].message_pairs.append(
                     MessagePair(
+                        content=f"raw: \n{content}",
                         message=content,
                         response=dummy_response,
                         timestamp=datetime.now().strftime('%Y-%m-%d %H:%M:%S')
@@ -188,12 +198,22 @@ class BatchProcessor:
             # 尝试发送消息
             for attempt in range(self.retry_times):
                 try:
-                    message = COMMAND_TEMPLATE.format(original_file, block_path, content)
-                    response = self.chat_session.send_message(message)
+                    self.logger.info("\n\n//////---------------------------------------------------------------")
+                    self.logger.info(f"[content]: \n{content}")
 
+                    preprocessed_content = self.preprocess_session.send_message(PREPROCESS_MSG.format(content))
+                    self.logger.info(f"[preprocessed_content]: \n{preprocessed_content}")
+
+                    message = COMMAND_TEMPLATE.format(original_file, block_path, preprocessed_content)
+                    self.logger.info(f"[message]: {message}")
+
+                    response = self.chat_session.send_message(message)
+                    self.logger.info(textwrap.dedent(f"[response]: \n{response}"))
+                    self.logger.info("\n---------------------------------------------------------------//////\n\n")
                     # 创建消息对
                     self.state[original_file].message_pairs.append(
                         MessagePair(
+                            content=content,
                             message=message,
                             response=response,
                             timestamp=datetime.now().strftime('%Y-%m-%d %H:%M:%S')
@@ -284,7 +304,7 @@ class BatchProcessor:
 
             self.logger.info(f"Appended {len(new_responses)} Cypher statements to {state.cypher_file}")
 
-    @retry_on_exception(max_retries=None, retry_interval=2.0)
+    @retry_on_exception(max_retries=10, retry_interval=2.0)
     def process_all(self):
         """处理所有文件"""
         all_files = self.get_all_files()
@@ -429,15 +449,22 @@ if __name__ == "__main__":
     if not DRY_RUN:
         # gql_POST
         tokens = {}
+        preprocess_bot_name = "Assistant"
         # bot_name = "Assistant"
         bot_name = "claude-3.5-sonnet-200k"
-        chat_manager = PoeChatManager(tokens=tokens, dry_run=False)
-        session = chat_manager.create_session(bot_name=bot_name, initial_message=INIT_MSG)
-        session.send_message(INSTRUCT_MSG)
-        # session = chat_manager.get_session(bot_name=bot_name, chat_code='2y9ur7o1f4u98sqw5hg')
+        chat_manager = PoeChatManager(tokens=tokens, log_level=logging.INFO, dry_run=False)
+
+        # preprocess_session = chat_manager.create_session(bot_name=preprocess_bot_name, initial_message=PREPROCESS_INIT_MSG)
+        preprocess_session = chat_manager.get_session(bot_name=bot_name, chat_code='2y405esrum7wlw8cria')
+
+        # session = chat_manager.create_session(bot_name=bot_name, initial_message=INIT_MSG)
+        session = chat_manager.get_session(bot_name=bot_name, chat_code='2y406tqjs31ldhr5zzs')
+        # session.send_message(INSTRUCT_MSG)
+
 
     processor = BatchProcessor(
         input_dir="dataset",
+        preprocess_session=DummyChatSession() if DRY_RUN else preprocess_session,
         chat_session=DummyChatSession() if DRY_RUN else session,
         save_interval=5
     )
