@@ -34,6 +34,15 @@ FOR (e:Examination) ON (e.name);
 
 CREATE INDEX treatment_index IF NOT EXISTS
 FOR (t:Treatment) ON (t.name);
+
+CREATE INDEX riskfactor_index IF NOT EXISTS
+FOR (d:RiskFactor) ON (d.name);
+
+CREATE INDEX complication_index IF NOT EXISTS
+FOR (s:Complication) ON (s.name);
+
+CREATE INDEX examination_index IF NOT EXISTS
+FOR (e:Examination) ON (e.name);
 """
 
 CYPHER_SCHEMA = """

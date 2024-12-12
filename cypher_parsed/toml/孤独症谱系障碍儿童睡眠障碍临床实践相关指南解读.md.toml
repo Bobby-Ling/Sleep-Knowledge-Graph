@@ -1,0 +1,2311 @@
+[metadata]
+file_name = "孤独症谱系障碍儿童睡眠障碍临床实践相关指南解读.md"
+processed_at = "2024-12-12 01:30:29"
+total_pairs = 10
+
+[[message_pairs]]
+timestamp = "2024-12-12 01:29:54"
+message = """
+
+[背景信息]
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+[命令]
+[CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+[详细补充需求]
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出\"// 空\"(不含引号)
+
+// 定义节点属性示例
+// 疾病节点
+CREATE (:Disease {
+    name: String,           // 疾病名称
+    code: String,           // 疾病编码
+    description: String,    // 疾病描述
+    category: String,       // 疾病分类
+    severity: String        // 严重程度
+});
+
+// 症状节点
+CREATE (:Symptom {
+    name: String,           // 症状名称
+    description: String,    // 症状描述
+    severity: String,       // 严重程度
+    frequency: String       // 发生频率
+});
+
+// 检查项目节点
+CREATE (:Examination {
+    name: String,           // 检查名称
+    description: String,    // 检查描述
+    method: String,         // 检查方法
+    requirement: String     // 检查要求
+});
+
+// 治疗方案节点
+CREATE (:Treatment {
+    name: String,           // 治疗名称
+    type: String,           // 类型(药物/非药物)
+    description: String,    // 治疗描述
+    dosage: String,         // 剂量(药物)
+    duration: String,       // 持续时间
+    contraindication: String // 禁忌症
+});
+
+// 量表工具节点
+CREATE (:Scale {
+    name: String,           // 量表名称
+    description: String,    // 量表描述
+    score_range: String,    // 分数范围
+    interpretation: String  // 结果解释
+});
+
+// 风险因素节点
+CREATE (:RiskFactor {
+    name: String,           // 因素名称
+    description: String,    // 描述
+    impact_level: String    // 影响程度
+});
+
+// 并发症节点
+CREATE (:Complication {
+    name: String,           // 并发症名称
+    description: String,    // 描述
+    severity: String        // 严重程度
+});
+
+// 定义关系类型
+// 症状-疾病关系
+CREATE (:Symptom)-[:INDICATES {
+    confidence: Float,      // 置信度
+    frequency: String,      // 发生频率
+    severity: String        // 严重程度
+}]->(:Disease);
+
+// 疾病-检查关系
+CREATE (:Disease)-[:REQUIRES_EXAM {
+    priority: String,       // 优先级
+    mandatory: Boolean      // 是否必需
+}]->(:Examination);
+
+// 疾病-治疗关系
+CREATE (:Disease)-[:TREATED_BY {
+    effectiveness: Float,   // 有效性
+    priority: String,       // 优先级
+    stage: String          // 治疗阶段
+}]->(:Treatment);
+
+// 疾病-并发症关系
+CREATE (:Disease)-[:MAY_CAUSE {
+    probability: Float,     // 发生概率
+    timeframe: String      // 时间框架
+}]->(:Complication);
+
+// 疾病-风险因素关系
+CREATE (:Disease)-[:INFLUENCED_BY {
+    impact_level: String,   // 影响程度
+    evidence_level: String  // 证据等级
+}]->(:RiskFactor);
+
+// 疾病-量表关系
+CREATE (:Disease)-[:ASSESSED_BY {
+    applicability: Float,   // 适用性
+    recommendation_level: String  // 推荐级别
+}]->(:Scale);
+
+[关系抽取说明]
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
+请尽你可能抽取全部关系
+[示例输出]
+MERGE (d1:Disease {name: \"阻塞性睡眠呼吸暂停低通气综合征\", short_name: \"OSAHS\"})
+MERGE (c1:Disease {name: \"高血压\"})
+MERGE (c2:Disease {name: \"糖尿病\"})
+MERGE (c1)-[:COMPLICATION_OF]->(d1)
+MERGE (c2)-[:COMPLICATION_OF]->(d1)
+
+[隶属文件名]
+孤独症谱系障碍儿童睡眠障碍临床实践相关指南解读.md
+[隶属文件分块名]
+孤独症谱系障碍儿童睡眠障碍临床实践相关指南解读/003-1-证据等级和推荐强度.md
+[文本块]
+# 证据等级和推荐强度
+
+GRADE 方法作为证据质量评价及推荐强度评级的标准，为系统评价和指南制订提供了一个证据质量评价体系，同时为指南中推荐强度的制订提供了一种系统评级方法。GRADE 方法将证据群的质量分为高、中、低和极低4 个等级，而将推荐强度分为强、弱2 级：当干预措施明确利大于弊或弊大于利时，为强推荐；当利弊不确定时，为弱推荐。ATN 共识和NICE 指南主要遵循GRADE 方法进行证据质量评价，而AAN指引基于修订的GRADE 方法制订推荐强度。ATN 共识系统回顾发现尚缺乏关于ASD 儿童失眠治疗的高质量研究证据，仅在系统综述基础上形成专家共识。NICE 指南根据GRADE 方法对证据质量进行了分级，最后制订的推荐强度体现在每条建议中，而未使用特定的评级或标签说明建议的推荐强度。
+
+AAN 指南制定小组根据偏倚风险来锚定对证据的最初信心，包括高度信心、中等信心、低度信心和极低信心，最终综合利弊提出实践建议。当有足够的证据支持时，推荐强度如下：A 级是最强的推荐级别，在绝大多数情况下执行该建议将改善健康结局；B 级指应该执行的实践建议，执行此类建议在大多数情况下可能会改善健康结局；C 级是在临床实践范围内有效的最低允许推荐水平，在某些情况下执行该建议可能会改善健康结局。当证据不足以支持某项干预的使用时，推荐强度为U 级（证据不充分）或R 级（干预的利弊未知，且费用高或存在风险），R 级的建议不应在超出研究范围的情境下使用。需要注意的是，AAN 指南最终提出的实践建议均为B 级推荐。
+
+"""
+response = """
+// 节点更新
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-12 01:29:57"
+message = """
+
+[背景信息]
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+[命令]
+[CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+[详细补充需求]
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出\"// 空\"(不含引号)
+
+// 定义节点属性示例
+// 疾病节点
+CREATE (:Disease {
+    name: String,           // 疾病名称
+    code: String,           // 疾病编码
+    description: String,    // 疾病描述
+    category: String,       // 疾病分类
+    severity: String        // 严重程度
+});
+
+// 症状节点
+CREATE (:Symptom {
+    name: String,           // 症状名称
+    description: String,    // 症状描述
+    severity: String,       // 严重程度
+    frequency: String       // 发生频率
+});
+
+// 检查项目节点
+CREATE (:Examination {
+    name: String,           // 检查名称
+    description: String,    // 检查描述
+    method: String,         // 检查方法
+    requirement: String     // 检查要求
+});
+
+// 治疗方案节点
+CREATE (:Treatment {
+    name: String,           // 治疗名称
+    type: String,           // 类型(药物/非药物)
+    description: String,    // 治疗描述
+    dosage: String,         // 剂量(药物)
+    duration: String,       // 持续时间
+    contraindication: String // 禁忌症
+});
+
+// 量表工具节点
+CREATE (:Scale {
+    name: String,           // 量表名称
+    description: String,    // 量表描述
+    score_range: String,    // 分数范围
+    interpretation: String  // 结果解释
+});
+
+// 风险因素节点
+CREATE (:RiskFactor {
+    name: String,           // 因素名称
+    description: String,    // 描述
+    impact_level: String    // 影响程度
+});
+
+// 并发症节点
+CREATE (:Complication {
+    name: String,           // 并发症名称
+    description: String,    // 描述
+    severity: String        // 严重程度
+});
+
+// 定义关系类型
+// 症状-疾病关系
+CREATE (:Symptom)-[:INDICATES {
+    confidence: Float,      // 置信度
+    frequency: String,      // 发生频率
+    severity: String        // 严重程度
+}]->(:Disease);
+
+// 疾病-检查关系
+CREATE (:Disease)-[:REQUIRES_EXAM {
+    priority: String,       // 优先级
+    mandatory: Boolean      // 是否必需
+}]->(:Examination);
+
+// 疾病-治疗关系
+CREATE (:Disease)-[:TREATED_BY {
+    effectiveness: Float,   // 有效性
+    priority: String,       // 优先级
+    stage: String          // 治疗阶段
+}]->(:Treatment);
+
+// 疾病-并发症关系
+CREATE (:Disease)-[:MAY_CAUSE {
+    probability: Float,     // 发生概率
+    timeframe: String      // 时间框架
+}]->(:Complication);
+
+// 疾病-风险因素关系
+CREATE (:Disease)-[:INFLUENCED_BY {
+    impact_level: String,   // 影响程度
+    evidence_level: String  // 证据等级
+}]->(:RiskFactor);
+
+// 疾病-量表关系
+CREATE (:Disease)-[:ASSESSED_BY {
+    applicability: Float,   // 适用性
+    recommendation_level: String  // 推荐级别
+}]->(:Scale);
+
+[关系抽取说明]
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
+请尽你可能抽取全部关系
+[示例输出]
+MERGE (d1:Disease {name: \"阻塞性睡眠呼吸暂停低通气综合征\", short_name: \"OSAHS\"})
+MERGE (c1:Disease {name: \"高血压\"})
+MERGE (c2:Disease {name: \"糖尿病\"})
+MERGE (c1)-[:COMPLICATION_OF]->(d1)
+MERGE (c2)-[:COMPLICATION_OF]->(d1)
+
+[隶属文件名]
+孤独症谱系障碍儿童睡眠障碍临床实践相关指南解读.md
+[隶属文件分块名]
+孤独症谱系障碍儿童睡眠障碍临床实践相关指南解读/001-孤独症谱系障碍儿童睡眠障碍临床实践相关指南解读.md
+[文本块]
+孤独症谱系障碍儿童睡眠障碍临床实践相关指南解读
+
+唐艺嘉, 王紫惊, 姜艳蕊, 江帆, 王广海
+
+摘要：睡眠障碍，尤其是失眠和睡眠行为紊乱在孤独症谱系障碍（ASD）儿童中极为常见，对ASD儿童及其家庭造成多方面损害。国际上多个专业组织强调将睡眠障碍纳入ASD儿童的综合诊疗之中，并发布了相关临床指南或专家共识，如美国孤独症治疗联盟（ATN）共识、英国国家卫生与临床优化研究所（NICE）指南、美国神经病学学会（AAN）指南等。然而，目前仍缺乏适用于我国ASD儿童睡眠障碍的临床指南或专家共识，极大限制了相关临床工作的开展。本文重点对上述3个临床指南或专家共识涉及的证据等级和推荐强度、睡眠障碍界定和相关因素评估，以及睡眠障碍行为治疗和褪黑素治疗等进行解读，以期为我国ASD儿童睡眠障碍的诊治，以及临床指南或专家共识的制订提供参考。
+
+关键词：孤独症谱系障碍；睡眠障碍；失眠；儿童；指南；行为治疗
+
+中图分类号：R 749.91 R 277.7
+
+文献标识码：A DOI:10.12114/j.issn.1007-9572.2022.0267
+
+作者：唐艺嘉, 王紫惊, 姜艳蕊, 江帆, 王广海
+
+来源：《中国全科医学》，2022，25(21):2563-2568
+
+在中国，孤独症谱系障碍（ASD）是一种起病于儿童早期的神经发育障碍，其核心症状为社交障碍、重复刻板的行为和局限狭窄的兴趣。睡眠障碍是ASD儿童最常见的共患疾病之一，国外报道其发生率达50%至80%，而我国区域性调查显示ASD儿童睡眠障碍发生率为70%，以就寝抵抗、睡眠时间不足或睡眠节律紊乱最为突出。睡眠障碍不仅会损害ASD儿童的日间功能，还与其核心症状的加重密切相关，给其家庭成员造成较大的压力和情绪困扰。因此，临床上对ASD儿童睡眠障碍进行及时评估和干预对改善ASD儿童的健康结局、功能水平、生活质量及家庭幸福具有十分重要的意义。
+
+"""
+response = """
+// 节点更新
+MERGE (n:Disease {name: '孤独症谱系障碍'})
+SET 
+    n.code = coalesce(n.code, 'ASD'),
+    n.description = coalesce(n.description, '一种起病于儿童早期的神经发育障碍，其核心症状为社交障碍、重复刻板的行为和局限狭窄的兴趣'),
+    n.category = coalesce(n.category, '神经发育障碍'),
+    n.severity = coalesce(n.severity, '严重');
+
+MERGE (n:Disease {name: '睡眠障碍'})
+SET 
+    n.description = coalesce(n.description, 'ASD儿童最常见的共患疾病之一,与睡眠时间不足或睡眠节律紊乱相关'),
+    n.category = coalesce(n.category, '睡眠障碍'),
+    n.severity = coalesce(n.severity, '中等');
+
+MERGE (n:Symptom {name: '失眠'})
+SET 
+    n.description = coalesce(n.description, '睡眠不足'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '高');
+
+MERGE (n:Symptom {name: '睡眠行为紊乱'})
+SET 
+    n.description = coalesce(n.description, '包括就寝抵抗'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '高');
+
+MERGE (n:Treatment {name: '行为治疗'})
+SET 
+    n.type = coalesce(n.type, '非药物'),
+    n.description = coalesce(n.description, '针对睡眠障碍的行为干预'),
+    n.duration = coalesce(n.duration, '根据个体情况'),
+    n.contraindication = coalesce(n.contraindication, '无');
+
+MERGE (n:Treatment {name: '褪黑素治疗'})
+SET 
+    n.type = coalesce(n.type, '药物'),
+    n.description = coalesce(n.description, '使用褪黑素改善睡眠质量'),
+    n.dosage = coalesce(n.dosage, '根据年龄和体重'),
+    n.duration = coalesce(n.duration, '短期使用'),
+    n.contraindication = coalesce(n.contraindication, '对褪黑素过敏');
+
+// 关系更新
+MATCH (from) WHERE from.name = '失眠'
+MATCH (to) WHERE to.name = '睡眠障碍'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.8),
+    r.frequency = coalesce(r.frequency, '高'),
+    r.severity = coalesce(r.severity, '中等');
+
+MATCH (from) WHERE from.name = '睡眠行为紊乱'
+MATCH (to) WHERE to.name = '睡眠障碍'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.85),
+    r.frequency = coalesce(r.frequency, '高'),
+    r.severity = coalesce(r.severity, '中等');
+
+MATCH (from) WHERE from.name = '睡眠障碍'
+MATCH (to) WHERE to.name = '行为治疗'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.75),
+    r.priority = coalesce(r.priority, '高'),
+    r.stage = coalesce(r.stage, '初步干预');
+
+MATCH (from) WHERE from.name = '睡眠障碍'
+MATCH (to) WHERE to.name = '褪黑素治疗'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.85),
+    r.priority = coalesce(r.priority, '中'),
+    r.stage = coalesce(r.stage, '短期治疗');
+
+MATCH (from) WHERE from.name = '孤独症谱系障碍'
+MATCH (to) WHERE to.name = '睡眠障碍'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.7),
+    r.timeframe = coalesce(r.timeframe, '长期');
+
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-12 01:29:58"
+message = """
+
+[背景信息]
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+[命令]
+[CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+[详细补充需求]
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出\"// 空\"(不含引号)
+
+// 定义节点属性示例
+// 疾病节点
+CREATE (:Disease {
+    name: String,           // 疾病名称
+    code: String,           // 疾病编码
+    description: String,    // 疾病描述
+    category: String,       // 疾病分类
+    severity: String        // 严重程度
+});
+
+// 症状节点
+CREATE (:Symptom {
+    name: String,           // 症状名称
+    description: String,    // 症状描述
+    severity: String,       // 严重程度
+    frequency: String       // 发生频率
+});
+
+// 检查项目节点
+CREATE (:Examination {
+    name: String,           // 检查名称
+    description: String,    // 检查描述
+    method: String,         // 检查方法
+    requirement: String     // 检查要求
+});
+
+// 治疗方案节点
+CREATE (:Treatment {
+    name: String,           // 治疗名称
+    type: String,           // 类型(药物/非药物)
+    description: String,    // 治疗描述
+    dosage: String,         // 剂量(药物)
+    duration: String,       // 持续时间
+    contraindication: String // 禁忌症
+});
+
+// 量表工具节点
+CREATE (:Scale {
+    name: String,           // 量表名称
+    description: String,    // 量表描述
+    score_range: String,    // 分数范围
+    interpretation: String  // 结果解释
+});
+
+// 风险因素节点
+CREATE (:RiskFactor {
+    name: String,           // 因素名称
+    description: String,    // 描述
+    impact_level: String    // 影响程度
+});
+
+// 并发症节点
+CREATE (:Complication {
+    name: String,           // 并发症名称
+    description: String,    // 描述
+    severity: String        // 严重程度
+});
+
+// 定义关系类型
+// 症状-疾病关系
+CREATE (:Symptom)-[:INDICATES {
+    confidence: Float,      // 置信度
+    frequency: String,      // 发生频率
+    severity: String        // 严重程度
+}]->(:Disease);
+
+// 疾病-检查关系
+CREATE (:Disease)-[:REQUIRES_EXAM {
+    priority: String,       // 优先级
+    mandatory: Boolean      // 是否必需
+}]->(:Examination);
+
+// 疾病-治疗关系
+CREATE (:Disease)-[:TREATED_BY {
+    effectiveness: Float,   // 有效性
+    priority: String,       // 优先级
+    stage: String          // 治疗阶段
+}]->(:Treatment);
+
+// 疾病-并发症关系
+CREATE (:Disease)-[:MAY_CAUSE {
+    probability: Float,     // 发生概率
+    timeframe: String      // 时间框架
+}]->(:Complication);
+
+// 疾病-风险因素关系
+CREATE (:Disease)-[:INFLUENCED_BY {
+    impact_level: String,   // 影响程度
+    evidence_level: String  // 证据等级
+}]->(:RiskFactor);
+
+// 疾病-量表关系
+CREATE (:Disease)-[:ASSESSED_BY {
+    applicability: Float,   // 适用性
+    recommendation_level: String  // 推荐级别
+}]->(:Scale);
+
+[关系抽取说明]
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
+请尽你可能抽取全部关系
+[示例输出]
+MERGE (d1:Disease {name: \"阻塞性睡眠呼吸暂停低通气综合征\", short_name: \"OSAHS\"})
+MERGE (c1:Disease {name: \"高血压\"})
+MERGE (c2:Disease {name: \"糖尿病\"})
+MERGE (c1)-[:COMPLICATION_OF]->(d1)
+MERGE (c2)-[:COMPLICATION_OF]->(d1)
+
+[隶属文件名]
+孤独症谱系障碍儿童睡眠障碍临床实践相关指南解读.md
+[隶属文件分块名]
+孤独症谱系障碍儿童睡眠障碍临床实践相关指南解读/002-孤独症谱系障碍儿童睡眠障碍临床实践相关指南解读.md
+[文本块]
+孤独症谱系障碍儿童睡眠障碍临床实践相关指南解读  
+- 《柳叶刀》重大报告  
+  - 强调：针对ASD患者提供个体化、系统化及阶梯式管理和支持  
+  - 睡眠障碍等共患疾病的治疗：不可或缺的部分  
+
+- 专业组织推荐  
+  - 将睡眠障碍纳入ASD儿童的综合诊疗  
+
+- 相关指南或专家共识  
+  - 2012年：  
+    - 美国孤独症治疗联盟(ATN)睡眠专委会  
+    - 国家儿童保健质量机构(NICHQ)  
+    - 制订《ASD儿童青少年失眠识别、评估和管理的实践路径》专家共识（ATN共识）  
+  - 2013年：  
+    - 英国国家卫生与临床优化研究所(NICE)  
+    - 社会卓越护理协会(SCIE)  
+    - 发布《19岁以下ASD患者支持和管理临床指南》，2021年6月更新睡眠障碍的干预部分（NICE指南）  
+  - 2020年：  
+    - 美国神经病学学会(AAN)  
+    - 发布《ASD儿童青少年失眠和睡眠行为紊乱治疗实践指南》（AAN指南）  
+    - 得到美国睡眠医学学会(AASM)支持  
+
+- 国内研究现状  
+  - 有限于ASD儿童睡眠障碍现状、影响因素和干预方法的初步探索  
+  - 引入国外指南性专著《孤独症谱系障碍儿童睡眠问题实用指南》  
+
+- 中华医学会与专家组  
+  - 联合发布《孤独症谱系障碍儿童早期识别筛查和早期干预专家共识》  
+  - 首次推荐将睡眠障碍作为ASD儿童的共患疾病纳入临床实践  
+
+- 现状  
+  - 缺乏适用于我国ASD儿童睡眠障碍的临床指南及专家共识  
+  - 限制相关临床工作的开展  
+
+- 目标  
+  - 解读上述3个国际指南或共识  
+  - 为我国ASD儿童睡眠障碍的诊治及临床指南或专家共识的制订提供参考  
+
+"""
+response = """
+// 节点更新
+MERGE (n:Disease {name: '孤独症谱系障碍'})
+SET 
+    n.short_name = coalesce(n.short_name, 'ASD');
+
+MERGE (n:Disease {name: '睡眠障碍'})
+SET 
+    n.description = coalesce(n.description, '影响睡眠质量和模式的疾病');
+
+MERGE (n:Disease {name: '失眠'});
+
+MERGE (n:Complication {name: '共患疾病'})
+SET 
+    n.description = coalesce(n.description, '与孤独症谱系障碍并存的其他疾病'),
+    n.severity = coalesce(n.severity, '中等');
+
+MERGE (n:Examination {name: 'ASD儿童睡眠障碍筛查'})
+SET 
+    n.description = coalesce(n.description, '用于评估ASD儿童的睡眠问题'),
+    n.method = coalesce(n.method, '问卷调查'),
+    n.requirement = coalesce(n.requirement, '具备相关背景的医务人员');
+
+MERGE (n:Treatment {name: '睡眠干预'})
+SET 
+    n.type = coalesce(n.type, '非药物'),
+    n.description = coalesce(n.description, '针对ASD儿童睡眠障碍的非药物疗法'),
+    n.duration = coalesce(n.duration, '持续'),
+    n.contraindication = coalesce(n.contraindication, '无');
+
+MERGE (n:Scale {name: 'ASD睡眠质量评分量表'})
+SET 
+    n.description = coalesce(n.description, '评估ASD儿童睡眠质量的工具'),
+    n.score_range = coalesce(n.score_range, '0-10'),
+    n.interpretation = coalesce(n.interpretation, '分数越高，睡眠质量越差');
+
+// 关系更新
+MATCH (from) WHERE from.name = '孤独症谱系障碍'
+MATCH (to) WHERE to.name = '睡眠障碍'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.85),
+    r.priority = coalesce(r.priority, '高'),
+    r.stage = coalesce(r.stage, '持续治疗');
+
+MATCH (from) WHERE from.name = '孤独症谱系障碍'
+MATCH (to) WHERE to.name = '失眠'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.9),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '中等');
+
+MATCH (from) WHERE from.name = '孤独症谱系障碍'
+MATCH (to) WHERE to.name = '共患疾病'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.7),
+    r.timeframe = coalesce(r.timeframe, '长期');
+
+MATCH (from) WHERE from.name = '孤独症谱系障碍'
+MATCH (to) WHERE to.name = 'ASD儿童睡眠障碍筛查'
+MERGE (from)-[r:REQUIRES_EXAM]->(to)
+SET 
+    r.priority = coalesce(r.priority, '高'),
+    r.mandatory = coalesce(r.mandatory, 'true');
+
+MATCH (from) WHERE from.name = '睡眠障碍'
+MATCH (to) WHERE to.name = '睡眠干预'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.75),
+    r.priority = coalesce(r.priority, '中'),
+    r.stage = coalesce(r.stage, '初期干预');
+
+MATCH (from) WHERE from.name = '睡眠障碍'
+MATCH (to) WHERE to.name = 'ASD睡眠质量评分量表'
+MERGE (from)-[r:ASSESSED_BY]->(to)
+SET 
+    r.applicability = coalesce(r.applicability, 0.8),
+    r.recommendation_level = coalesce(r.recommendation_level, '推荐');
+
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-12 01:30:03"
+message = """
+
+[背景信息]
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+[命令]
+[CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+[详细补充需求]
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出\"// 空\"(不含引号)
+
+// 定义节点属性示例
+// 疾病节点
+CREATE (:Disease {
+    name: String,           // 疾病名称
+    code: String,           // 疾病编码
+    description: String,    // 疾病描述
+    category: String,       // 疾病分类
+    severity: String        // 严重程度
+});
+
+// 症状节点
+CREATE (:Symptom {
+    name: String,           // 症状名称
+    description: String,    // 症状描述
+    severity: String,       // 严重程度
+    frequency: String       // 发生频率
+});
+
+// 检查项目节点
+CREATE (:Examination {
+    name: String,           // 检查名称
+    description: String,    // 检查描述
+    method: String,         // 检查方法
+    requirement: String     // 检查要求
+});
+
+// 治疗方案节点
+CREATE (:Treatment {
+    name: String,           // 治疗名称
+    type: String,           // 类型(药物/非药物)
+    description: String,    // 治疗描述
+    dosage: String,         // 剂量(药物)
+    duration: String,       // 持续时间
+    contraindication: String // 禁忌症
+});
+
+// 量表工具节点
+CREATE (:Scale {
+    name: String,           // 量表名称
+    description: String,    // 量表描述
+    score_range: String,    // 分数范围
+    interpretation: String  // 结果解释
+});
+
+// 风险因素节点
+CREATE (:RiskFactor {
+    name: String,           // 因素名称
+    description: String,    // 描述
+    impact_level: String    // 影响程度
+});
+
+// 并发症节点
+CREATE (:Complication {
+    name: String,           // 并发症名称
+    description: String,    // 描述
+    severity: String        // 严重程度
+});
+
+// 定义关系类型
+// 症状-疾病关系
+CREATE (:Symptom)-[:INDICATES {
+    confidence: Float,      // 置信度
+    frequency: String,      // 发生频率
+    severity: String        // 严重程度
+}]->(:Disease);
+
+// 疾病-检查关系
+CREATE (:Disease)-[:REQUIRES_EXAM {
+    priority: String,       // 优先级
+    mandatory: Boolean      // 是否必需
+}]->(:Examination);
+
+// 疾病-治疗关系
+CREATE (:Disease)-[:TREATED_BY {
+    effectiveness: Float,   // 有效性
+    priority: String,       // 优先级
+    stage: String          // 治疗阶段
+}]->(:Treatment);
+
+// 疾病-并发症关系
+CREATE (:Disease)-[:MAY_CAUSE {
+    probability: Float,     // 发生概率
+    timeframe: String      // 时间框架
+}]->(:Complication);
+
+// 疾病-风险因素关系
+CREATE (:Disease)-[:INFLUENCED_BY {
+    impact_level: String,   // 影响程度
+    evidence_level: String  // 证据等级
+}]->(:RiskFactor);
+
+// 疾病-量表关系
+CREATE (:Disease)-[:ASSESSED_BY {
+    applicability: Float,   // 适用性
+    recommendation_level: String  // 推荐级别
+}]->(:Scale);
+
+[关系抽取说明]
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
+请尽你可能抽取全部关系
+[示例输出]
+MERGE (d1:Disease {name: \"阻塞性睡眠呼吸暂停低通气综合征\", short_name: \"OSAHS\"})
+MERGE (c1:Disease {name: \"高血压\"})
+MERGE (c2:Disease {name: \"糖尿病\"})
+MERGE (c1)-[:COMPLICATION_OF]->(d1)
+MERGE (c2)-[:COMPLICATION_OF]->(d1)
+
+[隶属文件名]
+孤独症谱系障碍儿童睡眠障碍临床实践相关指南解读.md
+[隶属文件分块名]
+孤独症谱系障碍儿童睡眠障碍临床实践相关指南解读/004-2-ASD-儿童睡眠障碍的界定.md
+[文本块]
+# 2 ASD 儿童睡眠障碍的界定  
+
+睡眠障碍通常以睡眠质量、时长和就寝时间异常为主要表现。失眠是ASD儿童最常见的睡眠障碍，指在睡眠时间和睡眠条件适合的情况下，儿童在启动或维持睡眠上反复出现困难，导致日间功能损害。ATN共识聚焦于失眠问题，指出ASD儿童均应该进行失眠筛查。这可通过一系列针对失眠的问题来完成，如儿童睡眠习惯问卷(CSHQ)中的某些条目：孩子上床后是否在20分钟以内入睡；孩子是否需要在父母或兄弟姐妹的床上入睡；孩子是否睡得太少；孩子是否会在夜间醒来1次。AAN指南则针对失眠及睡眠行为紊乱，包括就寝抵抗、睡眠潜伏期、睡眠连续性（睡眠效率和夜醒）、总睡眠时间和日间行为。ASD儿童的睡眠障碍除了就寝抵抗、夜间觉醒等行为性睡眠问题外，还包括睡眠呼吸暂停综合征和不宁腿综合征等原发性睡眠疾病。
+
+"""
+response = """
+// 节点更新
+MERGE (n:Disease {name: '失眠'})
+SET 
+    n.description = coalesce(n.description, '在睡眠时间和睡眠条件适合的情况下，儿童在启动或维持睡眠上反复出现困难，导致日间功能损害'),
+    n.category = coalesce(n.category, '睡眠障碍'),
+    n.severity = coalesce(n.severity, '高');
+
+MERGE (n:Disease {name: '睡眠呼吸暂停综合征'})
+SET 
+    n.description = coalesce(n.description, '反复出现的呼吸暂停，影响睡眠质量'),
+    n.category = coalesce(n.category, '原发性睡眠疾病'),
+    n.severity = coalesce(n.severity, '中');
+
+MERGE (n:Disease {name: '不宁腿综合征'})
+SET 
+    n.description = coalesce(n.description, '在休息时出现不适感，并迫使患者活动以缓解症状'),
+    n.category = coalesce(n.category, '原发性睡眠疾病'),
+    n.severity = coalesce(n.severity, '中');
+
+MERGE (n:Symptom {name: '就寝抵抗'})
+SET 
+    n.description = coalesce(n.description, '儿童在入睡时拒绝就寝，表现出抗拒行为'),
+    n.severity = coalesce(n.severity, '高'),
+    n.frequency = coalesce(n.frequency, '频繁');
+
+MERGE (n:Symptom {name: '夜间觉醒'})
+SET 
+    n.description = coalesce(n.description, '儿童在夜间频繁醒来'),
+    n.severity = coalesce(n.severity, '中'),
+    n.frequency = coalesce(n.frequency, '频繁');
+
+// 关系更新
+MATCH (from) WHERE from.name = '失眠'
+MATCH (to) WHERE to.name = '睡眠呼吸暂停综合征'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.9),
+    r.frequency = coalesce(r.frequency, '高'),
+    r.severity = coalesce(r.severity, '高');
+
+MATCH (from) WHERE from.name = '失眠'
+MATCH (to) WHERE to.name = '不宁腿综合征'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.9),
+    r.frequency = coalesce(r.frequency, '高'),
+    r.severity = coalesce(r.severity, '高');
+
+MATCH (from) WHERE from.name = '失眠'
+MATCH (to) WHERE to.name = '就寝抵抗'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.95),
+    r.frequency = coalesce(r.frequency, '高'),
+    r.severity = coalesce(r.severity, '高');
+
+MATCH (from) WHERE from.name = '失眠'
+MATCH (to) WHERE to.name = '夜间觉醒'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.95),
+    r.frequency = coalesce(r.frequency, '高'),
+    r.severity = coalesce(r.severity, '高');
+
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-12 01:30:03"
+message = """
+
+[背景信息]
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+[命令]
+[CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+[详细补充需求]
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出\"// 空\"(不含引号)
+
+// 定义节点属性示例
+// 疾病节点
+CREATE (:Disease {
+    name: String,           // 疾病名称
+    code: String,           // 疾病编码
+    description: String,    // 疾病描述
+    category: String,       // 疾病分类
+    severity: String        // 严重程度
+});
+
+// 症状节点
+CREATE (:Symptom {
+    name: String,           // 症状名称
+    description: String,    // 症状描述
+    severity: String,       // 严重程度
+    frequency: String       // 发生频率
+});
+
+// 检查项目节点
+CREATE (:Examination {
+    name: String,           // 检查名称
+    description: String,    // 检查描述
+    method: String,         // 检查方法
+    requirement: String     // 检查要求
+});
+
+// 治疗方案节点
+CREATE (:Treatment {
+    name: String,           // 治疗名称
+    type: String,           // 类型(药物/非药物)
+    description: String,    // 治疗描述
+    dosage: String,         // 剂量(药物)
+    duration: String,       // 持续时间
+    contraindication: String // 禁忌症
+});
+
+// 量表工具节点
+CREATE (:Scale {
+    name: String,           // 量表名称
+    description: String,    // 量表描述
+    score_range: String,    // 分数范围
+    interpretation: String  // 结果解释
+});
+
+// 风险因素节点
+CREATE (:RiskFactor {
+    name: String,           // 因素名称
+    description: String,    // 描述
+    impact_level: String    // 影响程度
+});
+
+// 并发症节点
+CREATE (:Complication {
+    name: String,           // 并发症名称
+    description: String,    // 描述
+    severity: String        // 严重程度
+});
+
+// 定义关系类型
+// 症状-疾病关系
+CREATE (:Symptom)-[:INDICATES {
+    confidence: Float,      // 置信度
+    frequency: String,      // 发生频率
+    severity: String        // 严重程度
+}]->(:Disease);
+
+// 疾病-检查关系
+CREATE (:Disease)-[:REQUIRES_EXAM {
+    priority: String,       // 优先级
+    mandatory: Boolean      // 是否必需
+}]->(:Examination);
+
+// 疾病-治疗关系
+CREATE (:Disease)-[:TREATED_BY {
+    effectiveness: Float,   // 有效性
+    priority: String,       // 优先级
+    stage: String          // 治疗阶段
+}]->(:Treatment);
+
+// 疾病-并发症关系
+CREATE (:Disease)-[:MAY_CAUSE {
+    probability: Float,     // 发生概率
+    timeframe: String      // 时间框架
+}]->(:Complication);
+
+// 疾病-风险因素关系
+CREATE (:Disease)-[:INFLUENCED_BY {
+    impact_level: String,   // 影响程度
+    evidence_level: String  // 证据等级
+}]->(:RiskFactor);
+
+// 疾病-量表关系
+CREATE (:Disease)-[:ASSESSED_BY {
+    applicability: Float,   // 适用性
+    recommendation_level: String  // 推荐级别
+}]->(:Scale);
+
+[关系抽取说明]
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
+请尽你可能抽取全部关系
+[示例输出]
+MERGE (d1:Disease {name: \"阻塞性睡眠呼吸暂停低通气综合征\", short_name: \"OSAHS\"})
+MERGE (c1:Disease {name: \"高血压\"})
+MERGE (c2:Disease {name: \"糖尿病\"})
+MERGE (c1)-[:COMPLICATION_OF]->(d1)
+MERGE (c2)-[:COMPLICATION_OF]->(d1)
+
+[隶属文件名]
+孤独症谱系障碍儿童睡眠障碍临床实践相关指南解读.md
+[隶属文件分块名]
+孤独症谱系障碍儿童睡眠障碍临床实践相关指南解读/008-4-ASD-儿童睡眠障碍的治疗.md
+[文本块]
+# 4 ASD 儿童睡眠障碍的治疗（续）
+
+4.3 补充替代疗法 
+- ASD儿童睡眠障碍的补充替代治疗包括：
+  - 重力毯
+  - 特殊睡眠床垫
+  - 按摩
+  - 瑜伽
+  - 芳香疗法
+  - omega-3脂肪酸
+  - 维生素等特殊营养补充剂
+- NICE指南不建议使用omega-3脂肪酸来治疗ASD儿童青少年的睡眠障碍。
+- ATN共识检索到的补充替代疗法包括：
+  - 按摩疗法
+  - 芳香疗法
+  但这两者的有效性均无证据支持。
+- ATN共识的文献回顾还包含复合维生素和铁剂的使用，但支持这两者对ASD儿童失眠疗效的证据有限。
+- AAN指南未发现证据支持常规使用：
+  - 重力毯
+  - 特殊睡眠床垫
+  能改善睡眠（B级推荐）。
+- 关于重力毯，目前没有临床试验报道严重不良事件的发生，对于某些ASD儿童青少年来说，这可能是合理的非药物治疗方法（B级推荐）。
+
+"""
+response = """
+// 节点更新
+MERGE (n:Disease {name: 'ASD儿童睡眠障碍'})
+SET 
+    n.description = coalesce(n.description, '孤独症谱系障碍儿童的睡眠障碍');
+
+MERGE (n:Treatment {name: '重力毯'})
+SET 
+    n.type = coalesce(n.type, '非药物'),
+    n.description = coalesce(n.description, '一种重力感应的毯子，旨在提供深压触觉以促进放松和睡眠'),
+    n.recommendation_level = coalesce(n.recommendation_level, 'B级推荐');
+
+MERGE (n:Treatment {name: '特殊睡眠床垫'})
+SET 
+    n.type = coalesce(n.type, '非药物'),
+    n.description = coalesce(n.description, '专为改善睡眠质量而设计的床垫'),
+    n.recommendation_level = coalesce(n.recommendation_level, 'B级推荐');
+
+MERGE (n:Treatment {name: '按摩'})
+SET 
+    n.type = coalesce(n.type, '非药物'),
+    n.description = coalesce(n.description, '通过手法刺激身体来促进放松和睡眠');
+
+MERGE (n:Treatment {name: '瑜伽'})
+SET 
+    n.type = coalesce(n.type, '非药物'),
+    n.description = coalesce(n.description, '结合身体姿势与呼吸培训，旨在提升身心健康');
+
+MERGE (n:Treatment {name: '芳香疗法'})
+SET 
+    n.type = coalesce(n.type, '非药物'),
+    n.description = coalesce(n.description, '使用植物提取的香精来帮助放松和改善睡眠');
+
+MERGE (n:Treatment {name: 'omega-3脂肪酸'})
+SET 
+    n.type = coalesce(n.type, '药物'),
+    n.description = coalesce(n.description, '一种脂肪酸补充剂，常用于改善心理健康'),
+    n.contraindication = coalesce(n.contraindication, 'NICE指南不建议使用');
+
+MERGE (n:Treatment {name: '维生素等特殊营养补充剂'})
+SET 
+    n.type = coalesce(n.type, '药物'),
+    n.description = coalesce(n.description, '包括复合维生素和其他营养补充剂');
+
+MERGE (n:Treatment {name: '按摩疗法'})
+SET 
+    n.type = coalesce(n.type, '非药物'),
+    n.description = coalesce(n.description, '以缓解压力和改善睡眠为目的的专业按摩');
+
+// 关系更新
+MATCH (from) WHERE from.name = 'ASD儿童睡眠障碍'
+MATCH (to) WHERE to.name = '重力毯'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.5),
+    r.priority = coalesce(r.priority, '中'),
+    r.stage = coalesce(r.stage, '治疗');
+
+MATCH (from) WHERE from.name = 'ASD儿童睡眠障碍'
+MATCH (to) WHERE to.name = '特殊睡眠床垫'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.5),
+    r.priority = coalesce(r.priority, '中'),
+    r.stage = coalesce(r.stage, '治疗');
+
+MATCH (from) WHERE from.name = 'ASD儿童睡眠障碍'
+MATCH (to) WHERE to.name = '按摩'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.4),
+    r.priority = coalesce(r.priority, '中'),
+    r.stage = coalesce(r.stage, '治疗');
+
+MATCH (from) WHERE from.name = 'ASD儿童睡眠障碍'
+MATCH (to) WHERE to.name = '瑜伽'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.4),
+    r.priority = coalesce(r.priority, '中'),
+    r.stage = coalesce(r.stage, '治疗');
+
+MATCH (from) WHERE from.name = 'ASD儿童睡眠障碍'
+MATCH (to) WHERE to.name = '芳香疗法'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.4),
+    r.priority = coalesce(r.priority, '中'),
+    r.stage = coalesce(r.stage, '治疗');
+
+MATCH (from) WHERE from.name = 'ASD儿童睡眠障碍'
+MATCH (to) WHERE to.name = 'omega-3脂肪酸'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.2),
+    r.priority = coalesce(r.priority, '低'),
+    r.stage = coalesce(r.stage, '治疗');
+
+MATCH (from) WHERE from.name = 'ASD儿童睡眠障碍'
+MATCH (to) WHERE to.name = '维生素等特殊营养补充剂'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.3),
+    r.priority = coalesce(r.priority, '低'),
+    r.stage = coalesce(r.stage, '治疗');
+
+MATCH (from) WHERE from.name = 'ASD儿童睡眠障碍'
+MATCH (to) WHERE to.name = '按摩疗法'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.2),
+    r.priority = coalesce(r.priority, '低'),
+    r.stage = coalesce(r.stage, '治疗');
+
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-12 01:30:05"
+message = """
+
+[背景信息]
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+[命令]
+[CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+[详细补充需求]
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出\"// 空\"(不含引号)
+
+// 定义节点属性示例
+// 疾病节点
+CREATE (:Disease {
+    name: String,           // 疾病名称
+    code: String,           // 疾病编码
+    description: String,    // 疾病描述
+    category: String,       // 疾病分类
+    severity: String        // 严重程度
+});
+
+// 症状节点
+CREATE (:Symptom {
+    name: String,           // 症状名称
+    description: String,    // 症状描述
+    severity: String,       // 严重程度
+    frequency: String       // 发生频率
+});
+
+// 检查项目节点
+CREATE (:Examination {
+    name: String,           // 检查名称
+    description: String,    // 检查描述
+    method: String,         // 检查方法
+    requirement: String     // 检查要求
+});
+
+// 治疗方案节点
+CREATE (:Treatment {
+    name: String,           // 治疗名称
+    type: String,           // 类型(药物/非药物)
+    description: String,    // 治疗描述
+    dosage: String,         // 剂量(药物)
+    duration: String,       // 持续时间
+    contraindication: String // 禁忌症
+});
+
+// 量表工具节点
+CREATE (:Scale {
+    name: String,           // 量表名称
+    description: String,    // 量表描述
+    score_range: String,    // 分数范围
+    interpretation: String  // 结果解释
+});
+
+// 风险因素节点
+CREATE (:RiskFactor {
+    name: String,           // 因素名称
+    description: String,    // 描述
+    impact_level: String    // 影响程度
+});
+
+// 并发症节点
+CREATE (:Complication {
+    name: String,           // 并发症名称
+    description: String,    // 描述
+    severity: String        // 严重程度
+});
+
+// 定义关系类型
+// 症状-疾病关系
+CREATE (:Symptom)-[:INDICATES {
+    confidence: Float,      // 置信度
+    frequency: String,      // 发生频率
+    severity: String        // 严重程度
+}]->(:Disease);
+
+// 疾病-检查关系
+CREATE (:Disease)-[:REQUIRES_EXAM {
+    priority: String,       // 优先级
+    mandatory: Boolean      // 是否必需
+}]->(:Examination);
+
+// 疾病-治疗关系
+CREATE (:Disease)-[:TREATED_BY {
+    effectiveness: Float,   // 有效性
+    priority: String,       // 优先级
+    stage: String          // 治疗阶段
+}]->(:Treatment);
+
+// 疾病-并发症关系
+CREATE (:Disease)-[:MAY_CAUSE {
+    probability: Float,     // 发生概率
+    timeframe: String      // 时间框架
+}]->(:Complication);
+
+// 疾病-风险因素关系
+CREATE (:Disease)-[:INFLUENCED_BY {
+    impact_level: String,   // 影响程度
+    evidence_level: String  // 证据等级
+}]->(:RiskFactor);
+
+// 疾病-量表关系
+CREATE (:Disease)-[:ASSESSED_BY {
+    applicability: Float,   // 适用性
+    recommendation_level: String  // 推荐级别
+}]->(:Scale);
+
+[关系抽取说明]
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
+请尽你可能抽取全部关系
+[示例输出]
+MERGE (d1:Disease {name: \"阻塞性睡眠呼吸暂停低通气综合征\", short_name: \"OSAHS\"})
+MERGE (c1:Disease {name: \"高血压\"})
+MERGE (c2:Disease {name: \"糖尿病\"})
+MERGE (c1)-[:COMPLICATION_OF]->(d1)
+MERGE (c2)-[:COMPLICATION_OF]->(d1)
+
+[隶属文件名]
+孤独症谱系障碍儿童睡眠障碍临床实践相关指南解读.md
+[隶属文件分块名]
+孤独症谱系障碍儿童睡眠障碍临床实践相关指南解读/005-3-ASD-儿童睡眠障碍相关因素的评估.md
+[文本块]
+3 ASD儿童睡眠障碍相关因素的评估  
+
+国际指南：
+- ATN共识
+- AAN指南
+- NICE指南
+
+主要内容：
+- 睡眠障碍类型：失眠、睡眠行为紊乱
+- 原发性睡眠疾病：睡眠呼吸暂停综合征
+
+建议：
+- 妥善评估不同类型的睡眠障碍及相关因素
+- 对于疑似原发性睡眠疾病的患者，推荐转诊至睡眠专家
+- 睡眠卫生保健人员可进行医学因素的评估和处理
+
+ASD儿童常见共患疾病：
+- 癫痫
+- 夜间胃食管反流
+- 焦虑
+- 抑郁
+- 双相情感障碍
+- 精神障碍
+- 注意力缺陷多动障碍
+
+影响因素：
+- 共患疾病可能导致继发性睡眠障碍
+- 药物的不良反应可能造成睡眠障碍
+
+推荐措施：
+- 识别、评估可能导致睡眠障碍的共患疾病和药物
+- 治疗相关共患疾病
+- 调整或停止可能导致睡眠障碍的药物
+
+多层次因素：
+- 生理因素
+- 社会因素
+- 心理因素
+
+相关评估内容：
+- 睡眠环境
+- 睡眠习惯
+- 日间活动
+- 情绪问题
+- 家庭功能损害
+
+要求：
+- 医护人员具备多学科专业知识
+- 与多学科专业人员保持密切交流与合作
+
+"""
+response = """
+// 节点更新
+MERGE (n:Disease {name: '失眠'});
+
+MERGE (n:Disease {name: '睡眠行为紊乱'});
+
+MERGE (n:Disease {name: '睡眠呼吸暂停综合征'});
+
+MERGE (n:Disease {name: '癫痫'});
+
+MERGE (n:Disease {name: '夜间胃食管反流'});
+
+MERGE (n:Disease {name: '焦虑'});
+
+MERGE (n:Disease {name: '抑郁'});
+
+MERGE (n:Disease {name: '双相情感障碍'});
+
+MERGE (n:Disease {name: '精神障碍'});
+
+MERGE (n:Disease {name: '注意力缺陷多动障碍'});
+
+// 关系更新
+MATCH (from) WHERE from.name = '睡眠呼吸暂停综合征'
+MATCH (to) WHERE to.name = '失眠'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.6),
+    r.timeframe = coalesce(r.timeframe, '短期');
+
+MATCH (from) WHERE from.name = '睡眠呼吸暂停综合征'
+MATCH (to) WHERE to.name = '睡眠行为紊乱'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.7),
+    r.timeframe = coalesce(r.timeframe, '短期');
+
+MATCH (from) WHERE from.name = '癫痫'
+MATCH (to) WHERE to.name = '失眠'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.5),
+    r.timeframe = coalesce(r.timeframe, '短期');
+
+MATCH (from) WHERE from.name = '夜间胃食管反流'
+MATCH (to) WHERE to.name = '失眠'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.4),
+    r.timeframe = coalesce(r.timeframe, '短期');
+
+MATCH (from) WHERE from.name = '焦虑'
+MATCH (to) WHERE to.name = '失眠'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.5),
+    r.timeframe = coalesce(r.timeframe, '短期');
+
+MATCH (from) WHERE from.name = '抑郁'
+MATCH (to) WHERE to.name = '失眠'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.5),
+    r.timeframe = coalesce(r.timeframe, '中期');
+
+MATCH (from) WHERE from.name = '双相情感障碍'
+MATCH (to) WHERE to.name = '失眠'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.5),
+    r.timeframe = coalesce(r.timeframe, '短期');
+
+MATCH (from) WHERE from.name = '精神障碍'
+MATCH (to) WHERE to.name = '失眠'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.5),
+    r.timeframe = coalesce(r.timeframe, '短期');
+
+MATCH (from) WHERE from.name = '注意力缺陷多动障碍'
+MATCH (to) WHERE to.name = '失眠'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.5),
+    r.timeframe = coalesce(r.timeframe, '短期');
+
+MATCH (from) WHERE from.name = '癫痫'
+MATCH (to) WHERE to.name = '失眠'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.6),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '中');
+
+MATCH (from) WHERE from.name = '夜间胃食管反流'
+MATCH (to) WHERE to.name = '失眠'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.4),
+    r.frequency = coalesce(r.frequency, '不常见'),
+    r.severity = coalesce(r.severity, '低');
+
+MATCH (from) WHERE from.name = '焦虑'
+MATCH (to) WHERE to.name = '失眠'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.5),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '中');
+
+MATCH (from) WHERE from.name = '抑郁'
+MATCH (to) WHERE to.name = '失眠'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.5),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '中');
+
+MATCH (from) WHERE from.name = '双相情感障碍'
+MATCH (to) WHERE to.name = '失眠'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.5),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '中');
+
+MATCH (from) WHERE from.name = '精神障碍'
+MATCH (to) WHERE to.name = '失眠'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.5),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '低');
+
+MATCH (from) WHERE from.name = '注意力缺陷多动障碍'
+MATCH (to) WHERE to.name = '失眠'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.5),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '中');
+
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-12 01:30:07"
+message = """
+
+[背景信息]
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+[命令]
+[CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+[详细补充需求]
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出\"// 空\"(不含引号)
+
+// 定义节点属性示例
+// 疾病节点
+CREATE (:Disease {
+    name: String,           // 疾病名称
+    code: String,           // 疾病编码
+    description: String,    // 疾病描述
+    category: String,       // 疾病分类
+    severity: String        // 严重程度
+});
+
+// 症状节点
+CREATE (:Symptom {
+    name: String,           // 症状名称
+    description: String,    // 症状描述
+    severity: String,       // 严重程度
+    frequency: String       // 发生频率
+});
+
+// 检查项目节点
+CREATE (:Examination {
+    name: String,           // 检查名称
+    description: String,    // 检查描述
+    method: String,         // 检查方法
+    requirement: String     // 检查要求
+});
+
+// 治疗方案节点
+CREATE (:Treatment {
+    name: String,           // 治疗名称
+    type: String,           // 类型(药物/非药物)
+    description: String,    // 治疗描述
+    dosage: String,         // 剂量(药物)
+    duration: String,       // 持续时间
+    contraindication: String // 禁忌症
+});
+
+// 量表工具节点
+CREATE (:Scale {
+    name: String,           // 量表名称
+    description: String,    // 量表描述
+    score_range: String,    // 分数范围
+    interpretation: String  // 结果解释
+});
+
+// 风险因素节点
+CREATE (:RiskFactor {
+    name: String,           // 因素名称
+    description: String,    // 描述
+    impact_level: String    // 影响程度
+});
+
+// 并发症节点
+CREATE (:Complication {
+    name: String,           // 并发症名称
+    description: String,    // 描述
+    severity: String        // 严重程度
+});
+
+// 定义关系类型
+// 症状-疾病关系
+CREATE (:Symptom)-[:INDICATES {
+    confidence: Float,      // 置信度
+    frequency: String,      // 发生频率
+    severity: String        // 严重程度
+}]->(:Disease);
+
+// 疾病-检查关系
+CREATE (:Disease)-[:REQUIRES_EXAM {
+    priority: String,       // 优先级
+    mandatory: Boolean      // 是否必需
+}]->(:Examination);
+
+// 疾病-治疗关系
+CREATE (:Disease)-[:TREATED_BY {
+    effectiveness: Float,   // 有效性
+    priority: String,       // 优先级
+    stage: String          // 治疗阶段
+}]->(:Treatment);
+
+// 疾病-并发症关系
+CREATE (:Disease)-[:MAY_CAUSE {
+    probability: Float,     // 发生概率
+    timeframe: String      // 时间框架
+}]->(:Complication);
+
+// 疾病-风险因素关系
+CREATE (:Disease)-[:INFLUENCED_BY {
+    impact_level: String,   // 影响程度
+    evidence_level: String  // 证据等级
+}]->(:RiskFactor);
+
+// 疾病-量表关系
+CREATE (:Disease)-[:ASSESSED_BY {
+    applicability: Float,   // 适用性
+    recommendation_level: String  // 推荐级别
+}]->(:Scale);
+
+[关系抽取说明]
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
+请尽你可能抽取全部关系
+[示例输出]
+MERGE (d1:Disease {name: \"阻塞性睡眠呼吸暂停低通气综合征\", short_name: \"OSAHS\"})
+MERGE (c1:Disease {name: \"高血压\"})
+MERGE (c2:Disease {name: \"糖尿病\"})
+MERGE (c1)-[:COMPLICATION_OF]->(d1)
+MERGE (c2)-[:COMPLICATION_OF]->(d1)
+
+[隶属文件名]
+孤独症谱系障碍儿童睡眠障碍临床实践相关指南解读.md
+[隶属文件分块名]
+孤独症谱系障碍儿童睡眠障碍临床实践相关指南解读/007-4-ASD-儿童睡眠障碍的治疗.md
+[文本块]
+# 4 ASD 儿童睡眠障碍的治疗（续）
+## 4.2 褪黑素治疗
+
+- **褪黑素**：由大脑的松果体产生，具有调节昼夜节律的功能和催眠作用。
+- **FDA**：目前尚未批准用于治疗儿童失眠的药物。
+- **外源性褪黑素**：作为补充剂常用于儿童和成人失眠的治疗。
+
+### 推荐意见
+- **AAN 指南**：
+  - 若与ASD儿童青少年睡眠障碍有关的共患疾病和药物使用问题已经解决，但行为治疗未能改善睡眠时，临床医生可考虑使用褪黑素治疗（B 级推荐）。
+
+- **ATN 共识**：
+  - 当ASD儿童日间行为问题严重，父母拒绝或无法接受一线疗法时，应考虑药物治疗。
+  
+- **NICE 指南**：
+  - 仅在行为治疗无效或睡眠障碍对患儿及家庭造成不良影响时，才考虑药物或褪黑素治疗，并在专业指导下联合非药物治疗同时进行。
+
+### 疗效证据
+- **ATN 共识**：几项小规模随机对照试验证实补充褪黑素能改善ASD儿童失眠。
+- **AAN 指南**：褪黑素能改善多种睡眠问题，包括就寝抵抗、睡眠潜伏期、睡眠效率和总睡眠时间。
+- **NICE 指南**：显示出褪黑素对睡眠的多方面改善效果。
+- **CBT结合褪黑素**：对ASD儿童失眠有效。
+
+### 使用方法
+- **AAN指南**：推荐使用含量确定的药物级褪黑素或高含量褪黑素（B 级推荐）。
+- **剂量建议**：
+  - 从低剂量开始（1~3 mg/d），睡前30-60分钟使用，不超过10 mg/d（B 级推荐）。
+  
+### 潜在不良影响
+- **短期不良反应**：早晨嗜睡、遗尿、头痛、头晕、腹泻、皮疹等，但未发现严重不良事件。
+- **长期使用安全性**：
+  - 尚缺乏长期使用安全性的数据。
+  - 可能影响下丘脑-性腺轴，干扰青春期正常发育。
+  
+### 研究发现
+- 褪黑素对ASD儿童失眠的长期治疗是安全有效的，没有观察到长期使用褪黑素对儿童生长和青春期发育的不利影响，亦未发现戒断反应或其他严重安全问题。
+
+### 确保评估
+- 使用药物治疗时，应定期评估，确保治疗的利大于弊。
+
+"""
+response = """
+// 节点更新
+MERGE (n:Disease {name: '孤独症谱系障碍儿童睡眠障碍'});
+
+MERGE (n:Treatment {name: '褪黑素'})
+SET 
+    n.type = coalesce(n.type, '药物'),
+    n.description = coalesce(n.description, '由大脑的松果体产生，具有调节昼夜节律的功能和催眠作用'),
+    n.dosage = coalesce(n.dosage, '1~10 mg/d'),
+    n.duration = coalesce(n.duration, '临床医生建议'),
+    n.contraindication = coalesce(n.contraindication, '尚缺乏长期使用安全性的数据');
+
+MERGE (n:Disease {name: '儿童失眠'});
+
+// 关系更新
+MATCH (from) WHERE from.name = '孤独症谱系障碍儿童睡眠障碍'
+MATCH (to) WHERE to.name = '褪黑素'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.8),
+    r.priority = coalesce(r.priority, 'B 级推荐'),
+    r.stage = coalesce(r.stage, '长期治疗');
+
+MATCH (from) WHERE from.name = '儿童失眠'
+MATCH (to) WHERE to.name = '孤独症谱系障碍儿童睡眠障碍'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.9),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '中度');
+
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-12 01:30:08"
+message = """
+
+[背景信息]
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+[命令]
+[CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+[详细补充需求]
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出\"// 空\"(不含引号)
+
+// 定义节点属性示例
+// 疾病节点
+CREATE (:Disease {
+    name: String,           // 疾病名称
+    code: String,           // 疾病编码
+    description: String,    // 疾病描述
+    category: String,       // 疾病分类
+    severity: String        // 严重程度
+});
+
+// 症状节点
+CREATE (:Symptom {
+    name: String,           // 症状名称
+    description: String,    // 症状描述
+    severity: String,       // 严重程度
+    frequency: String       // 发生频率
+});
+
+// 检查项目节点
+CREATE (:Examination {
+    name: String,           // 检查名称
+    description: String,    // 检查描述
+    method: String,         // 检查方法
+    requirement: String     // 检查要求
+});
+
+// 治疗方案节点
+CREATE (:Treatment {
+    name: String,           // 治疗名称
+    type: String,           // 类型(药物/非药物)
+    description: String,    // 治疗描述
+    dosage: String,         // 剂量(药物)
+    duration: String,       // 持续时间
+    contraindication: String // 禁忌症
+});
+
+// 量表工具节点
+CREATE (:Scale {
+    name: String,           // 量表名称
+    description: String,    // 量表描述
+    score_range: String,    // 分数范围
+    interpretation: String  // 结果解释
+});
+
+// 风险因素节点
+CREATE (:RiskFactor {
+    name: String,           // 因素名称
+    description: String,    // 描述
+    impact_level: String    // 影响程度
+});
+
+// 并发症节点
+CREATE (:Complication {
+    name: String,           // 并发症名称
+    description: String,    // 描述
+    severity: String        // 严重程度
+});
+
+// 定义关系类型
+// 症状-疾病关系
+CREATE (:Symptom)-[:INDICATES {
+    confidence: Float,      // 置信度
+    frequency: String,      // 发生频率
+    severity: String        // 严重程度
+}]->(:Disease);
+
+// 疾病-检查关系
+CREATE (:Disease)-[:REQUIRES_EXAM {
+    priority: String,       // 优先级
+    mandatory: Boolean      // 是否必需
+}]->(:Examination);
+
+// 疾病-治疗关系
+CREATE (:Disease)-[:TREATED_BY {
+    effectiveness: Float,   // 有效性
+    priority: String,       // 优先级
+    stage: String          // 治疗阶段
+}]->(:Treatment);
+
+// 疾病-并发症关系
+CREATE (:Disease)-[:MAY_CAUSE {
+    probability: Float,     // 发生概率
+    timeframe: String      // 时间框架
+}]->(:Complication);
+
+// 疾病-风险因素关系
+CREATE (:Disease)-[:INFLUENCED_BY {
+    impact_level: String,   // 影响程度
+    evidence_level: String  // 证据等级
+}]->(:RiskFactor);
+
+// 疾病-量表关系
+CREATE (:Disease)-[:ASSESSED_BY {
+    applicability: Float,   // 适用性
+    recommendation_level: String  // 推荐级别
+}]->(:Scale);
+
+[关系抽取说明]
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
+请尽你可能抽取全部关系
+[示例输出]
+MERGE (d1:Disease {name: \"阻塞性睡眠呼吸暂停低通气综合征\", short_name: \"OSAHS\"})
+MERGE (c1:Disease {name: \"高血压\"})
+MERGE (c2:Disease {name: \"糖尿病\"})
+MERGE (c1)-[:COMPLICATION_OF]->(d1)
+MERGE (c2)-[:COMPLICATION_OF]->(d1)
+
+[隶属文件名]
+孤独症谱系障碍儿童睡眠障碍临床实践相关指南解读.md
+[隶属文件分块名]
+孤独症谱系障碍儿童睡眠障碍临床实践相关指南解读/010-6-小结和展望.md
+[文本块]
+# 6 小结和展望  
+
+ASD儿童与睡眠障碍（失眠和睡眠行为紊乱）相关，国际组织制定了临床指南和专家共识，包括AAN指南、NICE指南和ATN共识。这些文献为我国ASD儿童的睡眠障碍研究提供了参考。  
+
+- 方法学：建议按照GRADE方法提供评价体系和框架，制定我国的循证指南。  
+- 内容：指南和共识评价了ASD儿童失眠和睡眠行为紊乱的药物及非药物治疗，强调临床实践和标准化管理路径。  
+
+需要注意的是，现有指南的研究证据有限，尤其是高质量证据不足，且未充分考虑跨文化因素，特别是在我国ASD儿童中的适用性。因此，亟需多学科专家开展高质量随机对照研究，综合国内外证据，通过系统的循证方法，制定适合我国的诊疗指南，并进行专业培训和推广应用，以提高临床诊治水平，促进睡眠健康、功能康复及家庭幸福。  
+
+志谢：感谢上海交通大学医学院图书馆的仇晓春教授提供的GRADE方法建议。  
+
+作者贡献：  
+- 唐艺嘉：资料/文献收集、论文撰写及修订  
+- 王紫惊、姜艳蕊：论文修订  
+- 江帆、王广海：论文构思、修订、质量控制及审校负责  
+
+本文无利益冲突。  
+
+"""
+response = """
+// 节点更新
+MERGE (n:Disease {name: 'ASD儿童睡眠障碍'})
+SET 
+    n.description = coalesce(n.description, '与自闭症谱系障碍儿童相关的睡眠问题'),
+    n.category = coalesce(n.category, '睡眠障碍'),
+    n.severity = coalesce(n.severity, '中等');
+
+MERGE (n:Symptom {name: '失眠'})
+SET 
+    n.description = coalesce(n.description, '睡眠质量差，难以入睡或维持睡眠状态'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '经常');
+
+MERGE (n:Symptom {name: '睡眠行为紊乱'})
+SET 
+    n.description = coalesce(n.description, '睡眠模式异常，可能表现为夜醒或异常行为'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '经常');
+
+MERGE (n:Treatment {name: '药物治疗'})
+SET 
+    n.type = coalesce(n.type, '药物'),
+    n.description = coalesce(n.description, '针对ASD儿童失眠的药物方案'),
+    n.dosage = coalesce(n.dosage, '根据医生建议'),
+    n.duration = coalesce(n.duration, '视情况而定'),
+    n.contraindication = coalesce(n.contraindication, '对药物成分过敏的患者禁用');
+
+MERGE (n:Treatment {name: '非药物治疗'})
+SET 
+    n.type = coalesce(n.type, '非药物'),
+    n.description = coalesce(n.description, '包括认知行为疗法等方式来改善睡眠'),
+    n.dosage = coalesce(n.dosage, '不适用'),
+    n.duration = coalesce(n.duration, '通常为数周'),
+    n.contraindication = coalesce(n.contraindication, '无特定禁忌');
+
+// 关系更新
+MATCH (from) WHERE from.name = 'ASD儿童睡眠障碍'
+MATCH (to) WHERE to.name = '失眠'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.8),
+    r.frequency = coalesce(r.frequency, '经常'),
+    r.severity = coalesce(r.severity, '中等');
+
+MATCH (from) WHERE from.name = 'ASD儿童睡眠障碍'
+MATCH (to) WHERE to.name = '睡眠行为紊乱'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.8),
+    r.frequency = coalesce(r.frequency, '经常'),
+    r.severity = coalesce(r.severity, '中等');
+
+MATCH (from) WHERE from.name = 'ASD儿童睡眠障碍'
+MATCH (to) WHERE to.name = '药物治疗'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.85),
+    r.priority = coalesce(r.priority, '高'),
+    r.stage = coalesce(r.stage, '初始治疗');
+
+MATCH (from) WHERE from.name = 'ASD儿童睡眠障碍'
+MATCH (to) WHERE to.name = '非药物治疗'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.9),
+    r.priority = coalesce(r.priority, '高'),
+    r.stage = coalesce(r.stage, '初始治疗');
+
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-12 01:30:08"
+message = """
+
+[背景信息]
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+[命令]
+[CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+[详细补充需求]
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出\"// 空\"(不含引号)
+
+// 定义节点属性示例
+// 疾病节点
+CREATE (:Disease {
+    name: String,           // 疾病名称
+    code: String,           // 疾病编码
+    description: String,    // 疾病描述
+    category: String,       // 疾病分类
+    severity: String        // 严重程度
+});
+
+// 症状节点
+CREATE (:Symptom {
+    name: String,           // 症状名称
+    description: String,    // 症状描述
+    severity: String,       // 严重程度
+    frequency: String       // 发生频率
+});
+
+// 检查项目节点
+CREATE (:Examination {
+    name: String,           // 检查名称
+    description: String,    // 检查描述
+    method: String,         // 检查方法
+    requirement: String     // 检查要求
+});
+
+// 治疗方案节点
+CREATE (:Treatment {
+    name: String,           // 治疗名称
+    type: String,           // 类型(药物/非药物)
+    description: String,    // 治疗描述
+    dosage: String,         // 剂量(药物)
+    duration: String,       // 持续时间
+    contraindication: String // 禁忌症
+});
+
+// 量表工具节点
+CREATE (:Scale {
+    name: String,           // 量表名称
+    description: String,    // 量表描述
+    score_range: String,    // 分数范围
+    interpretation: String  // 结果解释
+});
+
+// 风险因素节点
+CREATE (:RiskFactor {
+    name: String,           // 因素名称
+    description: String,    // 描述
+    impact_level: String    // 影响程度
+});
+
+// 并发症节点
+CREATE (:Complication {
+    name: String,           // 并发症名称
+    description: String,    // 描述
+    severity: String        // 严重程度
+});
+
+// 定义关系类型
+// 症状-疾病关系
+CREATE (:Symptom)-[:INDICATES {
+    confidence: Float,      // 置信度
+    frequency: String,      // 发生频率
+    severity: String        // 严重程度
+}]->(:Disease);
+
+// 疾病-检查关系
+CREATE (:Disease)-[:REQUIRES_EXAM {
+    priority: String,       // 优先级
+    mandatory: Boolean      // 是否必需
+}]->(:Examination);
+
+// 疾病-治疗关系
+CREATE (:Disease)-[:TREATED_BY {
+    effectiveness: Float,   // 有效性
+    priority: String,       // 优先级
+    stage: String          // 治疗阶段
+}]->(:Treatment);
+
+// 疾病-并发症关系
+CREATE (:Disease)-[:MAY_CAUSE {
+    probability: Float,     // 发生概率
+    timeframe: String      // 时间框架
+}]->(:Complication);
+
+// 疾病-风险因素关系
+CREATE (:Disease)-[:INFLUENCED_BY {
+    impact_level: String,   // 影响程度
+    evidence_level: String  // 证据等级
+}]->(:RiskFactor);
+
+// 疾病-量表关系
+CREATE (:Disease)-[:ASSESSED_BY {
+    applicability: Float,   // 适用性
+    recommendation_level: String  // 推荐级别
+}]->(:Scale);
+
+[关系抽取说明]
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
+请尽你可能抽取全部关系
+[示例输出]
+MERGE (d1:Disease {name: \"阻塞性睡眠呼吸暂停低通气综合征\", short_name: \"OSAHS\"})
+MERGE (c1:Disease {name: \"高血压\"})
+MERGE (c2:Disease {name: \"糖尿病\"})
+MERGE (c1)-[:COMPLICATION_OF]->(d1)
+MERGE (c2)-[:COMPLICATION_OF]->(d1)
+
+[隶属文件名]
+孤独症谱系障碍儿童睡眠障碍临床实践相关指南解读.md
+[隶属文件分块名]
+孤独症谱系障碍儿童睡眠障碍临床实践相关指南解读/009-5-ASD-儿童睡眠障碍的管理路径.md
+[文本块]
+# 5 ASD 儿童睡眠障碍的管理路径  
+
+ATN 共识制订了ASD儿童青少年失眠的识别、评估和管理临床实践路径，并在4个机构进行可行性测试及优化调整。ATN 共识推荐ASD儿童均应接受失眠筛查，一旦确定存在失眠问题，应进行进一步评估。同时评估父母是否愿意先接受睡眠教育/行为干预。ATN 共识将睡眠教育/行为干预作为一线治疗方法，如果父母不愿意或无法接受，则可考虑药物治疗，但父母仍需了解睡眠习惯知识。ATN 共识认为在任何干预后均应进行随访，以评估治疗的有效性和耐受性，随访应在开始治疗后2周至1个月内进行，并期望在4周内观察到改善。及时的随访可以帮助父母调整干预措施，并在需要时提供转诊。在长期随访中(如1年)，应重复实践路径开始时的步骤(从筛查是否存在失眠开始)。在ASD儿童的管理中，需要咨询睡眠专家的情况如下：(1)初步评估时服用多种睡眠药物；(2)失眠在初始干预措施下没有得到改善；(3)失眠特别严重，导致明显的日间损害或使孩子在夜间清醒时面临受伤的风险；(4)存在潜在导致失眠症状的睡眠障碍，包括睡眠呼吸暂停综合征、不宁腿综合征等。  
+
+NICE 指南也介绍了ASD儿童青少年睡眠障碍的管理方法。首先应对睡眠障碍进行全面评估，以确定其确切的性质和可能的致病因素，如睡眠环境、睡眠习惯、共患疾病和目前使用的药物。评估后，应支持ASD儿童青少年的父母或照顾者制订睡眠计划(通常指睡眠行为干预)，鼓励儿童青少年建立规律的夜间睡眠模式，并记录睡眠日记以帮助其调整睡眠计划。NICE指南认为，药物治疗只有在睡眠计划无效，ASD儿童青少年的睡眠障碍持续存在并对其及家庭造成不良影响时使用，并且应与非药物治疗配合使用；若睡眠问题仍持续存在，应考虑转诊至睡眠专家处。尽管AAN 指南未对ASD儿童青少年睡眠障碍的管理流程直接进行介绍，但其推荐建议中对睡眠障碍的评估以及药物使用时机的推荐与ATN 共识和NICE 指南基本一致。
+
+"""
+response = """
+// 节点更新
+MERGE (n:Disease {name: 'ASD儿童失眠'})
+SET 
+    n.description = coalesce(n.description, 'ASD儿童青少年睡眠障碍'),
+    n.category = coalesce(n.category, '睡眠障碍');
+
+MERGE (n:Symptom {name: '失眠'})
+SET 
+    n.description = coalesce(n.description, '难以入睡或保持睡眠'),
+    n.severity = coalesce(n.severity, '严重'),
+    n.frequency = coalesce(n.frequency, '频繁');
+
+MERGE (n:Treatment {name: '睡眠教育/行为干预'})
+SET 
+    n.type = coalesce(n.type, '非药物'),
+    n.description = coalesce(n.description, '通过教育和行为调整来改善睡眠'),
+    n.duration = coalesce(n.duration, '持续性');
+
+MERGE (n:Treatment {name: '药物治疗'})
+SET 
+    n.type = coalesce(n.type, '药物'),
+    n.description = coalesce(n.description, '使用药物来改善失眠'),
+    n.dosage = coalesce(n.dosage, '根据医嘱'),
+    n.duration = coalesce(n.duration, '视情况而定');
+
+MERGE (n:Complication {name: '睡眠呼吸暂停综合征'})
+SET 
+    n.description = coalesce(n.description, '夜间呼吸暂停，导致睡眠中断'),
+    n.severity = coalesce(n.severity, '严重');
+
+MERGE (n:Complication {name: '不宁腿综合征'})
+SET 
+    n.description = coalesce(n.description, '腿部不适，导致夜间难以入睡'),
+    n.severity = coalesce(n.severity, '中等');
+
+// 关系更新
+MATCH (from) WHERE from.name = 'ASD儿童失眠'
+MATCH (to) WHERE to.name = '失眠'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.9),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '严重');
+
+MATCH (from) WHERE from.name = 'ASD儿童失眠'
+MATCH (to) WHERE to.name = '睡眠教育/行为干预'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.85),
+    r.priority = coalesce(r.priority, '高'),
+    r.stage = coalesce(r.stage, '一线治疗');
+
+MATCH (from) WHERE from.name = 'ASD儿童失眠'
+MATCH (to) WHERE to.name = '药物治疗'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.7),
+    r.priority = coalesce(r.priority, '低'),
+    r.stage = coalesce(r.stage, '替代治疗');
+
+MATCH (from) WHERE from.name = 'ASD儿童失眠'
+MATCH (to) WHERE to.name = '睡眠呼吸暂停综合征'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.6),
+    r.timeframe = coalesce(r.timeframe, '长期');
+
+MATCH (from) WHERE from.name = 'ASD儿童失眠'
+MATCH (to) WHERE to.name = '不宁腿综合征'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.5),
+    r.timeframe = coalesce(r.timeframe, '长期');
+
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-12 01:30:16"
+message = """
+
+[背景信息]
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+[命令]
+[CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+[详细补充需求]
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出\"// 空\"(不含引号)
+
+// 定义节点属性示例
+// 疾病节点
+CREATE (:Disease {
+    name: String,           // 疾病名称
+    code: String,           // 疾病编码
+    description: String,    // 疾病描述
+    category: String,       // 疾病分类
+    severity: String        // 严重程度
+});
+
+// 症状节点
+CREATE (:Symptom {
+    name: String,           // 症状名称
+    description: String,    // 症状描述
+    severity: String,       // 严重程度
+    frequency: String       // 发生频率
+});
+
+// 检查项目节点
+CREATE (:Examination {
+    name: String,           // 检查名称
+    description: String,    // 检查描述
+    method: String,         // 检查方法
+    requirement: String     // 检查要求
+});
+
+// 治疗方案节点
+CREATE (:Treatment {
+    name: String,           // 治疗名称
+    type: String,           // 类型(药物/非药物)
+    description: String,    // 治疗描述
+    dosage: String,         // 剂量(药物)
+    duration: String,       // 持续时间
+    contraindication: String // 禁忌症
+});
+
+// 量表工具节点
+CREATE (:Scale {
+    name: String,           // 量表名称
+    description: String,    // 量表描述
+    score_range: String,    // 分数范围
+    interpretation: String  // 结果解释
+});
+
+// 风险因素节点
+CREATE (:RiskFactor {
+    name: String,           // 因素名称
+    description: String,    // 描述
+    impact_level: String    // 影响程度
+});
+
+// 并发症节点
+CREATE (:Complication {
+    name: String,           // 并发症名称
+    description: String,    // 描述
+    severity: String        // 严重程度
+});
+
+// 定义关系类型
+// 症状-疾病关系
+CREATE (:Symptom)-[:INDICATES {
+    confidence: Float,      // 置信度
+    frequency: String,      // 发生频率
+    severity: String        // 严重程度
+}]->(:Disease);
+
+// 疾病-检查关系
+CREATE (:Disease)-[:REQUIRES_EXAM {
+    priority: String,       // 优先级
+    mandatory: Boolean      // 是否必需
+}]->(:Examination);
+
+// 疾病-治疗关系
+CREATE (:Disease)-[:TREATED_BY {
+    effectiveness: Float,   // 有效性
+    priority: String,       // 优先级
+    stage: String          // 治疗阶段
+}]->(:Treatment);
+
+// 疾病-并发症关系
+CREATE (:Disease)-[:MAY_CAUSE {
+    probability: Float,     // 发生概率
+    timeframe: String      // 时间框架
+}]->(:Complication);
+
+// 疾病-风险因素关系
+CREATE (:Disease)-[:INFLUENCED_BY {
+    impact_level: String,   // 影响程度
+    evidence_level: String  // 证据等级
+}]->(:RiskFactor);
+
+// 疾病-量表关系
+CREATE (:Disease)-[:ASSESSED_BY {
+    applicability: Float,   // 适用性
+    recommendation_level: String  // 推荐级别
+}]->(:Scale);
+
+[关系抽取说明]
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
+请尽你可能抽取全部关系
+[示例输出]
+MERGE (d1:Disease {name: \"阻塞性睡眠呼吸暂停低通气综合征\", short_name: \"OSAHS\"})
+MERGE (c1:Disease {name: \"高血压\"})
+MERGE (c2:Disease {name: \"糖尿病\"})
+MERGE (c1)-[:COMPLICATION_OF]->(d1)
+MERGE (c2)-[:COMPLICATION_OF]->(d1)
+
+[隶属文件名]
+孤独症谱系障碍儿童睡眠障碍临床实践相关指南解读.md
+[隶属文件分块名]
+孤独症谱系障碍儿童睡眠障碍临床实践相关指南解读/006-4-ASD-儿童睡眠障碍的治疗.md
+[文本块]
+# 4 ASD 儿童睡眠障碍的治疗  
+
+## 4.1 行为治疗  
+- 行为治疗对正常儿童失眠的有效性已被广泛证实，但其应用于ASD儿童的疗效证据相对有限。  
+- AAN指南和ATN共识建议将行为治疗作为ASD儿童青少年失眠和睡眠行为紊乱干预的一线方案。  
+  - AAN指南指出，父母应考虑改善ASD儿童的睡眠习惯，将行为治疗视为一线方案，单独或联合药物、营养治疗（B级推荐）。  
+  - ATN共识也指出失眠的治疗应从父母教育/行为干预开始。  
+- ASD儿童因其症状及共患疾病（如智力缺陷、感觉统合失调、沟通能力差、社交反应能力有限）对睡眠习惯的调整更为困难。  
+- ASD儿童对刻板、重复活动的偏好可能有助于适应性睡眠程序的建立，ATN共识建议使用可视化图表辅助。  
+
+### 行为疗法适用性
+- 对于5岁及以下的ASD儿童，改善睡眠习惯的行为疗法包括：  
+  - 消退法  
+  - 逐渐消退法  
+  - 积极就寝程序  
+  - 渐变就寝时间  
+- 针对成人的认知行为疗法（CBT）经调整后也适用于年龄较大的儿童。  
+- ATN共识系统回顾支持：  
+  - 消退法  
+  - 积极强化法  
+  - 父母教育对ASD儿童失眠的治疗效果。  
+
+### 行为干预效果
+- AAN指南指出，ASD儿童青少年的行为干预通常是短期、多成分、以目标为导向的，旨在改变导致其睡眠障碍的思维方式和行为。  
+- AAN指南系统回顾发现，基于家庭的CBT能改善患儿的就寝抵抗，但在睡眠潜伏期、睡眠效率、夜醒、总睡眠时间方面证据不足或存在争议。  
+- AAN指南系统回顾表明，睡眠卫生知识教育手册、个体或团体的父母睡眠教育对睡眠障碍无效或存在争议，而父母睡眠行为训练的影响证据也不充分。  
+- NICE指南系统回顾中有中等质量证据表明，CBT对午睡时间、就寝时间有显著影响。  
+
+### 研究需求
+- ASD儿童睡眠障碍的行为治疗效果仍需更多高质量研究验证。  
+- 行为治疗、CBT及父母睡眠卫生教育三者有重叠之处，常作为同一概念使用，主要涉及睡眠信念的形成和睡眠习惯的培养，其共同或独特疗效因子、适用性及推广性等有待进一步研究。  
+
+## 表1: ASD儿童睡眠障碍的行为治疗方法  
+注: $\\mathrm{{ASD}=}$ 孤独症谱系障碍  
+
+"""
+response = """
+// 节点更新
+MERGE (n:Disease {name: 'ASD儿童睡眠障碍'})
+SET 
+    n.description = coalesce(n.description, '孤独症谱系障碍儿童的睡眠障碍');
+
+MERGE (n:Treatment {name: '行为治疗'})
+SET 
+    n.type = coalesce(n.type, '非药物'),
+    n.description = coalesce(n.description, '对ASD儿童失眠的行为干预'),
+    n.duration = coalesce(n.duration, '短期'),
+    n.contraindication = coalesce(n.contraindication, '无');
+
+MERGE (n:Treatment {name: '认知行为疗法'})
+SET 
+    n.type = coalesce(n.type, '非药物'),
+    n.description = coalesce(n.description, '认知行为疗法经调整后适用于年龄较大的ASD儿童'),
+    n.duration = coalesce(n.duration, '短期'),
+    n.contraindication = coalesce(n.contraindication, '无');
+
+MERGE (n:Treatment {name: '消退法'})
+SET 
+    n.type = coalesce(n.type, '非药物'),
+    n.description = coalesce(n.description, '改善睡眠习惯的行为疗法'),
+    n.duration = coalesce(n.duration, '短期'),
+    n.contraindication = coalesce(n.contraindication, '无');
+
+MERGE (n:Treatment {name: '积极就寝程序'})
+SET 
+    n.type = coalesce(n.type, '非药物'),
+    n.description = coalesce(n.description, '积极的睡眠准备程序'),
+    n.duration = coalesce(n.duration, '短期'),
+    n.contraindication = coalesce(n.contraindication, '无');
+
+MERGE (n:Treatment {name: '逐渐消退法'})
+SET 
+    n.type = coalesce(n.type, '非药物'),
+    n.description = coalesce(n.description, '逐渐减少对ASD儿童的依赖'),
+    n.duration = coalesce(n.duration, '短期'),
+    n.contraindication = coalesce(n.contraindication, '无');
+
+MERGE (n:Treatment {name: '父母睡眠教育'})
+SET 
+    n.type = coalesce(n.type, '非药物'),
+    n.description = coalesce(n.description, '针对父母的睡眠习惯教育'),
+    n.duration = coalesce(n.duration, '短期'),
+    n.contraindication = coalesce(n.contraindication, '无');
+
+// 关系更新
+MATCH (from) WHERE from.name = 'ASD儿童睡眠障碍'
+MATCH (to) WHERE to.name = '行为治疗'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.7),
+    r.priority = coalesce(r.priority, '高'),
+    r.stage = coalesce(r.stage, '一线');
+
+MATCH (from) WHERE from.name = 'ASD儿童睡眠障碍'
+MATCH (to) WHERE to.name = '认知行为疗法'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.6),
+    r.priority = coalesce(r.priority, '中'),
+    r.stage = coalesce(r.stage, '一线');
+
+MATCH (from) WHERE from.name = 'ASD儿童睡眠障碍'
+MATCH (to) WHERE to.name = '消退法'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.8),
+    r.priority = coalesce(r.priority, '高'),
+    r.stage = coalesce(r.stage, '一线');
+
+MATCH (from) WHERE from.name = 'ASD儿童睡眠障碍'
+MATCH (to) WHERE to.name = '积极就寝程序'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.75),
+    r.priority = coalesce(r.priority, '高'),
+    r.stage = coalesce(r.stage, '一线');
+
+MATCH (from) WHERE from.name = 'ASD儿童睡眠障碍'
+MATCH (to) WHERE to.name = '逐渐消退法'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.65),
+    r.priority = coalesce(r.priority, '中'),
+    r.stage = coalesce(r.stage, '一线');
+
+MATCH (from) WHERE from.name = 'ASD儿童睡眠障碍'
+MATCH (to) WHERE to.name = '父母睡眠教育'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.5),
+    r.priority = coalesce(r.priority, '低'),
+    r.stage = coalesce(r.stage, '一线');
+
+"""

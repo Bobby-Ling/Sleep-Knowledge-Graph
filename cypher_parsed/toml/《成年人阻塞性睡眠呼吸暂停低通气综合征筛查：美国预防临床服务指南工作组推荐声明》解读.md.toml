@@ -1,0 +1,2500 @@
+[metadata]
+file_name = "《成年人阻塞性睡眠呼吸暂停低通气综合征筛查：美国预防临床服务指南工作组推荐声明》解读.md"
+processed_at = "2024-12-12 01:29:29"
+total_pairs = 13
+
+[[message_pairs]]
+timestamp = "2024-12-12 01:29:07"
+message = """
+
+[背景信息]
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+[命令]
+[CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+[详细补充需求]
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出\"// 空\"(不含引号)
+
+// 定义节点属性示例
+// 疾病节点
+CREATE (:Disease {
+    name: String,           // 疾病名称
+    code: String,           // 疾病编码
+    description: String,    // 疾病描述
+    category: String,       // 疾病分类
+    severity: String        // 严重程度
+});
+
+// 症状节点
+CREATE (:Symptom {
+    name: String,           // 症状名称
+    description: String,    // 症状描述
+    severity: String,       // 严重程度
+    frequency: String       // 发生频率
+});
+
+// 检查项目节点
+CREATE (:Examination {
+    name: String,           // 检查名称
+    description: String,    // 检查描述
+    method: String,         // 检查方法
+    requirement: String     // 检查要求
+});
+
+// 治疗方案节点
+CREATE (:Treatment {
+    name: String,           // 治疗名称
+    type: String,           // 类型(药物/非药物)
+    description: String,    // 治疗描述
+    dosage: String,         // 剂量(药物)
+    duration: String,       // 持续时间
+    contraindication: String // 禁忌症
+});
+
+// 量表工具节点
+CREATE (:Scale {
+    name: String,           // 量表名称
+    description: String,    // 量表描述
+    score_range: String,    // 分数范围
+    interpretation: String  // 结果解释
+});
+
+// 风险因素节点
+CREATE (:RiskFactor {
+    name: String,           // 因素名称
+    description: String,    // 描述
+    impact_level: String    // 影响程度
+});
+
+// 并发症节点
+CREATE (:Complication {
+    name: String,           // 并发症名称
+    description: String,    // 描述
+    severity: String        // 严重程度
+});
+
+// 定义关系类型
+// 症状-疾病关系
+CREATE (:Symptom)-[:INDICATES {
+    confidence: Float,      // 置信度
+    frequency: String,      // 发生频率
+    severity: String        // 严重程度
+}]->(:Disease);
+
+// 疾病-检查关系
+CREATE (:Disease)-[:REQUIRES_EXAM {
+    priority: String,       // 优先级
+    mandatory: Boolean      // 是否必需
+}]->(:Examination);
+
+// 疾病-治疗关系
+CREATE (:Disease)-[:TREATED_BY {
+    effectiveness: Float,   // 有效性
+    priority: String,       // 优先级
+    stage: String          // 治疗阶段
+}]->(:Treatment);
+
+// 疾病-并发症关系
+CREATE (:Disease)-[:MAY_CAUSE {
+    probability: Float,     // 发生概率
+    timeframe: String      // 时间框架
+}]->(:Complication);
+
+// 疾病-风险因素关系
+CREATE (:Disease)-[:INFLUENCED_BY {
+    impact_level: String,   // 影响程度
+    evidence_level: String  // 证据等级
+}]->(:RiskFactor);
+
+// 疾病-量表关系
+CREATE (:Disease)-[:ASSESSED_BY {
+    applicability: Float,   // 适用性
+    recommendation_level: String  // 推荐级别
+}]->(:Scale);
+
+[关系抽取说明]
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
+请尽你可能抽取全部关系
+[示例输出]
+MERGE (d1:Disease {name: \"阻塞性睡眠呼吸暂停低通气综合征\", short_name: \"OSAHS\"})
+MERGE (c1:Disease {name: \"高血压\"})
+MERGE (c2:Disease {name: \"糖尿病\"})
+MERGE (c1)-[:COMPLICATION_OF]->(d1)
+MERGE (c2)-[:COMPLICATION_OF]->(d1)
+
+[隶属文件名]
+《成年人阻塞性睡眠呼吸暂停低通气综合征筛查：美国预防临床服务指南工作组推荐声明》解读.md
+[隶属文件分块名]
+《成年人阻塞性睡眠呼吸暂停低通气综合征筛查：美国预防临床服务指南工作组推荐声明》解读/002-USPSTF-指南解读系列.md
+[文本块]
+# USPSTF 指南解读系列
+
+"""
+response = """
+// 节点更新
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-12 01:29:10"
+message = """
+
+[背景信息]
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+[命令]
+[CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+[详细补充需求]
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出\"// 空\"(不含引号)
+
+// 定义节点属性示例
+// 疾病节点
+CREATE (:Disease {
+    name: String,           // 疾病名称
+    code: String,           // 疾病编码
+    description: String,    // 疾病描述
+    category: String,       // 疾病分类
+    severity: String        // 严重程度
+});
+
+// 症状节点
+CREATE (:Symptom {
+    name: String,           // 症状名称
+    description: String,    // 症状描述
+    severity: String,       // 严重程度
+    frequency: String       // 发生频率
+});
+
+// 检查项目节点
+CREATE (:Examination {
+    name: String,           // 检查名称
+    description: String,    // 检查描述
+    method: String,         // 检查方法
+    requirement: String     // 检查要求
+});
+
+// 治疗方案节点
+CREATE (:Treatment {
+    name: String,           // 治疗名称
+    type: String,           // 类型(药物/非药物)
+    description: String,    // 治疗描述
+    dosage: String,         // 剂量(药物)
+    duration: String,       // 持续时间
+    contraindication: String // 禁忌症
+});
+
+// 量表工具节点
+CREATE (:Scale {
+    name: String,           // 量表名称
+    description: String,    // 量表描述
+    score_range: String,    // 分数范围
+    interpretation: String  // 结果解释
+});
+
+// 风险因素节点
+CREATE (:RiskFactor {
+    name: String,           // 因素名称
+    description: String,    // 描述
+    impact_level: String    // 影响程度
+});
+
+// 并发症节点
+CREATE (:Complication {
+    name: String,           // 并发症名称
+    description: String,    // 描述
+    severity: String        // 严重程度
+});
+
+// 定义关系类型
+// 症状-疾病关系
+CREATE (:Symptom)-[:INDICATES {
+    confidence: Float,      // 置信度
+    frequency: String,      // 发生频率
+    severity: String        // 严重程度
+}]->(:Disease);
+
+// 疾病-检查关系
+CREATE (:Disease)-[:REQUIRES_EXAM {
+    priority: String,       // 优先级
+    mandatory: Boolean      // 是否必需
+}]->(:Examination);
+
+// 疾病-治疗关系
+CREATE (:Disease)-[:TREATED_BY {
+    effectiveness: Float,   // 有效性
+    priority: String,       // 优先级
+    stage: String          // 治疗阶段
+}]->(:Treatment);
+
+// 疾病-并发症关系
+CREATE (:Disease)-[:MAY_CAUSE {
+    probability: Float,     // 发生概率
+    timeframe: String      // 时间框架
+}]->(:Complication);
+
+// 疾病-风险因素关系
+CREATE (:Disease)-[:INFLUENCED_BY {
+    impact_level: String,   // 影响程度
+    evidence_level: String  // 证据等级
+}]->(:RiskFactor);
+
+// 疾病-量表关系
+CREATE (:Disease)-[:ASSESSED_BY {
+    applicability: Float,   // 适用性
+    recommendation_level: String  // 推荐级别
+}]->(:Scale);
+
+[关系抽取说明]
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
+请尽你可能抽取全部关系
+[示例输出]
+MERGE (d1:Disease {name: \"阻塞性睡眠呼吸暂停低通气综合征\", short_name: \"OSAHS\"})
+MERGE (c1:Disease {name: \"高血压\"})
+MERGE (c2:Disease {name: \"糖尿病\"})
+MERGE (c1)-[:COMPLICATION_OF]->(d1)
+MERGE (c2)-[:COMPLICATION_OF]->(d1)
+
+[隶属文件名]
+《成年人阻塞性睡眠呼吸暂停低通气综合征筛查：美国预防临床服务指南工作组推荐声明》解读.md
+[隶属文件分块名]
+《成年人阻塞性睡眠呼吸暂停低通气综合征筛查：美国预防临床服务指南工作组推荐声明》解读/001-开始.md
+[文本块]
+[20] WU Y F, LIU X Q, LI X, et al. Estimation of 10-year risk of fatal and nonfatal ischemic cardiovascular diseases in Chinese adults. Circulation, 2006, 114(21):2217-2225. DOI:10.1161/CIRCULATIONAHA.105.607499.  
+[21] YANG X L, LI J X, HU D S, et al. Predicting the 10-year risks of atherosclerotic cardiovascular disease in Chinese population: the china-PAR project (prediction for ASCVD risk in China). Circulation, 2016, 134(19):1430-1440. DOI:10.1161/CIRCULATIONAHA.116.022367.  
+[22] 中华医学会心血管病学分会, 中国康复医学会心脏预防与康复专业委员会, 中国老年学和老年医学会心脏专业委员会, 等. 中国心血管病一级预防指南. 中华心血管病杂志, 2020, 48(12):1000-1038. DOI:10.3760/cma.j.cn112148-20201009-00796.  
+[23] 中国血脂管理指南修订联合专家委员会. 中国血脂管理指南(2023 年). 中国循环杂志, 2023, 38(3):237-271. DOI:10.3969/j.issn.1000-3614.2023.03.001.  
+[24] COLLABORATION C T T, BAIGENT C, BLACKWELL L, et al. Efficacy and safety of more intensive lowering of LDL cholesterol: a meta-analysis of data from 170,000 participants in 26 randomised trials. Lancet, 2010, 376(9753):1670-1681. DOI:10.1016/S0140-6736(10)61350-5. (收稿日期:2023-11-12; 修回日期:2023-12-20) (本文编辑:崔莎)
+
+"""
+response = """
+// 节点更新
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-12 01:29:11"
+message = """
+
+[背景信息]
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+[命令]
+[CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+[详细补充需求]
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出\"// 空\"(不含引号)
+
+// 定义节点属性示例
+// 疾病节点
+CREATE (:Disease {
+    name: String,           // 疾病名称
+    code: String,           // 疾病编码
+    description: String,    // 疾病描述
+    category: String,       // 疾病分类
+    severity: String        // 严重程度
+});
+
+// 症状节点
+CREATE (:Symptom {
+    name: String,           // 症状名称
+    description: String,    // 症状描述
+    severity: String,       // 严重程度
+    frequency: String       // 发生频率
+});
+
+// 检查项目节点
+CREATE (:Examination {
+    name: String,           // 检查名称
+    description: String,    // 检查描述
+    method: String,         // 检查方法
+    requirement: String     // 检查要求
+});
+
+// 治疗方案节点
+CREATE (:Treatment {
+    name: String,           // 治疗名称
+    type: String,           // 类型(药物/非药物)
+    description: String,    // 治疗描述
+    dosage: String,         // 剂量(药物)
+    duration: String,       // 持续时间
+    contraindication: String // 禁忌症
+});
+
+// 量表工具节点
+CREATE (:Scale {
+    name: String,           // 量表名称
+    description: String,    // 量表描述
+    score_range: String,    // 分数范围
+    interpretation: String  // 结果解释
+});
+
+// 风险因素节点
+CREATE (:RiskFactor {
+    name: String,           // 因素名称
+    description: String,    // 描述
+    impact_level: String    // 影响程度
+});
+
+// 并发症节点
+CREATE (:Complication {
+    name: String,           // 并发症名称
+    description: String,    // 描述
+    severity: String        // 严重程度
+});
+
+// 定义关系类型
+// 症状-疾病关系
+CREATE (:Symptom)-[:INDICATES {
+    confidence: Float,      // 置信度
+    frequency: String,      // 发生频率
+    severity: String        // 严重程度
+}]->(:Disease);
+
+// 疾病-检查关系
+CREATE (:Disease)-[:REQUIRES_EXAM {
+    priority: String,       // 优先级
+    mandatory: Boolean      // 是否必需
+}]->(:Examination);
+
+// 疾病-治疗关系
+CREATE (:Disease)-[:TREATED_BY {
+    effectiveness: Float,   // 有效性
+    priority: String,       // 优先级
+    stage: String          // 治疗阶段
+}]->(:Treatment);
+
+// 疾病-并发症关系
+CREATE (:Disease)-[:MAY_CAUSE {
+    probability: Float,     // 发生概率
+    timeframe: String      // 时间框架
+}]->(:Complication);
+
+// 疾病-风险因素关系
+CREATE (:Disease)-[:INFLUENCED_BY {
+    impact_level: String,   // 影响程度
+    evidence_level: String  // 证据等级
+}]->(:RiskFactor);
+
+// 疾病-量表关系
+CREATE (:Disease)-[:ASSESSED_BY {
+    applicability: Float,   // 适用性
+    recommendation_level: String  // 推荐级别
+}]->(:Scale);
+
+[关系抽取说明]
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
+请尽你可能抽取全部关系
+[示例输出]
+MERGE (d1:Disease {name: \"阻塞性睡眠呼吸暂停低通气综合征\", short_name: \"OSAHS\"})
+MERGE (c1:Disease {name: \"高血压\"})
+MERGE (c2:Disease {name: \"糖尿病\"})
+MERGE (c1)-[:COMPLICATION_OF]->(d1)
+MERGE (c2)-[:COMPLICATION_OF]->(d1)
+
+[隶属文件名]
+《成年人阻塞性睡眠呼吸暂停低通气综合征筛查：美国预防临床服务指南工作组推荐声明》解读.md
+[隶属文件分块名]
+《成年人阻塞性睡眠呼吸暂停低通气综合征筛查：美国预防临床服务指南工作组推荐声明》解读/007-3-USPSTP-成年人OSAHS-筛查推荐概要.md
+[文本块]
+# 3 USPSTP 成年人 OSAHS 筛查推荐概要  
+
+"""
+response = """
+// 节点更新
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-12 01:29:14"
+message = """
+
+[背景信息]
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+[命令]
+[CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+[详细补充需求]
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出\"// 空\"(不含引号)
+
+// 定义节点属性示例
+// 疾病节点
+CREATE (:Disease {
+    name: String,           // 疾病名称
+    code: String,           // 疾病编码
+    description: String,    // 疾病描述
+    category: String,       // 疾病分类
+    severity: String        // 严重程度
+});
+
+// 症状节点
+CREATE (:Symptom {
+    name: String,           // 症状名称
+    description: String,    // 症状描述
+    severity: String,       // 严重程度
+    frequency: String       // 发生频率
+});
+
+// 检查项目节点
+CREATE (:Examination {
+    name: String,           // 检查名称
+    description: String,    // 检查描述
+    method: String,         // 检查方法
+    requirement: String     // 检查要求
+});
+
+// 治疗方案节点
+CREATE (:Treatment {
+    name: String,           // 治疗名称
+    type: String,           // 类型(药物/非药物)
+    description: String,    // 治疗描述
+    dosage: String,         // 剂量(药物)
+    duration: String,       // 持续时间
+    contraindication: String // 禁忌症
+});
+
+// 量表工具节点
+CREATE (:Scale {
+    name: String,           // 量表名称
+    description: String,    // 量表描述
+    score_range: String,    // 分数范围
+    interpretation: String  // 结果解释
+});
+
+// 风险因素节点
+CREATE (:RiskFactor {
+    name: String,           // 因素名称
+    description: String,    // 描述
+    impact_level: String    // 影响程度
+});
+
+// 并发症节点
+CREATE (:Complication {
+    name: String,           // 并发症名称
+    description: String,    // 描述
+    severity: String        // 严重程度
+});
+
+// 定义关系类型
+// 症状-疾病关系
+CREATE (:Symptom)-[:INDICATES {
+    confidence: Float,      // 置信度
+    frequency: String,      // 发生频率
+    severity: String        // 严重程度
+}]->(:Disease);
+
+// 疾病-检查关系
+CREATE (:Disease)-[:REQUIRES_EXAM {
+    priority: String,       // 优先级
+    mandatory: Boolean      // 是否必需
+}]->(:Examination);
+
+// 疾病-治疗关系
+CREATE (:Disease)-[:TREATED_BY {
+    effectiveness: Float,   // 有效性
+    priority: String,       // 优先级
+    stage: String          // 治疗阶段
+}]->(:Treatment);
+
+// 疾病-并发症关系
+CREATE (:Disease)-[:MAY_CAUSE {
+    probability: Float,     // 发生概率
+    timeframe: String      // 时间框架
+}]->(:Complication);
+
+// 疾病-风险因素关系
+CREATE (:Disease)-[:INFLUENCED_BY {
+    impact_level: String,   // 影响程度
+    evidence_level: String  // 证据等级
+}]->(:RiskFactor);
+
+// 疾病-量表关系
+CREATE (:Disease)-[:ASSESSED_BY {
+    applicability: Float,   // 适用性
+    recommendation_level: String  // 推荐级别
+}]->(:Scale);
+
+[关系抽取说明]
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
+请尽你可能抽取全部关系
+[示例输出]
+MERGE (d1:Disease {name: \"阻塞性睡眠呼吸暂停低通气综合征\", short_name: \"OSAHS\"})
+MERGE (c1:Disease {name: \"高血压\"})
+MERGE (c2:Disease {name: \"糖尿病\"})
+MERGE (c1)-[:COMPLICATION_OF]->(d1)
+MERGE (c2)-[:COMPLICATION_OF]->(d1)
+
+[隶属文件名]
+《成年人阻塞性睡眠呼吸暂停低通气综合征筛查：美国预防临床服务指南工作组推荐声明》解读.md
+[隶属文件分块名]
+《成年人阻塞性睡眠呼吸暂停低通气综合征筛查：美国预防临床服务指南工作组推荐声明》解读/005-1-成年人OSAHS-流行病学.md
+[文本块]
+成年人OSAHS是常见的睡眠呼吸疾病，诊断标准为呼吸暂停低通气指数（AHI）≥5次/h。我国有1.76亿OSAHS患者，居全球首位。由于医疗负担巨大，高危人群筛查、早期诊断和管理至关重要。OSAHS治疗主要依赖三级甲等综合医院，但由于医疗资源限制，OSAHS就诊的患者数量有限，公众对OSAHS的认知度较低，导致预防及治疗困难。多数高危患者未被及时发现和诊治，可能导致并发症，增加治疗难度。仅靠医院的诊治不足以满足OSAHS公共卫生管理需求，需要配合早期筛查以提前介入防治。
+
+"""
+response = """
+// 节点更新
+MERGE (n:Disease {name: '阻塞性睡眠呼吸暂停低通气综合征'})
+SET 
+    n.code = coalesce(n.code, 'OSAHS'),
+    n.description = coalesce(n.description, '一种常见的睡眠呼吸疾病'),
+    n.category = coalesce(n.category, '睡眠障碍'),
+    n.severity = coalesce(n.severity, '严重');
+
+MERGE (n:Symptom {name: '呼吸暂停低通气指数'})
+SET 
+    n.description = coalesce(n.description, '在一小时内发生的呼吸暂停或低通气事件的次数'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '≥5次/h');
+
+MERGE (n:Complication {name: '并发症'})
+SET 
+    n.description = coalesce(n.description, '可能由于OSAHS未被及时发现和诊治而导致的其他健康问题'),
+    n.severity = coalesce(n.severity, '严重');
+
+// 关系更新
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = '呼吸暂停低通气指数'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.9),
+    r.frequency = coalesce(r.frequency, '高'),
+    r.severity = coalesce(r.severity, '严重');
+
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = '并发症'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.7),
+    r.timeframe = coalesce(r.timeframe, '长期');
+
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-12 01:29:15"
+message = """
+
+[背景信息]
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+[命令]
+[CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+[详细补充需求]
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出\"// 空\"(不含引号)
+
+// 定义节点属性示例
+// 疾病节点
+CREATE (:Disease {
+    name: String,           // 疾病名称
+    code: String,           // 疾病编码
+    description: String,    // 疾病描述
+    category: String,       // 疾病分类
+    severity: String        // 严重程度
+});
+
+// 症状节点
+CREATE (:Symptom {
+    name: String,           // 症状名称
+    description: String,    // 症状描述
+    severity: String,       // 严重程度
+    frequency: String       // 发生频率
+});
+
+// 检查项目节点
+CREATE (:Examination {
+    name: String,           // 检查名称
+    description: String,    // 检查描述
+    method: String,         // 检查方法
+    requirement: String     // 检查要求
+});
+
+// 治疗方案节点
+CREATE (:Treatment {
+    name: String,           // 治疗名称
+    type: String,           // 类型(药物/非药物)
+    description: String,    // 治疗描述
+    dosage: String,         // 剂量(药物)
+    duration: String,       // 持续时间
+    contraindication: String // 禁忌症
+});
+
+// 量表工具节点
+CREATE (:Scale {
+    name: String,           // 量表名称
+    description: String,    // 量表描述
+    score_range: String,    // 分数范围
+    interpretation: String  // 结果解释
+});
+
+// 风险因素节点
+CREATE (:RiskFactor {
+    name: String,           // 因素名称
+    description: String,    // 描述
+    impact_level: String    // 影响程度
+});
+
+// 并发症节点
+CREATE (:Complication {
+    name: String,           // 并发症名称
+    description: String,    // 描述
+    severity: String        // 严重程度
+});
+
+// 定义关系类型
+// 症状-疾病关系
+CREATE (:Symptom)-[:INDICATES {
+    confidence: Float,      // 置信度
+    frequency: String,      // 发生频率
+    severity: String        // 严重程度
+}]->(:Disease);
+
+// 疾病-检查关系
+CREATE (:Disease)-[:REQUIRES_EXAM {
+    priority: String,       // 优先级
+    mandatory: Boolean      // 是否必需
+}]->(:Examination);
+
+// 疾病-治疗关系
+CREATE (:Disease)-[:TREATED_BY {
+    effectiveness: Float,   // 有效性
+    priority: String,       // 优先级
+    stage: String          // 治疗阶段
+}]->(:Treatment);
+
+// 疾病-并发症关系
+CREATE (:Disease)-[:MAY_CAUSE {
+    probability: Float,     // 发生概率
+    timeframe: String      // 时间框架
+}]->(:Complication);
+
+// 疾病-风险因素关系
+CREATE (:Disease)-[:INFLUENCED_BY {
+    impact_level: String,   // 影响程度
+    evidence_level: String  // 证据等级
+}]->(:RiskFactor);
+
+// 疾病-量表关系
+CREATE (:Disease)-[:ASSESSED_BY {
+    applicability: Float,   // 适用性
+    recommendation_level: String  // 推荐级别
+}]->(:Scale);
+
+[关系抽取说明]
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
+请尽你可能抽取全部关系
+[示例输出]
+MERGE (d1:Disease {name: \"阻塞性睡眠呼吸暂停低通气综合征\", short_name: \"OSAHS\"})
+MERGE (c1:Disease {name: \"高血压\"})
+MERGE (c2:Disease {name: \"糖尿病\"})
+MERGE (c1)-[:COMPLICATION_OF]->(d1)
+MERGE (c2)-[:COMPLICATION_OF]->(d1)
+
+[隶属文件名]
+《成年人阻塞性睡眠呼吸暂停低通气综合征筛查：美国预防临床服务指南工作组推荐声明》解读.md
+[隶属文件分块名]
+《成年人阻塞性睡眠呼吸暂停低通气综合征筛查：美国预防临床服务指南工作组推荐声明》解读/006-2-USPSTF-最新推荐.md
+[文本块]
+2 USPSTF 最新推荐
+
+目前没有足够的证据支持或反对在成年人中进行OSAHS筛查。临床医生应根据临床经验判断OSAHS筛查的必要性及如何进行筛查。评估理论依据见表1。
+
+"""
+response = """
+// 节点更新
+MERGE (n:Disease {name: '阻塞性睡眠呼吸暂停低通气综合征'})
+SET 
+    n.code = coalesce(n.code, 'OSAHS');
+
+MERGE (n:Examination {name: '阻塞性睡眠呼吸暂停低通气综合征筛查'})
+SET 
+    n.description = coalesce(n.description, '用于筛查阻塞性睡眠呼吸暂停低通气综合征的检查'),
+    n.method = coalesce(n.method, '临床评估'),
+    n.requirement = coalesce(n.requirement, '根据临床经验判断必要性');
+
+// 关系更新
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = '阻塞性睡眠呼吸暂停低通气综合征筛查'
+MERGE (from)-[r:REQUIRES_EXAM]->(to)
+SET 
+    r.priority = coalesce(r.priority, '高'),
+    r.mandatory = coalesce(r.mandatory, 'true');
+
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-12 01:29:16"
+message = """
+
+[背景信息]
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+[命令]
+[CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+[详细补充需求]
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出\"// 空\"(不含引号)
+
+// 定义节点属性示例
+// 疾病节点
+CREATE (:Disease {
+    name: String,           // 疾病名称
+    code: String,           // 疾病编码
+    description: String,    // 疾病描述
+    category: String,       // 疾病分类
+    severity: String        // 严重程度
+});
+
+// 症状节点
+CREATE (:Symptom {
+    name: String,           // 症状名称
+    description: String,    // 症状描述
+    severity: String,       // 严重程度
+    frequency: String       // 发生频率
+});
+
+// 检查项目节点
+CREATE (:Examination {
+    name: String,           // 检查名称
+    description: String,    // 检查描述
+    method: String,         // 检查方法
+    requirement: String     // 检查要求
+});
+
+// 治疗方案节点
+CREATE (:Treatment {
+    name: String,           // 治疗名称
+    type: String,           // 类型(药物/非药物)
+    description: String,    // 治疗描述
+    dosage: String,         // 剂量(药物)
+    duration: String,       // 持续时间
+    contraindication: String // 禁忌症
+});
+
+// 量表工具节点
+CREATE (:Scale {
+    name: String,           // 量表名称
+    description: String,    // 量表描述
+    score_range: String,    // 分数范围
+    interpretation: String  // 结果解释
+});
+
+// 风险因素节点
+CREATE (:RiskFactor {
+    name: String,           // 因素名称
+    description: String,    // 描述
+    impact_level: String    // 影响程度
+});
+
+// 并发症节点
+CREATE (:Complication {
+    name: String,           // 并发症名称
+    description: String,    // 描述
+    severity: String        // 严重程度
+});
+
+// 定义关系类型
+// 症状-疾病关系
+CREATE (:Symptom)-[:INDICATES {
+    confidence: Float,      // 置信度
+    frequency: String,      // 发生频率
+    severity: String        // 严重程度
+}]->(:Disease);
+
+// 疾病-检查关系
+CREATE (:Disease)-[:REQUIRES_EXAM {
+    priority: String,       // 优先级
+    mandatory: Boolean      // 是否必需
+}]->(:Examination);
+
+// 疾病-治疗关系
+CREATE (:Disease)-[:TREATED_BY {
+    effectiveness: Float,   // 有效性
+    priority: String,       // 优先级
+    stage: String          // 治疗阶段
+}]->(:Treatment);
+
+// 疾病-并发症关系
+CREATE (:Disease)-[:MAY_CAUSE {
+    probability: Float,     // 发生概率
+    timeframe: String      // 时间框架
+}]->(:Complication);
+
+// 疾病-风险因素关系
+CREATE (:Disease)-[:INFLUENCED_BY {
+    impact_level: String,   // 影响程度
+    evidence_level: String  // 证据等级
+}]->(:RiskFactor);
+
+// 疾病-量表关系
+CREATE (:Disease)-[:ASSESSED_BY {
+    applicability: Float,   // 适用性
+    recommendation_level: String  // 推荐级别
+}]->(:Scale);
+
+[关系抽取说明]
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
+请尽你可能抽取全部关系
+[示例输出]
+MERGE (d1:Disease {name: \"阻塞性睡眠呼吸暂停低通气综合征\", short_name: \"OSAHS\"})
+MERGE (c1:Disease {name: \"高血压\"})
+MERGE (c2:Disease {name: \"糖尿病\"})
+MERGE (c1)-[:COMPLICATION_OF]->(d1)
+MERGE (c2)-[:COMPLICATION_OF]->(d1)
+
+[隶属文件名]
+《成年人阻塞性睡眠呼吸暂停低通气综合征筛查：美国预防临床服务指南工作组推荐声明》解读.md
+[隶属文件分块名]
+《成年人阻塞性睡眠呼吸暂停低通气综合征筛查：美国预防临床服务指南工作组推荐声明》解读/003-成年人阻塞性睡眠呼吸暂停低通气综合征筛查美国预防临床服务指南工作组推荐声明解读.md
+[文本块]
+# 成年人阻塞性睡眠呼吸暂停低通气综合征筛查推荐解读  
+
+**作者**  
+曾凌枫, 张慧, 雷思, 卓慧, 叶云, 许琰, 罗荧荃  
+- 所属单位:  
+  1. 中南大学湘雅二医院全科医学科, 湖南省长沙市, 410001  
+  2. 中南大学湘雅二医院老年医学科, 湖南省长沙市, 410001  
+- 通信作者: 罗荧荃, 主任医师  
+- E-mail: luoyingquan@csu.edu.cn  
+- 曾凌枫和张慧为共同第一作者  
+
+**摘要**  
+成年人阻塞性睡眠呼吸暂停低通气综合征(OSAHS)是一种常见的睡眠呼吸障碍,与高血压、糖尿病、心血管疾病及其他健康问题紧密相关。尽管OSAHS对全球健康有广泛影响,其筛查和诊断在临床实践中的普及率仍低。美国预防临床服务指南工作组(USPSTF)近期发布了最新的成年人OSAHS筛查推荐,旨在帮助识别和治疗潜在的睡眠呼吸障碍。本文解读最新推荐,结合我国实际情况，为我国成年人OSAHS筛查提供参考。
+
+**关键词**  
+- 阻塞性睡眠呼吸暂停低通气综合征  
+- 睡眠呼吸暂停, 阻塞性  
+- 美国预防临床服务指南工作组  
+- 筛查  
+- 成年人  
+
+**中图分类号**: R 749.79  
+**文献标识码**: A  
+**DOI**: 10.12114/j.issn.1007-9572.2023.0850  
+
+"""
+response = """
+// 节点更新
+MERGE (n:Disease {name: '阻塞性睡眠呼吸暂停低通气综合征'})
+SET 
+    n.code = coalesce(n.code, 'OSAHS'),
+    n.description = coalesce(n.description, '一种常见的睡眠呼吸障碍'),
+    n.category = coalesce(n.category, '睡眠障碍'),
+    n.severity = coalesce(n.severity, '严重');
+
+MERGE (n:Disease {name: '高血压'});
+
+MERGE (n:Disease {name: '糖尿病'});
+
+MERGE (n:Disease {name: '心血管疾病'})
+SET 
+    n.description = coalesce(n.description, '与高血压、糖尿病相关的健康问题');
+
+// 关系更新
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = '高血压'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.7),
+    r.timeframe = coalesce(r.timeframe, '长期');
+
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = '糖尿病'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.5),
+    r.timeframe = coalesce(r.timeframe, '长期');
+
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = '心血管疾病'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.6),
+    r.timeframe = coalesce(r.timeframe, '长期');
+
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-12 01:29:20"
+message = """
+
+[背景信息]
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+[命令]
+[CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+[详细补充需求]
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出\"// 空\"(不含引号)
+
+// 定义节点属性示例
+// 疾病节点
+CREATE (:Disease {
+    name: String,           // 疾病名称
+    code: String,           // 疾病编码
+    description: String,    // 疾病描述
+    category: String,       // 疾病分类
+    severity: String        // 严重程度
+});
+
+// 症状节点
+CREATE (:Symptom {
+    name: String,           // 症状名称
+    description: String,    // 症状描述
+    severity: String,       // 严重程度
+    frequency: String       // 发生频率
+});
+
+// 检查项目节点
+CREATE (:Examination {
+    name: String,           // 检查名称
+    description: String,    // 检查描述
+    method: String,         // 检查方法
+    requirement: String     // 检查要求
+});
+
+// 治疗方案节点
+CREATE (:Treatment {
+    name: String,           // 治疗名称
+    type: String,           // 类型(药物/非药物)
+    description: String,    // 治疗描述
+    dosage: String,         // 剂量(药物)
+    duration: String,       // 持续时间
+    contraindication: String // 禁忌症
+});
+
+// 量表工具节点
+CREATE (:Scale {
+    name: String,           // 量表名称
+    description: String,    // 量表描述
+    score_range: String,    // 分数范围
+    interpretation: String  // 结果解释
+});
+
+// 风险因素节点
+CREATE (:RiskFactor {
+    name: String,           // 因素名称
+    description: String,    // 描述
+    impact_level: String    // 影响程度
+});
+
+// 并发症节点
+CREATE (:Complication {
+    name: String,           // 并发症名称
+    description: String,    // 描述
+    severity: String        // 严重程度
+});
+
+// 定义关系类型
+// 症状-疾病关系
+CREATE (:Symptom)-[:INDICATES {
+    confidence: Float,      // 置信度
+    frequency: String,      // 发生频率
+    severity: String        // 严重程度
+}]->(:Disease);
+
+// 疾病-检查关系
+CREATE (:Disease)-[:REQUIRES_EXAM {
+    priority: String,       // 优先级
+    mandatory: Boolean      // 是否必需
+}]->(:Examination);
+
+// 疾病-治疗关系
+CREATE (:Disease)-[:TREATED_BY {
+    effectiveness: Float,   // 有效性
+    priority: String,       // 优先级
+    stage: String          // 治疗阶段
+}]->(:Treatment);
+
+// 疾病-并发症关系
+CREATE (:Disease)-[:MAY_CAUSE {
+    probability: Float,     // 发生概率
+    timeframe: String      // 时间框架
+}]->(:Complication);
+
+// 疾病-风险因素关系
+CREATE (:Disease)-[:INFLUENCED_BY {
+    impact_level: String,   // 影响程度
+    evidence_level: String  // 证据等级
+}]->(:RiskFactor);
+
+// 疾病-量表关系
+CREATE (:Disease)-[:ASSESSED_BY {
+    applicability: Float,   // 适用性
+    recommendation_level: String  // 推荐级别
+}]->(:Scale);
+
+[关系抽取说明]
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
+请尽你可能抽取全部关系
+[示例输出]
+MERGE (d1:Disease {name: \"阻塞性睡眠呼吸暂停低通气综合征\", short_name: \"OSAHS\"})
+MERGE (c1:Disease {name: \"高血压\"})
+MERGE (c2:Disease {name: \"糖尿病\"})
+MERGE (c1)-[:COMPLICATION_OF]->(d1)
+MERGE (c2)-[:COMPLICATION_OF]->(d1)
+
+[隶属文件名]
+《成年人阻塞性睡眠呼吸暂停低通气综合征筛查：美国预防临床服务指南工作组推荐声明》解读.md
+[隶属文件分块名]
+《成年人阻塞性睡眠呼吸暂停低通气综合征筛查：美国预防临床服务指南工作组推荐声明》解读/009-32-OSAHS-的定义.md
+[文本块]
+OSAHS 是一种睡眠障碍，其特征是：
+
+- 尽管努力呼吸，在睡眠期间仍然存在咽喉气道狭窄和阻塞
+- 呼吸气流减少或停止
+- 总的气道阻塞持续时间超过 $10~\\mathrm{s}$ 被定义为呼吸暂停
+- 低通气是部分气道阻塞，至少导致血氧饱和度下降 $3\\%$ 或呼吸努力相关微觉醒
+
+阻塞性睡眠呼吸暂停被定义为：
+- 呼吸暂停、低通气或呼吸努力相关微觉醒事件 $\\geqslant 5$ 次 $/\\mathrm{h}$ 
+
+睡眠AHI用于定义OSAHS的严重程度：
+- 轻度OSAHS: AHI 为 $5{\\sim}{<}15$ 次 $/\\mathrm{h}$
+- 中度OSAHS: AHI 为 $15{\\sim}{<}30$ 次 $/\\mathrm{h}$
+- 重度OSAHS: $\\mathrm{AHI}\\geqslant30$ 次 $/\\mathrm{h}$ 
+
+氧减饱和度指数(ODI)的诊断标准：
+- $\\mathrm{AHI}\\geqslant15$ 次 $/\\mathrm{h}$ 且 $\\mathrm{ODI}{>}4\\%$ 
+- 建议对于 $\\mathrm{AHI}\\geqslant10$ 次 $/\\mathrm{h}$ 且 $\\mathrm{ODI}~>~4\\%$ 的患者行进一步评估以确诊OSAHS
+
+OSAHS 的常见临床体征和症状包括：
+- 日间嗜睡过多
+- 尽管睡眠时间足够，仍然觉得休息不够
+- 大声或不规则的打鼾
+- 睡觉时窒息或呼吸困难
+
+"""
+response = """
+// 节点更新
+MERGE (n:Disease {name: '阻塞性睡眠呼吸暂停低通气综合征'})
+SET 
+    n.description = coalesce(n.description, 'OSAHS 是一种睡眠障碍，其特征是呼吸气流减少或停止，咽喉气道狭窄和阻塞'),
+    n.severity = coalesce(n.severity, '轻度/中度/重度');
+
+MERGE (n:Symptom {name: '日间嗜睡过多'})
+SET 
+    n.description = coalesce(n.description, '常见临床体征'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '持续');
+
+MERGE (n:Symptom {name: '休息不够'})
+SET 
+    n.description = coalesce(n.description, '尽管睡眠时间足够，仍然觉得休息不够'),
+    n.severity = coalesce(n.severity, '轻度'),
+    n.frequency = coalesce(n.frequency, '持续');
+
+MERGE (n:Symptom {name: '打鼾'})
+SET 
+    n.description = coalesce(n.description, '大声或不规则的打鼾'),
+    n.severity = coalesce(n.severity, '轻度'),
+    n.frequency = coalesce(n.frequency, '持续');
+
+MERGE (n:Symptom {name: '窒息或呼吸困难'})
+SET 
+    n.description = coalesce(n.description, '睡觉时窒息或呼吸困难'),
+    n.severity = coalesce(n.severity, '重度'),
+    n.frequency = coalesce(n.frequency, '偶发');
+
+// 关系更新
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = '日间嗜睡过多'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.9),
+    r.frequency = coalesce(r.frequency, '高频'),
+    r.severity = coalesce(r.severity, '重度');
+
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = '休息不够'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.8),
+    r.frequency = coalesce(r.frequency, '高频'),
+    r.severity = coalesce(r.severity, '轻度');
+
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = '打鼾'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.85),
+    r.frequency = coalesce(r.frequency, '高频'),
+    r.severity = coalesce(r.severity, '轻度');
+
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = '窒息或呼吸困难'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.95),
+    r.frequency = coalesce(r.frequency, '高频'),
+    r.severity = coalesce(r.severity, '重度');
+
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-12 01:29:23"
+message = """
+
+[背景信息]
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+[命令]
+[CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+[详细补充需求]
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出\"// 空\"(不含引号)
+
+// 定义节点属性示例
+// 疾病节点
+CREATE (:Disease {
+    name: String,           // 疾病名称
+    code: String,           // 疾病编码
+    description: String,    // 疾病描述
+    category: String,       // 疾病分类
+    severity: String        // 严重程度
+});
+
+// 症状节点
+CREATE (:Symptom {
+    name: String,           // 症状名称
+    description: String,    // 症状描述
+    severity: String,       // 严重程度
+    frequency: String       // 发生频率
+});
+
+// 检查项目节点
+CREATE (:Examination {
+    name: String,           // 检查名称
+    description: String,    // 检查描述
+    method: String,         // 检查方法
+    requirement: String     // 检查要求
+});
+
+// 治疗方案节点
+CREATE (:Treatment {
+    name: String,           // 治疗名称
+    type: String,           // 类型(药物/非药物)
+    description: String,    // 治疗描述
+    dosage: String,         // 剂量(药物)
+    duration: String,       // 持续时间
+    contraindication: String // 禁忌症
+});
+
+// 量表工具节点
+CREATE (:Scale {
+    name: String,           // 量表名称
+    description: String,    // 量表描述
+    score_range: String,    // 分数范围
+    interpretation: String  // 结果解释
+});
+
+// 风险因素节点
+CREATE (:RiskFactor {
+    name: String,           // 因素名称
+    description: String,    // 描述
+    impact_level: String    // 影响程度
+});
+
+// 并发症节点
+CREATE (:Complication {
+    name: String,           // 并发症名称
+    description: String,    // 描述
+    severity: String        // 严重程度
+});
+
+// 定义关系类型
+// 症状-疾病关系
+CREATE (:Symptom)-[:INDICATES {
+    confidence: Float,      // 置信度
+    frequency: String,      // 发生频率
+    severity: String        // 严重程度
+}]->(:Disease);
+
+// 疾病-检查关系
+CREATE (:Disease)-[:REQUIRES_EXAM {
+    priority: String,       // 优先级
+    mandatory: Boolean      // 是否必需
+}]->(:Examination);
+
+// 疾病-治疗关系
+CREATE (:Disease)-[:TREATED_BY {
+    effectiveness: Float,   // 有效性
+    priority: String,       // 优先级
+    stage: String          // 治疗阶段
+}]->(:Treatment);
+
+// 疾病-并发症关系
+CREATE (:Disease)-[:MAY_CAUSE {
+    probability: Float,     // 发生概率
+    timeframe: String      // 时间框架
+}]->(:Complication);
+
+// 疾病-风险因素关系
+CREATE (:Disease)-[:INFLUENCED_BY {
+    impact_level: String,   // 影响程度
+    evidence_level: String  // 证据等级
+}]->(:RiskFactor);
+
+// 疾病-量表关系
+CREATE (:Disease)-[:ASSESSED_BY {
+    applicability: Float,   // 适用性
+    recommendation_level: String  // 推荐级别
+}]->(:Scale);
+
+[关系抽取说明]
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
+请尽你可能抽取全部关系
+[示例输出]
+MERGE (d1:Disease {name: \"阻塞性睡眠呼吸暂停低通气综合征\", short_name: \"OSAHS\"})
+MERGE (c1:Disease {name: \"高血压\"})
+MERGE (c2:Disease {name: \"糖尿病\"})
+MERGE (c1)-[:COMPLICATION_OF]->(d1)
+MERGE (c2)-[:COMPLICATION_OF]->(d1)
+
+[隶属文件名]
+《成年人阻塞性睡眠呼吸暂停低通气综合征筛查：美国预防临床服务指南工作组推荐声明》解读.md
+[隶属文件分块名]
+《成年人阻塞性睡眠呼吸暂停低通气综合征筛查：美国预防临床服务指南工作组推荐声明》解读/008-31-适用人群.md
+[文本块]
+适用人群：无症状成年人（≥18岁）；未被识别有OSAHS症状的成年人（例如：打鼾、目击到呼吸暂停、日间嗜睡过多、认知功能障碍、情绪变化、睡觉时呼吸困难或窒息）。  
+不适用人群：已经出现OSAHS症状或高度疑似OSAHS的人；可能诱发OSAHS发作的急性疾病患者（例如卒中）；儿童；青少年；孕妇。
+
+"""
+response = """
+// 节点更新
+MERGE (n:Disease {name: '阻塞性睡眠呼吸暂停低通气综合征'})
+SET 
+    n.code = coalesce(n.code, 'OSAHS'),
+    n.description = coalesce(n.description, '一种影响睡眠的疾病，导致呼吸暂停和低通气'),
+    n.category = coalesce(n.category, '睡眠障碍'),
+    n.severity = coalesce(n.severity, '严重');
+
+MERGE (n:Symptom {name: '打鼾'})
+SET 
+    n.description = coalesce(n.description, '在睡眠中发出响亮的呼吸声'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '频繁');
+
+MERGE (n:Symptom {name: '呼吸暂停'})
+SET 
+    n.description = coalesce(n.description, '在睡眠中出现短暂的呼吸停止'),
+    n.severity = coalesce(n.severity, '高'),
+    n.frequency = coalesce(n.frequency, '不定期');
+
+MERGE (n:Symptom {name: '日间嗜睡'})
+SET 
+    n.description = coalesce(n.description, '白天过度困倦，影响正常活动'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '频繁');
+
+MERGE (n:Symptom {name: '认知功能障碍'})
+SET 
+    n.description = coalesce(n.description, '注意力和记忆力差的症状'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '中等');
+
+MERGE (n:Symptom {name: '情绪变化'})
+SET 
+    n.description = coalesce(n.description, '睡眠不足引起的情绪波动'),
+    n.severity = coalesce(n.severity, '轻'),
+    n.frequency = coalesce(n.frequency, '中等');
+
+MERGE (n:Symptom {name: '呼吸困难'})
+SET 
+    n.description = coalesce(n.description, '在睡眠中感到呼吸受阻'),
+    n.severity = coalesce(n.severity, '高'),
+    n.frequency = coalesce(n.frequency, '偶尔');
+
+MERGE (n:Symptom {name: '窒息'})
+SET 
+    n.description = coalesce(n.description, '睡眠中感到窒息'),
+    n.severity = coalesce(n.severity, '高'),
+    n.frequency = coalesce(n.frequency, '偶尔');
+
+// 关系更新
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = '打鼾'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.9),
+    r.frequency = coalesce(r.frequency, '高'),
+    r.severity = coalesce(r.severity, '严重');
+
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = '呼吸暂停'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.95),
+    r.frequency = coalesce(r.frequency, '中等'),
+    r.severity = coalesce(r.severity, '严重');
+
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = '日间嗜睡'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.8),
+    r.frequency = coalesce(r.frequency, '高'),
+    r.severity = coalesce(r.severity, '中等');
+
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = '认知功能障碍'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.75),
+    r.frequency = coalesce(r.frequency, '中等'),
+    r.severity = coalesce(r.severity, '中等');
+
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = '情绪变化'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.6),
+    r.frequency = coalesce(r.frequency, '低'),
+    r.severity = coalesce(r.severity, '轻');
+
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = '呼吸困难'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.85),
+    r.frequency = coalesce(r.frequency, '偶尔'),
+    r.severity = coalesce(r.severity, '严重');
+
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = '窒息'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.9),
+    r.frequency = coalesce(r.frequency, '偶尔'),
+    r.severity = coalesce(r.severity, '严重');
+
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-12 01:29:24"
+message = """
+
+[背景信息]
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+[命令]
+[CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+[详细补充需求]
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出\"// 空\"(不含引号)
+
+// 定义节点属性示例
+// 疾病节点
+CREATE (:Disease {
+    name: String,           // 疾病名称
+    code: String,           // 疾病编码
+    description: String,    // 疾病描述
+    category: String,       // 疾病分类
+    severity: String        // 严重程度
+});
+
+// 症状节点
+CREATE (:Symptom {
+    name: String,           // 症状名称
+    description: String,    // 症状描述
+    severity: String,       // 严重程度
+    frequency: String       // 发生频率
+});
+
+// 检查项目节点
+CREATE (:Examination {
+    name: String,           // 检查名称
+    description: String,    // 检查描述
+    method: String,         // 检查方法
+    requirement: String     // 检查要求
+});
+
+// 治疗方案节点
+CREATE (:Treatment {
+    name: String,           // 治疗名称
+    type: String,           // 类型(药物/非药物)
+    description: String,    // 治疗描述
+    dosage: String,         // 剂量(药物)
+    duration: String,       // 持续时间
+    contraindication: String // 禁忌症
+});
+
+// 量表工具节点
+CREATE (:Scale {
+    name: String,           // 量表名称
+    description: String,    // 量表描述
+    score_range: String,    // 分数范围
+    interpretation: String  // 结果解释
+});
+
+// 风险因素节点
+CREATE (:RiskFactor {
+    name: String,           // 因素名称
+    description: String,    // 描述
+    impact_level: String    // 影响程度
+});
+
+// 并发症节点
+CREATE (:Complication {
+    name: String,           // 并发症名称
+    description: String,    // 描述
+    severity: String        // 严重程度
+});
+
+// 定义关系类型
+// 症状-疾病关系
+CREATE (:Symptom)-[:INDICATES {
+    confidence: Float,      // 置信度
+    frequency: String,      // 发生频率
+    severity: String        // 严重程度
+}]->(:Disease);
+
+// 疾病-检查关系
+CREATE (:Disease)-[:REQUIRES_EXAM {
+    priority: String,       // 优先级
+    mandatory: Boolean      // 是否必需
+}]->(:Examination);
+
+// 疾病-治疗关系
+CREATE (:Disease)-[:TREATED_BY {
+    effectiveness: Float,   // 有效性
+    priority: String,       // 优先级
+    stage: String          // 治疗阶段
+}]->(:Treatment);
+
+// 疾病-并发症关系
+CREATE (:Disease)-[:MAY_CAUSE {
+    probability: Float,     // 发生概率
+    timeframe: String      // 时间框架
+}]->(:Complication);
+
+// 疾病-风险因素关系
+CREATE (:Disease)-[:INFLUENCED_BY {
+    impact_level: String,   // 影响程度
+    evidence_level: String  // 证据等级
+}]->(:RiskFactor);
+
+// 疾病-量表关系
+CREATE (:Disease)-[:ASSESSED_BY {
+    applicability: Float,   // 适用性
+    recommendation_level: String  // 推荐级别
+}]->(:Scale);
+
+[关系抽取说明]
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
+请尽你可能抽取全部关系
+[示例输出]
+MERGE (d1:Disease {name: \"阻塞性睡眠呼吸暂停低通气综合征\", short_name: \"OSAHS\"})
+MERGE (c1:Disease {name: \"高血压\"})
+MERGE (c2:Disease {name: \"糖尿病\"})
+MERGE (c1)-[:COMPLICATION_OF]->(d1)
+MERGE (c2)-[:COMPLICATION_OF]->(d1)
+
+[隶属文件名]
+《成年人阻塞性睡眠呼吸暂停低通气综合征筛查：美国预防临床服务指南工作组推荐声明》解读.md
+[隶属文件分块名]
+《成年人阻塞性睡眠呼吸暂停低通气综合征筛查：美国预防临床服务指南工作组推荐声明》解读/010-33-高危人群的识别.md
+[文本块]
+成年人OSAHS的高危人群包括以下因素：
+1. 年龄因素：40岁及以上的成年人更容易受到OSAHS的影响，原因是上呼吸道肌肉和组织随年龄增长而松弛，导致呼吸道阻塞更为常见。
+2. 肥胖和超重：BMI≥30 kg/m²的成年人面临更高的OSAHS风险，过多的脂肪沉积在颈部和喉部可能导致上呼吸道狭窄，增加呼吸道阻塞的可能性。
+3. 高血压：高血压与OSAHS存在双向关联，高血压患者更容易患上OSAHS，OSAHS也会加重高血压。
+4. 2型糖尿病：糖尿病患者更容易患上OSAHS，OSAHS也可以加重糖尿病症状，二者的相互影响可能与胰岛素敏感性和胰岛素抵抗有关。
+5. 心血管疾病：OSAHS与心血管疾病（如冠心病和卒中）之间存在紧密联系，呼吸暂停导致低氧血症和交感神经活性增加，可能增加冠状动脉疾病的风险。
+6. 性别差异：虽然OSAHS在男性中更为常见，但绝经后妇女也是高危人群，更年期后雌激素水平下降可能导致上呼吸道肌肉松弛，增加发生风险。
+7. 家族史：家族中有OSAHS患者可能使个体具有遗传上的易感性。
+
+这些高危因素共同影响OSAHS的发病，对于医生和卫生保健专业人员来说，理解这些因素对于识别OSAHS患者及推荐适当的筛查和治疗至关重要，同时也有助于提高公众意识，促使人们关注自身风险并主动寻求医疗建议。高风险人群的筛查和干预对于减少OSAHS的潜在健康影响至关重要。
+
+"""
+response = """
+// 节点更新
+MERGE (n:Disease {name: '阻塞性睡眠呼吸暂停低通气综合征'})
+SET 
+    n.code = coalesce(n.code, 'OSAHS'),
+    n.description = coalesce(n.description, '一种睡眠相关呼吸障碍，特征为睡眠时反复发生上呼吸道的部分或完全阻塞'),
+    n.category = coalesce(n.category, '睡眠病'),
+    n.severity = coalesce(n.severity, '中等');
+
+MERGE (n:RiskFactor {name: '年龄因素'})
+SET 
+    n.description = coalesce(n.description, '40岁及以上的成年人更容易受到OSAHS的影响，原因是上呼吸道肌肉和组织随年龄增长而松弛，导致呼吸道阻塞更为常见'),
+    n.impact_level = coalesce(n.impact_level, '高');
+
+MERGE (n:RiskFactor {name: '肥胖和超重'})
+SET 
+    n.description = coalesce(n.description, 'BMI≥30 kg/m²的成年人面临更高的OSAHS风险，过多的脂肪沉积在颈部和喉部可能导致上呼吸道狭窄，增加呼吸道阻塞的可能性'),
+    n.impact_level = coalesce(n.impact_level, '高');
+
+MERGE (n:RiskFactor {name: '高血压'})
+SET 
+    n.description = coalesce(n.description, '高血压与OSAHS存在双向关联，高血压患者更容易患上OSAHS，OSAHS也会加重高血压'),
+    n.impact_level = coalesce(n.impact_level, '高');
+
+MERGE (n:RiskFactor {name: '2型糖尿病'})
+SET 
+    n.description = coalesce(n.description, '糖尿病患者更容易患上OSAHS，OSAHS也可以加重糖尿病症状，二者的相互影响可能与胰岛素敏感性和胰岛素抵抗有关'),
+    n.impact_level = coalesce(n.impact_level, '高');
+
+MERGE (n:RiskFactor {name: '心血管疾病'})
+SET 
+    n.description = coalesce(n.description, 'OSAHS与心血管疾病之间存在紧密联系，呼吸暂停导致低氧血症和交感神经活性增加，可能增加冠状动脉疾病的风险'),
+    n.impact_level = coalesce(n.impact_level, '高');
+
+MERGE (n:RiskFactor {name: '性别差异'})
+SET 
+    n.description = coalesce(n.description, '虽然OSAHS在男性中更为常见，但绝经后妇女也是高危人群，更年期后雌激素水平下降可能导致上呼吸道肌肉松弛，增加发生风险'),
+    n.impact_level = coalesce(n.impact_level, '中');
+
+MERGE (n:RiskFactor {name: '家族史'})
+SET 
+    n.description = coalesce(n.description, '家族中有OSAHS患者可能使个体具有遗传上的易感性'),
+    n.impact_level = coalesce(n.impact_level, '中');
+
+// 关系更新
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = '年龄因素'
+MERGE (from)-[r:INFLUENCED_BY]->(to)
+SET 
+    r.impact_level = coalesce(r.impact_level, '高'),
+    r.evidence_level = coalesce(r.evidence_level, '优质');
+
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = '肥胖和超重'
+MERGE (from)-[r:INFLUENCED_BY]->(to)
+SET 
+    r.impact_level = coalesce(r.impact_level, '高'),
+    r.evidence_level = coalesce(r.evidence_level, '优质');
+
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = '高血压'
+MERGE (from)-[r:INFLUENCED_BY]->(to)
+SET 
+    r.impact_level = coalesce(r.impact_level, '高'),
+    r.evidence_level = coalesce(r.evidence_level, '优质');
+
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = '2型糖尿病'
+MERGE (from)-[r:INFLUENCED_BY]->(to)
+SET 
+    r.impact_level = coalesce(r.impact_level, '高'),
+    r.evidence_level = coalesce(r.evidence_level, '优质');
+
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = '心血管疾病'
+MERGE (from)-[r:INFLUENCED_BY]->(to)
+SET 
+    r.impact_level = coalesce(r.impact_level, '高'),
+    r.evidence_level = coalesce(r.evidence_level, '优质');
+
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = '性别差异'
+MERGE (from)-[r:INFLUENCED_BY]->(to)
+SET 
+    r.impact_level = coalesce(r.impact_level, '中'),
+    r.evidence_level = coalesce(r.evidence_level, '中等');
+
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = '家族史'
+MERGE (from)-[r:INFLUENCED_BY]->(to)
+SET 
+    r.impact_level = coalesce(r.impact_level, '中'),
+    r.evidence_level = coalesce(r.evidence_level, '中等');
+
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-12 01:29:26"
+message = """
+
+[背景信息]
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+[命令]
+[CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+[详细补充需求]
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出\"// 空\"(不含引号)
+
+// 定义节点属性示例
+// 疾病节点
+CREATE (:Disease {
+    name: String,           // 疾病名称
+    code: String,           // 疾病编码
+    description: String,    // 疾病描述
+    category: String,       // 疾病分类
+    severity: String        // 严重程度
+});
+
+// 症状节点
+CREATE (:Symptom {
+    name: String,           // 症状名称
+    description: String,    // 症状描述
+    severity: String,       // 严重程度
+    frequency: String       // 发生频率
+});
+
+// 检查项目节点
+CREATE (:Examination {
+    name: String,           // 检查名称
+    description: String,    // 检查描述
+    method: String,         // 检查方法
+    requirement: String     // 检查要求
+});
+
+// 治疗方案节点
+CREATE (:Treatment {
+    name: String,           // 治疗名称
+    type: String,           // 类型(药物/非药物)
+    description: String,    // 治疗描述
+    dosage: String,         // 剂量(药物)
+    duration: String,       // 持续时间
+    contraindication: String // 禁忌症
+});
+
+// 量表工具节点
+CREATE (:Scale {
+    name: String,           // 量表名称
+    description: String,    // 量表描述
+    score_range: String,    // 分数范围
+    interpretation: String  // 结果解释
+});
+
+// 风险因素节点
+CREATE (:RiskFactor {
+    name: String,           // 因素名称
+    description: String,    // 描述
+    impact_level: String    // 影响程度
+});
+
+// 并发症节点
+CREATE (:Complication {
+    name: String,           // 并发症名称
+    description: String,    // 描述
+    severity: String        // 严重程度
+});
+
+// 定义关系类型
+// 症状-疾病关系
+CREATE (:Symptom)-[:INDICATES {
+    confidence: Float,      // 置信度
+    frequency: String,      // 发生频率
+    severity: String        // 严重程度
+}]->(:Disease);
+
+// 疾病-检查关系
+CREATE (:Disease)-[:REQUIRES_EXAM {
+    priority: String,       // 优先级
+    mandatory: Boolean      // 是否必需
+}]->(:Examination);
+
+// 疾病-治疗关系
+CREATE (:Disease)-[:TREATED_BY {
+    effectiveness: Float,   // 有效性
+    priority: String,       // 优先级
+    stage: String          // 治疗阶段
+}]->(:Treatment);
+
+// 疾病-并发症关系
+CREATE (:Disease)-[:MAY_CAUSE {
+    probability: Float,     // 发生概率
+    timeframe: String      // 时间框架
+}]->(:Complication);
+
+// 疾病-风险因素关系
+CREATE (:Disease)-[:INFLUENCED_BY {
+    impact_level: String,   // 影响程度
+    evidence_level: String  // 证据等级
+}]->(:RiskFactor);
+
+// 疾病-量表关系
+CREATE (:Disease)-[:ASSESSED_BY {
+    applicability: Float,   // 适用性
+    recommendation_level: String  // 推荐级别
+}]->(:Scale);
+
+[关系抽取说明]
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
+请尽你可能抽取全部关系
+[示例输出]
+MERGE (d1:Disease {name: \"阻塞性睡眠呼吸暂停低通气综合征\", short_name: \"OSAHS\"})
+MERGE (c1:Disease {name: \"高血压\"})
+MERGE (c2:Disease {name: \"糖尿病\"})
+MERGE (c1)-[:COMPLICATION_OF]->(d1)
+MERGE (c2)-[:COMPLICATION_OF]->(d1)
+
+[隶属文件名]
+《成年人阻塞性睡眠呼吸暂停低通气综合征筛查：美国预防临床服务指南工作组推荐声明》解读.md
+[隶属文件分块名]
+《成年人阻塞性睡眠呼吸暂停低通气综合征筛查：美国预防临床服务指南工作组推荐声明》解读/013-35-潜在的干预措施.md
+[文本块]
+# 3.5 潜在的干预措施（续）
+
+- OSAHS 筛查方法：国内外无显著区别，目前尚无明确筛查方案。
+- 高危人群：我国OSAHS 患病群体庞大，筛查高危人群（无症状 OSAHS）有积极作用。
+- 筛查建议：
+  - 具有 OSAHS 典型症状、体征、相关合并疾病以及围术期人群。
+  - 不具备典型症状或未意识到 OSAHS 症状的高危人群。
+  - 职业人群（职业司机、飞行员、消防员）及危险工作人群（高空作业、伐木等）。
+
+- 研究：探索问卷（如 STOP-Bang）在国内高危人群中的筛查有效性，但局限于肥胖、高血压、糖尿病等特定人群。
+- 一般人群研究：鲜有报道，2018 年《成人阻塞性睡眠呼吸暂停基层诊疗指南(实践版·2018)》不推荐无症状普通人群筛查。
+- 学者观点：早发现、早诊断、早治疗关键；公众对健康关注度提升，推荐常规健康体检中包含睡眠问卷评估及整夜监测。
+- 公务员研究：即使免费筛查及治疗接受度仍低，需要做好科普工作，提高公众认知。
+- 临床工作：结合患者实际情况判断筛查必要性，开展大规模人群研究探索筛查风险与获益，提供指南证据支持。
+
+"""
+response = """
+// 节点更新
+MERGE (n:Disease {name: '阻塞性睡眠呼吸暂停低通气综合征'})
+SET 
+    n.short_name = coalesce(n.short_name, 'OSAHS');
+
+MERGE (n:Symptom {name: 'OSAHS 典型症状'})
+SET 
+    n.description = coalesce(n.description, '具有 OSAHS 典型症状、体征、相关合并疾病');
+
+MERGE (n:Symptom {name: '无症状 OSAHS'})
+SET 
+    n.description = coalesce(n.description, '不具备典型症状或未意识到 OSAHS 症状的高危人群');
+
+MERGE (n:Symptom {name: '高危职业人群'})
+SET 
+    n.description = coalesce(n.description, '职业司机、飞行员、消防员及危险工作人群');
+
+MERGE (n:Complication {name: '肥胖'})
+SET 
+    n.description = coalesce(n.description, '与 OSAHS 患病相关的风险因素');
+
+MERGE (n:Complication {name: '高血压'})
+SET 
+    n.description = coalesce(n.description, '与 OSAHS 患病相关的风险因素');
+
+MERGE (n:Complication {name: '糖尿病'})
+SET 
+    n.description = coalesce(n.description, '与 OSAHS 患病相关的风险因素');
+
+// 关系更新
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = 'OSAHS 典型症状'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 1.0),
+    r.frequency = coalesce(r.frequency, '高'),
+    r.severity = coalesce(r.severity, '严重');
+
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = '无症状 OSAHS'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.8),
+    r.frequency = coalesce(r.frequency, '中'),
+    r.severity = coalesce(r.severity, '中等');
+
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = '高危职业人群'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.75),
+    r.frequency = coalesce(r.frequency, '高'),
+    r.severity = coalesce(r.severity, '严重');
+
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = '肥胖'
+MERGE (from)-[r:INFLUENCED_BY]->(to)
+SET 
+    r.impact_level = coalesce(r.impact_level, '高'),
+    r.evidence_level = coalesce(r.evidence_level, '良好');
+
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = '高血压'
+MERGE (from)-[r:INFLUENCED_BY]->(to)
+SET 
+    r.impact_level = coalesce(r.impact_level, '高'),
+    r.evidence_level = coalesce(r.evidence_level, '良好');
+
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = '糖尿病'
+MERGE (from)-[r:INFLUENCED_BY]->(to)
+SET 
+    r.impact_level = coalesce(r.impact_level, '中'),
+    r.evidence_level = coalesce(r.evidence_level, '良好');
+
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-12 01:29:26"
+message = """
+
+[背景信息]
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+[命令]
+[CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+[详细补充需求]
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出\"// 空\"(不含引号)
+
+// 定义节点属性示例
+// 疾病节点
+CREATE (:Disease {
+    name: String,           // 疾病名称
+    code: String,           // 疾病编码
+    description: String,    // 疾病描述
+    category: String,       // 疾病分类
+    severity: String        // 严重程度
+});
+
+// 症状节点
+CREATE (:Symptom {
+    name: String,           // 症状名称
+    description: String,    // 症状描述
+    severity: String,       // 严重程度
+    frequency: String       // 发生频率
+});
+
+// 检查项目节点
+CREATE (:Examination {
+    name: String,           // 检查名称
+    description: String,    // 检查描述
+    method: String,         // 检查方法
+    requirement: String     // 检查要求
+});
+
+// 治疗方案节点
+CREATE (:Treatment {
+    name: String,           // 治疗名称
+    type: String,           // 类型(药物/非药物)
+    description: String,    // 治疗描述
+    dosage: String,         // 剂量(药物)
+    duration: String,       // 持续时间
+    contraindication: String // 禁忌症
+});
+
+// 量表工具节点
+CREATE (:Scale {
+    name: String,           // 量表名称
+    description: String,    // 量表描述
+    score_range: String,    // 分数范围
+    interpretation: String  // 结果解释
+});
+
+// 风险因素节点
+CREATE (:RiskFactor {
+    name: String,           // 因素名称
+    description: String,    // 描述
+    impact_level: String    // 影响程度
+});
+
+// 并发症节点
+CREATE (:Complication {
+    name: String,           // 并发症名称
+    description: String,    // 描述
+    severity: String        // 严重程度
+});
+
+// 定义关系类型
+// 症状-疾病关系
+CREATE (:Symptom)-[:INDICATES {
+    confidence: Float,      // 置信度
+    frequency: String,      // 发生频率
+    severity: String        // 严重程度
+}]->(:Disease);
+
+// 疾病-检查关系
+CREATE (:Disease)-[:REQUIRES_EXAM {
+    priority: String,       // 优先级
+    mandatory: Boolean      // 是否必需
+}]->(:Examination);
+
+// 疾病-治疗关系
+CREATE (:Disease)-[:TREATED_BY {
+    effectiveness: Float,   // 有效性
+    priority: String,       // 优先级
+    stage: String          // 治疗阶段
+}]->(:Treatment);
+
+// 疾病-并发症关系
+CREATE (:Disease)-[:MAY_CAUSE {
+    probability: Float,     // 发生概率
+    timeframe: String      // 时间框架
+}]->(:Complication);
+
+// 疾病-风险因素关系
+CREATE (:Disease)-[:INFLUENCED_BY {
+    impact_level: String,   // 影响程度
+    evidence_level: String  // 证据等级
+}]->(:RiskFactor);
+
+// 疾病-量表关系
+CREATE (:Disease)-[:ASSESSED_BY {
+    applicability: Float,   // 适用性
+    recommendation_level: String  // 推荐级别
+}]->(:Scale);
+
+[关系抽取说明]
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
+请尽你可能抽取全部关系
+[示例输出]
+MERGE (d1:Disease {name: \"阻塞性睡眠呼吸暂停低通气综合征\", short_name: \"OSAHS\"})
+MERGE (c1:Disease {name: \"高血压\"})
+MERGE (c2:Disease {name: \"糖尿病\"})
+MERGE (c1)-[:COMPLICATION_OF]->(d1)
+MERGE (c2)-[:COMPLICATION_OF]->(d1)
+
+[隶属文件名]
+《成年人阻塞性睡眠呼吸暂停低通气综合征筛查：美国预防临床服务指南工作组推荐声明》解读.md
+[隶属文件分块名]
+《成年人阻塞性睡眠呼吸暂停低通气综合征筛查：美国预防临床服务指南工作组推荐声明》解读/014-4-总结.md
+[文本块]
+OSAHS 是一种常见但易被忽视的睡眠障碍。USPSTF 推荐认为目前没有足够的证据评估成年人OSAHS筛查的受益与风险，呼吁更多的关于OSAHS筛查获益与风险的研究，以及开发能够准确检测无症状人群中OSAHS风险增加的筛查工具。通过结合国内与USPSTF推荐，医生和卫生保健提供者可以综合使用不同的筛查工具和方法，根据患者的具体情况和需求，以更好地识别和治疗OSAHS。这种综合筛查策略有望提高我国成年人OSAHS的早期诊断率，确保患者能够及时获得合适的治疗和护理，从而改善其生活质量，减轻相关全身性健康问题的风险。
+
+表1：USPSTF评估理论依据。
+
+表2：关于USPSTF成年人阻塞性睡眠呼吸暂停筛查的总结。
+
+作者贡献：曾凌枫、张慧、雷思进行文献/资料收集和整理；曾凌枫、卓慧、叶云、许琰进行论文撰写；罗荧荃进行论文的修订，负责文章的质量控制及审校。
+
+本文无利益冲突。
+
+"""
+response = """
+// 节点更新
+MERGE (n:Disease {name: '阻塞性睡眠呼吸暂停低通气综合征'})
+SET 
+    n.code = coalesce(n.code, 'OSAHS'),
+    n.description = coalesce(n.description, '一种常见但易被忽视的睡眠障碍'),
+    n.category = coalesce(n.category, '睡眠障碍'),
+    n.severity = coalesce(n.severity, '中等');
+
+MERGE (n:Examination {name: 'OSAHS筛查'})
+SET 
+    n.description = coalesce(n.description, '评估成年人OSAHS筛查的受益与风险'),
+    n.method = coalesce(n.method, '问卷调查'),
+    n.requirement = coalesce(n.requirement, '无');
+
+MERGE (n:Symptom {name: '嗜睡'})
+SET 
+    n.description = coalesce(n.description, '患者白天感到异常嗜睡'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '频繁');
+
+MERGE (n:RiskFactor {name: '生活方式因素'})
+SET 
+    n.description = coalesce(n.description, '包括肥胖、缺乏运动等'),
+    n.impact_level = coalesce(n.impact_level, '高');
+
+MERGE (n:Complication {name: '高血压'})
+SET 
+    n.description = coalesce(n.description, '由于OSAHS可能导致的并发症'),
+    n.severity = coalesce(n.severity, '严重');
+
+MERGE (n:Complication {name: '糖尿病'})
+SET 
+    n.description = coalesce(n.description, 'OSAHS可能增加糖尿病风险'),
+    n.severity = coalesce(n.severity, '严重');
+
+// 关系更新
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = 'OSAHS筛查'
+MERGE (from)-[r:REQUIRES_EXAM]->(to)
+SET 
+    r.priority = coalesce(r.priority, '高'),
+    r.mandatory = coalesce(r.mandatory, 'true');
+
+MATCH (from) WHERE from.name = '嗜睡'
+MATCH (to) WHERE to.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.75),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '中等');
+
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = '生活方式因素'
+MERGE (from)-[r:INFLUENCED_BY]->(to)
+SET 
+    r.impact_level = coalesce(r.impact_level, '高'),
+    r.evidence_level = coalesce(r.evidence_level, '强');
+
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = '高血压'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.6),
+    r.timeframe = coalesce(r.timeframe, '长期');
+
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = '糖尿病'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.5),
+    r.timeframe = coalesce(r.timeframe, '长期');
+
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-12 01:29:29"
+message = """
+
+[背景信息]
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+[命令]
+[CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+[详细补充需求]
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出\"// 空\"(不含引号)
+
+// 定义节点属性示例
+// 疾病节点
+CREATE (:Disease {
+    name: String,           // 疾病名称
+    code: String,           // 疾病编码
+    description: String,    // 疾病描述
+    category: String,       // 疾病分类
+    severity: String        // 严重程度
+});
+
+// 症状节点
+CREATE (:Symptom {
+    name: String,           // 症状名称
+    description: String,    // 症状描述
+    severity: String,       // 严重程度
+    frequency: String       // 发生频率
+});
+
+// 检查项目节点
+CREATE (:Examination {
+    name: String,           // 检查名称
+    description: String,    // 检查描述
+    method: String,         // 检查方法
+    requirement: String     // 检查要求
+});
+
+// 治疗方案节点
+CREATE (:Treatment {
+    name: String,           // 治疗名称
+    type: String,           // 类型(药物/非药物)
+    description: String,    // 治疗描述
+    dosage: String,         // 剂量(药物)
+    duration: String,       // 持续时间
+    contraindication: String // 禁忌症
+});
+
+// 量表工具节点
+CREATE (:Scale {
+    name: String,           // 量表名称
+    description: String,    // 量表描述
+    score_range: String,    // 分数范围
+    interpretation: String  // 结果解释
+});
+
+// 风险因素节点
+CREATE (:RiskFactor {
+    name: String,           // 因素名称
+    description: String,    // 描述
+    impact_level: String    // 影响程度
+});
+
+// 并发症节点
+CREATE (:Complication {
+    name: String,           // 并发症名称
+    description: String,    // 描述
+    severity: String        // 严重程度
+});
+
+// 定义关系类型
+// 症状-疾病关系
+CREATE (:Symptom)-[:INDICATES {
+    confidence: Float,      // 置信度
+    frequency: String,      // 发生频率
+    severity: String        // 严重程度
+}]->(:Disease);
+
+// 疾病-检查关系
+CREATE (:Disease)-[:REQUIRES_EXAM {
+    priority: String,       // 优先级
+    mandatory: Boolean      // 是否必需
+}]->(:Examination);
+
+// 疾病-治疗关系
+CREATE (:Disease)-[:TREATED_BY {
+    effectiveness: Float,   // 有效性
+    priority: String,       // 优先级
+    stage: String          // 治疗阶段
+}]->(:Treatment);
+
+// 疾病-并发症关系
+CREATE (:Disease)-[:MAY_CAUSE {
+    probability: Float,     // 发生概率
+    timeframe: String      // 时间框架
+}]->(:Complication);
+
+// 疾病-风险因素关系
+CREATE (:Disease)-[:INFLUENCED_BY {
+    impact_level: String,   // 影响程度
+    evidence_level: String  // 证据等级
+}]->(:RiskFactor);
+
+// 疾病-量表关系
+CREATE (:Disease)-[:ASSESSED_BY {
+    applicability: Float,   // 适用性
+    recommendation_level: String  // 推荐级别
+}]->(:Scale);
+
+[关系抽取说明]
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
+请尽你可能抽取全部关系
+[示例输出]
+MERGE (d1:Disease {name: \"阻塞性睡眠呼吸暂停低通气综合征\", short_name: \"OSAHS\"})
+MERGE (c1:Disease {name: \"高血压\"})
+MERGE (c2:Disease {name: \"糖尿病\"})
+MERGE (c1)-[:COMPLICATION_OF]->(d1)
+MERGE (c2)-[:COMPLICATION_OF]->(d1)
+
+[隶属文件名]
+《成年人阻塞性睡眠呼吸暂停低通气综合征筛查：美国预防临床服务指南工作组推荐声明》解读.md
+[隶属文件分块名]
+《成年人阻塞性睡眠呼吸暂停低通气综合征筛查：美国预防临床服务指南工作组推荐声明》解读/011-34-筛查工具的选择.md
+[文本块]
+# 3.4 筛查工具的选择  
+
+USPSTF 推荐强调了在筛查成年人OSAHS 时选择合适筛查工具的重要性。这些工具在确定高危人群和识别潜在OSAHS 患者方面起着关键作用。关于USPSTF推荐的一些筛查工具有：几种筛查问卷和临床预测工具旨在识别OSAHS 高危人群。许多工具需要结合有关临床发现（例如，BMI 和颈围）以及与OSAHS 相关的症状。潜在的筛查问卷和临床预测工具包括：Epworth 嗜睡量表（ESS）、STOP 问卷（打鼾、疲劳、观察到的呼吸暂停、高血压）、STOP-Bang 问卷（STOP 问卷加BMI、年龄、颈围和性别）、柏林问卷等筛查方法。一项荟萃分析结果显示，相比较于其他的问卷，STOP-Bang 问卷对于OSAHS 筛查具有最高的灵敏度。此外国内外研究表明，动态心电图等可穿戴设备可用于OSAHS 初筛。然而，这些工具在从基层医疗卫生服务中招募的无症状人群中尚未得到充分验证。高度怀疑OSAHS 的人常需要通过多导睡眠图来明确诊断，该图结合了多种测量数据，包括脑电图、眼动图、下颌电肌电图、气流监测、血氧饱和度、呼吸频率、心电图或心率、体位监测和腿动监测等。多导睡眠图期间测得的AHI 代表事件发生的频率，常用于描述疾病或病情的严重程度。
+
+"""
+response = """
+// 节点更新
+MERGE (n:Disease {name: '阻塞性睡眠呼吸暂停低通气综合征'})
+SET 
+    n.short_name = coalesce(n.short_name, 'OSAHS');
+
+MERGE (n:Scale {name: 'Epworth 嗜睡量表'})
+SET 
+    n.description = coalesce(n.description, '用于评估白天嗜睡程度'),
+    n.score_range = coalesce(n.score_range, '0-24'),
+    n.interpretation = coalesce(n.interpretation, '分数越高，嗜睡程度越严重');
+
+MERGE (n:Scale {name: 'STOP 问卷'})
+SET 
+    n.description = coalesce(n.description, '评估打鼾、疲劳、观察到的呼吸暂停、高血压对OSAHS的影响'),
+    n.score_range = coalesce(n.score_range, '0-8'),
+    n.interpretation = coalesce(n.interpretation, '分数越高，风险越大');
+
+MERGE (n:Scale {name: 'STOP-Bang 问卷'})
+SET 
+    n.description = coalesce(n.description, '结合BMI、年龄、颈围和性别筛查OSAHS'),
+    n.score_range = coalesce(n.score_range, '0-8'),
+    n.interpretation = coalesce(n.interpretation, '分数越高，风险越大');
+
+MERGE (n:Scale {name: '柏林问卷'})
+SET 
+    n.description = coalesce(n.description, '通过打鼾、疲劳和睡眠历史识别OSAHS高危人群'),
+    n.score_range = coalesce(n.score_range, '0-3'),
+    n.interpretation = coalesce(n.interpretation, '分数越高，风险越大');
+
+// 关系更新
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = 'Epworth 嗜睡量表'
+MERGE (from)-[r:ASSESSED_BY]->(to)
+SET 
+    r.applicability = coalesce(r.applicability, 0.9),
+    r.recommendation_level = coalesce(r.recommendation_level, '高推荐');
+
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = 'STOP 问卷'
+MERGE (from)-[r:ASSESSED_BY]->(to)
+SET 
+    r.applicability = coalesce(r.applicability, 0.85),
+    r.recommendation_level = coalesce(r.recommendation_level, '高推荐');
+
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = 'STOP-Bang 问卷'
+MERGE (from)-[r:ASSESSED_BY]->(to)
+SET 
+    r.applicability = coalesce(r.applicability, 0.95),
+    r.recommendation_level = coalesce(r.recommendation_level, '高推荐');
+
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = '柏林问卷'
+MERGE (from)-[r:ASSESSED_BY]->(to)
+SET 
+    r.applicability = coalesce(r.applicability, 0.8),
+    r.recommendation_level = coalesce(r.recommendation_level, '中推荐');
+
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-12 01:29:29"
+message = """
+
+[背景信息]
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+[命令]
+[CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+[详细补充需求]
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出\"// 空\"(不含引号)
+
+// 定义节点属性示例
+// 疾病节点
+CREATE (:Disease {
+    name: String,           // 疾病名称
+    code: String,           // 疾病编码
+    description: String,    // 疾病描述
+    category: String,       // 疾病分类
+    severity: String        // 严重程度
+});
+
+// 症状节点
+CREATE (:Symptom {
+    name: String,           // 症状名称
+    description: String,    // 症状描述
+    severity: String,       // 严重程度
+    frequency: String       // 发生频率
+});
+
+// 检查项目节点
+CREATE (:Examination {
+    name: String,           // 检查名称
+    description: String,    // 检查描述
+    method: String,         // 检查方法
+    requirement: String     // 检查要求
+});
+
+// 治疗方案节点
+CREATE (:Treatment {
+    name: String,           // 治疗名称
+    type: String,           // 类型(药物/非药物)
+    description: String,    // 治疗描述
+    dosage: String,         // 剂量(药物)
+    duration: String,       // 持续时间
+    contraindication: String // 禁忌症
+});
+
+// 量表工具节点
+CREATE (:Scale {
+    name: String,           // 量表名称
+    description: String,    // 量表描述
+    score_range: String,    // 分数范围
+    interpretation: String  // 结果解释
+});
+
+// 风险因素节点
+CREATE (:RiskFactor {
+    name: String,           // 因素名称
+    description: String,    // 描述
+    impact_level: String    // 影响程度
+});
+
+// 并发症节点
+CREATE (:Complication {
+    name: String,           // 并发症名称
+    description: String,    // 描述
+    severity: String        // 严重程度
+});
+
+// 定义关系类型
+// 症状-疾病关系
+CREATE (:Symptom)-[:INDICATES {
+    confidence: Float,      // 置信度
+    frequency: String,      // 发生频率
+    severity: String        // 严重程度
+}]->(:Disease);
+
+// 疾病-检查关系
+CREATE (:Disease)-[:REQUIRES_EXAM {
+    priority: String,       // 优先级
+    mandatory: Boolean      // 是否必需
+}]->(:Examination);
+
+// 疾病-治疗关系
+CREATE (:Disease)-[:TREATED_BY {
+    effectiveness: Float,   // 有效性
+    priority: String,       // 优先级
+    stage: String          // 治疗阶段
+}]->(:Treatment);
+
+// 疾病-并发症关系
+CREATE (:Disease)-[:MAY_CAUSE {
+    probability: Float,     // 发生概率
+    timeframe: String      // 时间框架
+}]->(:Complication);
+
+// 疾病-风险因素关系
+CREATE (:Disease)-[:INFLUENCED_BY {
+    impact_level: String,   // 影响程度
+    evidence_level: String  // 证据等级
+}]->(:RiskFactor);
+
+// 疾病-量表关系
+CREATE (:Disease)-[:ASSESSED_BY {
+    applicability: Float,   // 适用性
+    recommendation_level: String  // 推荐级别
+}]->(:Scale);
+
+[关系抽取说明]
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
+请尽你可能抽取全部关系
+[示例输出]
+MERGE (d1:Disease {name: \"阻塞性睡眠呼吸暂停低通气综合征\", short_name: \"OSAHS\"})
+MERGE (c1:Disease {name: \"高血压\"})
+MERGE (c2:Disease {name: \"糖尿病\"})
+MERGE (c1)-[:COMPLICATION_OF]->(d1)
+MERGE (c2)-[:COMPLICATION_OF]->(d1)
+
+[隶属文件名]
+《成年人阻塞性睡眠呼吸暂停低通气综合征筛查：美国预防临床服务指南工作组推荐声明》解读.md
+[隶属文件分块名]
+《成年人阻塞性睡眠呼吸暂停低通气综合征筛查：美国预防临床服务指南工作组推荐声明》解读/004-Obstructive-Sleep-Apnea-in-Adults-ScreeningInterpr.md
+[文本块]
+# Obstructive Sleep Apnea in Adults Screening: Interpretation of the U.S. Preventive Services Task Force Recommendation Statement  
+
+**Authors**: ZENG Lingfeng, ZHANG Hu, LEI Si, ZHUO Hui, YE Yun, XU Yan, LUO Yingquan  
+**Affiliations**:  
+1. Department of General Practice, the Second Xiangya Hospital of Central South University, Changsha 410001, China  
+2. Department of Geriatrics, the Second Xiangya Hospital of Central South University, Changsha 410001, China  
+**Corresponding Author**: LUO Yingquan, Chief physician; Email: luoyingquan@csu.edu.cn  
+**Co-first authors**: ZENG Lingfeng, ZHANG Hui  
+
+**Abstract**:  
+Obstructive sleep apnea hypopnea syndrome (OSAHS) in adults is a common sleep-breathing disorder closely associated with hypertension, diabetes, cardiovascular diseases, and other health concerns. Despite its widespread impact on global health, the screening and diagnosis of OSAHS is still not widely available in clinical practice. In this context, the U.S. Preventive Services Task Force (USPSTF) has recently released updated recommendations for adult OSAHS screening to help more people identify and treat potential sleep-breathing disorders. This article interprets the latest recommendations and considers the practical situation in China, providing reference for OSAHS screening of adults in China.  
+
+**Key words**: Obstructive sleep apnea hypopnea syndrome; Sleep apnea, obstructive; United States Preventive Services Task Force; Screening; Adult  
+
+**内容**:  
+成年人阻塞性睡眠呼吸暂停低通气综合征 (OSAHS) 是一种常见却常被低估的睡眠障碍，表现为在睡眠期间呼吸暂停和上呼吸道阻塞，其主要症状包括持续打鼾、呼吸停顿和短暂的醒来，导致患者夜间多次出现低氧血症和日间嗜睡。然而，OSAHS 不仅是“打鼾问题”，其已被证实与高血压、冠心病、脑卒中、糖尿病、肥胖等全身性疾病密切相关。成年人 OSAHS 的筛查和治疗备受关注。美国预防临床服务指南工作组 (USPSTF) 是一家负责评估临床预防证据，并发布筛查推荐的非营利组织。2022 年，USPSTF 对 2017 版成年人 OSAHS 筛查推荐进行了更新，发布了最新的成年人 OSAHS 筛查推荐，指出对于 18 岁以上的无症状成年人，目前没有足够的证据去评估 OSAHS 筛查的获益与风险。结合我国实际情况，本文对该推荐提出的建议进行解读，以期为我国成年人 OSAHS 的筛查以及防治提供有力参考。  
+
+**基金项目**: 湖南省自然科学基金资助项目 (2023JJ60438)  
+
+**引用**:  
+曾凌枫, 张慧, 雷思, 等. 《成年人阻塞性睡眠呼吸暂停低通气综合征筛查:美国预防临床服务指南工作组推荐声明》解读[J]. 中国全科医学, 2024, 27(12):1412-1416. DOI:10.12114/j.issn.1007-9572.2023.0850.  
+ZENG L F, ZHANG H, LEI S, et al. Obstructive sleep apnea in adults screening: interpretation of the U.S. Preventive Services Task Force Recommendation Statement[J]. Chinese General Practice, 2024, 27(12):1412-1416.  
+**Copyright**: Chinese General Practice Publishing House Co., Ltd. This is an open access article under the CC BY-NC-ND 4.0 license.
+
+"""
+response = """
+// 节点更新
+MERGE (n:Disease {name: '阻塞性睡眠呼吸暂停低通气综合征'})
+SET 
+    n.code = coalesce(n.code, 'OSAHS'),
+    n.description = coalesce(n.description, '一种常见却常被低估的睡眠障碍，表现为在睡眠期间呼吸暂停和上呼吸道阻塞'),
+    n.category = coalesce(n.category, '睡眠障碍'),
+    n.severity = coalesce(n.severity, '中等');
+
+MERGE (n:Disease {name: '高血压'})
+SET 
+    n.code = coalesce(n.code, 'HT'),
+    n.description = coalesce(n.description, '高血压是一种以动脉血压持续升高为特点的疾病'),
+    n.category = coalesce(n.category, '心血管疾病'),
+    n.severity = coalesce(n.severity, '严重');
+
+MERGE (n:Disease {name: '冠心病'})
+SET 
+    n.code = coalesce(n.code, 'CHD'),
+    n.description = coalesce(n.description, '冠状动脉供血不足导致的心脏病'),
+    n.category = coalesce(n.category, '心血管疾病'),
+    n.severity = coalesce(n.severity, '严重');
+
+MERGE (n:Disease {name: '脑卒中'})
+SET 
+    n.code = coalesce(n.code, 'Stroke'),
+    n.description = coalesce(n.description, '由于脑部供血不足而导致的功能障碍'),
+    n.category = coalesce(n.category, '神经系统疾病'),
+    n.severity = coalesce(n.severity, '严重');
+
+MERGE (n:Disease {name: '糖尿病'})
+SET 
+    n.code = coalesce(n.code, 'DM'),
+    n.description = coalesce(n.description, '以高血糖为特征的代谢病'),
+    n.category = coalesce(n.category, '内分泌疾病'),
+    n.severity = coalesce(n.severity, '严重');
+
+MERGE (n:Disease {name: '肥胖'})
+SET 
+    n.code = coalesce(n.code, 'Obesity'),
+    n.description = coalesce(n.description, '体内脂肪过多的一种状态'),
+    n.category = coalesce(n.category, '代谢性疾病'),
+    n.severity = coalesce(n.severity, '中等');
+
+// 关系更新
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = '高血压'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 1.0),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '严重');
+
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = '冠心病'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 1.0),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '严重');
+
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = '脑卒中'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 1.0),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '严重');
+
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = '糖尿病'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 1.0),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '严重');
+
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停低通气综合征'
+MATCH (to) WHERE to.name = '肥胖'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 1.0),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '中等');
+
+"""

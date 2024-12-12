@@ -1,0 +1,2330 @@
+[metadata]
+file_name = "慢性偏头痛住院患者医疗质量评价与改进专家共识.md"
+processed_at = "2024-12-12 01:31:26"
+total_pairs = 12
+
+[[message_pairs]]
+timestamp = "2024-12-12 01:30:58"
+message = """
+
+[背景信息]
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+[命令]
+[CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+[详细补充需求]
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出\"// 空\"(不含引号)
+
+// 定义节点属性示例
+// 疾病节点
+CREATE (:Disease {
+    name: String,           // 疾病名称
+    code: String,           // 疾病编码
+    description: String,    // 疾病描述
+    category: String,       // 疾病分类
+    severity: String        // 严重程度
+});
+
+// 症状节点
+CREATE (:Symptom {
+    name: String,           // 症状名称
+    description: String,    // 症状描述
+    severity: String,       // 严重程度
+    frequency: String       // 发生频率
+});
+
+// 检查项目节点
+CREATE (:Examination {
+    name: String,           // 检查名称
+    description: String,    // 检查描述
+    method: String,         // 检查方法
+    requirement: String     // 检查要求
+});
+
+// 治疗方案节点
+CREATE (:Treatment {
+    name: String,           // 治疗名称
+    type: String,           // 类型(药物/非药物)
+    description: String,    // 治疗描述
+    dosage: String,         // 剂量(药物)
+    duration: String,       // 持续时间
+    contraindication: String // 禁忌症
+});
+
+// 量表工具节点
+CREATE (:Scale {
+    name: String,           // 量表名称
+    description: String,    // 量表描述
+    score_range: String,    // 分数范围
+    interpretation: String  // 结果解释
+});
+
+// 风险因素节点
+CREATE (:RiskFactor {
+    name: String,           // 因素名称
+    description: String,    // 描述
+    impact_level: String    // 影响程度
+});
+
+// 并发症节点
+CREATE (:Complication {
+    name: String,           // 并发症名称
+    description: String,    // 描述
+    severity: String        // 严重程度
+});
+
+// 定义关系类型
+// 症状-疾病关系
+CREATE (:Symptom)-[:INDICATES {
+    confidence: Float,      // 置信度
+    frequency: String,      // 发生频率
+    severity: String        // 严重程度
+}]->(:Disease);
+
+// 疾病-检查关系
+CREATE (:Disease)-[:REQUIRES_EXAM {
+    priority: String,       // 优先级
+    mandatory: Boolean      // 是否必需
+}]->(:Examination);
+
+// 疾病-治疗关系
+CREATE (:Disease)-[:TREATED_BY {
+    effectiveness: Float,   // 有效性
+    priority: String,       // 优先级
+    stage: String          // 治疗阶段
+}]->(:Treatment);
+
+// 疾病-并发症关系
+CREATE (:Disease)-[:MAY_CAUSE {
+    probability: Float,     // 发生概率
+    timeframe: String      // 时间框架
+}]->(:Complication);
+
+// 疾病-风险因素关系
+CREATE (:Disease)-[:INFLUENCED_BY {
+    impact_level: String,   // 影响程度
+    evidence_level: String  // 证据等级
+}]->(:RiskFactor);
+
+// 疾病-量表关系
+CREATE (:Disease)-[:ASSESSED_BY {
+    applicability: Float,   // 适用性
+    recommendation_level: String  // 推荐级别
+}]->(:Scale);
+
+[关系抽取说明]
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
+请尽你可能抽取全部关系
+[示例输出]
+MERGE (d1:Disease {name: \"阻塞性睡眠呼吸暂停低通气综合征\", short_name: \"OSAHS\"})
+MERGE (c1:Disease {name: \"高血压\"})
+MERGE (c2:Disease {name: \"糖尿病\"})
+MERGE (c1)-[:COMPLICATION_OF]->(d1)
+MERGE (c2)-[:COMPLICATION_OF]->(d1)
+
+[隶属文件名]
+慢性偏头痛住院患者医疗质量评价与改进专家共识.md
+[隶属文件分块名]
+慢性偏头痛住院患者医疗质量评价与改进专家共识/005-情况.md
+[文本块]
+# 情况
+
+"""
+response = """
+// 节点更新
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-12 01:31:01"
+message = """
+
+[背景信息]
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+[命令]
+[CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+[详细补充需求]
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出\"// 空\"(不含引号)
+
+// 定义节点属性示例
+// 疾病节点
+CREATE (:Disease {
+    name: String,           // 疾病名称
+    code: String,           // 疾病编码
+    description: String,    // 疾病描述
+    category: String,       // 疾病分类
+    severity: String        // 严重程度
+});
+
+// 症状节点
+CREATE (:Symptom {
+    name: String,           // 症状名称
+    description: String,    // 症状描述
+    severity: String,       // 严重程度
+    frequency: String       // 发生频率
+});
+
+// 检查项目节点
+CREATE (:Examination {
+    name: String,           // 检查名称
+    description: String,    // 检查描述
+    method: String,         // 检查方法
+    requirement: String     // 检查要求
+});
+
+// 治疗方案节点
+CREATE (:Treatment {
+    name: String,           // 治疗名称
+    type: String,           // 类型(药物/非药物)
+    description: String,    // 治疗描述
+    dosage: String,         // 剂量(药物)
+    duration: String,       // 持续时间
+    contraindication: String // 禁忌症
+});
+
+// 量表工具节点
+CREATE (:Scale {
+    name: String,           // 量表名称
+    description: String,    // 量表描述
+    score_range: String,    // 分数范围
+    interpretation: String  // 结果解释
+});
+
+// 风险因素节点
+CREATE (:RiskFactor {
+    name: String,           // 因素名称
+    description: String,    // 描述
+    impact_level: String    // 影响程度
+});
+
+// 并发症节点
+CREATE (:Complication {
+    name: String,           // 并发症名称
+    description: String,    // 描述
+    severity: String        // 严重程度
+});
+
+// 定义关系类型
+// 症状-疾病关系
+CREATE (:Symptom)-[:INDICATES {
+    confidence: Float,      // 置信度
+    frequency: String,      // 发生频率
+    severity: String        // 严重程度
+}]->(:Disease);
+
+// 疾病-检查关系
+CREATE (:Disease)-[:REQUIRES_EXAM {
+    priority: String,       // 优先级
+    mandatory: Boolean      // 是否必需
+}]->(:Examination);
+
+// 疾病-治疗关系
+CREATE (:Disease)-[:TREATED_BY {
+    effectiveness: Float,   // 有效性
+    priority: String,       // 优先级
+    stage: String          // 治疗阶段
+}]->(:Treatment);
+
+// 疾病-并发症关系
+CREATE (:Disease)-[:MAY_CAUSE {
+    probability: Float,     // 发生概率
+    timeframe: String      // 时间框架
+}]->(:Complication);
+
+// 疾病-风险因素关系
+CREATE (:Disease)-[:INFLUENCED_BY {
+    impact_level: String,   // 影响程度
+    evidence_level: String  // 证据等级
+}]->(:RiskFactor);
+
+// 疾病-量表关系
+CREATE (:Disease)-[:ASSESSED_BY {
+    applicability: Float,   // 适用性
+    recommendation_level: String  // 推荐级别
+}]->(:Scale);
+
+[关系抽取说明]
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
+请尽你可能抽取全部关系
+[示例输出]
+MERGE (d1:Disease {name: \"阻塞性睡眠呼吸暂停低通气综合征\", short_name: \"OSAHS\"})
+MERGE (c1:Disease {name: \"高血压\"})
+MERGE (c2:Disease {name: \"糖尿病\"})
+MERGE (c1)-[:COMPLICATION_OF]->(d1)
+MERGE (c2)-[:COMPLICATION_OF]->(d1)
+
+[隶属文件名]
+慢性偏头痛住院患者医疗质量评价与改进专家共识.md
+[隶属文件分块名]
+慢性偏头痛住院患者医疗质量评价与改进专家共识/006-4预防性药物使用率.md
+[文本块]
+预防性药物使用率  
+定义: 接受偏头痛预防性治疗的病例数占同期收治住院慢性偏头痛患者总例数的比例。  
+计算公式: 接受预防性治疗率 =  
+
+"""
+response = """
+// 节点更新
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-12 01:31:04"
+message = """
+
+[背景信息]
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+[命令]
+[CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+[详细补充需求]
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出\"// 空\"(不含引号)
+
+// 定义节点属性示例
+// 疾病节点
+CREATE (:Disease {
+    name: String,           // 疾病名称
+    code: String,           // 疾病编码
+    description: String,    // 疾病描述
+    category: String,       // 疾病分类
+    severity: String        // 严重程度
+});
+
+// 症状节点
+CREATE (:Symptom {
+    name: String,           // 症状名称
+    description: String,    // 症状描述
+    severity: String,       // 严重程度
+    frequency: String       // 发生频率
+});
+
+// 检查项目节点
+CREATE (:Examination {
+    name: String,           // 检查名称
+    description: String,    // 检查描述
+    method: String,         // 检查方法
+    requirement: String     // 检查要求
+});
+
+// 治疗方案节点
+CREATE (:Treatment {
+    name: String,           // 治疗名称
+    type: String,           // 类型(药物/非药物)
+    description: String,    // 治疗描述
+    dosage: String,         // 剂量(药物)
+    duration: String,       // 持续时间
+    contraindication: String // 禁忌症
+});
+
+// 量表工具节点
+CREATE (:Scale {
+    name: String,           // 量表名称
+    description: String,    // 量表描述
+    score_range: String,    // 分数范围
+    interpretation: String  // 结果解释
+});
+
+// 风险因素节点
+CREATE (:RiskFactor {
+    name: String,           // 因素名称
+    description: String,    // 描述
+    impact_level: String    // 影响程度
+});
+
+// 并发症节点
+CREATE (:Complication {
+    name: String,           // 并发症名称
+    description: String,    // 描述
+    severity: String        // 严重程度
+});
+
+// 定义关系类型
+// 症状-疾病关系
+CREATE (:Symptom)-[:INDICATES {
+    confidence: Float,      // 置信度
+    frequency: String,      // 发生频率
+    severity: String        // 严重程度
+}]->(:Disease);
+
+// 疾病-检查关系
+CREATE (:Disease)-[:REQUIRES_EXAM {
+    priority: String,       // 优先级
+    mandatory: Boolean      // 是否必需
+}]->(:Examination);
+
+// 疾病-治疗关系
+CREATE (:Disease)-[:TREATED_BY {
+    effectiveness: Float,   // 有效性
+    priority: String,       // 优先级
+    stage: String          // 治疗阶段
+}]->(:Treatment);
+
+// 疾病-并发症关系
+CREATE (:Disease)-[:MAY_CAUSE {
+    probability: Float,     // 发生概率
+    timeframe: String      // 时间框架
+}]->(:Complication);
+
+// 疾病-风险因素关系
+CREATE (:Disease)-[:INFLUENCED_BY {
+    impact_level: String,   // 影响程度
+    evidence_level: String  // 证据等级
+}]->(:RiskFactor);
+
+// 疾病-量表关系
+CREATE (:Disease)-[:ASSESSED_BY {
+    applicability: Float,   // 适用性
+    recommendation_level: String  // 推荐级别
+}]->(:Scale);
+
+[关系抽取说明]
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
+请尽你可能抽取全部关系
+[示例输出]
+MERGE (d1:Disease {name: \"阻塞性睡眠呼吸暂停低通气综合征\", short_name: \"OSAHS\"})
+MERGE (c1:Disease {name: \"高血压\"})
+MERGE (c2:Disease {name: \"糖尿病\"})
+MERGE (c1)-[:COMPLICATION_OF]->(d1)
+MERGE (c2)-[:COMPLICATION_OF]->(d1)
+
+[隶属文件名]
+慢性偏头痛住院患者医疗质量评价与改进专家共识.md
+[隶属文件分块名]
+慢性偏头痛住院患者医疗质量评价与改进专家共识/004-表1-头痛日记.md
+[文本块]
+# 头痛日记
+
+1. 今日是否有头痛发作?
+   - 否
+   - 是
+
+2. 头痛开始的时间: 口口:口口 (24小时制, 精确到小时、分钟)
+
+   - 若醒来时即头痛, 醒来时间: 口口:口口 (24小时制, 精确到小时、分钟)
+
+3. 头痛结束时间: 口口:口口 (24小时制, 精确到小时、分钟)
+
+   - 若人睡后头痛消失, 人睡时间: 口口:口口 (24小时制, 精确到小时、分钟)
+
+4. 头痛发作时的平均严重程度 (VAS评分): 口口分
+
+5. 头痛发作时的最严重的程度 (VAS评分): 口口分
+
+6. 头痛发作之前 (1小时以内) 或头痛时, 是否有先兆发生?
+   - 否
+   - 是
+
+7. 头痛时是否使用急性止痛药物?
+   - 是
+
+   7.1 请选择使用了哪种药物:
+   - 对乙酰氨基酚
+   - 佐米曲普坦
+   - 利扎曲普坦
+   - 散利痛
+   - 其他:
+
+   7.2 使用急性止痛药物2小时后, 头痛的严重程度: 口口分
+
+注: 疼痛完全缓解 (pain freedom): 中重度头痛减轻为无痛; 头痛缓解 (headache relief): 中重度头痛减轻为轻度头痛或无痛
+
+"""
+response = """
+// 节点更新
+MERGE (n:Disease {name: '慢性偏头痛'})
+SET 
+    n.description = coalesce(n.description, '脑部的慢性疼痛状态，通常表现为反复发作的剧烈头痛');
+
+MERGE (n:Symptom {name: '头痛'})
+SET 
+    n.description = coalesce(n.description, '通常为一侧或双侧的剧烈疼痛'),
+    n.severity = coalesce(n.severity, '中重度'),
+    n.frequency = coalesce(n.frequency, '频繁');
+
+MERGE (n:Treatment {name: '急性止痛药物'})
+SET 
+    n.type = coalesce(n.type, '药物'),
+    n.description = coalesce(n.description, '用于缓解头痛急性发作的药物'),
+    n.dosage = coalesce(n.dosage, '根据医生处方'),
+    n.duration = coalesce(n.duration, '持续至疼痛缓解'),
+    n.contraindication = coalesce(n.contraindication, '对药物过敏');
+
+// 关系更新
+MATCH (from) WHERE from.name = '头痛'
+MATCH (to) WHERE to.name = '慢性偏头痛'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.85),
+    r.frequency = coalesce(r.frequency, '每日'),
+    r.severity = coalesce(r.severity, '中重度');
+
+MATCH (from) WHERE from.name = '慢性偏头痛'
+MATCH (to) WHERE to.name = '急性止痛药物'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.9),
+    r.priority = coalesce(r.priority, '高'),
+    r.stage = coalesce(r.stage, '发作时');
+
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-12 01:31:04"
+message = """
+
+[背景信息]
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+[命令]
+[CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+[详细补充需求]
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出\"// 空\"(不含引号)
+
+// 定义节点属性示例
+// 疾病节点
+CREATE (:Disease {
+    name: String,           // 疾病名称
+    code: String,           // 疾病编码
+    description: String,    // 疾病描述
+    category: String,       // 疾病分类
+    severity: String        // 严重程度
+});
+
+// 症状节点
+CREATE (:Symptom {
+    name: String,           // 症状名称
+    description: String,    // 症状描述
+    severity: String,       // 严重程度
+    frequency: String       // 发生频率
+});
+
+// 检查项目节点
+CREATE (:Examination {
+    name: String,           // 检查名称
+    description: String,    // 检查描述
+    method: String,         // 检查方法
+    requirement: String     // 检查要求
+});
+
+// 治疗方案节点
+CREATE (:Treatment {
+    name: String,           // 治疗名称
+    type: String,           // 类型(药物/非药物)
+    description: String,    // 治疗描述
+    dosage: String,         // 剂量(药物)
+    duration: String,       // 持续时间
+    contraindication: String // 禁忌症
+});
+
+// 量表工具节点
+CREATE (:Scale {
+    name: String,           // 量表名称
+    description: String,    // 量表描述
+    score_range: String,    // 分数范围
+    interpretation: String  // 结果解释
+});
+
+// 风险因素节点
+CREATE (:RiskFactor {
+    name: String,           // 因素名称
+    description: String,    // 描述
+    impact_level: String    // 影响程度
+});
+
+// 并发症节点
+CREATE (:Complication {
+    name: String,           // 并发症名称
+    description: String,    // 描述
+    severity: String        // 严重程度
+});
+
+// 定义关系类型
+// 症状-疾病关系
+CREATE (:Symptom)-[:INDICATES {
+    confidence: Float,      // 置信度
+    frequency: String,      // 发生频率
+    severity: String        // 严重程度
+}]->(:Disease);
+
+// 疾病-检查关系
+CREATE (:Disease)-[:REQUIRES_EXAM {
+    priority: String,       // 优先级
+    mandatory: Boolean      // 是否必需
+}]->(:Examination);
+
+// 疾病-治疗关系
+CREATE (:Disease)-[:TREATED_BY {
+    effectiveness: Float,   // 有效性
+    priority: String,       // 优先级
+    stage: String          // 治疗阶段
+}]->(:Treatment);
+
+// 疾病-并发症关系
+CREATE (:Disease)-[:MAY_CAUSE {
+    probability: Float,     // 发生概率
+    timeframe: String      // 时间框架
+}]->(:Complication);
+
+// 疾病-风险因素关系
+CREATE (:Disease)-[:INFLUENCED_BY {
+    impact_level: String,   // 影响程度
+    evidence_level: String  // 证据等级
+}]->(:RiskFactor);
+
+// 疾病-量表关系
+CREATE (:Disease)-[:ASSESSED_BY {
+    applicability: Float,   // 适用性
+    recommendation_level: String  // 推荐级别
+}]->(:Scale);
+
+[关系抽取说明]
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
+请尽你可能抽取全部关系
+[示例输出]
+MERGE (d1:Disease {name: \"阻塞性睡眠呼吸暂停低通气综合征\", short_name: \"OSAHS\"})
+MERGE (c1:Disease {name: \"高血压\"})
+MERGE (c2:Disease {name: \"糖尿病\"})
+MERGE (c1)-[:COMPLICATION_OF]->(d1)
+MERGE (c2)-[:COMPLICATION_OF]->(d1)
+
+[隶属文件名]
+慢性偏头痛住院患者医疗质量评价与改进专家共识.md
+[隶属文件分块名]
+慢性偏头痛住院患者医疗质量评价与改进专家共识/007-区接受偏头痛预防性治疗的例数-100同期收治住院慢性偏头痛例数.md
+[文本块]
+区接受偏头痛预防性治疗的例数 × 100% 同期收治住院慢性偏头痛例数  
+
+意义: 反映医院对于头痛规范性诊疗措施的执行情况。  
+
+慢性偏头痛患者在急性期治疗同时, 需在病历中记录近6个月预防性用药使用方案，并制定个体化预防治疗方案。  
+
+此项措施是为了规范慢性偏头痛预防性治疗药物的使用。  
+
+合并药物过度使用性头痛 (medication overused headache, MOH) 患者药物戒断告知率:  
+
+定义: 单位时间内, 住院偏头痛患者完成 MOH 筛查、告知需要药物戒断治疗例数占同期收治住院慢性偏头痛患者总例数的比例。  
+
+MOH  
+
+合并 MOH 患者药物戒断告知率 = ∑合并 MOH 患者签署药物戒断知情同意书的例数  
+
+"""
+response = """
+// 节点更新
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-12 01:31:08"
+message = """
+
+[背景信息]
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+[命令]
+[CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+[详细补充需求]
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出\"// 空\"(不含引号)
+
+// 定义节点属性示例
+// 疾病节点
+CREATE (:Disease {
+    name: String,           // 疾病名称
+    code: String,           // 疾病编码
+    description: String,    // 疾病描述
+    category: String,       // 疾病分类
+    severity: String        // 严重程度
+});
+
+// 症状节点
+CREATE (:Symptom {
+    name: String,           // 症状名称
+    description: String,    // 症状描述
+    severity: String,       // 严重程度
+    frequency: String       // 发生频率
+});
+
+// 检查项目节点
+CREATE (:Examination {
+    name: String,           // 检查名称
+    description: String,    // 检查描述
+    method: String,         // 检查方法
+    requirement: String     // 检查要求
+});
+
+// 治疗方案节点
+CREATE (:Treatment {
+    name: String,           // 治疗名称
+    type: String,           // 类型(药物/非药物)
+    description: String,    // 治疗描述
+    dosage: String,         // 剂量(药物)
+    duration: String,       // 持续时间
+    contraindication: String // 禁忌症
+});
+
+// 量表工具节点
+CREATE (:Scale {
+    name: String,           // 量表名称
+    description: String,    // 量表描述
+    score_range: String,    // 分数范围
+    interpretation: String  // 结果解释
+});
+
+// 风险因素节点
+CREATE (:RiskFactor {
+    name: String,           // 因素名称
+    description: String,    // 描述
+    impact_level: String    // 影响程度
+});
+
+// 并发症节点
+CREATE (:Complication {
+    name: String,           // 并发症名称
+    description: String,    // 描述
+    severity: String        // 严重程度
+});
+
+// 定义关系类型
+// 症状-疾病关系
+CREATE (:Symptom)-[:INDICATES {
+    confidence: Float,      // 置信度
+    frequency: String,      // 发生频率
+    severity: String        // 严重程度
+}]->(:Disease);
+
+// 疾病-检查关系
+CREATE (:Disease)-[:REQUIRES_EXAM {
+    priority: String,       // 优先级
+    mandatory: Boolean      // 是否必需
+}]->(:Examination);
+
+// 疾病-治疗关系
+CREATE (:Disease)-[:TREATED_BY {
+    effectiveness: Float,   // 有效性
+    priority: String,       // 优先级
+    stage: String          // 治疗阶段
+}]->(:Treatment);
+
+// 疾病-并发症关系
+CREATE (:Disease)-[:MAY_CAUSE {
+    probability: Float,     // 发生概率
+    timeframe: String      // 时间框架
+}]->(:Complication);
+
+// 疾病-风险因素关系
+CREATE (:Disease)-[:INFLUENCED_BY {
+    impact_level: String,   // 影响程度
+    evidence_level: String  // 证据等级
+}]->(:RiskFactor);
+
+// 疾病-量表关系
+CREATE (:Disease)-[:ASSESSED_BY {
+    applicability: Float,   // 适用性
+    recommendation_level: String  // 推荐级别
+}]->(:Scale);
+
+[关系抽取说明]
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
+请尽你可能抽取全部关系
+[示例输出]
+MERGE (d1:Disease {name: \"阻塞性睡眠呼吸暂停低通气综合征\", short_name: \"OSAHS\"})
+MERGE (c1:Disease {name: \"高血压\"})
+MERGE (c2:Disease {name: \"糖尿病\"})
+MERGE (c1)-[:COMPLICATION_OF]->(d1)
+MERGE (c2)-[:COMPLICATION_OF]->(d1)
+
+[隶属文件名]
+慢性偏头痛住院患者医疗质量评价与改进专家共识.md
+[隶属文件分块名]
+慢性偏头痛住院患者医疗质量评价与改进专家共识/001-慢性偏头痛住院患者医疗质量评价与改进-专家共识.md
+[文本块]
+# 慢性偏头痛住院患者医疗质量评价与改进 专家共识  
+
+**组织**: 中华医学会神经病学分会头痛协作组  
+**通信作者**: 王永刚  
+**机构**: 首都医科大学附属北京天坛医院神经病学中心头痛科  
+**地点**: 北京 100070  
+**Email**: w100yg@163.com  
+
+**摘要**: 
+偏头痛是一种高致残性的原发性头痛疾病，发作时伴随恶心、呕吐、畏光和畏声等症状。慢性偏头痛常由发作性偏头痛进展而来，且多合并焦虑、抑郁和睡眠障碍等共病，进而加重疾病负担。目前我国偏头痛的临床诊断与治疗尚不规范，缺乏偏头痛医疗质量控制评价体系。为实现规范的偏头痛诊疗，中华医学会神经病学分会头痛协作组专家在国内外偏头痛临床研究基础上，结合我国医疗体系现状，形成了慢性偏头痛住院患者的医疗质量评价专家共识。  
+
+**关键词**: 偏头痛; 治疗; 医疗质量评价; 专家共识  
+
+**Abstract**: 
+Migraine is a highly disabling primary headache disease, accompanied by nausea, emesis, photophobia, and phonophobia. Chronic migraine usually develops from episodic migraine and often comorbid with anxiety, depression, and sleep disorders, further aggravating the disease burden. Currently, the clinical diagnosis and treatment of migraine in China are not standardized, and there is a lack of a migraine medical quality control evaluation system. To achieve standardized diagnosis and treatment of migraine, headache collaborators of the Chinese Society of Neurology drafted the expert consensus on the medical quality evaluation of inpatients with chronic migraine, based on national and international clinical research and in consideration of the current situation of China's medical system.  
+
+**Key words**: Migraine; Treatment; Medical quality evaluation; Expert consensus  
+
+"""
+response = """
+// 节点更新
+MERGE (n:Disease {name: '偏头痛'})
+SET 
+    n.description = coalesce(n.description, '一种高致残性的原发性头痛疾病'),
+    n.category = coalesce(n.category, '神经系统疾病');
+
+MERGE (n:Symptom {name: '恶心'})
+SET 
+    n.description = coalesce(n.description, '发作时伴随的症状'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '发作时');
+
+MERGE (n:Symptom {name: '呕吐'})
+SET 
+    n.description = coalesce(n.description, '发作时伴随的症状'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '发作时');
+
+MERGE (n:Symptom {name: '畏光'})
+SET 
+    n.description = coalesce(n.description, '发作时伴随的症状'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '发作时');
+
+MERGE (n:Symptom {name: '畏声'})
+SET 
+    n.description = coalesce(n.description, '发作时伴随的症状'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '发作时');
+
+MERGE (n:Symptom {name: '焦虑'})
+SET 
+    n.description = coalesce(n.description, '常与慢性偏头痛合并的共病'),
+    n.severity = coalesce(n.severity, '轻度'),
+    n.frequency = coalesce(n.frequency, '常见');
+
+MERGE (n:Symptom {name: '抑郁'})
+SET 
+    n.description = coalesce(n.description, '常与慢性偏头痛合并的共病'),
+    n.severity = coalesce(n.severity, '中度'),
+    n.frequency = coalesce(n.frequency, '常见');
+
+MERGE (n:Symptom {name: '睡眠障碍'})
+SET 
+    n.description = coalesce(n.description, '常与慢性偏头痛合并的共病'),
+    n.severity = coalesce(n.severity, '中度'),
+    n.frequency = coalesce(n.frequency, '常见');
+
+// 关系更新
+MATCH (from) WHERE from.name = '偏头痛'
+MATCH (to) WHERE to.name = '恶心'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.9),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '高');
+
+MATCH (from) WHERE from.name = '偏头痛'
+MATCH (to) WHERE to.name = '呕吐'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.9),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '高');
+
+MATCH (from) WHERE from.name = '偏头痛'
+MATCH (to) WHERE to.name = '畏光'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.9),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '中');
+
+MATCH (from) WHERE from.name = '偏头痛'
+MATCH (to) WHERE to.name = '畏声'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.9),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '中');
+
+MATCH (from) WHERE from.name = '偏头痛'
+MATCH (to) WHERE to.name = '焦虑'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.8),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '中');
+
+MATCH (from) WHERE from.name = '偏头痛'
+MATCH (to) WHERE to.name = '抑郁'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.8),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '中');
+
+MATCH (from) WHERE from.name = '偏头痛'
+MATCH (to) WHERE to.name = '睡眠障碍'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.8),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '中');
+
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-12 01:31:10"
+message = """
+
+[背景信息]
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+[命令]
+[CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+[详细补充需求]
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出\"// 空\"(不含引号)
+
+// 定义节点属性示例
+// 疾病节点
+CREATE (:Disease {
+    name: String,           // 疾病名称
+    code: String,           // 疾病编码
+    description: String,    // 疾病描述
+    category: String,       // 疾病分类
+    severity: String        // 严重程度
+});
+
+// 症状节点
+CREATE (:Symptom {
+    name: String,           // 症状名称
+    description: String,    // 症状描述
+    severity: String,       // 严重程度
+    frequency: String       // 发生频率
+});
+
+// 检查项目节点
+CREATE (:Examination {
+    name: String,           // 检查名称
+    description: String,    // 检查描述
+    method: String,         // 检查方法
+    requirement: String     // 检查要求
+});
+
+// 治疗方案节点
+CREATE (:Treatment {
+    name: String,           // 治疗名称
+    type: String,           // 类型(药物/非药物)
+    description: String,    // 治疗描述
+    dosage: String,         // 剂量(药物)
+    duration: String,       // 持续时间
+    contraindication: String // 禁忌症
+});
+
+// 量表工具节点
+CREATE (:Scale {
+    name: String,           // 量表名称
+    description: String,    // 量表描述
+    score_range: String,    // 分数范围
+    interpretation: String  // 结果解释
+});
+
+// 风险因素节点
+CREATE (:RiskFactor {
+    name: String,           // 因素名称
+    description: String,    // 描述
+    impact_level: String    // 影响程度
+});
+
+// 并发症节点
+CREATE (:Complication {
+    name: String,           // 并发症名称
+    description: String,    // 描述
+    severity: String        // 严重程度
+});
+
+// 定义关系类型
+// 症状-疾病关系
+CREATE (:Symptom)-[:INDICATES {
+    confidence: Float,      // 置信度
+    frequency: String,      // 发生频率
+    severity: String        // 严重程度
+}]->(:Disease);
+
+// 疾病-检查关系
+CREATE (:Disease)-[:REQUIRES_EXAM {
+    priority: String,       // 优先级
+    mandatory: Boolean      // 是否必需
+}]->(:Examination);
+
+// 疾病-治疗关系
+CREATE (:Disease)-[:TREATED_BY {
+    effectiveness: Float,   // 有效性
+    priority: String,       // 优先级
+    stage: String          // 治疗阶段
+}]->(:Treatment);
+
+// 疾病-并发症关系
+CREATE (:Disease)-[:MAY_CAUSE {
+    probability: Float,     // 发生概率
+    timeframe: String      // 时间框架
+}]->(:Complication);
+
+// 疾病-风险因素关系
+CREATE (:Disease)-[:INFLUENCED_BY {
+    impact_level: String,   // 影响程度
+    evidence_level: String  // 证据等级
+}]->(:RiskFactor);
+
+// 疾病-量表关系
+CREATE (:Disease)-[:ASSESSED_BY {
+    applicability: Float,   // 适用性
+    recommendation_level: String  // 推荐级别
+}]->(:Scale);
+
+[关系抽取说明]
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
+请尽你可能抽取全部关系
+[示例输出]
+MERGE (d1:Disease {name: \"阻塞性睡眠呼吸暂停低通气综合征\", short_name: \"OSAHS\"})
+MERGE (c1:Disease {name: \"高血压\"})
+MERGE (c2:Disease {name: \"糖尿病\"})
+MERGE (c1)-[:COMPLICATION_OF]->(d1)
+MERGE (c2)-[:COMPLICATION_OF]->(d1)
+
+[隶属文件名]
+慢性偏头痛住院患者医疗质量评价与改进专家共识.md
+[隶属文件分块名]
+慢性偏头痛住院患者医疗质量评价与改进专家共识/002-一背景.md
+[文本块]
+# 一、背景  
+
+偏头痛是一种高发病率、高致残率的原发性疾病，以发作性中重度的搏动样头痛为特征，可伴随恶心、呕吐、畏光和畏声等症状。偏头痛在人群中广泛流行，是门诊及急诊患者就诊的主要原因。据估计，2017年中国约有1.51亿人罹患偏头痛，其导致的残疾生存年限为547万人年。全球疾病负担研究发现，偏头痛是第2位致残性疾病，造成沉重的社会经济负担。目前，有关我国偏头痛实际诊疗情况和医疗资源消耗的数据较少，从既往相关研究数据可知我国偏头痛患者存在诊断正确率低、头痛教育缺乏、特异性止痛药及预防性药物使用不足、非处方药物过度使用等严重诊疗不规范情况。因此，必须制订偏头痛诊疗质量控制指标，规范临床诊疗行为。  
+
+当患者头痛持续超过3个月，每月头痛超过15天，符合偏头痛特点的头痛天数超过8天可诊断为慢性偏头痛。慢性偏头痛多由发作性偏头痛进展、演变而来，每年约有3%的发作性偏头痛转化为慢性偏头痛，造成的直接和间接年人均经济损失是发作性偏头痛的4倍。慢性偏头痛合并焦虑、抑郁、睡眠障碍等共病更为常见，进一步加重疾病负担。大部分偏头痛患者仅需门诊治疗，但当慢性偏头痛患者存在治疗效果差、依从性低、合并多种共病、药物依赖、特殊人群（如妊娠、癫痫、内环境紊乱等复杂情况）时，往往需要住院进行鉴别诊断及治疗。  
+
+虽然偏头痛诊疗质量控制最终目标是针对所有门诊及住院偏头痛患者提出质量评价及改进方案，但现阶段因我国人口基数大、不同地区门诊诊治所花费的时间不同、网络建设存在差异，尚难以进行标准化管理。目前仅就疾病负担最重的慢性偏头痛住院患者规范化诊疗行为提出医疗质量评价与改进专家建议，期望通过住院患者的规范化管理推动门诊偏头痛患者的规范化治疗。鉴于大部分偏头痛住院患者为慢性偏头痛，因此本共识所指的偏头痛患者均为慢性偏头痛住院患者。  
+
+为提高临床诊疗水平，国家卫生健康委员会于2020年提出要进一步加强单病种质量管理与控制工作，制订单病种质量检测信息项。为建立规范的偏头痛医疗质量体系，国家神经系统疾病医疗质量控制中心联合中华医学会神经病学分会各领域专家，通过广泛查阅文献、收集资料、反复商讨，共同制定了《2022年中国慢性偏头痛住院患者诊疗质量控制方案》，旨在明确偏头痛医疗质量的关键控制指标及记录要求，并提出专家推荐意见，为相关医疗机构、医务人员及政府卫生部门开展高质量的偏头痛诊疗工作提供科学依据和规范指导。  
+
+"""
+response = """
+// 节点更新
+MERGE (n:Disease {name: '偏头痛'})
+SET 
+    n.description = coalesce(n.description, '一种高发病率、高致残率的原发性疾病，以发作性中重度的搏动样头痛为特征');
+
+MERGE (n:Disease {name: '慢性偏头痛'})
+SET 
+    n.description = coalesce(n.description, '当患者头痛持续超过3个月，每月头痛超过15天，符合偏头痛特点的头痛天数超过8天可诊断为慢性偏头痛');
+
+MERGE (n:Disease {name: '焦虑'})
+SET 
+    n.description = coalesce(n.description, '一种常见的心理障碍，表现为过度担忧和紧张');
+
+MERGE (n:Disease {name: '抑郁'})
+SET 
+    n.description = coalesce(n.description, '一种常见的情绪障碍，导致持久的悲伤和失去兴趣');
+
+MERGE (n:Disease {name: '睡眠障碍'})
+SET 
+    n.description = coalesce(n.description, '表现为难以入睡、维持睡眠或早醒等问题');
+
+MERGE (n:Symptom {name: '恶心'})
+SET 
+    n.description = coalesce(n.description, '一种不适，这种感觉通常伴随着呕吐');
+
+MERGE (n:Symptom {name: '呕吐'})
+SET 
+    n.description = coalesce(n.description, '反射性排出胃内容物的过程');
+
+MERGE (n:Symptom {name: '畏光'})
+SET 
+    n.description = coalesce(n.description, '对光线的过敏反应');
+
+MERGE (n:Symptom {name: '畏声'})
+SET 
+    n.description = coalesce(n.description, '对声音的敏感或不适');
+
+// 关系更新
+MATCH (from) WHERE from.name = '慢性偏头痛'
+MATCH (to) WHERE to.name = '恶心'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.9),
+    r.frequency = coalesce(r.frequency, '每月超过15天'),
+    r.severity = coalesce(r.severity, '中重度');
+
+MATCH (from) WHERE from.name = '慢性偏头痛'
+MATCH (to) WHERE to.name = '呕吐'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.9),
+    r.frequency = coalesce(r.frequency, '每月超过15天'),
+    r.severity = coalesce(r.severity, '中重度');
+
+MATCH (from) WHERE from.name = '慢性偏头痛'
+MATCH (to) WHERE to.name = '畏光'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.8),
+    r.frequency = coalesce(r.frequency, '每月超过15天'),
+    r.severity = coalesce(r.severity, '中重度');
+
+MATCH (from) WHERE from.name = '慢性偏头痛'
+MATCH (to) WHERE to.name = '畏声'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.8),
+    r.frequency = coalesce(r.frequency, '每月超过15天'),
+    r.severity = coalesce(r.severity, '中重度');
+
+MATCH (from) WHERE from.name = '慢性偏头痛'
+MATCH (to) WHERE to.name = '焦虑'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.7),
+    r.timeframe = coalesce(r.timeframe, '常见');
+
+MATCH (from) WHERE from.name = '慢性偏头痛'
+MATCH (to) WHERE to.name = '抑郁'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.7),
+    r.timeframe = coalesce(r.timeframe, '常见');
+
+MATCH (from) WHERE from.name = '慢性偏头痛'
+MATCH (to) WHERE to.name = '睡眠障碍'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.6),
+    r.timeframe = coalesce(r.timeframe, '常见');
+
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-12 01:31:10"
+message = """
+
+[背景信息]
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+[命令]
+[CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+[详细补充需求]
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出\"// 空\"(不含引号)
+
+// 定义节点属性示例
+// 疾病节点
+CREATE (:Disease {
+    name: String,           // 疾病名称
+    code: String,           // 疾病编码
+    description: String,    // 疾病描述
+    category: String,       // 疾病分类
+    severity: String        // 严重程度
+});
+
+// 症状节点
+CREATE (:Symptom {
+    name: String,           // 症状名称
+    description: String,    // 症状描述
+    severity: String,       // 严重程度
+    frequency: String       // 发生频率
+});
+
+// 检查项目节点
+CREATE (:Examination {
+    name: String,           // 检查名称
+    description: String,    // 检查描述
+    method: String,         // 检查方法
+    requirement: String     // 检查要求
+});
+
+// 治疗方案节点
+CREATE (:Treatment {
+    name: String,           // 治疗名称
+    type: String,           // 类型(药物/非药物)
+    description: String,    // 治疗描述
+    dosage: String,         // 剂量(药物)
+    duration: String,       // 持续时间
+    contraindication: String // 禁忌症
+});
+
+// 量表工具节点
+CREATE (:Scale {
+    name: String,           // 量表名称
+    description: String,    // 量表描述
+    score_range: String,    // 分数范围
+    interpretation: String  // 结果解释
+});
+
+// 风险因素节点
+CREATE (:RiskFactor {
+    name: String,           // 因素名称
+    description: String,    // 描述
+    impact_level: String    // 影响程度
+});
+
+// 并发症节点
+CREATE (:Complication {
+    name: String,           // 并发症名称
+    description: String,    // 描述
+    severity: String        // 严重程度
+});
+
+// 定义关系类型
+// 症状-疾病关系
+CREATE (:Symptom)-[:INDICATES {
+    confidence: Float,      // 置信度
+    frequency: String,      // 发生频率
+    severity: String        // 严重程度
+}]->(:Disease);
+
+// 疾病-检查关系
+CREATE (:Disease)-[:REQUIRES_EXAM {
+    priority: String,       // 优先级
+    mandatory: Boolean      // 是否必需
+}]->(:Examination);
+
+// 疾病-治疗关系
+CREATE (:Disease)-[:TREATED_BY {
+    effectiveness: Float,   // 有效性
+    priority: String,       // 优先级
+    stage: String          // 治疗阶段
+}]->(:Treatment);
+
+// 疾病-并发症关系
+CREATE (:Disease)-[:MAY_CAUSE {
+    probability: Float,     // 发生概率
+    timeframe: String      // 时间框架
+}]->(:Complication);
+
+// 疾病-风险因素关系
+CREATE (:Disease)-[:INFLUENCED_BY {
+    impact_level: String,   // 影响程度
+    evidence_level: String  // 证据等级
+}]->(:RiskFactor);
+
+// 疾病-量表关系
+CREATE (:Disease)-[:ASSESSED_BY {
+    applicability: Float,   // 适用性
+    recommendation_level: String  // 推荐级别
+}]->(:Scale);
+
+[关系抽取说明]
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
+请尽你可能抽取全部关系
+[示例输出]
+MERGE (d1:Disease {name: \"阻塞性睡眠呼吸暂停低通气综合征\", short_name: \"OSAHS\"})
+MERGE (c1:Disease {name: \"高血压\"})
+MERGE (c2:Disease {name: \"糖尿病\"})
+MERGE (c1)-[:COMPLICATION_OF]->(d1)
+MERGE (c2)-[:COMPLICATION_OF]->(d1)
+
+[隶属文件名]
+慢性偏头痛住院患者医疗质量评价与改进专家共识.md
+[隶属文件分块名]
+慢性偏头痛住院患者医疗质量评价与改进专家共识/012-本刊临床病例理讨论栏目征稿启事.md
+[文本块]
+本刊“临床病例(理)讨论”栏目征稿启事  
+
+临床医学是实践性很强的应用科学，临床医师需要在工作中不断提高自己的诊疗技能，思维方式方法的学习和锻炼不可或缺。鉴于内科学科的特点，我刊在创刊伊始即设立了“临床病例(理)讨论”栏目，每期至少刊出1篇，至今已刊出400余篇，深受广大读者的喜爱。现特向全国三级甲等医院征集“临床病例(理)讨论”稿。  
+
+要求如下:  
+- 讨论的病例应涉及内科领域多学科的疑难病例，经过大内科查房；或诊治过程曲折，有明确的经验教训；或诊断明确，但治疗棘手，最终治疗成功者。  
+- 病例临床资料完整，能提供必要的实验室、影像学和病理确诊证据。  
+- 文稿包括“病历摘要”和“讨论”两部分，讨论可以按依次发言的形式，也可以是经过系统归纳后，思路清晰、条理清楚的分析总结，并引用必要的文献。  
+- 文稿字数以3000字左右为宜，并附有中、英文摘要。  
+- 此类文章须经过相关学科专家审阅、定稿会专家组讨论通过，确认对启迪临床医师诊疗思路有帮助者方可录用。  
+- 对于刊登在本刊的“临床病例(理)讨论”文稿，我们视同论著类文章。  
+
+欢迎投稿。
+
+"""
+response = """
+// 节点更新
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-12 01:31:10"
+message = """
+
+[背景信息]
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+[命令]
+[CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+[详细补充需求]
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出\"// 空\"(不含引号)
+
+// 定义节点属性示例
+// 疾病节点
+CREATE (:Disease {
+    name: String,           // 疾病名称
+    code: String,           // 疾病编码
+    description: String,    // 疾病描述
+    category: String,       // 疾病分类
+    severity: String        // 严重程度
+});
+
+// 症状节点
+CREATE (:Symptom {
+    name: String,           // 症状名称
+    description: String,    // 症状描述
+    severity: String,       // 严重程度
+    frequency: String       // 发生频率
+});
+
+// 检查项目节点
+CREATE (:Examination {
+    name: String,           // 检查名称
+    description: String,    // 检查描述
+    method: String,         // 检查方法
+    requirement: String     // 检查要求
+});
+
+// 治疗方案节点
+CREATE (:Treatment {
+    name: String,           // 治疗名称
+    type: String,           // 类型(药物/非药物)
+    description: String,    // 治疗描述
+    dosage: String,         // 剂量(药物)
+    duration: String,       // 持续时间
+    contraindication: String // 禁忌症
+});
+
+// 量表工具节点
+CREATE (:Scale {
+    name: String,           // 量表名称
+    description: String,    // 量表描述
+    score_range: String,    // 分数范围
+    interpretation: String  // 结果解释
+});
+
+// 风险因素节点
+CREATE (:RiskFactor {
+    name: String,           // 因素名称
+    description: String,    // 描述
+    impact_level: String    // 影响程度
+});
+
+// 并发症节点
+CREATE (:Complication {
+    name: String,           // 并发症名称
+    description: String,    // 描述
+    severity: String        // 严重程度
+});
+
+// 定义关系类型
+// 症状-疾病关系
+CREATE (:Symptom)-[:INDICATES {
+    confidence: Float,      // 置信度
+    frequency: String,      // 发生频率
+    severity: String        // 严重程度
+}]->(:Disease);
+
+// 疾病-检查关系
+CREATE (:Disease)-[:REQUIRES_EXAM {
+    priority: String,       // 优先级
+    mandatory: Boolean      // 是否必需
+}]->(:Examination);
+
+// 疾病-治疗关系
+CREATE (:Disease)-[:TREATED_BY {
+    effectiveness: Float,   // 有效性
+    priority: String,       // 优先级
+    stage: String          // 治疗阶段
+}]->(:Treatment);
+
+// 疾病-并发症关系
+CREATE (:Disease)-[:MAY_CAUSE {
+    probability: Float,     // 发生概率
+    timeframe: String      // 时间框架
+}]->(:Complication);
+
+// 疾病-风险因素关系
+CREATE (:Disease)-[:INFLUENCED_BY {
+    impact_level: String,   // 影响程度
+    evidence_level: String  // 证据等级
+}]->(:RiskFactor);
+
+// 疾病-量表关系
+CREATE (:Disease)-[:ASSESSED_BY {
+    applicability: Float,   // 适用性
+    recommendation_level: String  // 推荐级别
+}]->(:Scale);
+
+[关系抽取说明]
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
+请尽你可能抽取全部关系
+[示例输出]
+MERGE (d1:Disease {name: \"阻塞性睡眠呼吸暂停低通气综合征\", short_name: \"OSAHS\"})
+MERGE (c1:Disease {name: \"高血压\"})
+MERGE (c2:Disease {name: \"糖尿病\"})
+MERGE (c1)-[:COMPLICATION_OF]->(d1)
+MERGE (c2)-[:COMPLICATION_OF]->(d1)
+
+[隶属文件名]
+慢性偏头痛住院患者医疗质量评价与改进专家共识.md
+[隶属文件分块名]
+慢性偏头痛住院患者医疗质量评价与改进专家共识/010-三结语.md
+[文本块]
+慢性偏头痛住院患者医疗质量评价与改进专家共识的制订旨在推动慢性偏头痛规范化诊疗，为偏头痛医疗质量控制卫生政策的制订提供依据。对于质量控制指标，鉴于不同地区医疗环境存在差异，需结合当地实际情况合理应用。编写组希望医疗机构和卫生服务人员能通过本共识了解偏头痛管理概念，运用于临床实际，不断改进医疗质量，规范偏头痛患者的诊疗，改善其长期预后。
+
+主要执笔：
+- 王永刚（首都医科大学附属北京天坛医院神经病学中心头痛科）
+- 肖哲曼（武汉大学人民医院神经内科）
+- 刘恺鸣（浙江大学医学院附属第二医院神经内科）
+- 赵红如（苏州大学附属第一医院神经内科）
+- 刘永辉（广西中医药大学第一附属医院脑病科）
+- 沈航（中国医学科学院北京协和医院神经科）
+- 桂韦（中国科学技术大学附属第一医院（安徽省立医院）神经内科）
+- 康慧聪（华中科技大学附属同济医院神经内科）
+- 张清秀（南京大学医学院附属鼓楼医院神经内科）
+- 常贺生（首都医科大学附属北京朝阳医院儿科）
+- 王蕾（兰州大学第二医院神经内科）
+
+编写组成员（按姓氏汉语拼音顺序）：
+- 陈宁（四川大学华西医院神经内科）
+- 董铭（吉林大学第一医院神经内科）
+- 郭淮莲（北京大学人民医院神经内科）
+- 李磊（哈尔滨医科大学附属第二医院神经内科）
+- 李明欣（山东大学齐鲁医院神经内科）
+- 潘晓华（包头市第八医院神经内科）
+- 燕兰云（江苏省人民医院神经内科）
+- 杨西爱（安康市中心医院神经内科）
+- 张亚清（首都医科大学附属北京天坛医院神经病学中心头痛科）
+- 张忠玲（哈尔滨医科大学附属第一医院神经内科）
+
+利益冲突：所有作者声明无利益冲突。
+
+"""
+response = """
+// 节点更新
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-12 01:31:13"
+message = """
+
+[背景信息]
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+[命令]
+[CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+[详细补充需求]
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出\"// 空\"(不含引号)
+
+// 定义节点属性示例
+// 疾病节点
+CREATE (:Disease {
+    name: String,           // 疾病名称
+    code: String,           // 疾病编码
+    description: String,    // 疾病描述
+    category: String,       // 疾病分类
+    severity: String        // 严重程度
+});
+
+// 症状节点
+CREATE (:Symptom {
+    name: String,           // 症状名称
+    description: String,    // 症状描述
+    severity: String,       // 严重程度
+    frequency: String       // 发生频率
+});
+
+// 检查项目节点
+CREATE (:Examination {
+    name: String,           // 检查名称
+    description: String,    // 检查描述
+    method: String,         // 检查方法
+    requirement: String     // 检查要求
+});
+
+// 治疗方案节点
+CREATE (:Treatment {
+    name: String,           // 治疗名称
+    type: String,           // 类型(药物/非药物)
+    description: String,    // 治疗描述
+    dosage: String,         // 剂量(药物)
+    duration: String,       // 持续时间
+    contraindication: String // 禁忌症
+});
+
+// 量表工具节点
+CREATE (:Scale {
+    name: String,           // 量表名称
+    description: String,    // 量表描述
+    score_range: String,    // 分数范围
+    interpretation: String  // 结果解释
+});
+
+// 风险因素节点
+CREATE (:RiskFactor {
+    name: String,           // 因素名称
+    description: String,    // 描述
+    impact_level: String    // 影响程度
+});
+
+// 并发症节点
+CREATE (:Complication {
+    name: String,           // 并发症名称
+    description: String,    // 描述
+    severity: String        // 严重程度
+});
+
+// 定义关系类型
+// 症状-疾病关系
+CREATE (:Symptom)-[:INDICATES {
+    confidence: Float,      // 置信度
+    frequency: String,      // 发生频率
+    severity: String        // 严重程度
+}]->(:Disease);
+
+// 疾病-检查关系
+CREATE (:Disease)-[:REQUIRES_EXAM {
+    priority: String,       // 优先级
+    mandatory: Boolean      // 是否必需
+}]->(:Examination);
+
+// 疾病-治疗关系
+CREATE (:Disease)-[:TREATED_BY {
+    effectiveness: Float,   // 有效性
+    priority: String,       // 优先级
+    stage: String          // 治疗阶段
+}]->(:Treatment);
+
+// 疾病-并发症关系
+CREATE (:Disease)-[:MAY_CAUSE {
+    probability: Float,     // 发生概率
+    timeframe: String      // 时间框架
+}]->(:Complication);
+
+// 疾病-风险因素关系
+CREATE (:Disease)-[:INFLUENCED_BY {
+    impact_level: String,   // 影响程度
+    evidence_level: String  // 证据等级
+}]->(:RiskFactor);
+
+// 疾病-量表关系
+CREATE (:Disease)-[:ASSESSED_BY {
+    applicability: Float,   // 适用性
+    recommendation_level: String  // 推荐级别
+}]->(:Scale);
+
+[关系抽取说明]
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
+请尽你可能抽取全部关系
+[示例输出]
+MERGE (d1:Disease {name: \"阻塞性睡眠呼吸暂停低通气综合征\", short_name: \"OSAHS\"})
+MERGE (c1:Disease {name: \"高血压\"})
+MERGE (c2:Disease {name: \"糖尿病\"})
+MERGE (c1)-[:COMPLICATION_OF]->(d1)
+MERGE (c2)-[:COMPLICATION_OF]->(d1)
+
+[隶属文件名]
+慢性偏头痛住院患者医疗质量评价与改进专家共识.md
+[隶属文件分块名]
+慢性偏头痛住院患者医疗质量评价与改进专家共识/003-一背景.md
+[文本块]
+一、背景（续）  
+本共识采用的医疗质量控制指标主要参考2020年神经系统疾病医疗质量控制指标及国内外的相关指南，并结合我国医疗体系现状设立。国际指南主要参考美国神经病学学会2014头痛质量测量标准、2018通用神经病学测量标准、2019美国神经病学学会头痛测量标准等。建议各质量控制指标和推荐意见可结合当地实际医疗现况进行相应调整，以方便、快速地应用于临床，实现规范的偏头痛诊疗。  
+
+二、慢性偏头痛住院患者医疗质量评价与关键指标  
+
+1. 头痛发作严重程度记录率:  
+(1) 定义: 记录头痛严重程度（视觉模拟量表 VAS评分）的例数占同期收治住院的慢性偏头痛患者总例数的比例。  
+(2) 计算公式: 头痛发作严重程度记录率 = ∑记录头痛发作严重程度的例数 × 100% / ∑同期收治住院慢性偏头痛患者例数  
+意义: 反映医院对于头痛规范性诊疗措施的执行情况。头痛严重程度是头痛分型诊断的重要依据，也是评估疗效的主要指标。住院患者病历里应有动态的VAS评分记录。  
+
+2. 头痛发作频率记录率:  
+(1) 定义: 记录头痛发作频率的例数占同期收治住院的慢性偏头痛患者总例数的比例。  
+(2) 计算公式: 头痛发作频率记录率 = ∑记录头痛发作频率的例数 / ∑同期收治住院慢性偏头痛患者例数  
+意义: 反映医院对于头痛规范性诊疗措施的执行情况。头痛频率是偏头痛分型依据，也是判断偏头痛预防性治疗指征和疗效的指标。住院患者病历里应有每月头痛发作天数的记录。  
+
+3. 急性期药物使用情况记录率:  
+(1) 定义: 病历中记录了3个月内或最近10次发作中使用急性期药物情况者占同期收治住院的慢性偏头痛患者的比例。  
+(2) 计算公式: 急性期药物使用情况记录率 = ∑记录急性期药物使用情况的例数 × 100% / ∑同期收治住院慢性偏头痛患者例数  
+意义: 反映医院对于头痛规范性诊疗措施的执行情况。急性期治疗药物使用情况包括药物名称、给药方式、剂量、频率、有效性及副作用。急性期治疗可使用对乙酰氨基酚、非甾体抗炎药、曲坦类药物、降钙素基因相关肽受体拮抗剂等。阿片、巴比妥类药物具有成瘾性，可能导致药物过度使用性头痛并诱发耐药性，需要详细记录使用情况。
+
+"""
+response = """
+// 节点更新
+MERGE (n:Disease {name: '慢性偏头痛'});
+
+MERGE (n:Symptom {name: '头痛发作严重程度'})
+SET 
+    n.description = coalesce(n.description, '记录头痛严重程度（视觉模拟量表 VAS评分）的例数'),
+    n.severity = coalesce(n.severity, '高'),
+    n.frequency = coalesce(n.frequency, '常见');
+
+MERGE (n:Symptom {name: '头痛发作频率'})
+SET 
+    n.description = coalesce(n.description, '记录头痛发作频率的例数'),
+    n.severity = coalesce(n.severity, '中'),
+    n.frequency = coalesce(n.frequency, '常见');
+
+MERGE (n:Treatment {name: '急性期治疗药物'})
+SET 
+    n.type = coalesce(n.type, '药物'),
+    n.description = coalesce(n.description, '用于缓解头痛的药物'),
+    n.dosage = coalesce(n.dosage, '根据处方'),
+    n.duration = coalesce(n.duration, '根据发作情况'),
+    n.contraindication = coalesce(n.contraindication, '阿片类药物可能导致成瘾性');
+
+MERGE (n:Treatment {name: '对乙酰氨基酚'})
+SET 
+    n.type = coalesce(n.type, '药物'),
+    n.description = coalesce(n.description, '常用的急性期治疗药物'),
+    n.dosage = coalesce(n.dosage, '根据剂量'),
+    n.duration = coalesce(n.duration, '根据需要'),
+    n.contraindication = coalesce(n.contraindication, '肝功能不全');
+
+MERGE (n:Treatment {name: '非甾体抗炎药'})
+SET 
+    n.type = coalesce(n.type, '药物'),
+    n.description = coalesce(n.description, '用于缓解疼痛的药物'),
+    n.dosage = coalesce(n.dosage, '根据剂量'),
+    n.duration = coalesce(n.duration, '根据需要'),
+    n.contraindication = coalesce(n.contraindication, '胃肠道溃疡');
+
+MERGE (n:Treatment {name: '曲坦类药物'})
+SET 
+    n.type = coalesce(n.type, '药物'),
+    n.description = coalesce(n.description, '偏头痛急性治疗药物'),
+    n.dosage = coalesce(n.dosage, '根据处方'),
+    n.duration = coalesce(n.duration, '根据发作情况'),
+    n.contraindication = coalesce(n.contraindication, '局部血管病');
+
+MERGE (n:Treatment {name: '降钙素基因相关肽受体拮抗剂'})
+SET 
+    n.type = coalesce(n.type, '药物'),
+    n.description = coalesce(n.description, '用于偏头痛治疗的药物'),
+    n.dosage = coalesce(n.dosage, '根据医生指导'),
+    n.duration = coalesce(n.duration, '根据发作情况'),
+    n.contraindication = coalesce(n.contraindication, '心血管疾病');
+
+MERGE (n:Complication {name: '药物过度使用性头痛'})
+SET 
+    n.description = coalesce(n.description, '因药物过度使用而引发的头痛'),
+    n.severity = coalesce(n.severity, '高');
+
+MERGE (n:Complication {name: '耐药性'})
+SET 
+    n.description = coalesce(n.description, '对药物的敏感性下降'),
+    n.severity = coalesce(n.severity, '中');
+
+// 关系更新
+MATCH (from) WHERE from.name = '头痛发作严重程度'
+MATCH (to) WHERE to.name = '慢性偏头痛'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.9),
+    r.frequency = coalesce(r.frequency, '高'),
+    r.severity = coalesce(r.severity, '高');
+
+MATCH (from) WHERE from.name = '头痛发作频率'
+MATCH (to) WHERE to.name = '慢性偏头痛'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.85),
+    r.frequency = coalesce(r.frequency, '高'),
+    r.severity = coalesce(r.severity, '中');
+
+MATCH (from) WHERE from.name = '慢性偏头痛'
+MATCH (to) WHERE to.name = '急性期治疗药物'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.88),
+    r.priority = coalesce(r.priority, '高'),
+    r.stage = coalesce(r.stage, '急性');
+
+MATCH (from) WHERE from.name = '慢性偏头痛'
+MATCH (to) WHERE to.name = '对乙酰氨基酚'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.9),
+    r.priority = coalesce(r.priority, '高'),
+    r.stage = coalesce(r.stage, '急性');
+
+MATCH (from) WHERE from.name = '慢性偏头痛'
+MATCH (to) WHERE to.name = '非甾体抗炎药'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.87),
+    r.priority = coalesce(r.priority, '高'),
+    r.stage = coalesce(r.stage, '急性');
+
+MATCH (from) WHERE from.name = '慢性偏头痛'
+MATCH (to) WHERE to.name = '曲坦类药物'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.92),
+    r.priority = coalesce(r.priority, '高'),
+    r.stage = coalesce(r.stage, '急性');
+
+MATCH (from) WHERE from.name = '慢性偏头痛'
+MATCH (to) WHERE to.name = '降钙素基因相关肽受体拮抗剂'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.91),
+    r.priority = coalesce(r.priority, '高'),
+    r.stage = coalesce(r.stage, '急性');
+
+MATCH (from) WHERE from.name = '慢性偏头痛'
+MATCH (to) WHERE to.name = '药物过度使用性头痛'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.7),
+    r.timeframe = coalesce(r.timeframe, '长期');
+
+MATCH (from) WHERE from.name = '药物过度使用性头痛'
+MATCH (to) WHERE to.name = '耐药性'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.6),
+    r.timeframe = coalesce(r.timeframe, '长期');
+
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-12 01:31:17"
+message = """
+
+[背景信息]
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+[命令]
+[CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+[详细补充需求]
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出\"// 空\"(不含引号)
+
+// 定义节点属性示例
+// 疾病节点
+CREATE (:Disease {
+    name: String,           // 疾病名称
+    code: String,           // 疾病编码
+    description: String,    // 疾病描述
+    category: String,       // 疾病分类
+    severity: String        // 严重程度
+});
+
+// 症状节点
+CREATE (:Symptom {
+    name: String,           // 症状名称
+    description: String,    // 症状描述
+    severity: String,       // 严重程度
+    frequency: String       // 发生频率
+});
+
+// 检查项目节点
+CREATE (:Examination {
+    name: String,           // 检查名称
+    description: String,    // 检查描述
+    method: String,         // 检查方法
+    requirement: String     // 检查要求
+});
+
+// 治疗方案节点
+CREATE (:Treatment {
+    name: String,           // 治疗名称
+    type: String,           // 类型(药物/非药物)
+    description: String,    // 治疗描述
+    dosage: String,         // 剂量(药物)
+    duration: String,       // 持续时间
+    contraindication: String // 禁忌症
+});
+
+// 量表工具节点
+CREATE (:Scale {
+    name: String,           // 量表名称
+    description: String,    // 量表描述
+    score_range: String,    // 分数范围
+    interpretation: String  // 结果解释
+});
+
+// 风险因素节点
+CREATE (:RiskFactor {
+    name: String,           // 因素名称
+    description: String,    // 描述
+    impact_level: String    // 影响程度
+});
+
+// 并发症节点
+CREATE (:Complication {
+    name: String,           // 并发症名称
+    description: String,    // 描述
+    severity: String        // 严重程度
+});
+
+// 定义关系类型
+// 症状-疾病关系
+CREATE (:Symptom)-[:INDICATES {
+    confidence: Float,      // 置信度
+    frequency: String,      // 发生频率
+    severity: String        // 严重程度
+}]->(:Disease);
+
+// 疾病-检查关系
+CREATE (:Disease)-[:REQUIRES_EXAM {
+    priority: String,       // 优先级
+    mandatory: Boolean      // 是否必需
+}]->(:Examination);
+
+// 疾病-治疗关系
+CREATE (:Disease)-[:TREATED_BY {
+    effectiveness: Float,   // 有效性
+    priority: String,       // 优先级
+    stage: String          // 治疗阶段
+}]->(:Treatment);
+
+// 疾病-并发症关系
+CREATE (:Disease)-[:MAY_CAUSE {
+    probability: Float,     // 发生概率
+    timeframe: String      // 时间框架
+}]->(:Complication);
+
+// 疾病-风险因素关系
+CREATE (:Disease)-[:INFLUENCED_BY {
+    impact_level: String,   // 影响程度
+    evidence_level: String  // 证据等级
+}]->(:RiskFactor);
+
+// 疾病-量表关系
+CREATE (:Disease)-[:ASSESSED_BY {
+    applicability: Float,   // 适用性
+    recommendation_level: String  // 推荐级别
+}]->(:Scale);
+
+[关系抽取说明]
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
+请尽你可能抽取全部关系
+[示例输出]
+MERGE (d1:Disease {name: \"阻塞性睡眠呼吸暂停低通气综合征\", short_name: \"OSAHS\"})
+MERGE (c1:Disease {name: \"高血压\"})
+MERGE (c2:Disease {name: \"糖尿病\"})
+MERGE (c1)-[:COMPLICATION_OF]->(d1)
+MERGE (c2)-[:COMPLICATION_OF]->(d1)
+
+[隶属文件名]
+慢性偏头痛住院患者医疗质量评价与改进专家共识.md
+[隶属文件分块名]
+慢性偏头痛住院患者医疗质量评价与改进专家共识/011-参-考-文-献.md
+[文本块]
+# 参考文献  
+
+[1] Headache Classification Committee of the International Headache Society (IHS) The International Classification of Headache Disorders, 3rd edition. Cephalalgia, 2018, 38(1): 1-211. DOI: 10.1177/0333102417738202.  
+[2] Friedman BW, West J, Vinson DR, et al. Current management of migraine in US emergency departments: an analysis of the National Hospital Ambulatory Medical Care Survey. Cephalalgia, 2015, 35(4): 301-309. DOI: 10.1177/0333102414539055.  
+[3] Yao C, Wang Y, Wang L, et al. Burden of headache disorders in China, 1990-2017: findings from the Global Burden of Disease Study 2017. J Headache Pain, 2019, 20(1): 102. DOI: 10.1186/s10194-019-1048-2.  
+[4] Global, regional, and national burden of migraine and tension‐type headache, 1990‐2016: a systematic analysis for the Global Burden of Disease Study 2016. Lancet Neurol, 2018, 17(11): 954-976. DOI: 10.1016/S1474-4422(18)30322-3.  
+[5] Takeshima T, Wan Q, Zhang Y, et al. Prevalence, burden, and clinical management of migraine in China, Japan, and South Korea: a comprehensive review of the literature. J Headache Pain, 2019, 20(1): 111. DOI: 10.1186/S10194-019-1062-4.  
+[6] Ashina M, Katsarava Z, Do TP, et al. Migraine: epidemiology and systems of care. Lancet, 2021, 397(10283): 1485‐1495. DOI: 10.1016/S0140‐6736(20)32160‐7.  
+[7] Eigenbrodt AK, Ashina H, Khan S, et al. Diagnosis and management of migraine in ten steps. Nat Rev Neurol, 2021, 17(8): 501‐514. DOI: 10.1038/s41582‐021‐00509‐5.  
+[8] Steiner TJ, Jensen R, Katsarava Z, et al. Aids to management of headache disorders in primary care (2nd edition): on behalf of the European Headache Federation and Lifting The Burden: the Global Campaign against Headache. J Headache Pain, 2019, 20(1): 57. DOI: 10.1186/s10194-018-0899-2.  
+[9] Zhang N, Cowan RP. On making a headache medicine rotation mandatory in neurology training. Headache, 2019, 59(10): 1841-1845. DOI: 10.1111/head.13667.  
+[10] Kristoffersen ES, Faiz KW, Winsvold BS. Neurology residents' knowledge of the management of headache. Cephalalgia, 2019, 39(11): 1396‐1406. DOI: 10.1177/0333102419847973.  
+[11] Silberstein SD, Lipton RB, Sliwinski M. Classification of daily and near-daily headaches: field trial of revised IHS criteria. Neurology, 1996, 47(4): 871-875. DOI: 10.1212/wnl.47.4.871.  
+[12] Berra E, Sances G, De Icco R, et al. Cost of Chronic and Episodic Migraine. A pilot study from a tertiary headache centre in northern Italy. J Headache Pain, 2015, 16: 532. DOI: 10.1186/s10194-015-0532-6.  
+[13] Buse DC, Manack A, Serrano D, et al. Sociodemographic and comorbidity profiles of chronic migraine and episodic migraine sufferers. J Neurol Neurosurg Psychiatry, 2010, 81(4): 428-432. DOI: 10.1136/jnnp.2009.192492.  
+[14] Giacomozzi AR, Vindas AP, Silva AA Jr et al. Latin American consensus on guidelines for chronic migraine treatment. Arq Neuropsiquiatr, 2013, 71(7): 478-486. DOI: 10.1590/0004‐282X20130066.  
+[15] Marmura MJ, Hou A. Inpatient Management of Migraine. Neurol Clin, 2019, 37(4): 771-788. DOI: 10.1016/j.ncl.2019.07.007.  
+[16] 国家卫生健康委办公厅. 国家卫生健康委办公厅关于进一步加强单病种质量管理与控制工作的通知. 国卫办医函 2020 624 [R/OL]. [2022-09-22]. cn/yzygi/s7657/202007/b31755433b8e4a50b23906b9f1a07393.shtml.  
+[17] 国家卫生健康委办公厅. 国家卫生健康委办公厅关于印发神经系统疾病和肾病专业医疗质量控制指标(2020年版). 2020 13 [R/OL]. [2022-09-22]. 14c4798c9b2c39735c769.shtml.  
+[18] 国家神经系统疾病质量控制中心头痛规范化建设工作委员会. [J]. 2021, 16(2): 187-193. DOI: 10.3969/jissn.1673-5765.2021.02.014.  
+[19] 头面痛学组. 中国偏头痛诊断治疗指南. 中国疼痛医学杂, 2011, 17(2): 65-86. DOI: 10.3969/j.issn.1006-9852.2011.02.001.  
+[20] 中华医学会疼痛学分会头面痛学组, 中国医师协会神经内科医师分会疼痛和感觉障碍专委会. 中国偏头痛防治指南. 中国疼痛医学杂志, 2016, 22(10): 721-727. DOI: 10.3969/j.issn.1006-9852.2016.10.001.  
+[21] Ross S, Wall E, Schierman B, et al. Quality improvement in neurology: primary headache quality measures. Neurology, 2015, 84(2): 200-203. DOI: 10.1212/WNL.0000000000001134.  
+[22] Martello J, Buchhalter J, Das RR, et al. Quality improvement in neurology: Universal neurology quality measurement set: Executive summary. Neurology, 2019, 92(9): 418‐426. DOI: 10.1212/WNL.0000000000006927.  
+[23] Robbins MS, Victorio MC, Bailey M, et al. Quality improvement in neurology: Headache Quality Measurement Set. Neurology, 2020, 95(19): 866-873. DOI: 10.1212/WNL.0000000000010634.  
+
+"""
+response = """
+// 节点更新
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-12 01:31:25"
+message = """
+
+[背景信息]
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+[命令]
+[CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+[详细补充需求]
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出\"// 空\"(不含引号)
+
+// 定义节点属性示例
+// 疾病节点
+CREATE (:Disease {
+    name: String,           // 疾病名称
+    code: String,           // 疾病编码
+    description: String,    // 疾病描述
+    category: String,       // 疾病分类
+    severity: String        // 严重程度
+});
+
+// 症状节点
+CREATE (:Symptom {
+    name: String,           // 症状名称
+    description: String,    // 症状描述
+    severity: String,       // 严重程度
+    frequency: String       // 发生频率
+});
+
+// 检查项目节点
+CREATE (:Examination {
+    name: String,           // 检查名称
+    description: String,    // 检查描述
+    method: String,         // 检查方法
+    requirement: String     // 检查要求
+});
+
+// 治疗方案节点
+CREATE (:Treatment {
+    name: String,           // 治疗名称
+    type: String,           // 类型(药物/非药物)
+    description: String,    // 治疗描述
+    dosage: String,         // 剂量(药物)
+    duration: String,       // 持续时间
+    contraindication: String // 禁忌症
+});
+
+// 量表工具节点
+CREATE (:Scale {
+    name: String,           // 量表名称
+    description: String,    // 量表描述
+    score_range: String,    // 分数范围
+    interpretation: String  // 结果解释
+});
+
+// 风险因素节点
+CREATE (:RiskFactor {
+    name: String,           // 因素名称
+    description: String,    // 描述
+    impact_level: String    // 影响程度
+});
+
+// 并发症节点
+CREATE (:Complication {
+    name: String,           // 并发症名称
+    description: String,    // 描述
+    severity: String        // 严重程度
+});
+
+// 定义关系类型
+// 症状-疾病关系
+CREATE (:Symptom)-[:INDICATES {
+    confidence: Float,      // 置信度
+    frequency: String,      // 发生频率
+    severity: String        // 严重程度
+}]->(:Disease);
+
+// 疾病-检查关系
+CREATE (:Disease)-[:REQUIRES_EXAM {
+    priority: String,       // 优先级
+    mandatory: Boolean      // 是否必需
+}]->(:Examination);
+
+// 疾病-治疗关系
+CREATE (:Disease)-[:TREATED_BY {
+    effectiveness: Float,   // 有效性
+    priority: String,       // 优先级
+    stage: String          // 治疗阶段
+}]->(:Treatment);
+
+// 疾病-并发症关系
+CREATE (:Disease)-[:MAY_CAUSE {
+    probability: Float,     // 发生概率
+    timeframe: String      // 时间框架
+}]->(:Complication);
+
+// 疾病-风险因素关系
+CREATE (:Disease)-[:INFLUENCED_BY {
+    impact_level: String,   // 影响程度
+    evidence_level: String  // 证据等级
+}]->(:RiskFactor);
+
+// 疾病-量表关系
+CREATE (:Disease)-[:ASSESSED_BY {
+    applicability: Float,   // 适用性
+    recommendation_level: String  // 推荐级别
+}]->(:Scale);
+
+[关系抽取说明]
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
+请尽你可能抽取全部关系
+[示例输出]
+MERGE (d1:Disease {name: \"阻塞性睡眠呼吸暂停低通气综合征\", short_name: \"OSAHS\"})
+MERGE (c1:Disease {name: \"高血压\"})
+MERGE (c2:Disease {name: \"糖尿病\"})
+MERGE (c1)-[:COMPLICATION_OF]->(d1)
+MERGE (c2)-[:COMPLICATION_OF]->(d1)
+
+[隶属文件名]
+慢性偏头痛住院患者医疗质量评价与改进专家共识.md
+[隶属文件分块名]
+慢性偏头痛住院患者医疗质量评价与改进专家共识/008-同期收治住院慢性偏头痛例数.md
+[文本块]
+# ∑同期收治住院慢性偏头痛例数  
+
+$\\times100\\%$  
+
+意义:反映医院对于头痛规范化诊疗措施的执行情况,有助于提升慢性偏头痛治疗效果,防止复发。MOH是指既往有原发性头痛因规律服用过量≥15 d/ ≥15 d方及联合使用止痛药 $\\geqslant10\\;\\mathrm{d}/$ 月,NSAIDs及对乙酰氨基酚 $\\geqslant15~\\mathrm{d}/$ 月),导致每月头痛发作 $\\geq\\!15\\;\\mathrm{d}$ ,并且持续至少3个月。根据急性期药物用药频率筛查出慢性偏头痛中合并药物过度使用的患者,应对止痛药物戒断的模式、疗程、不良反应进行健康教育,并签署知情同意书。  
+
+6.头痛日记记录率:  
+
+(1)定义:规范记录头痛日记(表1)的例数占同期收治住院的慢性偏头痛患者总例数的比例。  
+
+(2)计算公式:  
+
+头痛日记记录率 $=$规范记录头痛日记的例数  
+
+$\\times~100\\%$∑同期收治住院慢性偏头痛例数  
+
+意义:反映医院对于头痛规范化诊疗措施的执行情况,有助于提供详细的病史以帮助诊断和评估预防治疗效果。偏头痛住院患者病历里应体现医院对头痛日记的患者教育及患者头痛日记记录的情况。  
+
+7.失能评估率:  
+
+(1)定义:进行失能评估的例数占同期收治住院慢性偏头痛患者总例数的比例。  
+
+(2)计算公式:  
+
+失能评估率 $=$  
+
+∑进行失能评估的例数× 100%  
+
+Z同期收治住院慢性偏头痛例数  
+
+意义:评估偏头痛患者人院前后失能程度,以便评估疗效以及头痛负担。偏头痛残疾程度评估问卷(MIDAS)(表2)是世界范围内被专科医生广泛应用的头痛失能问卷,具有较好的重测信度和效度,反映近3个月的头痛负担。儿童和青少年可使用儿童青少年头痛残疾量表(RedMIDAS)(表3)评估近3个月头痛负担及疗效。头痛影响测验(HIT-6)(表4),评价4周内头痛对患者工作、家庭和社会活动的影响。  
+
+8.共病焦虑抑郁状态筛查率:  
+
+表2偏头痛残疾程度评估问卷(MIDAS)  
+
+表3儿童青少年(6~17岁)头痛残疾量表(PedMIDAS)  
+
+表4 头痛影响测定量表(HIT-6)  
+
+注:1级: $<\\!50$ 分,没有或较少影响;2级:50~55分,中度影响;3级:56~59分,明显影响;4级:严重影响  
+
+(1)定义:完成共病(焦虑状态、抑郁状态)筛查例数占同期收治住院慢性偏头痛患者总例数的比例。  
+
+(2)计算公式:  
+
+共病焦虑抑郁状态筛查率 $=$完成共病(焦虑状态、抑郁状态)筛查的例数
+
+"""
+response = """
+// 节点更新
+MERGE (n:Disease {name: '慢性偏头痛'});
+
+MERGE (n:Treatment {name: '止痛药物戒断'})
+SET 
+    n.type = coalesce(n.type, '非药物'),
+    n.description = coalesce(n.description, '针对过度使用止痛药的患者进行戒断治疗'),
+    n.duration = coalesce(n.duration, '根据患者个体情况'),
+    n.contraindication = coalesce(n.contraindication, '药物过敏');
+
+MERGE (n:Symptom {name: '头痛'})
+SET 
+    n.description = coalesce(n.description, '反复发作的头痛症状'),
+    n.severity = coalesce(n.severity, '中度'),
+    n.frequency = coalesce(n.frequency, '每月多次');
+
+MERGE (n:Scale {name: '偏头痛残疾程度评估问卷(MIDAS)'})
+SET 
+    n.description = coalesce(n.description, '评估偏头痛患者的残疾程度'),
+    n.score_range = coalesce(n.score_range, '0-100'),
+    n.interpretation = coalesce(n.interpretation, '得分越高，残疾程度越重');
+
+MERGE (n:Scale {name: '儿童青少年头痛残疾量表(RedMIDAS)'})
+SET 
+    n.description = coalesce(n.description, '专门评估儿童和青少年偏头痛的残疾程度'),
+    n.score_range = coalesce(n.score_range, '0-100'),
+    n.interpretation = coalesce(n.interpretation, '得分越高，残疾程度越重');
+
+MERGE (n:Scale {name: '头痛影响测定量表(HIT-6)'})
+SET 
+    n.description = coalesce(n.description, '评估头痛对患者生活质量的影响'),
+    n.score_range = coalesce(n.score_range, '36-78'),
+    n.interpretation = coalesce(n.interpretation, '得分越高，影响越大');
+
+// 关系更新
+MATCH (from) WHERE from.name = '头痛'
+MATCH (to) WHERE to.name = '慢性偏头痛'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.9),
+    r.frequency = coalesce(r.frequency, '经常'),
+    r.severity = coalesce(r.severity, '中度');
+
+MATCH (from) WHERE from.name = '慢性偏头痛'
+MATCH (to) WHERE to.name = '止痛药物戒断'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.85),
+    r.priority = coalesce(r.priority, '高'),
+    r.stage = coalesce(r.stage, '急性期');
+
+MATCH (from) WHERE from.name = '慢性偏头痛'
+MATCH (to) WHERE to.name = '偏头痛残疾程度评估问卷(MIDAS)'
+MERGE (from)-[r:ASSESSED_BY]->(to)
+SET 
+    r.applicability = coalesce(r.applicability, 0.95),
+    r.recommendation_level = coalesce(r.recommendation_level, '推荐');
+
+MATCH (from) WHERE from.name = '慢性偏头痛'
+MATCH (to) WHERE to.name = '儿童青少年头痛残疾量表(RedMIDAS)'
+MERGE (from)-[r:ASSESSED_BY]->(to)
+SET 
+    r.applicability = coalesce(r.applicability, 0.9),
+    r.recommendation_level = coalesce(r.recommendation_level, '适用');
+
+MATCH (from) WHERE from.name = '慢性偏头痛'
+MATCH (to) WHERE to.name = '头痛影响测定量表(HIT-6)'
+MERGE (from)-[r:ASSESSED_BY]->(to)
+SET 
+    r.applicability = coalesce(r.applicability, 0.92),
+    r.recommendation_level = coalesce(r.recommendation_level, '推荐');
+
+MATCH (from) WHERE from.name = '慢性偏头痛'
+MATCH (to) WHERE to.name = '头痛'
+MERGE (from)-[r:REQUIRES_EXAM]->(to)
+SET 
+    r.priority = coalesce(r.priority, '高'),
+    r.mandatory = coalesce(r.mandatory, 'true');
+
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-12 01:31:26"
+message = """
+
+[背景信息]
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+[命令]
+[CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+[详细补充需求]
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出\"// 空\"(不含引号)
+
+// 定义节点属性示例
+// 疾病节点
+CREATE (:Disease {
+    name: String,           // 疾病名称
+    code: String,           // 疾病编码
+    description: String,    // 疾病描述
+    category: String,       // 疾病分类
+    severity: String        // 严重程度
+});
+
+// 症状节点
+CREATE (:Symptom {
+    name: String,           // 症状名称
+    description: String,    // 症状描述
+    severity: String,       // 严重程度
+    frequency: String       // 发生频率
+});
+
+// 检查项目节点
+CREATE (:Examination {
+    name: String,           // 检查名称
+    description: String,    // 检查描述
+    method: String,         // 检查方法
+    requirement: String     // 检查要求
+});
+
+// 治疗方案节点
+CREATE (:Treatment {
+    name: String,           // 治疗名称
+    type: String,           // 类型(药物/非药物)
+    description: String,    // 治疗描述
+    dosage: String,         // 剂量(药物)
+    duration: String,       // 持续时间
+    contraindication: String // 禁忌症
+});
+
+// 量表工具节点
+CREATE (:Scale {
+    name: String,           // 量表名称
+    description: String,    // 量表描述
+    score_range: String,    // 分数范围
+    interpretation: String  // 结果解释
+});
+
+// 风险因素节点
+CREATE (:RiskFactor {
+    name: String,           // 因素名称
+    description: String,    // 描述
+    impact_level: String    // 影响程度
+});
+
+// 并发症节点
+CREATE (:Complication {
+    name: String,           // 并发症名称
+    description: String,    // 描述
+    severity: String        // 严重程度
+});
+
+// 定义关系类型
+// 症状-疾病关系
+CREATE (:Symptom)-[:INDICATES {
+    confidence: Float,      // 置信度
+    frequency: String,      // 发生频率
+    severity: String        // 严重程度
+}]->(:Disease);
+
+// 疾病-检查关系
+CREATE (:Disease)-[:REQUIRES_EXAM {
+    priority: String,       // 优先级
+    mandatory: Boolean      // 是否必需
+}]->(:Examination);
+
+// 疾病-治疗关系
+CREATE (:Disease)-[:TREATED_BY {
+    effectiveness: Float,   // 有效性
+    priority: String,       // 优先级
+    stage: String          // 治疗阶段
+}]->(:Treatment);
+
+// 疾病-并发症关系
+CREATE (:Disease)-[:MAY_CAUSE {
+    probability: Float,     // 发生概率
+    timeframe: String      // 时间框架
+}]->(:Complication);
+
+// 疾病-风险因素关系
+CREATE (:Disease)-[:INFLUENCED_BY {
+    impact_level: String,   // 影响程度
+    evidence_level: String  // 证据等级
+}]->(:RiskFactor);
+
+// 疾病-量表关系
+CREATE (:Disease)-[:ASSESSED_BY {
+    applicability: Float,   // 适用性
+    recommendation_level: String  // 推荐级别
+}]->(:Scale);
+
+[关系抽取说明]
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
+请尽你可能抽取全部关系
+[示例输出]
+MERGE (d1:Disease {name: \"阻塞性睡眠呼吸暂停低通气综合征\", short_name: \"OSAHS\"})
+MERGE (c1:Disease {name: \"高血压\"})
+MERGE (c2:Disease {name: \"糖尿病\"})
+MERGE (c1)-[:COMPLICATION_OF]->(d1)
+MERGE (c2)-[:COMPLICATION_OF]->(d1)
+
+[隶属文件名]
+慢性偏头痛住院患者医疗质量评价与改进专家共识.md
+[隶属文件分块名]
+慢性偏头痛住院患者医疗质量评价与改进专家共识/009-Z同期收治住院慢性偏头痛例数.md
+[文本块]
+# Z同期收治住院慢性偏头痛例数  
+
+意义: 反映医院对于头痛规范化诊疗措施的执行情况。  
+
+- 焦虑及抑郁状态显著增加了慢性偏头痛患者的疾病负担。  
+- 慢性偏头痛住院期间应进行焦虑及抑郁状态筛查。  
+
+主要量表:  
+- 广泛性焦虑量表 (GAD-7)  
+- 汉密尔顿焦虑量表 (HAMA)  
+- PHQ-9 健康问卷 (PHQ-9)  
+- 汉密尔顿抑郁量表 (HAMD)  
+
+共病睡眠障碍筛查率:  
+
+(1) 定义: 完成共病睡眠障碍的筛查例数占同期收治住院慢性偏头痛患者总例数的比例。  
+
+(2) 计算公式:  
+共病睡眠障碍筛查率 = ∑完成共病睡眠障碍筛查的例数 × 100% / ∑同期收治住院慢性偏头痛例数  
+
+意义: 反应医疗机构对慢性偏头痛共病睡眠障碍规范化诊疗措施执行情况，有助于提高对慢性偏头痛共病睡眠障碍的及时识别及治疗，提高患者生活质量。  
+
+建议量表:  
+- 匹兹堡睡眠质量指数 (PSQI)  
+
+"""
+response = """
+// 节点更新
+MERGE (n:Disease {name: '慢性偏头痛'});
+
+MERGE (n:Disease {name: '共病睡眠障碍'});
+
+MERGE (n:Symptom {name: '焦虑'})
+SET 
+    n.description = coalesce(n.description, '显著增加了慢性偏头痛患者的疾病负担');
+
+MERGE (n:Symptom {name: '抑郁'})
+SET 
+    n.description = coalesce(n.description, '显著增加了慢性偏头痛患者的疾病负担');
+
+MERGE (n:Scale {name: '广泛性焦虑量表 (GAD-7)'})
+SET 
+    n.description = coalesce(n.description, '用于评估焦虑状态');
+
+MERGE (n:Scale {name: '汉密尔顿焦虑量表 (HAMA)'})
+SET 
+    n.description = coalesce(n.description, '用于评估焦虑状态');
+
+MERGE (n:Scale {name: 'PHQ-9 健康问卷'})
+SET 
+    n.description = coalesce(n.description, '用于评估抑郁状态');
+
+MERGE (n:Scale {name: '汉密尔顿抑郁量表 (HAMD)'})
+SET 
+    n.description = coalesce(n.description, '用于评估抑郁状态');
+
+MERGE (n:Scale {name: '匹兹堡睡眠质量指数 (PSQI)'})
+SET 
+    n.description = coalesce(n.description, '用于评估睡眠质量');
+
+// 关系更新
+MATCH (from) WHERE from.name = '慢性偏头痛'
+MATCH (to) WHERE to.name = '共病睡眠障碍'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.5),
+    r.timeframe = coalesce(r.timeframe, '住院期间');
+
+"""

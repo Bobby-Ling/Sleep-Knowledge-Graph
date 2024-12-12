@@ -88,7 +88,7 @@ class CommandRunner:
 
 # main 函数保持不变
 def main():
-    global TRACE_FILE_SUFFIX, MAX_WORKERS
+    global MAX_WORKERS
     parser = argparse.ArgumentParser()
     parser.add_argument(
         '--dry-run',

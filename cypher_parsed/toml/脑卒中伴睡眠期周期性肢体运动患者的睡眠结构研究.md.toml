@@ -1,0 +1,1691 @@
+[metadata]
+file_name = "脑卒中伴睡眠期周期性肢体运动患者的睡眠结构研究.md"
+processed_at = "2024-12-12 01:27:26"
+total_pairs = 7
+
+[[message_pairs]]
+timestamp = "2024-12-12 01:26:34"
+message = """
+
+[背景信息]
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+[命令]
+[CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+[详细补充需求]
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出\"// 空\"(不含引号)
+
+// 定义节点属性示例
+// 疾病节点
+CREATE (:Disease {
+    name: String,           // 疾病名称
+    code: String,           // 疾病编码
+    description: String,    // 疾病描述
+    category: String,       // 疾病分类
+    severity: String        // 严重程度
+});
+
+// 症状节点
+CREATE (:Symptom {
+    name: String,           // 症状名称
+    description: String,    // 症状描述
+    severity: String,       // 严重程度
+    frequency: String       // 发生频率
+});
+
+// 检查项目节点
+CREATE (:Examination {
+    name: String,           // 检查名称
+    description: String,    // 检查描述
+    method: String,         // 检查方法
+    requirement: String     // 检查要求
+});
+
+// 治疗方案节点
+CREATE (:Treatment {
+    name: String,           // 治疗名称
+    type: String,           // 类型(药物/非药物)
+    description: String,    // 治疗描述
+    dosage: String,         // 剂量(药物)
+    duration: String,       // 持续时间
+    contraindication: String // 禁忌症
+});
+
+// 量表工具节点
+CREATE (:Scale {
+    name: String,           // 量表名称
+    description: String,    // 量表描述
+    score_range: String,    // 分数范围
+    interpretation: String  // 结果解释
+});
+
+// 风险因素节点
+CREATE (:RiskFactor {
+    name: String,           // 因素名称
+    description: String,    // 描述
+    impact_level: String    // 影响程度
+});
+
+// 并发症节点
+CREATE (:Complication {
+    name: String,           // 并发症名称
+    description: String,    // 描述
+    severity: String        // 严重程度
+});
+
+// 定义关系类型
+// 症状-疾病关系
+CREATE (:Symptom)-[:INDICATES {
+    confidence: Float,      // 置信度
+    frequency: String,      // 发生频率
+    severity: String        // 严重程度
+}]->(:Disease);
+
+// 疾病-检查关系
+CREATE (:Disease)-[:REQUIRES_EXAM {
+    priority: String,       // 优先级
+    mandatory: Boolean      // 是否必需
+}]->(:Examination);
+
+// 疾病-治疗关系
+CREATE (:Disease)-[:TREATED_BY {
+    effectiveness: Float,   // 有效性
+    priority: String,       // 优先级
+    stage: String          // 治疗阶段
+}]->(:Treatment);
+
+// 疾病-并发症关系
+CREATE (:Disease)-[:MAY_CAUSE {
+    probability: Float,     // 发生概率
+    timeframe: String      // 时间框架
+}]->(:Complication);
+
+// 疾病-风险因素关系
+CREATE (:Disease)-[:INFLUENCED_BY {
+    impact_level: String,   // 影响程度
+    evidence_level: String  // 证据等级
+}]->(:RiskFactor);
+
+// 疾病-量表关系
+CREATE (:Disease)-[:ASSESSED_BY {
+    applicability: Float,   // 适用性
+    recommendation_level: String  // 推荐级别
+}]->(:Scale);
+
+[关系抽取说明]
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
+请尽你可能抽取全部关系
+[示例输出]
+MERGE (d1:Disease {name: \"阻塞性睡眠呼吸暂停低通气综合征\", short_name: \"OSAHS\"})
+MERGE (c1:Disease {name: \"高血压\"})
+MERGE (c2:Disease {name: \"糖尿病\"})
+MERGE (c1)-[:COMPLICATION_OF]->(d1)
+MERGE (c2)-[:COMPLICATION_OF]->(d1)
+
+[隶属文件名]
+脑卒中伴睡眠期周期性肢体运动患者的睡眠结构研究.md
+[隶属文件分块名]
+脑卒中伴睡眠期周期性肢体运动患者的睡眠结构研究/002-脑卒中伴睡眠期周期性肢体运动患者的睡眠结构研究.md
+[文本块]
+脑卒中伴睡眠期周期性肢体运动患者的睡眠结构研究  
+睡眠期周期性肢体运动 (PLMS) 是指主要发生于非快速动眼睡眠期重复性肢体运动，其特点为睡眠期间短暂、刻板、重复性的踇趾伸直、足踝部背屈，有时累及膝部、髋部及上肢。  
+周期性肢体运动指数 (PLMI) 是在睡眠监测中发现规律性肢体运动的次数，PLMI≥15 次/小时且排除其他疾病引起的睡眠症状则为周期性肢体运动障碍 (PLMD)。  
+成年人 PLMD 患病率为 4%~11%，且随着年龄增加发病率增加。  
+有研究表明，PLMS 可能是脑卒中的危险因素，可加重脑卒中患者功能障碍（美国国立卫生研究院卒中量表 NIHSS 评分升高）。  
+LIN 等研究支持并验证了上述结果。  
+尽管 PLMS 与脑卒中严重程度和复发率明显相关，但目前的横断面研究仍无法回答二者的时间顺序和因果关系。  
+因研究 PLMS 对脑卒中患者睡眠影响的相关资料较少，本研究拟通过多导睡眠监测 (PSG) 观察脑卒中患者的睡眠结构，并对伴 PLMS 的脑卒中患者进行睡眠结构分析。
+
+"""
+response = """
+// 节点更新
+MERGE (n:Disease {name: '脑卒中'})
+SET 
+    n.code = coalesce(n.code, 'I63'),
+    n.description = coalesce(n.description, '脑血管意外'),
+    n.category = coalesce(n.category, '神经系统疾病'),
+    n.severity = coalesce(n.severity, '严重');
+
+MERGE (n:Disease {name: '周期性肢体运动障碍'})
+SET 
+    n.code = coalesce(n.code, 'G47.61'),
+    n.description = coalesce(n.description, '在睡眠期间出现的周期性肢体运动'),
+    n.category = coalesce(n.category, '睡眠障碍'),
+    n.severity = coalesce(n.severity, '中等');
+
+MERGE (n:Symptom {name: '周期性肢体运动'})
+SET 
+    n.description = coalesce(n.description, '非快速动眼睡眠期间的重复性肢体运动'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '短暂、刻板');
+
+MERGE (n:Symptom {name: '功能障碍'})
+SET 
+    n.description = coalesce(n.description, '脑卒中患者的功能受损'),
+    n.severity = coalesce(n.severity, '严重'),
+    n.frequency = coalesce(n.frequency, '持续');
+
+MERGE (n:RiskFactor {name: 'PLMS'})
+SET 
+    n.description = coalesce(n.description, '睡眠期周期性肢体运动的表现'),
+    n.impact_level = coalesce(n.impact_level, '高');
+
+// 关系更新
+MATCH (from) WHERE from.name = '脑卒中'
+MATCH (to) WHERE to.name = 'PLMS'
+MERGE (from)-[r:INFLUENCED_BY]->(to)
+SET 
+    r.impact_level = coalesce(r.impact_level, '高'),
+    r.evidence_level = coalesce(r.evidence_level, '中');
+
+MATCH (from) WHERE from.name = '周期性肢体运动障碍'
+MATCH (to) WHERE to.name = '脑卒中'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.9),
+    r.frequency = coalesce(r.frequency, '频繁'),
+    r.severity = coalesce(r.severity, '中');
+
+MATCH (from) WHERE from.name = '脑卒中'
+MATCH (to) WHERE to.name = '周期性肢体运动障碍'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.6),
+    r.timeframe = coalesce(r.timeframe, '长期');
+
+MATCH (from) WHERE from.name = '周期性肢体运动障碍'
+MATCH (to) WHERE to.name = 'PLMS'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.8),
+    r.priority = coalesce(r.priority, '高'),
+    r.stage = coalesce(r.stage, '早期');
+
+MATCH (from) WHERE from.name = '脑卒中'
+MATCH (to) WHERE to.name = '周期性肢体运动'
+MERGE (from)-[r:REQUIRES_EXAM]->(to)
+SET 
+    r.priority = coalesce(r.priority, '高'),
+    r.mandatory = coalesce(r.mandatory, 'true');
+
+MATCH (from) WHERE from.name = '脑卒中'
+MATCH (to) WHERE to.name = '功能障碍'
+MERGE (from)-[r:REQUIRES_EXAM]->(to)
+SET 
+    r.priority = coalesce(r.priority, '中'),
+    r.mandatory = coalesce(r.mandatory, 'true');
+
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-12 01:26:37"
+message = """
+
+[背景信息]
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+[命令]
+[CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+[详细补充需求]
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出\"// 空\"(不含引号)
+
+// 定义节点属性示例
+// 疾病节点
+CREATE (:Disease {
+    name: String,           // 疾病名称
+    code: String,           // 疾病编码
+    description: String,    // 疾病描述
+    category: String,       // 疾病分类
+    severity: String        // 严重程度
+});
+
+// 症状节点
+CREATE (:Symptom {
+    name: String,           // 症状名称
+    description: String,    // 症状描述
+    severity: String,       // 严重程度
+    frequency: String       // 发生频率
+});
+
+// 检查项目节点
+CREATE (:Examination {
+    name: String,           // 检查名称
+    description: String,    // 检查描述
+    method: String,         // 检查方法
+    requirement: String     // 检查要求
+});
+
+// 治疗方案节点
+CREATE (:Treatment {
+    name: String,           // 治疗名称
+    type: String,           // 类型(药物/非药物)
+    description: String,    // 治疗描述
+    dosage: String,         // 剂量(药物)
+    duration: String,       // 持续时间
+    contraindication: String // 禁忌症
+});
+
+// 量表工具节点
+CREATE (:Scale {
+    name: String,           // 量表名称
+    description: String,    // 量表描述
+    score_range: String,    // 分数范围
+    interpretation: String  // 结果解释
+});
+
+// 风险因素节点
+CREATE (:RiskFactor {
+    name: String,           // 因素名称
+    description: String,    // 描述
+    impact_level: String    // 影响程度
+});
+
+// 并发症节点
+CREATE (:Complication {
+    name: String,           // 并发症名称
+    description: String,    // 描述
+    severity: String        // 严重程度
+});
+
+// 定义关系类型
+// 症状-疾病关系
+CREATE (:Symptom)-[:INDICATES {
+    confidence: Float,      // 置信度
+    frequency: String,      // 发生频率
+    severity: String        // 严重程度
+}]->(:Disease);
+
+// 疾病-检查关系
+CREATE (:Disease)-[:REQUIRES_EXAM {
+    priority: String,       // 优先级
+    mandatory: Boolean      // 是否必需
+}]->(:Examination);
+
+// 疾病-治疗关系
+CREATE (:Disease)-[:TREATED_BY {
+    effectiveness: Float,   // 有效性
+    priority: String,       // 优先级
+    stage: String          // 治疗阶段
+}]->(:Treatment);
+
+// 疾病-并发症关系
+CREATE (:Disease)-[:MAY_CAUSE {
+    probability: Float,     // 发生概率
+    timeframe: String      // 时间框架
+}]->(:Complication);
+
+// 疾病-风险因素关系
+CREATE (:Disease)-[:INFLUENCED_BY {
+    impact_level: String,   // 影响程度
+    evidence_level: String  // 证据等级
+}]->(:RiskFactor);
+
+// 疾病-量表关系
+CREATE (:Disease)-[:ASSESSED_BY {
+    applicability: Float,   // 适用性
+    recommendation_level: String  // 推荐级别
+}]->(:Scale);
+
+[关系抽取说明]
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
+请尽你可能抽取全部关系
+[示例输出]
+MERGE (d1:Disease {name: \"阻塞性睡眠呼吸暂停低通气综合征\", short_name: \"OSAHS\"})
+MERGE (c1:Disease {name: \"高血压\"})
+MERGE (c2:Disease {name: \"糖尿病\"})
+MERGE (c1)-[:COMPLICATION_OF]->(d1)
+MERGE (c2)-[:COMPLICATION_OF]->(d1)
+
+[隶属文件名]
+脑卒中伴睡眠期周期性肢体运动患者的睡眠结构研究.md
+[隶属文件分块名]
+脑卒中伴睡眠期周期性肢体运动患者的睡眠结构研究/005-3-讨论.md
+[文本块]
+睡眠障碍是脑卒中的常见并发症，临床表现多样，受到神经内科等学科的关注。PLMS（周期性肢体运动综合症）因反复刻板性动作引起关注，但其病因尚不明确，文献称其可能与多巴胺能系统受损相关，并可增加心脑血管疾病的风险。目前对脑血管引发肢体运动的防治未受到重视，相关报道较少，临床经验也缺乏。当床伴发现患者睡眠中肢体异常运动时，临床上常以脑血管并发症处理，而未进一步探查病因，可能因药物选择不当而诱发或加重症状，延误病情。本研究纳入81例患者，观察其睡眠结构，以提供理论支持和数据支撑，促进睡眠医学发展，科学指导用药，降低患者负担。
+
+研究发现伴有PLMS的患者，睡眠效率降低，清醒次数增多，睡眠结构失调，PLMS与周期性肢体运动觉醒指数有较强相关性（$r_{s}{=}0.828$）。BENBIR等调查评估了年龄为50-80岁的缺血性脑卒中患者，发现54.3%的患者在睡眠中会出现周期性腿部运动，平均PLMI较高。脑的破坏性损伤会导致运动通路受损，造成大脑皮质下去抑制，引起A11多巴胺能在脑干脊髓通路中功能减退，促进PLMS进展。这些通路支配节前交感神经元，其功能减退可导致交感神经兴奋，增加心脏病和脑卒中的发病风险。在最新前瞻性研究中，分析PLMS与脑小血管病变的影像学关系，发现PLMS升高与脑小血管疾病相关。证实脑卒中患者的器质性病变会加重PLMS发展，是心脑血管疾病的重要危险因素。
+
+关于PLMS患者的脑神经功能，KIM等通过分析脑电图源定位的增量波段，发现PLMS发作之前，个体大脑中央周围区域首先发生变化，随后是额叶和顶叶区域。一项采用正电子发射断层扫描技术的研究表明，PLMS发生之前，个体双侧大脑中央周围和右后扣带回区域与运动相关的运动想象激活相对应。越来越多的神经影像学和神经解剖学研究证据支持PLMS的启动与中央周围、前额叶背外侧和扣带回区域脑电活动的关系，其中前额叶背外侧皮质负责运动控制，后扣带皮质作为中心节点，在与额顶控制网络相关的执行运动控制中发挥作用。监测睡眠时，笔者观察到在发生PLMS前，个体的脑电图会显示相应的波幅变化，支持PLMS与皮质额叶、扣带回的相关性。
+
+"""
+response = """
+// 节点更新
+MERGE (n:Disease {name: '脑卒中'})
+SET 
+    n.description = coalesce(n.description, '脑卒中是常见的神经系统疾病，常伴随睡眠障碍'),
+    n.category = coalesce(n.category, '神经病'),
+    n.severity = coalesce(n.severity, '严重');
+
+MERGE (n:Disease {name: '周期性肢体运动综合症'})
+SET 
+    n.short_name = coalesce(n.short_name, 'PLMS'),
+    n.description = coalesce(n.description, '因反复刻板性动作引起的睡眠障碍，可能与多巴胺能系统受损有关'),
+    n.category = coalesce(n.category, '睡眠障碍'),
+    n.severity = coalesce(n.severity, '中等');
+
+MERGE (n:Complication {name: '心脑血管疾病'})
+SET 
+    n.description = coalesce(n.description, '与脑卒中相关的危险疾病'),
+    n.severity = coalesce(n.severity, '严重');
+
+// 关系更新
+MATCH (from) WHERE from.name = '脑卒中'
+MATCH (to) WHERE to.name = '心脑血管疾病'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.543),
+    r.timeframe = coalesce(r.timeframe, '长期');
+
+MATCH (from) WHERE from.name = '脑卒中'
+MATCH (to) WHERE to.name = '周期性肢体运动综合症'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.828),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '中等');
+
+MATCH (from) WHERE from.name = '周期性肢体运动综合症'
+MATCH (to) WHERE to.name = '脑卒中'
+MERGE (from)-[r:REQUIRES_EXAM]->(to)
+SET 
+    r.priority = coalesce(r.priority, '高'),
+    r.mandatory = coalesce(r.mandatory, 'true');
+
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-12 01:26:39"
+message = """
+
+[背景信息]
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+[命令]
+[CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+[详细补充需求]
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出\"// 空\"(不含引号)
+
+// 定义节点属性示例
+// 疾病节点
+CREATE (:Disease {
+    name: String,           // 疾病名称
+    code: String,           // 疾病编码
+    description: String,    // 疾病描述
+    category: String,       // 疾病分类
+    severity: String        // 严重程度
+});
+
+// 症状节点
+CREATE (:Symptom {
+    name: String,           // 症状名称
+    description: String,    // 症状描述
+    severity: String,       // 严重程度
+    frequency: String       // 发生频率
+});
+
+// 检查项目节点
+CREATE (:Examination {
+    name: String,           // 检查名称
+    description: String,    // 检查描述
+    method: String,         // 检查方法
+    requirement: String     // 检查要求
+});
+
+// 治疗方案节点
+CREATE (:Treatment {
+    name: String,           // 治疗名称
+    type: String,           // 类型(药物/非药物)
+    description: String,    // 治疗描述
+    dosage: String,         // 剂量(药物)
+    duration: String,       // 持续时间
+    contraindication: String // 禁忌症
+});
+
+// 量表工具节点
+CREATE (:Scale {
+    name: String,           // 量表名称
+    description: String,    // 量表描述
+    score_range: String,    // 分数范围
+    interpretation: String  // 结果解释
+});
+
+// 风险因素节点
+CREATE (:RiskFactor {
+    name: String,           // 因素名称
+    description: String,    // 描述
+    impact_level: String    // 影响程度
+});
+
+// 并发症节点
+CREATE (:Complication {
+    name: String,           // 并发症名称
+    description: String,    // 描述
+    severity: String        // 严重程度
+});
+
+// 定义关系类型
+// 症状-疾病关系
+CREATE (:Symptom)-[:INDICATES {
+    confidence: Float,      // 置信度
+    frequency: String,      // 发生频率
+    severity: String        // 严重程度
+}]->(:Disease);
+
+// 疾病-检查关系
+CREATE (:Disease)-[:REQUIRES_EXAM {
+    priority: String,       // 优先级
+    mandatory: Boolean      // 是否必需
+}]->(:Examination);
+
+// 疾病-治疗关系
+CREATE (:Disease)-[:TREATED_BY {
+    effectiveness: Float,   // 有效性
+    priority: String,       // 优先级
+    stage: String          // 治疗阶段
+}]->(:Treatment);
+
+// 疾病-并发症关系
+CREATE (:Disease)-[:MAY_CAUSE {
+    probability: Float,     // 发生概率
+    timeframe: String      // 时间框架
+}]->(:Complication);
+
+// 疾病-风险因素关系
+CREATE (:Disease)-[:INFLUENCED_BY {
+    impact_level: String,   // 影响程度
+    evidence_level: String  // 证据等级
+}]->(:RiskFactor);
+
+// 疾病-量表关系
+CREATE (:Disease)-[:ASSESSED_BY {
+    applicability: Float,   // 适用性
+    recommendation_level: String  // 推荐级别
+}]->(:Scale);
+
+[关系抽取说明]
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
+请尽你可能抽取全部关系
+[示例输出]
+MERGE (d1:Disease {name: \"阻塞性睡眠呼吸暂停低通气综合征\", short_name: \"OSAHS\"})
+MERGE (c1:Disease {name: \"高血压\"})
+MERGE (c2:Disease {name: \"糖尿病\"})
+MERGE (c1)-[:COMPLICATION_OF]->(d1)
+MERGE (c2)-[:COMPLICATION_OF]->(d1)
+
+[隶属文件名]
+脑卒中伴睡眠期周期性肢体运动患者的睡眠结构研究.md
+[隶属文件分块名]
+脑卒中伴睡眠期周期性肢体运动患者的睡眠结构研究/004-2-结果.md
+[文本块]
+# 结果  
+
+## 2.1 两组患者一般资料比较  
+对照组42例, 试验组39例。 两组患者年龄、性别、BMI、脑卒中类型比较, 差异无统计学意义( $P{>}0.05$ ), 见表1。  
+
+## 2.2 试验组与对照组患者睡眠结构及相关参数比较  
+试验组清醒期PLMI、N1期睡眠占总睡眠时间比例、N2期睡眠占总睡眠时间比例、觉醒指数、周期性肢体运动觉醒指数高于对照组, 睡眠效率、N3期睡眠占总睡眠时间比例低于对照组, 差异有统计学意义( $P{<}0.05$ ); 两组患者REM期睡眠占总睡眠时间比例、AHI、睡眠潜伏期比较, 差异无统计学意义( $P{>}0.05$ ), 见表2。  
+
+## 2.3 PLMS与睡眠结构及相关参数的相关性分析  
+PLMS与清醒期PLMI、N2期睡眠占总睡眠时间比例、睡眠潜伏期、觉醒指数、周期性肢体运动觉醒指数呈正相关, 与睡眠效率呈负相关( $P{<}0.05$ ), 见表3。  
+
+"""
+response = """
+// 节点更新
+MERGE (n:Disease {name: '脑卒中'})
+SET 
+    n.type = coalesce(n.type, '神经系统疾病');
+
+MERGE (n:Symptom {name: '周期性肢体运动'})
+SET 
+    n.description = coalesce(n.description, '在睡眠中出现周期性肢体运动'),
+    n.severity = coalesce(n.severity, '中'),
+    n.frequency = coalesce(n.frequency, '频繁');
+
+MERGE (n:Symptom {name: '清醒期PLMI'})
+SET 
+    n.description = coalesce(n.description, '清醒期的腿动指数'),
+    n.severity = coalesce(n.severity, '高'),
+    n.frequency = coalesce(n.frequency, '频繁');
+
+MERGE (n:Symptom {name: '觉醒指数'})
+SET 
+    n.description = coalesce(n.description, '觉醒的频率'),
+    n.severity = coalesce(n.severity, '中'),
+    n.frequency = coalesce(n.frequency, '中等');
+
+MERGE (n:Symptom {name: 'N1期睡眠占比'})
+SET 
+    n.description = coalesce(n.description, 'N1期睡眠占总睡眠时间的比例'),
+    n.severity = coalesce(n.severity, '低'),
+    n.frequency = coalesce(n.frequency, '中等');
+
+MERGE (n:Symptom {name: 'N2期睡眠占比'})
+SET 
+    n.description = coalesce(n.description, 'N2期睡眠占总睡眠时间的比例'),
+    n.severity = coalesce(n.severity, '中'),
+    n.frequency = coalesce(n.frequency, '中等');
+
+MERGE (n:Symptom {name: '睡眠效率'})
+SET 
+    n.description = coalesce(n.description, '有效睡眠的比例'),
+    n.severity = coalesce(n.severity, '高'),
+    n.frequency = coalesce(n.frequency, '低');
+
+MERGE (n:Symptom {name: 'N3期睡眠占比'})
+SET 
+    n.description = coalesce(n.description, 'N3期睡眠占总睡眠时间的比例'),
+    n.severity = coalesce(n.severity, '低'),
+    n.frequency = coalesce(n.frequency, '低');
+
+MERGE (n:Symptom {name: 'REM期睡眠占比'})
+SET 
+    n.description = coalesce(n.description, 'REM期睡眠占总睡眠时间的比例'),
+    n.severity = coalesce(n.severity, '低'),
+    n.frequency = coalesce(n.frequency, '低');
+
+MERGE (n:Symptom {name: 'AHI'})
+SET 
+    n.description = coalesce(n.description, '睡眠呼吸暂停指数'),
+    n.severity = coalesce(n.severity, '高'),
+    n.frequency = coalesce(n.frequency, '低');
+
+MERGE (n:Symptom {name: '睡眠潜伏期'})
+SET 
+    n.description = coalesce(n.description, '入睡所需时间'),
+    n.severity = coalesce(n.severity, '中'),
+    n.frequency = coalesce(n.frequency, '低');
+
+// 关系更新
+MATCH (from) WHERE from.name = '脑卒中'
+MATCH (to) WHERE to.name = '周期性肢体运动'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.85),
+    r.frequency = coalesce(r.frequency, '频繁'),
+    r.severity = coalesce(r.severity, '中');
+
+MATCH (from) WHERE from.name = '脑卒中'
+MATCH (to) WHERE to.name = '清醒期PLMI'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.7),
+    r.frequency = coalesce(r.frequency, '中等'),
+    r.severity = coalesce(r.severity, '高');
+
+MATCH (from) WHERE from.name = '脑卒中'
+MATCH (to) WHERE to.name = '觉醒指数'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.8),
+    r.frequency = coalesce(r.frequency, '中等'),
+    r.severity = coalesce(r.severity, '中');
+
+MATCH (from) WHERE from.name = '脑卒中'
+MATCH (to) WHERE to.name = 'N1期睡眠占比'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.65),
+    r.frequency = coalesce(r.frequency, '中等'),
+    r.severity = coalesce(r.severity, '低');
+
+MATCH (from) WHERE from.name = '脑卒中'
+MATCH (to) WHERE to.name = 'N2期睡眠占比'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.75),
+    r.frequency = coalesce(r.frequency, '中等'),
+    r.severity = coalesce(r.severity, '中');
+
+MATCH (from) WHERE from.name = '脑卒中'
+MATCH (to) WHERE to.name = '睡眠效率'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.6),
+    r.frequency = coalesce(r.frequency, '低'),
+    r.severity = coalesce(r.severity, '高');
+
+MATCH (from) WHERE from.name = '脑卒中'
+MATCH (to) WHERE to.name = 'N3期睡眠占比'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.6),
+    r.frequency = coalesce(r.frequency, '低'),
+    r.severity = coalesce(r.severity, '低');
+
+MATCH (from) WHERE from.name = '脑卒中'
+MATCH (to) WHERE to.name = 'REM期睡眠占比'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.55),
+    r.frequency = coalesce(r.frequency, '低'),
+    r.severity = coalesce(r.severity, '低');
+
+MATCH (from) WHERE from.name = '脑卒中'
+MATCH (to) WHERE to.name = 'AHI'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.75),
+    r.frequency = coalesce(r.frequency, '低'),
+    r.severity = coalesce(r.severity, '高');
+
+MATCH (from) WHERE from.name = '脑卒中'
+MATCH (to) WHERE to.name = '睡眠潜伏期'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.7),
+    r.frequency = coalesce(r.frequency, '低'),
+    r.severity = coalesce(r.severity, '中');
+
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-12 01:26:50"
+message = """
+
+[背景信息]
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+[命令]
+[CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+[详细补充需求]
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出\"// 空\"(不含引号)
+
+// 定义节点属性示例
+// 疾病节点
+CREATE (:Disease {
+    name: String,           // 疾病名称
+    code: String,           // 疾病编码
+    description: String,    // 疾病描述
+    category: String,       // 疾病分类
+    severity: String        // 严重程度
+});
+
+// 症状节点
+CREATE (:Symptom {
+    name: String,           // 症状名称
+    description: String,    // 症状描述
+    severity: String,       // 严重程度
+    frequency: String       // 发生频率
+});
+
+// 检查项目节点
+CREATE (:Examination {
+    name: String,           // 检查名称
+    description: String,    // 检查描述
+    method: String,         // 检查方法
+    requirement: String     // 检查要求
+});
+
+// 治疗方案节点
+CREATE (:Treatment {
+    name: String,           // 治疗名称
+    type: String,           // 类型(药物/非药物)
+    description: String,    // 治疗描述
+    dosage: String,         // 剂量(药物)
+    duration: String,       // 持续时间
+    contraindication: String // 禁忌症
+});
+
+// 量表工具节点
+CREATE (:Scale {
+    name: String,           // 量表名称
+    description: String,    // 量表描述
+    score_range: String,    // 分数范围
+    interpretation: String  // 结果解释
+});
+
+// 风险因素节点
+CREATE (:RiskFactor {
+    name: String,           // 因素名称
+    description: String,    // 描述
+    impact_level: String    // 影响程度
+});
+
+// 并发症节点
+CREATE (:Complication {
+    name: String,           // 并发症名称
+    description: String,    // 描述
+    severity: String        // 严重程度
+});
+
+// 定义关系类型
+// 症状-疾病关系
+CREATE (:Symptom)-[:INDICATES {
+    confidence: Float,      // 置信度
+    frequency: String,      // 发生频率
+    severity: String        // 严重程度
+}]->(:Disease);
+
+// 疾病-检查关系
+CREATE (:Disease)-[:REQUIRES_EXAM {
+    priority: String,       // 优先级
+    mandatory: Boolean      // 是否必需
+}]->(:Examination);
+
+// 疾病-治疗关系
+CREATE (:Disease)-[:TREATED_BY {
+    effectiveness: Float,   // 有效性
+    priority: String,       // 优先级
+    stage: String          // 治疗阶段
+}]->(:Treatment);
+
+// 疾病-并发症关系
+CREATE (:Disease)-[:MAY_CAUSE {
+    probability: Float,     // 发生概率
+    timeframe: String      // 时间框架
+}]->(:Complication);
+
+// 疾病-风险因素关系
+CREATE (:Disease)-[:INFLUENCED_BY {
+    impact_level: String,   // 影响程度
+    evidence_level: String  // 证据等级
+}]->(:RiskFactor);
+
+// 疾病-量表关系
+CREATE (:Disease)-[:ASSESSED_BY {
+    applicability: Float,   // 适用性
+    recommendation_level: String  // 推荐级别
+}]->(:Scale);
+
+[关系抽取说明]
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
+请尽你可能抽取全部关系
+[示例输出]
+MERGE (d1:Disease {name: \"阻塞性睡眠呼吸暂停低通气综合征\", short_name: \"OSAHS\"})
+MERGE (c1:Disease {name: \"高血压\"})
+MERGE (c2:Disease {name: \"糖尿病\"})
+MERGE (c1)-[:COMPLICATION_OF]->(d1)
+MERGE (c2)-[:COMPLICATION_OF]->(d1)
+
+[隶属文件名]
+脑卒中伴睡眠期周期性肢体运动患者的睡眠结构研究.md
+[隶属文件分块名]
+脑卒中伴睡眠期周期性肢体运动患者的睡眠结构研究/001-脑卒中伴睡眠期周期性肢体运动患者的睡眠结构研究.md
+[文本块]
+脑卒中伴睡眠期周期性肢体运动患者的睡眠结构研究  
+**作者**: 胡娅娅, 朱宁, 薛孟周  
+**机构**: 郑州大学第二附属医院神经康复科  
+
+**摘要**:   
+背景: 睡眠障碍为脑卒中常见的并发症，临床表现多样，以睡眠期间反复刻板的肢体运动称为睡眠期周期性肢体运动(PLMS)。PLMS的发病机制及对脑卒中预后的影响尚在探索阶段，相关研究较少。  
+目的: 探究脑卒中伴PLMS患者的睡眠结构。  
+方法: 选取2020年12月至2022年2月于郑州大学第二附属医院就诊的伴睡眠障碍且行多导睡眠监测(PSG)的脑卒中患者81例，依据周期性肢体运动指数(PLMI)将患者分为非PLMS患者（对照组，PLMI<15次/h）和PLMS患者（试验组，PLMI≥15次/h）。比较两组以下参数：清醒期PLMI、睡眠效率、N1期睡眠占总睡眠时间比例、N2期睡眠占总睡眠时间比例、N3期睡眠占总睡眠时间比例、REM期睡眠占总睡眠时间比例、睡眠呼吸暂停低通气指数(AHI)、睡眠潜伏期、觉醒指数、周期性肢体运动觉醒指数，并分析PLMS与睡眠结构及相关参数的相关性。  
+结果: 对照组42例，试验组39例。试验组清醒期PLMI、N1期睡眠占总睡眠时间比例、N2期睡眠占总睡眠时间比例、觉醒指数、周期性肢体运动觉醒指数高于对照组，睡眠效率、N3期睡眠占总睡眠时间比例低于对照组（P<0.05）；两组患者睡眠潜伏期、AHI、REM期睡眠占总睡眠时间比例比较，差异无统计学意义（P>0.05）。Spearman秩相关分析结果显示，PLMS与清醒期PLMI、N2期睡眠占总睡眠时间比例、睡眠潜伏期、觉醒指数、周期性肢体运动觉醒指数呈正相关（r值分别为0.619、0.250、0.271、0.312、0.828，P值分别为<0.001、0.024、0.014、0.005、<0.001），与睡眠效率呈负相关（r=-0.345，P=0.002）。  
+结论: 伴PLMS的脑卒中患者客观存在睡眠紊乱，睡眠效率降低，可能是脑卒中预后不良的标志之一。  
+
+**关键词**: 夜间性肌阵挛综合征;睡眠期周期性肢体运动;周期性肢体运动障碍;卒中;睡眠结构  
+**文献标识码**: A  
+**DOI**: 10.12114/j.issn.1007-9572.2022.0468  
+
+**英文摘要**:  
+**Title**: Effect of Periodic Limb Movements in Sleep on Sleep Structure in Stroke Patients  
+**Authors**: HU Yaya, ZHU Ning*, XUE Mengzhou  
+**Institution**: Department of Neurological Rehabilitation, the Second Affiliated Hospital of Zhengzhou University, Zhengzhou 450000, China  
+
+**Abstract**:  
+Background: Sleep disorder is a common complication of stroke with various clinical manifestations. Among them, periodic limb movements in sleep (PLMS) are characterized by repetitive and stereotyped limb movements during sleep. Due to limited clinical data, the pathogenesis of PLMS and their impact on prognosis of stroke are still in the exploratory stage. Studies about the effect of PLMS on sleep in stroke patients are few worldwide.  
+Objective: To explore the sleep structure of stroke patients with PLMS.  
+Methods: From December 2020 to February 2022, a total of 81 stroke patients with sleep disorders were selected from the Second Affiliated Hospital of Zhengzhou University, in which polysomnography (PSG) was performed. Patients were divided into non-PLMS patients (control group, PLMI<15 times/h) and PLMS patients (experimental group, PLMI≥15 times/h) based on the Periodic Limb Movement Index (PLMI). The parameters compared between the two groups included awake PLMI, sleep efficiency, proportion of stage N1, N2, N3 sleep in total sleep time, REM sleep in total sleep time, sleep apnea hypopnea index (AHI), sleep latency, arousal index, and periodic limb movement arousal index (PLMAI). Results of Spearman rank correlation analysis provided insights into the correlation between PLMS and these parameters.  
+Results: There were 42 cases in the control group and 39 cases in the experimental group. The awake PLMI, proportions of stage N1 and N2 sleep, arousal index, and PLMAI in the experimental group were higher than those in the control group (P<0.05). However, sleep efficiency and proportions of stage N3 sleep in the experimental group were lower (P<0.05). No significant difference was found between the two groups for sleep latency, AHI, and REM stage sleep (P>0.05). Spearman rank correlation analysis indicated that PLMS had positive correlations with awake PLMI, proportion of stage N2 sleep, sleep latency, arousal index, and PLMAI (r values of 0.619, 0.250, 0.271, 0.312, 0.828; P values <0.001, 0.024, 0.014, 0.005, <0.001) and a negative correlation with sleep efficiency (r=-0.345, P=0.002).  
+Conclusion: Stroke patients with PLMS exhibit objective sleep disturbances and reduced sleep efficiency, suggesting PLMS may be indicative of poor prognosis in stroke.  
+
+**Key words**: Nocturnal myoclonus syndrome;Periodic limb movements in sleep;Periodic limb movement disorder; Stroke;Sleep structure  
+
+"""
+response = """
+// 节点更新
+MERGE (n:Disease {name: '脑卒中'})
+SET 
+    n.description = coalesce(n.description, '脑卒中常见的并发症，临床表现多样。');
+
+MERGE (n:Disease {name: '睡眠障碍'})
+SET 
+    n.description = coalesce(n.description, '睡眠障碍为脑卒中常见的并发症，临床表现多样。');
+
+MERGE (n:Symptom {name: '睡眠期周期性肢体运动'})
+SET 
+    n.description = coalesce(n.description, '以睡眠期间反复刻板的肢体运动称为睡眠期周期性肢体运动(PLMS)。'),
+    n.severity = coalesce(n.severity, '多样'),
+    n.frequency = coalesce(n.frequency, '周期性');
+
+MERGE (n:Symptom {name: '清醒期PLMI'})
+SET 
+    n.description = coalesce(n.description, '觉醒期间的周期性肢体运动指数。');
+
+MERGE (n:Symptom {name: '睡眠效率'})
+SET 
+    n.description = coalesce(n.description, '从睡眠开始到完全醒来的比例。');
+
+MERGE (n:Symptom {name: 'N1期睡眠占总睡眠时间比例'})
+SET 
+    n.description = coalesce(n.description, 'N1期睡眠的占比。');
+
+MERGE (n:Symptom {name: 'N2期睡眠占总睡眠时间比例'})
+SET 
+    n.description = coalesce(n.description, 'N2期睡眠的占比。');
+
+MERGE (n:Symptom {name: 'N3期睡眠占总睡眠时间比例'})
+SET 
+    n.description = coalesce(n.description, 'N3期睡眠的占比。');
+
+MERGE (n:Symptom {name: 'REM期睡眠占总睡眠时间比例'})
+SET 
+    n.description = coalesce(n.description, 'REM期睡眠的占比。');
+
+MERGE (n:Symptom {name: '睡眠呼吸暂停低通气指数'})
+SET 
+    n.description = coalesce(n.description, '反映睡眠呼吸状态的指数。');
+
+MERGE (n:Symptom {name: '睡眠潜伏期'})
+SET 
+    n.description = coalesce(n.description, '从入睡到深睡状态的时长。');
+
+MERGE (n:Symptom {name: '觉醒指数'})
+SET 
+    n.description = coalesce(n.description, '反映觉醒情况的指数。');
+
+MERGE (n:Symptom {name: '周期性肢体运动觉醒指数'})
+SET 
+    n.description = coalesce(n.description, '与周期性肢体运动相关的觉醒情况的指数。');
+
+MERGE (n:Complication {name: '睡眠紊乱'})
+SET 
+    n.description = coalesce(n.description, '伴PLMS的脑卒中患者客观存在睡眠紊乱。'),
+    n.severity = coalesce(n.severity, '低');
+
+// 关系更新
+MATCH (from) WHERE from.name = '脑卒中'
+MATCH (to) WHERE to.name = '睡眠期周期性肢体运动'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.8),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '严重');
+
+MATCH (from) WHERE from.name = '睡眠障碍'
+MATCH (to) WHERE to.name = '睡眠期周期性肢体运动'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.9),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '严重');
+
+MATCH (from) WHERE from.name = '脑卒中'
+MATCH (to) WHERE to.name = '清醒期PLMI'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.7),
+    r.frequency = coalesce(r.frequency, '较少');
+
+MATCH (from) WHERE from.name = '脑卒中'
+MATCH (to) WHERE to.name = '睡眠效率'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.7),
+    r.frequency = coalesce(r.frequency, '较少');
+
+MATCH (from) WHERE from.name = '脑卒中'
+MATCH (to) WHERE to.name = 'N1期睡眠占总睡眠时间比例'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.7),
+    r.frequency = coalesce(r.frequency, '较少');
+
+MATCH (from) WHERE from.name = '脑卒中'
+MATCH (to) WHERE to.name = 'N2期睡眠占总睡眠时间比例'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.7),
+    r.frequency = coalesce(r.frequency, '较少');
+
+MATCH (from) WHERE from.name = '脑卒中'
+MATCH (to) WHERE to.name = 'N3期睡眠占总睡眠时间比例'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.7),
+    r.frequency = coalesce(r.frequency, '较少');
+
+MATCH (from) WHERE from.name = '脑卒中'
+MATCH (to) WHERE to.name = 'REM期睡眠占总睡眠时间比例'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.7),
+    r.frequency = coalesce(r.frequency, '较少');
+
+MATCH (from) WHERE from.name = '脑卒中'
+MATCH (to) WHERE to.name = '睡眠呼吸暂停低通气指数'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.7),
+    r.frequency = coalesce(r.frequency, '较少');
+
+MATCH (from) WHERE from.name = '脑卒中'
+MATCH (to) WHERE to.name = '睡眠潜伏期'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.7),
+    r.frequency = coalesce(r.frequency, '较少');
+
+MATCH (from) WHERE from.name = '脑卒中'
+MATCH (to) WHERE to.name = '觉醒指数'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.7),
+    r.frequency = coalesce(r.frequency, '较少');
+
+MATCH (from) WHERE from.name = '脑卒中'
+MATCH (to) WHERE to.name = '周期性肢体运动觉醒指数'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.7),
+    r.frequency = coalesce(r.frequency, '较少');
+
+MATCH (from) WHERE from.name = '脑卒中'
+MATCH (to) WHERE to.name = '睡眠紊乱'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.5),
+    r.timeframe = coalesce(r.timeframe, '短期');
+
+MATCH (from) WHERE from.name = '睡眠障碍'
+MATCH (to) WHERE to.name = '睡眠紊乱'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.5),
+    r.timeframe = coalesce(r.timeframe, '短期');
+
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-12 01:26:51"
+message = """
+
+[背景信息]
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+[命令]
+[CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+[详细补充需求]
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出\"// 空\"(不含引号)
+
+// 定义节点属性示例
+// 疾病节点
+CREATE (:Disease {
+    name: String,           // 疾病名称
+    code: String,           // 疾病编码
+    description: String,    // 疾病描述
+    category: String,       // 疾病分类
+    severity: String        // 严重程度
+});
+
+// 症状节点
+CREATE (:Symptom {
+    name: String,           // 症状名称
+    description: String,    // 症状描述
+    severity: String,       // 严重程度
+    frequency: String       // 发生频率
+});
+
+// 检查项目节点
+CREATE (:Examination {
+    name: String,           // 检查名称
+    description: String,    // 检查描述
+    method: String,         // 检查方法
+    requirement: String     // 检查要求
+});
+
+// 治疗方案节点
+CREATE (:Treatment {
+    name: String,           // 治疗名称
+    type: String,           // 类型(药物/非药物)
+    description: String,    // 治疗描述
+    dosage: String,         // 剂量(药物)
+    duration: String,       // 持续时间
+    contraindication: String // 禁忌症
+});
+
+// 量表工具节点
+CREATE (:Scale {
+    name: String,           // 量表名称
+    description: String,    // 量表描述
+    score_range: String,    // 分数范围
+    interpretation: String  // 结果解释
+});
+
+// 风险因素节点
+CREATE (:RiskFactor {
+    name: String,           // 因素名称
+    description: String,    // 描述
+    impact_level: String    // 影响程度
+});
+
+// 并发症节点
+CREATE (:Complication {
+    name: String,           // 并发症名称
+    description: String,    // 描述
+    severity: String        // 严重程度
+});
+
+// 定义关系类型
+// 症状-疾病关系
+CREATE (:Symptom)-[:INDICATES {
+    confidence: Float,      // 置信度
+    frequency: String,      // 发生频率
+    severity: String        // 严重程度
+}]->(:Disease);
+
+// 疾病-检查关系
+CREATE (:Disease)-[:REQUIRES_EXAM {
+    priority: String,       // 优先级
+    mandatory: Boolean      // 是否必需
+}]->(:Examination);
+
+// 疾病-治疗关系
+CREATE (:Disease)-[:TREATED_BY {
+    effectiveness: Float,   // 有效性
+    priority: String,       // 优先级
+    stage: String          // 治疗阶段
+}]->(:Treatment);
+
+// 疾病-并发症关系
+CREATE (:Disease)-[:MAY_CAUSE {
+    probability: Float,     // 发生概率
+    timeframe: String      // 时间框架
+}]->(:Complication);
+
+// 疾病-风险因素关系
+CREATE (:Disease)-[:INFLUENCED_BY {
+    impact_level: String,   // 影响程度
+    evidence_level: String  // 证据等级
+}]->(:RiskFactor);
+
+// 疾病-量表关系
+CREATE (:Disease)-[:ASSESSED_BY {
+    applicability: Float,   // 适用性
+    recommendation_level: String  // 推荐级别
+}]->(:Scale);
+
+[关系抽取说明]
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
+请尽你可能抽取全部关系
+[示例输出]
+MERGE (d1:Disease {name: \"阻塞性睡眠呼吸暂停低通气综合征\", short_name: \"OSAHS\"})
+MERGE (c1:Disease {name: \"高血压\"})
+MERGE (c2:Disease {name: \"糖尿病\"})
+MERGE (c1)-[:COMPLICATION_OF]->(d1)
+MERGE (c2)-[:COMPLICATION_OF]->(d1)
+
+[隶属文件名]
+脑卒中伴睡眠期周期性肢体运动患者的睡眠结构研究.md
+[隶属文件分块名]
+脑卒中伴睡眠期周期性肢体运动患者的睡眠结构研究/006-3-讨论.md
+[文本块]
+在睡眠结构方面，普遍认为PLMS是一种唤醒反应，是造成睡眠碎片化的原因。PLMS大致可分为两类：一类仅为PSG观察的结果，与觉醒无关，另一类与觉醒相关。伴有脑电图唤醒的PLMS已被证明与交感神经介导的脉搏率和血压增加有关，影响缺血性脑卒中患者的预后。研究结果显示PLMS与PLMS引起的觉醒存在较强相关，与整体的觉醒呈弱相关。伴PLMS的脑卒中患者虽有引起觉醒的肢体运动，但也有无临床意义的肢体运动。PLMS的发生原因复杂，药理学研究表明，普拉克索可减少PLMS而不影响觉醒频率，氯硝西泮可减少睡眠觉醒但对PLMS无影响。越来越多研究指出PLMS与觉醒可能没有直接因果关系，可能受到其他睡眠阶段事件及多种影响因素的调节。
+
+分析结果发现，患者睡眠结构紊乱可能由阻塞性睡眠呼吸暂停、伴有觉醒的肢体运动、脑卒中及潜在危险因素引起。PLMI ≥ 15次/h是脑卒中复发的强预测因子，清醒次数增多、睡眠效率降低进一步加重患者临床症状。PSG结果显示，试验组患者N1、N2期睡眠占总睡眠时间比例增多，N3期睡眠占总睡眠时间比例减少。造成睡眠结构紊乱的因素包括脑血流减少和重新分布、中枢神经递质失调、细胞因子失衡、神经功能缺损等。同时发现PLMS与清醒期PLMI和周期性肢体运动觉醒指数存在相关性，清醒时肢体运动受多种因素影响，未降低日常生活能力，因此受到临床忽视。 
+
+本研究数据为刻板的监测数据，无法动态观察PLMS与清醒之间的因果关系。参与患者仅来自一个睡眠障碍中心，可能导致样本偏倚和抽样偏差。未来研究需进行更大规模、多中心的研究，以探讨PLMS对脑卒中患者的影响，为更好识别、干预和治疗PLMS提供理论支持。
+
+"""
+response = """
+// 节点更新
+MERGE (n:Disease {name: '阻塞性睡眠呼吸暂停'});
+
+MERGE (n:Disease {name: '脑卒中'});
+
+MERGE (n:Symptom {name: '周期性肢体运动'})
+SET 
+    n.description = coalesce(n.description, '在睡眠中出现的周期性肢体运动'),
+    n.severity = coalesce(n.severity, '轻度'),
+    n.frequency = coalesce(n.frequency, '频繁');
+
+MERGE (n:Symptom {name: '睡眠碎片化'})
+SET 
+    n.description = coalesce(n.description, '睡眠期间的中断或碎片化现象'),
+    n.severity = coalesce(n.severity, '中度'),
+    n.frequency = coalesce(n.frequency, '频繁');
+
+MERGE (n:Treatment {name: '普拉克索'})
+SET 
+    n.type = coalesce(n.type, '药物'),
+    n.description = coalesce(n.description, '可减少PLMS而不影响觉醒频率'),
+    n.dosage = coalesce(n.dosage, '依医嘱'),
+    n.duration = coalesce(n.duration, '依医嘱'),
+    n.contraindication = coalesce(n.contraindication, '对患者个体情况需要评估');
+
+MERGE (n:Treatment {name: '氯硝西泮'})
+SET 
+    n.type = coalesce(n.type, '药物'),
+    n.description = coalesce(n.description, '可减少睡眠觉醒但对PLMS无影响'),
+    n.dosage = coalesce(n.dosage, '依医嘱'),
+    n.duration = coalesce(n.duration, '依医嘱'),
+    n.contraindication = coalesce(n.contraindication, '对患者个体情况需要评估');
+
+// 关系更新
+MATCH (from) WHERE from.name = '周期性肢体运动'
+MATCH (to) WHERE to.name = '脑卒中'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.8),
+    r.frequency = coalesce(r.frequency, '频繁'),
+    r.severity = coalesce(r.severity, '轻度');
+
+MATCH (from) WHERE from.name = '睡眠碎片化'
+MATCH (to) WHERE to.name = '阻塞性睡眠呼吸暂停'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.7),
+    r.frequency = coalesce(r.frequency, '频繁'),
+    r.severity = coalesce(r.severity, '中度');
+
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停'
+MATCH (to) WHERE to.name = '普拉克索'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.9),
+    r.priority = coalesce(r.priority, '高'),
+    r.stage = coalesce(r.stage, '急性');
+
+MATCH (from) WHERE from.name = '脑卒中'
+MATCH (to) WHERE to.name = '氯硝西泮'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.85),
+    r.priority = coalesce(r.priority, '中'),
+    r.stage = coalesce(r.stage, '急性');
+
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-12 01:26:52"
+message = """
+
+[背景信息]
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+[命令]
+[CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+[详细补充需求]
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出\"// 空\"(不含引号)
+
+// 定义节点属性示例
+// 疾病节点
+CREATE (:Disease {
+    name: String,           // 疾病名称
+    code: String,           // 疾病编码
+    description: String,    // 疾病描述
+    category: String,       // 疾病分类
+    severity: String        // 严重程度
+});
+
+// 症状节点
+CREATE (:Symptom {
+    name: String,           // 症状名称
+    description: String,    // 症状描述
+    severity: String,       // 严重程度
+    frequency: String       // 发生频率
+});
+
+// 检查项目节点
+CREATE (:Examination {
+    name: String,           // 检查名称
+    description: String,    // 检查描述
+    method: String,         // 检查方法
+    requirement: String     // 检查要求
+});
+
+// 治疗方案节点
+CREATE (:Treatment {
+    name: String,           // 治疗名称
+    type: String,           // 类型(药物/非药物)
+    description: String,    // 治疗描述
+    dosage: String,         // 剂量(药物)
+    duration: String,       // 持续时间
+    contraindication: String // 禁忌症
+});
+
+// 量表工具节点
+CREATE (:Scale {
+    name: String,           // 量表名称
+    description: String,    // 量表描述
+    score_range: String,    // 分数范围
+    interpretation: String  // 结果解释
+});
+
+// 风险因素节点
+CREATE (:RiskFactor {
+    name: String,           // 因素名称
+    description: String,    // 描述
+    impact_level: String    // 影响程度
+});
+
+// 并发症节点
+CREATE (:Complication {
+    name: String,           // 并发症名称
+    description: String,    // 描述
+    severity: String        // 严重程度
+});
+
+// 定义关系类型
+// 症状-疾病关系
+CREATE (:Symptom)-[:INDICATES {
+    confidence: Float,      // 置信度
+    frequency: String,      // 发生频率
+    severity: String        // 严重程度
+}]->(:Disease);
+
+// 疾病-检查关系
+CREATE (:Disease)-[:REQUIRES_EXAM {
+    priority: String,       // 优先级
+    mandatory: Boolean      // 是否必需
+}]->(:Examination);
+
+// 疾病-治疗关系
+CREATE (:Disease)-[:TREATED_BY {
+    effectiveness: Float,   // 有效性
+    priority: String,       // 优先级
+    stage: String          // 治疗阶段
+}]->(:Treatment);
+
+// 疾病-并发症关系
+CREATE (:Disease)-[:MAY_CAUSE {
+    probability: Float,     // 发生概率
+    timeframe: String      // 时间框架
+}]->(:Complication);
+
+// 疾病-风险因素关系
+CREATE (:Disease)-[:INFLUENCED_BY {
+    impact_level: String,   // 影响程度
+    evidence_level: String  // 证据等级
+}]->(:RiskFactor);
+
+// 疾病-量表关系
+CREATE (:Disease)-[:ASSESSED_BY {
+    applicability: Float,   // 适用性
+    recommendation_level: String  // 推荐级别
+}]->(:Scale);
+
+[关系抽取说明]
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
+请尽你可能抽取全部关系
+[示例输出]
+MERGE (d1:Disease {name: \"阻塞性睡眠呼吸暂停低通气综合征\", short_name: \"OSAHS\"})
+MERGE (c1:Disease {name: \"高血压\"})
+MERGE (c2:Disease {name: \"糖尿病\"})
+MERGE (c1)-[:COMPLICATION_OF]->(d1)
+MERGE (c2)-[:COMPLICATION_OF]->(d1)
+
+[隶属文件名]
+脑卒中伴睡眠期周期性肢体运动患者的睡眠结构研究.md
+[隶属文件分块名]
+脑卒中伴睡眠期周期性肢体运动患者的睡眠结构研究/003-1-资料与方法.md
+[文本块]
+# 1 资料与方法  
+
+## 1.1 一般资料  
+选取2020年12月至2022年2月于郑州大学第二附属医院就诊的伴睡眠障碍且行PSG的脑卒中患者81例。脑卒中诊断参考《中国急性缺血性脑卒中诊治指南2018》的诊断标准。PLMS诊断参考《国际睡眠疾病分类第三版》中睡眠相关运动障碍相关标准：至少连续4次出现腿动事件；腿动事件最短周期（包括腿动事件）为5秒、最大间隔（包括腿动事件）为90秒（若双腿腿动事件起始点间隔<5秒，计为单次腿动）。符合上述诊断标准且伴有不同程度睡眠障碍的患者纳入此次试验。排除不宁腿综合征、快速动眼期睡眠行为障碍（RBD）、发作性睡病、充血性心力衰竭、原发性高血压、终末期肾病、脊髓损伤、酒精依赖、帕金森病和Tourette综合征者。  
+
+本研究已获得郑州大学第二附属医院医学伦理委员会批准（批件号：2022174），患者本人或其法定代表人签署知情同意书。  
+
+## 1.2 方法  
+
+### 1.2.1 资料采集  
+由从事睡眠医学的医师收集患者基本信息（年龄、性别、身高、体质量、脑卒中类型）及PSG监测数据，计算BMI。信息采集过程中严格保守患者隐私。  
+
+### 1.2.2 PSG 方法  
+行PSG前，告知患者监测当日禁服调节睡眠药物及饮用酒、咖啡、可乐、茶等；日间少睡，避免情绪波动等，保证夜间睡眠质量。在符合以上条件下，于19:00前进入睡眠监测室，待患者适应环境后进行PSG，直至次日7:00离开，记录时间≥7小时。睡眠检测分析系统自动记录并分析脑电图、眼电图、下肢肌电图和口鼻气流等指标，再由经PSG技术培训的医师根据美国睡眠医学会睡眠及其相关事件判读手册2.6版进行修正，记录相关监测数据，包括清醒期PLMI、睡眠效率、N1期睡眠占总睡眠时间比例、N2期睡眠占总睡眠时间比例、N3期睡眠占总睡眠时间比例、REM期睡眠占总睡眠时间比例、睡眠呼吸暂停低通气指数（AHI）、睡眠潜伏期、觉醒指数、周期性肢体运动觉醒指数情况。  
+
+依据PLMI将患者分为非PLMS患者（对照组，PLMI<15次/h）和PLMS患者（试验组，PLMI≥15次/h）。  
+
+## 1.3 观察指标  
+比较两组患者睡眠结构及相关参数，分析PLMS与睡眠结构及相关参数的相关性。  
+
+## 1.4 统计学方法  
+应用SPSS 26.0统计学软件进行数据分析。计量资料进行正态性检验，符合正态分布以（$\\overline{{x}} \\pm \\textbf{s}$）表示，方差齐两组间比较采用成组$t$检验，否则以$M$（$P_{25}$，$P_{75}$）表示，两组比较采用秩和检验；计数资料以相对数表示，两组间比较采用$\\chi^{\\,2}$检验。相关性分析采用Spearman秩相关分析。以$P<0.05$为差异有统计学意义。
+
+"""
+response = """
+// 节点更新
+MERGE (n:Disease {name: '脑卒中'})
+SET 
+    n.code = coalesce(n.code, 'I63'),
+    n.description = coalesce(n.description, '脑卒中是一种急性脑血流中断的状态。'),
+    n.category = coalesce(n.category, '神经系统疾病'),
+    n.severity = coalesce(n.severity, '严重');
+
+MERGE (n:Disease {name: '腿动症'})
+SET 
+    n.code = coalesce(n.code, 'G25.81'),
+    n.description = coalesce(n.description, '腿动症是一种在睡眠中表现为周期性腿部运动的障碍。'),
+    n.category = coalesce(n.category, '睡眠障碍'),
+    n.severity = coalesce(n.severity, '中等');
+
+MERGE (n:Symptom {name: '睡眠障碍'})
+SET 
+    n.description = coalesce(n.description, '患者在睡眠中表现出持续的睡眠质量下降。'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '频繁');
+
+MERGE (n:Symptom {name: '清醒期PLMI'})
+SET 
+    n.description = coalesce(n.description, '清醒期周期性腿部运动指数。'),
+    n.severity = coalesce(n.severity, '高'),
+    n.frequency = coalesce(n.frequency, '偶尔');
+
+MERGE (n:Symptom {name: '睡眠效率'})
+SET 
+    n.description = coalesce(n.description, '在监测时间内，实际睡眠时间与监测时间的比例。'),
+    n.severity = coalesce(n.severity, '低'),
+    n.frequency = coalesce(n.frequency, '持续');
+
+MERGE (n:Symptom {name: '睡眠呼吸暂停低通气指数(AHI)'})
+SET 
+    n.description = coalesce(n.description, '每小时发生的睡眠呼吸暂停及低通气事件的数量。'),
+    n.severity = coalesce(n.severity, '高'),
+    n.frequency = coalesce(n.frequency, '可变');
+
+MERGE (n:Symptom {name: '睡眠潜伏期'})
+SET 
+    n.description = coalesce(n.description, '从入睡开始到睡眠的开始之间的时间间隔。'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '偶尔');
+
+MERGE (n:Symptom {name: '觉醒指数'})
+SET 
+    n.description = coalesce(n.description, '一个表示夜间觉醒次数的指标。'),
+    n.severity = coalesce(n.severity, '低'),
+    n.frequency = coalesce(n.frequency, '偶尔');
+
+MERGE (n:Symptom {name: '周期性肢体运动觉醒指数'})
+SET 
+    n.description = coalesce(n.description, '夜间周期性肢体运动造成的觉醒次数的指标。'),
+    n.severity = coalesce(n.severity, '高'),
+    n.frequency = coalesce(n.frequency, '频繁');
+
+// 关系更新
+MATCH (from) WHERE from.name = '腿动症'
+MATCH (to) WHERE to.name = '睡眠障碍'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.8),
+    r.frequency = coalesce(r.frequency, '频繁'),
+    r.severity = coalesce(r.severity, '严重');
+
+MATCH (from) WHERE from.name = '脑卒中'
+MATCH (to) WHERE to.name = '清醒期PLMI'
+MERGE (from)-[r:REQUIRES_EXAM]->(to)
+SET 
+    r.priority = coalesce(r.priority, '高'),
+    r.mandatory = coalesce(r.mandatory, 'true');
+
+MATCH (from) WHERE from.name = '脑卒中'
+MATCH (to) WHERE to.name = '睡眠效率'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.75),
+    r.priority = coalesce(r.priority, '高'),
+    r.stage = coalesce(r.stage, '急性');
+
+MATCH (from) WHERE from.name = '腿动症'
+MATCH (to) WHERE to.name = '睡眠呼吸暂停低通气指数(AHI)'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.9),
+    r.priority = coalesce(r.priority, '高'),
+    r.stage = coalesce(r.stage, '急性');
+
+MATCH (from) WHERE from.name = '脑卒中'
+MATCH (to) WHERE to.name = '睡眠潜伏期'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.85),
+    r.priority = coalesce(r.priority, '高'),
+    r.stage = coalesce(r.stage, '稳定');
+
+MATCH (from) WHERE from.name = '脑卒中'
+MATCH (to) WHERE to.name = '觉醒指数'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.7),
+    r.priority = coalesce(r.priority, '中等'),
+    r.stage = coalesce(r.stage, '急性');
+
+MATCH (from) WHERE from.name = '脑卒中'
+MATCH (to) WHERE to.name = '周期性肢体运动觉醒指数'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.88),
+    r.priority = coalesce(r.priority, '高'),
+    r.stage = coalesce(r.stage, '急性');
+
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-12 01:26:57"
+message = """
+
+[背景信息]
+我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+[命令]
+[CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+[详细补充需求]
+输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
+请保证你生成的语句可以多次执行而不出现重复定义问题;
+请保证语法正确性;
+请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出\"// 空\"(不含引号)
+
+// 定义节点属性示例
+// 疾病节点
+CREATE (:Disease {
+    name: String,           // 疾病名称
+    code: String,           // 疾病编码
+    description: String,    // 疾病描述
+    category: String,       // 疾病分类
+    severity: String        // 严重程度
+});
+
+// 症状节点
+CREATE (:Symptom {
+    name: String,           // 症状名称
+    description: String,    // 症状描述
+    severity: String,       // 严重程度
+    frequency: String       // 发生频率
+});
+
+// 检查项目节点
+CREATE (:Examination {
+    name: String,           // 检查名称
+    description: String,    // 检查描述
+    method: String,         // 检查方法
+    requirement: String     // 检查要求
+});
+
+// 治疗方案节点
+CREATE (:Treatment {
+    name: String,           // 治疗名称
+    type: String,           // 类型(药物/非药物)
+    description: String,    // 治疗描述
+    dosage: String,         // 剂量(药物)
+    duration: String,       // 持续时间
+    contraindication: String // 禁忌症
+});
+
+// 量表工具节点
+CREATE (:Scale {
+    name: String,           // 量表名称
+    description: String,    // 量表描述
+    score_range: String,    // 分数范围
+    interpretation: String  // 结果解释
+});
+
+// 风险因素节点
+CREATE (:RiskFactor {
+    name: String,           // 因素名称
+    description: String,    // 描述
+    impact_level: String    // 影响程度
+});
+
+// 并发症节点
+CREATE (:Complication {
+    name: String,           // 并发症名称
+    description: String,    // 描述
+    severity: String        // 严重程度
+});
+
+// 定义关系类型
+// 症状-疾病关系
+CREATE (:Symptom)-[:INDICATES {
+    confidence: Float,      // 置信度
+    frequency: String,      // 发生频率
+    severity: String        // 严重程度
+}]->(:Disease);
+
+// 疾病-检查关系
+CREATE (:Disease)-[:REQUIRES_EXAM {
+    priority: String,       // 优先级
+    mandatory: Boolean      // 是否必需
+}]->(:Examination);
+
+// 疾病-治疗关系
+CREATE (:Disease)-[:TREATED_BY {
+    effectiveness: Float,   // 有效性
+    priority: String,       // 优先级
+    stage: String          // 治疗阶段
+}]->(:Treatment);
+
+// 疾病-并发症关系
+CREATE (:Disease)-[:MAY_CAUSE {
+    probability: Float,     // 发生概率
+    timeframe: String      // 时间框架
+}]->(:Complication);
+
+// 疾病-风险因素关系
+CREATE (:Disease)-[:INFLUENCED_BY {
+    impact_level: String,   // 影响程度
+    evidence_level: String  // 证据等级
+}]->(:RiskFactor);
+
+// 疾病-量表关系
+CREATE (:Disease)-[:ASSESSED_BY {
+    applicability: Float,   // 适用性
+    recommendation_level: String  // 推荐级别
+}]->(:Scale);
+
+[关系抽取说明]
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
+请尽你可能抽取全部关系
+[示例输出]
+MERGE (d1:Disease {name: \"阻塞性睡眠呼吸暂停低通气综合征\", short_name: \"OSAHS\"})
+MERGE (c1:Disease {name: \"高血压\"})
+MERGE (c2:Disease {name: \"糖尿病\"})
+MERGE (c1)-[:COMPLICATION_OF]->(d1)
+MERGE (c2)-[:COMPLICATION_OF]->(d1)
+
+[隶属文件名]
+脑卒中伴睡眠期周期性肢体运动患者的睡眠结构研究.md
+[隶属文件分块名]
+脑卒中伴睡眠期周期性肢体运动患者的睡眠结构研究/007-3-讨论.md
+[文本块]
+# 讨论（续）
+PLMS的发病机制尚未明确，PLMS与各种条件的关联很难用单一的机制解释。但对于脑卒中患者来说，伴有PLMS会增加患者睡眠结构紊乱，增加脑卒中复发风险，是脑卒中预后不良的标志。因此，在治疗原发病的同时，应结合患者睡眠监测报告，分析睡眠障碍的类型，观察PLMI及是否伴有觉醒的肢体运动，结合患者的临床需求选择合适的药物，并随访服药后是否出现其他不良反应等，改善睡眠状况的同时，降低脑卒中复发及加重的因素，从而提高生活质量。  
+
+作者贡献：
+- 胡娅娅：负责研究方案的构思与设计，数据收集、整理、统计，结果分析与解释，论文撰写等工作；
+- 朱宁：负责睡眠报告的解读、论文修订工作，负责文章的质量控制及审校，对文章整体负责并进行监督管理；
+- 薛孟周：对研究的实施与可行性进行分析，并对论文进行审校。  
+
+本文无利益冲突。
+
+"""
+response = """
+// 节点更新
+MERGE (n:Disease {name: '脑卒中'})
+SET 
+    n.description = coalesce(n.description, '脑卒中是由于脑部血液供应受阻，导致脑细胞损伤的一种疾病。'),
+    n.severity = coalesce(n.severity, '严重');
+
+MERGE (n:Disease {name: '周期性肢体运动睡眠障碍'})
+SET 
+    n.short_name = coalesce(n.short_name, 'PLMS'),
+    n.description = coalesce(n.description, '周期性肢体运动睡眠障碍是一种在睡眠中出现周期性肢体运动的疾病，影响睡眠质量。'),
+    n.severity = coalesce(n.severity, '中等');
+
+MERGE (n:Treatment {name: '药物治疗'})
+SET 
+    n.type = coalesce(n.type, '药物'),
+    n.description = coalesce(n.description, '根据患者的临床需求选择合适的药物以改善睡眠状况。'),
+    n.dosage = coalesce(n.dosage, '根据医生建议'),
+    n.duration = coalesce(n.duration, '长期'),
+    n.contraindication = coalesce(n.contraindication, '有潜在副作用');
+
+MERGE (n:Complication {name: '睡眠结构紊乱'})
+SET 
+    n.description = coalesce(n.description, '睡眠结构紊乱是指睡眠周期和阶段的异常，可能影响睡眠质量和健康。'),
+    n.severity = coalesce(n.severity, '中等');
+
+// 关系更新
+MATCH (from) WHERE from.name = '脑卒中'
+MATCH (to) WHERE to.name = '周期性肢体运动睡眠障碍'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.7),
+    r.timeframe = coalesce(r.timeframe, '长期');
+
+MATCH (from) WHERE from.name = '周期性肢体运动睡眠障碍'
+MATCH (to) WHERE to.name = '脑卒中'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.8),
+    r.frequency = coalesce(r.frequency, '高'),
+    r.severity = coalesce(r.severity, '中等');
+
+MATCH (from) WHERE from.name = '脑卒中'
+MATCH (to) WHERE to.name = '药物治疗'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.75),
+    r.priority = coalesce(r.priority, '高'),
+    r.stage = coalesce(r.stage, '急性');
+
+MATCH (from) WHERE from.name = '脑卒中'
+MATCH (to) WHERE to.name = '睡眠结构紊乱'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.6),
+    r.timeframe = coalesce(r.timeframe, '长期');
+
+MATCH (from) WHERE from.name = '周期性肢体运动睡眠障碍'
+MATCH (to) WHERE to.name = '睡眠结构紊乱'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.9),
+    r.frequency = coalesce(r.frequency, '频繁'),
+    r.severity = coalesce(r.severity, '中等');
+
+"""

@@ -178,6 +178,7 @@ class BatchProcessor:
 
     def save_state(self):
         """保存处理状态"""
+        self.logger.info("Try saving current processing state")
         with self.save_lock:  # 使用锁确保并发安全
             state_dict = {
                 k: {

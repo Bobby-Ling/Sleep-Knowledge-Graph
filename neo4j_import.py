@@ -1,154 +1,130 @@
 # %%
+from datetime import datetime
 import json
 import os
 import logging
+import sys
+from typing import Iterator
 from neo4j import GraphDatabase
 from neo4j.exceptions import *
+from tqdm import tqdm
 
-# 配置日志
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s",
-    handlers=[logging.StreamHandler()]
-)
+from prompts_template import CYPHER_CONSTRAINT_SCHEMA
+from cypher_normalizer import CypherTomlResponseIterator
 
 URI = "neo4j+s://78717f6d.databases.neo4j.io:7687"
 USER = "neo4j"
 PASSWORD = "v6_ajT8EJU_naZWZjijqP7rySyaOYK7hl9oKJw74TQg"
+
 class Neo4jImporter:
-    def __init__(self, uri = URI, user = USER, password = PASSWORD):
+    def __init__(self, uri = URI, auth = (USER, PASSWORD), log_level = logging.INFO):
         self.logger = logging.getLogger(self.__class__.__name__)
+        self.setup_logging(log_level)
         try:
-            self.driver = GraphDatabase.driver(uri, auth=(user, password))
+            self.driver = GraphDatabase.driver(uri, auth=auth)
             self.logger.info("Successfully connected to Neo4j database.")
         except AuthError as e:
             self.logger.error("Authentication failed: %s", e)
             raise
 
+    def setup_logging(self, log_level):
+        """设置日志"""
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        log_file = f'logs/import_{timestamp}.log'
+
+        self.logger.setLevel(logging.DEBUG)
+
+        console_handler = logging.StreamHandler(sys.stdout)
+        console_handler.setLevel(log_level)
+
+        file_handler = logging.FileHandler(log_file, encoding='utf-8')
+        file_handler.setLevel(logging.DEBUG)
+
+        formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+        console_handler.setFormatter(formatter)
+        file_handler.setFormatter(formatter)
+
+        self.logger.handlers.clear()
+        self.logger.addHandler(console_handler)
+        self.logger.addHandler(file_handler)
+        self.logger.debug(f"debug{self.logger.handlers}")
+
     def close(self):
         self.driver.close()
         self.logger.info("Closed connection to Neo4j database.")
     def execute(self, query: str):
-        """执行单条 Cypher 查询并返回结果。"""
-        self.logger.info("Executing query: %s", query)
-        with self.driver.session() as session:
-            try:
-                result = session.run(query)
-                # 将结果转换为列表（或其他合适的格式）
-                # result_list = [record for record in result]
-                # self.logger.info("Query executed successfully, returned %d records.", len(result_list))
-                # return result_list
-                return result.single().data()
-            except CypherSyntaxError as e:
-                self.logger.error("Query failed: %s", e)
-                return {"error": str(e)}
-    def import_cypher(self, cypher: str):
-        """导入单条或多条 Cypher 语句（可以是分号分隔的字符串）。"""
-        self.logger.info("Starting to import Cypher...")
-        successful_queries = 0
-        failed_queries = 0
-        errors = []
+        """执行一条或多条 Cypher 查询并返回所有结果。"""
+        self.logger.debug("Executing queries: %s", query)
 
-        # 按分号拆分多个语句并去掉空白
-        queries = [query.strip() for query in cypher.split(";") if query.strip()]
+        queries = [q.strip() for q in query.split(";") if q.strip()]
+        results = []
 
         with self.driver.session() as session:
-            for idx, query in enumerate(queries, start=1):
+            for idx, single_query in enumerate(queries, start=1):
                 try:
-                    session.run(query)
-                    successful_queries += 1
-                    self.logger.info("Executed query %d/%d successfully.", idx, len(queries))
+                    result = session.run(single_query)
+                    records = list(result)
+                    if records:
+                        # 将所有记录转换为字典列表
+                        result_data = [record.data() for record in records]
+                        self.logger.debug(
+                            "Query %d/%d result:\n%s",
+                            idx,
+                            len(queries),
+                            json.dumps(result_data, indent=4, ensure_ascii=False)
+                        )
+                        results.append(result_data)
+                    else:
+                        self.logger.debug("Query %d/%d returned no results", idx, len(queries))
+                        results.append([])
+
                 except CypherSyntaxError as e:
-                    failed_queries += 1
-                    errors.append((query, str(e)))
-                    self.logger.warning("Query %d failed: %s", idx, e)
+                    self.logger.error("Query %d/%d failed: %s", idx, len(queries), e)
+                    results.append({"error": str(e)})
+        return results
+    def execute_iter(self, iterator: Iterator) -> tuple[int, int]:
+        """
+        从迭代器中获取数据并执行Cypher语句
+        """
+        success_count = 0
+        error_count = 0
+        current_batch = 0
 
-        self.logger.info(
-            "Import completed: %d successful, %d failed.",
-            successful_queries, failed_queries
-        )
-        if errors:
-            self.logger.debug("Failed queries: %s", errors)
-        return {"successful": successful_queries, "failed": failed_queries, "errors": errors}
+        self.logger.info("Starting Cypher statements execution")
 
-    def import_from_file(self, file_path: str):
-        """从文件中导入 Cypher 语句。"""
-        try:
-            with open(file_path, "r", encoding="utf-8") as file:
-                cypher = file.read()
-            self.logger.info("Successfully read Cypher file: %s", file_path)
-            return self.import_cypher(cypher)
-        except FileNotFoundError as e:
-            self.logger.error("File not found: %s", e)
-            raise
-        except IOError as e:
-            self.logger.error("IO error reading file: %s", e)
-            raise
+        # 使用tqdm创建进度条
+        pbar = tqdm(iterator, total=len(iterator), desc="Executing Cypher statements")
 
-    def import_from_directory(self, directory_path: str):
-        """从目录中批量导入所有 `.cypher` 文件。"""
-        self.logger.info("Starting to import Cypher files from directory: %s", directory_path)
-        if not os.path.isdir(directory_path):
-            self.logger.error("Provided path is not a directory: %s", directory_path)
-            raise NotADirectoryError(f"{directory_path} is not a valid directory.")
+        for block in pbar:
+            current_batch += 1
+            try:
+                self.execute(block)
+                self.logger.debug("\n\n////////------------------------------------\n")
+                self.logger.debug(block)
+                self.logger.debug("\n------------------------------------////////\n\n")
+                success_count += 1
 
-        successful_files = 0
-        failed_files = 0
-        total_results = {"successful": 0, "failed": 0, "errors": []}
+            except Exception as e:
+                error_count += 1
+                self.logger.error(f"Failed to process block: {str(e)}")
 
-        for file_name in os.listdir(directory_path):
-            if file_name.endswith(".cypher"):
-                file_path = os.path.join(directory_path, file_name)
-                try:
-                    self.logger.info("Importing file: %s", file_path)
-                    result = self.import_from_file(file_path)
-                    successful_files += 1
-                    total_results["successful"] += result["successful"]
-                    total_results["failed"] += result["failed"]
-                    total_results["errors"].extend(result["errors"])
-                except Exception as e:
-                    failed_files += 1
-                    self.logger.error("Failed to import file %s: %s", file_path, e)
+        self.logger.info(f"Execution completed. Total processed: {current_batch}")
+        self.logger.info(f"Final results - Success: {success_count}, Errors: {error_count}")
 
-        self.logger.info(
-            "Directory import completed: %d files successful, %d files failed.",
-            successful_files, failed_files
-        )
-        return total_results
+        return success_count, error_count
+
+
 # %%
-importer = Neo4jImporter(URI, USER, PASSWORD)
+# importer = Neo4jImporter(URI, (USER, PASSWORD))
+importer = Neo4jImporter('bolt://localhost:7687', None)
 # %%
 if __name__ == "__main__":
+    pass
     # 从字符串导入
-    # importer.import_cypher("MATCH (n) DETACH DELETE n;")
-    cypher_script = """
-    MERGE (d:Disease {name: "阻塞性睡眠呼吸暂停低通气综合征", description: "OSAHS"})
-    MERGE (t1:Treatment {name: "体质量管理", type: "非药物", description: "包括饮食控制和适度的体育锻炼, 旨在减轻体质量. "})
-    MERGE (t2:Treatment {name: "生活方式改变", type: "非药物", description: "包括戒烟、限制酒精摄入、避免晚餐过量饮食、规律作息和改进睡眠环境等. "})
-    MERGE (t3:Treatment {name: "持续气道正压通气(CPAP)", type: "药物", description: "通过面罩或鼻罩提供气道正压, 防止气道坍塌, 确保患者在夜间呼吸通畅. "})
-    MERGE (t4:Treatment {name: "自动调节压力正压通气(APAP)", type: "药物", description: "可以根据患者的呼吸情况进行调整, 以提供更个性化的治疗. "})
-    MERGE (d)-[:TREATED_BY]->(t1)
-    MERGE (d)-[:TREATED_BY]->(t2)
-    MERGE (d)-[:TREATED_BY]->(t3)
-    MERGE (d)-[:TREATED_BY]->(t4);
-    """
-    result = importer.import_cypher(cypher_script)
-    logging.info("Result: %s", result)
-    result = importer.execute("""
-MATCH (d:Disease {name: "阻塞性睡眠呼吸暂停低通气综合征"})-[:TREATED_BY]->(t:Treatment)
-WITH d, 
-     COLLECT(CASE WHEN t.type = '药物' THEN t.name END) as drug_treatments,
-     COLLECT(CASE WHEN t.type = '非药物' THEN t.name END) as non_drug_treatments,
-     COLLECT(CASE WHEN t.type = '药物' THEN t.description END) as drug_descriptions,
-     COLLECT(CASE WHEN t.type = '非药物' THEN t.description END) as non_drug_descriptions
-RETURN d.name as DiseaseName,
-       d.description as DiseaseDescription,
-       [x IN drug_treatments WHERE x IS NOT NULL] as DrugTreatments,
-       [x IN drug_descriptions WHERE x IS NOT NULL] as DrugTreatmentDescriptions,
-       [x IN non_drug_treatments WHERE x IS NOT NULL] as NonDrugTreatments,
-       [x IN non_drug_descriptions WHERE x IS NOT NULL] as NonDrugTreatmentDescriptions
-                              """)
-    logging.info("Result: \n%s", json.dumps(result, indent=4, ensure_ascii=False))
+    result = importer.execute("MATCH (n) DETACH DELETE n;")
+    result = importer.execute(CYPHER_CONSTRAINT_SCHEMA)
+    # cypher_script = """"""
+    # result = importer.execute(cypher_script)
 
     # # 从文件导入
     # file_path = "path/to/cypher_file.cql"
@@ -159,12 +135,11 @@ RETURN d.name as DiseaseName,
     #     logging.error("Failed to import file: %s", e)
 
     # 从目录导入
-    # directory_path = "cyphers"
-    # try:
-    #     dir_result = importer.import_from_directory(directory_path)
-    #     logging.info("Directory import result: %s", dir_result)
-    # except Exception as e:
-    #     logging.error("Failed to import directory: %s", e)
+    toml_dir = "cypher_parsed/toml"
+    try:
+        importer.execute_iter(CypherTomlResponseIterator(toml_dir))
+    except Exception as e:
+        logging.error("Failed to import directory: %s", e)
 
     # importer.close()
 

@@ -84,13 +84,42 @@ def test_independent_worker():
     worker.do_work()
 
 if __name__ == '__main__':
-    print("=== 测试场景1: 通过LoggingDemo创建的worker ===")
-    demo = LoggingDemo()
-    demo.test_worker_logging()
+    # print("=== 测试场景1: 通过LoggingDemo创建的worker ===")
+    # demo = LoggingDemo()
+    # demo.test_worker_logging()
 
-    print("\n=== 测试场景2: 独立创建的worker ===")
-    test_independent_worker()
+    # print("\n=== 测试场景2: 独立创建的worker ===")
+    # test_independent_worker()
 
-    print("\n=== 测试场景3: 在现有logger配置下创建新的worker ===")
-    new_worker = WorkerClass("late_worker")
-    new_worker.do_work()
+    # print("\n=== 测试场景3: 在现有logger配置下创建新的worker ===")
+    # new_worker = WorkerClass("late_worker")
+    # new_worker.do_work()
+    pass
+
+import logging
+
+# Create logger
+logger = logging.getLogger('my_app')
+logger.setLevel(logging.DEBUG)
+
+# Console handler (INFO level)
+console_handler = logging.StreamHandler()
+console_handler.setLevel(logging.INFO)
+console_formatter = logging.Formatter('%(levelname)s: %(message)s')
+console_handler.setFormatter(console_formatter)
+
+# File handler (DEBUG level)
+file_handler = logging.FileHandler('debug.log')
+file_handler.setLevel(logging.DEBUG)
+file_formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+file_handler.setFormatter(file_formatter)
+
+# Add handlers to logger
+logger.addHandler(console_handler)
+logger.addHandler(file_handler)
+
+# Example usage
+logger.debug('Debug message - only goes to file')
+logger.info('Info message - goes to both console and file')
+logger.warning('Warning message - goes to both console and file')
+logger.error('Error message - goes to both console and file')
