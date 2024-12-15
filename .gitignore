@@ -9,3 +9,6 @@ processing_state*.json
 __pycache__/
 /test/
 *.log
+/scale_output/
+temp.py
+test.ipynb

@@ -1,0 +1,146 @@
+{
+  "title": "Stop Bang 睡眠呼吸暂停风险评估",
+  "description": "请回答以下问题以评估睡眠呼吸暂停综合征(OSAS)风险",
+  "pages": [
+    {
+      "name": "page1",
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "stopbang_snoring",
+          "title": "1. 打鼾：你是否大声打鼾（大过说话声音，或者隔着关闭的门也能听到）？",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 1,
+              "text": "是"
+            },
+            {
+              "value": 0,
+              "text": "否"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "stopbang_tired",
+          "title": "2. 疲劳：你是否白天感觉累，疲惫或者想睡觉？",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 1,
+              "text": "是"
+            },
+            {
+              "value": 0,
+              "text": "否"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "stopbang_observed",
+          "title": "3. 呼吸暂停：是否有人观察到你睡觉时有呼吸停止现象？",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 1,
+              "text": "是"
+            },
+            {
+              "value": 0,
+              "text": "否"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "stopbang_pressure",
+          "title": "4. 高血压：你是否曾经或者目前是高血压患者？",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 1,
+              "text": "是"
+            },
+            {
+              "value": 0,
+              "text": "否"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "stopbang_stopbang_bmi",
+          "title": "5. BMI：体重指数是否大于35？",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 1,
+              "text": "是"
+            },
+            {
+              "value": 0,
+              "text": "否"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "stopbang_age",
+          "title": "6. 年龄：年龄是否超过50岁？",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 1,
+              "text": "是"
+            },
+            {
+              "value": 0,
+              "text": "否"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "stopbang_neck",
+          "title": "7. 颈围：颈围是否大于40厘米？",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 1,
+              "text": "是"
+            },
+            {
+              "value": 0,
+              "text": "否"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "stopbang_gender",
+          "title": "8. 性别：是否男性？",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 1,
+              "text": "是"
+            },
+            {
+              "value": 0,
+              "text": "否"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "calculatedValues": [
+    {
+      "name": "totalScore",
+      "expression": "{stopbang_snoring}+{stopbang_tired}+{stopbang_observed}+{stopbang_pressure}+{stopbang_bmi}+{stopbang_age}+{stopbang_neck}+{stopbang_gender}"
+    }
+  ],
+  "completedHtml": "评估结果：{totalScore} 分\n<p>评分标准：≥3分为OSAS高危人群，<3分为低风险。</p>"
+}

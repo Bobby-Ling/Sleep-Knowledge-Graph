@@ -1,0 +1,212 @@
+{
+  "title": "阿森斯失眠量表（AIS）",
+  "description": "本表主要用于记录您对遇到过的睡眠障碍的自我评估。对于以下列出的问题，如果在过去1个月内每星期至少发生3次在您身上，就请您在相应的选项中选择：",
+  "pages": [
+    {
+      "name": "page1",
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "ais_sleep_latency",
+          "title": "1. 入睡时间（关灯后到睡着的时间）",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "没问题"
+            },
+            {
+              "value": 1,
+              "text": "轻微延迟"
+            },
+            {
+              "value": 2,
+              "text": "显著延迟"
+            },
+            {
+              "value": 3,
+              "text": "延迟严重或没有睡觉"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "ais_night_awakening",
+          "title": "2. 夜间苏醒",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "没问题"
+            },
+            {
+              "value": 1,
+              "text": "轻微影响"
+            },
+            {
+              "value": 2,
+              "text": "显著影响"
+            },
+            {
+              "value": 3,
+              "text": "严重影响或没有睡觉"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "ais_early_awakening",
+          "title": "3. 比期望的时间早醒",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "没问题"
+            },
+            {
+              "value": 1,
+              "text": "轻微提早"
+            },
+            {
+              "value": 2,
+              "text": "显著提早"
+            },
+            {
+              "value": 3,
+              "text": "严重提早或没有睡觉"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "ais_sleep_duration",
+          "title": "4. 总睡眠时间",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "足够"
+            },
+            {
+              "value": 1,
+              "text": "轻微不足"
+            },
+            {
+              "value": 2,
+              "text": "显著不足"
+            },
+            {
+              "value": 3,
+              "text": "严重不足或没有睡觉"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "ais_sleep_quality",
+          "title": "5. 总睡眠质量（无论睡多长）",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "满意"
+            },
+            {
+              "value": 1,
+              "text": "轻微不满"
+            },
+            {
+              "value": 2,
+              "text": "显著不满"
+            },
+            {
+              "value": 3,
+              "text": "严重不满或没有睡觉"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "ais_daytime_mood",
+          "title": "6. 白天情绪",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "正常"
+            },
+            {
+              "value": 1,
+              "text": "轻微低落"
+            },
+            {
+              "value": 2,
+              "text": "显著低落"
+            },
+            {
+              "value": 3,
+              "text": "严重低落"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "ais_physical_function",
+          "title": "7. 白天身体功能（体力或精神：如记忆力、认知力和注意力等）",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "足够"
+            },
+            {
+              "value": 1,
+              "text": "轻微影响"
+            },
+            {
+              "value": 2,
+              "text": "显著影响"
+            },
+            {
+              "value": 3,
+              "text": "严重影响"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "ais_daytime_sleepiness",
+          "title": "8. 白天思睡",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "无思睡"
+            },
+            {
+              "value": 1,
+              "text": "轻微思睡"
+            },
+            {
+              "value": 2,
+              "text": "显著思睡"
+            },
+            {
+              "value": 3,
+              "text": "严重思睡"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "calculatedValues": [
+    {
+      "name": "totalScore",
+      "expression": "{ais_sleep_latency}+{ais_night_awakening}+{ais_early_awakening}+{ais_sleep_duration}+{ais_sleep_quality}+{Q6}+{Q7}+{Q8}"
+    }
+  ],
+  "completedHtml": {
+    "default": "总分: {totalScore}\n\n评分说明：\n0-3分：正常\n4-5分：可疑失眠\n6分及以上：失眠"
+  }
+}

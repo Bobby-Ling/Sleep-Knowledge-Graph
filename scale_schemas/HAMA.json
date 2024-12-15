@@ -1,0 +1,412 @@
+{
+  "title": "汉密顿焦虑量表(HAMA)",
+  "description": "请根据患者目前的症状严重程度进行评分。评分标准：0分-无症状，1分-轻度，2分-中度，3分-重度，4分-极重度",
+  "pages": [
+    {
+      "name": "page1",
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "hama_anxiety",
+          "title": "1. 焦虑心境",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "0分-无症状"
+            },
+            {
+              "value": 1,
+              "text": "1分-轻度"
+            },
+            {
+              "value": 2,
+              "text": "2分-中度"
+            },
+            {
+              "value": 3,
+              "text": "3分-重度"
+            },
+            {
+              "value": 4,
+              "text": "4分-极重度"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "hama_tension",
+          "title": "2. 紧张",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "0分-无症状"
+            },
+            {
+              "value": 1,
+              "text": "1分-轻度"
+            },
+            {
+              "value": 2,
+              "text": "2分-中度"
+            },
+            {
+              "value": 3,
+              "text": "3分-重度"
+            },
+            {
+              "value": 4,
+              "text": "4分-极重度"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "hama_fear",
+          "title": "3. 害怕",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "0分-无症状"
+            },
+            {
+              "value": 1,
+              "text": "1分-轻度"
+            },
+            {
+              "value": 2,
+              "text": "2分-中度"
+            },
+            {
+              "value": 3,
+              "text": "3分-重度"
+            },
+            {
+              "value": 4,
+              "text": "4分-极重度"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "hama_insomnia",
+          "title": "4. 失眠",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "0分-无症状"
+            },
+            {
+              "value": 1,
+              "text": "1分-轻度"
+            },
+            {
+              "value": 2,
+              "text": "2分-中度"
+            },
+            {
+              "value": 3,
+              "text": "3分-重度"
+            },
+            {
+              "value": 4,
+              "text": "4分-极重度"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "hama_cognitive",
+          "title": "5. 认知功能",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "0分-无症状"
+            },
+            {
+              "value": 1,
+              "text": "1分-轻度"
+            },
+            {
+              "value": 2,
+              "text": "2分-中度"
+            },
+            {
+              "value": 3,
+              "text": "3分-重度"
+            },
+            {
+              "value": 4,
+              "text": "4分-极重度"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "hama_depression",
+          "title": "6. 抑郁心境",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "0分-无症状"
+            },
+            {
+              "value": 1,
+              "text": "1分-轻度"
+            },
+            {
+              "value": 2,
+              "text": "2分-中度"
+            },
+            {
+              "value": 3,
+              "text": "3分-重度"
+            },
+            {
+              "value": 4,
+              "text": "4分-极重度"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "hama_somatic_anxiety",
+          "title": "7. 躯体性焦虑",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "0分-无症状"
+            },
+            {
+              "value": 1,
+              "text": "1分-轻度"
+            },
+            {
+              "value": 2,
+              "text": "2分-中度"
+            },
+            {
+              "value": 3,
+              "text": "3分-重度"
+            },
+            {
+              "value": 4,
+              "text": "4分-极重度"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "hama_psychic_anxiety",
+          "title": "8. 精神性焦虑",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "0分-无症状"
+            },
+            {
+              "value": 1,
+              "text": "1分-轻度"
+            },
+            {
+              "value": 2,
+              "text": "2分-中度"
+            },
+            {
+              "value": 3,
+              "text": "3分-重度"
+            },
+            {
+              "value": 4,
+              "text": "4分-极重度"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "hama_cardiovascular",
+          "title": "9. 心血管系统症状",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "0分-无症状"
+            },
+            {
+              "value": 1,
+              "text": "1分-轻度"
+            },
+            {
+              "value": 2,
+              "text": "2分-中度"
+            },
+            {
+              "value": 3,
+              "text": "3分-重度"
+            },
+            {
+              "value": 4,
+              "text": "4分-极重度"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "hama_respiratory",
+          "title": "10. 呼吸系统症状",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "0分-无症状"
+            },
+            {
+              "value": 1,
+              "text": "1分-轻度"
+            },
+            {
+              "value": 2,
+              "text": "2分-中度"
+            },
+            {
+              "value": 3,
+              "text": "3分-重度"
+            },
+            {
+              "value": 4,
+              "text": "4分-极重度"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "hama_gastrointestinal",
+          "title": "11. 胃肠道症状",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "0分-无症状"
+            },
+            {
+              "value": 1,
+              "text": "1分-轻度"
+            },
+            {
+              "value": 2,
+              "text": "2分-中度"
+            },
+            {
+              "value": 3,
+              "text": "3分-重度"
+            },
+            {
+              "value": 4,
+              "text": "4分-极重度"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "hama_genitourinary",
+          "title": "12. 生殖泌尿神经系统症状",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "0分-无症状"
+            },
+            {
+              "value": 1,
+              "text": "1分-轻度"
+            },
+            {
+              "value": 2,
+              "text": "2分-中度"
+            },
+            {
+              "value": 3,
+              "text": "3分-重度"
+            },
+            {
+              "value": 4,
+              "text": "4分-极重度"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "hama_autonomic",
+          "title": "13. 植物神经系统症状",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "0分-无症状"
+            },
+            {
+              "value": 1,
+              "text": "1分-轻度"
+            },
+            {
+              "value": 2,
+              "text": "2分-中度"
+            },
+            {
+              "value": 3,
+              "text": "3分-重度"
+            },
+            {
+              "value": 4,
+              "text": "4分-极重度"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "hama_behavior",
+          "title": "14. 会谈时行为表现",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "0分-无症状"
+            },
+            {
+              "value": 1,
+              "text": "1分-轻度"
+            },
+            {
+              "value": 2,
+              "text": "2分-中度"
+            },
+            {
+              "value": 3,
+              "text": "3分-重度"
+            },
+            {
+              "value": 4,
+              "text": "4分-极重度"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "calculatedValues": [
+    {
+      "name": "totalScore",
+      "expression": "{hama_anxiety}+{hama_tension}+{hama_fear}+{hama_insomnia}+{hama_cognitive}+{hama_depression}+{hama_somatic_anxiety}+{hama_psychic_anxiety}+{hama_cardiovascular}+{hama_anxiety0}+{hama_anxiety1}+{hama_anxiety2}+{hama_anxiety3}+{hama_anxiety4}"
+    }
+  ],
+  "completedHtml": {
+    "default": "总分: {totalScore}\n\n评分说明：\n≥29分：可能为严重焦虑\n21-28分：明显焦虑\n14-20分：确有焦虑\n7-13分：可能有焦虑\n≤6分：无焦虑症状"
+  }
+}

@@ -1,0 +1,50 @@
+{
+    "title": "个人信息",
+    "description": "",
+    "pages": [
+      {
+        "name": "page1",
+        "elements": [
+          {
+            "type": "text",
+            "name": "name",
+            "title": "姓名",
+            "isRequired": true
+          },
+          {
+            "type": "radiogroup",
+            "name": "gender",
+            "title": "性别",
+            "isRequired": true,
+            "choices": [
+              { "value": "male", "text": "男" },
+              { "value": "female", "text": "女" }
+            ]
+          },
+          {
+            "type": "text",
+            "name": "age",
+            "title": "年龄",
+            "inputType": "number",
+            "isRequired": true
+          },
+          {
+            "type": "text",
+            "name": "education",
+            "title": "文化程度"
+          },
+          {
+            "type": "text",
+            "name": "occupation",
+            "title": "职业"
+          },
+          {
+            "type": "date",
+            "name": "assessmentDate",
+            "title": "评定日期",
+            "isRequired": true
+          }
+        ]
+      }
+    ]
+  }

@@ -1,0 +1,628 @@
+{
+  "title": "汉密顿抑郁量表(HAMD)",
+  "description": "请根据患者目前的症状严重程度进行评分",
+  "pages": [
+    {
+      "name": "page1",
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "hamd_depression",
+          "title": "1. 抑郁情绪",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "0分"
+            },
+            {
+              "value": 1,
+              "text": "1分"
+            },
+            {
+              "value": 2,
+              "text": "2分"
+            },
+            {
+              "value": 3,
+              "text": "3分"
+            },
+            {
+              "value": 4,
+              "text": "4分"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "hamd_guilt",
+          "title": "2. 有罪感",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "0分"
+            },
+            {
+              "value": 1,
+              "text": "1分"
+            },
+            {
+              "value": 2,
+              "text": "2分"
+            },
+            {
+              "value": 3,
+              "text": "3分"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "hamd_suicide",
+          "title": "3. 自杀",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "0分"
+            },
+            {
+              "value": 1,
+              "text": "1分"
+            },
+            {
+              "value": 2,
+              "text": "2分"
+            },
+            {
+              "value": 3,
+              "text": "3分"
+            },
+            {
+              "value": 4,
+              "text": "4分"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "hamd_insomnia_early",
+          "title": "4. 入睡困难",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "0分"
+            },
+            {
+              "value": 1,
+              "text": "1分"
+            },
+            {
+              "value": 2,
+              "text": "2分"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "hamd_insomnia_middle",
+          "title": "5. 睡眠不深",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "0分"
+            },
+            {
+              "value": 1,
+              "text": "1分"
+            },
+            {
+              "value": 2,
+              "text": "2分"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "hamd_insomnia_late",
+          "title": "6. 早醒",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "0分"
+            },
+            {
+              "value": 1,
+              "text": "1分"
+            },
+            {
+              "value": 2,
+              "text": "2分"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "hamd_work_interests",
+          "title": "7. 工作和兴趣",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "0分"
+            },
+            {
+              "value": 1,
+              "text": "1分"
+            },
+            {
+              "value": 2,
+              "text": "2分"
+            },
+            {
+              "value": 3,
+              "text": "3分"
+            },
+            {
+              "value": 4,
+              "text": "4分"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "hamd_retardation",
+          "title": "8. 阻滞",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "0分"
+            },
+            {
+              "value": 1,
+              "text": "1分"
+            },
+            {
+              "value": 2,
+              "text": "2分"
+            },
+            {
+              "value": 3,
+              "text": "3分"
+            },
+            {
+              "value": 4,
+              "text": "4分"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "hamd_agitation",
+          "title": "9. 激越",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "0分"
+            },
+            {
+              "value": 1,
+              "text": "1分"
+            },
+            {
+              "value": 2,
+              "text": "2分"
+            },
+            {
+              "value": 3,
+              "text": "3分"
+            },
+            {
+              "value": 4,
+              "text": "4分"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "hamd_anxiety_psychic",
+          "title": "10. 精神性焦虑",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "0分"
+            },
+            {
+              "value": 1,
+              "text": "1分"
+            },
+            {
+              "value": 2,
+              "text": "2分"
+            },
+            {
+              "value": 3,
+              "text": "3分"
+            },
+            {
+              "value": 4,
+              "text": "4分"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "hamd_anxiety_somatic",
+          "title": "11. 躯体性焦虑",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "0分"
+            },
+            {
+              "value": 1,
+              "text": "1分"
+            },
+            {
+              "value": 2,
+              "text": "2分"
+            },
+            {
+              "value": 3,
+              "text": "3分"
+            },
+            {
+              "value": 4,
+              "text": "4分"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "hamd_somatic_gastric",
+          "title": "12. 胃肠道症状",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "0分"
+            },
+            {
+              "value": 1,
+              "text": "1分"
+            },
+            {
+              "value": 2,
+              "text": "2分"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "hamd_somatic_general",
+          "title": "13. 全身症状",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "0分"
+            },
+            {
+              "value": 1,
+              "text": "1分"
+            },
+            {
+              "value": 2,
+              "text": "2分"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "hamd_genital",
+          "title": "14. 性症状",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "0分"
+            },
+            {
+              "value": 1,
+              "text": "1分"
+            },
+            {
+              "value": 2,
+              "text": "2分"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "hamd_hypochondriasis",
+          "title": "15. 疑病",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "0分"
+            },
+            {
+              "value": 1,
+              "text": "1分"
+            },
+            {
+              "value": 2,
+              "text": "2分"
+            },
+            {
+              "value": 3,
+              "text": "3分"
+            },
+            {
+              "value": 4,
+              "text": "4分"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "hamd_weight_loss",
+          "title": "16. 体重减轻",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "0分"
+            },
+            {
+              "value": 1,
+              "text": "1分"
+            },
+            {
+              "value": 2,
+              "text": "2分"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "hamd_insight",
+          "title": "17. 自知力",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "0分"
+            },
+            {
+              "value": 1,
+              "text": "1分"
+            },
+            {
+              "value": 2,
+              "text": "2分"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "hamd_depression8A",
+          "title": "18A. 日夜变化(早)",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "0分"
+            },
+            {
+              "value": 1,
+              "text": "1分"
+            },
+            {
+              "value": 2,
+              "text": "2分"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "hamd_depression8B",
+          "title": "18B. 日夜变化(晚)",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "0分"
+            },
+            {
+              "value": 1,
+              "text": "1分"
+            },
+            {
+              "value": 2,
+              "text": "2分"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "hamd_diurnal_evening",
+          "title": "19. 人格或现实解体",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "0分"
+            },
+            {
+              "value": 1,
+              "text": "1分"
+            },
+            {
+              "value": 2,
+              "text": "2分"
+            },
+            {
+              "value": 3,
+              "text": "3分"
+            },
+            {
+              "value": 4,
+              "text": "4分"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "hamd_depersonalization",
+          "title": "20. 偏执症状",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "0分"
+            },
+            {
+              "value": 1,
+              "text": "1分"
+            },
+            {
+              "value": 2,
+              "text": "2分"
+            },
+            {
+              "value": 3,
+              "text": "3分"
+            },
+            {
+              "value": 4,
+              "text": "4分"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "hamd_paranoid",
+          "title": "21. 强迫症状",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "0分"
+            },
+            {
+              "value": 1,
+              "text": "1分"
+            },
+            {
+              "value": 2,
+              "text": "2分"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "hamd_obsessional",
+          "title": "22. 能力减退感",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "0分"
+            },
+            {
+              "value": 1,
+              "text": "1分"
+            },
+            {
+              "value": 2,
+              "text": "2分"
+            },
+            {
+              "value": 3,
+              "text": "3分"
+            },
+            {
+              "value": 4,
+              "text": "4分"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "hamd_helplessness",
+          "title": "23. 绝望感",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "0分"
+            },
+            {
+              "value": 1,
+              "text": "1分"
+            },
+            {
+              "value": 2,
+              "text": "2分"
+            },
+            {
+              "value": 3,
+              "text": "3分"
+            },
+            {
+              "value": 4,
+              "text": "4分"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "hamd_hopelessness",
+          "title": "24. 自卑感",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "0分"
+            },
+            {
+              "value": 1,
+              "text": "1分"
+            },
+            {
+              "value": 2,
+              "text": "2分"
+            },
+            {
+              "value": 3,
+              "text": "3分"
+            },
+            {
+              "value": 4,
+              "text": "4分"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "calculatedValues": [
+    {
+      "name": "totalScore",
+      "expression": "{hamd_depression}+{hamd_guilt}+{hamd_suicide}+{hamd_insomnia_early}+{hamd_insomnia_middle}+{hamd_insomnia_late}+{hamd_work_interests}+{hamd_retardation}+{hamd_agitation}+{hamd_depression0}+{hamd_depression1}+{hamd_depression2}+{hamd_depression3}+{hamd_depression4}+{hamd_depression5}+{hamd_depression6}+{hamd_depression7}+{hamd_depression8A}+{hamd_depression8B}+{hamd_depression9}+{hamd_guilt0}+{hamd_guilt1}+{hamd_guilt2}+{hamd_guilt3}+{hamd_guilt4}"
+    }
+  ],
+  "completedHtml": {
+    "default": "总分: {totalScore}\n\n评分说明：\n≥35分：可能为严重抑郁\n20-34分：中等程度抑郁\n8-19分：可能有轻度抑郁\n≤7分：无抑郁症状"
+  }
+}

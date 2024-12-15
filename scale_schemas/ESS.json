@@ -1,0 +1,212 @@
+{
+  "title": "Epworth嗜睡量表(ESS)",
+  "description": "在下列情况下你打瞌睡（不仅仅是感到疲倦）的可能如何？这是指你最近几月的通常生活情况；假如你最近没有做过其中的某些事情，请试着填上它们可能会给你带来多大的影响。",
+  "pages": [
+    {
+      "name": "page1",
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "ess_reading",
+          "title": "1. 坐着阅读书刊时打瞌睡的可能性",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 3,
+              "text": "很可能打瞌睡"
+            },
+            {
+              "value": 2,
+              "text": "中度可能打瞌睡"
+            },
+            {
+              "value": 1,
+              "text": "轻度可能打瞌睡"
+            },
+            {
+              "value": 0,
+              "text": "从不打瞌睡"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "ess_tv",
+          "title": "2. 看电视时打瞌睡的可能性",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 3,
+              "text": "很可能打瞌睡"
+            },
+            {
+              "value": 2,
+              "text": "中度可能打瞌睡"
+            },
+            {
+              "value": 1,
+              "text": "轻度可能打瞌睡"
+            },
+            {
+              "value": 0,
+              "text": "从不打瞌睡"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "ess_public_place",
+          "title": "3. 在公共场所坐着不动（例如在剧场或开会）时打瞌睡的可能性",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 3,
+              "text": "很可能打瞌睡"
+            },
+            {
+              "value": 2,
+              "text": "中度可能打瞌睡"
+            },
+            {
+              "value": 1,
+              "text": "轻度可能打瞌睡"
+            },
+            {
+              "value": 0,
+              "text": "从不打瞌睡"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "ess_passenger",
+          "title": "4. 作为乘客在汽车中坐1小时，中间不休息时打瞌睡的可能性",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 3,
+              "text": "很可能打瞌睡"
+            },
+            {
+              "value": 2,
+              "text": "中度可能打瞌睡"
+            },
+            {
+              "value": 1,
+              "text": "轻度可能打瞌睡"
+            },
+            {
+              "value": 0,
+              "text": "从不打瞌睡"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "ess_afternoon_rest",
+          "title": "5. 在环境许可时，下午躺下休息时打瞌睡的可能性",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 3,
+              "text": "很可能打瞌睡"
+            },
+            {
+              "value": 2,
+              "text": "中度可能打瞌睡"
+            },
+            {
+              "value": 1,
+              "text": "轻度可能打瞌睡"
+            },
+            {
+              "value": 0,
+              "text": "从不打瞌睡"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "ess_conversation",
+          "title": "6. 坐下与人谈话时打瞌睡的可能性",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 3,
+              "text": "很可能打瞌睡"
+            },
+            {
+              "value": 2,
+              "text": "中度可能打瞌睡"
+            },
+            {
+              "value": 1,
+              "text": "轻度可能打瞌睡"
+            },
+            {
+              "value": 0,
+              "text": "从不打瞌睡"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "ess_after_lunch",
+          "title": "7. 午餐不喝酒，餐后安静地坐着时打瞌睡的可能性",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 3,
+              "text": "很可能打瞌睡"
+            },
+            {
+              "value": 2,
+              "text": "中度可能打瞌睡"
+            },
+            {
+              "value": 1,
+              "text": "轻度可能打瞌睡"
+            },
+            {
+              "value": 0,
+              "text": "从不打瞌睡"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "ess_traffic_jam",
+          "title": "8. 遇堵车时停车数分钟时打瞌睡的可能性",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 3,
+              "text": "很可能打瞌睡"
+            },
+            {
+              "value": 2,
+              "text": "中度可能打瞌睡"
+            },
+            {
+              "value": 1,
+              "text": "轻度可能打瞌睡"
+            },
+            {
+              "value": 0,
+              "text": "从不打瞌睡"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "calculatedValues": [
+    {
+      "name": "totalScore",
+      "expression": "{ess_reading}+{ess_tv}+{ess_public_place}+{ess_passenger}+{ess_afternoon_rest}+{ess_conversation}+{ess_after_lunch}+{ess_traffic_jam}"
+    }
+  ],
+  "completedHtml": {
+    "default": "总分: {totalScore}\n\n评分说明：\n0-6分：正常范围\n7-10分：轻度嗜睡\n11-15分：中度嗜睡\n16-24分：重度嗜睡"
+  }
+}

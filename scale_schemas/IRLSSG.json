@@ -1,0 +1,299 @@
+{
+  "title": "国际不宁腿综合征研究组评分标准(IRLSSG)",
+  "description": "请根据最近1个星期您的平均状况，回答以下10个问题：",
+  "pages": [
+    {
+      "name": "page1",
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "irlssg_discomfort",
+          "title": "1. 总体上讲，您腿部（或者：臂部）的不适症状达到何种程度？",
+          "choices": [
+            {
+              "value": 4,
+              "text": "非常严重"
+            },
+            {
+              "value": 3,
+              "text": "严重"
+            },
+            {
+              "value": 2,
+              "text": "中度"
+            },
+            {
+              "value": 1,
+              "text": "轻度"
+            },
+            {
+              "value": 0,
+              "text": "没有不适"
+            }
+          ],
+          "isRequired": true
+        },
+        {
+          "type": "radiogroup",
+          "name": "irlssg_urge_to_move",
+          "title": "2. 总体上讲，您因为腿部不适而需要起来活动的欲望达到何种程度？",
+          "choices": [
+            {
+              "value": 4,
+              "text": "非常严重"
+            },
+            {
+              "value": 3,
+              "text": "严重"
+            },
+            {
+              "value": 2,
+              "text": "中度"
+            },
+            {
+              "value": 1,
+              "text": "轻度"
+            },
+            {
+              "value": 0,
+              "text": "没有不适"
+            }
+          ],
+          "isRequired": true
+        },
+        {
+          "type": "radiogroup",
+          "name": "irlssg_relief",
+          "title": "3. 总体上讲，通过活动，您腿部（或：臂部）的不适症状得到多大程度的缓解？",
+          "choices": [
+            {
+              "value": 4,
+              "text": "没有缓解"
+            },
+            {
+              "value": 3,
+              "text": "稍缓解"
+            },
+            {
+              "value": 2,
+              "text": "中度缓解"
+            },
+            {
+              "value": 1,
+              "text": "完全或几乎完全缓解"
+            },
+            {
+              "value": 0,
+              "text": "没有RLS症状，此问题不适合我"
+            }
+          ],
+          "isRequired": true
+        },
+        {
+          "type": "radiogroup",
+          "name": "irlssg_sleep_disturbance",
+          "title": "4. 总体上讲，因为RLS症状，您的睡眠受到多大的影响？",
+          "choices": [
+            {
+              "value": 4,
+              "text": "非常严重"
+            },
+            {
+              "value": 3,
+              "text": "严重"
+            },
+            {
+              "value": 2,
+              "text": "中度"
+            },
+            {
+              "value": 1,
+              "text": "轻度"
+            },
+            {
+              "value": 0,
+              "text": "没有影响"
+            }
+          ],
+          "isRequired": true
+        },
+        {
+          "type": "radiogroup",
+          "name": "irlssg_fatigue",
+          "title": "5. 因为RLS的症状，您的疲惫和困倦感达到何种程度？",
+          "choices": [
+            {
+              "value": 4,
+              "text": "非常严重"
+            },
+            {
+              "value": 3,
+              "text": "严重"
+            },
+            {
+              "value": 2,
+              "text": "中度"
+            },
+            {
+              "value": 1,
+              "text": "轻度"
+            },
+            {
+              "value": 0,
+              "text": "完全没有"
+            }
+          ],
+          "isRequired": true
+        },
+        {
+          "type": "radiogroup",
+          "name": "irlssg_impact",
+          "title": "6. 总体上讲，您RLS症状对生活的影响有多严重？",
+          "choices": [
+            {
+              "value": 4,
+              "text": "非常严重"
+            },
+            {
+              "value": 3,
+              "text": "严重"
+            },
+            {
+              "value": 2,
+              "text": "中度"
+            },
+            {
+              "value": 1,
+              "text": "轻度"
+            },
+            {
+              "value": 0,
+              "text": "没有影响"
+            }
+          ],
+          "isRequired": true
+        },
+        {
+          "type": "radiogroup",
+          "name": "irlssg_frequency",
+          "title": "7. 您多久出现一次RLS症状？",
+          "choices": [
+            {
+              "value": 4,
+              "text": "非常频繁，6-7天/周"
+            },
+            {
+              "value": 3,
+              "text": "频繁，4-5天/周"
+            },
+            {
+              "value": 2,
+              "text": "中度，2-3天/周"
+            },
+            {
+              "value": 1,
+              "text": "偶尔，<1次/周"
+            },
+            {
+              "value": 0,
+              "text": "无症状出现"
+            }
+          ],
+          "isRequired": true
+        },
+        {
+          "type": "radiogroup",
+          "name": "irlssg_duration",
+          "title": "8. 如果出现RLS症状，一天内的平均持续时间有多久？",
+          "choices": [
+            {
+              "value": 4,
+              "text": "非常严重，≥8小时/日"
+            },
+            {
+              "value": 3,
+              "text": "严重，3-8小时/日"
+            },
+            {
+              "value": 2,
+              "text": "中度，1-3小时/日"
+            },
+            {
+              "value": 1,
+              "text": "轻度，≤1小时/日"
+            },
+            {
+              "value": 0,
+              "text": "无症状出现"
+            }
+          ],
+          "isRequired": true
+        },
+        {
+          "type": "radiogroup",
+          "name": "irlssg_daily_affairs",
+          "title": "9. 总体上讲，您的RLS症状对您处理日常生活事务的能力有多大影响？包括：家庭、学校和社会事务等。",
+          "choices": [
+            {
+              "value": 4,
+              "text": "非常严重"
+            },
+            {
+              "value": 3,
+              "text": "严重"
+            },
+            {
+              "value": 2,
+              "text": "中度"
+            },
+            {
+              "value": 1,
+              "text": "轻度"
+            },
+            {
+              "value": 0,
+              "text": "没有影响"
+            }
+          ],
+          "isRequired": true
+        },
+        {
+          "type": "radiogroup",
+          "name": "irlssg_mood",
+          "title": "10. 您的RLS症状对您情绪的影响有多严重？如出现气恼、忧郁、悲伤、焦虑和激惹等？",
+          "choices": [
+            {
+              "value": 4,
+              "text": "非常严重"
+            },
+            {
+              "value": 3,
+              "text": "严重"
+            },
+            {
+              "value": 2,
+              "text": "中度"
+            },
+            {
+              "value": 1,
+              "text": "轻度"
+            },
+            {
+              "value": 0,
+              "text": "没有影响"
+            }
+          ],
+          "isRequired": true
+        }
+      ]
+    }
+  ],
+  "showQuestionNumbers": true,
+  "calculatedValues": [
+    {
+      "name": "totalScore",
+      "expression": "{irlssg_discomfort}+{irlssg_urge_to_move}+{irlssg_relief}+{irlssg_sleep_disturbance}+{irlssg_fatigue}+{irlssg_impact}+{irlssg_frequency}+{irlssg_duration}+{irlssg_daily_affairs}+{irlssg_discomfort0}"
+    }
+  ],
+  "completedHtml": "问卷已完成！总分：{totalScore}\n评分说明：\n0-10分：无/轻微\n11-20分：中度\n21-30分：重度\n31-40分：极重度"
+}

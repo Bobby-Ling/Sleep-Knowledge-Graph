@@ -1,0 +1,228 @@
+{
+  "title": "中文版RBD筛查问卷",
+  "description": "请根据实际情况选择",
+  "pages": [
+    {
+      "name": "page1",
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "rbdsq_vivid_dreams",
+          "title": "1. 我有时做很生动的梦",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 1,
+              "text": "是"
+            },
+            {
+              "value": 0,
+              "text": "否"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "rbdsq_aggressive_dreams",
+          "title": "2. 我梦里常出现带攻击或暴力行为",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 1,
+              "text": "是"
+            },
+            {
+              "value": 0,
+              "text": "否"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "rbdsq_dream_enactment",
+          "title": "3. 我睡着后所做的动作大部分与我梦境一致",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 1,
+              "text": "是"
+            },
+            {
+              "value": 0,
+              "text": "否"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "rbdsq_limb_movement",
+          "title": "4. 我知道睡着时我的手或脚会动",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 1,
+              "text": "是"
+            },
+            {
+              "value": 0,
+              "text": "否"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "rbdsq_injury",
+          "title": "5. 我睡觉时曾发生或几乎要发生自己受伤或伤及床伴的事",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 1,
+              "text": "是"
+            },
+            {
+              "value": 0,
+              "text": "否"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "rbdsq_sleep_behavior_1",
+          "title": "6.1 我睡觉时发生过或现在存在下列情况：\n说梦话、大喊大叫、咒骂、大笑",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 1,
+              "text": "是"
+            },
+            {
+              "value": 0,
+              "text": "否"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "rbdsq_sleep_behavior_2",
+          "title": "6.2 我睡觉时发生过或现在存在下列情况：\n突发肢体大动作，如\"打斗\"",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 1,
+              "text": "是"
+            },
+            {
+              "value": 0,
+              "text": "否"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "rbdsq_sleep_behavior_3",
+          "title": "6.3 我睡觉时发生过或现在存在下列情况：\n睡觉时没必要的手势、复杂动作，如挥手、敬礼、拍蚊子、手伸出床外",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 1,
+              "text": "是"
+            },
+            {
+              "value": 0,
+              "text": "否"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "rbdsq_sleep_behavior_4",
+          "title": "6.4 我睡觉时发生过或现在存在下列情况：\n东西掉下床，如床头灯、书本、眼镜等",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 1,
+              "text": "是"
+            },
+            {
+              "value": 0,
+              "text": "否"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "rbdsq_vocalization",
+          "title": "7. 我曾被睡觉后做出的动作惊醒",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 1,
+              "text": "是"
+            },
+            {
+              "value": 0,
+              "text": "否"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "rbdsq_sudden_movement",
+          "title": "8. 醒后梦的大部分内容我记得很清楚",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 1,
+              "text": "是"
+            },
+            {
+              "value": 0,
+              "text": "否"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "rbdsq_complex_movement",
+          "title": "9. 我的睡眠常受上述情况影响",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 1,
+              "text": "是"
+            },
+            {
+              "value": 0,
+              "text": "否"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "rbdsq_items_falling",
+          "title": "10. 我曾患或正患神经系统疾病（如脑卒中、脑外外伤后帕金森综合征、不安腿综合征、发作性睡病、抑郁、癫痫、脑炎等）",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 1,
+              "text": "是"
+            },
+            {
+              "value": 0,
+              "text": "否"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "calculatedValues": [
+    {
+      "name": "totalScore",
+      "expression": "{rbdsq_vivid_dreams}+{rbdsq_aggressive_dreams}+{rbdsq_dream_enactment}+{rbdsq_limb_movement}+{rbdsq_injury}+{rbdsq_sleep_behavior_1}+{rbdsq_sleep_behavior_2}+{rbdsq_sleep_behavior_3}+{rbdsq_sleep_behavior_4}+{rbdsq_vocalization}+{rbdsq_sudden_movement}+{rbdsq_complex_movement}+{rbdsq_vivid_dreams0}"
+    }
+  ],
+  "completedHtml": {
+    "default": "总分: {totalScore}\n\n"
+  }
+}
