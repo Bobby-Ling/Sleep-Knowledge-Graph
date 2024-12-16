@@ -338,7 +338,7 @@ class HAMDScale(BaseScale):
     @classmethod
     def extract_answers(cls, table_json: str) -> List[int]:
         """提取答案列表"""
-        table = json.loads(table_json)[0]
+        table = json.loads(table_json)[0] + json.loads(table_json)[1]
         answers = []
 
         # 处理前17题
@@ -355,7 +355,7 @@ class HAMDScale(BaseScale):
         answers.append(int(table[9][3]))  # A.早
         answers.append(int(table[10][3])) # B.晚
 
-        # 处理19-22题
+        # 处理19-24题
         for row in table[11:]:
             if row[1] is not None:
                 answers.append(int(row[1]))
@@ -590,7 +590,7 @@ class StopBangScale(BaseScale):
     def extract_values(cls, answers: List[str]) -> Dict[str, int]:
         return cls.extract_question_values_common(answers, cls.schema.value)
 
-class SleepDisorderScaleDataset:
+class SleepDisorderScaleDataset():
     """睡眠障碍量表数据集"""
 
     # 基础列
@@ -622,7 +622,7 @@ class SleepDisorderScaleDataset:
         """从目录名获取病例ID"""
         return dir_name.split('-')[0]
 
-    def __init__(self, dataset_dir: str, schema_dir: str = SCHEMA_DIR):
+    def __init__(self, dataset_dir: str):
         """初始化数据集
         
         Args:
@@ -726,7 +726,7 @@ DEMO_DIR = f"{SCALE_TARGET_DIR}/1-轻度阻塞性睡眠后续暂停"
 dataset = SleepDisorderScaleDataset(SCALE_SOURCE_DIR)
 df = dataset.data
 # print(df)
-df.to_csv("dataset.csv")
+df.to_csv("dataset.csv", index=False)
 # df
 # %%
 # hamd_df = HAMDScale.extract(f"{DEMO_DIR}/{Schema.HAMD.scale_file}")
