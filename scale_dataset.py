@@ -720,8 +720,8 @@ if __name__ == "__main__":
 
 # %%
 SCALE_SOURCE_DIR = "/mnt/c/Users/bobby/DATA/文档/项目/知识图谱/睡眠障碍诊断知识图谱培训材料/睡眠数据库--修改版"
-# SCALE_SOURCE_DIR = "dataset_scale"
-SCALE_TARGET_DIR = "dataset_scale"
+# SCALE_SOURCE_DIR = "dataset-origin/dataset_scale"
+SCALE_TARGET_DIR = "dataset-origin/dataset_scale"
 DEMO_DIR = f"{SCALE_TARGET_DIR}/1-轻度阻塞性睡眠后续暂停"
 
 dataset = SleepDisorderScaleDataset(SCALE_SOURCE_DIR)

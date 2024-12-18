@@ -337,7 +337,7 @@ def process_directory(input_dir: str, output_dir: str) -> List[FileStats]:
 
 # %%
 if __name__ == '__main__':
-    input_directory = "dataset-origin"
+    input_directory = "dataset-origin/knowledges"
     output_directory = "dataset"
     stats_list = process_directory(input_directory, output_directory)
     print_stats(stats_list)
