@@ -255,8 +255,8 @@ COMMAND_TEMPLATE = """
 如果当前块没有之前Schema中的关系或者无法提取, 则返回"// 空";
 注意, 我将会直接将你生成的语句合并后导入neo4j, 因此请务必保证语法正确性.
 [关系抽取说明]
-抽取时请重点关注上文Schema中的这些实体节点: Disease Symptom Treatment Complication
-以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM
+抽取时请重点关注上文Schema中的这些实体节点: Disease Symptom NonDrugTreatment DrugTreatment Complication
+以及这些关系INDICATES TREATED_BY REQUIRES_EXAM
 [隶属文件名]
 {0}
 [隶属文件分块号]
@@ -267,7 +267,7 @@ COMMAND_TEMPLATE = """
 
 API_COMMAND_MSG = f"""
 [背景信息]
-我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
+我现在正在进行睡眠医疗知识图谱的构建工作, 想请你对文本进行实体识别、关系抽取和知识规则构建, 输出neo4j cypher语句.
 [命令]
 [CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
 请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句
@@ -279,15 +279,17 @@ API_COMMAND_MSG = f"""
 [CYPHER_SCHEMA]
 {CYPHER_SCHEMA}
 [关系抽取说明]
+抽取主题侧重与睡眠相关;
 抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
 以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
-文本可能很长很长, 请尽你可能抽取全部实体和关系, 也可以适当结合[文本块]进行推理然后生成一些;
+文本可能很长很长, 请尽你可能抽取全部实体和关系; 也可以适当结合[文本块]进行推理然后生成一些, 但是请务必保证逻辑合理性.
 [示例输出]
-MERGE (d1:Disease {{name: "阻塞性睡眠呼吸暂停低通气综合征", short_name: "OSAHS"}})
-MERGE (c1:Disease {{name: "高血压"}})
-MERGE (c2:Disease {{name: "糖尿病"}})
-MERGE (c1)-[:COMPLICATION_OF]->(d1)
-MERGE (c2)-[:COMPLICATION_OF]->(d1)
+MERGE (d1:Disease {{name: "失眠"}})
+MERGE (d2:Disease {{name: "阻塞性睡眠呼吸暂停", short_name: "OSA"}})
+MERGE (d1)-[:INDICATES {{confidence: 0.9, frequency: "常见", severity: "严重"}}]->(d2)
+MERGE (d1)-[:TREATED_BY {{effectiveness: 0.85, priority: "高", stage: "初始治疗"}}]->(:NonDrugTreatment {{name: "CBT-I", description: "认知行为疗法", duration: "短期", frequency: "根据需要", contraindication: "无", equipment: "无"}})
+MERGE (d1)-[:TREATED_BY {{effectiveness: 0.7, priority: "中", stage: "联合治疗"}}]->(:DrugTreatment {{name: "BZRAs", description: "苯二氮草类药物", dosage: "根据医生建议", frequency: "根据需要", duration: "短期", route: "口服", contraindication: "重度呼吸衰竭"}})
+MERGE (d2)-[:MAY_CAUSE {{probability: 0.6, timeframe: "长期"}}]->(d1)
 """
 
 API_PAYLOAD_TEMPLATE = """

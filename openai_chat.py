@@ -2,6 +2,7 @@
 from prompts_template import *
 from openai import OpenAI
 from openai.types import CompletionUsage
+from openai.types.chat import ChatCompletion
 from chat_session_interfce import ChatSessionInterface
 
 client1 = OpenAI(
@@ -18,37 +19,33 @@ class OpenAIChatSession(ChatSessionInterface):
         super().__init__(logger_name)
         self.client = client
         self.model = model
+        self.completion: ChatCompletion
 
     # @override
     def _process_message(self, message: str, system_msg = API_COMMAND_MSG) -> str:
-        completion = self.client.chat.completions.create(
+        self.completion = self.client.chat.completions.create(
             model=self.model,
             messages=[
-                {"role": "system", "content": API_COMMAND_MSG},
+                {"role": "system", "content": system_msg},
                 {"role": "user", "content": message}
             ]
         )
-        result = completion.choices[0].message.content
-        self.logger.info(completion.usage)
+        result = self.completion.choices[0].message.content
+        self.logger.info(self.completion.usage)
         return result or ''
     # @override
     def update_connection(self):
         pass
 # %%
-if __name__ == "__main__":
-    client = OpenAI(
-        base_url="https://api.gptsapi.net/v1",
-        api_key="sk-v6b21de09961ae981a677f1d02c1f2ade61a1d01c4c9JHN4"
-    )
+DEMO_MSG = ""
 
-    completion = client.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=[
-            {"role": "system", "content": API_COMMAND_MSG},
-            {"role": "user", "content": DEMO_API_PAYLOAD}
-        ]
-    )
-    message_content= completion.choices[0].message.content
+# %%
+if __name__ == "__main__":
+    chat = OpenAIChatSession(client=client1)
+
+    message_content= chat.send_message(DEMO_MSG)
+    completion = chat.completion
+
     tokens_used= completion.usage or CompletionUsage
     prompt_tokens = tokens_used.prompt_tokens
     completion_tokens = tokens_used.completion_tokens

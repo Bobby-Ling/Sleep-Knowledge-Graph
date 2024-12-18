@@ -1,10 +1,248 @@
 [metadata]
 file_name = "女性阻塞性睡眠呼吸暂停诊治专家共识.md"
-processed_at = "2024-12-18 16:48:29"
+processed_at = "2024-12-19 00:12:18"
 total_pairs = 2
 
 [[message_pairs]]
-timestamp = "2024-12-18 09:55:59"
+timestamp = "2024-12-19 00:08:22"
+message = """
+
+[隶属文件名]
+女性阻塞性睡眠呼吸暂停诊治专家共识.md
+[隶属文件分块名]
+女性阻塞性睡眠呼吸暂停诊治专家共识/002-治疗篇.md
+[文本块]
+# 治疗篇
+女性OSA治疗的总体目标是减轻症状、改善睡眠和生活质量、防治OSA相关合并症及并发症。  
+
+问题8:女性OSA的一般治疗方式有哪些?  
+
+推荐意见:推荐对所有不同严重程度的女性OSA患者,可采用以下一般治疗方式:减重、饮食控制、运动、体位治疗、减少乙醇摄人、慎用镇静催眠药物(中等质量证据,强推荐);建议及时评估和治疗女性OSA相关合并症及并发症(中等质量证据,强推荐)。  
+
+循证概述:在行为治疗方面,减重、饮食控制是女性OSA治疗的基础,体重减轻 $10\\%$ 可适度改善OSA严重程度,但残余AHI与中度OSA一致;符合适应证者可推荐外科减重手术,有报道称 $77.5\\%$ 的男性和 $90\\%$ 的女性能够在术后停止CPAP治疗6。同时,研究表明即使BMI没有降低,运动仍可改善OSA严重度,改善睡眠质量及日间症状;有氧运动联合抗阻训练降低 AHI效果优于单纯有氧运动[2]侧卧位睡眠有助于减轻OSA,对于 $\\mathrm{BMI}{<}32\\;\\mathrm{kg}/\\mathrm{m}^{2}$ 的患者效果更佳[。体位性 OSA(positionalobstructive sleep apnea,POSA)定义为仰卧位/侧卧位时的AHI比值 $\\geqslant2$ ,首选侧卧位睡眠[36]。传统“网球法”体位治疗(tennis ball technique,TBT)有助于减少仰卧位睡眠时间,但强制性侧卧,舒适性不佳,长期治疗依从性不到 $10\\%^{\\left[94\\right]}$ ;新型的睡眠姿势训练器(sleep position trainer,SPT)利用置于患者胸部、颈部或前额体位感应器和振动发生器,将患者转为非仰卧位睡眠姿势,来自6项研究数据均显示,SPT显著降低AHI,其长期治疗依从性达 $64.4\\%\\sim$$75.5\\%^{[52]}$ 。智能止鼾枕(smart antisnoring pillows,SAP)通过音频传感器检测鼾声,调整移动泡沫枕芯来改变患者头颈部姿势,有助于治疗轻-中度OSA[5]。此外,体位治疗可与无创正压通气(non-invasive positive pressure ventilation, NPPV)、口腔矫治器和减重等联合治疗OSA。  
+
+饮酒增加OSA风险[3],麻醉剂和镇静药物可抑制呼吸中枢,加重上气道塌陷性[32]。因此,OSA患者在麻醉恢复期无人工气道保护时,应注意观察,并慎用镇静催眠药物治疗疼痛[。女性OSA存在合并症风险及相关医疗支出均高于男性,包括心血管疾病、高脂血症、糖尿病、支气管哮喘、甲状腺功能减退症、骨关节病和反流性胃炎等,因此应重视合并症及并发症的治疗[]。  
+
+问题9:女性OSA患者NPPV治疗如何选择模式及提高治疗依从性?  
+
+推荐意见:推荐首选NPPV治疗女性中-重度OSA(高质量证据,强推荐);建议使用行为干预、患者教育提高NPPV治疗依从性(中等质量证据,强推荐);建议根据患者情况,选择合适的治疗模式和人机连接面罩,及时处理不良反应(中等质量证据,强推荐);推荐应用远程医疗模式提高治疗依从性(高质量证据,强推荐)。  
+
+循证概述:NPPV是成人OSA、中枢性睡眠呼吸暂停综合征、睡眠相关肺泡低通气疾病的最主要治疗手段,可解除上气道阻塞、纠正睡眠结构紊乱、消除睡眠期低氧、提高睡眠质量和生活质量、降低相关并发症发生率和病死率[98。NPPV 治疗的适应证,包括 $\\mathrm{AHI}{>}15$ 次 $/\\mathrm{h}$ ,或 $\\mathrm{AHI}{>}5$ 次/h且存在OSA相关临床症状或并发症,有学者建议对所有妊娠期OSA女性进行NPPV治疗[10];相对禁忌证,包括气胸或纵隔气肿、血压明显降低(低于 $90/60~\\mathrm{mmHg}$$\\mathrm{1\\mmHg{=}0.133\\ k P a)}$ 或休克、急性心肌梗死患者血流动力学指标不稳定、脑脊液漏、颅脑外伤或颅内积气、青光眼、中耳或鼻窦感染未控制时等[74]。NPPV治疗的主要目标是维持 $\\mathrm{SpO}_{2}{>}90\\%$ ,AHIK5次/h,并减轻临床症状。  
+
+NPPV治疗模式,包括:(1)CPAP模式:是中-重度女性 OSA首选的治疗模式[74,10] ,其适应证为:$\\textcircled{\\scriptsize{1}}$ 中-重度OSA; $\\textcircled{2}$ 轻度OSA但患者症状明显或合并心脑血管疾病、代谢性疾病; $\\textcircled{3}$ 经其他治疗无效的OSA; $\\mathrm{\\textcircled{4}O S A}$ 围手术期治疗; $\\circled{5}$ 治疗相关中枢性autoset⁃continuo9u8s positive airway pressure APAPapnea,T-ECSA)98。(2)自动持续气道正压通气(autoset-continuous positive airway pressure, APAP)模式:属于单水平治疗模式,在预设的最高和最低压力之间自动调整压力大小,保证上气道开放所需的最低有效治疗压力,其适应证为: $\\textcircled{\\scriptsize{1}}$ 体位及睡眠时相相关OSA; $\\circledast$ 饮酒相关或服用催眠镇静药物相关OSA; $\\circled{3}$ 体重增减显著的OSA; $\\textcircled{4}$ 固定压力CPAP不能耐受的中-重度OSA; $\\mathrm{\\textcircled{5}0S A}$ 患者进行非PSG下无人工值守的自动压力滴定治疗[74]。对于无合并症的中-重度女性OSA来说,APAP与人工CPAP压力滴定价值相同,且APAP与CPAP的长期依从性相当,部分患者对APAP的耐受性更好,接受度更高。AfH(autoset for her)属于APAP通气模式,其根据女性OSA的特征优化压力反应,增强对气流受限的识别敏感度,可实现温和有效的压力调节、以较低的平均治疗压力解决呼吸事件并减少微觉醒,AfH模式也适合追求舒适感的男性患者[102]。(3)双水平气道正压通气(bilevel positive airway pressure,BPAP)模式:分别设定吸气压(IPAP)和呼气压(EPAP),具有压力随呼气和吸气时相自动转换功能,IPAP保证吸气相有足够压力支持,EPAP防止呼气相上气道塌陷发生。与CPAP相比,BPAP可降低平均治疗压力,提高舒适度,增加有效通气量[3,其适应证为: $\\textcircled{\\scriptsize{1}}$ 不耐受CPAP的患者; $\\textcircled{2}$ CPAP滴定压力 $\\mathrm{|\\!\\geqslant\\!15\\;cm\\;H_{2}O(1\\;c m H_{2}O\\!=\\!0.098\\;k P a)}$ ; $\\textcircled{3}$ 慢性肺泡低NPPV OSA慢阻肺-OSA重叠综合征、肥胖低通气综合征及神经肌肉疾病等[98]。NPPV 可降低女性 OSA 患者心血管风险及心血管病死率[104-05],对 OSA女性肾脏保护益处大于男性[106]。CPAP治疗6个月可改善血糖控制和胰岛素抵抗、中-重度抑郁症状、慢性失眠严重度[\"],以及中-重度女性OSA患者的膀胱过度活动(overactive bladder,OBA)并减少尿失禁[107]。对轻度女性OSA患者,CPAP明显改善症状,ESS问卷和 SF-36生活质量调查问卷改善幅度明显大于男性[108]。整合AfH的算法,APAP模式也被证实可改善OSA,增加REM期睡眠、提高睡眠和生活70%  
+
+广泛认可的NPPV治疗OSA依从性标准是:至少 $70\\%$ 的夜晚使用NPPV治疗,每晚使用时间>$4\\,\\mathrm{~h~}^{[111]}$ 。提高 NPPV 治疗依从性的策略,包括:  
+
+(1)行为干预:基于心理学理论的强化行为干预可显著提高依从性,如放松疗法等[1I2]。失眠是女性OSA患者的常见主诉,可能对NPPV依从性产生负面影响,放松疗法有利于改善失眠,提高女性OSA合并失眠患者的治疗依从性113}。(2)面罩的选择:面罩的类型影响NPPV疗效和治疗依从性,应根据患者的实际情况选择,还需考虑患者喜好[88,98患者教育: $\\mathrm{\\textcircled{1}0S A}$ 的书面知识教育; $\\textcircled{2}$ 解读PSG及治疗跟踪记录卡等进行患者教育,可增加就诊频次,提高长期治疗依从性; $\\textcircled{3}$ 提供NPPV故障排除信息等[12]。(4)远程医疗:可在NPPV治疗初始阶段即使用远程监测指导,包括使用时间、残余AHI、漏气及治疗压力等[113]。(5)不良反应的处理:及时正确处理不良反应有利于提高依从性\"4,常见不良反应的处理措施见表7。  
+
+问题10:女性0SA的其他治疗策略有哪些?  
+
+推荐意见:推荐女性OSA的其他治疗方式,包括口腔矫治器、上气道手术治疗、舌下神经刺激治疗等,具有中等治疗效果,有助于实现精准及个性化治疗(中等质量证据,强推荐);围绝经期和绝经后期女性OSA可考虑女性绝经后激素治疗(menopausal hormone therapy,MHT)(低质量证据,弱推荐)。  
+
+循证概述:口腔矫治器治疗女性OSA成功率更高,用于不耐受CPAP治疗的轻-中度患者,建议使用定制的矫治器,而非预制的口腔矫治器[15];下颌复位固定器在女性OSA患者,尤其是重度患者中应答率明显更高]。上气道手术治疗通常不作首选治疗,适应证为解除上气道梗阻且无手术禁忌证的患者,成人常用术式包括上颌骨前移、咽部手术及多级分期手术等,女性性别是预测上颌骨前移手术成功的一个因素[1]。舌下神经刺激治疗指在 OSA患者舌下植人电极刺激神经,可减少吸气时气道塌陷,对特定患者有效,耐受性良好,但患者需满足:(1)不愿意或不耐受CPAP治疗;(2)中枢性及混合性睡眠呼吸事件占总事件 $25\\%$ 以下;(3)良好的上气道解剖(无软聘位置向心性塌陷);(4)无舌下神经麻痹、肌肉神经疾病、心肺器官的严重疾患;( $5)\\,\\mathrm{BMI}{<}32\\;\\mathrm{kg}/\\mathrm{m}^{2}$ 的患者。舌下神经刺激治疗效果低于CPAP[2],已发表研究中的大多数受试者都是男性,尚未研究性别的差异。  
+
+T OSA[ ,]对于围绝经期和绝经后期女性,有学者提出应用MHT升高女性性激素水平,进而降低OSA发生风险。有研究发现绝经后女性使用MHT显著降低OSA发生风险[39},MHT(雌二醇联合 $3~\\mathrm{mg}$ 地诺孕MHT AH $\\mathrm{AHI}^{[27]}$ 15% 118研究显示MHT治疗未改善OSA严重度118];也有报道MHT治疗早期AHI可下降 $15\\%$ ,但治疗后期无进一步改善,且与未治疗者相似[1I9]。MHT治疗也存在一定风险,如阴道出血、恶心、呕吐、肝功能损伤,最重要的是增加心血管疾病、卒中、静脉血栓栓塞和乳腺癌的发生风险[120]。因此,对合并更年期明显血管舒缩症状(潮热、出汗)或绝经生殖泌尿综合征且无禁忌证的轻度OSA,可考虑试用MHT治疗,但需权衡利弊。MHT治疗的禁忌证包括:妊娠/可疑妊娠;原因不明的阴道出血;乳腺癌/可疑乳腺癌;近6个月有活动性静脉或动脉血栓;严重肝肾功能不全。此外,MHT的治疗需个体化,药物的选择、剂量、用药途径和使用时间,建议与妇科医生联合商讨决定。若需长期使用,在用药1、3、6、12个月均需进行妇科随访,此后至少每12个月要去医院复诊[121]。目前 MHT对 OSA 影响的干预性研究很少,只有少数随机安慰剂对照研究,MHT在绝经后OSA女性中的应用尚需更多的研究和证据。  
+
+表7无创正压通气常见不良反应及处理措施[°0  
+
+问题11:如何对女性0SA进行随访和管理?  
+
+推荐意见:推荐接受NPPV治疗后的第1周、第1个月、第3个月,之后每6个月或1年随访1次(高质量证据,强推荐);手术治疗后的第3、6个月应复查PSG,以观察疗效,推荐疗效不佳者启用NPPV等治疗(中等质量证据,强推荐);口腔矫治器治疗后的第3、6个月应复查PSG,考虑按需调整口腔矫治器,以巩固长期疗效,或改用NPPV等治疗(中等质量证据,GPS);随访时需考虑关注治疗后AHI、症状改善、不良反应,并及时进行处理(中等质量证据,GPS);推荐对NPPV治疗进行互联网远程管理,不受地域限制且可提供高质低价和全面的睡眠管理(高质量证据,强推荐);妊娠合并OSA患者随访详见“妊娠期OSA篇” S  
+
+循征概述:女性OSA治疗的有效性和长期益处,得益于对OSA长期的管理、建立科学的随访体系。NPPV治疗、口腔矫治器治疗、手术治疗的随访时间已被各指南/共识进行推荐\",对于女性OSA患者,目前没有其他证据表明需要更改随访策略。对NPPV治疗的患者,在使用初期有一个适应的过程,在治疗后第1周、第1个月第3个月和患者密切合作,解决其遇到的问题是必需的,此后可每半年或一年随访一次;口腔矫治器治疗和(或)手术治疗后3、6个月应复查PSG;关于舌下神经刺激的研究,大多集中在其疗效和安全性,随访资料尚缺乏[6]。对NPPV患者,随访内容应包括治疗效果、治疗依从性、治疗过程中的不良反应,及设备问题,需寻找原因积极处理,比如是否存在大量漏气、皮肤压伤等[°]。同时,鉴于OSA对女性生活质量的影响更大[12},症状的改善应该作为随访关注的要点。对口腔矫治器和手术治疗的患者,随访应复查PSG、了解症状改善和不良反应是评估疗效及治疗调整的重要参考[52,116]。此外,随访方式应包括:(1)电话随访:定期复诊的基础上给予治疗相关问题进行指导,可有效提高NPPV依从性;(2)社交软件:利用手机APP与患者保持沟通;(3)互联网远程管理:基于远程医疗的主动管理策略与较好的长期治疗依从性相关[22]。在呼吸机中植入芯片,采集呼吸机使用的相关数据,通过5G等无线通信技术将数据传输到云服务器数据管理平台,对患者进行跟踪随访,降低了NPPV治疗中止率并减少患者家庭医疗支出,还可提供患者教育资料等[122-14]。但是远程监测方案需遵守安全性原则,包括专业问责制、风险管理评估和感染控制,并特别考虑到远程医疗就诊时患者的身心安全[23-24]
+# 妊娠期OSA篇
+问题12:妊娠期OSA的诊断和评估有何特点?  
+
+推荐意见:推荐孕期管理与孕期保健时对OSA高危孕妇进行筛查和诊断,符合以下一项者即为OSA高危人群(高质量证据,强推荐):(1)症状:夜间打鼾、睡眠期憋醒、晨起头疼、失眠、抑郁、白天过度嗜睡、疲劳;(2)年龄 $\\cdot{>}35$ 岁的孕妇;(3)体征:$\\textcircled{\\scriptsize{1}}$ 肥胖、颈部粗短:体重超过标准体重的 $20\\%$ 或以上, $\\mathrm{BMI}{\\gtrsim}30~\\mathrm{kg/m}^{2}$ ,颈围 ${>}40\\;\\mathrm{cm}$ 。 $\\textcircled{2}$ 上气道解剖异常:鼻腔阻塞、扁桃体肥大及下颌后缩等;(4)内科线索疾病:难治性高血压、不明原因的心律失常、慢性充血性心力衰竭、难治性糖尿病和胰岛素抵抗、难治性哮喘、甲状腺功能减退症、原发性醛固酮增多症等;(5)产科线索疾病:子痫前期、HDP、GDM、无法用其他因素解释的胎儿宫内生长受限、除外其他原因的胸闷憋气、既往妊娠期OSA病史或家族史等;对于0SA高危人群,考虑在妊娠12\\~18周筛查OSA(低质量证据,GPS);考虑应用各种睡眠呼吸障碍问卷、模型、IV类监测设备和消费级别监测设备筛查妊娠期OSA(低质量证据,弱推荐);推荐使用I型监测设备诊断妊娠期OSA(高质量证据,强推荐);对无严重合并症的妊娠期OSA推荐III型PM设备进行居家诊断(高质量证据,强推荐);推荐依据临床症状、体征联合PSG或PM监测结果,诊断妊娠期OSA(高质量证据,强推荐)。  
+
+循证概述:妊娠期OSA对母婴结局有不良影响,结合国外相关文献、国内指南及专家讨论,需筛查OSA高危人群,包括:(1)鼾症:女性OSA的症状不典型,但打鼾仍为主要症状。研究显示,1/3的女性孕前打鼾, $23\\%$ 的女性妊娠期打鼾[25],存在鼾症的女性分娩的危险风险比增高1.60倍[126]。鉴于鼾症的发生率和对母婴的不良反应,建议对有鼾症的孕妇进行 OSA筛查;(2)晨起头疼、抑郁:是女性OSA 的非典型症状[3,还可伴夜间呼吸暂停、憋醒、白天疲劳嗜睡等典型症状,上述症状者应进行OSA筛查;(3)妊娠期肥胖:肥胖是妊娠期OSA的重要预测指标,妊娠早期肥胖女性中 $40\\%$ 在妊娠晚期罹患OSA,而体重正常或超重女性中,妊娠晚期仅 $14.5\\%$罹患OSA,基线BMI每增加 $5\\;\\mathrm{kg}/\\mathrm{m}^{2}$ ,妊娠晚期OSA患病率升高1.93倍[15]。颈围 ${>}40~\\mathrm{cm}$ 也是OSA非常重要的危险因素[127];(4)妊娠年龄:OSA的独立危险因素之一,妊娠年龄每增加10岁,孕晚期患OSA风险增加3.24倍5},妊娠年龄大于35岁,罹患0SA的OR值为 $3.06^{[128]}$ ,因此建议年龄大于35周岁的孕妇应行OSA筛查;(5)上气道解剖结构异常:鼻腔阻塞(鼻中隔偏曲、鼻甲肥大、鼻息肉、合并鼻部肿瘤等)、II度以上扁桃体肥大、软松弛、悬雍垂过长或过粗、咽腔狭窄、腺样体肥大、舌体肥大、舌根后坠、下颌后缩、颞颌关节功能障碍及小颌畸形等[127],建议进行OSA 的筛查;(6)内科疾病史: $53\\%$有高血压病史的孕妇存在孕前打鼾,且合并重度OSA,甲状腺疾病也是女性OSA的高危因素[79,129],因此建议患有内科相关疾病的孕妇,如难治性高血压、不明原因的心律失常、慢性充血性心力衰竭、糖尿病和胰岛素抵抗、甲状腺功能减退症等,进行[ ,] 12920娠期呈先降后升的“U\"形变化[2\",妊娠20周前,收缩压和舒张压略有下降,而妊娠20周后,随着胎儿快速生长对胎盘血流需求增加,单纯靠子宫动脉扩张已不能满足需求,导致母体血压升高,妊娠37周左右达最高值,多胎妊娠较单胎妊娠血压水平更高[30。因此孕中期,轻-中度OSA患者发生HDP的风险增加2倍,重度 OSA 患者发生HDP风险更高[3],且 OSA是 HDP和子痫前期发生的独立危险[, , ] 6糖水平和餐后 $2\\;\\mathrm{{h}}$ 血糖水平逐渐上升,妊娠36周时达峰值并持续到产后6周;孕期空腹血糖水平变化不大,但在产后6周明显升高。OSA在GDM女性中普遍存在,两者间存在量效关系,即AHI轻度升高与 GDM发病率增加呈正相关[3\",轻度妊娠期OSA的GDM 患病率为 $43\\%$ ,中-重度妊娠期OSA的GDM患病率上升至 $63\\%$ ,而非OSA孕妇GDM患病率为$25\\%^{[133]}$ 50 66O 1S34AHDPGDM[,,]普通高血压、糖尿病人群合并OSA 的发病机制相似,应针对罹患 HDP、GDM等合并症的孕妇,或疾病高风险孕妇进行OSA筛查。有学者建议对所有孕妇应进行OSA评估,以筛查新发或有OSA病史OSA  
+
+目前筛查的最佳时间尚无有力证据支持,鉴于OSA对母婴的不良影响,Dominguez等li27建议在妊娠12\\~18周筛查0SA,以尽早进行评估与治疗。由于妊娠期女性的OSA多以失眠、睡眠质量差为主要表现,日间嗜睡常不严重,针对普通人群的筛查工具(如柏林问卷、Stop-Bang问卷及ESS)对妊娠期OSA的敏感度和特异度较差,有学者提出了多种不同的妊娠期OSA预测模型,如包含孕妇年龄、BMI、打鼾、高血压、上气道特征等不同特征的组合,但尚未证实其预测妊娠期OSA 的准确性[36]。IIV类监测设备和消费级别监测设备也缺乏足够的临床验证,因此以上筛查工具结果仅作参考。  
+
+整夜值守的PSG是诊断妊娠期OSA的金标准,正规监测需要整夜 $^{\\geqslant7\\mathrm{~h~}}$ 的睡眠。但因其价格昂贵、预约周期较长、孕妇需在睡眠中心进行监测等存在诸多不便。根据美国内科医师学会(AmericanCollege of Physicians,ACP)制定的 OSA诊疗指南,对于无严重合并症的患者,居家环境中应用II型或III型PM设备进行睡眠监测可作为妊娠期OSA诊断方式!]。结合女性OSA临床特征,参照我国《成人阻塞性睡眠呼吸暂停多学科诊疗指南》74]、《妊娠期阻塞性睡眠呼吸暂停低通气综合征临床诊治专家共识(草案)》36美国睡眠医学会《气道正压治疗成人阻塞性睡眠呼吸暂停临床实践指南》[13]及专家组建议,满足以下标准可诊断妊娠期OSA:(1)PSG或PM监测显示 $\\mathrm{AHI}{\\geqslant}5\\$ 次/h,且具有女性OSA的症状或体征或相关合并/并发症(如已确诊高血压、情绪障碍、不明原因的心律失常、慢性充血性心力衰竭、HDP、HDM、无法用其他因素解释的胎儿宫内生长受限、除外其他原因的胸闷憋气),或既往有OSA病史或家族史等;(2)对于日间嗜睡不明显者(ESS<9分),PSG或PM监测显示AHI≥10次/h。根据《妊娠期阻塞性睡眠呼吸暂停低通气综合征临床诊治专家共识(草案)》36]及专家意见,妊娠期OSA诊疗流程如图1。  
+
+问题13:妊娠期0SA的管理有何推荐意见?  
+
+推荐意见:一旦确诊妊娠期OSA,考虑由睡眠中心的专业人员及产科医生、孕妇和家属共同讨论以制定个性化治疗方案,必要时需麻醉科、新生儿科、重症医学科多学科协同合作,并应持续到产后期。应根据患者情况,采取综合的治疗模式,包括加强体重管理、体位治疗、NPPV治疗、口腔矫治器、母婴合并症管理等(中等质量证据,GPS);因孕期体重在持续增加,推荐采用APAP治疗妊娠期OSA(高质量证据,强推荐);考虑采用口腔矫治器治疗单纯打鼾者及轻-中度妊娠期OSA患者,尤其是合并下颌后缩的患者,或NPPV治疗不耐受者(低质量证据,GPS);不考虑上气道手术治疗妊娠期OSA(低质量证据,GPS);建议对接受非OSA相关手术的妊娠期OSA患者,进行围手术期NPPV治疗(中等质量证据,强推荐);考虑在妊娠24周左右,应对患者病情重新评估和调整治疗方案,产后应再次行PSG或PM监测,评估产后是否继续NPPV等治疗(中等质量证据,GPS)。  
+
+注:OSA:阻塞性睡眠呼吸暂停;PSG:多导睡眠监测;PM:便携式睡眠监测;AHI:呼吸暂 停低通气指数;CPAP:持续气道正压通气   
+图1妊娠期OSA诊疗流程  
+
+循证概述:在妊娠期可通过控制营养摄人和运动来进行体重管理。参考《妊娠期高血糖诊治指南(2022)》[138]及《妊娠期阻塞性睡眠呼吸暂停低通气综合征临床诊治专家共识(草案》3\",我国不同孕前BMI孕妇的推荐妊娠期增重目标详见表8。孕期运动方法选择低至中等强度的运动,需避免日间过度劳累,戒烟、戒酒、慎用镇静催眠药物及其他可引I起或加重OSA的药物。体位治疗有利于上气道的开放,从仰睡改为侧睡可能对轻度妊娠期OSA患者有益[38]  
+
+NPPV治疗是中-重度妊娠期OSA的标准一线治疗选择,以及轻度妊娠期OSA的合适替代治疗,解除上气道的阻塞、消除睡眠期的低氧、纠正睡眠结构的紊乱。妊娠期使用NPPV的适应证为: $\\mathrm{\\AHI\\5{\\sim}}$30 次/h,偶有 $\\mathrm{SpO}_{2}{<}90\\%$ 伴临床症状;或 $\\mathrm{AHI}{>}30$ 次/h;或频繁 $\\mathrm{SpO}_{2}{<}$$90\\%$ ,也有学者建议对所有妊娠期OSA进行 NPPV 治疗[9]。治疗的主要目标是维持 $\\mathrm{SpO}_{2}{>}90\\%$ ,AHI<5次/h,并减轻临床症状[36]。模式选择参见“治疗篇”。妊娠期应用  
+
+NPPV治疗可降低高血压和早产风险,改善胰岛素敏感性,增加新生儿出生体重并降低早产率[139-40]改善子痫前期孕妇夜间 $\\mathrm{SpO}_{2}$ 、降低血压、延长孕龄、改善新生儿结局,且对孕妇无不良健康影响[141-42]。我国小样本研究也显示,NPPV治疗妊娠期OSA可提高夜间 $\\mathrm{SpO}_{2}$ , $90\\%$ 患者未发生胎儿生长受限和新生儿室息,所有患者NPPV依从性良好,未见不良反应[43]。随着妊娠和体重增加等生理变化,妊娠期OSA患者气道阻塞可能随着孕期进程而加重,因此在治疗过程中需密切观测治疗效果,必要时重复PSG或PM监测、推荐选择具有自动滴定功能的APAP设备,便于调整治疗压力,优化NPPV治疗[,]2。4孕前已接受  治疗的患者应在整个妊娠期间继续治疗,按照要求进行NPPV随访,并在妊娠24周左右重新评估及调整治疗方案,互联网远程随访方式有助于提高孕妇依从性[139,144]。产后应再次行PSG或PM监测,评估是否继续NPPV等治疗[129]。此外,由于激素水平改变易出现鼻充血和黏膜水肿,孕妇鼻塞的发生率较高,因此要注意患者及家属的依从性教育[38]  
+
+表8基于妊娠前体重指数推荐的妊娠期体重增长目标  
+
+口腔矫治器治疗适用于单纯打鼾者及轻-中度OSA患者,特别是下颌后缩的患者:以及不能耐受NPPV治疗的轻-中度OSA孕妇[36]。但考虑到装置通常需要定制,且孕期需不断调整[145] ,因此不建议其作为一线治疗方式。治疗妊娠期OSA的手术方式和普通人群OSA无异,但妊娠期麻醉、手术风险较高,且妊娠期OSA在产后通常可以得到改善或完全缓解,因此,不建议采用上气道手术治疗妊娠期OSA[36]。中度至重度妊娠期OSA还可能患有肺动脉高压或合并心血管疾病,因此还应考虑超声心动图检查。产科医生应早期发现或预防这些临床问题,警惕OSA合并GDM和HDP疾病的发生风险[38]。若患者由于多种合并症而需要剖宫产终止妊娠,术前需与麻醉科进行沟通围手术期的注意事项,包括:围手术期需应用的NPPV治疗、麻醉方式选择、动脉血压监测时间、术后体位选择(避免仰卧位)、镇静药物的风险等方面,必要时可协同重症医学科等进行多学科合作[10]
+# 总结与展望
+女性OSA并不罕见,但临床表现并不典型,加之问卷筛查对女性不敏感,因此易漏诊误诊,需提高对该疾病的认识。诊断方面,PSG为金标准,对无复杂并发症者PM可作为确诊工具,对妊娠患者PM为一线诊断方法。治疗方面,NPPV治疗仍为首选治疗,特别是妊娠OSA患者,根据女性特点设计的治疗模式有助于提高疗效和依从性。  
+
+对于女性OSA还存在不少问题有待解决。例如,缺乏便捷高效的女性OSA筛查问卷或工具;女性OSA的症状更轻及严重度较男性低,诊断标准是否需有别于男性?女性OSA严重度判断是否应结合PSG结果和主观日间嗜睡来确定?绝经期女性OSA患病率明显增高的确切机制是什么,如何指导治疗?鉴于OSA对母婴的危害及OSA风险随妊娠周数增加而增加,妊娠期OSA的筛查范围是否需要扩大,以及是否需要尽早应用NPPV治疗?OSA与其他合并症的共同管理方式等。希望在未来更多研究提供更多的循证医学依据。
+
+"""
+response = """
+// 节点更新
+MERGE (n:Disease {name: '女性阻塞性睡眠呼吸暂停'})
+SET 
+    n.description = coalesce(n.description, '女性阻塞性睡眠呼吸暂停，简称OSA，常见于女性，特征包括夜间打鼾、睡眠中憋醒、白天过度嗜睡等'),
+    n.severity = coalesce(n.severity, '中度');
+
+MERGE (n:Disease {name: '合并症'})
+SET 
+    n.description = coalesce(n.description, '阻塞性睡眠呼吸暂停可能引发多种合并症，如心血管疾病、高脂血症、糖尿病等'),
+    n.severity = coalesce(n.severity, '中度');
+
+MERGE (n:Symptom {name: '失眠'})
+SET 
+    n.description = coalesce(n.description, '睡眠质量差，难以入睡或保持睡眠'),
+    n.severity = coalesce(n.severity, '中度'),
+    n.frequency = coalesce(n.frequency, '常见');
+
+MERGE (n:Symptom {name: '白天嗜睡'})
+SET 
+    n.description = coalesce(n.description, '在白天感到异常疲倦或者困倦'),
+    n.severity = coalesce(n.severity, '中度'),
+    n.frequency = coalesce(n.frequency, '常见');
+
+MERGE (n:Symptom {name: '晨起头疼'})
+SET 
+    n.description = coalesce(n.description, '早上起床时感到头部不适'),
+    n.severity = coalesce(n.severity, '中度'),
+    n.frequency = coalesce(n.frequency, '偶见');
+
+MERGE (n:Symptom {name: '抑郁'})
+SET 
+    n.description = coalesce(n.description, '情绪低落，失去兴趣'),
+    n.severity = coalesce(n.severity, '中度'),
+    n.frequency = coalesce(n.frequency, '偶见');
+
+MERGE (n:NonDrugTreatment {name: '减重'})
+SET 
+    n.description = coalesce(n.description, '控制体重，通过饮食和运动改善健康'),
+    n.duration = coalesce(n.duration, '长期'),
+    n.frequency = coalesce(n.frequency, '持续'),
+    n.contraindication = coalesce(n.contraindication, '无'),
+    n.equipment = coalesce(n.equipment, '无');
+
+MERGE (n:NonDrugTreatment {name: '体位治疗'})
+SET 
+    n.description = coalesce(n.description, '通过改变睡眠姿势减轻症状'),
+    n.duration = coalesce(n.duration, '长期'),
+    n.frequency = coalesce(n.frequency, '持续'),
+    n.contraindication = coalesce(n.contraindication, '无'),
+    n.equipment = coalesce(n.equipment, '智能止鼾枕');
+
+MERGE (n:NonDrugTreatment {name: '运动'})
+SET 
+    n.description = coalesce(n.description, '增加身体活动有助于改善OSA'),
+    n.duration = coalesce(n.duration, '长期'),
+    n.frequency = coalesce(n.frequency, '持续'),
+    n.contraindication = coalesce(n.contraindication, '无'),
+    n.equipment = coalesce(n.equipment, '无');
+
+MERGE (n:NonDrugTreatment {name: '口腔矫治器'})
+SET 
+    n.description = coalesce(n.description, '用于不耐受CPAP治疗的轻-中度OSA患者'),
+    n.duration = coalesce(n.duration, '长期'),
+    n.frequency = coalesce(n.frequency, '持续'),
+    n.contraindication = coalesce(n.contraindication, '无'),
+    n.equipment = coalesce(n.equipment, '定制口腔矫治器');
+
+MERGE (n:NonDrugTreatment {name: 'NPPV'})
+SET 
+    n.description = coalesce(n.description, '无创正压通气，一线治疗选项'),
+    n.duration = coalesce(n.duration, '持续'),
+    n.frequency = coalesce(n.frequency, '每晚'),
+    n.contraindication = coalesce(n.contraindication, '低血压、气胸'),
+    n.equipment = coalesce(n.equipment, '无');
+
+// 关系更新
+MATCH (from) WHERE from.name = '女性阻塞性睡眠呼吸暂停'
+MATCH (to) WHERE to.name = '失眠'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.9),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '中度');
+
+MATCH (from) WHERE from.name = '女性阻塞性睡眠呼吸暂停'
+MATCH (to) WHERE to.name = '白天嗜睡'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.9),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '中度');
+
+MATCH (from) WHERE from.name = '女性阻塞性睡眠呼吸暂停'
+MATCH (to) WHERE to.name = '晨起头疼'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.85),
+    r.frequency = coalesce(r.frequency, '偶见'),
+    r.severity = coalesce(r.severity, '中度');
+
+MATCH (from) WHERE from.name = '女性阻塞性睡眠呼吸暂停'
+MATCH (to) WHERE to.name = '抑郁'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.85),
+    r.frequency = coalesce(r.frequency, '偶见'),
+    r.severity = coalesce(r.severity, '中度');
+
+MATCH (from) WHERE from.name = '女性阻塞性睡眠呼吸暂停'
+MATCH (to) WHERE to.name = '减重'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.8),
+    r.priority = coalesce(r.priority, '高'),
+    r.stage = coalesce(r.stage, '持续治疗');
+
+MATCH (from) WHERE from.name = '女性阻塞性睡眠呼吸暂停'
+MATCH (to) WHERE to.name = '体位治疗'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.85),
+    r.priority = coalesce(r.priority, '高'),
+    r.stage = coalesce(r.stage, '持续治疗');
+
+MATCH (from) WHERE from.name = '女性阻塞性睡眠呼吸暂停'
+MATCH (to) WHERE to.name = '运动'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.9),
+    r.priority = coalesce(r.priority, '高'),
+    r.stage = coalesce(r.stage, '持续治疗');
+
+MATCH (from) WHERE from.name = '女性阻塞性睡眠呼吸暂停'
+MATCH (to) WHERE to.name = '口腔矫治器'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.75),
+    r.priority = coalesce(r.priority, '中'),
+    r.stage = coalesce(r.stage, '持续治疗');
+
+MATCH (from) WHERE from.name = '女性阻塞性睡眠呼吸暂停'
+MATCH (to) WHERE to.name = 'NPPV'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.9),
+    r.priority = coalesce(r.priority, '高'),
+    r.stage = coalesce(r.stage, '一线治疗');
+
+MATCH (from) WHERE from.name = '女性阻塞性睡眠呼吸暂停'
+MATCH (to) WHERE to.name = '合并症'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.7),
+    r.timeframe = coalesce(r.timeframe, '长期');
+
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-19 00:08:23"
 message = """
 
 [隶属文件名]
@@ -115,147 +353,164 @@ response = """
 MERGE (n:Disease {name: '阻塞性睡眠呼吸暂停'})
 SET 
     n.code = coalesce(n.code, 'OSA'),
-    n.description = coalesce(n.description, '一种因上气道反复塌陷而导致的睡眠呼吸障碍，表现为夜间打鼾、呼吸暂停和日间过度嗜睡等症状'),
+    n.description = coalesce(n.description, '阻塞性睡眠呼吸暂停是一种常见的睡眠障碍，表现为睡眠时反复呼吸暂停和低通气。'),
     n.category = coalesce(n.category, '睡眠障碍'),
     n.severity = coalesce(n.severity, '中等');
 
-MERGE (n:Symptom {name: '打鼾'})
+MERGE (n:Disease {name: '高血压'})
 SET 
-    n.description = coalesce(n.description, '睡眠中发出的噪音，可能伴随呼吸暂停'),
-    n.severity = coalesce(n.severity, '轻'),
-    n.frequency = coalesce(n.frequency, '夜间');
+    n.code = coalesce(n.code, 'HT'),
+    n.description = coalesce(n.description, '高血压是一种常见的慢性疾病，其血压水平明显高于正常范围。'),
+    n.category = coalesce(n.category, '心血管疾病'),
+    n.severity = coalesce(n.severity, '严重');
 
-MERGE (n:Symptom {name: '日间过度嗜睡'})
+MERGE (n:Disease {name: '2型糖尿病'})
 SET 
-    n.description = coalesce(n.description, '白天感到异常困倦，影响日常活动和生活'),
-    n.severity = coalesce(n.severity, '中'),
-    n.frequency = coalesce(n.frequency, '每天');
+    n.code = coalesce(n.code, 'T2DM'),
+    n.description = coalesce(n.description, '2型糖尿病是一种代谢性疾病，主要表现为胰岛素抵抗和高血糖。'),
+    n.category = coalesce(n.category, '内分泌疾病'),
+    n.severity = coalesce(n.severity, '中等');
+
+MERGE (n:Disease {name: '妊娠期高血压'})
+SET 
+    n.code = coalesce(n.code, 'HDP'),
+    n.description = coalesce(n.description, '妊娠期高血压是指妊娠期间血压升高的病症。'),
+    n.category = coalesce(n.category, '妊娠期疾病'),
+    n.severity = coalesce(n.severity, '严重');
+
+MERGE (n:Disease {name: '妊娠期糖尿病'})
+SET 
+    n.code = coalesce(n.code, 'GDM'),
+    n.description = coalesce(n.description, '妊娠期糖尿病是指妊娠期间首次发现或持续的糖尿病。'),
+    n.category = coalesce(n.category, '妊娠期疾病'),
+    n.severity = coalesce(n.severity, '严重');
 
 MERGE (n:Symptom {name: '失眠'})
 SET 
-    n.description = coalesce(n.description, '入睡困难或维持睡眠困难，夜间经常醒来'),
-    n.severity = coalesce(n.severity, '轻'),
-    n.frequency = coalesce(n.frequency, '夜间');
+    n.description = coalesce(n.description, '失眠是指入睡困难或睡眠不质量低。'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '常见');
+
+MERGE (n:Symptom {name: '日间疲劳感'})
+SET 
+    n.description = coalesce(n.description, '患者在白天感到无力或精力不足。'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '常见');
 
 MERGE (n:Symptom {name: '晨起头痛'})
 SET 
-    n.description = coalesce(n.description, '早晨醒来时感到头痛，可能与睡眠质量差有关'),
+    n.description = coalesce(n.description, '早晨醒来时感到头痛。'),
     n.severity = coalesce(n.severity, '轻'),
-    n.frequency = coalesce(n.frequency, '每天');
+    n.frequency = coalesce(n.frequency, '偶见');
 
 MERGE (n:Symptom {name: '焦虑'})
 SET 
-    n.description = coalesce(n.description, '感到紧张或担忧的情绪状态'),
-    n.severity = coalesce(n.severity, '中'),
-    n.frequency = coalesce(n.frequency, '每天');
+    n.description = coalesce(n.description, '感到紧张和不安。'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '常见');
 
 MERGE (n:Symptom {name: '噩梦'})
 SET 
-    n.description = coalesce(n.description, '梦中经历恐怖或烦恼的情节，常导致觉醒'),
+    n.description = coalesce(n.description, '在睡眠中经历不愉快的梦。'),
     n.severity = coalesce(n.severity, '轻'),
-    n.frequency = coalesce(n.frequency, '偶尔');
+    n.frequency = coalesce(n.frequency, '偶见');
 
-MERGE (n:RiskFactor {name: '肥胖'})
+MERGE (n:Symptom {name: '夜间打鼾'})
 SET 
-    n.description = coalesce(n.description, '体重过重，对呼吸道施加了额外压力，增加OSA风险'),
-    n.impact_level = coalesce(n.impact_level, '高');
+    n.description = coalesce(n.description, '在睡眠中发出大声鼾声。'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '常见');
 
-MERGE (n:RiskFactor {name: '脱发'})
+MERGE (n:Symptom {name: '被观察到的呼吸暂停'})
 SET 
-    n.description = coalesce(n.description, '可能与内分泌变化或生活方式有关，影响OSA症状'),
-    n.impact_level = coalesce(n.impact_level, '中');
+    n.description = coalesce(n.description, '在他人眼中睡眠中呼吸暂停的现象。'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '偶见');
 
-MERGE (n:RiskFactor {name: '绝经'})
+MERGE (n:Symptom {name: '不宁腿综合征'})
 SET 
-    n.description = coalesce(n.description, '性激素水平变化，可能导致OSA发生的风险增加'),
-    n.impact_level = coalesce(n.impact_level, '高');
+    n.description = coalesce(n.description, '腿部在休息时感到不适，需活动以缓解。'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '常见');
 
-MERGE (n:Complication {name: '高血压'})
+MERGE (n:Symptom {name: '夜间遗尿'})
 SET 
-    n.description = coalesce(n.description, '一种可能由OSA引起的并发症'),
-    n.severity = coalesce(n.severity, '高');
-
-MERGE (n:Complication {name: '心力衰竭'})
-SET 
-    n.description = coalesce(n.description, 'OSA可增加心力衰竭的发生风险'),
-    n.severity = coalesce(n.severity, '高');
-
-MERGE (n:Treatment {name: '连续气道正压通气(CPAP)'})
-SET 
-    n.description = coalesce(n.description, '常用于治疗OSA的设备，通过持续气道正压保持上气道开放'),
-    n.effectiveness = coalesce(n.effectiveness, '0.90'),
-    n.priority = coalesce(n.priority, '高'),
-    n.stage = coalesce(n.stage, '长期');
+    n.description = coalesce(n.description, '睡眠中意外排尿。'),
+    n.severity = coalesce(n.severity, '轻'),
+    n.frequency = coalesce(n.frequency, '偶见');
 
 // 关系更新
-MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停'
-MATCH (to) WHERE to.name = '打鼾'
-MERGE (from)-[r:INDICATES]->(to)
-SET 
-    r.confidence = coalesce(r.confidence, 0.85),
-    r.frequency = coalesce(r.frequency, '常见'),
-    r.severity = coalesce(r.severity, '中');
-
-MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停'
-MATCH (to) WHERE to.name = '日间过度嗜睡'
-MERGE (from)-[r:INDICATES]->(to)
-SET 
-    r.confidence = coalesce(r.confidence, 0.9),
-    r.frequency = coalesce(r.frequency, '常见'),
-    r.severity = coalesce(r.severity, '中');
-
 MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停'
 MATCH (to) WHERE to.name = '失眠'
 MERGE (from)-[r:INDICATES]->(to)
 SET 
-    r.confidence = coalesce(r.confidence, 0.75),
-    r.frequency = coalesce(r.frequency, '偶尔'),
-    r.severity = coalesce(r.severity, '轻');
+    r.confidence = coalesce(r.confidence, 0.9),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '中等');
+
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停'
+MATCH (to) WHERE to.name = '日间疲劳感'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.85),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '中等');
 
 MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停'
 MATCH (to) WHERE to.name = '晨起头痛'
 MERGE (from)-[r:INDICATES]->(to)
 SET 
-    r.confidence = coalesce(r.confidence, 0.7),
-    r.frequency = coalesce(r.frequency, '偶尔'),
+    r.confidence = coalesce(r.confidence, 0.8),
+    r.frequency = coalesce(r.frequency, '偶见'),
     r.severity = coalesce(r.severity, '轻');
 
 MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停'
 MATCH (to) WHERE to.name = '焦虑'
 MERGE (from)-[r:INDICATES]->(to)
 SET 
-    r.confidence = coalesce(r.confidence, 0.65),
-    r.frequency = coalesce(r.frequency, '偶尔'),
-    r.severity = coalesce(r.severity, '轻');
+    r.confidence = coalesce(r.confidence, 0.7),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '中等');
 
 MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停'
 MATCH (to) WHERE to.name = '噩梦'
 MERGE (from)-[r:INDICATES]->(to)
 SET 
     r.confidence = coalesce(r.confidence, 0.6),
-    r.frequency = coalesce(r.frequency, '偶尔'),
+    r.frequency = coalesce(r.frequency, '偶见'),
     r.severity = coalesce(r.severity, '轻');
 
 MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停'
-MATCH (to) WHERE to.name = '肥胖'
-MERGE (from)-[r:INFLUENCED_BY]->(to)
+MATCH (to) WHERE to.name = '夜间打鼾'
+MERGE (from)-[r:INDICATES]->(to)
 SET 
-    r.impact_level = coalesce(r.impact_level, '高'),
-    r.evidence_level = coalesce(r.evidence_level, '强');
+    r.confidence = coalesce(r.confidence, 0.9),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '中等');
 
 MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停'
-MATCH (to) WHERE to.name = '脱发'
-MERGE (from)-[r:INFLUENCED_BY]->(to)
+MATCH (to) WHERE to.name = '被观察到的呼吸暂停'
+MERGE (from)-[r:INDICATES]->(to)
 SET 
-    r.impact_level = coalesce(r.impact_level, '中'),
-    r.evidence_level = coalesce(r.evidence_level, '中');
+    r.confidence = coalesce(r.confidence, 0.7),
+    r.frequency = coalesce(r.frequency, '偶见'),
+    r.severity = coalesce(r.severity, '中等');
 
 MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停'
-MATCH (to) WHERE to.name = '绝经'
-MERGE (from)-[r:INFLUENCED_BY]->(to)
+MATCH (to) WHERE to.name = '不宁腿综合征'
+MERGE (from)-[r:INDICATES]->(to)
 SET 
-    r.impact_level = coalesce(r.impact_level, '高'),
-    r.evidence_level = coalesce(r.evidence_level, '强');
+    r.confidence = coalesce(r.confidence, 0.65),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '中等');
+
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停'
+MATCH (to) WHERE to.name = '夜间遗尿'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.5),
+    r.frequency = coalesce(r.frequency, '偶见'),
+    r.severity = coalesce(r.severity, '轻');
 
 MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停'
 MATCH (to) WHERE to.name = '高血压'
@@ -265,304 +520,24 @@ SET
     r.timeframe = coalesce(r.timeframe, '长期');
 
 MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停'
-MATCH (to) WHERE to.name = '心力衰竭'
-MERGE (from)-[r:MAY_CAUSE]->(to)
-SET 
-    r.probability = coalesce(r.probability, 0.5),
-    r.timeframe = coalesce(r.timeframe, '长期');
-
-MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停'
-MATCH (to) WHERE to.name = '连续气道正压通气(CPAP)'
-MERGE (from)-[r:TREATED_BY]->(to)
-SET 
-    r.effectiveness = coalesce(r.effectiveness, 0.9),
-    r.priority = coalesce(r.priority, '高'),
-    r.stage = coalesce(r.stage, '长期');
-
-"""
-
-[[message_pairs]]
-timestamp = "2024-12-18 09:56:01"
-message = """
-
-[隶属文件名]
-女性阻塞性睡眠呼吸暂停诊治专家共识.md
-[隶属文件分块名]
-女性阻塞性睡眠呼吸暂停诊治专家共识/002-治疗篇.md
-[文本块]
-# 治疗篇
-女性OSA治疗的总体目标是减轻症状、改善睡眠和生活质量、防治OSA相关合并症及并发症。  
-
-问题8:女性OSA的一般治疗方式有哪些?  
-
-推荐意见:推荐对所有不同严重程度的女性OSA患者,可采用以下一般治疗方式:减重、饮食控制、运动、体位治疗、减少乙醇摄人、慎用镇静催眠药物(中等质量证据,强推荐);建议及时评估和治疗女性OSA相关合并症及并发症(中等质量证据,强推荐)。  
-
-循证概述:在行为治疗方面,减重、饮食控制是女性OSA治疗的基础,体重减轻 $10\\%$ 可适度改善OSA严重程度,但残余AHI与中度OSA一致;符合适应证者可推荐外科减重手术,有报道称 $77.5\\%$ 的男性和 $90\\%$ 的女性能够在术后停止CPAP治疗6。同时,研究表明即使BMI没有降低,运动仍可改善OSA严重度,改善睡眠质量及日间症状;有氧运动联合抗阻训练降低 AHI效果优于单纯有氧运动[2]侧卧位睡眠有助于减轻OSA,对于 $\\mathrm{BMI}{<}32\\;\\mathrm{kg}/\\mathrm{m}^{2}$ 的患者效果更佳[。体位性 OSA(positionalobstructive sleep apnea,POSA)定义为仰卧位/侧卧位时的AHI比值 $\\geqslant2$ ,首选侧卧位睡眠[36]。传统“网球法”体位治疗(tennis ball technique,TBT)有助于减少仰卧位睡眠时间,但强制性侧卧,舒适性不佳,长期治疗依从性不到 $10\\%^{\\left[94\\right]}$ ;新型的睡眠姿势训练器(sleep position trainer,SPT)利用置于患者胸部、颈部或前额体位感应器和振动发生器,将患者转为非仰卧位睡眠姿势,来自6项研究数据均显示,SPT显著降低AHI,其长期治疗依从性达 $64.4\\%\\sim$$75.5\\%^{[52]}$ 。智能止鼾枕(smart antisnoring pillows,SAP)通过音频传感器检测鼾声,调整移动泡沫枕芯来改变患者头颈部姿势,有助于治疗轻-中度OSA[5]。此外,体位治疗可与无创正压通气(non-invasive positive pressure ventilation, NPPV)、口腔矫治器和减重等联合治疗OSA。  
-
-饮酒增加OSA风险[3],麻醉剂和镇静药物可抑制呼吸中枢,加重上气道塌陷性[32]。因此,OSA患者在麻醉恢复期无人工气道保护时,应注意观察,并慎用镇静催眠药物治疗疼痛[。女性OSA存在合并症风险及相关医疗支出均高于男性,包括心血管疾病、高脂血症、糖尿病、支气管哮喘、甲状腺功能减退症、骨关节病和反流性胃炎等,因此应重视合并症及并发症的治疗[]。  
-
-问题9:女性OSA患者NPPV治疗如何选择模式及提高治疗依从性?  
-
-推荐意见:推荐首选NPPV治疗女性中-重度OSA(高质量证据,强推荐);建议使用行为干预、患者教育提高NPPV治疗依从性(中等质量证据,强推荐);建议根据患者情况,选择合适的治疗模式和人机连接面罩,及时处理不良反应(中等质量证据,强推荐);推荐应用远程医疗模式提高治疗依从性(高质量证据,强推荐)。  
-
-循证概述:NPPV是成人OSA、中枢性睡眠呼吸暂停综合征、睡眠相关肺泡低通气疾病的最主要治疗手段,可解除上气道阻塞、纠正睡眠结构紊乱、消除睡眠期低氧、提高睡眠质量和生活质量、降低相关并发症发生率和病死率[98。NPPV 治疗的适应证,包括 $\\mathrm{AHI}{>}15$ 次 $/\\mathrm{h}$ ,或 $\\mathrm{AHI}{>}5$ 次/h且存在OSA相关临床症状或并发症,有学者建议对所有妊娠期OSA女性进行NPPV治疗[10];相对禁忌证,包括气胸或纵隔气肿、血压明显降低(低于 $90/60~\\mathrm{mmHg}$$\\mathrm{1\\mmHg{=}0.133\\ k P a)}$ 或休克、急性心肌梗死患者血流动力学指标不稳定、脑脊液漏、颅脑外伤或颅内积气、青光眼、中耳或鼻窦感染未控制时等[74]。NPPV治疗的主要目标是维持 $\\mathrm{SpO}_{2}{>}90\\%$ ,AHIK5次/h,并减轻临床症状。  
-
-NPPV治疗模式,包括:(1)CPAP模式:是中-重度女性 OSA首选的治疗模式[74,10] ,其适应证为:$\\textcircled{\\scriptsize{1}}$ 中-重度OSA; $\\textcircled{2}$ 轻度OSA但患者症状明显或合并心脑血管疾病、代谢性疾病; $\\textcircled{3}$ 经其他治疗无效的OSA; $\\mathrm{\\textcircled{4}O S A}$ 围手术期治疗; $\\circled{5}$ 治疗相关中枢性autoset⁃continuo9u8s positive airway pressure APAPapnea,T-ECSA)98。(2)自动持续气道正压通气(autoset-continuous positive airway pressure, APAP)模式:属于单水平治疗模式,在预设的最高和最低压力之间自动调整压力大小,保证上气道开放所需的最低有效治疗压力,其适应证为: $\\textcircled{\\scriptsize{1}}$ 体位及睡眠时相相关OSA; $\\circledast$ 饮酒相关或服用催眠镇静药物相关OSA; $\\circled{3}$ 体重增减显著的OSA; $\\textcircled{4}$ 固定压力CPAP不能耐受的中-重度OSA; $\\mathrm{\\textcircled{5}0S A}$ 患者进行非PSG下无人工值守的自动压力滴定治疗[74]。对于无合并症的中-重度女性OSA来说,APAP与人工CPAP压力滴定价值相同,且APAP与CPAP的长期依从性相当,部分患者对APAP的耐受性更好,接受度更高。AfH(autoset for her)属于APAP通气模式,其根据女性OSA的特征优化压力反应,增强对气流受限的识别敏感度,可实现温和有效的压力调节、以较低的平均治疗压力解决呼吸事件并减少微觉醒,AfH模式也适合追求舒适感的男性患者[102]。(3)双水平气道正压通气(bilevel positive airway pressure,BPAP)模式:分别设定吸气压(IPAP)和呼气压(EPAP),具有压力随呼气和吸气时相自动转换功能,IPAP保证吸气相有足够压力支持,EPAP防止呼气相上气道塌陷发生。与CPAP相比,BPAP可降低平均治疗压力,提高舒适度,增加有效通气量[3,其适应证为: $\\textcircled{\\scriptsize{1}}$ 不耐受CPAP的患者; $\\textcircled{2}$ CPAP滴定压力 $\\mathrm{|\\!\\geqslant\\!15\\;cm\\;H_{2}O(1\\;c m H_{2}O\\!=\\!0.098\\;k P a)}$ ; $\\textcircled{3}$ 慢性肺泡低NPPV OSA慢阻肺-OSA重叠综合征、肥胖低通气综合征及神经肌肉疾病等[98]。NPPV 可降低女性 OSA 患者心血管风险及心血管病死率[104-05],对 OSA女性肾脏保护益处大于男性[106]。CPAP治疗6个月可改善血糖控制和胰岛素抵抗、中-重度抑郁症状、慢性失眠严重度[\"],以及中-重度女性OSA患者的膀胱过度活动(overactive bladder,OBA)并减少尿失禁[107]。对轻度女性OSA患者,CPAP明显改善症状,ESS问卷和 SF-36生活质量调查问卷改善幅度明显大于男性[108]。整合AfH的算法,APAP模式也被证实可改善OSA,增加REM期睡眠、提高睡眠和生活70%  
-
-广泛认可的NPPV治疗OSA依从性标准是:至少 $70\\%$ 的夜晚使用NPPV治疗,每晚使用时间>$4\\,\\mathrm{~h~}^{[111]}$ 。提高 NPPV 治疗依从性的策略,包括:  
-
-(1)行为干预:基于心理学理论的强化行为干预可显著提高依从性,如放松疗法等[1I2]。失眠是女性OSA患者的常见主诉,可能对NPPV依从性产生负面影响,放松疗法有利于改善失眠,提高女性OSA合并失眠患者的治疗依从性113}。(2)面罩的选择:面罩的类型影响NPPV疗效和治疗依从性,应根据患者的实际情况选择,还需考虑患者喜好[88,98患者教育: $\\mathrm{\\textcircled{1}0S A}$ 的书面知识教育; $\\textcircled{2}$ 解读PSG及治疗跟踪记录卡等进行患者教育,可增加就诊频次,提高长期治疗依从性; $\\textcircled{3}$ 提供NPPV故障排除信息等[12]。(4)远程医疗:可在NPPV治疗初始阶段即使用远程监测指导,包括使用时间、残余AHI、漏气及治疗压力等[113]。(5)不良反应的处理:及时正确处理不良反应有利于提高依从性\"4,常见不良反应的处理措施见表7。  
-
-问题10:女性0SA的其他治疗策略有哪些?  
-
-推荐意见:推荐女性OSA的其他治疗方式,包括口腔矫治器、上气道手术治疗、舌下神经刺激治疗等,具有中等治疗效果,有助于实现精准及个性化治疗(中等质量证据,强推荐);围绝经期和绝经后期女性OSA可考虑女性绝经后激素治疗(menopausal hormone therapy,MHT)(低质量证据,弱推荐)。  
-
-循证概述:口腔矫治器治疗女性OSA成功率更高,用于不耐受CPAP治疗的轻-中度患者,建议使用定制的矫治器,而非预制的口腔矫治器[15];下颌复位固定器在女性OSA患者,尤其是重度患者中应答率明显更高]。上气道手术治疗通常不作首选治疗,适应证为解除上气道梗阻且无手术禁忌证的患者,成人常用术式包括上颌骨前移、咽部手术及多级分期手术等,女性性别是预测上颌骨前移手术成功的一个因素[1]。舌下神经刺激治疗指在 OSA患者舌下植人电极刺激神经,可减少吸气时气道塌陷,对特定患者有效,耐受性良好,但患者需满足:(1)不愿意或不耐受CPAP治疗;(2)中枢性及混合性睡眠呼吸事件占总事件 $25\\%$ 以下;(3)良好的上气道解剖(无软聘位置向心性塌陷);(4)无舌下神经麻痹、肌肉神经疾病、心肺器官的严重疾患;( $5)\\,\\mathrm{BMI}{<}32\\;\\mathrm{kg}/\\mathrm{m}^{2}$ 的患者。舌下神经刺激治疗效果低于CPAP[2],已发表研究中的大多数受试者都是男性,尚未研究性别的差异。  
-
-T OSA[ ,]对于围绝经期和绝经后期女性,有学者提出应用MHT升高女性性激素水平,进而降低OSA发生风险。有研究发现绝经后女性使用MHT显著降低OSA发生风险[39},MHT(雌二醇联合 $3~\\mathrm{mg}$ 地诺孕MHT AH $\\mathrm{AHI}^{[27]}$ 15% 118研究显示MHT治疗未改善OSA严重度118];也有报道MHT治疗早期AHI可下降 $15\\%$ ,但治疗后期无进一步改善,且与未治疗者相似[1I9]。MHT治疗也存在一定风险,如阴道出血、恶心、呕吐、肝功能损伤,最重要的是增加心血管疾病、卒中、静脉血栓栓塞和乳腺癌的发生风险[120]。因此,对合并更年期明显血管舒缩症状(潮热、出汗)或绝经生殖泌尿综合征且无禁忌证的轻度OSA,可考虑试用MHT治疗,但需权衡利弊。MHT治疗的禁忌证包括:妊娠/可疑妊娠;原因不明的阴道出血;乳腺癌/可疑乳腺癌;近6个月有活动性静脉或动脉血栓;严重肝肾功能不全。此外,MHT的治疗需个体化,药物的选择、剂量、用药途径和使用时间,建议与妇科医生联合商讨决定。若需长期使用,在用药1、3、6、12个月均需进行妇科随访,此后至少每12个月要去医院复诊[121]。目前 MHT对 OSA 影响的干预性研究很少,只有少数随机安慰剂对照研究,MHT在绝经后OSA女性中的应用尚需更多的研究和证据。  
-
-表7无创正压通气常见不良反应及处理措施[°0  
-
-问题11:如何对女性0SA进行随访和管理?  
-
-推荐意见:推荐接受NPPV治疗后的第1周、第1个月、第3个月,之后每6个月或1年随访1次(高质量证据,强推荐);手术治疗后的第3、6个月应复查PSG,以观察疗效,推荐疗效不佳者启用NPPV等治疗(中等质量证据,强推荐);口腔矫治器治疗后的第3、6个月应复查PSG,考虑按需调整口腔矫治器,以巩固长期疗效,或改用NPPV等治疗(中等质量证据,GPS);随访时需考虑关注治疗后AHI、症状改善、不良反应,并及时进行处理(中等质量证据,GPS);推荐对NPPV治疗进行互联网远程管理,不受地域限制且可提供高质低价和全面的睡眠管理(高质量证据,强推荐);妊娠合并OSA患者随访详见“妊娠期OSA篇” S  
-
-循征概述:女性OSA治疗的有效性和长期益处,得益于对OSA长期的管理、建立科学的随访体系。NPPV治疗、口腔矫治器治疗、手术治疗的随访时间已被各指南/共识进行推荐\",对于女性OSA患者,目前没有其他证据表明需要更改随访策略。对NPPV治疗的患者,在使用初期有一个适应的过程,在治疗后第1周、第1个月第3个月和患者密切合作,解决其遇到的问题是必需的,此后可每半年或一年随访一次;口腔矫治器治疗和(或)手术治疗后3、6个月应复查PSG;关于舌下神经刺激的研究,大多集中在其疗效和安全性,随访资料尚缺乏[6]。对NPPV患者,随访内容应包括治疗效果、治疗依从性、治疗过程中的不良反应,及设备问题,需寻找原因积极处理,比如是否存在大量漏气、皮肤压伤等[°]。同时,鉴于OSA对女性生活质量的影响更大[12},症状的改善应该作为随访关注的要点。对口腔矫治器和手术治疗的患者,随访应复查PSG、了解症状改善和不良反应是评估疗效及治疗调整的重要参考[52,116]。此外,随访方式应包括:(1)电话随访:定期复诊的基础上给予治疗相关问题进行指导,可有效提高NPPV依从性;(2)社交软件:利用手机APP与患者保持沟通;(3)互联网远程管理:基于远程医疗的主动管理策略与较好的长期治疗依从性相关[22]。在呼吸机中植入芯片,采集呼吸机使用的相关数据,通过5G等无线通信技术将数据传输到云服务器数据管理平台,对患者进行跟踪随访,降低了NPPV治疗中止率并减少患者家庭医疗支出,还可提供患者教育资料等[122-14]。但是远程监测方案需遵守安全性原则,包括专业问责制、风险管理评估和感染控制,并特别考虑到远程医疗就诊时患者的身心安全[23-24]
-# 妊娠期OSA篇
-问题12:妊娠期OSA的诊断和评估有何特点?  
-
-推荐意见:推荐孕期管理与孕期保健时对OSA高危孕妇进行筛查和诊断,符合以下一项者即为OSA高危人群(高质量证据,强推荐):(1)症状:夜间打鼾、睡眠期憋醒、晨起头疼、失眠、抑郁、白天过度嗜睡、疲劳;(2)年龄 $\\cdot{>}35$ 岁的孕妇;(3)体征:$\\textcircled{\\scriptsize{1}}$ 肥胖、颈部粗短:体重超过标准体重的 $20\\%$ 或以上, $\\mathrm{BMI}{\\gtrsim}30~\\mathrm{kg/m}^{2}$ ,颈围 ${>}40\\;\\mathrm{cm}$ 。 $\\textcircled{2}$ 上气道解剖异常:鼻腔阻塞、扁桃体肥大及下颌后缩等;(4)内科线索疾病:难治性高血压、不明原因的心律失常、慢性充血性心力衰竭、难治性糖尿病和胰岛素抵抗、难治性哮喘、甲状腺功能减退症、原发性醛固酮增多症等;(5)产科线索疾病:子痫前期、HDP、GDM、无法用其他因素解释的胎儿宫内生长受限、除外其他原因的胸闷憋气、既往妊娠期OSA病史或家族史等;对于0SA高危人群,考虑在妊娠12\\~18周筛查OSA(低质量证据,GPS);考虑应用各种睡眠呼吸障碍问卷、模型、IV类监测设备和消费级别监测设备筛查妊娠期OSA(低质量证据,弱推荐);推荐使用I型监测设备诊断妊娠期OSA(高质量证据,强推荐);对无严重合并症的妊娠期OSA推荐III型PM设备进行居家诊断(高质量证据,强推荐);推荐依据临床症状、体征联合PSG或PM监测结果,诊断妊娠期OSA(高质量证据,强推荐)。  
-
-循证概述:妊娠期OSA对母婴结局有不良影响,结合国外相关文献、国内指南及专家讨论,需筛查OSA高危人群,包括:(1)鼾症:女性OSA的症状不典型,但打鼾仍为主要症状。研究显示,1/3的女性孕前打鼾, $23\\%$ 的女性妊娠期打鼾[25],存在鼾症的女性分娩的危险风险比增高1.60倍[126]。鉴于鼾症的发生率和对母婴的不良反应,建议对有鼾症的孕妇进行 OSA筛查;(2)晨起头疼、抑郁:是女性OSA 的非典型症状[3,还可伴夜间呼吸暂停、憋醒、白天疲劳嗜睡等典型症状,上述症状者应进行OSA筛查;(3)妊娠期肥胖:肥胖是妊娠期OSA的重要预测指标,妊娠早期肥胖女性中 $40\\%$ 在妊娠晚期罹患OSA,而体重正常或超重女性中,妊娠晚期仅 $14.5\\%$罹患OSA,基线BMI每增加 $5\\;\\mathrm{kg}/\\mathrm{m}^{2}$ ,妊娠晚期OSA患病率升高1.93倍[15]。颈围 ${>}40~\\mathrm{cm}$ 也是OSA非常重要的危险因素[127];(4)妊娠年龄:OSA的独立危险因素之一,妊娠年龄每增加10岁,孕晚期患OSA风险增加3.24倍5},妊娠年龄大于35岁,罹患0SA的OR值为 $3.06^{[128]}$ ,因此建议年龄大于35周岁的孕妇应行OSA筛查;(5)上气道解剖结构异常:鼻腔阻塞(鼻中隔偏曲、鼻甲肥大、鼻息肉、合并鼻部肿瘤等)、II度以上扁桃体肥大、软松弛、悬雍垂过长或过粗、咽腔狭窄、腺样体肥大、舌体肥大、舌根后坠、下颌后缩、颞颌关节功能障碍及小颌畸形等[127],建议进行OSA 的筛查;(6)内科疾病史: $53\\%$有高血压病史的孕妇存在孕前打鼾,且合并重度OSA,甲状腺疾病也是女性OSA的高危因素[79,129],因此建议患有内科相关疾病的孕妇,如难治性高血压、不明原因的心律失常、慢性充血性心力衰竭、糖尿病和胰岛素抵抗、甲状腺功能减退症等,进行[ ,] 12920娠期呈先降后升的“U\"形变化[2\",妊娠20周前,收缩压和舒张压略有下降,而妊娠20周后,随着胎儿快速生长对胎盘血流需求增加,单纯靠子宫动脉扩张已不能满足需求,导致母体血压升高,妊娠37周左右达最高值,多胎妊娠较单胎妊娠血压水平更高[30。因此孕中期,轻-中度OSA患者发生HDP的风险增加2倍,重度 OSA 患者发生HDP风险更高[3],且 OSA是 HDP和子痫前期发生的独立危险[, , ] 6糖水平和餐后 $2\\;\\mathrm{{h}}$ 血糖水平逐渐上升,妊娠36周时达峰值并持续到产后6周;孕期空腹血糖水平变化不大,但在产后6周明显升高。OSA在GDM女性中普遍存在,两者间存在量效关系,即AHI轻度升高与 GDM发病率增加呈正相关[3\",轻度妊娠期OSA的GDM 患病率为 $43\\%$ ,中-重度妊娠期OSA的GDM患病率上升至 $63\\%$ ,而非OSA孕妇GDM患病率为$25\\%^{[133]}$ 50 66O 1S34AHDPGDM[,,]普通高血压、糖尿病人群合并OSA 的发病机制相似,应针对罹患 HDP、GDM等合并症的孕妇,或疾病高风险孕妇进行OSA筛查。有学者建议对所有孕妇应进行OSA评估,以筛查新发或有OSA病史OSA  
-
-目前筛查的最佳时间尚无有力证据支持,鉴于OSA对母婴的不良影响,Dominguez等li27建议在妊娠12\\~18周筛查0SA,以尽早进行评估与治疗。由于妊娠期女性的OSA多以失眠、睡眠质量差为主要表现,日间嗜睡常不严重,针对普通人群的筛查工具(如柏林问卷、Stop-Bang问卷及ESS)对妊娠期OSA的敏感度和特异度较差,有学者提出了多种不同的妊娠期OSA预测模型,如包含孕妇年龄、BMI、打鼾、高血压、上气道特征等不同特征的组合,但尚未证实其预测妊娠期OSA 的准确性[36]。IIV类监测设备和消费级别监测设备也缺乏足够的临床验证,因此以上筛查工具结果仅作参考。  
-
-整夜值守的PSG是诊断妊娠期OSA的金标准,正规监测需要整夜 $^{\\geqslant7\\mathrm{~h~}}$ 的睡眠。但因其价格昂贵、预约周期较长、孕妇需在睡眠中心进行监测等存在诸多不便。根据美国内科医师学会(AmericanCollege of Physicians,ACP)制定的 OSA诊疗指南,对于无严重合并症的患者,居家环境中应用II型或III型PM设备进行睡眠监测可作为妊娠期OSA诊断方式!]。结合女性OSA临床特征,参照我国《成人阻塞性睡眠呼吸暂停多学科诊疗指南》74]、《妊娠期阻塞性睡眠呼吸暂停低通气综合征临床诊治专家共识(草案)》36美国睡眠医学会《气道正压治疗成人阻塞性睡眠呼吸暂停临床实践指南》[13]及专家组建议,满足以下标准可诊断妊娠期OSA:(1)PSG或PM监测显示 $\\mathrm{AHI}{\\geqslant}5\\$ 次/h,且具有女性OSA的症状或体征或相关合并/并发症(如已确诊高血压、情绪障碍、不明原因的心律失常、慢性充血性心力衰竭、HDP、HDM、无法用其他因素解释的胎儿宫内生长受限、除外其他原因的胸闷憋气),或既往有OSA病史或家族史等;(2)对于日间嗜睡不明显者(ESS<9分),PSG或PM监测显示AHI≥10次/h。根据《妊娠期阻塞性睡眠呼吸暂停低通气综合征临床诊治专家共识(草案)》36]及专家意见,妊娠期OSA诊疗流程如图1。  
-
-问题13:妊娠期0SA的管理有何推荐意见?  
-
-推荐意见:一旦确诊妊娠期OSA,考虑由睡眠中心的专业人员及产科医生、孕妇和家属共同讨论以制定个性化治疗方案,必要时需麻醉科、新生儿科、重症医学科多学科协同合作,并应持续到产后期。应根据患者情况,采取综合的治疗模式,包括加强体重管理、体位治疗、NPPV治疗、口腔矫治器、母婴合并症管理等(中等质量证据,GPS);因孕期体重在持续增加,推荐采用APAP治疗妊娠期OSA(高质量证据,强推荐);考虑采用口腔矫治器治疗单纯打鼾者及轻-中度妊娠期OSA患者,尤其是合并下颌后缩的患者,或NPPV治疗不耐受者(低质量证据,GPS);不考虑上气道手术治疗妊娠期OSA(低质量证据,GPS);建议对接受非OSA相关手术的妊娠期OSA患者,进行围手术期NPPV治疗(中等质量证据,强推荐);考虑在妊娠24周左右,应对患者病情重新评估和调整治疗方案,产后应再次行PSG或PM监测,评估产后是否继续NPPV等治疗(中等质量证据,GPS)。  
-
-注:OSA:阻塞性睡眠呼吸暂停;PSG:多导睡眠监测;PM:便携式睡眠监测;AHI:呼吸暂 停低通气指数;CPAP:持续气道正压通气   
-图1妊娠期OSA诊疗流程  
-
-循证概述:在妊娠期可通过控制营养摄人和运动来进行体重管理。参考《妊娠期高血糖诊治指南(2022)》[138]及《妊娠期阻塞性睡眠呼吸暂停低通气综合征临床诊治专家共识(草案》3\",我国不同孕前BMI孕妇的推荐妊娠期增重目标详见表8。孕期运动方法选择低至中等强度的运动,需避免日间过度劳累,戒烟、戒酒、慎用镇静催眠药物及其他可引I起或加重OSA的药物。体位治疗有利于上气道的开放,从仰睡改为侧睡可能对轻度妊娠期OSA患者有益[38]  
-
-NPPV治疗是中-重度妊娠期OSA的标准一线治疗选择,以及轻度妊娠期OSA的合适替代治疗,解除上气道的阻塞、消除睡眠期的低氧、纠正睡眠结构的紊乱。妊娠期使用NPPV的适应证为: $\\mathrm{\\AHI\\5{\\sim}}$30 次/h,偶有 $\\mathrm{SpO}_{2}{<}90\\%$ 伴临床症状;或 $\\mathrm{AHI}{>}30$ 次/h;或频繁 $\\mathrm{SpO}_{2}{<}$$90\\%$ ,也有学者建议对所有妊娠期OSA进行 NPPV 治疗[9]。治疗的主要目标是维持 $\\mathrm{SpO}_{2}{>}90\\%$ ,AHI<5次/h,并减轻临床症状[36]。模式选择参见“治疗篇”。妊娠期应用  
-
-NPPV治疗可降低高血压和早产风险,改善胰岛素敏感性,增加新生儿出生体重并降低早产率[139-40]改善子痫前期孕妇夜间 $\\mathrm{SpO}_{2}$ 、降低血压、延长孕龄、改善新生儿结局,且对孕妇无不良健康影响[141-42]。我国小样本研究也显示,NPPV治疗妊娠期OSA可提高夜间 $\\mathrm{SpO}_{2}$ , $90\\%$ 患者未发生胎儿生长受限和新生儿室息,所有患者NPPV依从性良好,未见不良反应[43]。随着妊娠和体重增加等生理变化,妊娠期OSA患者气道阻塞可能随着孕期进程而加重,因此在治疗过程中需密切观测治疗效果,必要时重复PSG或PM监测、推荐选择具有自动滴定功能的APAP设备,便于调整治疗压力,优化NPPV治疗[,]2。4孕前已接受  治疗的患者应在整个妊娠期间继续治疗,按照要求进行NPPV随访,并在妊娠24周左右重新评估及调整治疗方案,互联网远程随访方式有助于提高孕妇依从性[139,144]。产后应再次行PSG或PM监测,评估是否继续NPPV等治疗[129]。此外,由于激素水平改变易出现鼻充血和黏膜水肿,孕妇鼻塞的发生率较高,因此要注意患者及家属的依从性教育[38]  
-
-表8基于妊娠前体重指数推荐的妊娠期体重增长目标  
-
-口腔矫治器治疗适用于单纯打鼾者及轻-中度OSA患者,特别是下颌后缩的患者:以及不能耐受NPPV治疗的轻-中度OSA孕妇[36]。但考虑到装置通常需要定制,且孕期需不断调整[145] ,因此不建议其作为一线治疗方式。治疗妊娠期OSA的手术方式和普通人群OSA无异,但妊娠期麻醉、手术风险较高,且妊娠期OSA在产后通常可以得到改善或完全缓解,因此,不建议采用上气道手术治疗妊娠期OSA[36]。中度至重度妊娠期OSA还可能患有肺动脉高压或合并心血管疾病,因此还应考虑超声心动图检查。产科医生应早期发现或预防这些临床问题,警惕OSA合并GDM和HDP疾病的发生风险[38]。若患者由于多种合并症而需要剖宫产终止妊娠,术前需与麻醉科进行沟通围手术期的注意事项,包括:围手术期需应用的NPPV治疗、麻醉方式选择、动脉血压监测时间、术后体位选择(避免仰卧位)、镇静药物的风险等方面,必要时可协同重症医学科等进行多学科合作[10]
-# 总结与展望
-女性OSA并不罕见,但临床表现并不典型,加之问卷筛查对女性不敏感,因此易漏诊误诊,需提高对该疾病的认识。诊断方面,PSG为金标准,对无复杂并发症者PM可作为确诊工具,对妊娠患者PM为一线诊断方法。治疗方面,NPPV治疗仍为首选治疗,特别是妊娠OSA患者,根据女性特点设计的治疗模式有助于提高疗效和依从性。  
-
-对于女性OSA还存在不少问题有待解决。例如,缺乏便捷高效的女性OSA筛查问卷或工具;女性OSA的症状更轻及严重度较男性低,诊断标准是否需有别于男性?女性OSA严重度判断是否应结合PSG结果和主观日间嗜睡来确定?绝经期女性OSA患病率明显增高的确切机制是什么,如何指导治疗?鉴于OSA对母婴的危害及OSA风险随妊娠周数增加而增加,妊娠期OSA的筛查范围是否需要扩大,以及是否需要尽早应用NPPV治疗?OSA与其他合并症的共同管理方式等。希望在未来更多研究提供更多的循证医学依据。
-
-"""
-response = """
-// 节点更新
-MERGE (n:Disease {name: '女性阻塞性睡眠呼吸暂停'})
-SET 
-    n.code = coalesce(n.code, 'OSA'),
-    n.description = coalesce(n.description, '睡眠期间反复出现呼吸暂停或通气减少的疾病'),
-    n.category = coalesce(n.category, '呼吸系统疾病'),
-    n.severity = coalesce(n.severity, '中-重度');
-
-MERGE (n:NonDrugTreatment {name: '减重'})
-SET 
-    n.description = coalesce(n.description, '通过减轻体重来改善OSA症状'),
-    n.duration = coalesce(n.duration, '长期'),
-    n.frequency = coalesce(n.frequency, '每天'),
-    n.contraindication = coalesce(n.contraindication, '肥胖患者');
-
-MERGE (n:NonDrugTreatment {name: '饮食控制'})
-SET 
-    n.description = coalesce(n.description, '通过合理饮食来辅助减重和改善OSA症状'),
-    n.duration = coalesce(n.duration, '长期'),
-    n.frequency = coalesce(n.frequency, '每天'),
-    n.contraindication = coalesce(n.contraindication, '对食物过敏');
-
-MERGE (n:NonDrugTreatment {name: '运动'})
-SET 
-    n.description = coalesce(n.description, '通过有氧运动和抗阻训练来改善OSA症状'),
-    n.duration = coalesce(n.duration, '长期'),
-    n.frequency = coalesce(n.frequency, '每周几次'),
-    n.contraindication = coalesce(n.contraindication, '心肺疾病患者');
-
-MERGE (n:NonDrugTreatment {name: '体位治疗'})
-SET 
-    n.description = coalesce(n.description, '通过改变睡眠姿势来减轻OSA症状'),
-    n.duration = coalesce(n.duration, '长期'),
-    n.frequency = coalesce(n.frequency, '每晚'),
-    n.contraindication = coalesce(n.contraindication, '对体位舒适性要求');
-
-MERGE (n:NonDrugTreatment {name: '减少乙醇摄入'})
-SET 
-    n.description = coalesce(n.description, '限制酒精摄入量以降低OSA风险'),
-    n.duration = coalesce(n.duration, '长期'),
-    n.frequency = coalesce(n.frequency, '每周'),
-    n.contraindication = coalesce(n.contraindication, '无');
-
-MERGE (n:NonDrugTreatment {name: '慎用镇静催眠药物'})
-SET 
-    n.description = coalesce(n.description, '谨慎使用可能加重OSA症状的药物'),
-    n.duration = coalesce(n.duration, '长期'),
-    n.frequency = coalesce(n.frequency, '按需'),
-    n.contraindication = coalesce(n.contraindication, '无');
-
-MERGE (n:Disease {name: '合并症'})
-SET 
-    n.code = coalesce(n.code, 'MC'),
-    n.description = coalesce(n.description, '与OSA相关的其他疾病'),
-    n.category = coalesce(n.category, '综合症'),
-    n.severity = coalesce(n.severity, '中');
-
-MERGE (n:Complication {name: '心血管疾病'})
-SET 
-    n.description = coalesce(n.description, '可能由OSA引起的并发症'),
-    n.severity = coalesce(n.severity, '高');
-
-MERGE (n:Complication {name: '高脂血症'})
-SET 
-    n.description = coalesce(n.description, '可能由OSA引起的并发症'),
-    n.severity = coalesce(n.severity, '中');
-
-MERGE (n:Complication {name: '糖尿病'})
-SET 
-    n.description = coalesce(n.description, '可能由OSA引起的并发症'),
-    n.severity = coalesce(n.severity, '中');
-
-MERGE (n:Complication {name: '支气管哮喘'})
-SET 
-    n.description = coalesce(n.description, '可能由OSA引起的并发症'),
-    n.severity = coalesce(n.severity, '高');
-
-MERGE (n:Complication {name: '甲状腺功能减退症'})
-SET 
-    n.description = coalesce(n.description, '可能由OSA引起的并发症'),
-    n.severity = coalesce(n.severity, '中');
-
-MERGE (n:Complication {name: '骨关节疾病'})
-SET 
-    n.description = coalesce(n.description, '可能由OSA引起的并发症'),
-    n.severity = coalesce(n.severity, '中');
-
-MERGE (n:Complication {name: '反流性胃炎'})
-SET 
-    n.description = coalesce(n.description, '可能由OSA引起的并发症'),
-    n.severity = coalesce(n.severity, '低');
-
-MERGE (n:Examination {name: '多导睡眠监测'})
-SET 
-    n.description = coalesce(n.description, '评价夜间睡眠和呼吸'),
-    n.method = coalesce(n.method, 'PSG'),
-    n.requirement = coalesce(n.requirement, '夜间监测');
-
-// 关系更新
-MATCH (from) WHERE from.name = '女性阻塞性睡眠呼吸暂停'
-MATCH (to) WHERE to.name = '减重'
-MERGE (from)-[r:TREATED_BY]->(to)
-SET 
-    r.effectiveness = coalesce(r.effectiveness, 0.8),
-    r.priority = coalesce(r.priority, '高'),
-    r.stage = coalesce(r.stage, '初期治疗');
-
-MATCH (from) WHERE from.name = '女性阻塞性睡眠呼吸暂停'
-MATCH (to) WHERE to.name = '饮食控制'
-MERGE (from)-[r:TREATED_BY]->(to)
-SET 
-    r.effectiveness = coalesce(r.effectiveness, 0.7),
-    r.priority = coalesce(r.priority, '中'),
-    r.stage = coalesce(r.stage, '基础治疗');
-
-MATCH (from) WHERE from.name = '女性阻塞性睡眠呼吸暂停'
-MATCH (to) WHERE to.name = '运动'
-MERGE (from)-[r:TREATED_BY]->(to)
-SET 
-    r.effectiveness = coalesce(r.effectiveness, 0.75),
-    r.priority = coalesce(r.priority, '中'),
-    r.stage = coalesce(r.stage, '基础治疗');
-
-MATCH (from) WHERE from.name = '女性阻塞性睡眠呼吸暂停'
-MATCH (to) WHERE to.name = '体位治疗'
-MERGE (from)-[r:TREATED_BY]->(to)
-SET 
-    r.effectiveness = coalesce(r.effectiveness, 0.65),
-    r.priority = coalesce(r.priority, '低'),
-    r.stage = coalesce(r.stage, '辅助治疗');
-
-MATCH (from) WHERE from.name = '女性阻塞性睡眠呼吸暂停'
-MATCH (to) WHERE to.name = '减少乙醇摄入'
-MERGE (from)-[r:TREATED_BY]->(to)
-SET 
-    r.effectiveness = coalesce(r.effectiveness, 0.6),
-    r.priority = coalesce(r.priority, '低'),
-    r.stage = coalesce(r.stage, '风险控制');
-
-MATCH (from) WHERE from.name = '女性阻塞性睡眠呼吸暂停'
-MATCH (to) WHERE to.name = '慎用镇静催眠药物'
-MERGE (from)-[r:TREATED_BY]->(to)
-SET 
-    r.effectiveness = coalesce(r.effectiveness, 0.5),
-    r.priority = coalesce(r.priority, '低'),
-    r.stage = coalesce(r.stage, '风险控制');
-
-MATCH (from) WHERE from.name = '女性阻塞性睡眠呼吸暂停'
-MATCH (to) WHERE to.name = '心血管疾病'
-MERGE (from)-[r:MAY_CAUSE]->(to)
-SET 
-    r.probability = coalesce(r.probability, 0.7),
-    r.timeframe = coalesce(r.timeframe, '长期');
-
-MATCH (from) WHERE from.name = '女性阻塞性睡眠呼吸暂停'
-MATCH (to) WHERE to.name = '高脂血症'
+MATCH (to) WHERE to.name = '2型糖尿病'
 MERGE (from)-[r:MAY_CAUSE]->(to)
 SET 
     r.probability = coalesce(r.probability, 0.65),
     r.timeframe = coalesce(r.timeframe, '长期');
 
-MATCH (from) WHERE from.name = '女性阻塞性睡眠呼吸暂停'
-MATCH (to) WHERE to.name = '糖尿病'
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停'
+MATCH (to) WHERE to.name = '妊娠期高血压'
 MERGE (from)-[r:MAY_CAUSE]->(to)
 SET 
     r.probability = coalesce(r.probability, 0.6),
-    r.timeframe = coalesce(r.timeframe, '长期');
+    r.timeframe = coalesce(r.timeframe, '中期');
 
-MATCH (from) WHERE from.name = '女性阻塞性睡眠呼吸暂停'
-MATCH (to) WHERE to.name = '支气管哮喘'
+MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停'
+MATCH (to) WHERE to.name = '妊娠期糖尿病'
 MERGE (from)-[r:MAY_CAUSE]->(to)
 SET 
     r.probability = coalesce(r.probability, 0.55),
-    r.timeframe = coalesce(r.timeframe, '长期');
-
-MATCH (from) WHERE from.name = '女性阻塞性睡眠呼吸暂停'
-MATCH (to) WHERE to.name = '甲状腺功能减退症'
-MERGE (from)-[r:MAY_CAUSE]->(to)
-SET 
-    r.probability = coalesce(r.probability, 0.5),
-    r.timeframe = coalesce(r.timeframe, '长期');
-
-MATCH (from) WHERE from.name = '女性阻塞性睡眠呼吸暂停'
-MATCH (to) WHERE to.name = '骨关节疾病'
-MERGE (from)-[r:MAY_CAUSE]->(to)
-SET 
-    r.probability = coalesce(r.probability, 0.45),
-    r.timeframe = coalesce(r.timeframe, '长期');
-
-MATCH (from) WHERE from.name = '女性阻塞性睡眠呼吸暂停'
-MATCH (to) WHERE to.name = '反流性胃炎'
-MERGE (from)-[r:MAY_CAUSE]->(to)
-SET 
-    r.probability = coalesce(r.probability, 0.4),
-    r.timeframe = coalesce(r.timeframe, '长期');
-
-MATCH (from) WHERE from.name = '女性阻塞性睡眠呼吸暂停'
-MATCH (to) WHERE to.name = '多导睡眠监测'
-MERGE (from)-[r:REQUIRES_EXAM]->(to)
-SET 
-    r.priority = coalesce(r.priority, '中'),
-    r.mandatory = coalesce(r.mandatory, 'true');
+    r.timeframe = coalesce(r.timeframe, '中期');
 
 """

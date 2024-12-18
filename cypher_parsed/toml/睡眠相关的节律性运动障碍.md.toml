@@ -1,10 +1,10 @@
 [metadata]
 file_name = "睡眠相关的节律性运动障碍.md"
-processed_at = "2024-12-18 16:48:29"
-total_pairs = 2
+processed_at = "2024-12-19 00:12:18"
+total_pairs = 1
 
 [[message_pairs]]
-timestamp = "2024-12-18 09:56:11"
+timestamp = "2024-12-19 00:09:45"
 message = """
 
 [隶属文件名]
@@ -68,207 +68,79 @@ response = """
 MERGE (n:Disease {name: '睡眠相关的节律性运动障碍'})
 SET 
     n.code = coalesce(n.code, 'SRMD'),
-    n.description = coalesce(n.description, '与睡眠相关的以身体多部位反复的节律性刻板样动作为表现的综合征。'),
-    n.category = coalesce(n.category, '睡眠运动障碍性疾病'),
-    n.severity = coalesce(n.severity, '轻度');
+    n.description = coalesce(n.description, '是一种与睡眠相关的以身体多部位反复的节律性刻板样动作为表现的综合征。'),
+    n.category = coalesce(n.category, '睡眠运动障碍'),
+    n.severity = coalesce(n.severity, '轻至中等');
+
+MERGE (n:Symptom {name: '反复的节律性运动'})
+SET 
+    n.description = coalesce(n.description, '表现为身体多部位反复的节律性刻板样动作为特征。'),
+    n.severity = coalesce(n.severity, '轻至中等'),
+    n.frequency = coalesce(n.frequency, '发作性');
 
 MERGE (n:Symptom {name: '撞头'})
 SET 
-    n.description = coalesce(n.description, '坐位时呈双下肢跪位，上身前后或侧位节律性摆动并有力的撞头'),
-    n.severity = coalesce(n.severity, '中度'),
-    n.frequency = coalesce(n.frequency, '每晚多次');
+    n.description = coalesce(n.description, '患者在发作时可能将头部撞击床头或墙壁。'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '每晚发作数次至数十次');
 
 MERGE (n:Symptom {name: '摇头'})
 SET 
-    n.description = coalesce(n.description, '仰卧位时头部向左右不停地摇摆'),
-    n.severity = coalesce(n.severity, '中度'),
-    n.frequency = coalesce(n.frequency, '每晚多次');
+    n.description = coalesce(n.description, '头部向左右不停地摇摆。'),
+    n.severity = coalesce(n.severity, '轻至中等'),
+    n.frequency = coalesce(n.frequency, '偶见于发作');
 
-MERGE (n:Symptom {name: '身体摇摆'})
+MERGE (n:Symptom {name: '身体前后摆动'})
 SET 
-    n.description = coalesce(n.description, '以手和膝支撑，坐位时摇摆身体'),
-    n.severity = coalesce(n.severity, '中度'),
-    n.frequency = coalesce(n.frequency, '每晚多次');
+    n.description = coalesce(n.description, '身体以复杂而固定模式进行前后摆动。'),
+    n.severity = coalesce(n.severity, '轻'),
+    n.frequency = coalesce(n.frequency, '常见');
 
-MERGE (n:Symptom {name: '卷动'})
+MERGE (n:Symptom {name: '混合型发作'})
 SET 
-    n.description = coalesce(n.description, '仰卧位时身体向两侧翻滚'),
-    n.severity = coalesce(n.severity, '轻度'),
-    n.frequency = coalesce(n.frequency, '少见');
-
-MERGE (n:Symptom {name: '腿摇摆型'})
-SET 
-    n.description = coalesce(n.description, '腿摇摆'),
-    n.severity = coalesce(n.severity, '轻度'),
-    n.frequency = coalesce(n.frequency, '少见');
-
-MERGE (n:Symptom {name: '腿撞击型'})
-SET 
-    n.description = coalesce(n.description, '腿撞向床边'),
-    n.severity = coalesce(n.severity, '轻度'),
-    n.frequency = coalesce(n.frequency, '少见');
-
-MERGE (n:Symptom {name: '夜间失眠'})
-SET 
-    n.description = coalesce(n.description, '由于节律性运动导致的睡眠干扰'),
-    n.severity = coalesce(n.severity, '中度'),
-    n.frequency = coalesce(n.frequency, '每晚');
-
-MERGE (n:Complication {name: '颈动脉夹层'})
-SET 
-    n.description = coalesce(n.description, '由于剧烈的碰撞导致的颈动脉损伤'),
-    n.severity = coalesce(n.severity, '严重');
-
-MERGE (n:Complication {name: '视网膜出血'})
-SET 
-    n.description = coalesce(n.description, '碰撞导致的视网膜出血'),
-    n.severity = coalesce(n.severity, '严重');
-
-MERGE (n:Complication {name: '头部创伤'})
-SET 
-    n.description = coalesce(n.description, '由于反复的节律性运动导致的头部外伤'),
-    n.severity = coalesce(n.severity, '中度');
+    n.description = coalesce(n.description, '包含两种或两种以上发作类型的表现。'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '时常出现');
 
 // 关系更新
+MATCH (from) WHERE from.name = '睡眠相关的节律性运动障碍'
+MATCH (to) WHERE to.name = '反复的节律性运动'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.9),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '中等');
+
 MATCH (from) WHERE from.name = '睡眠相关的节律性运动障碍'
 MATCH (to) WHERE to.name = '撞头'
 MERGE (from)-[r:INDICATES]->(to)
 SET 
-    r.confidence = coalesce(r.confidence, 0.9),
-    r.frequency = coalesce(r.frequency, '每晚多次'),
-    r.severity = coalesce(r.severity, '中度');
+    r.confidence = coalesce(r.confidence, 0.85),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '中等');
 
 MATCH (from) WHERE from.name = '睡眠相关的节律性运动障碍'
 MATCH (to) WHERE to.name = '摇头'
 MERGE (from)-[r:INDICATES]->(to)
 SET 
-    r.confidence = coalesce(r.confidence, 0.9),
-    r.frequency = coalesce(r.frequency, '每晚多次'),
-    r.severity = coalesce(r.severity, '中度');
-
-MATCH (from) WHERE from.name = '睡眠相关的节律性运动障碍'
-MATCH (to) WHERE to.name = '身体摇摆'
-MERGE (from)-[r:INDICATES]->(to)
-SET 
-    r.confidence = coalesce(r.confidence, 0.9),
-    r.frequency = coalesce(r.frequency, '每晚多次'),
-    r.severity = coalesce(r.severity, '中度');
-
-MATCH (from) WHERE from.name = '睡眠相关的节律性运动障碍'
-MATCH (to) WHERE to.name = '卷动'
-MERGE (from)-[r:INDICATES]->(to)
-SET 
-    r.confidence = coalesce(r.confidence, 0.7),
-    r.frequency = coalesce(r.frequency, '少见'),
-    r.severity = coalesce(r.severity, '轻度');
-
-MATCH (from) WHERE from.name = '睡眠相关的节律性运动障碍'
-MATCH (to) WHERE to.name = '腿摇摆型'
-MERGE (from)-[r:INDICATES]->(to)
-SET 
-    r.confidence = coalesce(r.confidence, 0.7),
-    r.frequency = coalesce(r.frequency, '少见'),
-    r.severity = coalesce(r.severity, '轻度');
-
-MATCH (from) WHERE from.name = '睡眠相关的节律性运动障碍'
-MATCH (to) WHERE to.name = '腿撞击型'
-MERGE (from)-[r:INDICATES]->(to)
-SET 
-    r.confidence = coalesce(r.confidence, 0.7),
-    r.frequency = coalesce(r.frequency, '少见'),
-    r.severity = coalesce(r.severity, '轻度');
-
-MATCH (from) WHERE from.name = '睡眠相关的节律性运动障碍'
-MATCH (to) WHERE to.name = '夜间失眠'
-MERGE (from)-[r:INDICATES]->(to)
-SET 
     r.confidence = coalesce(r.confidence, 0.8),
-    r.frequency = coalesce(r.frequency, '每晚'),
-    r.severity = coalesce(r.severity, '中度');
+    r.frequency = coalesce(r.frequency, '偶见'),
+    r.severity = coalesce(r.severity, '轻至中等');
 
 MATCH (from) WHERE from.name = '睡眠相关的节律性运动障碍'
-MATCH (to) WHERE to.name = '颈动脉夹层'
-MERGE (from)-[r:MAY_CAUSE]->(to)
+MATCH (to) WHERE to.name = '身体前后摆动'
+MERGE (from)-[r:INDICATES]->(to)
 SET 
-    r.probability = coalesce(r.probability, 0.6),
-    r.timeframe = coalesce(r.timeframe, '发作时及之后');
+    r.confidence = coalesce(r.confidence, 0.7),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '轻');
 
 MATCH (from) WHERE from.name = '睡眠相关的节律性运动障碍'
-MATCH (to) WHERE to.name = '视网膜出血'
-MERGE (from)-[r:MAY_CAUSE]->(to)
+MATCH (to) WHERE to.name = '混合型发作'
+MERGE (from)-[r:INDICATES]->(to)
 SET 
-    r.probability = coalesce(r.probability, 0.5),
-    r.timeframe = coalesce(r.timeframe, '发作时及之后');
+    r.confidence = coalesce(r.confidence, 0.75),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '中等');
 
-MATCH (from) WHERE from.name = '睡眠相关的节律性运动障碍'
-MATCH (to) WHERE to.name = '头部创伤'
-MERGE (from)-[r:MAY_CAUSE]->(to)
-SET 
-    r.probability = coalesce(r.probability, 0.7),
-    r.timeframe = coalesce(r.timeframe, '发作时及之后');
-
-"""
-
-[[message_pairs]]
-timestamp = "2024-12-18 16:48:13"
-message = """
-
-[隶属文件名]
-睡眠相关的节律性运动障碍.md
-[隶属文件分块名]
-睡眠相关的节律性运动障碍/001-完整文档.md
-[文本块]
-综述·
-# 睡眠相关的节律性运动障碍
-
-# 白洁 袁娜  刘永红
-睡眠相关的节律性运动障碍(sleeprelatedrhythmicmovementdisorder,SRMD)是一种与睡眠相关的以身体多部位反复的节律性刻板样动作为表现的综合征。1727年Wepfer首先描述了这一现象,1905年Zappert 和Cruchet等对其做了进一步较为详细的阐述[1。2014年最新发布的国际睡眠疾病分类(ICSD-3)中,SRMD被归类于睡眠运动障碍性疾病[2。SRMD 具有发作性、反复性、刻板性、发作后不能回忆发作过程等特点,常常被误诊为癫痫等其他发作性疾病。事实上,SRMD并不少见,但由于相关知识的缺乏,加上国内研究与报道的罕见,导致其临床识别率低,极易被误诊和漏诊。现就有关 SRMD 的临床研究综述如下。K
-# 一、流行病学及概述
-SRMD是指重复、刻板和节律性的大组肌群(尤其是头和颈部)的运动,多发生在人睡时和睡眠中,少数发生在早晨将醒时,由撞头、摇头、身体前后摆动及身体旋转等复杂而固定模式的异常运动组成。发作的频率为 $0.\\;5\\sim2.\\;0$ 次/s,持续时间通常不超过 $15\\,\\mathrm{\\min}$ 。亦有人称之为睡中撞头、夜间摇头。绝大多数研究认为男女发病率没有差异,仅有个别报道在成年患者中存在男性优势。关于SRMD的发病率,不同年龄段,其发病率差别较大,ICSD-3及其他研究显示 $59\\%$ 的婴幼儿在9个月时会出现一些节律性运动,18个月时患病率降至 $33\\%$ ,症状通常在4岁以后逐渐好转或消失,到5岁时患病率仅为 $5\\%$ [26]。成年 SRMD 患病有如下 3 种情况:婴幼儿时期发病且症状持续至成年;婴幼儿时期患有SRMD,随后自愈,成年后再次复发;青春期或成年后首次出现SRMD,后者又称为迟发型或晚发型SRMD[7]。
-# 二、病因及发病机制
-SRMD的病因不明,绝大多数患者不伴有其他疾病,也有少数患者同时患有精神发育迟滞、自闭症等神经精神疾病,个别学者报道同卵双胞胎均患有SRMD,对其家族进行遗传系谱分析发现确有家族史。有研究者[34]认为SRMD 是一种可习得性行为。目前,对于该病的发病机制还存在很大争议,前庭功能失调被认为是SRMD的始发因素2,自我刺激、自体性欲行为也被认为与 SRMD 发病有着密切关系[2。另有学者提出,刻板动作是由中枢震荡器控制所产生的,而这种运动是由刻板行为产生的知觉强化而维持的一种操作性行为[’。亦有脑外伤或疱疹性脑炎后发生 SRMD 的病例报道[1,7]。由于男性患病率明显高于女性,因此有人认为激素也有可能是 SRMD 发病因素之一[3]。还有学者认为SRMD患者和失眠患者有着相似的基因背景,通过影响GABA受体,增强皮质和皮质下结构的兴奋性[4.7]引起SRMD。近年来,有学者提出 SRMD是大脑皮质对位于脑干和脊髓的中枢运动模式发生器(centralpattern generators)丧失抑制作用所致,或者是与注意缺陷/多动症(attentiondeficit hyperactivity disorder,, ADHD)有 关[9-11]。 Kohyama等[2提出,皮质下结构有可能参与 SRMD 患者节律性运动的发生,睡眠中的运动调节受基底节,尤其是腹侧纹状体和内侧苍白球尾部的影响。
-# 三、临床表现
-SRMD 主要发生在人睡时、睡中短暂觉醒期或浅睡的转换阶段,偶见于清醒时,发作形式多样2:(1)撞头型:坐位时呈双下肢跪位,上身前后或侧位节律性摆动并有力的撞头,类似于“正在祈祷的穆斯林”;(2)摇头型:仰卧位时头部向左右不停地摇摆;(3)身体摇摆型:以手和膝支撑,坐位时摇摆身体;(4)其他类型:较少见,身体滚动型:仰卧位时身体向两侧翻滚;腿摇摆型及腿撞击型;(5)混合型:包含两种或两种以上发作类型。其中最常见的症状为撞头,或用手和膝盖协同作翻滚动作,把头顶或额部撞向床头或墙壁。发作时患者可发出响亮的喻嗡声或吟唱声。这些发作形式可单一重复出现,也可以多种形式转换或者同时出现[5,13-4]。每晚发作数次至数十次,每次发作持续数秒至 $15\\,\\mathrm{\\min}$ ,发作时不易唤醒,发作过后继续睡眠,醒后通常不能回忆发病经过。SRMD可引起人睡性失眠、由于剧烈的碰撞导致颈动脉夹层、视网膜出血、头部创伤等并发症[15-17],或者干扰他人睡眠。青春期和成年患者可同时伴有不宁腿综合征、阻塞性睡眠呼吸暂停、焦虑、抑郁、ADHD[18] 和白天瞌睡[3,17,19]  
-
-四、实验室检查  
-
-绝大多数患者是足月顺产,个别有早产史,但发育过程良好,少数成年患者存在精神异常和认知缺陷。脑部CT、MRI及核素成像检查结果均无异常。少数SRMD患者脑电图检查提示非特异性改变;可以有发作间期的棘、尖波出现[18,20]。血液生化指标检查均正常。有文献报道患者情绪不稳,易激惹,汉密尔顿焦虑和抑郁量表检查提示中度焦虑和抑郁[6]。  
-
-视频多导睡眠图(video-polysomnography,V-PSG)显示节律运动可发生在睡眠的各个阶段,有快速眼动期和非快速眼动(non-rapid eye movement,NREM)期,其中以 NREMII期最多见[5,12.20],也有报道称在慢波睡眠期发作[,PSG 数据显示SRMD单独发生在NREM期和快速眼动期的比例分别为$46\\%$ 和 $24\\%$ ,同时发生在 NREM 和快速眼动期比例为 $30\\%$相关肌肉记录到节律性运动电位[12,18]。PSG 监测数据发现,睡眠效率降低,睡眠结构NREMI期增加而II期减少,慢波睡眠明显减少;快速眼动期睡眠比例明显增加,而潜伏期缩短\",全夜觉醒次数和微觉醒指数较高。快速眼动期肌张力弛缓消失,伴随下颌肌电增加\"  
-
-SRMD作为睡眠运动障碍性疾病的一种,其发病特点为发作性,患者的发作经过很难被临床医生观察到,其发作过程常是由父母或旁人描述,病史的描述不清有时会导致临床医生对SRMD的误诊和漏诊。因此,对于疑诊患者,进行夜间V-PSG是非常必要的。
-# 五、诊断
-尽管近年来有关SRMD的报道有所增加,临床医师对该病的认识仍然有限,误诊漏诊依然存在。因此,提高对本病的认识是正确诊断的关键。临床医师可参考以下诊断标准[2:(1)表现为大肌肉群做重复、刻板、节律性的运动。(2)该运动与睡眠显著相关,往往在小睡或者入睡前发生,个别出现在入睡时或者睡眠中。(3)下列由这种行为导致的严重后果中,至少存在一项: $\\textcircled{\\scriptsize{1}}$ 妨碍正常睡眠; $\\textcircled{2}$ 日间功能严重障碍; $\\textcircled{3}$ 在没有防范措施的情况下,已造成自身损伤或者可能发生损伤。(4)无法用其他的运动障碍或癫痫解释。需要注意的是,这种节律性运动如果没有造成临床后果,只能认为是节律性运动,并不能诊断为节律性运动障碍。同时需排除夜间磨牙症、吮拇癖、不宁腿综合征、静坐不能、抽动症和癫痫等\"。本病亦可同时伴有其他睡眠障碍性疾病(如不宁腿综合征)[13,2-22],临床医师应仔细鉴别,以免漏诊。其中,V-PSG 是非常重要的检查手段。_  
-
-从SRMD的临床发作特点可以发现,其临床表现具有发作性、反复性、刻板性以及醒后不能回忆发作过程等特点;而且一些SRMD患者脑电图监测可以发现发作间期的尖波或棘波,以上SRMD的临床特点可能会导致临床医生将SRMD误诊为癫痫等其他发作性疾病;尤其是婴幼儿,在9个月时,高达2/3的健康婴幼儿会出现一些节律性运动,几科医生和神经科医生一定要注意识别,以免造成误诊误治。
-# 六、治疗
-绝大多数SRMD始发于婴幼儿期,并且在4岁以后逐渐自行缓解,故发作少者不需治疗,但应注意防止发作中受伤,如:颅脑外伤、颈动脉破裂、视网膜出血等[15-]。对于发作频繁者或者伴随不宁腿综合征、焦虑、抑郁、白日嗜睡、易激惹、注意力不集中和睡眠质量差者[3,17,1],应给予适当治疗。有研究称服用苯二氮草类药物有效,儿童和成人患者都显示对低剂量的氯硝西洋有较好的反应109-10,4,9,23]。采用氯硝西洋 $0.\\,5\\sim1.\\,0\\,\\mathrm{\\mg}$ 睡前口服,多数病例在使用当夜发作次数就明显减少,甚至消失。目前还没有关于氯硝西洋治疗本病的长期疗效以及何时停药的研究,也有个例报道提示氯硝西泮及咪达唑仑治疗 SRMD 均无效,而丙咪嗪效果显著[24]。近年来,有学者就多巴胺拮抗剂治疗SRMD 的疗效做了相关研究25」,另外也有使用行为干预、催眠和睡眠限定等治疗方法的报道[1,26」,以上关于 SRMD 的治疗均是个案报道,其疗效是否确定尚无定论。  
-
-总之,睡眠中可以发生各种发作性疾病,从各种睡眠障碍性疾病,如夜惊症、睡行症、SRMD等到各种睡眠中发作的癫痫,临床医生一定要注意识别每种疾病的特点,结合相关的实验室检查结果,尽量做出准确的判断,避免误诊误治。
-# 药物过度使用性头痛的发病机制
-
-# 陈 陈春富
-药物过度使用性头痛(medication overuse headache,MOH)是慢性头痛的一种形式,大量研究显示,MOH在世界范围内的发病率为 $0.\\,9\\%\\sim1.\\,8\\%^{\\,[1]}$ 。在头痛诊所或三级头痛中心,MOH患者已和偏头痛及紧张型头痛患者一样成为最大的头痛患者群体。MOH虽不是一种威胁生命的疾病,但可成为一种慢性致残性疾病,对患者日常功能的影响远大于偏头痛[2”。目前,MOH的发病机制尚未阐明。近年来,国外关于 MOH的研究报道较多,我们将 MOH发病机制的研究进展综述如下。
-# 一、MOH的诊断
-2006年修订的M0H诊断标准(国际头痛疾病分类第二版修订版)中提出,必须满足如下3项方可诊断为$\\mathrm{MOH}^{[3]}$
-# 1.头痛 $\\geqslant\\!15~\\mathrm{d}/$ 月。
-2.规律地过量使用一种或多种急性或对症治疗的药物 $\\geqslant3$ 个月:(1)麦角胺、曲普坦类(任何种类)、阿片或复方止痛药规律使用 $\\geqslant3$ 个月,每个月 $\\geqslant10\\ \\mathrm{d}_{\\circ}$ (2)单方止痛剂或麦角胺、曲普坦类、止痛药、阿片任意联合应用 $\\geqslant\\!15~\\mathrm{d}/$ 月,连续3个月,但任何一种药物的单独剂量并不过量。  
-
-3.在药物过量应用期间头痛加重或恶化。  
-
-二、MOH 的发病机制  
-
-1.遗传因素:MOH是一种具有遗传易患性的疾病。有MOH家族史以及药物或酒精等滥用史的个体发生MOH的风险将增加3倍,而家庭中某一家庭成员存在MOH的个体发生药物过度使用或物质滥用的风险将会增加4倍[4。脑源性神经营养因子基因Val166Met多态性或附近的某一基因位点可能与个体行为异常及药物滥用的发病机制相关,并且与MOH患者镇痛药的过度使用有关[\"。另有研究显示,多巴胺转运基因(SLC6A3,也称为DAT1)的等位基因10在MOH 患者中的表达显著低于偏头痛患者[6]。Sethi[7关于MOH发病相关的基因多态性研究提示,MOH的发生可能与亚甲基四氢叶酸还原酶基因C677和多巴胺D2受体基因C939的多态性有关。  
-
-2.心理和个体因素:越来越多的研究试图用心理学来解释MOH,患者对头痛的恐惧、害怕失去社会职能,且合并有焦虑、抑郁等心境障碍等心理因素都被认为在阵发性头痛转化为伴有药物过度使用的慢性头痛方面具有重要作用。Lantéri-Minet等[?发现前额叶与物质滥用有关,提示物质滥用倾向是MOH发病机制之一。  
-
-3.神经电生理方面:临床电生理检查结果提示,在躯体感觉和视觉皮质,MOH患者的神经元兴奋性增加。Ayzenberg等[\"发现,通过电刺激MOH患者的前额和肢体出现感觉诱发电位增加,药物戒断后上述改变恢复正常。Coppola等li0对比观察了MOH患者与非头痛患者,发现MOH患者体感诱发电位波幅增大,重复刺激后其波幅也不降低。通过应用激光诱发电位研究疼痛感受刺激的适应性,Ferraro等[1]发现,治疗成功的 MOH 患者上述缺失的适应性可部分修复。以上研究提示,神经元兴奋性增加导致神经电生理方面异常可能是MOH的发病机制之一。  
-
-4.神经递质和内分泌功能异常:许多神经递质在MOH患者中发生改变,包括5-羟色胺(5-hydroxytryptamine)、内源性大麻素、促肾上腺皮质激素释放激素、食欲素A。MOH患者血小板内5-羟色胺水平降低,但血小板膜上5-羟色胺 $2\\mathrm{A}$ 受体密度增加,这种受体上调现象在药物戒断后可恢复正常。使用镇痛类和曲谱坦类药物的M0H患者体内血小板5-羟色胺转运体的活性增加[12}。上述研究结果显示 MOH 患者的5-羟色胺系统功能受到抑制,表明药物过度使用抑制5-羟色胺摄取参与了MOH的发病机制。  
-
-Perrotta等[13发现,脂肪酸酰胺水解酶的活性和疼痛易
-
-"""
-response = """
-// 节点更新
 """

@@ -1,208 +1,281 @@
 // File: 卒中相关睡眠障碍评估与管理中国专家共识.md
-// Processed at: 2024-12-18 16:48:29
-// Total pairs: 3
+// Processed at: 2024-12-19 00:12:18
+// Total pairs: 2
 
 /* Response #1
-   Timestamp: 2024-12-18 09:56:12
+   Timestamp: 2024-12-19 00:08:19
 */
 // 节点更新
 MERGE (n:Disease {name: '卒中相关睡眠障碍'})
 SET 
-    n.code = coalesce(n.code, 'SSD'),
-    n.description = coalesce(n.description, '卒中后常见症状, 临床多见却易被忽视'),
+    n.description = coalesce(n.description, '卒中后常见症状，临床多见却易被忽视'),
     n.category = coalesce(n.category, '睡眠障碍'),
-    n.severity = coalesce(n.severity, '中');
+    n.severity = coalesce(n.severity, '严重');
 
 MERGE (n:Disease {name: '失眠'})
 SET 
-    n.code = coalesce(n.code, 'Insomnia'),
-    n.description = coalesce(n.description, '睡眠困难或维持困难'),
+    n.description = coalesce(n.description, '难以入眠或维持睡眠的症状'),
     n.category = coalesce(n.category, '睡眠障碍'),
-    n.severity = coalesce(n.severity, '轻');
+    n.severity = coalesce(n.severity, '严重');
 
 MERGE (n:Disease {name: '日间思睡'})
 SET 
-    n.code = coalesce(n.code, 'EDS'),
-    n.description = coalesce(n.description, '无法克制的困倦欲睡或非预期的白天入睡'),
+    n.description = coalesce(n.description, '日间感到过度困倦或无法保持清醒'),
     n.category = coalesce(n.category, '睡眠障碍'),
     n.severity = coalesce(n.severity, '中');
 
 MERGE (n:Disease {name: '睡眠呼吸障碍'})
 SET 
-    n.code = coalesce(n.code, 'SDB'),
-    n.description = coalesce(n.description, '睡眠期间出现呼吸中断'),
+    n.description = coalesce(n.description, '在睡眠过程中发生的呼吸问题'),
     n.category = coalesce(n.category, '睡眠障碍'),
     n.severity = coalesce(n.severity, '中');
-
-MERGE (n:Disease {name: '阻塞性睡眠呼吸暂停'})
-SET 
-    n.code = coalesce(n.code, 'OSA'),
-    n.description = coalesce(n.description, '睡眠中打鼾伴呼吸暂停'),
-    n.category = coalesce(n.category, '睡眠障碍'),
-    n.severity = coalesce(n.severity, '重');
-
-MERGE (n:Disease {name: '不宁腿综合征'})
-SET 
-    n.code = coalesce(n.code, 'RLS'),
-    n.description = coalesce(n.description, '活动双下肢的强烈愿望，伴随下肢不适感'),
-    n.category = coalesce(n.category, '睡眠障碍'),
-    n.severity = coalesce(n.severity, '轻');
 
 MERGE (n:Disease {name: '快速眼动睡眠期行为障碍'})
 SET 
-    n.code = coalesce(n.code, 'RBD'),
-    n.description = coalesce(n.description, '睡眠中出现复杂运动行为'),
+    n.description = coalesce(n.description, '在REM睡眠时出现不自主的行为'),
     n.category = coalesce(n.category, '睡眠障碍'),
     n.severity = coalesce(n.severity, '中');
 
-MERGE (n:Disease {name: '昼夜节律失调性睡眠觉醒障碍'})
+MERGE (n:Disease {name: '不宁腿综合征'})
 SET 
-    n.code = coalesce(n.code, 'CRSWD'),
-    n.description = coalesce(n.description, '生物节律与睡眠-觉醒周期的失调'),
+    n.description = coalesce(n.description, '在休息状态下出现的下肢强烈活动欲望'),
     n.category = coalesce(n.category, '睡眠障碍'),
     n.severity = coalesce(n.severity, '中');
 
-MERGE (n:Symptom {name: '焦虑'})
+MERGE (n:Disease {name: '睡眠中周期性肢体运动'})
 SET 
-    n.description = coalesce(n.description, '对未来或日常问题感到紧张不安'),
-    n.severity = coalesce(n.severity, '中'),
-    n.frequency = coalesce(n.frequency, '常见');
+    n.description = coalesce(n.description, '睡眠期间出现的周期性肢体运动'),
+    n.category = coalesce(n.category, '睡眠障碍'),
+    n.severity = coalesce(n.severity, '中');
 
-MERGE (n:Symptom {name: '抑郁'})
+MERGE (n:Examination {name: '多导睡眠监测'})
 SET 
-    n.description = coalesce(n.description, '持续的忧郁情绪，失去兴趣'),
-    n.severity = coalesce(n.severity, '重'),
-    n.frequency = coalesce(n.frequency, '常见');
+    n.description = coalesce(n.description, '用于评估睡眠障碍的检测方法'),
+    n.method = coalesce(n.method, '多导睡眠监测'),
+    n.requirement = coalesce(n.requirement, '适用于所有睡眠障碍患者');
 
-MERGE (n:RiskFactor {name: '高血压'})
+MERGE (n:NonDrugTreatment {name: '睡眠卫生与健康教育'})
 SET 
-    n.description = coalesce(n.description, '血压持续升高的状态'),
-    n.impact_level = coalesce(n.impact_level, '高');
+    n.description = coalesce(n.description, '鼓励患者进行健康的生活习惯'),
+    n.duration = coalesce(n.duration, '持续'),
+    n.frequency = coalesce(n.frequency, '根据患者需求'),
+    n.contraindication = coalesce(n.contraindication, '无'),
+    n.equipment = coalesce(n.equipment, '无');
 
-MERGE (n:RiskFactor {name: '糖尿病'})
+MERGE (n:DrugTreatment {name: '苯二氮草类药物'})
 SET 
-    n.description = coalesce(n.description, '高度的血糖水平导致的疾病'),
-    n.impact_level = coalesce(n.impact_level, '高');
-
-MERGE (n:RiskFactor {name: '心脏病'})
-SET 
-    n.description = coalesce(n.description, '影响心脏健康的疾病'),
-    n.impact_level = coalesce(n.impact_level, '中');
-
-MERGE (n:RiskFactor {name: '习惯性打鼾'})
-SET 
-    n.description = coalesce(n.description, '睡觉时发出的噪音影响睡眠'),
-    n.impact_level = coalesce(n.impact_level, '中');
-
-MERGE (n:Complication {name: '卒中死亡'})
-SET 
-    n.description = coalesce(n.description, '卒中引起的死亡风险'),
-    n.severity = coalesce(n.severity, '重');
-
-MERGE (n:Complication {name: '卒中复发'})
-SET 
-    n.description = coalesce(n.description, '再次发生卒中'),
-    n.severity = coalesce(n.severity, '重');
+    n.description = coalesce(n.description, '用于短期治疗失眠和焦虑症状'),
+    n.dosage = coalesce(n.dosage, '根据医生建议'),
+    n.frequency = coalesce(n.frequency, '根据需要'),
+    n.duration = coalesce(n.duration, '短期'),
+    n.route = coalesce(n.route, '口服'),
+    n.contraindication = coalesce(n.contraindication, '重度呼吸衰竭');
 
 // 关系更新
 MATCH (from) WHERE from.name = '卒中相关睡眠障碍'
-MATCH (to) WHERE to.name = '卒中死亡'
-MERGE (from)-[r:MAY_CAUSE]->(to)
-SET 
-    r.probability = coalesce(r.probability, 0.6),
-    r.timeframe = coalesce(r.timeframe, '短期');
-
-MATCH (from) WHERE from.name = '卒中相关睡眠障碍'
-MATCH (to) WHERE to.name = '卒中复发'
-MERGE (from)-[r:MAY_CAUSE]->(to)
-SET 
-    r.probability = coalesce(r.probability, 0.7),
-    r.timeframe = coalesce(r.timeframe, '短期');
-
-MATCH (from) WHERE from.name = '失眠'
-MATCH (to) WHERE to.name = '卒中相关睡眠障碍'
-MERGE (from)-[r:INDICATES]->(to)
-SET 
-    r.confidence = coalesce(r.confidence, 0.75),
-    r.frequency = coalesce(r.frequency, '常见'),
-    r.severity = coalesce(r.severity, '中');
-
-MATCH (from) WHERE from.name = '日间思睡'
-MATCH (to) WHERE to.name = '卒中相关睡眠障碍'
-MERGE (from)-[r:INDICATES]->(to)
-SET 
-    r.confidence = coalesce(r.confidence, 0.8),
-    r.frequency = coalesce(r.frequency, '常见'),
-    r.severity = coalesce(r.severity, '中');
-
-MATCH (from) WHERE from.name = '睡眠呼吸障碍'
-MATCH (to) WHERE to.name = '卒中相关睡眠障碍'
+MATCH (to) WHERE to.name = '失眠'
 MERGE (from)-[r:INDICATES]->(to)
 SET 
     r.confidence = coalesce(r.confidence, 0.9),
     r.frequency = coalesce(r.frequency, '常见'),
-    r.severity = coalesce(r.severity, '重');
+    r.severity = coalesce(r.severity, '严重');
 
-MATCH (from) WHERE from.name = '不宁腿综合征'
-MATCH (to) WHERE to.name = '卒中相关睡眠障碍'
+MATCH (from) WHERE from.name = '卒中相关睡眠障碍'
+MATCH (to) WHERE to.name = '日间思睡'
 MERGE (from)-[r:INDICATES]->(to)
 SET 
     r.confidence = coalesce(r.confidence, 0.85),
     r.frequency = coalesce(r.frequency, '常见'),
-    r.severity = coalesce(r.severity, '轻');
+    r.severity = coalesce(r.severity, '中');
 
-MATCH (from) WHERE from.name = '快速眼动睡眠期行为障碍'
-MATCH (to) WHERE to.name = '卒中相关睡眠障碍'
+MATCH (from) WHERE from.name = '卒中相关睡眠障碍'
+MATCH (to) WHERE to.name = '睡眠呼吸障碍'
 MERGE (from)-[r:INDICATES]->(to)
 SET 
-    r.confidence = coalesce(r.confidence, 0.88),
+    r.confidence = coalesce(r.confidence, 0.87),
     r.frequency = coalesce(r.frequency, '常见'),
     r.severity = coalesce(r.severity, '中');
 
 MATCH (from) WHERE from.name = '卒中相关睡眠障碍'
-MATCH (to) WHERE to.name = '高血压'
-MERGE (from)-[r:INFLUENCED_BY]->(to)
+MATCH (to) WHERE to.name = '快速眼动睡眠期行为障碍'
+MERGE (from)-[r:INDICATES]->(to)
 SET 
-    r.impact_level = coalesce(r.impact_level, '高'),
-    r.evidence_level = coalesce(r.evidence_level, '强');
+    r.confidence = coalesce(r.confidence, 0.9),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '中');
 
 MATCH (from) WHERE from.name = '卒中相关睡眠障碍'
-MATCH (to) WHERE to.name = '糖尿病'
-MERGE (from)-[r:INFLUENCED_BY]->(to)
+MATCH (to) WHERE to.name = '不宁腿综合征'
+MERGE (from)-[r:INDICATES]->(to)
 SET 
-    r.impact_level = coalesce(r.impact_level, '高'),
-    r.evidence_level = coalesce(r.evidence_level, '强');
+    r.confidence = coalesce(r.confidence, 0.86),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '中');
 
 MATCH (from) WHERE from.name = '卒中相关睡眠障碍'
-MATCH (to) WHERE to.name = '心脏病'
-MERGE (from)-[r:INFLUENCED_BY]->(to)
+MATCH (to) WHERE to.name = '睡眠中周期性肢体运动'
+MERGE (from)-[r:INDICATES]->(to)
 SET 
-    r.impact_level = coalesce(r.impact_level, '中'),
-    r.evidence_level = coalesce(r.evidence_level, '中');
+    r.confidence = coalesce(r.confidence, 0.82),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '中');
 
 MATCH (from) WHERE from.name = '卒中相关睡眠障碍'
-MATCH (to) WHERE to.name = '习惯性打鼾'
-MERGE (from)-[r:INFLUENCED_BY]->(to)
+MATCH (to) WHERE to.name = '多导睡眠监测'
+MERGE (from)-[r:REQUIRES_EXAM]->(to)
 SET 
-    r.impact_level = coalesce(r.impact_level, '中'),
-    r.evidence_level = coalesce(r.evidence_level, '中');
+    r.priority = coalesce(r.priority, '高'),
+    r.mandatory = coalesce(r.mandatory, 'true');
+
+MATCH (from) WHERE from.name = '卒中相关睡眠障碍'
+MATCH (to) WHERE to.name = '睡眠卫生与健康教育'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.8),
+    r.priority = coalesce(r.priority, '高'),
+    r.stage = coalesce(r.stage, '初始治疗');
+
+MATCH (from) WHERE from.name = '失眠'
+MATCH (to) WHERE to.name = '苯二氮草类药物'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.75),
+    r.priority = coalesce(r.priority, '中'),
+    r.stage = coalesce(r.stage, '联合治疗');
+
+MATCH (from) WHERE from.name = '卒中相关睡眠障碍'
+MATCH (to) WHERE to.name = '日间思睡'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.55),
+    r.timeframe = coalesce(r.timeframe, '长期');
+
+MATCH (from) WHERE from.name = '卒中相关睡眠障碍'
+MATCH (to) WHERE to.name = '睡眠呼吸障碍'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.65),
+    r.timeframe = coalesce(r.timeframe, '长期');
+
+MATCH (from) WHERE from.name = '卒中相关睡眠障碍'
+MATCH (to) WHERE to.name = '快速眼动睡眠期行为障碍'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.6),
+    r.timeframe = coalesce(r.timeframe, '长期');
+
+MATCH (from) WHERE from.name = '卒中相关睡眠障碍'
+MATCH (to) WHERE to.name = '不宁腿综合征'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.58),
+    r.timeframe = coalesce(r.timeframe, '长期');
+
+MATCH (from) WHERE from.name = '卒中相关睡眠障碍'
+MATCH (to) WHERE to.name = '睡眠中周期性肢体运动'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.63),
+    r.timeframe = coalesce(r.timeframe, '长期');
 
 
 
 // =====================================
 
 /* Response #2
-   Timestamp: 2024-12-18 16:48:13
+   Timestamp: 2024-12-19 00:08:22
 */
 // 节点更新
+MERGE (n:Disease {name: '卒中相关睡眠障碍'});
 
+MERGE (n:Disease {name: '不宁腿综合征'})
+SET 
+    n.short_name = coalesce(n.short_name, 'RLS');
 
-// =====================================
+MERGE (n:Disease {name: '周期性肢体运动障碍'})
+SET 
+    n.short_name = coalesce(n.short_name, 'PLMS');
 
-/* Response #3
-   Timestamp: 2024-12-18 16:48:13
-*/
-// 节点更新
+MERGE (n:Disease {name: '凌晨潮红'});
+
+MERGE (n:Symptom {name: '腿部不舒服'})
+SET 
+    n.description = coalesce(n.description, '腿部不适感'),
+    n.severity = coalesce(n.severity, '中'),
+    n.frequency = coalesce(n.frequency, '常见');
+
+MERGE (n:Symptom {name: '睡眠剥夺'})
+SET 
+    n.description = coalesce(n.description, '睡眠时间不足导致的症状'),
+    n.severity = coalesce(n.severity, '重'),
+    n.frequency = coalesce(n.frequency, '常见');
+
+MERGE (n:Symptom {name: '抑郁症'})
+SET 
+    n.description = coalesce(n.description, '情绪低落的一种精神状态'),
+    n.severity = coalesce(n.severity, '重'),
+    n.frequency = coalesce(n.frequency, '少见');
+
+MERGE (n:Symptom {name: '不良的睡眠习惯'})
+SET 
+    n.description = coalesce(n.description, '不良的作息和睡眠方式'),
+    n.severity = coalesce(n.severity, '中'),
+    n.frequency = coalesce(n.frequency, '常见');
+
+MERGE (n:Symptom {name: '睡眠-觉醒节律失调'})
+SET 
+    n.description = coalesce(n.description, '生物钟失调造成的睡眠问题'),
+    n.severity = coalesce(n.severity, '中'),
+    n.frequency = coalesce(n.frequency, '常见');
+
+// 关系更新
+MATCH (from) WHERE from.name = '卒中相关睡眠障碍'
+MATCH (to) WHERE to.name = '腿部不舒服'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.85),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '中');
+
+MATCH (from) WHERE from.name = '卒中相关睡眠障碍'
+MATCH (to) WHERE to.name = '睡眠剥夺'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.9),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '重');
+
+MATCH (from) WHERE from.name = '卒中相关睡眠障碍'
+MATCH (to) WHERE to.name = '抑郁症'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.75),
+    r.frequency = coalesce(r.frequency, '少见'),
+    r.severity = coalesce(r.severity, '重');
+
+MATCH (from) WHERE from.name = '卒中相关睡眠障碍'
+MATCH (to) WHERE to.name = '不良的睡眠习惯'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.8),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '中');
+
+MATCH (from) WHERE from.name = '卒中相关睡眠障碍'
+MATCH (to) WHERE to.name = '睡眠-觉醒节律失调'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.7),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '中');
+
+MATCH (from) WHERE from.name = '卒中相关睡眠障碍'
+MATCH (to) WHERE to.name = '不宁腿综合征'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.65),
+    r.timeframe = coalesce(r.timeframe, '长期');
+
 
 
 // =====================================

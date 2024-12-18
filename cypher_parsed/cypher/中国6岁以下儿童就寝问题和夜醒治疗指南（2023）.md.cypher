@@ -1,113 +1,153 @@
 // File: 中国6岁以下儿童就寝问题和夜醒治疗指南（2023）.md
-// Processed at: 2024-12-18 16:48:29
+// Processed at: 2024-12-19 00:12:18
 // Total pairs: 1
 
 /* Response #1
-   Timestamp: 2024-12-18 09:55:57
+   Timestamp: 2024-12-19 00:09:03
 */
 // 节点更新
-MERGE (n:Disease {name: '就寝问题'})
-SET 
-    n.description = coalesce(n.description, '6岁以下儿童失眠的主要表现，可对儿童生长发育和家长身心健康造成不良影响。');
+MERGE (n:Disease {name: '失眠'});
 
-MERGE (n:Disease {name: '夜醒'})
-SET 
-    n.description = coalesce(n.description, '6岁以下儿童失眠的主要表现，常见主诉之一。');
+MERGE (n:Disease {name: '慢性失眠障碍'});
 
-MERGE (n:Symptom {name: '人睡潜伏期'})
-SET 
-    n.description = coalesce(n.description, '从家长准备安顿儿童睡觉到儿童真正人睡的时间，一般认为大于20分钟具有临床意义。');
+MERGE (n:Disease {name: '短期失眠障碍'});
 
-MERGE (n:Symptom {name: '夜间醒来'})
-SET 
-    n.description = coalesce(n.description, '儿童频繁夜醒的问题，通常表现为每晚2次以上的夜醒，且每次醒来大于5分钟。');
+MERGE (n:Disease {name: '睡眠呼吸障碍'});
 
-MERGE (n:Treatment {name: '行为治疗'})
-SET 
-    n.description = coalesce(n.description, '通过标准消退法、渐进消退法等方式改善儿童就寝问题和夜醒。');
+MERGE (n:Disease {name: '胃食管反流'});
 
-MERGE (n:Treatment {name: '早期睡眠卫生习惯指导'})
-SET 
-    n.description = coalesce(n.description, '对儿童就寝问题和夜醒的改善效果显著，建议作为干预方法。');
+MERGE (n:Disease {name: '不宁腿综合征'});
 
-MERGE (n:Treatment {name: '药物治疗'})
-SET 
-    n.description = coalesce(n.description, '包括褪黑素，短期内可减少婴幼儿夜醒，但不推荐作为一线方案。');
+MERGE (n:Disease {name: '缺铁性贫血'});
 
-MERGE (n:Complication {name: '慢性失眠障碍'})
+MERGE (n:Disease {name: '抑郁障碍'});
+
+MERGE (n:Symptom {name: '就寝问题'})
 SET 
-    n.description = coalesce(n.description, '如果相关睡眠问题每周出现3次并持续3个月，为慢性失眠障碍。');
+    n.description = coalesce(n.description, '儿童入睡困难'),
+    n.severity = coalesce(n.severity, '中'),
+    n.frequency = coalesce(n.frequency, '常见');
+
+MERGE (n:Symptom {name: '夜醒'})
+SET 
+    n.description = coalesce(n.description, '儿童夜间频繁醒来'),
+    n.severity = coalesce(n.severity, '中'),
+    n.frequency = coalesce(n.frequency, '常见');
+
+MERGE (n:Symptom {name: '过度困倦'})
+SET 
+    n.description = coalesce(n.description, '白天过度困倦'),
+    n.severity = coalesce(n.severity, '轻'),
+    n.frequency = coalesce(n.frequency, '偶见');
+
+MERGE (n:Symptom {name: '注意力不集中'})
+SET 
+    n.description = coalesce(n.description, '注意力难以集中'),
+    n.severity = coalesce(n.severity, '中'),
+    n.frequency = coalesce(n.frequency, '偶见');
+
+MERGE (n:Symptom {name: '多动'})
+SET 
+    n.description = coalesce(n.description, '儿童活动性过强'),
+    n.severity = coalesce(n.severity, '中'),
+    n.frequency = coalesce(n.frequency, '偶见');
+
+MERGE (n:Symptom {name: '情绪问题'})
+SET 
+    n.description = coalesce(n.description, '情绪不稳定'),
+    n.severity = coalesce(n.severity, '中'),
+    n.frequency = coalesce(n.frequency, '偶见');
 
 // 关系更新
-MATCH (from) WHERE from.name = '就寝问题'
-MATCH (to) WHERE to.name = '行为治疗'
-MERGE (from)-[r:TREATED_BY]->(to)
+MATCH (from) WHERE from.name = '失眠'
+MATCH (to) WHERE to.name = '就寝问题'
+MERGE (from)-[r:INDICATES]->(to)
 SET 
-    r.effectiveness = coalesce(r.effectiveness, 0.85),
-    r.priority = coalesce(r.priority, '高'),
-    r.stage = coalesce(r.stage, '一线治疗');
+    r.confidence = coalesce(r.confidence, 0.9),
+    r.frequency = coalesce(r.frequency, '非常常见'),
+    r.severity = coalesce(r.severity, '严重');
 
-MATCH (from) WHERE from.name = '就寝问题'
-MATCH (to) WHERE to.name = '早期睡眠卫生习惯指导'
-MERGE (from)-[r:TREATED_BY]->(to)
+MATCH (from) WHERE from.name = '失眠'
+MATCH (to) WHERE to.name = '夜醒'
+MERGE (from)-[r:INDICATES]->(to)
 SET 
-    r.effectiveness = coalesce(r.effectiveness, 0.75),
-    r.priority = coalesce(r.priority, '高'),
-    r.stage = coalesce(r.stage, '辅助手段');
+    r.confidence = coalesce(r.confidence, 0.9),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '中');
 
-MATCH (from) WHERE from.name = '就寝问题'
-MATCH (to) WHERE to.name = '慢性失眠障碍'
+MATCH (from) WHERE from.name = '慢性失眠障碍'
+MATCH (to) WHERE to.name = '就寝问题'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.85),
+    r.frequency = coalesce(r.frequency, '靠前'),
+    r.severity = coalesce(r.severity, '中');
+
+MATCH (from) WHERE from.name = '失眠'
+MATCH (to) WHERE to.name = '不宁腿综合征'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.7),
+    r.timeframe = coalesce(r.timeframe, '长期');
+
+MATCH (from) WHERE from.name = '失眠'
+MATCH (to) WHERE to.name = '缺铁性贫血'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.5),
+    r.timeframe = coalesce(r.timeframe, '长期');
+
+MATCH (from) WHERE from.name = '睡眠呼吸障碍'
+MATCH (to) WHERE to.name = '失眠'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.55),
+    r.timeframe = coalesce(r.timeframe, '长期');
+
+MATCH (from) WHERE from.name = '胃食管反流'
+MATCH (to) WHERE to.name = '失眠'
 MERGE (from)-[r:MAY_CAUSE]->(to)
 SET 
     r.probability = coalesce(r.probability, 0.6),
     r.timeframe = coalesce(r.timeframe, '长期');
 
-MATCH (from) WHERE from.name = '就寝问题'
-MATCH (to) WHERE to.name = '人睡潜伏期'
+MATCH (from) WHERE from.name = '失眠'
+MATCH (to) WHERE to.name = '抑郁障碍'
+MERGE (from)-[r:INFLUENCED_BY]->(to)
+SET 
+    r.impact_level = coalesce(r.impact_level, '中'),
+    r.evidence_level = coalesce(r.evidence_level, '强');
+
+MATCH (from) WHERE from.name = '慢性失眠障碍'
+MATCH (to) WHERE to.name = '注意力不集中'
 MERGE (from)-[r:INDICATES]->(to)
 SET 
     r.confidence = coalesce(r.confidence, 0.9),
     r.frequency = coalesce(r.frequency, '常见'),
-    r.severity = coalesce(r.severity, '中等');
+    r.severity = coalesce(r.severity, '中');
 
-MATCH (from) WHERE from.name = '夜醒'
-MATCH (to) WHERE to.name = '夜间醒来'
-MERGE (from)-[r:INDICATES]->(to)
+MATCH (from) WHERE from.name = '不宁腿综合征'
+MATCH (to) WHERE to.name = '慢性失眠障碍'
+MERGE (from)-[r:MAY_CAUSE]->(to)
 SET 
-    r.confidence = coalesce(r.confidence, 0.9),
-    r.frequency = coalesce(r.frequency, '常见'),
-    r.severity = coalesce(r.severity, '中等');
-
-MATCH (from) WHERE from.name = '夜醒'
-MATCH (to) WHERE to.name = '行为治疗'
-MERGE (from)-[r:TREATED_BY]->(to)
-SET 
-    r.effectiveness = coalesce(r.effectiveness, 0.8),
-    r.priority = coalesce(r.priority, '高'),
-    r.stage = coalesce(r.stage, '一线治疗');
-
-MATCH (from) WHERE from.name = '夜醒'
-MATCH (to) WHERE to.name = '早期睡眠卫生习惯指导'
-MERGE (from)-[r:TREATED_BY]->(to)
-SET 
-    r.effectiveness = coalesce(r.effectiveness, 0.7),
-    r.priority = coalesce(r.priority, '高'),
-    r.stage = coalesce(r.stage, '辅助手段');
-
-MATCH (from) WHERE from.name = '夜醒'
-MATCH (to) WHERE to.name = '药物治疗'
-MERGE (from)-[r:TREATED_BY]->(to)
-SET 
-    r.effectiveness = coalesce(r.effectiveness, 0.6),
-    r.priority = coalesce(r.priority, '低'),
-    r.stage = coalesce(r.stage, '非首选');
+    r.probability = coalesce(r.probability, 0.4),
+    r.timeframe = coalesce(r.timeframe, '长期');
 
 MATCH (from) WHERE from.name = '就寝问题'
-MATCH (to) WHERE to.name = '夜醒'
-MERGE (from)-[r:REQUIRES_EXAM]->(to)
+MATCH (to) WHERE to.name = '睡眠呼吸障碍'
+MERGE (from)-[r:INDICATES]->(to)
 SET 
-    r.priority = coalesce(r.priority, '必需'),
-    r.mandatory = coalesce(r.mandatory, 'true');
+    r.confidence = coalesce(r.confidence, 0.8),
+    r.frequency = coalesce(r.frequency, '中'),
+    r.severity = coalesce(r.severity, '中');
+
+MATCH (from) WHERE from.name = '夜醒'
+MATCH (to) WHERE to.name = '胃食管反流'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.7),
+    r.frequency = coalesce(r.frequency, '中'),
+    r.severity = coalesce(r.severity, '中');
 
 
 

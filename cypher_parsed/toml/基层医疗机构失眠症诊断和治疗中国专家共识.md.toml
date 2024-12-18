@@ -1,10 +1,225 @@
 [metadata]
 file_name = "基层医疗机构失眠症诊断和治疗中国专家共识.md"
-processed_at = "2024-12-18 16:48:29"
+processed_at = "2024-12-19 00:12:18"
 total_pairs = 2
 
 [[message_pairs]]
-timestamp = "2024-12-18 09:55:55"
+timestamp = "2024-12-19 00:08:14"
+message = """
+
+[隶属文件名]
+基层医疗机构失眠症诊断和治疗中国专家共识.md
+[隶属文件分块名]
+基层医疗机构失眠症诊断和治疗中国专家共识/002-三物理治疗.md
+[文本块]
+# (三)物理治疗
+物理治疗具有使用方便,不易成瘾、不良反应小等优点。失眠的常用物理治疗包括光照疗法、重复经颅磁刺激、经颅电刺激、生物反馈疗法等;此外,迷走神经刺激术、虚拟现实(VR)、听觉刺激等新兴技术也日益得到关注。  
+
+1.光照治疗:光线是调节昼夜节律的重要因素。光照疗法可改善失眠患者的日间思睡,减少睡眠片段化[],光照治疗对于各种睡眠紊乱普遍有效,适用人群广泛(2A)。推荐晨间光照,单位$2\\ 500{\\sim}10\\ 000\\ \\mathrm{lux}$ ,每天光照时间 $30{\\sim}45\\ \\mathrm{min}$  
+
+2.重复经颅磁刺激(repetitive transcranialmagnetic stimulation,rTMS):低频 $\\mathrm{rTMS}\\left(\\,\\leqslant\\!1~\\mathrm{Hz}\\,\\right)$ 通过降低失眠患者的皮质异常兴奋性、诱导慢波睡眠、增加睡眠深度,同时影响松果体褪黑素的合成和分泌,以维持正常睡眠觉醒周期和改善睡眠质量。rTMS对失眠的疗效确切,并且可以缓解焦虑和抑郁症状7},疗效持续时间与疗程有关(2B)。  
+
+3.经颅电刺激(transcranialelectricalstimulation,TES):TES通过向头皮施加低强度电流来调节大脑活动,包括经颅交流电刺激(tACS)和经颅直流电刺激(tDCS)。tACS对慢性失眠患者有显著改善作用[3,tDCS在失眠患者中应用较少,暂不推荐。  
+
+4.生物反馈疗法:生物反馈旨在减少条件唤醒,尤其是躯体、认知或皮质的过度唤醒,可以减少失眠者的入睡时间和觉醒次数[74],可以作为CBTI的替代疗法或辅助治疗75。  
+
+5.其他:迷走神经刺激、VR、听觉刺激等治疗方法尚缺乏高质量的临床证据支持,暂不推荐。  
+
+推荐意见9:光照疗法对于各种睡眠紊乱普遍有效(2A),rTMS可以缓解失眠相关的焦虑和抑郁症状(2B),tACS对慢性失眠患者有改善作用(2B),生物反馈疗法可减少失眠者的入睡时间和觉醒次数(2B)。  
+
+(四)药物治疗  
+
+药物治疗主要是指镇静催眠药物,治疗中需要明确失眠症的病因以针对性治疗,还应避免或减少相关的负面效应。基层医疗机构需要遵循以下原则:  
+
+1.治疗时机:无法开展CBTI或不愿意接受CBTI,以及CBTI疗效不满意时,可以与患者共同决策,选择药物治疗[3,30];对于失眠症状严重且紧急的患者,则宜尽早应用。  
+
+2.个体化:考虑患者的症状学特点,如人睡困难、睡眠维持困难或早醒,关注共病的躯体疾病、精神障碍、睡眠障碍、药物和(或)成瘾性物质使用史、药物相互作用,以及患者的自我选择和药物可获取性等[3,66]  
+
+3.按需和间歇给药:以最低剂量开始治疗,逐步向上滴定以达到治疗效果[3]。“按需\"的具体决策标准:预期人睡困难时,上床前 $5{\\sim}10\\ \\mathrm{min}$ 服用;上床 $30\\;\\mathrm{min}$ 后仍不能人睡时,立即服用;比通常起床时间提前 $^{\\geqslant5}\\mathrm{~h~}$ 醒来,且无法再次入睡时,可以服用短半衰期的药物;根据次日的日间活动需求(如重要事务),睡前服用。“间歇”是指非连续性每晚用药,具体频次尚无定论,推荐频率为3\\~5晚/周[3.66]。  
+
+4.药物选择:催眠作用的药物种类繁多。苯二氮草类受体激动剂(benzodiazepinereceptoragonists,BZRA)的临床应用最为广泛,包括非苯二氮草类药物(如唑吡坦、右佐匹克隆、佐匹克隆、扎来普隆)苯二氮草类药物(如劳拉西泮、阿普唑仑、艾司唑仑) $\\upgamma\\cdot$ -氨基丁酸A型(GABAA)受体的部分正向别构调节剂(地达西尼)等。双重食欲素受体拮抗剂[dual orexin receptor antagonists(DORA),如莱博雷生、达利雷生、苏沃雷生]是新型镇静催眠DORA2A 2 BZRA选短、中效的BZRA或褪黑素受体激动剂(2A),或者DORA(2A);(2)其他的BZRA或褪黑素受体激动剂(2A);(3)具有镇静催眠作用的抗抑郁药物(2B),尤其适用于伴随焦虑和抑郁症状的失眠患者;(4)联合BZRA和具有镇静作用的抗抑郁剂(2B);(5)具有镇静作用的抗精神病药(2C)不作为首选药物使用,仅适用于某些特殊情况和人群;(6)非处方药抗组胺药物、普通褪黑素以及草提取物等非处方药(2D)。  
+
+5.疗程:疗程根据失眠障碍病程、严重程度及对药物的治疗反应决定,一般不超过4周;如果连续治疗超过4周时需重新全面评估。药物疗效与安全性欠佳者,建议更换治疗药物,睡眠明显改善者,建议适时采取降低剂量或间歇给药3。  
+
+6.终止治疗:患者的失眠改善并感觉可以控制睡眠后,可考虑逐渐减量、停药[76,CBTI有助于此过程。大剂量、多药联用或长期连续药物治疗的患者应避免突然停药,以避免失眠反跳、癫痫发作和其他的严重精神症状[66.,79]  
+
+7.特殊人群:儿童、孕妇、哺乳期妇女、肝肾功能损害、重度睡眠呼吸暂停综合征、重症肌无力患者慎用镇静催眠药物治疗(2D)[3。  
+
+推荐意见10:镇静催眠药物治疗应遵循个体化、按需、间歇和最低有效剂量给药的原则,建议首选短、中效的BZRA或褪黑素受体激动剂或者DORA(2A),尽可能在CBTI基础上使用镇静催眠药物(2A)。  
+
+推荐意见11:镇静催眠药物使用一般不超过4周,失眠改善并感觉可以控制睡眠后,可考虑逐渐减量、停药;连续治疗超过4周时,需重新全面评估。(专家共识)  
+
+(五)中医药治疗  
+
+中医称失眠症为“不寐病”,在辨证论治的基础上,进行证治分类[80-8],采用中医药治疗,以及针刺、穴位按摩、艾灸治疗、耳穴疗法、功法治疗、中医心理疗法等非药物疗法。  
+
+1.失眠症的辨证论治:(1)实证: $\\textcircled{1}$ 肝气郁结 证:治法:疏肝解郁,行气止痛。推荐方药:柴胡疏 肝散或逍遥散加减;推荐中成药:舒肝解郁胶囊[82] 舒眠胶囊[83]; $\\textcircled{2}$ 肝郁化火证:治法:疏肝解郁,清热 化火。推荐方药:龙胆泻肝汤加减; $\\textcircled{3}$ 胃气失和证: 治法:行气导滞,和胃降逆。推荐方药:保和丸或半 夏林米汤加减; $\\textcircled{4}$ 痰热内扰证:治法:化痰清热,和 中安神。推荐方药:黄连温胆汤加减; $\\circled{5}$ 瘀血内阻 证:治法:活血化瘀,通经活络。推荐方药:血府逐 瘀汤加减; $\\circled{6}$ 心火炽盛证:治法:清心泻火,养血安 神。推荐方药:导赤汤合交泰丸或朱砂安神丸加 减。(2)虚证: $\\textcircled{\\scriptsize{1}}$ 心脾两虚证:治法:益气健脾,养心 安神。推荐方药:归脾汤加减。推荐中成药:枣仁 安神胶囊[84-85]; $\\textcircled{2}$ 心胆气虚证:治法:益气养心,镇 静安神。推荐方药:安神定志丸合酸枣仁汤加 减; $\\textcircled{3}$ 心肾不交证:治法:滋阴降火,交通心肾。推 荐方药:六味地黄丸合交泰丸或天王补心丹加减; 推荐中成药:乌灵胶囊[86-87]、百乐眠胶囊[88]  
+
+2.中药单味药治疗:(1)药目:酸枣仁[8990]远志[1]、五味子[92]、茯神[9]、草[94]、落花生枝叶[5]、柏子仁%等。(2)服用方法:单味药可泡水作代茶饮。  
+
+3.失眠症的非药物手段治疗:(1)采用相应穴位可进行传统针刺、电针、温针、穴位按摩、艾灸治[ ] 101关、神庭、安眠、太溪[\"]。操作要领参考《针灸技术操作规范》。(2)耳穴治疗:取穴:神门、心、肝、皮质下、交感[8]。每日自行按压3\\~5次,每次每穴 $1\\sim$$2~\\mathrm{min}$ 。每晚睡前按1次,约 $5~\\mathrm{min}$ ,双耳交替。按压以耳廓微红、微热为度,不宜过度重按,切记揉搓。每周换耳穴贴2次,每次双耳各2贴,持续4周。(3)功法治疗: $\\textcircled{\\scriptsize{1}}$ 八段锦:操作要领参考国家体育总局推广的《健身气功·八段锦》10]; $\\textcircled{2}$ 太极拳:操作要领参考“六式太极拳\"[13]。建议治疗时间:每周3\\~4次,每次半小时,至少持续12周; $\\textcircled{3}$ 中医心理疗法:结合当代人的心理特征,重视精神调摄,倡导天人相应,五志有节,起居有常。  
+
+推荐意见12:中医治疗在辨证论治的基础上,对失眠症进行分类诊治,应用中药(2C)、中成药(2C)、针灸配合电针、温针、艾灸(2A)、中医心理疗法(2D)等非药物疗法,具有一定的应用场景。  
+
+推荐意见13:单味药代茶饮(2C)、穴位按摩(2D)、耳穴疗法(2C),八段锦(2D)、太极拳(2C)等功法锻炼的方法简便,便于患者居家保健。  
+
+推荐意见14:中医治疗可以单独应用,也可应用于镇静催眠药物的减量、停药过程。(专家共识)
+# 第八部分失眠症的基层管理
+建立基层失眠症体系管理,需要患者及其家庭成员/照料者、基层医疗机构人员、专科医师的共同参与。基层医疗机构具有特定的社区基础,在开展失眠防治、分级诊疗和建立健康网络方面具有重要作用(图1)。  
+
+一立足筛查,数据建档(一)失眠症筛查模式  
+
+ISI可作为基层人群定期筛查量表,并在筛查基础上应用睡眠日记、PSQI、ESS、MEQ、STOP-BANG、RLSQ等量表,以及家用睡眠监测设备、活动记录仪、非侵人式远程监控、额贴脑电、手环等设备进行筛查和评估[104]  
+
+(二)建立电子健康档案  
+
+基层医疗机构通过建立电子健康档案,充分运用互联网等信息网络技术,开展失眠症的定期评估和健康管理。通过信息化的个案管理平台,提高疾病的防治效率,降低复发风险,有效促进医疗服务的可及性。  
+
+二、分级诊疗、双向转诊(一)分级诊疗  
+
+分级诊疗可以优化医疗服务、构建多层次化体系,通过专科和全科、二三级医院(二级甲、乙等医院,三级甲、乙等医院)等上级医疗机构和基层医疗机构的协同合作,给患者提供全疾病周期的医疗服务,使患者在失眠症的早期获得及时的干预,减少就医的不便和盲目性,以及减少镇静催眠类药物的滥用,有助于医师进行有针对性地随访和制定个体化的诊疗方案,有利于全面改善医疗服务质量与提高医疗服务效率[105] MEDI(二)各级医疗机构失眠症的诊治范围  
+
+注:PSG为多导睡眠监测;rTMS为重复经颅磁刺激;tACS为经颅交流电刺激图1基层医疗机构失眠症诊疗流程图  
+
+1.基层医疗机构:具备失眠症的识别能力,具有开展失眠症的诊疗、预防、康复能力。  
+
+2.上级医疗机构:具有开展失眠症、药物依赖性失眠、异相睡眠障碍、不宁腿综合征、失眠症共病精神障碍和躯体疾病等疑难、急危重症的诊断、治疗能力。
+# (三)上转指征
+当基层医疗机构在处理失眠症患者时遇到以下情况,应考虑及时将患者转至上级医疗机构进行进一步的诊断和治疗。(1)失眠症经规范化治疗4周以上,未得到缓解或患者对治疗效果不满意。(2)需要上级医疗机构进行PSG、核磁共振等检查,以明确诊断和协助治疗。(3)基层不具备rTMS、tACS、生物反馈疗法等物理治疗设备,需上级医疗机构配合进行。(4)合并不稳定的躯体疾病、精神障碍、其他睡眠障碍。  
+
+(四)下转指征  
+
+失眠症经上级医疗机构规范治疗后,症状缓解的患者可下转至基层医疗机构进一步巩固治疗、康  
+
+复、随访。  
+
+三、规范治疗、定期随访(一)规范治疗  
+
+治疗方式包括良好生活习惯、心理治疗、物理治疗、药物治疗、中医药治疗等。在基层医疗机构,良好生活习惯是防治基础,心理治疗和物理治疗是优选治疗策略,药物治疗是以上措施效果不佳的治疗方法。其中,CBTI可以提高基层失眠症的临床疗效[10],在减少复发率、降低发病率上有一定作用[10],值得在基层诊疗中进一步推广。  
+
+(二)定期随访基层医疗机构可以通过面对面  
+
+访谈、电话、手机App、微信随访等形式做好失眠患者定期随访。定期随访有利于提高患者的睡眠认知水平,定期更新健康档案,动态观察睡眠情况,及时就患者出现的睡眠问题进行治疗、干预和转诊,降低失眠症进一步严重、恶化的风险。  
+
+推荐意见15:基层医疗机构在失眠症管理中承担重要任务,立足于筛查,建立电子健康档案,并根据诊疗范围与上级医疗机构开展规范化分级诊疗,并定期随访。(专家共识)  
+
+总之,本共识的制订充分吸纳了国内外失眠症诊断与治疗领域的最新研究成果,经过数十位专家的深人讨论和反复推敲,经过多轮修订后形成最终文本。尽管失眠症的诊断和治疗在基层医疗机构中已有一定的实践基础,但仍面临着诸多挑战和需要进一步探索的问题,如患者接受度、医疗资源配置,以及长期治疗效果的评估等。本共识仅代表参与撰写的专家组的集体意见,不具有法律上的强制执行力。随着未来失眠症诊断和治疗技术的不断进步,以及相关临床研究的深人,本共识将根据新的科学证据进行适时更新和完善,以期为基层医疗机构提供更加精准和有效的指导。
+
+"""
+response = """
+// 节点更新
+MERGE (n:Disease {name: '失眠'});
+
+MERGE (n:NonDrugTreatment {name: '光照疗法'})
+SET 
+    n.description = coalesce(n.description, '光线调节昼夜节律'),
+    n.duration = coalesce(n.duration, '短期'),
+    n.frequency = coalesce(n.frequency, '每天'),
+    n.contraindication = coalesce(n.contraindication, '无'),
+    n.equipment = coalesce(n.equipment, '无');
+
+MERGE (n:NonDrugTreatment {name: '重复经颅磁刺激'})
+SET 
+    n.description = coalesce(n.description, '低频磁刺激改善睡眠质量'),
+    n.duration = coalesce(n.duration, '短期'),
+    n.frequency = coalesce(n.frequency, '根据需要'),
+    n.contraindication = coalesce(n.contraindication, '无'),
+    n.equipment = coalesce(n.equipment, '设备需要');
+
+MERGE (n:NonDrugTreatment {name: '经颅电刺激'})
+SET 
+    n.description = coalesce(n.description, '向头皮施加低强度电流调节大脑活动'),
+    n.duration = coalesce(n.duration, '短期'),
+    n.frequency = coalesce(n.frequency, '根据需要'),
+    n.contraindication = coalesce(n.contraindication, '无'),
+    n.equipment = coalesce(n.equipment, '设备需要');
+
+MERGE (n:NonDrugTreatment {name: '生物反馈疗法'})
+SET 
+    n.description = coalesce(n.description, '减少条件唤醒，改善入睡时间'),
+    n.duration = coalesce(n.duration, '短期'),
+    n.frequency = coalesce(n.frequency, '根据需要'),
+    n.contraindication = coalesce(n.contraindication, '无'),
+    n.equipment = coalesce(n.equipment, '无');
+
+MERGE (n:DrugTreatment {name: '苯二氮草类药物'})
+SET 
+    n.description = coalesce(n.description, '用于治疗失眠的镇静催眠药物'),
+    n.dosage = coalesce(n.dosage, '根据医生建议'),
+    n.frequency = coalesce(n.frequency, '根据需要'),
+    n.duration = coalesce(n.duration, '不超过4周'),
+    n.route = coalesce(n.route, '口服'),
+    n.contraindication = coalesce(n.contraindication, '重度呼吸衰竭');
+
+MERGE (n:Complication {name: '焦虑症'})
+SET 
+    n.description = coalesce(n.description, '失眠可能导致焦虑症状加重'),
+    n.severity = coalesce(n.severity, '严重');
+
+MERGE (n:Complication {name: '抑郁症'})
+SET 
+    n.description = coalesce(n.description, '失眠与抑郁症状相关联'),
+    n.severity = coalesce(n.severity, '严重');
+
+// 关系更新
+MATCH (from) WHERE from.name = '失眠'
+MATCH (to) WHERE to.name = '光照疗法'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.85),
+    r.priority = coalesce(r.priority, '高'),
+    r.stage = coalesce(r.stage, '初始治疗');
+
+MATCH (from) WHERE from.name = '失眠'
+MATCH (to) WHERE to.name = '重复经颅磁刺激'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.8),
+    r.priority = coalesce(r.priority, '中'),
+    r.stage = coalesce(r.stage, '联合治疗');
+
+MATCH (from) WHERE from.name = '失眠'
+MATCH (to) WHERE to.name = '经颅电刺激'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.75),
+    r.priority = coalesce(r.priority, '中'),
+    r.stage = coalesce(r.stage, '辅助治疗');
+
+MATCH (from) WHERE from.name = '失眠'
+MATCH (to) WHERE to.name = '生物反馈疗法'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.7),
+    r.priority = coalesce(r.priority, '中'),
+    r.stage = coalesce(r.stage, '辅助治疗');
+
+MATCH (from) WHERE from.name = '失眠'
+MATCH (to) WHERE to.name = '苯二氮草类药物'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.9),
+    r.priority = coalesce(r.priority, '高'),
+    r.stage = coalesce(r.stage, '药物治疗');
+
+MATCH (from) WHERE from.name = '失眠'
+MATCH (to) WHERE to.name = '焦虑症'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.6),
+    r.timeframe = coalesce(r.timeframe, '长期');
+
+MATCH (from) WHERE from.name = '失眠'
+MATCH (to) WHERE to.name = '抑郁症'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.5),
+    r.timeframe = coalesce(r.timeframe, '长期');
+
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-19 00:08:25"
 message = """
 
 [隶属文件名]
@@ -148,288 +363,5 @@ MERGE (n:Disease {name: '失眠症'})
 SET 
     n.description = coalesce(n.description, '最常见的睡眠障碍'),
     n.category = coalesce(n.category, '睡眠障碍');
-
-MERGE (n:Disease {name: '焦虑症'})
-SET 
-    n.description = coalesce(n.description, '可能引起失眠的精神障碍'),
-    n.category = coalesce(n.category, '精神障碍');
-
-MERGE (n:Disease {name: '抑郁症'})
-SET 
-    n.description = coalesce(n.description, '可能与失眠症相关的精神障碍'),
-    n.category = coalesce(n.category, '精神障碍');
-
-MERGE (n:Disease {name: '糖尿病'})
-SET 
-    n.description = coalesce(n.description, '与慢性失眠相关的躯体疾病'),
-    n.category = coalesce(n.category, '躯体疾病');
-
-MERGE (n:Symptom {name: '睡眠困难'})
-SET 
-    n.description = coalesce(n.description, '入睡困难'),
-    n.severity = coalesce(n.severity, '中等'),
-    n.frequency = coalesce(n.frequency, '频繁');
-
-MERGE (n:Symptom {name: '睡眠不深'})
-SET 
-    n.description = coalesce(n.description, '睡眠质量差'),
-    n.severity = coalesce(n.severity, '中等'),
-    n.frequency = coalesce(n.frequency, '频繁');
-
-MERGE (n:Symptom {name: '易醒'})
-SET 
-    n.description = coalesce(n.description, '睡眠中频繁醒来'),
-    n.severity = coalesce(n.severity, '中等'),
-    n.frequency = coalesce(n.frequency, '频繁');
-
-MERGE (n:Symptom {name: '早醒'})
-SET 
-    n.description = coalesce(n.description, '比期望时间早醒'),
-    n.severity = coalesce(n.severity, '中等'),
-    n.frequency = coalesce(n.frequency, '频繁');
-
-// 关系更新
-MATCH (from) WHERE from.name = '失眠症'
-MATCH (to) WHERE to.name = '睡眠困难'
-MERGE (from)-[r:INDICATES]->(to)
-SET 
-    r.confidence = coalesce(r.confidence, 0.9),
-    r.frequency = coalesce(r.frequency, '经常'),
-    r.severity = coalesce(r.severity, '重度');
-
-MATCH (from) WHERE from.name = '失眠症'
-MATCH (to) WHERE to.name = '睡眠不深'
-MERGE (from)-[r:INDICATES]->(to)
-SET 
-    r.confidence = coalesce(r.confidence, 0.8),
-    r.frequency = coalesce(r.frequency, '经常'),
-    r.severity = coalesce(r.severity, '中度');
-
-MATCH (from) WHERE from.name = '失眠症'
-MATCH (to) WHERE to.name = '易醒'
-MERGE (from)-[r:INDICATES]->(to)
-SET 
-    r.confidence = coalesce(r.confidence, 0.85),
-    r.frequency = coalesce(r.frequency, '经常'),
-    r.severity = coalesce(r.severity, '中度');
-
-MATCH (from) WHERE from.name = '失眠症'
-MATCH (to) WHERE to.name = '早醒'
-MERGE (from)-[r:INDICATES]->(to)
-SET 
-    r.confidence = coalesce(r.confidence, 0.75),
-    r.frequency = coalesce(r.frequency, '经常'),
-    r.severity = coalesce(r.severity, '中度');
-
-MATCH (from) WHERE from.name = '失眠症'
-MATCH (to) WHERE to.name = '糖尿病'
-MERGE (from)-[r:MAY_CAUSE]->(to)
-SET 
-    r.probability = coalesce(r.probability, 0.6),
-    r.timeframe = coalesce(r.timeframe, '长期');
-
-MATCH (from) WHERE from.name = '失眠症'
-MATCH (to) WHERE to.name = '抑郁症'
-MERGE (from)-[r:INFLUENCED_BY]->(to)
-SET 
-    r.impact_level = coalesce(r.impact_level, '中'),
-    r.evidence_level = coalesce(r.evidence_level, '高');
-
-MATCH (from) WHERE from.name = '失眠症'
-MATCH (to) WHERE to.name = '焦虑症'
-MERGE (from)-[r:INFLUENCED_BY]->(to)
-SET 
-    r.impact_level = coalesce(r.impact_level, '高'),
-    r.evidence_level = coalesce(r.evidence_level, '中');
-
-MATCH (from) WHERE from.name = '失眠症'
-MATCH (to) WHERE to.name = '焦虑症'
-MERGE (from)-[r:MAY_CAUSE]->(to)
-SET 
-    r.probability = coalesce(r.probability, 0.5),
-    r.timeframe = coalesce(r.timeframe, '长期');
-
-"""
-
-[[message_pairs]]
-timestamp = "2024-12-18 09:55:56"
-message = """
-
-[隶属文件名]
-基层医疗机构失眠症诊断和治疗中国专家共识.md
-[隶属文件分块名]
-基层医疗机构失眠症诊断和治疗中国专家共识/002-三物理治疗.md
-[文本块]
-# (三)物理治疗
-物理治疗具有使用方便,不易成瘾、不良反应小等优点。失眠的常用物理治疗包括光照疗法、重复经颅磁刺激、经颅电刺激、生物反馈疗法等;此外,迷走神经刺激术、虚拟现实(VR)、听觉刺激等新兴技术也日益得到关注。  
-
-1.光照治疗:光线是调节昼夜节律的重要因素。光照疗法可改善失眠患者的日间思睡,减少睡眠片段化[],光照治疗对于各种睡眠紊乱普遍有效,适用人群广泛(2A)。推荐晨间光照,单位$2\\ 500{\\sim}10\\ 000\\ \\mathrm{lux}$ ,每天光照时间 $30{\\sim}45\\ \\mathrm{min}$  
-
-2.重复经颅磁刺激(repetitive transcranialmagnetic stimulation,rTMS):低频 $\\mathrm{rTMS}\\left(\\,\\leqslant\\!1~\\mathrm{Hz}\\,\\right)$ 通过降低失眠患者的皮质异常兴奋性、诱导慢波睡眠、增加睡眠深度,同时影响松果体褪黑素的合成和分泌,以维持正常睡眠觉醒周期和改善睡眠质量。rTMS对失眠的疗效确切,并且可以缓解焦虑和抑郁症状7},疗效持续时间与疗程有关(2B)。  
-
-3.经颅电刺激(transcranialelectricalstimulation,TES):TES通过向头皮施加低强度电流来调节大脑活动,包括经颅交流电刺激(tACS)和经颅直流电刺激(tDCS)。tACS对慢性失眠患者有显著改善作用[3,tDCS在失眠患者中应用较少,暂不推荐。  
-
-4.生物反馈疗法:生物反馈旨在减少条件唤醒,尤其是躯体、认知或皮质的过度唤醒,可以减少失眠者的入睡时间和觉醒次数[74],可以作为CBTI的替代疗法或辅助治疗75。  
-
-5.其他:迷走神经刺激、VR、听觉刺激等治疗方法尚缺乏高质量的临床证据支持,暂不推荐。  
-
-推荐意见9:光照疗法对于各种睡眠紊乱普遍有效(2A),rTMS可以缓解失眠相关的焦虑和抑郁症状(2B),tACS对慢性失眠患者有改善作用(2B),生物反馈疗法可减少失眠者的入睡时间和觉醒次数(2B)。  
-
-(四)药物治疗  
-
-药物治疗主要是指镇静催眠药物,治疗中需要明确失眠症的病因以针对性治疗,还应避免或减少相关的负面效应。基层医疗机构需要遵循以下原则:  
-
-1.治疗时机:无法开展CBTI或不愿意接受CBTI,以及CBTI疗效不满意时,可以与患者共同决策,选择药物治疗[3,30];对于失眠症状严重且紧急的患者,则宜尽早应用。  
-
-2.个体化:考虑患者的症状学特点,如人睡困难、睡眠维持困难或早醒,关注共病的躯体疾病、精神障碍、睡眠障碍、药物和(或)成瘾性物质使用史、药物相互作用,以及患者的自我选择和药物可获取性等[3,66]  
-
-3.按需和间歇给药:以最低剂量开始治疗,逐步向上滴定以达到治疗效果[3]。“按需\"的具体决策标准:预期人睡困难时,上床前 $5{\\sim}10\\ \\mathrm{min}$ 服用;上床 $30\\;\\mathrm{min}$ 后仍不能人睡时,立即服用;比通常起床时间提前 $^{\\geqslant5}\\mathrm{~h~}$ 醒来,且无法再次入睡时,可以服用短半衰期的药物;根据次日的日间活动需求(如重要事务),睡前服用。“间歇”是指非连续性每晚用药,具体频次尚无定论,推荐频率为3\\~5晚/周[3.66]。  
-
-4.药物选择:催眠作用的药物种类繁多。苯二氮草类受体激动剂(benzodiazepinereceptoragonists,BZRA)的临床应用最为广泛,包括非苯二氮草类药物(如唑吡坦、右佐匹克隆、佐匹克隆、扎来普隆)苯二氮草类药物(如劳拉西泮、阿普唑仑、艾司唑仑) $\\upgamma\\cdot$ -氨基丁酸A型(GABAA)受体的部分正向别构调节剂(地达西尼)等。双重食欲素受体拮抗剂[dual orexin receptor antagonists(DORA),如莱博雷生、达利雷生、苏沃雷生]是新型镇静催眠DORA2A 2 BZRA选短、中效的BZRA或褪黑素受体激动剂(2A),或者DORA(2A);(2)其他的BZRA或褪黑素受体激动剂(2A);(3)具有镇静催眠作用的抗抑郁药物(2B),尤其适用于伴随焦虑和抑郁症状的失眠患者;(4)联合BZRA和具有镇静作用的抗抑郁剂(2B);(5)具有镇静作用的抗精神病药(2C)不作为首选药物使用,仅适用于某些特殊情况和人群;(6)非处方药抗组胺药物、普通褪黑素以及草提取物等非处方药(2D)。  
-
-5.疗程:疗程根据失眠障碍病程、严重程度及对药物的治疗反应决定,一般不超过4周;如果连续治疗超过4周时需重新全面评估。药物疗效与安全性欠佳者,建议更换治疗药物,睡眠明显改善者,建议适时采取降低剂量或间歇给药3。  
-
-6.终止治疗:患者的失眠改善并感觉可以控制睡眠后,可考虑逐渐减量、停药[76,CBTI有助于此过程。大剂量、多药联用或长期连续药物治疗的患者应避免突然停药,以避免失眠反跳、癫痫发作和其他的严重精神症状[66.,79]  
-
-7.特殊人群:儿童、孕妇、哺乳期妇女、肝肾功能损害、重度睡眠呼吸暂停综合征、重症肌无力患者慎用镇静催眠药物治疗(2D)[3。  
-
-推荐意见10:镇静催眠药物治疗应遵循个体化、按需、间歇和最低有效剂量给药的原则,建议首选短、中效的BZRA或褪黑素受体激动剂或者DORA(2A),尽可能在CBTI基础上使用镇静催眠药物(2A)。  
-
-推荐意见11:镇静催眠药物使用一般不超过4周,失眠改善并感觉可以控制睡眠后,可考虑逐渐减量、停药;连续治疗超过4周时,需重新全面评估。(专家共识)  
-
-(五)中医药治疗  
-
-中医称失眠症为“不寐病”,在辨证论治的基础上,进行证治分类[80-8],采用中医药治疗,以及针刺、穴位按摩、艾灸治疗、耳穴疗法、功法治疗、中医心理疗法等非药物疗法。  
-
-1.失眠症的辨证论治:(1)实证: $\\textcircled{1}$ 肝气郁结 证:治法:疏肝解郁,行气止痛。推荐方药:柴胡疏 肝散或逍遥散加减;推荐中成药:舒肝解郁胶囊[82] 舒眠胶囊[83]; $\\textcircled{2}$ 肝郁化火证:治法:疏肝解郁,清热 化火。推荐方药:龙胆泻肝汤加减; $\\textcircled{3}$ 胃气失和证: 治法:行气导滞,和胃降逆。推荐方药:保和丸或半 夏林米汤加减; $\\textcircled{4}$ 痰热内扰证:治法:化痰清热,和 中安神。推荐方药:黄连温胆汤加减; $\\circled{5}$ 瘀血内阻 证:治法:活血化瘀,通经活络。推荐方药:血府逐 瘀汤加减; $\\circled{6}$ 心火炽盛证:治法:清心泻火,养血安 神。推荐方药:导赤汤合交泰丸或朱砂安神丸加 减。(2)虚证: $\\textcircled{\\scriptsize{1}}$ 心脾两虚证:治法:益气健脾,养心 安神。推荐方药:归脾汤加减。推荐中成药:枣仁 安神胶囊[84-85]; $\\textcircled{2}$ 心胆气虚证:治法:益气养心,镇 静安神。推荐方药:安神定志丸合酸枣仁汤加 减; $\\textcircled{3}$ 心肾不交证:治法:滋阴降火,交通心肾。推 荐方药:六味地黄丸合交泰丸或天王补心丹加减; 推荐中成药:乌灵胶囊[86-87]、百乐眠胶囊[88]  
-
-2.中药单味药治疗:(1)药目:酸枣仁[8990]远志[1]、五味子[92]、茯神[9]、草[94]、落花生枝叶[5]、柏子仁%等。(2)服用方法:单味药可泡水作代茶饮。  
-
-3.失眠症的非药物手段治疗:(1)采用相应穴位可进行传统针刺、电针、温针、穴位按摩、艾灸治[ ] 101关、神庭、安眠、太溪[\"]。操作要领参考《针灸技术操作规范》。(2)耳穴治疗:取穴:神门、心、肝、皮质下、交感[8]。每日自行按压3\\~5次,每次每穴 $1\\sim$$2~\\mathrm{min}$ 。每晚睡前按1次,约 $5~\\mathrm{min}$ ,双耳交替。按压以耳廓微红、微热为度,不宜过度重按,切记揉搓。每周换耳穴贴2次,每次双耳各2贴,持续4周。(3)功法治疗: $\\textcircled{\\scriptsize{1}}$ 八段锦:操作要领参考国家体育总局推广的《健身气功·八段锦》10]; $\\textcircled{2}$ 太极拳:操作要领参考“六式太极拳\"[13]。建议治疗时间:每周3\\~4次,每次半小时,至少持续12周; $\\textcircled{3}$ 中医心理疗法:结合当代人的心理特征,重视精神调摄,倡导天人相应,五志有节,起居有常。  
-
-推荐意见12:中医治疗在辨证论治的基础上,对失眠症进行分类诊治,应用中药(2C)、中成药(2C)、针灸配合电针、温针、艾灸(2A)、中医心理疗法(2D)等非药物疗法,具有一定的应用场景。  
-
-推荐意见13:单味药代茶饮(2C)、穴位按摩(2D)、耳穴疗法(2C),八段锦(2D)、太极拳(2C)等功法锻炼的方法简便,便于患者居家保健。  
-
-推荐意见14:中医治疗可以单独应用,也可应用于镇静催眠药物的减量、停药过程。(专家共识)
-# 第八部分失眠症的基层管理
-建立基层失眠症体系管理,需要患者及其家庭成员/照料者、基层医疗机构人员、专科医师的共同参与。基层医疗机构具有特定的社区基础,在开展失眠防治、分级诊疗和建立健康网络方面具有重要作用(图1)。  
-
-一立足筛查,数据建档(一)失眠症筛查模式  
-
-ISI可作为基层人群定期筛查量表,并在筛查基础上应用睡眠日记、PSQI、ESS、MEQ、STOP-BANG、RLSQ等量表,以及家用睡眠监测设备、活动记录仪、非侵人式远程监控、额贴脑电、手环等设备进行筛查和评估[104]  
-
-(二)建立电子健康档案  
-
-基层医疗机构通过建立电子健康档案,充分运用互联网等信息网络技术,开展失眠症的定期评估和健康管理。通过信息化的个案管理平台,提高疾病的防治效率,降低复发风险,有效促进医疗服务的可及性。  
-
-二、分级诊疗、双向转诊(一)分级诊疗  
-
-分级诊疗可以优化医疗服务、构建多层次化体系,通过专科和全科、二三级医院(二级甲、乙等医院,三级甲、乙等医院)等上级医疗机构和基层医疗机构的协同合作,给患者提供全疾病周期的医疗服务,使患者在失眠症的早期获得及时的干预,减少就医的不便和盲目性,以及减少镇静催眠类药物的滥用,有助于医师进行有针对性地随访和制定个体化的诊疗方案,有利于全面改善医疗服务质量与提高医疗服务效率[105] MEDI(二)各级医疗机构失眠症的诊治范围  
-
-注:PSG为多导睡眠监测;rTMS为重复经颅磁刺激;tACS为经颅交流电刺激图1基层医疗机构失眠症诊疗流程图  
-
-1.基层医疗机构:具备失眠症的识别能力,具有开展失眠症的诊疗、预防、康复能力。  
-
-2.上级医疗机构:具有开展失眠症、药物依赖性失眠、异相睡眠障碍、不宁腿综合征、失眠症共病精神障碍和躯体疾病等疑难、急危重症的诊断、治疗能力。
-# (三)上转指征
-当基层医疗机构在处理失眠症患者时遇到以下情况,应考虑及时将患者转至上级医疗机构进行进一步的诊断和治疗。(1)失眠症经规范化治疗4周以上,未得到缓解或患者对治疗效果不满意。(2)需要上级医疗机构进行PSG、核磁共振等检查,以明确诊断和协助治疗。(3)基层不具备rTMS、tACS、生物反馈疗法等物理治疗设备,需上级医疗机构配合进行。(4)合并不稳定的躯体疾病、精神障碍、其他睡眠障碍。  
-
-(四)下转指征  
-
-失眠症经上级医疗机构规范治疗后,症状缓解的患者可下转至基层医疗机构进一步巩固治疗、康  
-
-复、随访。  
-
-三、规范治疗、定期随访(一)规范治疗  
-
-治疗方式包括良好生活习惯、心理治疗、物理治疗、药物治疗、中医药治疗等。在基层医疗机构,良好生活习惯是防治基础,心理治疗和物理治疗是优选治疗策略,药物治疗是以上措施效果不佳的治疗方法。其中,CBTI可以提高基层失眠症的临床疗效[10],在减少复发率、降低发病率上有一定作用[10],值得在基层诊疗中进一步推广。  
-
-(二)定期随访基层医疗机构可以通过面对面  
-
-访谈、电话、手机App、微信随访等形式做好失眠患者定期随访。定期随访有利于提高患者的睡眠认知水平,定期更新健康档案,动态观察睡眠情况,及时就患者出现的睡眠问题进行治疗、干预和转诊,降低失眠症进一步严重、恶化的风险。  
-
-推荐意见15:基层医疗机构在失眠症管理中承担重要任务,立足于筛查,建立电子健康档案,并根据诊疗范围与上级医疗机构开展规范化分级诊疗,并定期随访。(专家共识)  
-
-总之,本共识的制订充分吸纳了国内外失眠症诊断与治疗领域的最新研究成果,经过数十位专家的深人讨论和反复推敲,经过多轮修订后形成最终文本。尽管失眠症的诊断和治疗在基层医疗机构中已有一定的实践基础,但仍面临着诸多挑战和需要进一步探索的问题,如患者接受度、医疗资源配置,以及长期治疗效果的评估等。本共识仅代表参与撰写的专家组的集体意见,不具有法律上的强制执行力。随着未来失眠症诊断和治疗技术的不断进步,以及相关临床研究的深人,本共识将根据新的科学证据进行适时更新和完善,以期为基层医疗机构提供更加精准和有效的指导。
-
-"""
-response = """
-// 节点更新
-MERGE (n:Disease {name: '失眠症'});
-
-MERGE (n:NonDrugTreatment {name: '光照疗法'})
-SET 
-    n.description = coalesce(n.description, '通过光线调节昼夜节律，改善失眠患者日间思睡，减少睡眠片段化'),
-    n.duration = coalesce(n.duration, '30~45 min'),
-    n.frequency = coalesce(n.frequency, '每日');
-
-MERGE (n:NonDrugTreatment {name: '重复经颅磁刺激'})
-SET 
-    n.description = coalesce(n.description, '低频rTMS通过降低失眠患者的皮质异常兴奋性、诱导慢波睡眠、增加睡眠深度');
-
-MERGE (n:NonDrugTreatment {name: '经颅电刺激'})
-SET 
-    n.description = coalesce(n.description, 'TES通过向头皮施加低强度电流来调节大脑活动');
-
-MERGE (n:NonDrugTreatment {name: '生物反馈疗法'})
-SET 
-    n.description = coalesce(n.description, '通过减少条件唤醒，减少失眠者的入睡时间和觉醒次数');
-
-MERGE (n:NonDrugTreatment {name: '迷走神经刺激'});
-
-MERGE (n:NonDrugTreatment {name: '虚拟现实(VR)'});
-
-MERGE (n:NonDrugTreatment {name: '听觉刺激'});
-
-// 关系更新
-MATCH (from) WHERE from.name = '失眠症'
-MATCH (to) WHERE to.name = '光照疗法'
-MERGE (from)-[r:TREATED_BY]->(to)
-SET 
-    r.effectiveness = coalesce(r.effectiveness, 0.9),
-    r.priority = coalesce(r.priority, '高');
-
-MATCH (from) WHERE from.name = '失眠症'
-MATCH (to) WHERE to.name = '重复经颅磁刺激'
-MERGE (from)-[r:TREATED_BY]->(to)
-SET 
-    r.effectiveness = coalesce(r.effectiveness, 0.9),
-    r.priority = coalesce(r.priority, '高');
-
-MATCH (from) WHERE from.name = '失眠症'
-MATCH (to) WHERE to.name = '经颅电刺激'
-MERGE (from)-[r:TREATED_BY]->(to)
-SET 
-    r.effectiveness = coalesce(r.effectiveness, 0.8),
-    r.priority = coalesce(r.priority, '中');
-
-MATCH (from) WHERE from.name = '失眠症'
-MATCH (to) WHERE to.name = '生物反馈疗法'
-MERGE (from)-[r:TREATED_BY]->(to)
-SET 
-    r.effectiveness = coalesce(r.effectiveness, 0.85),
-    r.priority = coalesce(r.priority, '中');
-
-MATCH (from) WHERE from.name = '失眠症'
-MATCH (to) WHERE to.name = '迷走神经刺激'
-MERGE (from)-[r:TREATED_BY]->(to)
-SET 
-    r.effectiveness = coalesce(r.effectiveness, 0.7),
-    r.priority = coalesce(r.priority, '低');
-
-MATCH (from) WHERE from.name = '失眠症'
-MATCH (to) WHERE to.name = '虚拟现实(VR)'
-MERGE (from)-[r:TREATED_BY]->(to)
-SET 
-    r.effectiveness = coalesce(r.effectiveness, 0.7),
-    r.priority = coalesce(r.priority, '低');
-
-MATCH (from) WHERE from.name = '失眠症'
-MATCH (to) WHERE to.name = '听觉刺激'
-MERGE (from)-[r:TREATED_BY]->(to)
-SET 
-    r.effectiveness = coalesce(r.effectiveness, 0.6),
-    r.priority = coalesce(r.priority, '低');
 
 """

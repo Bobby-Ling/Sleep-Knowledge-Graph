@@ -129,8 +129,8 @@ importer = Neo4jImporter("bolt://localhost:7687", None)
 # %%
 if __name__ == "__main__":
     # 从字符串导入
-    # result = importer.execute("MATCH (n) DETACH DELETE n;")
-    # result = importer.execute(CYPHER_CONSTRAINT_SCHEMA)
+    result = importer.execute("MATCH (n) DETACH DELETE n;")
+    result = importer.execute(CYPHER_CONSTRAINT_SCHEMA)
     # cypher_script = """"""
     # result = importer.execute(cypher_script)
 
@@ -143,162 +143,13 @@ if __name__ == "__main__":
     #     logging.error("Failed to import file: %s", e)
 
     # 从目录导入
-    # toml_dir = "cypher_parsed/toml"
-    # try:
-    #     importer.execute_iter(CypherTomlResponseIterator(toml_dir))
-    # except Exception as e:
-    #     logging.error("Failed to import directory: %s", e)
+    toml_dir = "cypher_parsed/toml"
+    try:
+        importer.execute_iter(CypherTomlResponseIterator(toml_dir))
+    except Exception as e:
+        logging.error("Failed to import directory: %s", e)
 
-    # importer.close()
-    # sys.exit()
+    importer.close()
+    sys.exit()
     pass
-
-# %%
-# result = importer.execute("MATCH (n:Symptom) RETURN n")
-result = importer.execute("MATCH (s:Symptom)-[r:INDICATES]->(d:Disease) RETURN s")
-symptom_mapping = [node["s"]["name"] for node in result[0]]
-
-
-# %%
-def generate_get_symptoms(symptoms_data: list[dict]):
-    # 为每个类别生成单独的查询语句
-    queries = []
-
-    for category in symptoms_data:
-        # 获取该类别下所有症状的internal_name
-        category_symptoms = [
-            symptom["internal_name"] for symptom in category["symptoms"]
-        ]
-
-        # 构建该类别的WHERE子句条件
-        where_conditions = " OR ".join(
-            [f"symptom.name = '{symptom}'" for symptom in category_symptoms]
-        )
-
-        # 构建该类别的查询语句
-        category_query = f"""
-        /* {category['category']} */
-        MATCH (symptom:Symptom)-[indicates:INDICATES]->(disease:Disease)
-        WHERE {where_conditions}
-        RETURN symptom, indicates, disease"""
-
-        queries.append(category_query)
-
-    # 使用分号连接所有查询语句
-    final_query = ";\n".join(queries)
-
-    return final_query
-
-
-symptom_mapping = json.loads(open("assets/symptoms.json", "r").read())
-query = generate_get_symptoms(symptom_mapping)
-# print(query)
-result = importer.execute(query)
-# print(importer.dump_execute(query))
-
-# %%
-symptom_query = [
-    {"category": "睡眠问题", "symptoms": ["入睡困难", "早醒", "多梦"]},
-    {"category": "日间症状", "symptoms": ["白天嗜睡"]},
-    {"category": "呼吸症状", "symptoms": ["打鼾", "夜间呼吸困难"]},
-    {"category": "异常行为", "symptoms": ["磨牙", "梦游"]},
-]
-
-
-def generate_submit_query(symptoms_data):
-    """
-    生成渐进式匹配的查询语句，确保返回最相关的结果
-    匹配策略：
-    1. 先尝试完全匹配所有症状
-    2. 如果没有结果，则查找匹配大部分症状的疾病（至少75%）
-    3. 如果仍没有结果，则查找匹配部分症状的疾病（至少50%）
-    4. 最后确保至少返回与最严重症状相关的疾病
-    """
-    # 收集所有选中的症状
-    all_symptoms = []
-    for category in symptoms_data:
-        all_symptoms.extend(category["symptoms"])
-
-    # 构建症状匹配条件
-    symptom_conditions = [f"'{symptom}'" for symptom in all_symptoms]
-    symptoms_list = ", ".join(symptom_conditions)
-
-    # 构建查询语句
-    query = f"""
-    WITH [{symptoms_list}] as symptoms
-    MATCH path = (s:Symptom)-[r:INDICATES|MAY_CAUSE*..3]-(d:Disease)
-    WHERE s.name IN symptoms
-    AND ALL(rel IN relationships(path) WHERE type(rel) IN ['INDICATES', 'MAY_CAUSE'])
-    AND ALL(node IN nodes(path) WHERE node:Symptom OR node:Disease)
-    
-    // 收集每个疾病匹配的症状
-    WITH d, COLLECT(DISTINCT s) as matched_symptoms, symptoms
-    
-    // 计算匹配率
-    WITH d, 
-         matched_symptoms, 
-         symptoms,
-         toFloat(size(matched_symptoms)) / size(symptoms) as match_ratio
-    
-    // 使用CASE进行渐进式匹配
-    WHERE CASE
-        // 完全匹配 (100%)
-        WHEN match_ratio = 1.0 THEN true
-        // 高度匹配 (>=75%)
-        WHEN match_ratio >= 0.75 THEN true
-        // 部分匹配 (>=50%)
-        WHEN match_ratio >= 0.50 THEN true
-        // 确保至少返回一些结果
-        ELSE match_ratio > 0
-    END
-    
-    // 获取相关检查和治疗
-    OPTIONAL MATCH (d)-[re:REQUIRES_EXAM]->(e:Examination)
-    OPTIONAL MATCH (d)-[rt:TREATED_BY]->(t:Treatment)
-    
-    // 收集相关疾病
-    WITH 
-        matched_symptoms,
-        d,
-        match_ratio,
-        d.severity as severity,
-        collect(distinct e) as exams,
-        collect(distinct t) as treatments
-    
-    // 查找相关疾病
-    MATCH (d2:Disease)
-    WHERE d2 = d OR 
-          EXISTS((d)-[:INDICATES|MAY_CAUSE*..2]-(d2)) OR
-          EXISTS((d2)-[:INDICATES|MAY_CAUSE*..2]-(d))
-    
-    // 组织最终结果
-    WITH 
-        matched_symptoms,
-        collect(distinct d2) as related_diseases,
-        match_ratio,
-        severity,
-        exams,
-        treatments
-    
-    // 返回结果，优先返回匹配度高的
-    RETURN 
-        matched_symptoms as Symptoms,
-        related_diseases as Diseases,
-        match_ratio as MatchRatio,
-        severity as Severity,
-        exams as RequiredExaminations,
-        treatments as Treatments
-    
-    // 按匹配率和严重程度排序
-    ORDER BY match_ratio DESC, severity DESC
-    LIMIT 10"""
-
-    return query
-
-
-query = generate_submit_query(symptom_query)
-print(query)
-result = importer.execute(query)
-print(importer.dump_execute(query))
-
 # %%

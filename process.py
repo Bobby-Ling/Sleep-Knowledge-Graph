@@ -197,13 +197,13 @@ class BatchProcessor:
         for path in self.input_dir.iterdir():
             if path.is_dir():
                 original_file = path.name + '.md'
-                if (self.input_dir / original_file).exists():
-                    block_files = sorted([
-                        str(f.relative_to(self.input_dir))
-                        for f in path.glob('*.md')
-                    ])
-                    if block_files:
-                        all_files[original_file] = block_files
+                # if (self.input_dir / original_file).exists():
+                block_files = sorted([
+                    str(f.relative_to(self.input_dir))
+                    for f in path.glob('*.md')
+                ])
+                if block_files:
+                    all_files[original_file] = block_files
         return all_files
 
     # 修改self.state
@@ -673,8 +673,8 @@ class BatchProcessor:
 
 # %%
 if __name__ == "__main__":
-    DRY_RUN = True
-    ENABLE_PARALLEL = True  # 新增并行处理开关
+    DRY_RUN = False
+    ENABLE_PARALLEL = True
 
     # 配置并行处理参数
     parallel_config = ParallelConfig(

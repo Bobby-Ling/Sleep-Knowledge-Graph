@@ -1,10 +1,160 @@
 [metadata]
 file_name = "日间过度思睡临床诊断和治疗专家共识.md"
-processed_at = "2024-12-18 16:48:29"
+processed_at = "2024-12-19 00:12:18"
 total_pairs = 2
 
 [[message_pairs]]
-timestamp = "2024-12-18 09:55:50"
+timestamp = "2024-12-19 00:09:01"
+message = """
+
+[隶属文件名]
+日间过度思睡临床诊断和治疗专家共识.md
+[隶属文件分块名]
+日间过度思睡临床诊断和治疗专家共识/002-一主观评估工具.md
+[文本块]
+# 一、主观评估工具
+1.ESS:常用于评估日间思睡的严重程度。问卷评估近期在8种久坐不动的情况下打瞌睡的频率:静坐阅读、看电视、在公共场合坐着不动、乘坐汽车持续 $^{1\\mathrm{~h~}}$ 、午后躺下休息、坐着与人交谈、午餐(不饮酒)后静坐、堵车时停下数分钟。将每种情况评为0\\~3分( $0{=}$ 不会打瞌睡, $3{=}$ 打瞌睡可能性高)。ESS得分 $\\mathord{\\left/{\\vphantom{\\left/{\\vphantom{\\left/{\\vphantom{\\left/{\\vphantom{\\left/{\\vphantom{\\left/{\\vphantom1}}\\right.\\kern-1}}\\right.\\kern-1}}}}}}}\\right.\\kern-1}1$ 分视为过度思睡, $\\geqslant\\!16$ 分提示有严重思睡。ESS适用于成年人,简便易操作,能够可靠地评估主观思睡,其得分与客观评估指标中度相关[97]  
+
+2.SSS:适合测试受试者当下的主观倦意。受试者在以下7项陈述中选出最符合自己思睡水平的1项: $1\\mathrm{=}$ 感觉清醒,有活力; $2\\mathrm{=}$ 身体状况、思维能力良好,但不是最佳状态,能够集中注意力; $3{=}$ 放松、清醒,反应能力不是最佳; $4\\mathrm{=}$ 多少有些不清醒,情绪不高; $5{=}$ 头脑不清醒,有点想睡,思维变慢; $^{6=}$困倦,努力坚持不睡着,希望躺着; $7\\mathrm{=}$ 无法持续保持清醒,很快可以入睡,出现类似做梦的思维活动。如果受试者在应该警觉时选择第4\\~7项,则可能有过度思睡。SSS的优点是可在治疗的不同阶段进行纵向比较,与急性睡眠剥夺的相关性良好8]  
+
+3.KSS:是用于测量当前个体主观感知的思睡和警觉性问卷,属于评估主观思睡和警觉程度的指标,其优点在于操作简单,并可反复多次进行。该量表需要被试对包含10个选项的题目作答,被试根据自己当前的清醒和思睡状态选择相应的选项,得到1\\~10之间的评分,分数越高代表清醒程度越低、思睡程度越重[]  
+
+4.PDSS:为11\\~15岁人群设计,用于评估青少年儿童日常学习生活中思睡的主观感受0]。问卷共包括8个条目,选项为0(从不)\\~4(总是)五级评分。分数越高,提示日间思睡越明显。在使用18/19分作为界值时,筛查发作性睡病的灵敏度和特异度较高。  
+
+5.UNS:用于发作性睡病的思睡、猝倒症状和夜间睡眠潜伏时间的评估。该自评问卷共包括11个条目,选项根据症状发生的频率为0\\~4分五级评分。在发作性睡病的筛查中,推荐以UNS总分 $\\geqslant\\!14$ 分为界值,具有较高的灵敏度和特异度。尤其是对于1型发作性睡病,<9分有助于排除此诊断([nI
+# 二、客观评估工具
+1.PSG:有助于评估夜间睡眠状况、发现夜间睡眠伴随的事件,对于病情的全面评估具有重要价值。因此,当怀疑有OSA、周期性肢体运动障碍、发作性睡病、其他中枢性嗜睡或睡眠期癫痫发作,或根据病史和体格检查未能明确思睡原因时,推荐使用PSG评估。在具有EDS表现的多种不同睡眠障碍中,PSG具有以下不同特征:OSA表现为阻塞性呼吸暂停、低通气和呼吸努力相关觉醒的次数增加;中枢性睡眠呼吸暂停表现为中枢性呼吸暂停、低通气和觉醒的次数增加;发作性睡病可能表现为人睡潜伏期缩短、N1期睡眠增加、N3期睡眠减少等睡眠结构的改变,并可能出现SOREMP、人睡后觉醒次数增加、睡眠效率下降、觉醒指数增加、R期眼动指数升高、REM睡眠期肌电失弛缓并出现梦境演绎行为等;周期性肢体运动障碍表现为刻板性腿部抽动,可能伴或不伴觉醒次数增加[3]  
+
+2.MSLT:目前被认为是可客观量化思睡的一种标准测量方法,是发作性睡病的重要诊断依据,也有助于评估特发性嗜睡症。因此,进行MSLT的两个主要指征为疑似发作性睡病或特发性嗜睡症,而不适合作为疑似OSA、失眠症或昼夜节律相关睡眠-觉醒障碍等其他可导致思睡的睡眠障碍以及神经系统疾病等躯体疾病的常规评估。MSLT的主要测量指标为平均睡眠潜伏时间和SOREMP次数。平均睡眠潜伏时间 $\\leqslant8\\ \\mathrm{min}$ 一般认为是存在思睡的客观证据,若同时存在2次或以上SOREMPs则支持诊断发作性睡病,其中1次SOREMP可由前夜PSG中的SOREMP替代;若仅有平均睡眠潜伏时间 $\\leqslant8\\ \\mathrm{min}$ 则支持特发性嗜睡症的诊断。  
+
+3.清醒维持测验(maintenanceofwakefulnesstest,MWT):用于评估受试者在日间安静环境中保持清醒的能力。不同于MSLT评估入睡的倾向,该检查评估保持清醒的能力,因此不能互相取代。MWT的主要测量指标为平均睡眠潜伏时间,一般认为平均睡眠潜伏时间 $\\leqslant8\\ \\mathrm{min}$ 为异常。在4次检测中都至少保持 $40\\;\\mathrm{{min}}$ 清醒,是受试者可以保持清醒的客观证据[13]。根据美国睡眠医学会(American Academy of Sleep Medicine, AASM)推荐,当发作性睡病、OSA、倒班工作等疾病或状态可能影响患者的日间觉醒能力、对患者或公众构成潜在威胁时,可通过MWT评估其日间保持清醒的能力,避免从事危险性职业,并且可以在研究中作为药物改善觉醒能力的疗效或不良反应的评价指标[103]_4.体动仪:通常指置入加速计的类似手表的可穿戴设备,可有效地客观测量数日至数周内的睡眠参数和平均运动时长,用于评估睡眠-觉醒周期[104]在思睡患者的评估中,体动仪可用于证实EDS的严重程度以及排除睡眠不足,尤其是在MSLT检查前。此外,由于可在患者的家庭环境中进行测量,与单夜PSG相比,体动仪的结果具有较高的外部睡眠环境真实性等优势。但是,当需要脑电图来记录睡眠结构、睡眠分期或睡眠期间的异常运动时,或怀疑存在睡眠呼吸障碍时,体动仪不能替代PSG。  
+
+5.其他客观评估工具:牛津睡眠抵抗测验(Oxford sleep resistance test, OSLER test)是 MWT 的简化版,也是间接量化EDS的客观评估工具[0];精神行为警觉测验(psychomotor vigilance task,PVT)是基于对视觉刺激的反应来测量警觉性1;另外,驾车试验也常用于警觉性评估[10]。
+# 三、生化-基因检测
+1.下丘脑分泌素-1(hypocretin-1):对于具有EDS主诉、临床高度怀疑发作性睡病的患者,脑脊液下丘脑分泌素-1(也称食欲素-A)的检测有助于明确诊断,尤其是当MSLT检查1次或多次结果为阴性、MSLT结果阴性却伴有典型猝倒发作、由于个人原因或研究条件限制无法完成MSLT、因服用药物或共患疾病可能干扰 MSLT结果时[108-09]。脑脊液中下丘脑分泌素-1浓度 $\\!\\!\\leqslant\\!110\\;\\mathrm{pg/ml}$ 或小于以同一标准检验正常者平均值的1/3可替代MSLT作为1型发作性睡病的诊断标准。  
+
+2.基因检测:并不常规用于EDS患者的评估。由于人类白细胞抗原(human leukocyte antigen,HLA) $\\mathrm{DQB1^{*}06:02\\,,D Q B1^{*}03:01}$ 等位基因与1型发作性睡病密切相关,该检测在伴有猝倒、怀疑发作性睡病患者的鉴别诊断中具有一定意义。研究发现,超过 $90\\%$ 的1型发作性睡病患者携带 $\\mathrm{DQB1^{*}}$$06{:}02$ ,因此,对于非典型猝倒患者,若无 $\\mathrm{DOB}1^{*}06$02,则支持排除1型发作性睡病。但很多健康人也携带该等位基因,因此该指标特异性并不高]  
+
+3.药物或物质浓度检测:对于药物或物质所致EDS,可通过检测血液中相关药物或物质的浓度协助诊断。
+# 第七部分 治疗
+分析病因是EDS治疗的首要任务,对于存在明确病因的EDS患者(如继发于中枢神经系统疾病应用镇静药物等),应积极治疗原发病、处理相关因素。EDS的治疗包括药物治疗和非药物治疗。
+# 一、非药物治疗
+非药物治疗包括生活方式干预、睡眠卫生宣教、行为调整等,几乎适用于所有EDS患者,并且是EDS治疗的基本措施。对于睡眠不足和昼夜节律紊乱相关的EDS,非药物治疗显得尤为重要。值得注意的是,非药物治疗对于EDS的效果还缺乏充分的随机对照试验来验证。  
+
+1.生活方式干预(IIIB):生活方式干预首先是获得患者认同,并改变其生活方式和不良睡眠卫生习惯。具体措施包括调整睡眠时间、创造有利的睡眠环境、减少在床上进行与睡眠不相关的活动(如看手机)、睡前避免干扰睡眠的物质(如酒精、咖啡)的摄入[1-4]。规律且充足的夜间睡眠、日间规律的体育锻炼、短暂的小睡( $20\\;\\mathrm{min}$ 左右),有助于促进夜间睡眠和提高日间的警觉性[11-1]。对于睡眠呼吸障碍患者,生活方式干预主要为戒酒、减重、体育锻炼,鼓励打鼾患者采取侧卧位睡眠。  
+
+2.调整入睡和起床时间(IIIB):对于昼夜节律延迟或前移的患者,可分别逐步提前或推迟人睡和起床时间,以达到社会和职业要求的作息时间,纠正不良睡眠卫生习惯。对于难治性患者,也可以使用时间疗法,即对于昼夜节律延迟的患者,逐步推迟人睡和起床时间;对于昼夜节律前移的患者,逐步提前人睡和起床时间,最终达到期望的作息节律[119]  
+
+3.光照疗法(IIIB):晨起规律的光疗(约$1\\ 000\\ \\mathrm{lux}$ ,每日持续 $\\geq\\!30\\ \\mathrm{min}$ )可使昼夜节律提前,可作为昼夜节律延迟患者的一种尝试手段[2。此外,昼夜节律延迟患者应避免夜间光照[12-12]。傍晚和夜间早期光疗(如 $2\\ 500{\\sim}10\\ 000\\ \\mathrm{lux}$ ,持续 $1\\sim$$^{3\\textrm{h}}$ )是针对昼夜节律前移患者的主要光照治疗方法[123-24]。 倒班者为了维持夜间的清醒状态,可适当提高夜间工作的光照强度[125-26]  
+
+4.OSA所致EDS的治疗:无创正压通气是睡眠呼吸障碍患者治疗的首选127-128,根据患者的特点,选择合适的模式,并评估患者对无创正压通气的依从性。对于拒绝或不依从无创正压通气的患者,可进行口腔矫治器治疗129-130。拒绝口腔矫治器或口腔矫治器疗效差的患者,可进行上气道手术131-32。不耐受无创正压通气且无气道塌陷的患者可进行舌下神经刺激术133。  
+
+5.失眠所致EDS的治疗:针对失眠症的治疗,如认知行为疗法(IA)、经颅电刺激(IIA)、经颅磁刺激(IIA)可改善睡眠质量,缓解失眠引起的EDS[134]
+# 二、药物治疗
+1.促觉醒药:促觉醒药首先应用于中枢性嗜睡患者。临床上应用较多的主要为1型发作性睡病的治疗,某些促觉醒药还可以控制猝倒发作(如替洛利生、 $\\upgamma.$ -羟丁酸钠)。目前可用于治疗EDS的促觉醒药及相关药物的用量、适应证及不良反应等注意事项见表3。特别需要强调的是,综合目前的循证医学证据、药物不良反应及成瘾倾向等因素,在1型发作性睡病的治疗中[13,32],首选药物是替洛利生(pitolisant)、莫达非尼(modafinil)、 $\\upgamma\\cdot$ 羟丁酸钠(gamma-hydroxybutyrate,sodium oxybate),其他药物包括阿莫达非尼(armodafinil)、哌甲酯(methylphenidate)缓释片、索林非妥(solriamfetol)、马吲哚(mazindol)等3i。如单药使用不能很好地控制患者的EDS,可以考虑联合用药。常用的联合用药策略包括: $\\upgamma.$ 羟丁酸钠 $^+$ 莫达非尼/阿莫达非尼/替洛利生,哌甲酯 $+\\upgamma$ -羟丁酸钠,莫达非尼/哌甲酯 $^+$ 替洛利生135。睡眠呼吸障碍患者如经有效无创正压通气治疗后EDS仍未缓解,可以使用替洛利生、莫达非尼/阿莫达非尼、索林非妥3。倒班人员必要时可以使用莫达非尼/阿莫达非尼保持夜间警觉126。 CU  
+
+表3可用于治疗日间过度思睡的神经兴奋剂及相关药物  
+
+注:OSA为阻塞性睡眠呼吸暂停;EDS为日间过度思睡;FDA为美国食品药品监督管理局;GABA为 $\\upgamma.$ 氨基丁酸  
+
+2.褪黑素及其受体激动剂:褪黑素主要用于昼夜节律紊乱导致EDS的患者。短期使用褪黑素(习惯睡眠开始前 $5\\{\\mathrm{-}7~\\mathrm{h}$ 或目标人睡时间前 $2{\\sim}3\\mathrm{~h~}$ 给予$0.3{\\sim}5.0~\\mathrm{mg}$ )可以改善人睡时间,调节生理性昼夜节律,给药时间越早,时相前移程度越明显\"。然而,健康成人使用大剂量褪黑素会出现头痛、思睡、低血压、高血压、胃肠不适及斑秃等不良反应,同时长期使用会抑制内源性褪黑素的分泌。大剂量使用褪黑素( $\\geqslant\\!10\\;\\mathrm{mg/d}\\,,$ 可抑制性激素分泌,因此在儿童、青少年中应慎用[36]。时差障碍的患者,向东旅行时,可在目的地时间每晚人睡前服用褪黑素 $0.5\\sim$$3.0~\\mathrm{mg}$ ,直到适应目的地昼夜节律;向西旅行时,可在后半夜服用褪黑素 $0.5~\\mathrm{mg}$ 。对于褪黑素治疗无效的患者,可考虑使用褪黑素受体激动剂他司美琼或雷美替胺,但不能改变时差障碍患者的昼夜节律137-138。  
+
+3.镇静催眠药物:此类药物主要用于昼夜节律紊乱导致EDS患者的助眠。对于已形成良好睡眠卫生习惯但白天仍难以按时入睡的倒班人员,可适量使用短效苯二氮草类、非苯二氮草类或食欲素受体拮抗剂2\",但这并不能缓解思睡,使夜班工作时保持警觉。镇静催眠类药物有助于缓解时差所致的失眠症状,但不推荐长期使用。  
+
+_4.其他药物:针对不宁腿综合征或周期性肢体运动障碍的治疗药物主要目的在于缓解症状,改善夜间睡眠,解决EDS。目前常用的治疗不宁腿综合征的药物包括多巴胺受体激动剂、 $\\alpha\\!-\\!2\\!-\\!8$ 钙通道配体(加巴喷丁、普瑞巴林)、阿片类等[139)。周期性肢体运动障碍患者可试用多巴胺受体激动剂治疗,如存在禁忌证,可尝试 $\\alpha-2-\\delta$ 钙通道配体[139]
+
+"""
+response = """
+// 节点更新
+MERGE (n:Disease {name: '日间过度思睡'});
+
+MERGE (n:Disease {name: '发作性睡病'});
+
+MERGE (n:Disease {name: '阻塞性睡眠呼吸暂停'})
+SET 
+    n.short_name = coalesce(n.short_name, 'OSA');
+
+MERGE (n:Symptom {name: '过度思睡'})
+SET 
+    n.description = coalesce(n.description, '白天出现异常困倦，难以保持警觉'),
+    n.severity = coalesce(n.severity, '严重'),
+    n.frequency = coalesce(n.frequency, '常见');
+
+MERGE (n:Symptom {name: '夜间睡眠问题'})
+SET 
+    n.description = coalesce(n.description, '夜间无法维持正常睡眠'),
+    n.severity = coalesce(n.severity, '严重'),
+    n.frequency = coalesce(n.frequency, '常见');
+
+MERGE (n:NonDrugTreatment {name: '生活方式干预'})
+SET 
+    n.description = coalesce(n.description, '通过调整生活方式改善睡眠质量'),
+    n.duration = coalesce(n.duration, '长期'),
+    n.frequency = coalesce(n.frequency, '持续'),
+    n.contraindication = coalesce(n.contraindication, '无'),
+    n.equipment = coalesce(n.equipment, '无');
+
+MERGE (n:NonDrugTreatment {name: '光照疗法'})
+SET 
+    n.description = coalesce(n.description, '使用光照调整昼夜节律'),
+    n.duration = coalesce(n.duration, '短期'),
+    n.frequency = coalesce(n.frequency, '每天'),
+    n.contraindication = coalesce(n.contraindication, '避免夜间光照'),
+    n.equipment = coalesce(n.equipment, '光照设备');
+
+MERGE (n:DrugTreatment {name: '莫达非尼'})
+SET 
+    n.description = coalesce(n.description, '用于改善日间过度思睡'),
+    n.dosage = coalesce(n.dosage, '按需'),
+    n.frequency = coalesce(n.frequency, '每日一次'),
+    n.duration = coalesce(n.duration, '根据需要'),
+    n.route = coalesce(n.route, '口服'),
+    n.contraindication = coalesce(n.contraindication, '无');
+
+// 关系更新
+MATCH (from) WHERE from.name = '过度思睡'
+MATCH (to) WHERE to.name = '日间过度思睡'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.9),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '严重');
+
+MATCH (from) WHERE from.name = '日间过度思睡'
+MATCH (to) WHERE to.name = '生活方式干预'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.85),
+    r.priority = coalesce(r.priority, '高'),
+    r.stage = coalesce(r.stage, '初始治疗');
+
+MATCH (from) WHERE from.name = '日间过度思睡'
+MATCH (to) WHERE to.name = '莫达非尼'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.9),
+    r.priority = coalesce(r.priority, '中'),
+    r.stage = coalesce(r.stage, '药物治疗');
+
+MATCH (from) WHERE from.name = '过度思睡'
+MATCH (to) WHERE to.name = '发作性睡病'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.8),
+    r.frequency = coalesce(r.frequency, '不常见'),
+    r.severity = coalesce(r.severity, '中等');
+
+MATCH (from) WHERE from.name = '日间过度思睡'
+MATCH (to) WHERE to.name = '阻塞性睡眠呼吸暂停'
+MERGE (from)-[r:MAY_CAUSE]->(to)
+SET 
+    r.probability = coalesce(r.probability, 0.7),
+    r.timeframe = coalesce(r.timeframe, '长期');
+
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-19 00:09:09"
 message = """
 
 [隶属文件名]
@@ -124,312 +274,139 @@ response = """
 // 节点更新
 MERGE (n:Disease {name: '日间过度思睡'})
 SET 
-    n.description = coalesce(n.description, '在一天需要保持清醒的时间段内无法维持清醒和警觉,出现不能抑制的睡眠需求,伴随注意力和记忆力减退'),
-    n.category = coalesce(n.category, '睡眠障碍');
+    n.description = coalesce(n.description, '在一天需要保持清醒的时间段内无法维持清醒和警觉，出现不能抑制的睡眠需求，甚至不由自主地入睡的症状'),
+    n.severity = coalesce(n.severity, '严重');
 
 MERGE (n:Disease {name: '发作性睡病'})
 SET 
-    n.description = coalesce(n.description, '由于下丘脑食欲素神经元选择性缺失或功能障碍所导致的中枢性嗜睡疾病'),
-    n.category = coalesce(n.category, '睡眠障碍');
+    n.description = coalesce(n.description, '是一种中枢性嗜睡疾病，表现为日间过度思睡、猝倒发作等症状'),
+    n.severity = coalesce(n.severity, '严重');
 
 MERGE (n:Disease {name: '特发性嗜睡症'})
 SET 
-    n.description = coalesce(n.description, '一种慢性中枢性嗜睡疾病,表现为EDS和难以从夜间睡眠或日间小睡中清醒'),
-    n.category = coalesce(n.category, '睡眠障碍');
+    n.description = coalesce(n.description, '是一种慢性中枢性嗜睡疾病，主要表现为日间过度思睡'),
+    n.severity = coalesce(n.severity, '中等');
 
 MERGE (n:Disease {name: '复发性嗜睡症'})
 SET 
-    n.description = coalesce(n.description, '以反复发作的思睡伴认知、精神和行为异常为基本特征的疾病'),
-    n.category = coalesce(n.category, '睡眠障碍');
-
-MERGE (n:Disease {name: '失眠症'})
-SET 
-    n.description = coalesce(n.description, '主要表现为夜间难以入睡或维持睡眠'),
-    n.category = coalesce(n.category, '睡眠障碍');
+    n.description = coalesce(n.description, '以反复发作的思睡伴随认知、精神和行为异常为特征的疾病'),
+    n.severity = coalesce(n.severity, '中等');
 
 MERGE (n:Disease {name: '睡眠呼吸障碍'})
 SET 
-    n.description = coalesce(n.description, '睡眠期间呼吸反复暂停或低通气'),
-    n.category = coalesce(n.category, '睡眠障碍');
+    n.description = coalesce(n.description, '导致睡眠质量下降，容易引发日间过度思睡的疾病'),
+    n.severity = coalesce(n.severity, '中等');
 
-MERGE (n:Symptom {name: '过度困倦'})
+MERGE (n:Disease {name: '失眠症'})
 SET 
-    n.description = coalesce(n.description, '无法抑制的睡眠需求'),
-    n.severity = coalesce(n.severity, '中等'),
-    n.frequency = coalesce(n.frequency, '频繁');
+    n.description = coalesce(n.description, '导引日间过度思睡的常见疾病'),
+    n.severity = coalesce(n.severity, '轻');
 
-MERGE (n:Symptom {name: '注意力减退'})
+MERGE (n:Disease {name: '精神障碍'})
 SET 
-    n.description = coalesce(n.description, '注意力和记忆力减退'),
-    n.severity = coalesce(n.severity, '中等'),
-    n.frequency = coalesce(n.frequency, '偶尔');
+    n.description = coalesce(n.description, '可表现为日间过度思睡的症状的疾病'),
+    n.severity = coalesce(n.severity, '轻');
 
 MERGE (n:Symptom {name: '疲劳'})
 SET 
     n.description = coalesce(n.description, '主观感觉体力和精力的缺乏'),
+    n.severity = coalesce(n.severity, '轻'),
+    n.frequency = coalesce(n.frequency, '常见');
+
+MERGE (n:Symptom {name: '注意力减退'})
+SET 
+    n.description = coalesce(n.description, '难以集中注意力的状态'),
+    n.severity = coalesce(n.severity, '轻'),
+    n.frequency = coalesce(n.frequency, '常见');
+
+MERGE (n:Symptom {name: '记忆力减退'})
+SET 
+    n.description = coalesce(n.description, '难以保持记忆的状态'),
+    n.severity = coalesce(n.severity, '轻'),
+    n.frequency = coalesce(n.frequency, '常见');
+
+MERGE (n:Symptom {name: '认知功能损害'})
+SET 
+    n.description = coalesce(n.description, '表现为言语、阅读和记忆困难'),
     n.severity = coalesce(n.severity, '中等'),
-    n.frequency = coalesce(n.frequency, '频繁');
+    n.frequency = coalesce(n.frequency, '常见');
 
-MERGE (n:Examination {name: '多导睡眠监测'})
+MERGE (n:Symptom {name: '睡眠发作'})
 SET 
-    n.description = coalesce(n.description, '用于诊断EDS相关疾病的检查'),
-    n.method = coalesce(n.method, '通过监测脑电活动等评估睡眠'),
-    n.requirement = coalesce(n.requirement, '需要在实验室进行');
-
-MERGE (n:Examination {name: '睡眠日记'})
-SET 
-    n.description = coalesce(n.description, '记录患者的睡眠模式和日间行为'),
-    n.method = coalesce(n.method, '自我报告'),
-    n.requirement = coalesce(n.requirement, '需持续一周以上记录');
+    n.description = coalesce(n.description, '在无意识状态下入睡的症状'),
+    n.severity = coalesce(n.severity, '重'),
+    n.frequency = coalesce(n.frequency, '偶发');
 
 // 关系更新
 MATCH (from) WHERE from.name = '日间过度思睡'
-MATCH (to) WHERE to.name = '过度困倦'
+MATCH (to) WHERE to.name = '发作性睡病'
 MERGE (from)-[r:INDICATES]->(to)
 SET 
-    r.confidence = coalesce(r.confidence, 1.0),
-    r.frequency = coalesce(r.frequency, '偶尔'),
+    r.confidence = coalesce(r.confidence, 0.95),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '严重');
+
+MATCH (from) WHERE from.name = '日间过度思睡'
+MATCH (to) WHERE to.name = '特发性嗜睡症'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.9),
+    r.frequency = coalesce(r.frequency, '常见'),
     r.severity = coalesce(r.severity, '中等');
 
 MATCH (from) WHERE from.name = '日间过度思睡'
-MATCH (to) WHERE to.name = '注意力减退'
+MATCH (to) WHERE to.name = '复发性嗜睡症'
 MERGE (from)-[r:INDICATES]->(to)
 SET 
-    r.confidence = coalesce(r.confidence, 1.0),
-    r.frequency = coalesce(r.frequency, '频繁'),
+    r.confidence = coalesce(r.confidence, 0.85),
+    r.frequency = coalesce(r.frequency, '偶发'),
     r.severity = coalesce(r.severity, '中等');
 
 MATCH (from) WHERE from.name = '日间过度思睡'
 MATCH (to) WHERE to.name = '疲劳'
 MERGE (from)-[r:INDICATES]->(to)
 SET 
-    r.confidence = coalesce(r.confidence, 0.9),
-    r.frequency = coalesce(r.frequency, '频繁'),
+    r.confidence = coalesce(r.confidence, 0.8),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '轻');
+
+MATCH (from) WHERE from.name = '日间过度思睡'
+MATCH (to) WHERE to.name = '注意力减退'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.75),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '轻');
+
+MATCH (from) WHERE from.name = '日间过度思睡'
+MATCH (to) WHERE to.name = '记忆力减退'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.7),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '轻');
+
+MATCH (from) WHERE from.name = '日间过度思睡'
+MATCH (to) WHERE to.name = '认知功能损害'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.75),
+    r.frequency = coalesce(r.frequency, '常见'),
     r.severity = coalesce(r.severity, '中等');
 
 MATCH (from) WHERE from.name = '日间过度思睡'
-MATCH (to) WHERE to.name = '多导睡眠监测'
-MERGE (from)-[r:REQUIRES_EXAM]->(to)
+MATCH (to) WHERE to.name = '睡眠发作'
+MERGE (from)-[r:INDICATES]->(to)
 SET 
-    r.priority = coalesce(r.priority, '高'),
-    r.mandatory = coalesce(r.mandatory, 'true');
-
-MATCH (from) WHERE from.name = '日间过度思睡'
-MATCH (to) WHERE to.name = '睡眠日记'
-MERGE (from)-[r:REQUIRES_EXAM]->(to)
-SET 
-    r.priority = coalesce(r.priority, '中'),
-    r.mandatory = coalesce(r.mandatory, 'false');
-
-MATCH (from) WHERE from.name = '日间过度思睡'
-MATCH (to) WHERE to.name = '发作性睡病'
-MERGE (from)-[r:TREATED_BY]->(to)
-SET 
-    r.effectiveness = coalesce(r.effectiveness, 0.85),
-    r.priority = coalesce(r.priority, '高'),
-    r.stage = coalesce(r.stage, '治疗');
-
-MATCH (from) WHERE from.name = '日间过度思睡'
-MATCH (to) WHERE to.name = '特发性嗜睡症'
-MERGE (from)-[r:TREATED_BY]->(to)
-SET 
-    r.effectiveness = coalesce(r.effectiveness, 0.75),
-    r.priority = coalesce(r.priority, '中'),
-    r.stage = coalesce(r.stage, '治疗');
+    r.confidence = coalesce(r.confidence, 0.7),
+    r.frequency = coalesce(r.frequency, '偶发'),
+    r.severity = coalesce(r.severity, '重');
 
 MATCH (from) WHERE from.name = '日间过度思睡'
 MATCH (to) WHERE to.name = '复发性嗜睡症'
 MERGE (from)-[r:MAY_CAUSE]->(to)
 SET 
-    r.probability = coalesce(r.probability, 0.5),
+    r.probability = coalesce(r.probability, 0.6),
     r.timeframe = coalesce(r.timeframe, '长期');
-
-"""
-
-[[message_pairs]]
-timestamp = "2024-12-18 09:55:51"
-message = """
-
-[隶属文件名]
-日间过度思睡临床诊断和治疗专家共识.md
-[隶属文件分块名]
-日间过度思睡临床诊断和治疗专家共识/002-一主观评估工具.md
-[文本块]
-# 一、主观评估工具
-1.ESS:常用于评估日间思睡的严重程度。问卷评估近期在8种久坐不动的情况下打瞌睡的频率:静坐阅读、看电视、在公共场合坐着不动、乘坐汽车持续 $^{1\\mathrm{~h~}}$ 、午后躺下休息、坐着与人交谈、午餐(不饮酒)后静坐、堵车时停下数分钟。将每种情况评为0\\~3分( $0{=}$ 不会打瞌睡, $3{=}$ 打瞌睡可能性高)。ESS得分 $\\mathord{\\left/{\\vphantom{\\left/{\\vphantom{\\left/{\\vphantom{\\left/{\\vphantom{\\left/{\\vphantom{\\left/{\\vphantom1}}\\right.\\kern-1}}\\right.\\kern-1}}}}}}}\\right.\\kern-1}1$ 分视为过度思睡, $\\geqslant\\!16$ 分提示有严重思睡。ESS适用于成年人,简便易操作,能够可靠地评估主观思睡,其得分与客观评估指标中度相关[97]  
-
-2.SSS:适合测试受试者当下的主观倦意。受试者在以下7项陈述中选出最符合自己思睡水平的1项: $1\\mathrm{=}$ 感觉清醒,有活力; $2\\mathrm{=}$ 身体状况、思维能力良好,但不是最佳状态,能够集中注意力; $3{=}$ 放松、清醒,反应能力不是最佳; $4\\mathrm{=}$ 多少有些不清醒,情绪不高; $5{=}$ 头脑不清醒,有点想睡,思维变慢; $^{6=}$困倦,努力坚持不睡着,希望躺着; $7\\mathrm{=}$ 无法持续保持清醒,很快可以入睡,出现类似做梦的思维活动。如果受试者在应该警觉时选择第4\\~7项,则可能有过度思睡。SSS的优点是可在治疗的不同阶段进行纵向比较,与急性睡眠剥夺的相关性良好8]  
-
-3.KSS:是用于测量当前个体主观感知的思睡和警觉性问卷,属于评估主观思睡和警觉程度的指标,其优点在于操作简单,并可反复多次进行。该量表需要被试对包含10个选项的题目作答,被试根据自己当前的清醒和思睡状态选择相应的选项,得到1\\~10之间的评分,分数越高代表清醒程度越低、思睡程度越重[]  
-
-4.PDSS:为11\\~15岁人群设计,用于评估青少年儿童日常学习生活中思睡的主观感受0]。问卷共包括8个条目,选项为0(从不)\\~4(总是)五级评分。分数越高,提示日间思睡越明显。在使用18/19分作为界值时,筛查发作性睡病的灵敏度和特异度较高。  
-
-5.UNS:用于发作性睡病的思睡、猝倒症状和夜间睡眠潜伏时间的评估。该自评问卷共包括11个条目,选项根据症状发生的频率为0\\~4分五级评分。在发作性睡病的筛查中,推荐以UNS总分 $\\geqslant\\!14$ 分为界值,具有较高的灵敏度和特异度。尤其是对于1型发作性睡病,<9分有助于排除此诊断([nI
-# 二、客观评估工具
-1.PSG:有助于评估夜间睡眠状况、发现夜间睡眠伴随的事件,对于病情的全面评估具有重要价值。因此,当怀疑有OSA、周期性肢体运动障碍、发作性睡病、其他中枢性嗜睡或睡眠期癫痫发作,或根据病史和体格检查未能明确思睡原因时,推荐使用PSG评估。在具有EDS表现的多种不同睡眠障碍中,PSG具有以下不同特征:OSA表现为阻塞性呼吸暂停、低通气和呼吸努力相关觉醒的次数增加;中枢性睡眠呼吸暂停表现为中枢性呼吸暂停、低通气和觉醒的次数增加;发作性睡病可能表现为人睡潜伏期缩短、N1期睡眠增加、N3期睡眠减少等睡眠结构的改变,并可能出现SOREMP、人睡后觉醒次数增加、睡眠效率下降、觉醒指数增加、R期眼动指数升高、REM睡眠期肌电失弛缓并出现梦境演绎行为等;周期性肢体运动障碍表现为刻板性腿部抽动,可能伴或不伴觉醒次数增加[3]  
-
-2.MSLT:目前被认为是可客观量化思睡的一种标准测量方法,是发作性睡病的重要诊断依据,也有助于评估特发性嗜睡症。因此,进行MSLT的两个主要指征为疑似发作性睡病或特发性嗜睡症,而不适合作为疑似OSA、失眠症或昼夜节律相关睡眠-觉醒障碍等其他可导致思睡的睡眠障碍以及神经系统疾病等躯体疾病的常规评估。MSLT的主要测量指标为平均睡眠潜伏时间和SOREMP次数。平均睡眠潜伏时间 $\\leqslant8\\ \\mathrm{min}$ 一般认为是存在思睡的客观证据,若同时存在2次或以上SOREMPs则支持诊断发作性睡病,其中1次SOREMP可由前夜PSG中的SOREMP替代;若仅有平均睡眠潜伏时间 $\\leqslant8\\ \\mathrm{min}$ 则支持特发性嗜睡症的诊断。  
-
-3.清醒维持测验(maintenanceofwakefulnesstest,MWT):用于评估受试者在日间安静环境中保持清醒的能力。不同于MSLT评估入睡的倾向,该检查评估保持清醒的能力,因此不能互相取代。MWT的主要测量指标为平均睡眠潜伏时间,一般认为平均睡眠潜伏时间 $\\leqslant8\\ \\mathrm{min}$ 为异常。在4次检测中都至少保持 $40\\;\\mathrm{{min}}$ 清醒,是受试者可以保持清醒的客观证据[13]。根据美国睡眠医学会(American Academy of Sleep Medicine, AASM)推荐,当发作性睡病、OSA、倒班工作等疾病或状态可能影响患者的日间觉醒能力、对患者或公众构成潜在威胁时,可通过MWT评估其日间保持清醒的能力,避免从事危险性职业,并且可以在研究中作为药物改善觉醒能力的疗效或不良反应的评价指标[103]_4.体动仪:通常指置入加速计的类似手表的可穿戴设备,可有效地客观测量数日至数周内的睡眠参数和平均运动时长,用于评估睡眠-觉醒周期[104]在思睡患者的评估中,体动仪可用于证实EDS的严重程度以及排除睡眠不足,尤其是在MSLT检查前。此外,由于可在患者的家庭环境中进行测量,与单夜PSG相比,体动仪的结果具有较高的外部睡眠环境真实性等优势。但是,当需要脑电图来记录睡眠结构、睡眠分期或睡眠期间的异常运动时,或怀疑存在睡眠呼吸障碍时,体动仪不能替代PSG。  
-
-5.其他客观评估工具:牛津睡眠抵抗测验(Oxford sleep resistance test, OSLER test)是 MWT 的简化版,也是间接量化EDS的客观评估工具[0];精神行为警觉测验(psychomotor vigilance task,PVT)是基于对视觉刺激的反应来测量警觉性1;另外,驾车试验也常用于警觉性评估[10]。
-# 三、生化-基因检测
-1.下丘脑分泌素-1(hypocretin-1):对于具有EDS主诉、临床高度怀疑发作性睡病的患者,脑脊液下丘脑分泌素-1(也称食欲素-A)的检测有助于明确诊断,尤其是当MSLT检查1次或多次结果为阴性、MSLT结果阴性却伴有典型猝倒发作、由于个人原因或研究条件限制无法完成MSLT、因服用药物或共患疾病可能干扰 MSLT结果时[108-09]。脑脊液中下丘脑分泌素-1浓度 $\\!\\!\\leqslant\\!110\\;\\mathrm{pg/ml}$ 或小于以同一标准检验正常者平均值的1/3可替代MSLT作为1型发作性睡病的诊断标准。  
-
-2.基因检测:并不常规用于EDS患者的评估。由于人类白细胞抗原(human leukocyte antigen,HLA) $\\mathrm{DQB1^{*}06:02\\,,D Q B1^{*}03:01}$ 等位基因与1型发作性睡病密切相关,该检测在伴有猝倒、怀疑发作性睡病患者的鉴别诊断中具有一定意义。研究发现,超过 $90\\%$ 的1型发作性睡病患者携带 $\\mathrm{DQB1^{*}}$$06{:}02$ ,因此,对于非典型猝倒患者,若无 $\\mathrm{DOB}1^{*}06$02,则支持排除1型发作性睡病。但很多健康人也携带该等位基因,因此该指标特异性并不高]  
-
-3.药物或物质浓度检测:对于药物或物质所致EDS,可通过检测血液中相关药物或物质的浓度协助诊断。
-# 第七部分 治疗
-分析病因是EDS治疗的首要任务,对于存在明确病因的EDS患者(如继发于中枢神经系统疾病应用镇静药物等),应积极治疗原发病、处理相关因素。EDS的治疗包括药物治疗和非药物治疗。
-# 一、非药物治疗
-非药物治疗包括生活方式干预、睡眠卫生宣教、行为调整等,几乎适用于所有EDS患者,并且是EDS治疗的基本措施。对于睡眠不足和昼夜节律紊乱相关的EDS,非药物治疗显得尤为重要。值得注意的是,非药物治疗对于EDS的效果还缺乏充分的随机对照试验来验证。  
-
-1.生活方式干预(IIIB):生活方式干预首先是获得患者认同,并改变其生活方式和不良睡眠卫生习惯。具体措施包括调整睡眠时间、创造有利的睡眠环境、减少在床上进行与睡眠不相关的活动(如看手机)、睡前避免干扰睡眠的物质(如酒精、咖啡)的摄入[1-4]。规律且充足的夜间睡眠、日间规律的体育锻炼、短暂的小睡( $20\\;\\mathrm{min}$ 左右),有助于促进夜间睡眠和提高日间的警觉性[11-1]。对于睡眠呼吸障碍患者,生活方式干预主要为戒酒、减重、体育锻炼,鼓励打鼾患者采取侧卧位睡眠。  
-
-2.调整入睡和起床时间(IIIB):对于昼夜节律延迟或前移的患者,可分别逐步提前或推迟人睡和起床时间,以达到社会和职业要求的作息时间,纠正不良睡眠卫生习惯。对于难治性患者,也可以使用时间疗法,即对于昼夜节律延迟的患者,逐步推迟人睡和起床时间;对于昼夜节律前移的患者,逐步提前人睡和起床时间,最终达到期望的作息节律[119]  
-
-3.光照疗法(IIIB):晨起规律的光疗(约$1\\ 000\\ \\mathrm{lux}$ ,每日持续 $\\geq\\!30\\ \\mathrm{min}$ )可使昼夜节律提前,可作为昼夜节律延迟患者的一种尝试手段[2。此外,昼夜节律延迟患者应避免夜间光照[12-12]。傍晚和夜间早期光疗(如 $2\\ 500{\\sim}10\\ 000\\ \\mathrm{lux}$ ,持续 $1\\sim$$^{3\\textrm{h}}$ )是针对昼夜节律前移患者的主要光照治疗方法[123-24]。 倒班者为了维持夜间的清醒状态,可适当提高夜间工作的光照强度[125-26]  
-
-4.OSA所致EDS的治疗:无创正压通气是睡眠呼吸障碍患者治疗的首选127-128,根据患者的特点,选择合适的模式,并评估患者对无创正压通气的依从性。对于拒绝或不依从无创正压通气的患者,可进行口腔矫治器治疗129-130。拒绝口腔矫治器或口腔矫治器疗效差的患者,可进行上气道手术131-32。不耐受无创正压通气且无气道塌陷的患者可进行舌下神经刺激术133。  
-
-5.失眠所致EDS的治疗:针对失眠症的治疗,如认知行为疗法(IA)、经颅电刺激(IIA)、经颅磁刺激(IIA)可改善睡眠质量,缓解失眠引起的EDS[134]
-# 二、药物治疗
-1.促觉醒药:促觉醒药首先应用于中枢性嗜睡患者。临床上应用较多的主要为1型发作性睡病的治疗,某些促觉醒药还可以控制猝倒发作(如替洛利生、 $\\upgamma.$ -羟丁酸钠)。目前可用于治疗EDS的促觉醒药及相关药物的用量、适应证及不良反应等注意事项见表3。特别需要强调的是,综合目前的循证医学证据、药物不良反应及成瘾倾向等因素,在1型发作性睡病的治疗中[13,32],首选药物是替洛利生(pitolisant)、莫达非尼(modafinil)、 $\\upgamma\\cdot$ 羟丁酸钠(gamma-hydroxybutyrate,sodium oxybate),其他药物包括阿莫达非尼(armodafinil)、哌甲酯(methylphenidate)缓释片、索林非妥(solriamfetol)、马吲哚(mazindol)等3i。如单药使用不能很好地控制患者的EDS,可以考虑联合用药。常用的联合用药策略包括: $\\upgamma.$ 羟丁酸钠 $^+$ 莫达非尼/阿莫达非尼/替洛利生,哌甲酯 $+\\upgamma$ -羟丁酸钠,莫达非尼/哌甲酯 $^+$ 替洛利生135。睡眠呼吸障碍患者如经有效无创正压通气治疗后EDS仍未缓解,可以使用替洛利生、莫达非尼/阿莫达非尼、索林非妥3。倒班人员必要时可以使用莫达非尼/阿莫达非尼保持夜间警觉126。 CU  
-
-表3可用于治疗日间过度思睡的神经兴奋剂及相关药物  
-
-注:OSA为阻塞性睡眠呼吸暂停;EDS为日间过度思睡;FDA为美国食品药品监督管理局;GABA为 $\\upgamma.$ 氨基丁酸  
-
-2.褪黑素及其受体激动剂:褪黑素主要用于昼夜节律紊乱导致EDS的患者。短期使用褪黑素(习惯睡眠开始前 $5\\{\\mathrm{-}7~\\mathrm{h}$ 或目标人睡时间前 $2{\\sim}3\\mathrm{~h~}$ 给予$0.3{\\sim}5.0~\\mathrm{mg}$ )可以改善人睡时间,调节生理性昼夜节律,给药时间越早,时相前移程度越明显\"。然而,健康成人使用大剂量褪黑素会出现头痛、思睡、低血压、高血压、胃肠不适及斑秃等不良反应,同时长期使用会抑制内源性褪黑素的分泌。大剂量使用褪黑素( $\\geqslant\\!10\\;\\mathrm{mg/d}\\,,$ 可抑制性激素分泌,因此在儿童、青少年中应慎用[36]。时差障碍的患者,向东旅行时,可在目的地时间每晚人睡前服用褪黑素 $0.5\\sim$$3.0~\\mathrm{mg}$ ,直到适应目的地昼夜节律;向西旅行时,可在后半夜服用褪黑素 $0.5~\\mathrm{mg}$ 。对于褪黑素治疗无效的患者,可考虑使用褪黑素受体激动剂他司美琼或雷美替胺,但不能改变时差障碍患者的昼夜节律137-138。  
-
-3.镇静催眠药物:此类药物主要用于昼夜节律紊乱导致EDS患者的助眠。对于已形成良好睡眠卫生习惯但白天仍难以按时入睡的倒班人员,可适量使用短效苯二氮草类、非苯二氮草类或食欲素受体拮抗剂2\",但这并不能缓解思睡,使夜班工作时保持警觉。镇静催眠类药物有助于缓解时差所致的失眠症状,但不推荐长期使用。  
-
-_4.其他药物:针对不宁腿综合征或周期性肢体运动障碍的治疗药物主要目的在于缓解症状,改善夜间睡眠,解决EDS。目前常用的治疗不宁腿综合征的药物包括多巴胺受体激动剂、 $\\alpha\\!-\\!2\\!-\\!8$ 钙通道配体(加巴喷丁、普瑞巴林)、阿片类等[139)。周期性肢体运动障碍患者可试用多巴胺受体激动剂治疗,如存在禁忌证,可尝试 $\\alpha-2-\\delta$ 钙通道配体[139]
-
-"""
-response = """
-// 节点更新
-MERGE (n:Disease {name: '日间过度思睡'})
-SET 
-    n.description = coalesce(n.description, '患者在白天感到过度疲倦和睡意，影响日常生活和工作。'),
-    n.severity = coalesce(n.severity, '严重');
-
-MERGE (n:Disease {name: '发作性睡病'})
-SET 
-    n.description = coalesce(n.description, '一种以极度嗜睡和猝倒为特征的神经系统疾病。'),
-    n.severity = coalesce(n.severity, '严重');
-
-MERGE (n:Disease {name: '阻塞性睡眠呼吸暂停'})
-SET 
-    n.description = coalesce(n.description, '睡眠过程中反复发生上气道部分阻塞，导致呼吸暂停。'),
-    n.severity = coalesce(n.severity, '严重');
-
-MERGE (n:Symptom {name: '过度思睡'})
-SET 
-    n.description = coalesce(n.description, '在白天异常的嗜睡或疲倦。'),
-    n.severity = coalesce(n.severity, '严重'),
-    n.frequency = coalesce(n.frequency, '经常');
-
-MERGE (n:Symptom {name: '猝倒'})
-SET 
-    n.description = coalesce(n.description, '患者意识丧失并迅速入睡的现象。'),
-    n.severity = coalesce(n.severity, '严重'),
-    n.frequency = coalesce(n.frequency, '偶尔');
-
-MERGE (n:Symptom {name: '夜间睡眠障碍'})
-SET 
-    n.description = coalesce(n.description, '夜间的睡眠质量差或频繁醒来。'),
-    n.severity = coalesce(n.severity, '中等'),
-    n.frequency = coalesce(n.frequency, '时常');
-
-MERGE (n:Symptom {name: '不宁腿综合征'})
-SET 
-    n.description = coalesce(n.description, '有强烈的下肢不适感，导致脉动和不自主的晃动。'),
-    n.severity = coalesce(n.severity, '中等'),
-    n.frequency = coalesce(n.frequency, '偶尔');
-
-MERGE (n:NonDrugTreatment {name: '生活方式干预'})
-SET 
-    n.description = coalesce(n.description, '改善患者的生活习惯，以促进更好的睡眠质量。'),
-    n.duration = coalesce(n.duration, '持续时间不定'),
-    n.frequency = coalesce(n.frequency, '长期');
-
-MERGE (n:DrugTreatment {name: '替洛利生'})
-SET 
-    n.description = coalesce(n.description, '用于治疗发作性睡病的促觉醒药物。'),
-    n.dosage = coalesce(n.dosage, '根据患者需求'),
-    n.frequency = coalesce(n.frequency, '根据医嘱'),
-    n.duration = coalesce(n.duration, '长期');
-
-MERGE (n:DrugTreatment {name: '莫达非尼'})
-SET 
-    n.description = coalesce(n.description, '一种用于改善日间警觉性的药物。'),
-    n.dosage = coalesce(n.dosage, '根据患者需求'),
-    n.frequency = coalesce(n.frequency, '根据医嘱'),
-    n.duration = coalesce(n.duration, '长期');
-
-MERGE (n:DrugTreatment {name: '褪黑素'})
-SET 
-    n.description = coalesce(n.description, '用于调整因昼夜节律紊乱引起的失眠。'),
-    n.dosage = coalesce(n.dosage, '0.3-5.0 mg'),
-    n.frequency = coalesce(n.frequency, '根据医嘱'),
-    n.duration = coalesce(n.duration, '短期');
-
-// 关系更新
-MATCH (from) WHERE from.name = '日间过度思睡'
-MATCH (to) WHERE to.name = '过度思睡'
-MERGE (from)-[r:INDICATES]->(to)
-SET 
-    r.confidence = coalesce(r.confidence, 0.9),
-    r.frequency = coalesce(r.frequency, '经常'),
-    r.severity = coalesce(r.severity, '严重');
-
-MATCH (from) WHERE from.name = '发作性睡病'
-MATCH (to) WHERE to.name = '猝倒'
-MERGE (from)-[r:INDICATES]->(to)
-SET 
-    r.confidence = coalesce(r.confidence, 0.95),
-    r.frequency = coalesce(r.frequency, '经常'),
-    r.severity = coalesce(r.severity, '严重');
-
-MATCH (from) WHERE from.name = '阻塞性睡眠呼吸暂停'
-MATCH (to) WHERE to.name = '夜间睡眠障碍'
-MERGE (from)-[r:INDICATES]->(to)
-SET 
-    r.confidence = coalesce(r.confidence, 0.85),
-    r.frequency = coalesce(r.frequency, '有时'),
-    r.severity = coalesce(r.severity, '中等');
-
-MATCH (from) WHERE from.name = '发作性睡病'
-MATCH (to) WHERE to.name = '生活方式干预'
-MERGE (from)-[r:TREATED_BY]->(to)
-SET 
-    r.effectiveness = coalesce(r.effectiveness, 0.9),
-    r.priority = coalesce(r.priority, '高'),
-    r.stage = coalesce(r.stage, '长期治疗');
-
-MATCH (from) WHERE from.name = '发作性睡病'
-MATCH (to) WHERE to.name = '替洛利生'
-MERGE (from)-[r:TREATED_BY]->(to)
-SET 
-    r.effectiveness = coalesce(r.effectiveness, 0.95),
-    r.priority = coalesce(r.priority, '高'),
-    r.stage = coalesce(r.stage, '长期治疗');
-
-MATCH (from) WHERE from.name = '日间过度思睡'
-MATCH (to) WHERE to.name = '莫达非尼'
-MERGE (from)-[r:TREATED_BY]->(to)
-SET 
-    r.effectiveness = coalesce(r.effectiveness, 0.85),
-    r.priority = coalesce(r.priority, '中'),
-    r.stage = coalesce(r.stage, '长期治疗');
-
-MATCH (from) WHERE from.name = '日间过度思睡'
-MATCH (to) WHERE to.name = '褪黑素'
-MERGE (from)-[r:TREATED_BY]->(to)
-SET 
-    r.effectiveness = coalesce(r.effectiveness, 0.8),
-    r.priority = coalesce(r.priority, '低'),
-    r.stage = coalesce(r.stage, '短期治疗');
 
 """
