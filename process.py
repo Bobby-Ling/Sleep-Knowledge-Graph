@@ -4,15 +4,12 @@ import os
 import json
 import textwrap
 import threading
-import toml
 import logging
-import random
 import time
-from typing import Any, List, Dict, Optional, Tuple
+from typing import List, Dict, Optional, Tuple
 from dataclasses import dataclass
 from pathlib import Path
 import tiktoken
-import concurrent.futures
 from queue import Empty, Queue
 from threading import Lock, Event, RLock
 import asyncio
@@ -21,9 +18,7 @@ from concurrent.futures import ThreadPoolExecutor
 from chat_session_interfce import ChatSessionInterface
 from openai_chat import OpenAIChatSession
 import openai_chat
-from poe_chat_manager import PoeChatManager, PoeChatSession
-from qianfan_chat import QianfanChatSession
-from prompts_template import API_COMMAND_MSG, API_PAYLOAD_TEMPLATE, INIT_MSG, INSTRUCT_MSG, COMMAND_TEMPLATE, PREPROCESS_INIT_MSG, PREPROCESS_MSG
+from prompts_template import API_COMMAND_MSG, API_PAYLOAD_TEMPLATE, PREPROCESS_MSG
 
 def retry_on_exception(max_retries: Optional[int] = None, retry_interval: float = 1.0):
     """
@@ -114,7 +109,7 @@ class BatchProcessor:
 
         # 并行处理相关的属性
         self.message_queue = Queue(maxsize=self.parallel_config.queue_size) if self.parallel_config.enabled else None
-        self.save_lock = Lock()
+        # self.save_lock = Lock()
         self.state_lock = RLock()
         self.stop_event = Event()
 
@@ -124,11 +119,7 @@ class BatchProcessor:
 
         # LLM价格配置 (每1K tokens的美元价格)
         self.price_config = {
-            "claude-3-opus": {"prompt": 0.015, "completion": 0.075},
-            "claude-3-sonnet": {"prompt": 0.015, "completion": 0.045},
-            "claude-2": {"prompt": 0.008, "completion": 0.024},
-            "gpt-4": {"prompt": 0.03, "completion": 0.06},
-            "gpt-3.5-turbo": {"prompt": 0.0005, "completion": 0.0015}
+            "gpt-4o-mini": {"prompt": 0.15/1000, "completion": 0.6/1000},
         }
 
         self.logger = logging.getLogger(LOGGER_NAME)
@@ -141,8 +132,9 @@ class BatchProcessor:
         """设置日志"""
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
         log_file = f'logs/processing_{timestamp}.log'
+        log_file_debug = f'logs/processing_{timestamp}_debug.log'
 
-        self.logger.setLevel(logging.INFO)
+        self.logger.setLevel(logging.DEBUG)
 
         console_handler = logging.StreamHandler()
         console_handler.setLevel(log_level)
@@ -150,14 +142,20 @@ class BatchProcessor:
         file_handler = logging.FileHandler(log_file, encoding='utf-8')
         file_handler.setLevel(logging.INFO)
 
+        debug_file_handler = logging.FileHandler(log_file_debug, encoding='utf-8')
+        debug_file_handler.setLevel(logging.DEBUG)
+
         formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
         console_handler.setFormatter(formatter)
         file_handler.setFormatter(formatter)
+        debug_file_handler.setFormatter(formatter)
 
         if not self.logger.handlers:
             self.logger.addHandler(console_handler)
             self.logger.addHandler(file_handler)
+            self.logger.addHandler(debug_file_handler)
 
+    # 修改self.state
     def load_state(self):
         """加载处理状态"""
         if os.path.exists(self.state_file):
@@ -176,20 +174,22 @@ class BatchProcessor:
         else:
             self.logger.info("No existing state found, starting fresh")
 
+    # 保存.json, 不用锁
     def save_state(self):
         """保存处理状态"""
-        self.logger.info("Try saving current processing state")
-        with self.save_lock:  # 使用锁确保并发安全
-            state_dict = {
-                k: {
-                    **{key: value for key, value in vars(v).items() if key != 'message_pairs'},
-                    'message_pairs': [vars(pair) for pair in v.message_pairs]
-                }
-                for k, v in self.state.items()
+        self.logger.info("Saving current processing state")
+        state = self.state.copy()
+        # with self.save_lock:  # 使用锁确保并发安全
+        state_dict = {
+            k: {
+                **{key: value for key, value in vars(v).items() if key != 'message_pairs'},
+                'message_pairs': [vars(pair) for pair in v.message_pairs]
             }
-            with open(self.state_file, 'w', encoding='utf-8') as f:
-                json.dump(state_dict, f, ensure_ascii=False, indent=2)
-            self.logger.info("Saved current processing state")
+            for k, v in state.items()
+        }
+        with open(self.state_file, 'w', encoding='utf-8') as f:
+            json.dump(state_dict, f, ensure_ascii=False, indent=2)
+        self.logger.info("Saved current processing state")
 
     def get_all_files(self) -> Dict[str, List[str]]:
         """获取所有需要处理的文件及其分块"""
@@ -206,6 +206,7 @@ class BatchProcessor:
                         all_files[original_file] = block_files
         return all_files
 
+    # 修改self.state
     def process_block(self, original_file: str, block_path: str) -> Optional[str]:
         """处理单个块文件"""
         full_path = self.input_dir / block_path
@@ -233,16 +234,18 @@ class BatchProcessor:
             for attempt in range(self.retry_times):
                 try:
                     self.logger.info("\n\n//////---------------------------------------------------------------")
-                    self.logger.info(f"[content]: \n{content}")
+                    self.logger.debug(f"[content]: \n{content}")
 
-                    preprocessed_content = self.preprocess_session.send_message(PREPROCESS_MSG.format(content))
-                    self.logger.info(f"[preprocessed_content]: \n{preprocessed_content}")
+                    preprocessed_content = content
+                    # preprocessed_content = self.preprocess_session.send_message(PREPROCESS_MSG.format(content))
+                    # self.logger.debug(f"[preprocessed_content]: \n{preprocessed_content}")
 
                     # message = COMMAND_TEMPLATE.format(original_file, block_path, preprocessed_content)
-                    message = API_COMMAND_MSG + API_PAYLOAD_TEMPLATE.format(original_file, block_path, preprocessed_content)
-                    self.logger.info(f"[message]: {message}")
+                    # message = API_COMMAND_MSG + API_PAYLOAD_TEMPLATE.format(original_file, block_path, preprocessed_content)
+                    message = API_PAYLOAD_TEMPLATE.format(original_file, block_path, preprocessed_content)
+                    self.logger.debug(f"[message]: {message}")
 
-                    response = self.chat_session.send_message(message)
+                    response = self.chat_session.send_message(message, )
                     self.logger.info(textwrap.dedent(f"[response]: \n{response}"))
                     self.logger.info("\n---------------------------------------------------------------//////\n\n")
                     # 创建消息对
@@ -270,6 +273,7 @@ class BatchProcessor:
             self.logger.error(f"Error processing {block_path}: {e}")
             raise
 
+    # 修改self.state
     async def process_message_async(self, original_file: str, block_path: str) -> Optional[str]:
         """异步处理单个消息"""
         try:
@@ -284,6 +288,7 @@ class BatchProcessor:
             self.logger.error(f"Error processing message async {block_path}: {e}")
             raise
 
+    # 修改self.state
     async def process_batch_async(self, batch: List[Tuple[str, str]]) -> List[Optional[str]]:
         """异步处理一批消息"""
         tasks = []
@@ -294,6 +299,7 @@ class BatchProcessor:
         responses = await asyncio.gather(*tasks, return_exceptions=True)
         return responses
 
+    # 修改self.state
     def parallel_processor(self):
         """并行处理工作线程"""
         while not self.stop_event.is_set():
@@ -310,20 +316,24 @@ class BatchProcessor:
                 if not batch:
                     continue
 
+                self.logger.info(f"收集了一批待处理的消息: {batch}")
+
                 # 异步处理这一批消息
                 loop = asyncio.new_event_loop()
                 asyncio.set_event_loop(loop)
                 try:
                     responses = loop.run_until_complete(self.process_batch_async(batch))
 
-                    # 更新处理状态
-                    with self.state_lock:
-                        for (original_file, block_path), response in zip(batch, responses):
-                            if isinstance(response, Exception):
-                                self.logger.error(f"Error processing {block_path}: {response}")
-                                continue
+                    for (original_file, block_path), response in zip(batch, responses):
+                        if isinstance(response, Exception):
+                            self.logger.error(f"Error processing {block_path}: {response}")
+                            continue
 
-                            if response:
+                        if response:
+                            # 更新处理状态
+                            self.logger.info("尝试获取self.state_lock")
+                            with self.state_lock:
+                                self.logger.info("已获取self.state_lock")
                                 state = self.state[original_file]
                                 state.processed_blocks += 1
 
@@ -331,7 +341,7 @@ class BatchProcessor:
                                 if state.processed_blocks % self.save_interval == 0:
                                     # with self.save_lock:
                                     self.save_state()
-                                    self.save_responses(original_file)
+                                    # self.save_responses(original_file)
                 finally:
                     loop.close()
 
@@ -404,7 +414,7 @@ class BatchProcessor:
         total_cost = 0
 
         # 获取当前使用的模型
-        model_name = getattr(self.chat_session, 'bot_name', 'claude-3-sonnet').lower()
+        model_name = getattr(self.chat_session, 'bot_name', 'gpt-4o-mini').lower()
 
         # 找到匹配的价格配置
         price_config = None
@@ -414,7 +424,7 @@ class BatchProcessor:
                 break
 
         if not price_config:
-            price_config = self.price_config["claude-3-sonnet"]
+            price_config = self.price_config["gpt-4o-mini"]
 
         # 统计每个文件的token使用情况
         file_stats = {}
@@ -539,10 +549,12 @@ class BatchProcessor:
 
                     if (i + 1) % self.save_interval == 0:
                         self.logger.info(f"Periodic save at block {i + 1}")
+                        # with self.save_lock:
                         self.save_state()
                         self.save_responses(original_file)
 
             state.completed = True
+            # with self.save_lock:
             self.save_state()
             self.save_responses(original_file)
 
@@ -572,36 +584,43 @@ class BatchProcessor:
                 for state in self.state.values():
                     if state.processed_blocks == len(state.block_files):
                         state.completed = True
-                        self.save_responses(state.file_name)
-
-            self.save_state()
+                        # self.save_responses(state.file_name)
+                # with self.save_lock:
+                self.save_state()
 
         finally:
             # 清理并行处理资源
+            for state in self.state.values():
+                # if state.processed_blocks == len(state.block_files):
+                self.save_responses(state.file_name)
             self.cleanup_parallel_processing()
 
+    # 保存单个文件的结果, 互不冲突, 不用锁
     def save_responses(self, file_name: str):
         """保存单个文件的所有响应，支持JSON和TOML格式"""
-        with self.save_lock:  # 使用锁确保并发安全
-            state = self.state[file_name]
-            if not state.message_pairs:
-                return
+        self.logger.info(f"Saving responses of {file_name}")
+        # with self.save_lock:  # 使用锁确保并发安全
+        state_copy = self.state.copy()
+        state = state_copy[file_name]
+        # state = self.state[file_name]
+        if not state.message_pairs:
+            return
 
-            base_path = self.input_dir / file_name
+        base_path = self.input_dir / file_name
 
-            # 保存JSON格式
-            json_data = {
-                "metadata": {
-                    "file_name": file_name,
-                    "processed_at": datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
-                    "total_pairs": len(state.message_pairs)
-                },
-                "message_pairs": [vars(pair) for pair in state.message_pairs]
-            }
+        # 保存JSON格式
+        json_data = {
+            "metadata": {
+                "file_name": file_name,
+                "processed_at": datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+                "total_pairs": len(state.message_pairs)
+            },
+            "message_pairs": [vars(pair) for pair in state.message_pairs]
+        }
 
-            json_file = f"{base_path}.responses.json"
-            with open(json_file, 'w', encoding='utf-8') as f:
-                json.dump(json_data, f, ensure_ascii=False, indent=2)
+        json_file = f"{base_path}.responses.json"
+        with open(json_file, 'w', encoding='utf-8') as f:
+            json.dump(json_data, f, ensure_ascii=False, indent=2)
         self.logger.info(f"Saved responses as JSON to {json_file}")
 
         # 2. 保存TOML格式
@@ -649,22 +668,25 @@ class BatchProcessor:
                     f.write(f"// Processed at {pair.timestamp}\n\n")
 
             self.logger.info(f"Appended {len(new_responses)} Cypher statements to {state.cypher_file}")
+
+        self.logger.info(f"Savd responses of {file_name}")
+
 # %%
 if __name__ == "__main__":
-    DRY_RUN = False
+    DRY_RUN = True
     ENABLE_PARALLEL = True  # 新增并行处理开关
 
     # 配置并行处理参数
     parallel_config = ParallelConfig(
         enabled=ENABLE_PARALLEL,
-        max_workers=10,
-        queue_size=10,
-        batch_size=10
+        max_workers=20,
+        queue_size=40,
+        batch_size=40
     ) if ENABLE_PARALLEL else None
 
     if not DRY_RUN:
-        session = OpenAIChatSession(openai_chat.client1)
-        preprocess_session = OpenAIChatSession(openai_chat.client2)
+        session = OpenAIChatSession(openai_chat.client1, logger_name=LOGGER_NAME)
+        preprocess_session = OpenAIChatSession(openai_chat.client2, logger_name=LOGGER_NAME)
 
         """         
         session = QianfanChatSession()

@@ -13,9 +13,6 @@ FOR (e:Examination) REQUIRE e.name IS UNIQUE;
 CREATE CONSTRAINT treatment_name IF NOT EXISTS
 FOR (t:Treatment) REQUIRE t.name IS UNIQUE;
 
-CREATE CONSTRAINT scale_name IF NOT EXISTS
-FOR (sc:Scale) REQUIRE sc.name IS UNIQUE;
-
 CREATE CONSTRAINT risk_factor_name IF NOT EXISTS
 FOR (r:RiskFactor) REQUIRE r.name IS UNIQUE;
 
@@ -46,6 +43,8 @@ FOR (e:Examination) ON (e.name);
 """
 
 CYPHER_SCHEMA = """
+// name都是主键
+
 // 定义节点属性示例
 // 疾病节点
 CREATE (:Disease {
@@ -73,21 +72,25 @@ CREATE (:Examination {
 });
 
 // 治疗方案节点
-CREATE (:Treatment {
-    name: String,           // 治疗名称
-    type: String,           // 类型(药物/非药物)
-    description: String,    // 治疗描述
-    dosage: String,         // 剂量(药物)
-    duration: String,       // 持续时间
-    contraindication: String // 禁忌症
+// 药物治疗节点
+CREATE (:DrugTreatment {
+    name: String,           // 药物名称
+    description: String,    // 药物描述
+    dosage: String,        // 用药剂量
+    frequency: String,     // 用药频率 
+    duration: String,      // 疗程
+    route: String,         // 给药途径
+    contraindication: String, // 禁忌症
 });
 
-// 量表工具节点
-CREATE (:Scale {
-    name: String,           // 量表名称
-    description: String,    // 量表描述
-    score_range: String,    // 分数范围
-    interpretation: String  // 结果解释
+// 非药物治疗节点  
+CREATE (:NonDrugTreatment {
+    name: String,           // 治疗名称
+    description: String,    // 治疗描述
+    duration: String,       // 持续时间
+    frequency: String,      // 治疗频率
+    contraindication: String, // 禁忌症
+    equipment: String,      // 所需设备
 });
 
 // 风险因素节点
@@ -136,12 +139,6 @@ CREATE (:Disease)-[:INFLUENCED_BY {
     impact_level: String,   // 影响程度
     evidence_level: String  // 证据等级
 }]->(:RiskFactor);
-
-// 疾病-量表关系
-CREATE (:Disease)-[:ASSESSED_BY {
-    applicability: Float,   // 适用性
-    recommendation_level: String  // 推荐级别
-}]->(:Scale);
 """
 
 
@@ -273,17 +270,18 @@ API_COMMAND_MSG = f"""
 我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行实体识别、关系抽取和知识规则构建, 使其输出可供neo4j直接导入.
 [命令]
 [CYPHER_SCHEMA]部分定义了本项目中我期望的neo4j知识图谱的实体和关系定义, 接下来我将会给你数据集([隶属文件名]和[隶属文件分块名]部分)中的[文本块];
-请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句, 
+请参考[示例输出]部分的Cypher语句依据[CYPHER_SCHEMA]部分提供的neo4j schema进行实体和关系抽取, 输出纯neo4j Cypher语句
 [详细补充需求]
 输出的Cypher语句不要分号, 不需要转义, 也不需要使用markdown语法等, 以便最后我可以通过字符串拼接直接导入neo4j数据库;
 请保证你生成的语句可以多次执行而不出现重复定义问题;
 请保证语法正确性;
 请一定尽可能抽取Cypher语句, 当无法抽取符合主题的语句时输出"// 空"(不含引号)
+[CYPHER_SCHEMA]
 {CYPHER_SCHEMA}
 [关系抽取说明]
 抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
 以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
-请尽你可能抽取全部关系
+文本可能很长很长, 请尽你可能抽取全部实体和关系, 也可以适当结合[文本块]进行推理然后生成一些;
 [示例输出]
 MERGE (d1:Disease {{name: "阻塞性睡眠呼吸暂停低通气综合征", short_name: "OSAHS"}})
 MERGE (c1:Disease {{name: "高血压"}})
@@ -310,7 +308,7 @@ SRMD是指重复、刻板和节律性的大组肌群(尤其是头和颈部)的�
     """,
 )
 
-DEMO_API_COMMAND = API_COMMAND_MSG + API_PAYLOAD_TEMPLATE.format(
+DEMO_API_PAYLOAD = API_PAYLOAD_TEMPLATE.format(
     "《成年人阻塞性睡眠呼吸暂停低通气综合征筛查: 美国预防临床服务指南工作组推荐声明》解读.md",
     "《成年人阻塞性睡眠呼吸暂停低通气综合征筛查: 美国预防临床服务指南工作组推荐声明》解读/012-35-潜在的干预措施.md",
     """# 潜在的干预措施  
@@ -334,9 +332,13 @@ USPSTF推荐不仅关注成年人OSAHS的筛查和识别, 还强调了潜在的�
 2. 在社区人群中, 尤其是在未被识别OSAHS或症状轻微的人群中, 评估筛查工具的准确性; 
 3. 开发准确的风险评估工具, 识别最有可能从OSAHS筛查中受益的人群; 
 4. 针对OSAHS自然进程的研究, 尤其是关于从轻度OSAHS进展至重度OSAHS方面的研究, 以及OSAHS被早期识别及治疗的临床获益方面的研究. 
-    """,
+"""
 )
+
+DEMO_API_COMMAND = API_COMMAND_MSG + DEMO_API_PAYLOAD
 
 # %%
 if __name__ == "__main__":
     print(DEMO_API_COMMAND)
+
+# %%

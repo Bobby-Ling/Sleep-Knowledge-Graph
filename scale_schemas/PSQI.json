@@ -32,9 +32,10 @@
             "isRequired": true
           },
           {
-            "type": "number",
+            "type": "text",
             "name":"psqi_sleep_duration",
             "title": "4. 过去一个月你每晚实际睡眠的时间有多少？(小时)",
+            "inputType": "number",
             "isRequired": true
           },
           {

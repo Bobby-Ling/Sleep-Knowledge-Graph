@@ -1,10 +1,18 @@
+# %%
 from toolz import pipe, curry
 import os
 import re
 import jieba
+import tiktoken
 from dataclasses import dataclass
 from typing import Dict, List, Tuple
 from pathlib import Path
+
+from prompts_template import API_COMMAND_MSG, API_PAYLOAD_TEMPLATE
+
+# 常量定义
+MAX_TOKEN = 16384  # gpt-4o-mini的最大token限制
+RESERVE_TOKEN = 3000  # 预留token数
 
 @dataclass
 class TokenCost:
@@ -31,12 +39,12 @@ class FileStats:
     en_only_count: int
     tokens: int
     estimated_cost: float
-    # blocks: List[TextBlock]  # 新增字段
+    blocks: List[TextBlock]
 
 MODEL_COSTS = {
-    'gpt-4': TokenCost('gpt-4', 0.03, 0.06),
-    'gpt-3.5-turbo': TokenCost('gpt-3.5-turbo', 0.0015, 0.002),
-    'claude-2': TokenCost('claude-2', 0.008, 0.024),
+    # $0.150 / 1M input tokens
+    # $0.600 / 1M output tokens
+    'gpt-4o-mini': TokenCost('gpt-4o-mini', 0.15, 0.6),
 }
 
 @curry
@@ -64,12 +72,16 @@ def remove_links(file_content: Tuple[str, str]) -> Tuple[str, str]:
     content = re.sub(r'\n\s*\n\s*\n', '\n\n', content)
     return (path, content)
 
-
 @curry
 def remove_references(file_content: Tuple[str, str]) -> Tuple[str, str]:
     path, content = file_content
     pattern = r'# 参考文献[\s\S]*?(?=\n#|$)'
     return (path, re.sub(pattern, '', content))
+
+def estimate_tokens(text: str) -> int:
+    """使用tiktoken准确计算token数量"""
+    encoding = tiktoken.encoding_for_model("gpt-4")  # gpt-4o-mini使用与gpt-4相同的分词器
+    return len(encoding.encode(text))
 
 @curry
 def analyze_stats(file_content: Tuple[str, str]) -> FileStats:
@@ -89,12 +101,12 @@ def analyze_stats(file_content: Tuple[str, str]) -> FileStats:
     en_content = re.sub(r'[^a-zA-Z\s]', '', content)
     en_only_count = len(en_content.split())
 
-    tokens = cn_only_count * 2 + en_only_count
-    cost = (tokens / 1000) * MODEL_COSTS['gpt-3.5-turbo'].input_price
+    tokens = estimate_tokens(content)
+    cost = (tokens / 1000000) * MODEL_COSTS['gpt-4o-mini'].input_price
 
     return FileStats(
         path=path,
-        content=content,  # 保存处理后的内容
+        content=content,
         size=os.path.getsize(path),
         basic_count=basic_count,
         with_punct_count=with_punct_count,
@@ -102,30 +114,22 @@ def analyze_stats(file_content: Tuple[str, str]) -> FileStats:
         cn_only_count=cn_only_count,
         en_only_count=en_only_count,
         tokens=tokens,
-        estimated_cost=cost
+        estimated_cost=cost,
+        blocks=[]
     )
-
-def estimate_tokens(text: str) -> int:
-    """估算文本的token数量"""
-    cn_content = len(re.findall(r'[\u4e00-\u9fff]', text))
-    en_content = len(re.sub(r'[^a-zA-Z\s]', '', text).split())
-    return cn_content * 2 + en_content
 
 @curry
 def split_into_blocks(max_tokens: int, file_stats: FileStats) -> FileStats:
-    """将文档按标题分块，并确保每块不超过最大token数"""
+    """将文档按标题分块，只有当累计token超过限制时才分块"""
     content = file_stats.content
+    blocks = []
 
     # 按标题分割文本
-    # 匹配 # 到 ###### 的标题
-    pattern = r'^(#{1,6})\s+(.+?)$'
+    sections = re.split(r'(^#{1,6}\s+.+$)', content, flags=re.MULTILINE)
 
-    # 分割文本为块
-    lines = content.split('\n')
     current_block = []
     current_title = "开始"
     current_level = 0
-    blocks = []
     current_tokens = 0
 
     def save_current_block():
@@ -139,34 +143,68 @@ def split_into_blocks(max_tokens: int, file_stats: FileStats) -> FileStats:
                 level=current_level
             ))
 
-    for line in lines:
-        match = re.match(pattern, line)
+    i = 0
+    while i < len(sections):
+        section = sections[i].strip()
+        if not section:
+            i += 1
+            continue
 
-        if match:
-            # 遇到新标题，保存当前块
-            save_current_block()
+        # 检查是否是标题
+        title_match = re.match(r'^(#{1,6})\s+(.+)$', section)
 
-            # 开始新块
-            current_level = len(match.group(1))  # 标题级别
-            current_title = match.group(2).strip()
-            current_block = [line]
-            current_tokens = estimate_tokens(line)
-        else:
-            # 检查添加当前行是否会超过最大token限制
-            line_tokens = estimate_tokens(line)
-            if current_tokens + line_tokens > max_tokens:
-                # 如果会超过，保存当前块并开始新块
+        if title_match:
+            level = len(title_match.group(1))
+            title = title_match.group(2).strip()
+
+            # 获取标题后的内容（如果存在）
+            content_section = sections[i + 1].strip() if i + 1 < len(sections) else ""
+
+            # 计算这个部分的token
+            section_tokens = estimate_tokens(section + "\n" + content_section)
+
+            # 如果当前累积的token加上新section会超过限制，保存当前块
+            if current_tokens + section_tokens > MAX_TOKEN - RESERVE_TOKEN:
                 save_current_block()
-                current_block = [f"# {current_title}（续）", line]
-                current_tokens = estimate_tokens('\n'.join(current_block))
+                current_block = []
+                current_tokens = 0
+
+            # 添加新的section
+            if current_block:
+                current_block.extend([section, content_section])
             else:
-                current_block.append(line)
-                current_tokens += line_tokens
+                current_title = title
+                current_level = level
+                current_block = [section, content_section]
+            current_tokens += section_tokens
+
+            i += 2  # 跳过内容部分
+        else:
+            # 处理无标题的内容
+            section_tokens = estimate_tokens(section)
+            if current_tokens + section_tokens > MAX_TOKEN - RESERVE_TOKEN:
+                save_current_block()
+                current_block = []
+                current_tokens = 0
+
+            current_block.append(section)
+            current_tokens += section_tokens
+            i += 1
 
     # 保存最后一个块
     save_current_block()
 
-    # 更新FileStats对象
+    # 如果总token数小于MAX_TOKEN-RESERVE_TOKEN，合并所有块
+    total_tokens = sum(block.tokens for block in blocks)
+    if total_tokens <= MAX_TOKEN - RESERVE_TOKEN:
+        combined_content = '\n'.join(block.content for block in blocks)
+        blocks = [TextBlock(
+            title="完整文档",
+            content=combined_content,
+            tokens=total_tokens,
+            level=0
+        )]
+
     file_stats.blocks = blocks
     return file_stats
 
@@ -234,7 +272,6 @@ def print_stats(stats_list: List[FileStats]):
     total_tokens = sum(stat.tokens for stat in stats_list)
     total_cost = sum(stat.estimated_cost for stat in stats_list)
 
-    # print("\nSize\t\tBasic\tPunct\tSplit\tCN\tEN\tTokens\tCost($)\tFile")
     print("\n"
         f"{'Size':<10}"
         f"{'Basic':<7}"
@@ -270,10 +307,10 @@ def print_stats(stats_list: List[FileStats]):
 
     print("\nEstimated costs for different models (input only):")
     for model_name, cost_info in MODEL_COSTS.items():
-        model_cost = (total_tokens / 1000) * cost_info.input_price
+        model_cost = (total_tokens / 1000000) * cost_info.input_price
         print(f"{model_name}: ${model_cost:.4f}")
 
-def process_directory(input_dir: str, output_dir: str, max_tokens: int = 2000) -> List[FileStats]:
+def process_directory(input_dir: str, output_dir: str) -> List[FileStats]:
     stats_list = []
 
     for root, _, files in os.walk(input_dir):
@@ -290,16 +327,18 @@ def process_directory(input_dir: str, output_dir: str, max_tokens: int = 2000) -
                     remove_references,
                     remove_links,
                     analyze_stats,
-                    split_into_blocks(max_tokens),  # 新增步骤
+                    split_into_blocks(MAX_TOKEN),
                     write_file(output_path),
-                    write_blocks(output_dir)  # 新增步骤
+                    write_blocks(output_dir)
                 )
                 stats_list.append(stats)
 
     return stats_list
 
+# %%
 if __name__ == '__main__':
     input_directory = "dataset-origin"
     output_directory = "dataset"
-    stats_list = process_directory(input_directory, output_directory, max_tokens=2000)
+    stats_list = process_directory(input_directory, output_directory)
     print_stats(stats_list)
+    print_block_stats(stats_list)

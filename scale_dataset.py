@@ -71,6 +71,7 @@ class SchemaData:
         elements = schema_data["pages"][0]["elements"]
         answer_value_schema = []
 
+        # TODO
         for question in elements:
             if question["type"] == "text":
                 if question.get("inputType") == "time":

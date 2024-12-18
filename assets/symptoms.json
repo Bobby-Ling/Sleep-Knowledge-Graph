@@ -1,0 +1,217 @@
+[
+    {
+        "category": "睡眠问题",
+        "symptoms": [
+            {
+                "name": "入睡困难",
+                "internal_name": "入睡困难",
+                "description": "躺在床上超过30分钟仍无法入睡，或感觉难以入睡"
+            },
+            {
+                "name": "夜间频繁醒来",
+                "internal_name": "夜间觉醒",
+                "description": "夜间睡眠过程中反复醒来，难以维持连续睡眠"
+            },
+            {
+                "name": "早醒",
+                "internal_name": "早醒",
+                "description": "比预期醒来时间提前醒来，且无法再次入睡"
+            },
+            {
+                "name": "多梦",
+                "internal_name": "多梦",
+                "description": "频繁做梦或经常记得梦的内容"
+            },
+            {
+                "name": "浅睡易醒",
+                "internal_name": "睡眠维持困难",
+                "description": "睡眠较浅，容易被声音或其他干扰唤醒"
+            },
+            {
+                "name": "睡眠质量差",
+                "internal_name": "睡眠质量差",
+                "description": "睡眠后仍感觉疲惫，没有休息好的感觉"
+            },
+            {
+                "name": "难以清醒",
+                "internal_name": "觉醒困难",
+                "description": "早晨醒来时感觉特别困难，需要很长时间才能完全清醒"
+            },
+            {
+                "name": "睡眠时间减少",
+                "internal_name": "总睡眠时间减少",
+                "description": "每天实际的睡眠时间明显少于正常需要的时间"
+            }
+        ]
+    },
+    {
+        "category": "日间症状",
+        "symptoms": [
+            {
+                "name": "白天嗜睡",
+                "internal_name": "日间过度思睡",
+                "description": "白天感觉特别困倦，容易打瞌睡或不自主入睡"
+            },
+            {
+                "name": "精力不足",
+                "internal_name": "疲劳",
+                "description": "感觉体力或精力不够，容易疲惫"
+            },
+            {
+                "name": "注意力难以集中",
+                "internal_name": "注意力集中困难",
+                "description": "难以集中精力完成工作或学习任务"
+            },
+            {
+                "name": "记忆力下降",
+                "internal_name": "记忆力下降",
+                "description": "对近期事物的记忆力变差，经常忘事"
+            },
+            {
+                "name": "工作效率降低",
+                "internal_name": "日间功能损害",
+                "description": "工作或学习效率明显下降，完成任务需要更多时间"
+            },
+            {
+                "name": "情绪易激动",
+                "internal_name": "易激惹",
+                "description": "容易发脾气，情绪波动大，易被激怒"
+            }
+        ]
+    },
+    {
+        "category": "呼吸症状",
+        "symptoms": [
+            {
+                "name": "打鼾",
+                "internal_name": "打鼾",
+                "description": "睡眠时发出响亮的呼吸声"
+            },
+            {
+                "name": "呼吸暂停",
+                "internal_name": "呼吸暂停",
+                "description": "睡眠时呼吸会短暂停止，可能被他人观察到"
+            },
+            {
+                "name": "憋醒",
+                "internal_name": "憋醒",
+                "description": "因呼吸不畅而突然醒来"
+            },
+            {
+                "name": "夜间呼吸困难",
+                "internal_name": "呼吸困难",
+                "description": "夜间感觉呼吸不顺畅或气短"
+            },
+            {
+                "name": "张口呼吸",
+                "internal_name": "张口呼吸",
+                "description": "睡眠时习惯性张开口呼吸"
+            }
+        ]
+    },
+    {
+        "category": "异常行为",
+        "symptoms": [
+            {
+                "name": "夜间腿部不适",
+                "internal_name": "腿部不适",
+                "description": "夜间感觉腿部有不适感，如蚂蚁爬行感，需要活动才能缓解"
+            },
+            {
+                "name": "睡眠时肢体抽动",
+                "internal_name": "周期性肢体运动",
+                "description": "睡眠中手脚会不自主地抽动或踢动"
+            },
+            {
+                "name": "磨牙",
+                "internal_name": "磨牙",
+                "description": "睡眠时会不自觉地磨牙或咬牙"
+            },
+            {
+                "name": "梦游",
+                "internal_name": "睡行症",
+                "description": "睡眠中起床行走或做其他活动，醒来后不记得"
+            },
+            {
+                "name": "夜惊",
+                "internal_name": "睡惊症",
+                "description": "睡眠中突然惊叫、哭泣或表现出恐惧"
+            },
+            {
+                "name": "说梦话",
+                "internal_name": "梦语症",
+                "description": "睡眠中说话，醒来后往往不记得"
+            },
+            {
+                "name": "睡眠时异常进食",
+                "internal_name": "睡眠相关性进食障碍",
+                "description": "夜间在不清醒状态下进食，醒来可能不记得"
+            }
+        ]
+    },
+    {
+        "category": "身体症状",
+        "symptoms": [
+            {
+                "name": "晨起头痛",
+                "internal_name": "觉醒头痛",
+                "description": "早晨醒来时感觉头痛"
+            },
+            {
+                "name": "胸闷",
+                "internal_name": "胸闷",
+                "description": "感觉胸部压迫或不适"
+            },
+            {
+                "name": "心慌",
+                "internal_name": "心悸",
+                "description": "感觉心跳加快或心跳不适"
+            },
+            {
+                "name": "全身疲乏",
+                "internal_name": "乏力",
+                "description": "全身无力，疲惫感明显"
+            },
+            {
+                "name": "夜间盗汗",
+                "internal_name": "盗汗",
+                "description": "夜间睡眠时出现大量汗水"
+            },
+            {
+                "name": "口干",
+                "internal_name": "口干",
+                "description": "感觉口腔干燥，尤其是早晨醒来时"
+            },
+            {
+                "name": "夜尿增多",
+                "internal_name": "遗尿",
+                "description": "夜间需要多次起床排尿，或出现遗尿情况"
+            }
+        ]
+    },
+    {
+        "category": "精神症状",
+        "symptoms": [
+            {
+                "name": "焦虑",
+                "internal_name": "焦虑",
+                "description": "感到担心、紧张或不安"
+            },
+            {
+                "name": "抑郁",
+                "internal_name": "抑郁",
+                "description": "情绪低落，对事物失去兴趣"
+            },
+            {
+                "name": "易紧张",
+                "internal_name": "紧张",
+                "description": "容易感到紧张不安，难以放松"
+            },
+            {
+                "name": "恐惧",
+                "internal_name": "恐惧",
+                "description": "对特定事物或情况产生强烈的害怕感"
+            }
+        ]
+    }
+]
