@@ -716,7 +716,23 @@ class SleepDisorderScaleDataset():
 
 # %%
 if __name__ == "__main__":
-    pass
+    df = pd.read_csv('dataset.csv')
+    result_df = pd.DataFrame()
+    result_df['diagnosis_label'] = df['diagnosis_label']
+    for schema in Schema:
+        if schema is not Schema.UNIMPLEMENTED:
+            if schema == Schema.PSQI:
+                pass
+            for column in schema.columns:
+                if column == "psqi_bedtime" or column == "psqi_wake_time":
+                    continue
+                # hama, psqi, ...
+                result_column = column.split('_')[0]
+                if result_column not in result_df:
+                    result_df[result_column] = df[column]
+                else:
+                    result_df[result_column] += df[column]
+    result_df.to_csv("scale_result.csv", index_label=False, index=False)
 
 # %%
 SCALE_SOURCE_DIR = "/mnt/c/Users/bobby/DATA/文档/项目/知识图谱/睡眠障碍诊断知识图谱培训材料/睡眠数据库--修改版"
@@ -724,12 +740,27 @@ SCALE_SOURCE_DIR = "/mnt/c/Users/bobby/DATA/文档/项目/知识图谱/睡眠障
 SCALE_TARGET_DIR = "dataset-origin/dataset_scale"
 DEMO_DIR = f"{SCALE_TARGET_DIR}/1-轻度阻塞性睡眠后续暂停"
 
-dataset = SleepDisorderScaleDataset(SCALE_SOURCE_DIR)
-df = dataset.data
+# dataset = SleepDisorderScaleDataset(SCALE_SOURCE_DIR)
+# df = dataset.data
 # print(df)
-df.to_csv("dataset.csv", index=False)
+# df.to_csv("dataset.csv", index=False)
 # df
 # %%
 # hamd_df = HAMDScale.extract(f"{DEMO_DIR}/{Schema.HAMD.scale_file}")
 
+# %%
+# scale_form_result = {}
+# for scale_cls in SleepDisorderScaleDataset.SCALE_CLASSES:
+#     if scale_cls.schema is Schema.PSQI:
+#         continue
+#     scale_values =  scale_cls.extract_values(
+#             scale_cls.extract_answers(
+#                 scale_cls.extract_content(
+#                     os.path.join(DEMO_DIR, scale_cls.schema.scale_file)
+#                 )
+#             )
+#         )
+#     print(scale_values)
+#     scale_form_result[scale_cls.schema.value] = [scale_values[column_name] for column_name in scale_cls.schema.columns]
+# print(json.dumps(scale_form_result))
 # %%
