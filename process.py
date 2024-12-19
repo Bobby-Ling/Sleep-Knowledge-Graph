@@ -337,10 +337,9 @@ class BatchProcessor:
                                 state = self.state[original_file]
                                 state.processed_blocks += 1
 
-                                # 定期保存
-                                if state.processed_blocks % self.save_interval == 0:
+                                # if state.processed_blocks % self.save_interval == 0:
                                     # with self.save_lock:
-                                    self.save_state()
+                                self.save_state()
                                     # self.save_responses(original_file)
                 finally:
                     loop.close()
@@ -579,16 +578,15 @@ class BatchProcessor:
             # 等待所有任务完成
             self.message_queue.join()
 
-            # 标记所有文件为完成
-            with self.state_lock:
-                for state in self.state.values():
-                    if state.processed_blocks == len(state.block_files):
-                        state.completed = True
-                        # self.save_responses(state.file_name)
-                # with self.save_lock:
-                self.save_state()
-
         finally:
+            # 标记所有文件为完成
+            # with self.state_lock:
+            for state in self.state.values():
+                if state.processed_blocks == len(state.block_files):
+                    state.completed = True
+                    # self.save_responses(state.file_name)
+            # with self.save_lock:
+            self.save_state()
             # 清理并行处理资源
             for state in self.state.values():
                 # if state.processed_blocks == len(state.block_files):
