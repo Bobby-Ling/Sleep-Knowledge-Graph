@@ -7,7 +7,7 @@
       "elements": [
         {
           "type": "radiogroup",
-          "name": "ais_sleep_latency",
+          "name": "aisi_sleep_latency",
           "title": "1. 入睡时间（关灯后到睡着的时间）",
           "isRequired": true,
           "choices": [
@@ -31,7 +31,7 @@
         },
         {
           "type": "radiogroup",
-          "name": "ais_night_awakening",
+          "name": "aisi_night_awakening",
           "title": "2. 夜间苏醒",
           "isRequired": true,
           "choices": [
@@ -55,7 +55,7 @@
         },
         {
           "type": "radiogroup",
-          "name": "ais_early_awakening",
+          "name": "aisi_early_awakening",
           "title": "3. 比期望的时间早醒",
           "isRequired": true,
           "choices": [
@@ -79,7 +79,7 @@
         },
         {
           "type": "radiogroup",
-          "name": "ais_sleep_duration",
+          "name": "aisi_sleep_duration",
           "title": "4. 总睡眠时间",
           "isRequired": true,
           "choices": [
@@ -103,7 +103,7 @@
         },
         {
           "type": "radiogroup",
-          "name": "ais_sleep_quality",
+          "name": "aisi_sleep_quality",
           "title": "5. 总睡眠质量（无论睡多长）",
           "isRequired": true,
           "choices": [
@@ -127,7 +127,7 @@
         },
         {
           "type": "radiogroup",
-          "name": "ais_daytime_mood",
+          "name": "aisi_daytime_mood",
           "title": "6. 白天情绪",
           "isRequired": true,
           "choices": [
@@ -151,7 +151,7 @@
         },
         {
           "type": "radiogroup",
-          "name": "ais_physical_function",
+          "name": "aisi_physical_function",
           "title": "7. 白天身体功能（体力或精神：如记忆力、认知力和注意力等）",
           "isRequired": true,
           "choices": [
@@ -175,7 +175,7 @@
         },
         {
           "type": "radiogroup",
-          "name": "ais_daytime_sleepiness",
+          "name": "aisi_daytime_sleepiness",
           "title": "8. 白天思睡",
           "isRequired": true,
           "choices": [
@@ -203,7 +203,7 @@
   "calculatedValues": [
     {
       "name": "totalScore",
-      "expression": "{ais_sleep_latency}+{ais_night_awakening}+{ais_early_awakening}+{ais_sleep_duration}+{ais_sleep_quality}+{Q6}+{Q7}+{Q8}"
+      "expression": "{aisi_sleep_latency}+{aisi_night_awakening}+{aisi_early_awakening}+{aisi_sleep_duration}+{aisi_sleep_quality}+{Q6}+{Q7}+{Q8}"
     }
   ],
   "completedHtml": {

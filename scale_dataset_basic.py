@@ -50,7 +50,7 @@ class SleepDisorderScaleDataset:
             "diagnosis_label",  # 疾病分类标签
         ]
 
-        self.ais_columns = []
+        self.aisi_columns = []
         self.ess_columns = []
         self.hama_columns = []
         self.hamd_columns = []
@@ -61,7 +61,7 @@ class SleepDisorderScaleDataset:
 
         # 初始化各量表的列名列表
         self.scale_schema_metas = {
-            "AISI": self.ais_columns,
+            "AISI": self.aisi_columns,
             "ESS": self.ess_columns,
             "HAMA": self.hama_columns,
             "HAMD": self.hamd_columns,
@@ -252,7 +252,7 @@ class SleepDisorderScaleDataset:
             "严重延迟或没有睡觉": 3,
             "延迟严重或没有睡觉": 3,
         }
-        columns = self.ais_columns
+        columns = self.aisi_columns
 
         # 一般情形, 但是这里的问卷结果比较呃呃
         # question_values = self.extract_question_values_common(answer_text, "AISI")

@@ -722,6 +722,7 @@ if __name__ == "__main__":
     for schema in Schema:
         if schema is not Schema.UNIMPLEMENTED:
             if schema == Schema.PSQI:
+                # continue
                 pass
             for column in schema.columns:
                 if column == "psqi_bedtime" or column == "psqi_wake_time":
@@ -752,7 +753,8 @@ DEMO_DIR = f"{SCALE_TARGET_DIR}/1-轻度阻塞性睡眠后续暂停"
 # scale_form_result = {}
 # for scale_cls in SleepDisorderScaleDataset.SCALE_CLASSES:
 #     if scale_cls.schema is Schema.PSQI:
-#         continue
+#         # continue
+#         pass
 #     scale_values =  scale_cls.extract_values(
 #             scale_cls.extract_answers(
 #                 scale_cls.extract_content(

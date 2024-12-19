@@ -11,6 +11,23 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "cwd": "${fileDirname}"
+        },
+        {
+            "name": "Python 调试程序: Flask",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "flask",
+            "env": {
+                "FLASK_APP": "backend.py",
+                "FLASK_DEBUG": "1"
+            },
+            "args": [
+                "run",
+                "--no-debugger",
+                "--no-reload"
+            ],
+            "jinja": true,
+            "autoStartBrowser": false
         }
     ]
 }
