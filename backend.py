@@ -6,6 +6,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Union
 
+import appbuilder
 import numpy as np
 from flask import Flask, jsonify, request
 from flask_cors import CORS
@@ -21,8 +22,9 @@ from langchain_openai import ChatOpenAI
 from analyze_scale import predict_diagnosis
 from neo4j_import import importer
 from neo4j_utils import generate_submit_query
-from prompts_template import CHAT_SYSTEM_MSG
+from prompts_template import CHAT_SYSTEM_MSG, SLEEP_ANALYZER_PAYLOAD_TEMPLATE, SLEEP_ANALYZER_SYSTEM_MSG
 from scale_dataset import Schema, SleepDisorderScaleDataset
+from qianfan_langchain import parse_result
 
 app = Flask(__name__)
 CORS(app)  # 允许跨域请求
@@ -32,6 +34,12 @@ logger.setLevel(logging.INFO)
 
 os.environ["OPENAI_API_KEY"] = 'sk-v6b21de09961ae981a677f1d02c1f2ade61a1d01c4c9JHN4'
 os.environ["OPENAI_API_BASE"] = 'https://api.gptsapi.net/v1'
+
+os.environ["APPBUILDER_TOKEN"] = "bce-v3/ALTAK-dz2T9w26uHBTw3DWWeNp2/8094ad4d9033ce35390cd6bece585e47a7bd0893"
+sleep_chatbot_app_id = "a4a01e79-a41f-47cb-b1de-d159ed499ad2"
+sleep_analyzer_app_id = "98256157-5b8e-47be-a215-b54bf47b9965"
+sleep_chatbot = appbuilder.AppBuilderClient(sleep_chatbot_app_id)
+sleep_analyzer = appbuilder.AppBuilderClient(sleep_analyzer_app_id)
 
 @dataclass
 class HistoryItem:
@@ -75,12 +83,16 @@ class Session:
     chat: SerializableMessageHistory = field(default_factory=SerializableMessageHistory)
     query: List[HistoryItem] = field(default_factory=list)
     scales: List[HistoryItem] = field(default_factory=list)
+    chatbot_conversation_id: str = field(default_factory=str)
+    analysis: dict = field(default_factory=dict)
 
     def to_dict(self) -> dict:
         return {
             "chat": self.chat.to_dict(),
             "query": [item.to_dict() for item in self.query],
-            "scales": [item.to_dict() for item in self.scales]
+            "scales": [item.to_dict() for item in self.scales],
+            "chatbot_conversation_id": self.chatbot_conversation_id,
+            "analysis": self.analysis
         }
 
     @classmethod
@@ -88,7 +100,9 @@ class Session:
         return cls(
             chat=SerializableMessageHistory.from_dict(data["chat"]),
             query=[HistoryItem.from_dict(item) for item in data["query"]],
-            scales=[HistoryItem.from_dict(item) for item in data["scales"]]
+            scales=[HistoryItem.from_dict(item) for item in data["scales"]],
+            chatbot_conversation_id=data["chatbot_conversation_id"],
+            analysis=data["analysis"]
         )
 
 class User:
@@ -113,7 +127,7 @@ class User:
         }
     }
     """
-    def __init__(self, save_path: str = "data/chat_history.json"):
+    def __init__(self, save_path: str = "data/chat.json"):
         self.save_path = Path(save_path)
         self.save_path.parent.mkdir(exist_ok=True)
         self.data: Dict[str, Session] = {}  # 修改为直接存储session
@@ -151,10 +165,13 @@ class User:
             logger.warning(f"{self.save_path} not exists!!!")
             return
 
-        with open(self.save_path, 'r', encoding='utf-8') as f:
-            data_dict: dict = json.load(f)
+        try:
+            with open(self.save_path, 'r', encoding='utf-8') as f:
+                data_dict: dict = json.load(f)
 
-        self.from_dict(data_dict)
+            self.from_dict(data_dict)
+        except Exception as e:
+            logger.warning(f"load state error :{e}")
 
 user = User()
 user.load()
@@ -167,7 +184,7 @@ model = ChatOpenAI(
 prompt_template = ChatPromptTemplate.from_messages([
     SystemMessage(content="你是一个聊天机器人, 具备记忆能力"),
     # SystemMessage(content=CHAT_SYSTEM_MSG),
-    MessagesPlaceholder(variable_name="history"),
+    # MessagesPlaceholder(variable_name="history"),
     ("human", "{input}"),
 ])
 
@@ -196,7 +213,11 @@ def create_session(session_id):
     title = data.get("title")
 
     # 初始化新的对话
-    user.get_session(session_id)
+    session = user.get_session(session_id)
+
+    # 百度机器人
+    session.chatbot_conversation_id = sleep_chatbot.create_conversation()
+
     user.save()
 
     return jsonify({
@@ -205,59 +226,98 @@ def create_session(session_id):
         "created_at": datetime.utcnow().isoformat()
     })
 
+@app.route("/chat/<session_id>/init", methods=["POST"])
+def init_chat(session_id):
+    session = user.get_session(session_id)
+
+    ANALYZER_MSG = ""
+    if len(session.query) == 0:
+        logger.warning("session.query is empty")
+    else:
+        ANALYZER_MSG += f"""
+        # neo4j查询结果json为
+        {session.query[-1].result}
+        """
+    if len(session.scales) == 0:
+        logger.warning("session.scales is empty")
+    else:
+        ANALYZER_MSG += f"""
+        # 量表结果和可能性分析为
+        {session.scales[-1].result}
+        """
+
+    # sleep_analyzer_conv_id = sleep_analyzer.create_conversation()
+    # result = parse_result(sleep_analyzer.run(sleep_analyzer_conv_id, query=ANALYZER_MSG))
+    neo4j_analyze_result = model.invoke([
+        SystemMessage(SLEEP_ANALYZER_SYSTEM_MSG),
+        HumanMessage(ANALYZER_MSG)
+    ])
+    logger.info(f"neo4j_analyze_result: \n{neo4j_analyze_result}\n")
+
+    neo4j_analyze_result_short = model.invoke([
+        SystemMessage("""
+            缩减下面的文本至400字以下, 保留核心诊断和建议相关内容, 可以适当删减药物和治疗等罗列部分
+        """),
+        HumanMessage(neo4j_analyze_result.content)
+    ])
+    logger.info(f"neo4j_analyze_result_short: \n{neo4j_analyze_result_short}\n")
+
+    CHATBOT_MSG = f"""我从另一个医疗Agent得到了以下信息, 
+    你的角色、指令、要求等都不变, 只是在接下来的对话中的回答多了以下这些额外信息:
+    # 来自 另一个Agent的信息
+    {neo4j_analyze_result_short}"""
+
+    chatbot_result = parse_result(sleep_chatbot.run(session.chatbot_conversation_id, query=CHATBOT_MSG))
+    logger.info(json.dumps(chatbot_result, indent=4, ensure_ascii=False))
+
+    session.chat.add_ai_message(AIMessage([{"response": chatbot_result}]))
+
+    response = {
+        "analysis": neo4j_analyze_result.content,
+        "short_analysis": neo4j_analyze_result_short.content,
+        "response": chatbot_result
+    }
+
+
+    session.analysis = response
+
+    user.save()
+
+    return jsonify(response)
+
+
 @app.route("/chat/<session_id>/messages", methods=["POST"])
 def send_message(session_id):
     data: dict = request.get_json()
     content: str = data["content"]
+    session = user.get_session(session_id)
 
-    config: RunnableConfig = {
-        "configurable": {
-            "session_id": session_id,
-        }
-    }
+    # config: RunnableConfig = {
+    #     "configurable": {
+    #         "session_id": session_id,
+    #     }
+    # }
 
-    response = chain.invoke(
-        {
-            "input": [HumanMessage(content=content)],
-        },
-        config=config
-    )
+    # response = chain.invoke(
+    #     {
+    #         "input": [HumanMessage(content=content)],
+    #     },
+    #     config=config
+    # )
+
+    # 获取neo4j
+    # response = model.invoke(
+    #     [HumanMessage(content='')],
+    #     config=config
+    # )
+
+    response = parse_result(sleep_chatbot.run(session.chatbot_conversation_id, query=content))
+    session.chat.add_user_message(HumanMessage(content))
+    session.chat.add_ai_message(AIMessage([{"response": response}]))
 
     user.save()
 
-    return jsonify({
-        "response": response.content,
-    })
-
-@app.route("/chat/<session_id>/messages/stream", methods=["POST"])
-def stream_message(session_id):
-    # TODO 无法保留历史
-    data: dict = request.get_json()
-    content = data.get("content")
-
-    if not content:
-        return jsonify({"error": "content  are required"}), 400
-
-    config: RunnableConfig = {
-        "configurable": {
-            "session_id": session_id,
-        }
-    }
-
-    def generate():
-        for chunk in chain.stream(
-            {
-                "input": [HumanMessage(content=content)],
-            },
-            config=config
-        ):
-            if hasattr(chunk, "content"):
-                yield f"data: {chunk.content}\n\n"
-
-    return app.response_class(
-        generate(),
-        mimetype='text/event-stream'
-    )
+    return jsonify(response)
 
 @app.route("/chat/<session_id>/messages", methods=["GET"])
 def get_messages(session_id):
@@ -271,7 +331,7 @@ def get_messages(session_id):
     })
 
 @app.route("/chat/<session_id>", methods=["GET"])
-def get_sessions(session_id):
+def get_session_data(session_id):
     sessions = user.data[session_id]
 
     return jsonify(sessions.to_dict())
@@ -406,4 +466,4 @@ def submit_query(session_id):
         return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(debug=True, host='0.0.0.0', port=5000)

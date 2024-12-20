@@ -1,6 +1,10 @@
 # %%
 import json
 import os
+from langchain_core._api import deprecated
+from langchain_core.messages import BaseMessage
+from langchain_core.outputs import LLMResult
+from langchain_core.prompt_values import PromptValue
 import qianfan
 from prompts_template import *
 from chat_session_interfce import ChatSessionInterface

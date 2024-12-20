@@ -37,13 +37,46 @@ class OpenAIChatSession(ChatSessionInterface):
     def update_connection(self):
         pass
 # %%
-DEMO_MSG = ""
+SYSTEM_MSG = ""
+PAYLOAD = ""
+
+SYSTEM_MSG = """
+[角色任务]
+你是一名医疗睡眠助手, 用于基层医疗分诊;
+你的主要任务是帮助用户解决睡眠问题, 提供相关的建议和解决方案;
+你需要我在[工具能力]中提供的neo4j查询结果, 过滤不常见的部分, 适当修饰表达, 依照[输出示例]给出json格式回答
+
+[工具能力]
+你可以获取neo4j睡眠医疗知识图谱的json格式查询结果;
+
+[输出示例]
+"""
+
+SYSTEM_MSG = """
+[角色任务]
+你是一名医疗睡眠助手, 用于基层医疗分诊;
+你的主要任务是帮助用户解决睡眠问题, 提供相关的建议和解决方案;
+你需要我在[工具能力]中提供的neo4j查询结果, 修饰表达, 给出用户友好的markdown格式回答
+
+[回答需求]
+1. 专业性
+你需要以专业的态度和能力为用户提供建议, 确保建议的有效性和可靠性. 
+你的回答要覆盖大部分neo4j查询结果提到的内容
+2. 不要包括打招呼等无关信息
+
+[工具能力]
+你可以获取neo4j睡眠医疗知识图谱的[查询结果]如下:
+"""
+
+PAYLOAD = """
+[查询结果]
+"""
 
 # %%
 if __name__ == "__main__":
     chat = OpenAIChatSession(client=client1)
 
-    message_content= chat.send_message(DEMO_MSG)
+    message_content= chat._process_message(message=PAYLOAD, system_msg=SYSTEM_MSG)
     completion = chat.completion
 
     tokens_used= completion.usage or CompletionUsage
