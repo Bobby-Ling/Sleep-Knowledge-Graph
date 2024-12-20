@@ -4,8 +4,8 @@ from neo4j_import import importer
 
 # %%
 # result = importer.execute("MATCH (n:Symptom) RETURN n")
-# result = importer.execute("MATCH (s:Symptom)-[r:INDICATES]->(d:Disease) RETURN s")
-# symptom_mapping = [node["s"]["name"] for node in result[0]]
+# result = importer.execute("MATCH (s:Symptom)-[r:INDICATES]->(d:Disease) RETURN DISTINCT s")
+# internal_symptoms = [node["s"]["name"] for node in result[0]]
 
 # %%
 # def generate_get_symptoms(symptoms_data: list[dict]):
@@ -38,7 +38,8 @@ from neo4j_import import importer
 #     return final_query
 
 
-# symptom_mapping = json.loads(open("assets/symptoms.json", "r").read())
+symptom_mapping = json.loads(open("assets/symptoms.json", "r").read())
+internal_symptoms = [symptom['internal_name'] for item in symptom_mapping for symptom in item['symptoms']]
 # query = generate_get_symptoms(symptom_mapping)
 # # print(query)
 # result = importer.execute(query)

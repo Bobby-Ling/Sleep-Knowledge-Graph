@@ -93,9 +93,10 @@ CREATE (:NonDrugTreatment {
     equipment: String,      // 所需设备
 });
 
-// 风险因素节点
+// 病史或者风险因素节点
 CREATE (:RiskFactor {
     name: String,           // 因素名称
+    type: String,           // 候选: [现病史, 既往史, 家族史, 其他风险]
     description: String,    // 描述
     impact_level: String    // 影响程度
 });
@@ -134,7 +135,7 @@ CREATE (:Disease)-[:MAY_CAUSE {
     timeframe: String      // 时间框架
 }]->(:Complication);
 
-// 疾病-风险因素关系
+// 疾病-风险或病史因素关系
 CREATE (:Disease)-[:INFLUENCED_BY {
     impact_level: String,   // 影响程度
     evidence_level: String  // 证据等级
@@ -144,7 +145,7 @@ CREATE (:Disease)-[:INFLUENCED_BY {
 
 INIT_MSG = """
 [背景信息]
-我现在正在进行睡眠医疗知识图谱的构建工作, 计划使用大语言模型进行**实体识别、关系抽取和知识规则构建**, 使其输出可供neo4j直接导入;
+我现在正在进行睡眠医疗知识图谱的构建工作, 以便辅助基层医疗分诊; 计划使用大语言模型进行**实体识别、关系抽取和知识规则构建**, 使其输出可供neo4j直接导入;
 已有数据集的统计信息如下(见[附加信息]部分, 表头包含分词/token等的统计信息), 请等待我接下来的命令.
 [本条回答格式]
 理解我的意思了就回答: "// 明白;"
@@ -338,6 +339,25 @@ USPSTF推荐不仅关注成年人OSAHS的筛查和识别, 还强调了潜在的�
 )
 
 DEMO_API_COMMAND = API_COMMAND_MSG + DEMO_API_PAYLOAD
+
+CHAT_SYSTEM_MSG = """
+[角色任务]
+你是一名医疗睡眠助手, 用于基层医疗分诊;
+本条对话中, 你需要根据我在[工具能力]中提供的neo4j查询结果, 修饰表达, 给出用户友好的markdown格式回答,
+之后的对话中, 你需要根据用户输入和这些信息帮助用户解决睡眠问题, 提供相关的建议和解决方案;
+
+[回答需求]
+1. 专业性
+你需要以专业的态度和能力为用户提供建议, 确保建议的有效性和可靠性. 
+你的回答要覆盖大部分neo4j查询结果提到的内容
+2. 不要包括打招呼等无关信息
+"""
+
+CHAT_INIT_PAYLOAD = """
+[工具能力]
+你可以获取neo4j睡眠医疗知识图谱的[查询结果]如下:
+{neo4j_result}
+"""
 
 # %%
 if __name__ == "__main__":
