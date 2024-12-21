@@ -25,6 +25,7 @@ from neo4j_utils import generate_submit_query
 from prompts_template import CHAT_SYSTEM_MSG, SLEEP_ANALYZER_PAYLOAD_TEMPLATE, SLEEP_ANALYZER_SYSTEM_MSG
 from scale_dataset import Schema, SleepDisorderScaleDataset
 from qianfan_langchain import parse_result
+from aip import AipOcr
 
 app = Flask(__name__)
 CORS(app)  # 允许跨域请求
@@ -40,6 +41,17 @@ sleep_chatbot_app_id = "a4a01e79-a41f-47cb-b1de-d159ed499ad2"
 sleep_analyzer_app_id = "98256157-5b8e-47be-a215-b54bf47b9965"
 sleep_chatbot = appbuilder.AppBuilderClient(sleep_chatbot_app_id)
 sleep_analyzer = appbuilder.AppBuilderClient(sleep_analyzer_app_id)
+
+APP_ID = '116780038'
+API_KEY = 'n9h8Si7uJwRScNh5QGfS0XZ2'
+SECRET_KEY = 'fz6dfLXaz1mXdmAs6OJNCAHrDfqyu7k4'
+
+ocr_client = AipOcr(APP_ID, API_KEY, SECRET_KEY)
+
+def get_file_content(file_path):
+    with open(file_path, 'rb') as fp:
+        return fp.read()
+
 
 @dataclass
 class HistoryItem:
@@ -83,14 +95,17 @@ class Session:
     chat: SerializableMessageHistory = field(default_factory=SerializableMessageHistory)
     query: List[HistoryItem] = field(default_factory=list)
     scales: List[HistoryItem] = field(default_factory=list)
+    medical_histories: List[HistoryItem] = field(default_factory=list)
     chatbot_conversation_id: str = field(default_factory=str)
     analysis: dict = field(default_factory=dict)
+
 
     def to_dict(self) -> dict:
         return {
             "chat": self.chat.to_dict(),
             "query": [item.to_dict() for item in self.query],
             "scales": [item.to_dict() for item in self.scales],
+            "medical_histories": [item.to_dict() for item in self.medical_histories],
             "chatbot_conversation_id": self.chatbot_conversation_id,
             "analysis": self.analysis
         }
@@ -101,6 +116,7 @@ class Session:
             chat=SerializableMessageHistory.from_dict(data["chat"]),
             query=[HistoryItem.from_dict(item) for item in data["query"]],
             scales=[HistoryItem.from_dict(item) for item in data["scales"]],
+            medical_histories=[HistoryItem.from_dict(item) for item in data["medical_histories"]],
             chatbot_conversation_id=data["chatbot_conversation_id"],
             analysis=data["analysis"]
         )
@@ -110,20 +126,19 @@ class User:
     {
         "session_id": {
             "chat": InMemoryChatMessageHistory,
-            "query": [
-                {
-                    "timestamp": str,
-                    "request": object,
-                    "result": object
+            "query": HistoryItem,
+            "scales": HistoryItem,
+            "medical_histories": HistoryItem,
+            "chatbot_conversation_id": str,
+            "analysis": {
+                "analysis": str,
+                "short_analysis": str,
+                "response": {
+                    "content": str,
+                    "followup_query": list,
+                    "references": list
                 }
-            ],
-            "scales": [
-                {
-                    "timestamp": str,
-                    "request": object,
-                    "result": object
-                }
-            ]
+            }
         }
     }
     """
@@ -244,6 +259,13 @@ def init_chat(session_id):
         ANALYZER_MSG += f"""
         # 量表结果和可能性分析为
         {session.scales[-1].result}
+        """
+    if len(session.medical_histories) == 0:
+        logger.warning("session.medical_histories is empty")
+    else:
+        ANALYZER_MSG += f"""
+        # 患者病历信息为
+        {session.medical_histories[-1].result}
         """
 
     # sleep_analyzer_conv_id = sleep_analyzer.create_conversation()
@@ -464,6 +486,53 @@ def submit_query(session_id):
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+UPLOAD_FOLDER = './tmp'
+if not os.path.exists(UPLOAD_FOLDER):
+    os.makedirs(UPLOAD_FOLDER)
+
+@app.route('/medical_history/<session_id>', methods=['POST'])
+def upload_medical_history(session_id):
+    session = user.get_session(session_id)
+
+    if 'file' not in request.files:
+        return jsonify({'error': 'No file part'}), 400
+
+    file = request.files['file']
+    if file.filename == '':
+        return jsonify({'error': 'No selected file'}), 400
+
+    os.makedirs('./tmp', exist_ok=True)
+    file_path = f'./tmp/{session_id}_{file.filename}'
+    file.save(file_path)
+
+    try:
+        with open(file_path, 'rb') as fp:
+            image = fp.read()
+        result = ocr_client.basicGeneral(image)
+        text = ' '.join([w['words'] for w in result['words_result']]) # type: ignore
+        # os.remove(file_path)
+        logger.info(f"ocr result: {text}")
+
+        extracted = model.invoke([
+            SystemMessage("将下面的病历信息提取出患者基本信息、患者症状、既往史、现病史、家族史等信息"),
+            HumanMessage(text)
+        ])
+
+        historu_item = HistoryItem(
+            timestamp=datetime.utcnow().isoformat(),
+            request=text,
+            result=extracted.content
+        )
+        session.medical_histories.append(historu_item)
+
+        user.save()
+
+        return jsonify(historu_item)
+    except:
+        if os.path.exists(file_path):
+            os.remove(file_path)
+        return jsonify({'error': 'OCR failed'}), 500
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
