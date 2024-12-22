@@ -23,7 +23,7 @@ from langchain_openai import ChatOpenAI
 from analyze_scale import predict_diagnosis
 from neo4j_import import importer
 from neo4j_utils import generate_submit_query
-from prompts_template import CHAT_SYSTEM_MSG, SLEEP_ANALYZER_PAYLOAD_TEMPLATE, SLEEP_ANALYZER_SYSTEM_MSG
+from prompts_template import CHAT_SYSTEM_MSG, MEDICAL_HISTORY_EXTRACTOR_SYSTEM_MSG, SLEEP_ANALYZER_PAYLOAD_TEMPLATE, SLEEP_ANALYZER_SYSTEM_MSG
 from scale_dataset import Schema, SleepDisorderScaleDataset, schema_to_scale
 from qianfan_langchain import parse_result
 from aip import AipOcr
@@ -326,48 +326,70 @@ def create_session(session_id):
         "created_at": datetime.utcnow().isoformat()
     })
 
+@app.route("/analysis/<session_id>", methods=["GET"])
+def analysis(session_id):
+    try:
+        session = user.get_session(session_id)
+
+        ANALYZER_MSG = ""
+        if len(session.query) == 0:
+            logger.warning("session.query is empty")
+        else:
+            ANALYZER_MSG += f"""
+            # neo4j查询结果json为
+            {session.query[-1].result}
+            """
+        if len(session.scales.analysis.summary) == 0:
+            logger.warning("session.scales is empty")
+        else:
+            ANALYZER_MSG += f"""
+            # 使用的量表及其评估分析为
+            {session.scales.result}
+            # 综合所有量表的结果和疾病可能性分析为
+            {session.scales.analysis}
+            """
+        if len(session.medical_histories) == 0:
+            logger.warning("session.medical_histories is empty")
+        else:
+            ANALYZER_MSG += f"""
+            # 患者病历信息为
+            {session.medical_histories[-1].result}
+            """
+
+        # sleep_analyzer_conv_id = sleep_analyzer.create_conversation()
+        # result = parse_result(sleep_analyzer.run(sleep_analyzer_conv_id, query=ANALYZER_MSG))
+        neo4j_analyze_result = model.invoke([
+            SystemMessage(SLEEP_ANALYZER_SYSTEM_MSG),
+            HumanMessage(ANALYZER_MSG)
+        ])
+        logger.info(f"neo4j_analyze_result: \n{neo4j_analyze_result}\n")
+
+        neo4j_analyze_result_short = model.invoke([
+            SystemMessage("""
+                根据下面的睡眠疾病分析json, 生成400字以下的文本, 保留核心诊断和建议相关内容, 可以适当删减药物和治疗等罗列部分
+            """),
+            HumanMessage(neo4j_analyze_result.content)
+        ])
+        logger.info(f"neo4j_analyze_result_short: \n{neo4j_analyze_result_short}\n")
+
+        response = {
+            "analysis": json.loads(str(neo4j_analyze_result.content)),
+            "short_analysis": neo4j_analyze_result_short.content,
+        }
+
+        session.analysis = response
+
+        user.save()
+
+        return jsonify(response)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 @app.route("/chat/<session_id>/init", methods=["POST"])
 def init_chat(session_id):
     session = user.get_session(session_id)
 
-    ANALYZER_MSG = ""
-    if len(session.query) == 0:
-        logger.warning("session.query is empty")
-    else:
-        ANALYZER_MSG += f"""
-        # neo4j查询结果json为
-        {session.query[-1].result}
-        """
-    if len(session.scales.analysis.summary) == 0:
-        logger.warning("session.scales is empty")
-    else:
-        ANALYZER_MSG += f"""
-        # 量表结果和可能性分析为
-        {session.scales.result}
-        """
-    if len(session.medical_histories) == 0:
-        logger.warning("session.medical_histories is empty")
-    else:
-        ANALYZER_MSG += f"""
-        # 患者病历信息为
-        {session.medical_histories[-1].result}
-        """
-
-    # sleep_analyzer_conv_id = sleep_analyzer.create_conversation()
-    # result = parse_result(sleep_analyzer.run(sleep_analyzer_conv_id, query=ANALYZER_MSG))
-    neo4j_analyze_result = model.invoke([
-        SystemMessage(SLEEP_ANALYZER_SYSTEM_MSG),
-        HumanMessage(ANALYZER_MSG)
-    ])
-    logger.info(f"neo4j_analyze_result: \n{neo4j_analyze_result}\n")
-
-    neo4j_analyze_result_short = model.invoke([
-        SystemMessage("""
-            缩减下面的文本至400字以下, 保留核心诊断和建议相关内容, 可以适当删减药物和治疗等罗列部分
-        """),
-        HumanMessage(neo4j_analyze_result.content)
-    ])
-    logger.info(f"neo4j_analyze_result_short: \n{neo4j_analyze_result_short}\n")
+    neo4j_analyze_result_short = session.analysis["short_analysis"]
 
     CHATBOT_MSG = f"""我从另一个医疗Agent得到了以下信息, 
     你的角色、指令、要求等都不变, 只是在接下来的对话中的回答多了以下这些额外信息:
@@ -379,14 +401,7 @@ def init_chat(session_id):
 
     session.chat.add_ai_message(AIMessage([{"response": chatbot_result}]))
 
-    response = {
-        "analysis": neo4j_analyze_result.content,
-        "short_analysis": neo4j_analyze_result_short.content,
-        "response": chatbot_result
-    }
-
-
-    session.analysis = response
+    response = chatbot_result
 
     user.save()
 
@@ -667,7 +682,7 @@ def upload_medical_history(session_id):
         logger.info(f"ocr result: {text}")
 
         extracted = model.invoke([
-            SystemMessage("将下面的病历信息提取出患者基本信息、患者症状、既往史、现病史、家族史等信息"),
+            SystemMessage(MEDICAL_HISTORY_EXTRACTOR_SYSTEM_MSG),
             HumanMessage(text)
         ])
 

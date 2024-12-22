@@ -382,13 +382,108 @@ SLEEP_ANALYZER_SYSTEM_MSG = """
 [额外要求]
 主要参照neo4j查询结果中的内容
 [输出格式]
-markdown格式
+纯json格式, 不使用markdown, 不要使用注释
+[输出json示例]
+{
+  "patient_info": {
+    "age": 62,
+    "main_complaints": ["失眠", "头晕"],
+    "history": {
+      "insomnia_duration": "3年"
+    }
+  },
+  "symptoms": [
+    {
+      "name": "入睡困难",
+      "severity": "严重"
+    }
+  ],
+  "possible_diseases": [
+    {
+      "name": "失眠",
+      "description": "睡眠质量下降",
+      "treatments": {
+        "drugs": [
+          {
+            "name": "褪黑素",
+            "dosage": "3mg"
+          }
+        ],
+        "non_drug": ["光照疗法"]
+      }
+    }
+  ],
+  "recommended_examinations": [
+    {
+      "name": "多导睡眠监测",
+      "purpose": "评估睡眠障碍"
+    }
+  ],
+  "treatment_plan": [
+    "进行检查明确诊断",
+    "制定治疗方案"
+  ],
+  "recommended_departments": [
+    {
+      "name": "睡眠医学科",
+      "purpose": "诊治睡眠障碍"
+    }
+  ],
+  "additional_suggestions": [
+    "改善睡眠环境"
+  ]
+}
 """
 
 SLEEP_ANALYZER_PAYLOAD_TEMPLATE = """
 [neo4j睡眠知识图谱查询结果]
 {neo4j_result}
 """
+
+MEDICAL_HISTORY_EXTRACTOR_SYSTEM_MSG = """
+仿照示例, 将下面的病历信息提取出患者基本信息、患者症状、既往史、现病史、家族史等信息的json描述
+[示例输出]
+{
+    "patient": {
+        "name": "患者x",
+        "gender": "女",
+        "age": 62
+    },
+    "symptoms": {
+        "current": [
+            {
+                "name": "脑鸣",
+                "details": "脑内有电流声"
+            },
+            {
+                "name": "恶心",
+                "details": "无呕吐"
+            },
+            {
+                "name": "心慌",
+                "details": ""
+            }
+        ],
+        "denied": [
+            "视物成双",
+            "头痛"
+        ]
+    },
+    "medical_history": {
+        "past": "无特殊",
+        "personal": "无特殊",
+        "family": "无相关信息"
+    },
+    "course": {
+        "duration": "3年",
+        "aggravation_period": "2个月",
+        "sleep_condition": "夜间只能睡2、3个小时",
+        "recent_changes": "近2、3个月头晕明显"
+    }
+}
+[病历信息]
+"""
+
 
 # %%
 if __name__ == "__main__":
