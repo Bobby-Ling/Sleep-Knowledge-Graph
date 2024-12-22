@@ -164,6 +164,24 @@ class Schema(Enum):
         return SchemaData._schema_data[self]
 
     @property
+    def scale_data(self) -> Dict:
+        if self.value == Schema.UNIMPLEMENTED:
+            raise ValueError(f"{schema.value}!")
+
+        with open(Path(SCHEMA_DIR)/self.json_file, "r", encoding="utf-8") as f:
+            schema_data = json.load(f)
+        return schema_data
+
+    @property
+    def scale_evaluation_data(self) -> Dict:
+        if self.value == Schema.UNIMPLEMENTED:
+            raise ValueError(f"{schema.value}!")
+
+        with open(Path(SCHEMA_DIR)/self.json_file, "r", encoding="utf-8") as f:
+            schema_data = json.load(f)
+        return schema_data["evaluation"]
+
+    @property
     def columns(self) -> List[str]:
         """获取列名列表"""
         SchemaData._load_schema_data(self)
@@ -243,6 +261,52 @@ class BaseScale:
     def extract_values(cls, answers: Union[List[str], List[int]]) -> Dict[str, int]:
         """转换答案为最终值，由子类实现"""
         raise NotImplementedError
+
+    @classmethod
+    def evaluate(cls, values: List[int]) -> Dict:
+        """values:
+        [1, 1, 1, 1, 1, 1, 1, 0]
+        """
+
+        """evaluation_schema:
+        [
+            {
+                "label": "无失眠",
+                "from": "0",
+                "to": "3"
+            },
+            {
+                "label": "可疑失眠",
+                "from": "4",
+                "to": "6"
+            },
+            {
+                "label": "临床失眠",
+                "from": "7",
+                "to": "24"
+            }
+        ]
+        """
+
+        evaluation_schema = cls.schema.scale_evaluation_data
+
+        score = sum(values)
+
+        interpretation = ""
+        for level in evaluation_schema:
+            if int(level["from"]) <= score <= int(level["to"]):
+                interpretation = level["label"]
+                break
+
+        return {
+            "summary": {
+                "score": score,
+                "max_score": int(evaluation_schema[-1]["to"]),
+                "interpretation": interpretation,
+                "levels": cls.schema.scale_evaluation_data
+            },
+            "details": None
+        }
 
 class AISIScale(BaseScale):
     """AISI量表"""
@@ -518,6 +582,105 @@ class PSQIScale(BaseScale):
 
         return question_values
 
+    @classmethod
+    def evaluate(cls, values: List[int]) -> Dict:
+        """
+        [1350, 3, 390, 4, 3, 3, 3, 0, 0, 0, 0, 2, 0, 2, 3, 1, 1]
+        """
+        # 提取时间信息并转换为小时
+        bedtime = values[0] / 60  # 转换为小时
+        wake_time = values[2] / 60
+        sleep_duration = values[3]
+
+        # 计算各个成分得分
+        # A.主观睡眠质量
+        comp_a = values[13]  # sleep_quality
+
+        # B.入睡时间
+        latency_score = values[1]  # sleep_latency
+        difficulty_score = values[4]  # difficulty_30min
+        sum_b = latency_score + difficulty_score
+        comp_b = 0 if sum_b == 0 else (1 if sum_b <= 2 else (2 if sum_b <= 4 else 3))
+
+        # C.睡眠时间
+        comp_c = 0 if sleep_duration > 7 else (1 if sleep_duration > 6 else (2 if sleep_duration >= 5 else 3))
+
+        # D.睡眠效率
+        time_in_bed = wake_time - bedtime if wake_time > bedtime else (24 - bedtime) + wake_time
+        sleep_efficiency = (sleep_duration / time_in_bed) * 100
+        comp_d = 0 if sleep_efficiency > 85 else (1 if sleep_efficiency >= 75 else (2 if sleep_efficiency >= 65 else 3))
+
+        # E.睡眠障碍
+        disturbance_sum = sum(values[5:13])  # night_wake到pain的总和
+        comp_e = 0 if disturbance_sum == 0 else (1 if disturbance_sum <= 9 else (2 if disturbance_sum <= 18 else 3))
+
+        # F.催眠药物
+        comp_f = values[14]  # medication
+
+        # G.日间功能障碍
+        daytime_score = values[15]  # daytime_drowsiness
+        enthusiasm_score = values[16]  # enthusiasm
+        sum_g = daytime_score + enthusiasm_score
+        comp_g = 0 if sum_g == 0 else (1 if sum_g <= 2 else (2 if sum_g <= 4 else 3))
+
+        # 计算总分
+        total_score = comp_a + comp_b + comp_c + comp_d + comp_e + comp_f + comp_g
+
+        # 确定解释
+        interpretation = "睡眠质量好" if total_score <= 5 else ("睡眠质量一般" if total_score <= 10 else "睡眠质量差")
+
+        # 构建返回结果
+
+        evaluation_schema = cls.schema.scale_evaluation_data
+
+        return {
+            "summary": {
+                "score": total_score,
+                "max_score": 21,
+                "interpretation": interpretation,
+                "levels": evaluation_schema
+            },
+            "details": {
+                "components": [
+                    {
+                        "name": "A.主观睡眠质量",
+                        "score": comp_a,
+                        "max_score": 3
+                    },
+                    {
+                        "name": "B.入睡时间",
+                        "score": comp_b,
+                        "max_score": 3
+                    },
+                    {
+                        "name": "C.睡眠时间",
+                        "score": comp_c,
+                        "max_score": 3
+                    },
+                    {
+                        "name": "D.睡眠效率",
+                        "score": comp_d,
+                        "max_score": 3
+                    },
+                    {
+                        "name": "E.睡眠障碍",
+                        "score": comp_e,
+                        "max_score": 3
+                    },
+                    {
+                        "name": "F.催眠药物",
+                        "score": comp_f,
+                        "max_score": 3
+                    },
+                    {
+                        "name": "G.日间功能障碍",
+                        "score": comp_g,
+                        "max_score": 3
+                    }
+                ]
+            }
+        }
+
 class RBDSQScale(BaseScale):
     """RBDSQ量表"""
     schema: Schema = Schema.RBDSQ
@@ -734,6 +897,17 @@ if __name__ == "__main__":
                 else:
                     result_df[result_column] += df[column]
     result_df.to_csv("scale_result.csv", index_label=False, index=False)
+
+schema_to_scale: Dict[Schema, Type[BaseScale]] = {
+    Schema.AISI: AISIScale,
+    Schema.ESS: ESSScale,
+    Schema.HAMA: HAMAScale,
+    Schema.HAMD: HAMDScale,
+    Schema.IRLSSG: IRLSSGScale,
+    Schema.PSQI: PSQIScale,
+    Schema.RBDSQ: RBDSQScale,
+    Schema.STOPBANG: StopBangScale,
+}
 
 # %%
 SCALE_SOURCE_DIR = "/mnt/c/Users/bobby/DATA/文档/项目/知识图谱/睡眠障碍诊断知识图谱培训材料/睡眠数据库--修改版"

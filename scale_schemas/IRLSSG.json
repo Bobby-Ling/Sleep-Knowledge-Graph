@@ -295,5 +295,32 @@
       "expression": "{irlssg_discomfort}+{irlssg_urge_to_move}+{irlssg_relief}+{irlssg_sleep_disturbance}+{irlssg_fatigue}+{irlssg_impact}+{irlssg_frequency}+{irlssg_duration}+{irlssg_daily_affairs}+{irlssg_discomfort0}"
     }
   ],
-  "completedHtml": "问卷已完成！总分：{totalScore}\n评分说明：\n0-10分：无/轻微\n11-20分：中度\n21-30分：重度\n31-40分：极重度"
+  "completedHtml": "问卷已完成！总分：{totalScore}\n评分说明：\n0-10分：无/轻微\n11-20分：中度\n21-30分：重度\n31-40分：极重度",
+  "evaluation": [
+    {
+      "label": "无症状",
+      "from": "0",
+      "to": "0"
+    },
+    {
+      "label": "轻度",
+      "from": "1",
+      "to": "10"
+    },
+    {
+      "label": "中度",
+      "from": "11",
+      "to": "20"
+    },
+    {
+      "label": "重度",
+      "from": "21",
+      "to": "30"
+    },
+    {
+      "label": "极重度",
+      "from": "31",
+      "to": "40"
+    }
+  ]
 }

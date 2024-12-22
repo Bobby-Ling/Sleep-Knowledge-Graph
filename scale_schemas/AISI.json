@@ -203,10 +203,27 @@
   "calculatedValues": [
     {
       "name": "totalScore",
-      "expression": "{aisi_sleep_latency}+{aisi_night_awakening}+{aisi_early_awakening}+{aisi_sleep_duration}+{aisi_sleep_quality}+{Q6}+{Q7}+{Q8}"
+      "expression": "{aisi_sleep_latency}+{aisi_night_awakening}+{aisi_early_awakening}+{aisi_sleep_duration}+{aisi_sleep_quality}+{aisi_daytime_mood}+{aisi_physical_function}+{aisi_daytime_sleepiness}"
     }
   ],
   "completedHtml": {
     "default": "总分: {totalScore}\n\n评分说明：\n0-3分：正常\n4-5分：可疑失眠\n6分及以上：失眠"
-  }
+  },
+  "evaluation": [
+    {
+      "label": "无失眠",
+      "from": "0",
+      "to": "3"
+    },
+    {
+      "label": "可疑失眠",
+      "from": "4",
+      "to": "6"
+    },
+    {
+      "label": "临床失眠",
+      "from": "7",
+      "to": "24"
+    }
+  ]
 }

@@ -5,6 +5,7 @@ from dataclasses import asdict, dataclass, field
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Union
+from unittest import result
 
 import appbuilder
 import numpy as np
@@ -23,7 +24,7 @@ from analyze_scale import predict_diagnosis
 from neo4j_import import importer
 from neo4j_utils import generate_submit_query
 from prompts_template import CHAT_SYSTEM_MSG, SLEEP_ANALYZER_PAYLOAD_TEMPLATE, SLEEP_ANALYZER_SYSTEM_MSG
-from scale_dataset import Schema, SleepDisorderScaleDataset
+from scale_dataset import Schema, SleepDisorderScaleDataset, schema_to_scale
 from qianfan_langchain import parse_result
 from aip import AipOcr
 
@@ -70,6 +71,90 @@ class HistoryItem:
     def to_dict(self) -> dict:
         return asdict(self)
 
+@dataclass
+class Prediction:
+    diagnosis: str
+    probability: int
+
+    @classmethod
+    def from_dict(cls, data: dict) -> 'Prediction':
+        return cls(
+            diagnosis=data["diagnosis"],
+            probability=data["probability"]
+        )
+
+    def to_dict(self) -> dict:
+        return asdict(self)
+
+@dataclass
+class ScalesAnalysis:
+    """
+    {
+        "summary": str,
+        "predict": [
+            {
+                "diagnosis": str
+                "probability": int
+            }
+        ]
+    }
+    """
+    summary: str = ""
+    predict: List[Prediction] = field(default_factory=list)
+
+    @classmethod
+    def from_dict(cls, data: dict) -> 'ScalesAnalysis':
+        return cls(
+            summary=data["summary"],
+            predict=[Prediction.from_dict(p) for p in data["predict"]]
+        )
+
+    def to_dict(self) -> dict:
+        return {
+            "summary": self.summary,
+            "predict": [p.to_dict() for p in self.predict]
+        }
+
+@dataclass
+class ScaleResult:
+    """
+    {
+        "request": {
+            "AISI": list[int]
+        },
+        "result": {
+            "AISI": dict
+        },
+        "analysis": {
+            "summary": str,
+            "predict": [
+                {
+                    "diagnosis": str
+                    "probability": int
+                }
+            ]
+        }
+    }
+    """
+    request: Dict[str, List[int]] = field(default_factory=dict)
+    result: Dict[str, dict] = field(default_factory=dict)
+    analysis: ScalesAnalysis = field(default_factory=lambda: ScalesAnalysis())
+
+    @classmethod
+    def from_dict(cls, data: dict) -> 'ScaleResult':
+        return cls(
+            request=data["request"],
+            result=data["result"],
+            analysis=ScalesAnalysis.from_dict(data["analysis"])
+        )
+
+    def to_dict(self) -> dict:
+        return {
+            "request": self.request,
+            "result": self.result,
+            "analysis": self.analysis.to_dict()
+        }
+
 class SerializableMessageHistory(InMemoryChatMessageHistory):
     def to_dict(self) -> List[dict]:
         return [
@@ -94,7 +179,7 @@ class SerializableMessageHistory(InMemoryChatMessageHistory):
 class Session:
     chat: SerializableMessageHistory = field(default_factory=SerializableMessageHistory)
     query: List[HistoryItem] = field(default_factory=list)
-    scales: List[HistoryItem] = field(default_factory=list)
+    scales: ScaleResult = field(default_factory=ScaleResult)
     medical_histories: List[HistoryItem] = field(default_factory=list)
     chatbot_conversation_id: str = field(default_factory=str)
     analysis: dict = field(default_factory=dict)
@@ -104,7 +189,7 @@ class Session:
         return {
             "chat": self.chat.to_dict(),
             "query": [item.to_dict() for item in self.query],
-            "scales": [item.to_dict() for item in self.scales],
+            "scales": self.scales.to_dict(),
             "medical_histories": [item.to_dict() for item in self.medical_histories],
             "chatbot_conversation_id": self.chatbot_conversation_id,
             "analysis": self.analysis
@@ -115,10 +200,10 @@ class Session:
         return cls(
             chat=SerializableMessageHistory.from_dict(data["chat"]),
             query=[HistoryItem.from_dict(item) for item in data["query"]],
-            scales=[HistoryItem.from_dict(item) for item in data["scales"]],
+            scales=ScaleResult.from_dict(data["scales"]),
             medical_histories=[HistoryItem.from_dict(item) for item in data["medical_histories"]],
             chatbot_conversation_id=data["chatbot_conversation_id"],
-            analysis=data["analysis"]
+            analysis=data["analysis"],
         )
 
 class User:
@@ -127,9 +212,9 @@ class User:
         "session_id": {
             "chat": InMemoryChatMessageHistory,
             "query": HistoryItem,
-            "scales": HistoryItem,
             "medical_histories": HistoryItem,
             "chatbot_conversation_id": str,
+            "scales": ScaleResult,
             "analysis": {
                 "analysis": str,
                 "short_analysis": str,
@@ -188,7 +273,7 @@ class User:
         except Exception as e:
             logger.warning(f"load state error :{e}")
 
-user = User()
+user = User("data/chat.json")
 user.load()
 
 model = ChatOpenAI(
@@ -253,12 +338,12 @@ def init_chat(session_id):
         # neo4j查询结果json为
         {session.query[-1].result}
         """
-    if len(session.scales) == 0:
+    if len(session.scales.analysis.summary) == 0:
         logger.warning("session.scales is empty")
     else:
         ANALYZER_MSG += f"""
         # 量表结果和可能性分析为
-        {session.scales[-1].result}
+        {session.scales.result}
         """
     if len(session.medical_histories) == 0:
         logger.warning("session.medical_histories is empty")
@@ -306,7 +391,6 @@ def init_chat(session_id):
     user.save()
 
     return jsonify(response)
-
 
 @app.route("/chat/<session_id>/messages", methods=["POST"])
 def send_message(session_id):
@@ -366,33 +450,55 @@ def get_scales():
             continue
         response.append({
             "name": schema.value,
-            "content": schema.scale_schema_data
+            "content": schema.scale_data
         })
     return jsonify(response)
 
-@app.route('/scales/<session_id>', methods=['POST'])
-def submit_scales(session_id):
-    """
-    {
-        "AISI": [1, 1, 1, 1, 1, 1, 1, 0], 
-        "ESS": [0, 0, 0, 0, 0, 0, 0, 0], 
-        "HAMA": [2, 2, 2, 2, 0, 1, 1, 2, 0, 0, 0, 0, 0, 1], 
-        "HAMD": [1, 1, 0, 1, 1, 1, 2, 3, 1, 2, 1, 0, 0, 0, 2, 0, 0, 0, 0, 0, 1, 1, 2, 0, 0], 
-        "IRLSSG": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
-        # "PSQI": [1350, 3, 390, 4, 3, 3, 3, 0, 0, 0, 0, 2, 0, 2, 3, 1, 1], 
-        "PSQI": [0, 3, 0, 4, 3, 3, 3, 0, 0, 0, 0, 2, 0, 2, 3, 1, 1], 
-        "RBDSQ": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
-        "StopBang": [0, 0, 0, 0, 0, 1, 0, 1]
-    } 
-    """
+@app.route('/scales/<session_id>/<schema_name>', methods=['POST'])
+def submit_scale(session_id, schema_name):
     try:
-        data: Dict[str, List[int]] = request.get_json()
+        session = user.get_session(session_id)
+        data: List[int] = request.get_json()
+        """data:
+        [1350, 3, 390, 4, 3, 3, 3, 0, 0, 0, 0, 2, 0, 2, 3, 1, 1]
+        """
+
+        schema = Schema(schema_name)
+        scale_cls = schema_to_scale[schema]
+
+        result = scale_cls.evaluate(data)
+
+        session.scales.request[schema.value] = data
+        session.scales.result[schema.value] = result
+        # session.scales.analysis = None
+
+        user.save()
+
+        return jsonify(result)
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/scales/<session_id>', methods=['GET'])
+def analyze_scales(session_id):
+    try:
+        session = user.get_session(session_id)
 
         """response:
         {
             "summary": "",
             "scales": {
-                "AISI": "",
+                "AISI": {
+                    "details": {
+                        "components": list
+                    },
+                    "summary": {
+                        "interpretation": "",
+                        "levels": list,
+                        "max_score": int,
+                        "score": int
+                    }
+                },
                 "ESS": "",
                 "HAMA": "",
                 "HAMD": "",
@@ -409,19 +515,21 @@ def submit_scales(session_id):
             ]
         }
         """
-        response: Dict[str, Union[str, Dict[str, str], List]] = {
+        analysis: Dict[str, Union[str, Dict[str, str], List]] = {
             "summary": "",
             "scales": {},
             "predict": []
         }
 
+        scales_data: Dict[str, List[int]] = session.scales.request
+
         patient_scale = []
         for schema in Schema:
             if schema is Schema.UNIMPLEMENTED:
                 continue
-            if schema.value in data:
+            if schema.value in scales_data:
                 logger.info(schema.value)
-                result = np.array(data[schema.value]).sum()
+                result = np.array(scales_data[schema.value]).sum()
             else:
                 result = np.nan
             patient_scale.append(result)
@@ -430,31 +538,30 @@ def submit_scales(session_id):
         predicted_label, labels_probabilities = predict_diagnosis(np.array([patient_scale]))
 
         n = 3
-        response["predict"] = [
+        analysis["predict"] = [
             {"diagnosis": label, "probability": f"{prob:.2f}"}
             for label, prob in labels_probabilities[:n]
         ]
-        response["summary"] = predicted_label # type: ignore
+        analysis["summary"] = predicted_label # type: ignore
 
         for scale_cls in SleepDisorderScaleDataset.SCALE_CLASSES:
             schema = scale_cls.schema
-            if schema.value not in data:
+            if schema.value not in scales_data:
                 continue
-            response["scales"][schema.value] = schema.value # type: ignore
+            analysis["scales"][schema.value] = session.scales.result[schema.value] # type: ignore
 
         # 保存量表历史
-        session = user.get_session(session_id)
-        session.scales.append(HistoryItem(
-            timestamp=datetime.utcnow().isoformat(),
-            request=data,
-            result=response
-        ))
+        session.scales.analysis = ScalesAnalysis.from_dict(analysis)
         user.save()
 
-        return jsonify(response)
+        return jsonify(analysis)
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+@app.route('/scales/<session_id>', methods=['POST'])
+def submit_scales(session_id):
+    return analyze_scales(session_id)
 
 @app.route('/query', methods=['GET'])
 def get_symptoms():
@@ -463,18 +570,63 @@ def get_symptoms():
 
 @app.route('/query/<session_id>', methods=['POST'])
 def submit_query(session_id):
+    """
+    提交症状列表, 返回查询结果和推荐量表
+
+    Args:
+        session_id (str): session_id 
+    """
+    def parse_symptoms(symptom_names: list[str], symptom_data: list[dict]) -> tuple[list[str], list[str], list[int]]:
+        """
+        从症状名称列表获取对应的internal_name列表和相关问卷列表
+        
+        Args:
+            symptom_names: 症状名称列表 (用户友好名称)
+            symptom_data: 完整的症状数据结构
+            
+        Returns:
+            tuple[list[str], list[str]]: (internal_name列表, 相关问卷列表)
+        """
+        internal_names = []
+        related_scales = set()
+
+        for category in symptom_data:
+            for symptom in category["symptoms"]:
+                # if symptom["name"] in symptom_names:
+                if symptom["internal_name"] in symptom_names:
+                    internal_names.append(symptom["internal_name"])
+                    related_scales.update(symptom["related_scales"])
+
+        related_scales_index: list[int] = []
+        for related_scale in related_scales:
+            related_scales_index.append(list(Schema).index(Schema(related_scale)))
+
+        return internal_names, sorted(list(related_scales)), related_scales_index
+
     try:
+        session = user.get_session(session_id)
         data: list[str] = request.get_json()
-        query_data = data
+        logger.info(data)
+        symptoms = json.loads(open('./assets/symptoms.json', 'r').read())
+        query_data, related_scales, related_scales_index = parse_symptoms(data, symptoms)
 
+        logger.info(f"query_data: {query_data}")
+        logger.info(f"related_scales: {related_scales}")
         query = generate_submit_query(query_data)
-        result = importer.execute(query)
+        query_result = importer.execute(query)
 
-        if not result:
+        if not query_result:
             return jsonify({"error": "No matching items found"}), 404
 
+        result = {
+            "result": query_result,
+            "related_scales_index": related_scales_index,
+            "related_scales": related_scales
+        }
+
+        # result = query_result
+
         # 保存查询历史
-        session = user.get_session(session_id)
         session.query.append(HistoryItem(
             timestamp=datetime.utcnow().isoformat(),
             request=query_data,

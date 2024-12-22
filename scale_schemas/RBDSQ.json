@@ -224,5 +224,17 @@
   ],
   "completedHtml": {
     "default": "总分: {totalScore}\n\n"
-  }
+  },
+  "evaluation": [
+    {
+      "label": "正常",
+      "from": "0",
+      "to": "4"
+    },
+    {
+      "label": "疑似RBD",
+      "from": "5",
+      "to": "13"
+    }
+  ]
 }

@@ -1,200 +1,385 @@
 {
-    "title": "匹茨堡睡眠质量指数量表(PSQI)",
-    "description": "请根据过去一个月的睡眠习惯回答以下问题",
-    "pages": [
-      {
-        "name": "page1",
-        "elements": [
-          {
-            "type": "text",
-            "name":"psqi_bedtime",
-            "title": "1. 过去一个月你通常上床睡觉的时间是？",
-            "inputType": "time",
-            "isRequired": true
-          },
-          {
-            "type": "radiogroup",
-            "name":"psqi_sleep_latency",
-            "title": "2. 过去一个月你每晚通常要多长时间（分钟）才能入睡？",
-            "isRequired": true,
-            "choices": [
-              { "value": 0, "text": "≤15(min)" },
-              { "value": 1, "text": "16-30(min)" },
-              { "value": 2, "text": "31-60(min)" },
-              { "value": 3, "text": "≥60(min)" }
-            ]
-          },
-          {
-            "type": "text",
-            "name":"psqi_wake_time",
-            "title": "3. 过去一个月每天早上通常什么时候起床？",
-            "inputType": "time",
-            "isRequired": true
-          },
-          {
-            "type": "text",
-            "name":"psqi_sleep_duration",
-            "title": "4. 过去一个月你每晚实际睡眠的时间有多少？(小时)",
-            "inputType": "number",
-            "isRequired": true
-          },
-          {
-            "type": "radiogroup",
-            "name": "psqi_sleep_difficulty_30min",
-            "title": "5. 过去一个月你是否因为以下问题而经常睡眠不好：不能在30分钟内入睡",
-            "isRequired": true,
-            "choices": [
-              { "value": 0, "text": "过去一个月没有" },
-              { "value": 1, "text": "每周平均不足一个晚上" },
-              { "value": 2, "text": "每周平均一或两个晚上" },
-              { "value": 3, "text": "每周平均三个或更多晚上" }
-            ]
-          },
-          {
-            "type": "radiogroup",
-            "name": "psqi_night_wake",
-            "title": "5. 过去一个月你是否因为以下问题而经常睡眠不好：在晚上睡眠中醒来或早醒",
-            "isRequired": true,
-            "choices": [
-              { "value": 0, "text": "过去一个月没有" },
-              { "value": 1, "text": "每周平均不足一个晚上" },
-              { "value": 2, "text": "每周平均一或两个晚上" },
-              { "value": 3, "text": "每周平均三个或更多晚上" }
-            ]
-          },
-          {
-            "type": "radiogroup",
-            "name": "psqi_bathroom",
-            "title": "5. 过去一个月你是否因为以下问题而经常睡眠不好：晚上有无起床上洗手间",
-            "isRequired": true,
-            "choices": [
-              { "value": 0, "text": "过去一个月没有" },
-              { "value": 1, "text": "每周平均不足一个晚上" },
-              { "value": 2, "text": "每周平均一或两个晚上" },
-              { "value": 3, "text": "每周平均三个或更多晚上" }
-            ]
-          },
-          {
-            "type": "radiogroup",
-            "name": "psqi_breathing",
-            "title": "5. 过去一个月你是否因为以下问题而经常睡眠不好：不舒服的呼吸",
-            "isRequired": true,
-            "choices": [
-              { "value": 0, "text": "过去一个月没有" },
-              { "value": 1, "text": "每周平均不足一个晚上" },
-              { "value": 2, "text": "每周平均一或两个晚上" },
-              { "value": 3, "text": "每周平均三个或更多晚上" }
-            ]
-          },
-          {
-            "type": "radiogroup",
-            "name": "psqi_snoring",
-            "title": "5. 过去一个月你是否因为以下问题而经常睡眠不好：大声咳嗽或打鼾声",
-            "isRequired": true,
-            "choices": [
-              { "value": 0, "text": "过去一个月没有" },
-              { "value": 1, "text": "每周平均不足一个晚上" },
-              { "value": 2, "text": "每周平均一或两个晚上" },
-              { "value": 3, "text": "每周平均三个或更多晚上" }
-            ]
-          },
-          {
-            "type": "radiogroup",
-            "name": "psqi_feel_cold",
-            "title": "5. 过去一个月你是否因为以下问题而经常睡眠不好：感到寒冷",
-            "isRequired": true,
-            "choices": [
-              { "value": 0, "text": "过去一个月没有" },
-              { "value": 1, "text": "每周平均不足一个晚上" },
-              { "value": 2, "text": "每周平均一或两个晚上" },
-              { "value": 3, "text": "每周平均三个或更多晚上" }
-            ]
-          },
-          {
-            "type": "radiogroup",
-            "name": "psqi_feel_hot",
-            "title": "5. 过去一个月你是否因为以下问题而经常睡眠不好：感到太热",
-            "isRequired": true,
-            "choices": [
-              { "value": 0, "text": "过去一个月没有" },
-              { "value": 1, "text": "每周平均不足一个晚上" },
-              { "value": 2, "text": "每周平均一或两个晚上" },
-              { "value": 3, "text": "每周平均三个或更多晚上" }
-            ]
-          },
-          {
-            "type": "radiogroup",
-            "name": "psqi_bad_dreams",
-            "title": "5. 过去一个月你是否因为以下问题而经常睡眠不好：做不好的梦",
-            "isRequired": true,
-            "choices": [
-              { "value": 0, "text": "过去一个月没有" },
-              { "value": 1, "text": "每周平均不足一个晚上" },
-              { "value": 2, "text": "每周平均一或两个晚上" },
-              { "value": 3, "text": "每周平均三个或更多晚上" }
-            ]
-          },
-          {
-            "type": "radiogroup",
-            "name": "psqi_pain",
-            "title": "5. 过去一个月你是否因为以下问题而经常睡眠不好：出现疼痛",
-            "isRequired": true,
-            "choices": [
-              { "value": 0, "text": "过去一个月没有" },
-              { "value": 1, "text": "每周平均不足一个晚上" },
-              { "value": 2, "text": "每周平均一或两个晚上" },
-              { "value": 3, "text": "每周平均三个或更多晚上" }
-            ]
-          },
-          {
-            "type": "radiogroup",
-            "name":"psqi_sleep_quality",
-            "title": "6. 你对过去一个月总睡眠质量评分：",
-            "isRequired": true,
-            "choices": [
-              { "value": 0, "text": "非常好" },
-              { "value": 1, "text": "尚好" },
-              { "value": 2, "text": "不好" },
-              { "value": 3, "text": "非常差" }
-            ]
-          },
-          {
-            "type": "radiogroup",
-            "name":"psqi_medication",
-            "title": "7. 过去一个月，你是否经常要服药才能入睡？",
-            "isRequired": true,
-            "choices": [
-              { "value": 0, "text": "过去一个月没有" },
-              { "value": 1, "text": "每周平均不足一个晚上" },
-              { "value": 2, "text": "每周平均一或两个晚上" },
-              { "value": 3, "text": "每周平均三个或更多晚上" }
-            ]
-          },
-          {
-            "type": "radiogroup",
-            "name":"psqi_daytime_drowsiness",
-            "title": "8. 过去一个月你在开车、吃饭或参加社会活动时难以保持清醒状态？",
-            "isRequired": true,
-            "choices": [
-              { "value": 0, "text": "过去一个月没有" },
-              { "value": 1, "text": "每周平均不足一个晚上" },
-              { "value": 2, "text": "每周平均一或两个晚上" },
-              { "value": 3, "text": "每周平均三个或更多晚上" }
-            ]
-          },
-          {
-            "type": "radiogroup",
-            "name":"psqi_enthusiasm",
-            "title": "9. 过去一个月，你在积极完成事情上是否有困难？",
-            "isRequired": true,
-            "choices": [
-              { "value": 0, "text": "没有困难" },
-              { "value": 1, "text": "有一点困难" },
-              { "value": 2, "text": "比较困难" },
-              { "value": 3, "text": "非常困难" }
-            ]
-          }
-        ]
-      }
-    ]
-  }
+  "title": "匹茨堡睡眠质量指数量表(PSQI)",
+  "description": "请根据过去一个月的睡眠习惯回答以下问题",
+  "pages": [
+    {
+      "name": "page1",
+      "elements": [
+        {
+          "type": "text",
+          "name": "psqi_bedtime",
+          "title": "1. 过去一个月你通常上床睡觉的时间是？",
+          "inputType": "time",
+          "isRequired": true
+        },
+        {
+          "type": "radiogroup",
+          "name": "psqi_sleep_latency",
+          "title": "2. 过去一个月你每晚通常要多长时间（分钟）才能入睡？",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "≤15(min)"
+            },
+            {
+              "value": 1,
+              "text": "16-30(min)"
+            },
+            {
+              "value": 2,
+              "text": "31-60(min)"
+            },
+            {
+              "value": 3,
+              "text": "≥60(min)"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "name": "psqi_wake_time",
+          "title": "3. 过去一个月每天早上通常什么时候起床？",
+          "inputType": "time",
+          "isRequired": true
+        },
+        {
+          "type": "text",
+          "name": "psqi_sleep_duration",
+          "title": "4. 过去一个月你每晚实际睡眠的时间有多少？(小时)",
+          "inputType": "number",
+          "isRequired": true
+        },
+        {
+          "type": "radiogroup",
+          "name": "psqi_sleep_difficulty_30min",
+          "title": "5. 过去一个月你是否因为以下问题而经常睡眠不好：不能在30分钟内入睡",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "过去一个月没有"
+            },
+            {
+              "value": 1,
+              "text": "每周平均不足一个晚上"
+            },
+            {
+              "value": 2,
+              "text": "每周平均一或两个晚上"
+            },
+            {
+              "value": 3,
+              "text": "每周平均三个或更多晚上"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "psqi_night_wake",
+          "title": "5. 过去一个月你是否因为以下问题而经常睡眠不好：在晚上睡眠中醒来或早醒",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "过去一个月没有"
+            },
+            {
+              "value": 1,
+              "text": "每周平均不足一个晚上"
+            },
+            {
+              "value": 2,
+              "text": "每周平均一或两个晚上"
+            },
+            {
+              "value": 3,
+              "text": "每周平均三个或更多晚上"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "psqi_bathroom",
+          "title": "5. 过去一个月你是否因为以下问题而经常睡眠不好：晚上有无起床上洗手间",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "过去一个月没有"
+            },
+            {
+              "value": 1,
+              "text": "每周平均不足一个晚上"
+            },
+            {
+              "value": 2,
+              "text": "每周平均一或两个晚上"
+            },
+            {
+              "value": 3,
+              "text": "每周平均三个或更多晚上"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "psqi_breathing",
+          "title": "5. 过去一个月你是否因为以下问题而经常睡眠不好：不舒服的呼吸",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "过去一个月没有"
+            },
+            {
+              "value": 1,
+              "text": "每周平均不足一个晚上"
+            },
+            {
+              "value": 2,
+              "text": "每周平均一或两个晚上"
+            },
+            {
+              "value": 3,
+              "text": "每周平均三个或更多晚上"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "psqi_snoring",
+          "title": "5. 过去一个月你是否因为以下问题而经常睡眠不好：大声咳嗽或打鼾声",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "过去一个月没有"
+            },
+            {
+              "value": 1,
+              "text": "每周平均不足一个晚上"
+            },
+            {
+              "value": 2,
+              "text": "每周平均一或两个晚上"
+            },
+            {
+              "value": 3,
+              "text": "每周平均三个或更多晚上"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "psqi_feel_cold",
+          "title": "5. 过去一个月你是否因为以下问题而经常睡眠不好：感到寒冷",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "过去一个月没有"
+            },
+            {
+              "value": 1,
+              "text": "每周平均不足一个晚上"
+            },
+            {
+              "value": 2,
+              "text": "每周平均一或两个晚上"
+            },
+            {
+              "value": 3,
+              "text": "每周平均三个或更多晚上"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "psqi_feel_hot",
+          "title": "5. 过去一个月你是否因为以下问题而经常睡眠不好：感到太热",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "过去一个月没有"
+            },
+            {
+              "value": 1,
+              "text": "每周平均不足一个晚上"
+            },
+            {
+              "value": 2,
+              "text": "每周平均一或两个晚上"
+            },
+            {
+              "value": 3,
+              "text": "每周平均三个或更多晚上"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "psqi_bad_dreams",
+          "title": "5. 过去一个月你是否因为以下问题而经常睡眠不好：做不好的梦",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "过去一个月没有"
+            },
+            {
+              "value": 1,
+              "text": "每周平均不足一个晚上"
+            },
+            {
+              "value": 2,
+              "text": "每周平均一或两个晚上"
+            },
+            {
+              "value": 3,
+              "text": "每周平均三个或更多晚上"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "psqi_pain",
+          "title": "5. 过去一个月你是否因为以下问题而经常睡眠不好：出现疼痛",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "过去一个月没有"
+            },
+            {
+              "value": 1,
+              "text": "每周平均不足一个晚上"
+            },
+            {
+              "value": 2,
+              "text": "每周平均一或两个晚上"
+            },
+            {
+              "value": 3,
+              "text": "每周平均三个或更多晚上"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "psqi_sleep_quality",
+          "title": "6. 你对过去一个月总睡眠质量评分：",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "非常好"
+            },
+            {
+              "value": 1,
+              "text": "尚好"
+            },
+            {
+              "value": 2,
+              "text": "不好"
+            },
+            {
+              "value": 3,
+              "text": "非常差"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "psqi_medication",
+          "title": "7. 过去一个月，你是否经常要服药才能入睡？",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "过去一个月没有"
+            },
+            {
+              "value": 1,
+              "text": "每周平均不足一个晚上"
+            },
+            {
+              "value": 2,
+              "text": "每周平均一或两个晚上"
+            },
+            {
+              "value": 3,
+              "text": "每周平均三个或更多晚上"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "psqi_daytime_drowsiness",
+          "title": "8. 过去一个月你在开车、吃饭或参加社会活动时难以保持清醒状态？",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "过去一个月没有"
+            },
+            {
+              "value": 1,
+              "text": "每周平均不足一个晚上"
+            },
+            {
+              "value": 2,
+              "text": "每周平均一或两个晚上"
+            },
+            {
+              "value": 3,
+              "text": "每周平均三个或更多晚上"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "psqi_enthusiasm",
+          "title": "9. 过去一个月，你在积极完成事情上是否有困难？",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": 0,
+              "text": "没有困难"
+            },
+            {
+              "value": 1,
+              "text": "有一点困难"
+            },
+            {
+              "value": 2,
+              "text": "比较困难"
+            },
+            {
+              "value": 3,
+              "text": "非常困难"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "evaluation": [
+    {
+      "label": "睡眠质量好",
+      "from": "0",
+      "to": "5"
+    },
+    {
+      "label": "睡眠质量一般",
+      "from": "6",
+      "to": "10"
+    },
+    {
+      "label": "睡眠质量差",
+      "from": "11",
+      "to": "21"
+    }
+  ]
+}

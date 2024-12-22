@@ -142,5 +142,22 @@
       "expression": "{stopbang_snoring}+{stopbang_tired}+{stopbang_observed}+{stopbang_pressure}+{stopbang_bmi}+{stopbang_age}+{stopbang_neck}+{stopbang_gender}"
     }
   ],
-  "completedHtml": "评估结果：{totalScore} 分\n<p>评分标准：≥3分为OSAS高危人群，<3分为低风险。</p>"
+  "completedHtml": "评估结果：{totalScore} 分\n<p>评分标准：≥3分为OSAS高危人群，<3分为低风险。</p>",
+  "evaluation": [
+    {
+      "label": "低风险",
+      "from": "0",
+      "to": "2"
+    },
+    {
+      "label": "中等风险",
+      "from": "3",
+      "to": "4"
+    },
+    {
+      "label": "高风险",
+      "from": "5",
+      "to": "8"
+    }
+  ]
 }

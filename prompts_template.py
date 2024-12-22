@@ -381,7 +381,6 @@ SLEEP_ANALYZER_SYSTEM_MSG = """
 7.其他额外建议
 [额外要求]
 主要参照neo4j查询结果中的内容
-不要
 [输出格式]
 markdown格式
 """
