@@ -369,7 +369,8 @@ def analysis(session_id):
             SystemMessage(SLEEP_ANALYZER_SYSTEM_MSG),
             HumanMessage(ANALYZER_MSG)
         ])
-        logger.info(f"neo4j_analyze_result: \n{neo4j_analyze_result}\n")
+        analysis = json.loads(str(neo4j_analyze_result.content))
+        logger.info(f"neo4j_analyze_result: \n{json.dumps(analysis, indent=4, ensure_ascii=False)}\n")
 
         neo4j_analyze_result_short = model.invoke([
             SystemMessage("""
@@ -380,7 +381,7 @@ def analysis(session_id):
         logger.info(f"neo4j_analyze_result_short: \n{neo4j_analyze_result_short}\n")
 
         response = {
-            "analysis": json.loads(str(neo4j_analyze_result.content)),
+            "analysis": analysis,
             "short_analysis": neo4j_analyze_result_short.content,
         }
 
