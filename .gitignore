@@ -2,6 +2,7 @@
 /logs/**
 !logs/.gitkeep
 /dataset*/
+!/dataset-origin/
 .conda/
 /cyphers*/
 /Google/
