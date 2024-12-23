@@ -10,7 +10,7 @@ from unittest import result
 
 import appbuilder
 import numpy as np
-from flask import Flask, jsonify, request
+from flask import Flask, Response, jsonify, request
 from flask_cors import CORS
 from langchain_core.chat_history import (BaseChatMessageHistory,
                                          InMemoryChatMessageHistory)
@@ -397,7 +397,11 @@ def analysis(session_id):
 def init_chat(session_id):
     session = user.get_session(session_id)
 
-    neo4j_analyze_result_short = session.analysis["short_analysis"]
+    if len(session.chat.to_dict()) != 0:
+        logger.warning("already initialized!")
+        return jsonify({})
+
+    neo4j_analyze_result_short = session.analysis.get("short_analysis") or ''
 
     ################ 百度
     # CHATBOT_MSG = f"""我从另一个医疗Agent得到了以下信息,
@@ -462,7 +466,11 @@ def send_message(session_id):
     response = {
         "content": content,
         "references": json.loads(references),
-        "followup_query": []
+        "followup_query": [
+            "placeHolderText1",
+            "placeHolderText2",
+            "placeHolderText3"
+        ]
     }
 
     ###################### 百度机器人, 需要手动保存历史, 已经废弃
@@ -474,6 +482,55 @@ def send_message(session_id):
     user.save()
 
     return jsonify(response)
+
+@app.route("/chat/<session_id>/messages/stream", methods=["POST"])
+def send_message_stream(session_id):
+    data: dict = request.get_json()
+    content: str = data["content"]
+    session = user.get_session(session_id)
+
+    # 百度睡眠向量数据库结果
+    references = sleep_db.run(sleep_db.create_conversation(), query=content).content.answer # type: ignore
+    logger.info(references)
+
+    def generate():
+        # 初始化一个空的响应结构
+        response = {
+            "content": "",
+            "references": json.loads(references),
+            "followup_query": [
+                "placeHolderText1",
+                "placeHolderText2",
+                "placeHolderText3"
+            ]
+        }
+
+        # 使用langchain流式处理
+        for chunk in chain.stream({
+            "input": content,
+            "knowledges": references
+        }, config={
+            "configurable": {
+                "session_id": session_id,
+            }
+        }):
+            if chunk.content:
+                response["content"] = chunk.content
+                # 使用SSE格式发送数据
+                yield f"data: {json.dumps(response)}\n\n"
+
+        user.save()
+        # 发送结束标记
+        yield "data: [DONE]\n\n"
+
+    return Response(
+        generate(),
+        mimetype='text/event-stream',
+        headers={
+            'Cache-Control': 'no-cache',
+            'Connection': 'keep-alive'
+        }
+    )
 
 @app.route("/chat/<session_id>/messages", methods=["GET"])
 def get_messages(session_id):
