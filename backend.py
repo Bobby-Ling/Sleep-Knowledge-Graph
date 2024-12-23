@@ -460,7 +460,7 @@ def send_message(session_id):
 
     response = {
         "content": content,
-        "references": references,
+        "references": json.loads(references),
         "followup_query": []
     }
 
