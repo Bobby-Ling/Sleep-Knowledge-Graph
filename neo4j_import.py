@@ -65,7 +65,7 @@ class Neo4jImporter:
         with self.driver.session() as session:
             for idx, single_query in enumerate(queries, start=1):
                 try:
-                    result = session.run(single_query)
+                    result = session.run(single_query) # type: ignore
                     records = list(result)
                     if records:
                         # 将所有记录转换为字典列表
@@ -102,7 +102,7 @@ class Neo4jImporter:
         self.logger.info("Starting Cypher statements execution")
 
         # 使用tqdm创建进度条
-        pbar = tqdm(iterator, total=len(iterator), desc="Executing Cypher statements")
+        pbar = tqdm(iterator, total=len(iterator), desc="Executing Cypher statements") # type: ignore
 
         for block in pbar:
             current_batch += 1

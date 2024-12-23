@@ -24,7 +24,7 @@ class QianfanChatSession(ChatSessionInterface):
             "role": "user",
             "content": message
         }])
-        result = resp["body"]['result']
+        result = resp["body"]['result'] # type: ignore
         return result
     # @override
     def update_connection(self):
@@ -38,8 +38,8 @@ if __name__ == "__main__":
         "role": "user",
         "content": DEMO_API_COMMAND
     }])
-    result = resp["body"]['result']
-    print(json.dumps(resp["body"], indent=4, ensure_ascii=False))
+    result = resp["body"]['result'] # type: ignore
+    print(json.dumps(resp["body"], indent=4, ensure_ascii=False)) # type: ignore
     print(result)
 
     exit
