@@ -721,16 +721,16 @@ def upload_medical_history(session_id):
             HumanMessage(text)
         ])
 
-        historu_item = HistoryItem(
+        history_item = HistoryItem(
             timestamp=datetime.utcnow().isoformat(),
             request=text,
-            result=extracted.content
+            result=json.loads(str(extracted.content))
         )
-        session.medical_histories.append(historu_item)
+        session.medical_histories.append(history_item)
 
         user.save()
 
-        return jsonify(historu_item)
+        return jsonify(history_item)
     except:
         if os.path.exists(file_path):
             os.remove(file_path)

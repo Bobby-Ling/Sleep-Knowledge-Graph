@@ -444,7 +444,10 @@ SLEEP_ANALYZER_PAYLOAD_TEMPLATE = """
 """
 
 MEDICAL_HISTORY_EXTRACTOR_SYSTEM_MSG = """
-仿照示例, 将下面的病历信息提取出患者基本信息、患者症状、既往史、现病史、家族史等信息的json描述
+[指令]
+仿照示例, 将下面的病历信息提取出患者基本信息、患者症状、既往史、现病史、家族史等信息的json
+[要求]
+纯json, 不要注释等信息, 以便可以直接json.loads()载入
 [示例输出]
 {
     "patient": {
