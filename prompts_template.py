@@ -384,7 +384,7 @@ SLEEP_ANALYZER_SYSTEM_MSG = """
 [额外要求]
 主要参照neo4j查询结果中的内容
 [输出格式]
-纯json格式, 不使用markdown, 不要使用注释
+纯json格式, 不使用markdown, 不要使用注释, 因为我会直接使用json.loads()进行加载
 [输出json示例]
 {
   "patient_info": {
