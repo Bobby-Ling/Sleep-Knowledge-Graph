@@ -1,7 +1,7 @@
 /output/
-/logs/
+/logs/**
+!logs/.gitkeep
 /dataset*/
-/logs/
 .conda/
 /cyphers*/
 /Google/
