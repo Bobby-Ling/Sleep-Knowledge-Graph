@@ -285,10 +285,10 @@ model = ChatOpenAI(
 )
 
 prompt_template = ChatPromptTemplate.from_messages([
-    SystemMessage(content="你是一个聊天机器人, 具备记忆能力"),
-    # SystemMessage(content=CHAT_SYSTEM_MSG),
-    # SystemMessage(content=CHAT_PAYLOAD_MSG.format("{knowledges}")),
-    # ("system", CHAT_PAYLOAD_MSG.format("{knowledges}")),
+    # SystemMessage(content="你是一个聊天机器人, 具备记忆能力"),
+    # SystemMessage(content="接下来无论我发送什么, 都请输出1"),
+    SystemMessage(content=CHAT_SYSTEM_MSG),
+    HumanMessage(content=CHAT_PAYLOAD_MSG.format("{knowledges}")),
     MessagesPlaceholder(variable_name="history"),
     ("human", "{input}"),
 ])
@@ -398,17 +398,33 @@ def init_chat(session_id):
 
     neo4j_analyze_result_short = session.analysis["short_analysis"]
 
-    CHATBOT_MSG = f"""我从另一个医疗Agent得到了以下信息, 
-    你的角色、指令、要求等都不变, 只是在接下来的对话中的回答多了以下这些额外信息:
-    # 来自 另一个Agent的信息
-    {neo4j_analyze_result_short}"""
+    ################ 百度
+    # CHATBOT_MSG = f"""我从另一个医疗Agent得到了以下信息,
+    # 你的角色、指令、要求等都不变, 只是在接下来的对话中的回答多了以下这些额外信息:
+    # # 来自 另一个Agent的信息
+    # {neo4j_analyze_result_short}"""
 
-    chatbot_result = parse_result(sleep_chatbot.run(session.chatbot_conversation_id, query=CHATBOT_MSG))
-    logger.info(json.dumps(chatbot_result, indent=4, ensure_ascii=False))
+    # chatbot_result = parse_result(sleep_chatbot.run(session.chatbot_conversation_id, query=CHATBOT_MSG))
+    # logger.info(json.dumps(chatbot_result, indent=4, ensure_ascii=False))
 
-    session.chat.add_ai_message(AIMessage([{"response": chatbot_result}]))
+    # session.chat.add_ai_message(AIMessage([{"response": chatbot_result}]))
+    ################
 
-    response = chatbot_result
+    content = chain.invoke(
+        input = {
+            "input": f"[注意]本条对话你只需要回答:明白了就行\n[患者分析结果]\n{neo4j_analyze_result_short}",
+            "knowledges": "这是第一条对话, 不会提供知识库, 根据之前的指示, 你的基础知识见[患者分析结果]部分"
+        },
+        config = {
+            "configurable": {
+                "session_id": session_id,
+            }
+        }
+    ).content
+
+    response = {
+        "content": content
+    }
 
     user.save()
 
@@ -430,28 +446,28 @@ def send_message(session_id):
     references = sleep_db.run(sleep_db.create_conversation(), query=content).content.answer # type: ignore
 
     logger.info(references)
-    # content = chain.invoke(
-    #     input = {
-    #         "input": content,
-    #         # "knowledges": references
-    #     },
-    #     config = {
-    #         "configurable": {
-    #             "session_id": session_id,
-    #         }
-    #     }
-    # ).content
+    content = chain.invoke(
+        input = {
+            "input": content,
+            "knowledges": references
+        },
+        config = {
+            "configurable": {
+                "session_id": session_id,
+            }
+        }
+    ).content
 
-    # response = {
-    #     "content": content,
-    #     "references": references,
-    #     "followup_query": []
-    # }
+    response = {
+        "content": content,
+        "references": references,
+        "followup_query": []
+    }
 
-    ###################### 百度机器人, 需要手动保存历史
-    response = parse_result(sleep_chatbot.run(session.chatbot_conversation_id, query=content))
-    session.chat.add_user_message(HumanMessage(content))
-    session.chat.add_ai_message(AIMessage([{"response": response}]))
+    ###################### 百度机器人, 需要手动保存历史, 已经废弃
+    # response = parse_result(sleep_chatbot.run(session.chatbot_conversation_id, query=content))
+    # session.chat.add_user_message(HumanMessage(content))
+    # session.chat.add_ai_message(AIMessage([{"response": response}]))
     ######################
 
     user.save()
