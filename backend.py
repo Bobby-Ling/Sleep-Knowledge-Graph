@@ -1,3 +1,4 @@
+# %%
 import json
 import logging
 import os
@@ -23,7 +24,7 @@ from langchain_openai import ChatOpenAI
 from analyze_scale import predict_diagnosis
 from neo4j_import import importer
 from neo4j_utils import generate_submit_query
-from prompts_template import CHAT_SYSTEM_MSG, MEDICAL_HISTORY_EXTRACTOR_SYSTEM_MSG, SLEEP_ANALYZER_PAYLOAD_TEMPLATE, SLEEP_ANALYZER_SYSTEM_MSG
+from prompts_template import CHAT_PAYLOAD_MSG, CHAT_SYSTEM_MSG, MEDICAL_HISTORY_EXTRACTOR_SYSTEM_MSG, SLEEP_ANALYZER_PAYLOAD_TEMPLATE, SLEEP_ANALYZER_SYSTEM_MSG
 from scale_dataset import Schema, SleepDisorderScaleDataset, schema_to_scale
 from qianfan_langchain import parse_result
 from aip import AipOcr
@@ -40,8 +41,10 @@ os.environ["OPENAI_API_BASE"] = 'https://api.gptsapi.net/v1'
 os.environ["APPBUILDER_TOKEN"] = "bce-v3/ALTAK-dz2T9w26uHBTw3DWWeNp2/8094ad4d9033ce35390cd6bece585e47a7bd0893"
 sleep_chatbot_app_id = "a4a01e79-a41f-47cb-b1de-d159ed499ad2"
 sleep_analyzer_app_id = "98256157-5b8e-47be-a215-b54bf47b9965"
+sleep_db_app_id = "f93d7dc8-ee70-4aba-babc-382a121dc5ef"
 sleep_chatbot = appbuilder.AppBuilderClient(sleep_chatbot_app_id)
 sleep_analyzer = appbuilder.AppBuilderClient(sleep_analyzer_app_id)
+sleep_db = appbuilder.AppBuilderClient(sleep_db_app_id)
 
 APP_ID = '116780038'
 API_KEY = 'n9h8Si7uJwRScNh5QGfS0XZ2'
@@ -284,7 +287,9 @@ model = ChatOpenAI(
 prompt_template = ChatPromptTemplate.from_messages([
     SystemMessage(content="你是一个聊天机器人, 具备记忆能力"),
     # SystemMessage(content=CHAT_SYSTEM_MSG),
-    # MessagesPlaceholder(variable_name="history"),
+    # SystemMessage(content=CHAT_PAYLOAD_MSG.format("{knowledges}")),
+    # ("system", CHAT_PAYLOAD_MSG.format("{knowledges}")),
+    MessagesPlaceholder(variable_name="history"),
     ("human", "{input}"),
 ])
 
@@ -297,6 +302,8 @@ chain = RunnableWithMessageHistory(
     input_messages_key="input",
     history_messages_key="history"
 )
+
+# %%
 
 @app.route("/sessions/<session_id>", methods=["POST"])
 def create_session(session_id):
@@ -413,28 +420,39 @@ def send_message(session_id):
     content: str = data["content"]
     session = user.get_session(session_id)
 
-    # config: RunnableConfig = {
-    #     "configurable": {
-    #         "session_id": session_id,
-    #     }
-    # }
-
-    # response = chain.invoke(
-    #     {
-    #         "input": [HumanMessage(content=content)],
-    #     },
-    #     config=config
-    # )
-
     # 获取neo4j
     # response = model.invoke(
     #     [HumanMessage(content='')],
     #     config=config
     # )
 
+    # 百度睡眠向量数据库结果
+    references = sleep_db.run(sleep_db.create_conversation(), query=content).content.answer # type: ignore
+
+    logger.info(references)
+    # content = chain.invoke(
+    #     input = {
+    #         "input": content,
+    #         # "knowledges": references
+    #     },
+    #     config = {
+    #         "configurable": {
+    #             "session_id": session_id,
+    #         }
+    #     }
+    # ).content
+
+    # response = {
+    #     "content": content,
+    #     "references": references,
+    #     "followup_query": []
+    # }
+
+    ###################### 百度机器人, 需要手动保存历史
     response = parse_result(sleep_chatbot.run(session.chatbot_conversation_id, query=content))
     session.chat.add_user_message(HumanMessage(content))
     session.chat.add_ai_message(AIMessage([{"response": response}]))
+    ######################
 
     user.save()
 
@@ -614,9 +632,9 @@ def submit_query(session_id):
 
         related_scales_index: list[int] = []
         for related_scale in related_scales:
-            related_scales_index.append(list(Schema).index(Schema(related_scale)))
+            related_scales_index.append(list(Schema).index(Schema(related_scale)) + 1)
 
-        return internal_names, sorted(list(related_scales)), related_scales_index
+        return internal_names, sorted(list(related_scales)), sorted(related_scales_index)
 
     try:
         session = user.get_session(session_id)
@@ -627,6 +645,7 @@ def submit_query(session_id):
 
         logger.info(f"query_data: {query_data}")
         logger.info(f"related_scales: {related_scales}")
+        logger.info(f"related_scales_index: {related_scales_index}")
         query = generate_submit_query(query_data)
         query_result = importer.execute(query)
 

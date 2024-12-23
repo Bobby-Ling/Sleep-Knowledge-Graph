@@ -32,7 +32,9 @@ class Neo4jImporter:
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         log_file = f"logs/import_{timestamp}.log"
 
-        self.logger.setLevel(logging.DEBUG)
+        # XXX 临时改一下
+        # self.logger.setLevel(logging.DEBUG)
+        self.logger.setLevel(logging.INFO)
 
         console_handler = logging.StreamHandler(sys.stdout)
         console_handler.setLevel(log_level)
