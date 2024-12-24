@@ -489,23 +489,22 @@ def send_message_stream(session_id):
     content: str = data["content"]
     session = user.get_session(session_id)
 
-    # 百度睡眠向量数据库结果
-    references = sleep_db.run(sleep_db.create_conversation(), query=content).content.answer # type: ignore
-    logger.info(references)
+    # 获取references
+    references = sleep_db.run(sleep_db.create_conversation(), query=content).content.answer
+
+    def get_followup_query():
+        followup_query = [
+            "placeHolderText1",
+            "placeHolderText2",
+            "placeHolderText3"
+        ]
+        for query in followup_query:
+            yield query
+
+
 
     def generate():
-        # 初始化一个空的响应结构
-        response = {
-            "content": "",
-            "references": json.loads(references),
-            "followup_query": [
-                "placeHolderText1",
-                "placeHolderText2",
-                "placeHolderText3"
-            ]
-        }
-
-        # 使用langchain流式处理
+        # 流式发送content
         for chunk in chain.stream({
             "input": content,
             "knowledges": references
@@ -515,12 +514,29 @@ def send_message_stream(session_id):
             }
         }):
             if chunk.content:
-                response["content"] = chunk.content
-                # 使用SSE格式发送数据
-                yield f"data: {json.dumps(response)}\n\n"
+                data = {
+                    "type": "content",
+                    "content": chunk.content
+                }
+                logger.info(chunk.content)
+                yield f"data: {json.dumps(data)}\n\n"
+
+        # 发送references
+        initial_data = {
+            "type": "references",
+            "references": json.loads(references)
+        }
+        yield f"data: {json.dumps(initial_data)}\n\n"
+
+        # 流式生成followup queries
+        for query_chunk in get_followup_query():
+            data = {
+                "type": "followup_query",
+                "query": query_chunk
+            }
+            yield f"data: {json.dumps(data)}\n\n"
 
         user.save()
-        # 发送结束标记
         yield "data: [DONE]\n\n"
 
     return Response(
