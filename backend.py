@@ -24,7 +24,7 @@ from langchain_openai import ChatOpenAI
 from analyze_scale import predict_diagnosis
 from neo4j_import import importer
 from neo4j_utils import generate_submit_query
-from prompts_template import CHAT_PAYLOAD_MSG, CHAT_SYSTEM_MSG, MEDICAL_HISTORY_EXTRACTOR_SYSTEM_MSG, SLEEP_ANALYZER_PAYLOAD_TEMPLATE, SLEEP_ANALYZER_SYSTEM_MSG
+from prompts_template import CHAT_PAYLOAD_MSG, CHAT_SYSTEM_MSG, GEN_FOLLOWUP_SYSTEM_MSG, MEDICAL_HISTORY_EXTRACTOR_SYSTEM_MSG, SLEEP_ANALYZER_PAYLOAD_TEMPLATE, SLEEP_ANALYZER_SYSTEM_MSG
 from scale_dataset import Schema, SleepDisorderScaleDataset, schema_to_scale
 from qianfan_langchain import parse_result
 from aip import AipOcr
@@ -303,6 +303,18 @@ chain = RunnableWithMessageHistory(
     history_messages_key="history"
 )
 
+followup_questions_prompt_template = ChatPromptTemplate.from_messages([
+    SystemMessage(content=GEN_FOLLOWUP_SYSTEM_MSG),
+    MessagesPlaceholder(variable_name="history"),
+    ("human", "{input}"),
+])
+
+followup_questions_chain = RunnableWithMessageHistory(
+    followup_questions_prompt_template | model, # type: ignore
+    get_session_history,
+    history_messages_key="history"
+)
+
 # %%
 
 @app.route("/sessions/<session_id>", methods=["POST"])
@@ -323,7 +335,8 @@ def create_session(session_id):
     session = user.get_session(session_id)
 
     # 百度机器人
-    session.chatbot_conversation_id = sleep_chatbot.create_conversation()
+    # session.chatbot_conversation_id = sleep_chatbot.create_conversation()
+    session.chatbot_conversation_id = "deprecated"
 
     user.save()
 
@@ -399,9 +412,12 @@ def init_chat(session_id):
 
     if len(session.chat.to_dict()) != 0:
         logger.warning("already initialized!")
-        return jsonify({})
+        return jsonify({
+            "content": "already initialized!"
+        })
 
-    neo4j_analyze_result_short = session.analysis.get("short_analysis") or ''
+    # neo4j_analyze_result_short = session.analysis.get("short_analysis") or ''
+    neo4j_analyze_result = str(session.analysis.get("analysis"))
 
     ################ 百度
     # CHATBOT_MSG = f"""我从另一个医疗Agent得到了以下信息,
@@ -417,7 +433,7 @@ def init_chat(session_id):
 
     content = chain.invoke(
         input = {
-            "input": f"[注意]本条对话你只需要回答:明白了就行\n[患者分析结果]\n{neo4j_analyze_result_short}",
+            "input": f"[注意]本条对话你只需要回答:明白了就行\n[患者分析结果]\n{neo4j_analyze_result}",
             "knowledges": "这是第一条对话, 不会提供知识库, 根据之前的指示, 你的基础知识见[患者分析结果]部分"
         },
         config = {
@@ -430,6 +446,8 @@ def init_chat(session_id):
     response = {
         "content": content
     }
+
+    session.chat.add_ai_message("您好! 您可以问我: 我应该采用哪些药物治疗和非药物治疗? 我应该进行哪些测试? 我应该去哪些科室检查? 我下一步应该怎么做? 这类问题")
 
     user.save()
 
@@ -490,18 +508,7 @@ def send_message_stream(session_id):
     session = user.get_session(session_id)
 
     # 获取references
-    references = sleep_db.run(sleep_db.create_conversation(), query=content).content.answer
-
-    def get_followup_query():
-        followup_query = [
-            "placeHolderText1",
-            "placeHolderText2",
-            "placeHolderText3"
-        ]
-        for query in followup_query:
-            yield query
-
-
+    references = sleep_db.run(sleep_db.create_conversation(), query=content).content.answer # type: ignore
 
     def generate():
         # 流式发送content
@@ -528,6 +535,64 @@ def send_message_stream(session_id):
         }
         yield f"data: {json.dumps(initial_data)}\n\n"
 
+        user.save()
+        yield "data: [DONE]\n\n"
+
+    return Response(
+        generate(),
+        mimetype='text/event-stream',
+        headers={
+            'Cache-Control': 'no-cache',
+            'Connection': 'keep-alive'
+        }
+    )
+
+@app.route("/chat/<session_id>/followup/stream", methods=["GET"])
+def get_followup_questions_stream(session_id):
+    session = user.get_session(session_id)
+
+    def get_followup_query():
+        current_json = ""
+
+        # 使用followup_questions_chain获取追问
+        for chunk in followup_questions_chain.stream({
+            "input": GEN_FOLLOWUP_SYSTEM_MSG,
+        }, config={
+            "configurable": {
+                "session_id": session_id,
+            }
+        }):
+            if chunk.content:
+                logger.info(chunk.content)
+                current_json += chunk.content
+
+                # 尝试找到完整的JSON对象
+                while "\n\n" in current_json:
+                    # 分割出第一个可能的完整JSON
+                    question_json, remaining = current_json.split("\n\n", 1)
+
+                    try:
+                        # 尝试解析JSON
+                        question_data = json.loads(question_json)
+                        if "content" in question_data:
+                            yield question_data["content"]
+                        # 更新remaining部分
+                        current_json = remaining
+                    except json.JSONDecodeError:
+                        # 如果解析失败,说明还不是完整的JSON
+                        # 保留当前积累的内容继续等待下一个chunk
+                        break
+
+        # 处理最后可能剩余的JSON
+        if current_json:
+            try:
+                question_data = json.loads(current_json)
+                if "content" in question_data:
+                    yield question_data["content"]
+            except json.JSONDecodeError:
+                pass
+
+    def generate():
         # 流式生成followup queries
         for query_chunk in get_followup_query():
             data = {
@@ -553,6 +618,8 @@ def get_messages(session_id):
 
     session = user.get_session(session_id)
     messages = session.chat.to_dict()
+    if len(messages) >= 2:
+        messages = messages[2:]
 
     return jsonify({
         "messages": messages,
