@@ -601,6 +601,8 @@ def get_followup_questions_stream(session_id):
             }
             yield f"data: {json.dumps(data)}\n\n"
 
+        session.chat = SerializableMessageHistory.from_dict(session.chat.to_dict()[:-2])
+
         user.save()
         yield "data: [DONE]\n\n"
 
