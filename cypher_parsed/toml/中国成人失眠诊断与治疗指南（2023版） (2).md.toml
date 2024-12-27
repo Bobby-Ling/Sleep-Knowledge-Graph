@@ -1,10 +1,282 @@
 [metadata]
 file_name = "中国成人失眠诊断与治疗指南（2023版） (2).md"
-processed_at = "2024-12-19 00:12:18"
+processed_at = "2024-12-27 20:09:32"
 total_pairs = 3
 
 [[message_pairs]]
-timestamp = "2024-12-19 00:08:15"
+timestamp = "2024-12-27 20:08:14"
+message = """
+
+[隶属文件名]
+中国成人失眠诊断与治疗指南（2023版） (2).md
+[隶属文件分块名]
+中国成人失眠诊断与治疗指南（2023版） (2)/001-中国成人失眠诊断与治疗指南2023版.md
+[文本块]
+# 中国成人失眠诊断与治疗指南(2023版)
+中华医学会神经病学分会睡眠障碍学组  
+
+通信作者:王玉平,首都医科大学宣武医院神经内科,北京100053,Email:wangyuping01@sina.cn  
+
+【摘要】失眠是最为常见的睡眠问题之一。《中国成人失眠诊断与治疗指南(2023版)》是结合了前版指南使用经验和当前具体国情,参考了国内外相关研究进展、新药和新型诊疗方法的应用,依照循证医学证据及时制订的。本指南主要的变化包括:(1)更新了失眠的临床评估内容;(2)更新了失眠药物治疗和心理治疗的相关推荐意见;(3)新增了失眠的中国民族医药治疗推荐意见;(4)新增了青少年及儿童等特殊人群以及伴有或共病其他疾病人群失眠的治疗推荐意见。新版指南在内容上更丰富,且科学性和实用性更强,更具临床指导价值。 Y  
+
+【关键词】失眠;诊断;治疗;指南
+# Chinese guideline for diagnosis and treatment of insomnia (2023)
+Chinese Society of Sleep Disorders  
+
+失眠(insomnia)是最为常见的睡眠问题之一。失眠患病率因不同的调查人群、方法和诊断标准而变化很大。2017年发表的一项包含17项研究的荟萃分析结果显示,我国普通人群有临床意义的失眠Insomnia Scale AIS 15%QualityIndex,PSQI)或阿森斯失眠量表(AthensInsomnia Scale,AIS)评估为 $15\\%^{[1]}$ 。在全球  
+
+COVID-19大流行期间,数百万人的睡眠受到影响,有报道全球失眠症状的患病率为 $20\\%{\\sim}45\\%^{\\left[2\\right]}$ 。我国一项在线调查结果显示,COVID-19大流行期间的失眠患病率为 $29.2\\%^{[3]}$ 。长期失眠影响个体的正常生活和工作,增加罹患各种健康问题的风险。严重的睡眠缺失会降低患者的工作效率和警觉水平,甚至有可能引发恶性意外事故,造成巨大损失[4-5]为规范国内失眠的诊断和治疗,相关领域的专家于2006年发表了《中国失眠定义、诊断及药物治疗专家共识(草案)》6,进而于2012年在循证医学框架内经过广泛讨论推出《中国成人失眠诊断与治疗指南》7,并于2018年发表了更新版的《中国成人失眠诊断与治疗指南(2017版)》8}。该系列共识、指南为临床医师提供了越来越全面、规范、具有操作性的成人失眠诊疗方案。近年来,随着失眠相应新型治疗药物的上市、新型诊疗方法的出现和临床研究证据的不断积累,国内针对失眠的临床诊疗经验也在不断丰富,这些变化促成了本次修订工作。  
+
+本修订版由中华医学会神经病学分会睡眠障碍学组牵头,并组织相关专家,结合国内失眠诊疗实践的现状,经广泛讨论后形成。 电
+# 修订说明和适用范围
+专家组参考国际失眠相关指南和临床实践标准[9-21],回顾2017年9月至2023年8月新发表的文献资料,结合前版指南使用经验和当前具体国情,依照循证医学证据提出失眠的诊断和治疗推荐意见。作为2017版指南的替代更新版本,本指南主要的变化包括:(1)更新了失眠的临床评估内容;(2)根据新的证据和我国国情更新了失眠药物治疗和心理治疗的相关推荐意见;(3)新增了失眠的中国民族医药治疗推荐意见;(4)新增了青少年及儿童等特殊人群以及伴有或共病其他疾病人群失眠的治疗推荐意见。本指南的目标人群为成人和6岁及以上的青少年儿童,不包括6岁以下人群。本指南适用于所有的临床医师,旨在提供易于临床操作且符合我国国情的失眠诊疗规范。指南是针对临床特定问题进行广泛医疗实践后的总结,即使是较低级别的推荐,所涉及的临床实践仍强于单一的个人经验,理应成为临床实践的重要指导;在使用过程中应结合患者具体病情,评估潜在风险,实施个体化的精准医学诊疗。
+# 证据等级与推荐强度
+本指南的证据等级和推荐强度基于中华医学会发布的《中国制订/修订临床诊疗指南的指导原则(2022版)》22],参考牛津循证医学中心2011年的证据等级标准(0CEBM 2011版)进行证据分级[23]。证据等级分为“高(A)、中(B)、低(C)、极低(D)”四级,推荐强度分为“强(I)、弱(II)”二级(表1)。专家小组成员对于每一条意见的推荐方向及推荐强度进行投票表决,至少获得 $80\\%$ 以上参与者的认可方形成最终推荐意见。
+# 失眠的定义
+失眠是指尽管有合适的睡眠机会和睡眠环境,依然对睡眠时间和(或)睡眠质量感到不满意,并且影响日间功能或引起躯体不适的一种主观体验。失眠达到一定的频率和持续时间,并且达到影响日常生活的程度(本文所涉及的失眠,是作为一种疾病并且需要进行干预的)。主要症状表现为人睡困难(成人人睡潜伏期超过 $30\\;\\mathrm{min}$ )、睡眠维持障碍(整夜觉醒次数 $^{\\geqslant2}$ 次)、早醒、睡眠质量下降和总睡眠时间减少(通常少于 $6.5\\;\\mathrm{h}$ ),症状每周至少出现3次,并且必须伴有日间功能障碍或日间的痛苦体验。失眠引起的日间功能障碍主要包括疲劳、情绪低落或易激惹、躯体不适、认知障碍、焦虑情绪等[2。部分人群虽然睡眠时间较短(如短睡眠者),但没有与失眠有关的日间损害症状,不应被诊断为失眠。如果失眠是由于其他睡眠-觉醒障碍、精神障碍、其他医学情况或某种物质或药物引起的,也不应诊断为失眠,只有当失眠是临床关注的独立症状时,才诊断为失眠[4] 。目前大多诊断标准已放弃原发性、继发性失眠的诊断,因为人们认识到,失眠不仅是其他躯体或精神障碍的伴随症状,也是一种独立的疾病,值得在临床实践中予以具体考虑。失眠可能更多地作为一种与躯体或精神障碍并存的症状,而不是以孤立的形式出现[25]  
+
+Table 1  Evidence quality grading and recommendation strength[23]   
+表1证据质量分级和推荐强度[23]
+# 失眠的临床评估
+失眠的临床评估包括病史采集、体格检查、主观评估和客观评估等手段[26]。对于每一例患者都应仔细进行病史采集和体格检查。鉴别诊断和疗效评估可以纳入主观评估和客观评估方法。  
+
+一、病史采集和体格检查  
+
+病史采集:详细的病史采集应包括:(1)失眠表现形式:人睡情况、夜间觉醒次数、早醒及睡眠中异常动作和行为情况;日间功能损害是否有精神和体力状态、工作和学习情况,有无日间思睡。(2)失眠程度:平均每周失眠的次数,每晚总睡眠时间、觉醒次数、每次觉醒持续时间、最后醒来的时间等。(3)病程:失眠持续时间及症状波动性。(4)失眠诱发和加重-缓解因素:是否有心理应激事件,如工作学习压力、生活变故、长期情绪不好等;睡眠环境与人睡关联因素:睡眠环境的噪声、床褥舒适度、频繁变更睡眠条件等影响因素。(5)睡眠觉醒节律:询问和评价作息时间表,每天上床和最后觉醒、起床时间,是否午睡、倒班等。(6)治疗情况:曾接受的治疗方法、药物种类和剂量以及疗效,是否存在药物或物质依赖。(7)其他:系统回顾,明确是否存在情绪障碍、神经系统、心血管系统、呼吸系统、消化系统、内分泌系统、泌尿生殖系统等疾病以及其他各种类型躯体疾病。  
+
+体格检查:了解身体状况和精神状态,包括常规体格检查、神经系统检查和精神心理状态的唔谈。
+# 二、主观评估
+
+# (一)睡眠日记
+睡眠日记是失眠评估的重要组成部分[27]。由患者本人或家人协助完成为期1\\~2周的睡眠日记,记录每日上床时间,估计睡眠潜伏期,记录夜间觉醒次数以及每次觉醒的时间,记录从上床开始到起床之间的总卧床时间,根据早晨觉醒时间估计实际睡眠时间,计算睡眠效率「(实际睡眠时间/卧床时间 $\\times100\\%$ ],记录夜间异常症状(异常呼吸、行为和运动等),记录日间精力与社会功能受影响程度的自我体验,记录午休情况、日间用药和饮料品种。睡眠日记是全面了解患者的睡眠及日间状况的有用工具。
+# (二)量表测评
+辅助失眠诊断与鉴别诊断的自评与他评量表包括:(1)PSQI;(2)失眠严重程度指数(InsomniaSeverityIndex,ISI);(3)爱泼沃斯思睡量表(Epworth Sleepiness Scale,ESS);(4)睡前觉醒状态量表(Pre-Sleep Arousal Scale,PSAS);(5)疲劳严重程度量表(Fatigue Severity Scale,FSS);(6)清晨型与夜晚型睡眠问卷(MorningandEveningQuestionnaire,MEQ);(7)简明健康调查问卷(ShortForm-36Health Survey,SF-36);(8)睡眠信念和态度量表(Dysfunctional Beliefs and Attitudes about SleepScale,DBAS);(9)情绪评估:汉密尔顿焦虑量表(Hamilton Anxiety Scale,HAMA),汉密尔顿抑郁量表(Hamilton Depression Scale,HAMD),贝克抑郁量表(Beck Depression Inventory,BDI)、状态-特质焦虑问卷(State-Trait Anxiety Inventory,STAI)、广泛性焦虑障碍量表(Generalized Anxiety Disorder Scale,GAD-7)。接诊医生可根据患者具体情况选用。
+# 三、客观评估
+1.多导睡眠监测(polysomnography,PSG)多次睡眠潜伏期试验(multiple sleeplatency test,MSLT):整夜PSG主要用于失眠的鉴别诊断和疗效评估,如周期性肢体运动障碍、睡眠呼吸暂停、快速眼动睡眠期行为障碍等,尤其是对药物或者心理治疗反应不佳的患者[28]。MSLT用于鉴别发作性睡病和其他可导致日间睡眠增多的疾病[29]  
+
+2.体动记录仪(actigraph):体动记录仪佩戴简单方便,是一种监测身体活动和休息-活动周期的非侵入性方法。在睡眠医学中,它被用于评估昼夜节律、睡眠-觉醒节律和休息时间,用于昼夜节律失调性睡眠觉醒障碍(circadian rhythm sleepwakedisorders,CRSWDs)的鉴别诊断,也可以在无PSG条件时作为替代手段评估患者夜间总睡眠时间和睡眠模式,但需要注意其并不能提供详细的睡眠分期信息3,也用于针对失眠的认知行为治疗(cognitive behavioral therapy for insomnia, CBT-I)时的有效检测补充手段。  
+
+3.可穿戴设备(含远程监测设备):近年来新兴的可穿戴设备以及远程监测设备改进了体动记录仪的缺点,保留了便携性,可进行多参数监测[31]  
+
+4.神经影像:必要的影像学检查(CT、磁共振成像)可有助于排除其他疾病,如颅内肿瘤、脑血管疾病等,功能磁共振成像可进行失眠的临床研究,并可为无创神经调控治疗精准定位刺激部位[32-33]  
+
+5.实验室检查:实验室检查是排除系统性疾病以及寻找失眠病因的重要工具,可根据患者情况进行血常规、甲状腺功能、肝肾功能、血红蛋白、铁蛋白、维生素 B12、维生素D等检查[34-7]
+# 失眠的分类诊断与鉴别诊断
+国际睡眠障碍分类第三版(InternationalClassification of Sleep Disorders, third edition,ICSD-3)将失眠分为三类,即慢性失眠、短期失眠和其他失眠[38]。慢性失眠的诊断标准见表2。该标准将失眠 ${\\geqslant}3$ 个月作为慢性失眠的持续时间标准,发作频次 $\\geqslant3$ 次/周失眠作为最低频次标准,同时存在 $^{\\geqslant1}$ 项与夜间睡眠紊乱相关的日间症状,并排除了仅仅主诉有睡眠质量差、醒后无恢复感的患者符合A、B、C和F项,而睡眠素乱和相关日间症状持续不足3个月的,则诊断为短期失眠。其他失眠适用于具备睡眠起始困难和维持困难的失眠症状但不符合慢性失眠或短期失眠诊断标准的罕见情况,可临时使用这一诊断,但由于缺少特异性,建议谨慎使用。有些患者失眠症状反复出现,应按照每次出现失眠持续的时间来判定是否属于慢性失眠。  
+
+表2慢性失眠的诊断标准[38  
+
+Table 2  Diagnostic criteria for chronic insomnia必须同时符合A\\~F项标准A患者报告,或患者的父母、照护者观察到下列1条或多条:(1)睡眠起始困难;(2)睡眠维持困难;(3)比期望时间过早醒来;(4)在合适的作息时间点不愿上床;(5)没有父母或照护者干预入睡困难B患者报告,或患者的父母、照护者观察到下列与夜间睡眠困难相关的1条或多条:(1)疲劳、不适;(2)注意力或记忆损害;(3)社交、家务、职业或学业能力损害;(4)情绪紊乱/激惹;(5)日间瞌睡;(6)行为问题,如活动过度、冲动、攻击;(7)动机、精力、工作主动性下降;(8)易发错误、事故;(9)关切或不满足睡眠C 单纯的睡眠机会不当(没有足够时间用于睡眠)或环境不当(环境并非安全、黑暗、安静和舒适)不能解释报告的睡眠/觉醒主诉D 每周至少出现3次睡眠紊乱和相关日间症状E睡眠素乱和相关日间症状至少已存在3个月F睡眠/觉醒困难不能由其他睡眠障碍更好地解释  
+
+多数失眠患者可同时存在抑郁、焦虑和(或)躯体化症状,且存在着密切且复杂的关系。失眠与抑郁同时存在的患者包括:失眠伴抑郁症状、失眠与抑郁共病、躯体疾病等伴发的失眠与抑郁;失眠与焦虑同时存在的患者包括:失眠伴焦虑症状、失眠与焦虑共病、躯体疾病等伴发的失眠与焦虑;失眠与躯体化症状同时存在的患者包括:失眠伴躯体化症状、失眠与躯体化症状共病、躯体疾病等伴发的失眠与躯体化症状。对于失眠伴抑郁/焦虑/躯体化症状的患者,失眠是患者的主要临床诊断,控制失眠症状可改善上述症状;对于失眠与抑郁/焦虑/躯体化症状共病的患者,失眠和抑郁/焦虑/躯体化症状均达到了疾病诊断标准,失眠与上述症状的起病和病情演变相对独立;对于躯体疾病等伴发的失眠与抑郁/焦虑/躯体化症状患者,躯体疾病相关的心理应激及脑功能、神经生化、内分泌等改变均可引起失眠和上述症状。  
+
+失眠需要与精神障碍、躯体疾病、药物或物质滥用,以及其他类型的睡眠障碍相鉴别。需要鉴别的其他睡眠障碍类型包括:睡眠相关呼吸障碍、不宁腿综合征(restless legs syndrome,RLS)周期性肢体运动障碍、昼夜节律失调性睡眠觉醒障碍、环境性睡眠困难、睡眠不足综合征、短睡眠者等。确定失眠诊断时还应针对可以确定的精神或躯体障碍给予相应的诊断  
+
+优秀实践声明(GoodPracticeStatement,GPS):(1)诊断失眠时,应进行睡眠质量、睡眠信念和态度、日间症状、情绪等量表评估,以便全面了解患者的总体情况;(2)如有可能,在首次系统评估前最好记录睡眠日记;(3)诊断失眠时应关注共存的其他疾病和症状,并给予相应的诊断;(4)鉴别其他睡眠障碍如睡眠相关呼吸障碍、周期性肢体运动障碍时应进行PSG;失眠患者接受合理干预后疗效反应不理想时,应进行PSG排除其他类型睡眠障碍;失眠患者伴随日间过度思睡,特别是在需要鉴别发作性睡病时,应当同时进行PSG和MSLT。
+# 失眠的治疗
+一、总体目标和干预策略  
+
+1.总体目标:(1)改善睡眠质量和(或)增加有效睡眠时间;(2)防止短期失眠转化成慢性失眠;(3)减少与失眠相关的躯体症状或与精神疾病共病的风险;(4)恢复日间社会功能,提高生活质量;(5)尽可能避免包括药物在内的各种干预方式带来的负面效应。  
+
+2.干预方式:失眠的干预方式主要包括药物治疗、心理治疗、物理治疗和中国民族医药治疗等。  
+
+药物治疗失眠的短期疗效已经被临床试验所证实,但是长期应用仍需承担药物不良反应、成瘾性等潜在风险。心理治疗主要包括睡眠卫生教育和CBT-I。应强调睡眠卫生教育的重要性,在建立良好睡眠卫生习惯的基础上,开展其他治疗手段。CBT-I能够有效纠正失眠患者错误的睡眠认知与不恰当的行为因素,有利于消除心理及生理性高觉醒,增强人睡驱动力,重建正确的睡眠觉醒认知模式,持续改善失眠患者的临床症状[39]。数字CBT-I也同样可以达到一定的治疗效果。近年来物理治疗如光照疗法、经颅电刺激(transcranialelectricalstimulation,TES)、经颅磁刺激(transcranialmagneticstimulation,TMS)、经颅电磁联合刺激、生物反馈治疗等在失眠治疗中被广泛应用,饮食疗法、芳香疗法、按摩、顺势疗法等,可作为选择的补充治疗方式。中医治疗失眠的历史悠久,尚需现代循证医学模式进行评估。  
+
+3.不同类型失眠的干预策略:对短期失眠患者应该积极寻找并消除可能的诱发因素,同时积极处置失眠症状。短期失眠患者在无法完成CBT-I时应早期应用药物治疗,药物可能与CBT-I的疗效相当。药物治疗能发挥良好的催眠效能,快速消除失眠症状,避免病程迁延[9,25]。对慢性失眠患者首先需要进行详细的病情评估,在建立良好睡眠卫生习惯的基础上,选择相应的治疗方法,对于长期用药的患者,需要定期进行医学评估,防范可能发生的不良反应[。  
+
+二、失眠的药物治疗  
+
+(一)苯二氮草受体激动剂(benzodiazepine receptor agonists , BZRAs)  
+
+s non‐BZDs 䓬BZDs)、非苯二氮草类药物(non-benzodiazepinedrugs,non-BZDs)和新型苯二氮草受体激动剂。BZDs于20世纪60年代开始使用,可非选择性激动$\\upgamma.$ 氨基丁酸受体A上不同的 $\\upgamma$ 亚基,具有镇静、催眠、抗焦虑、肌肉松弛和抗惊厥的药理作用。20世纪80年代以来,non-BZDs应用于临床治疗失眠,其选择性激动 $\\upgamma$ 氨基丁酸受体A上的 $\\upalpha_{1}$ 亚基,发挥催眠作用,不良反应较BZDs小[40]。  
+
+1.BZDs:可改善失眠患者的人睡困难,增加总睡眠时间。三唑仑属于短半衰期催眠药物,由于其成瘾性和逆行性遗忘发生率高,已被我国列为一类精神药品管理。国内常用于治疗失眠的BZDs还包括艾司唑仑、阿普唑仑、劳拉西泮、地西泮、奥沙西泮、氯硝西泮,其中艾司唑仑是美国食品药品监督管理局(FDA)唯一批准用于失眠治疗的BZDs。BZDs不良反应包括:日间困倦、头昏、肌张力减低、跌倒和认知功能减退等。持续使用BZDs后,突然停药可能会出现戒断症状和反跳性失眠,需逐步减停。需考虑有物质滥用史的失眠患者的潜在药物滥用风险。肝肾功能损害、重症肌无力、路易体痴呆、中重度阻塞性睡眠呼吸暂停(obstructive sleepapnea,OSA)患者禁用BZDs(A级证据,I级推荐)[41-43]  
+
+2.non-BZDs:主要包括唑吡坦、扎来普隆、右佐匹克隆和佐匹克隆。扎来普隆半衰期小于1h,适用于治疗人睡困难44] 。唑吡坦半衰期小于 $0.7\\mathrm{\\sim}$$3.5\\;\\mathrm{h}$ ,能够快速诱导睡眠,治疗人睡困难和睡眠维持障碍,使用时应防护跌倒及异态睡眠的发生。右佐匹克隆和佐匹克隆半衰期小于 $^\\textrm{\\scriptsize6h}$ ,比唑吡坦有更好的睡眠维持作用。长期应用时,扎来普隆对认知和心理运动的影响少于唑吡坦和佐匹克隆[45-46]  
+
+non-BZDs 与 BZDs 催眠疗效类似[47-48] ,但是药物依赖的风险较传统BZDs低。由于 non-BZDs半衰期相对较短,次日残余效应低,一般不产生日间困倦,因此 non-BZDs治疗失眠安全、有效,无严重药物不良反应(A级证据,I级推荐)[4-52]  
+
+3.新型苯二氮草受体激动剂地达西尼(dimdazenil):为 $\\upgamma$ 氨基丁酸A型( $\\upgamma$ -aminobutyricacid type A, $\\mathrm{GABA_{A}}$ )受体的部分正向别构调节剂,选择性作用于 $\\upalpha_{1}$ 亚基,部分激动 $\\mathrm{GABA_{A}}$ 受体。地达西尼达峰时间约 $^{1\\mathrm{~h~}}$ ,半衰期约 $4~\\mathrm{{h}}$ ,适用于人睡困难和睡眠维持困难,可以改善日间疲劳,不影响N日2间功能[ ]。地达西尼治疗失眠的研A究结果显示,其能缩短人睡时间和增加总睡眠时间,增加N2期睡眠,改善日间思睡[57(短期应用A级证据,I级推荐)。
+# (二)双食欲素受体拮抗剂
+食欲素(orexins)可分为两种神经肽:食欲素A[也称下丘脑分泌素-1(hypocretin-1)]和食欲素B[也称下丘脑分泌素-2(hypocretin-2)]。食欲素受体有两种,分别为食欲素1型受体(OX1R)和食欲antagonist DORA3 种双重食欲素受体拮抗剂(dual orexin receptorantagonist,DORA)药物包括:苏沃雷生(suvorexant)、莱博雷生(lemborexant)和达利雷生(daridorexant)。DORA能显著改善患者的主观人睡时间、总睡眠时间、延长快速眼球运动(rapid eyemovement,REM)睡眠持续时间,改善睡眠结构和睡眠质量[59-60]。常见的不良事件是头痛( $\\,\\!\\!\\,10\\%\\,,$ 思睡 $7\\%$ )和疲劳 $(5\\%)^{[61.62]}$ ,少于 $2\\%$ 的患者出现睡眠瘫痪和睡眠幻觉。DORA无次日残留,对认知及呼吸影响小,均可应用于有轻中度慢性阻塞性肺病(chronic obstructive pulmonary disease , COPD)和阻塞性睡眠呼吸暂停综合征(obstructive sleep apneasyndrome,OSAS)的失眠患者。其中,有证据表明莱博雷生对重度COPD和OSA患者的呼吸功能无负面影响[63-68]。目前尚无证据表明 DORA 导致药物依赖,可以长期应用,停药不出现显著的反跳性失眠[69-7]  
+
+苏沃雷生剂量为 $10~\\mathrm{mg}$ 或 $20~\\mathrm{mg}$ ,睡前口服,达峰时间一般为 $2.0{\\sim}3.5\\,\\mathrm{h}$ ,半衰期为 $12{\\sim}15\\ \\mathrm{h}^{[8]}$ 。其主要的不良反应是次日日间思睡[B]。苏沃I雷生可治疗阿尔茨海默病患者的失眠及急性脑卒中患者的主观失眠,不引起妄74-75。  
+
+莱博雷生剂量为 $5~\\mathrm{mg}$ 或 $10~\\mathrm{mg}$ ,达峰时间一般为 $1{\\sim}3~\\mathrm{h}$ ,半衰期为 $17{\\sim}19\\mathrm{~h~}$ 。莱博雷生可以明显提高睡眠效率,缩短睡眠潜伏期和失眠患者的睡眠后觉醒时间,安全性和耐受性良好(A级证据,I级推荐)[76-78] 8 h  
+
+达利雷生剂量为 $25~\\mathrm{mg}$ 或 $50~\\mathrm{mg}$ ,睡前 $30\\ \\mathrm{min}$口服,达峰时间一般为 $1{\\sim}2~\\mathrm{h}$ ,半衰期为 $^{8\\mathrm{~h~}}$ ,常用剂量为 $50~\\mathrm{mg}$ ,特殊人群每日 $25~\\mathrm{mg}$ $50~\\mathrm{mg}$ 达利雷生可改善夜间睡眠和日间功能,日间思睡发生比例低(A级证据,I级推荐)[79-80]
+# (三)褪黑素和褪黑素受体激动剂
+褪黑素与睡眠-觉醒周期的调节有关。褪黑素仅用于昼夜节律失调型睡眠觉醒障碍,如昼夜节律延迟综合征及时差变化所致失眠的短期应用,不建议作为常规药物治疗失眠。褪黑素缓释片( $2\\;\\mathrm{mg})$在欧洲被批准用于55岁以上中老年人群失眠的治疗(B级证据,I级推荐)[\"]。褪黑素有头痛、思睡、胃肠反应、血压变化、情绪低落等不良反应,长期使用褪黑素可影响内源性褪黑素的分泌,大剂量褪黑素( $10~\\mathrm{mg/d}$ 以上)可抑制性激素分泌。常用给药方法和剂量是入睡时间前的 $2{\\sim}3\\mathrm{~h~}$ 服用 $0.3{\\sim}5.0\\ \\mathrm{mg}$  
+
+褪黑素受体激动剂包括雷美替胺(ramelteon,又译雷美尔通)和特斯美尔通(tasimelteon,又译他司美琼)。褪黑素受体激动剂通过激动褪黑素受体,发挥催眠作用,其可缩短睡眠潜伏期、提高睡眠效率、增加总睡眠时间,用于昼夜节律失调所致的以人睡困难为主要表现的失眠(A级证据,II级推[, ] COPD无戒断症状及无呼吸抑制作用,次日残留作用少,适合用于合并存在睡眠呼吸障碍及COPD的失眠患者。特斯美尔通是唯一一个被美国FDA批准用于非 $24~\\mathrm{h}$ 昼夜节律睡眠障碍治疗的药物。阿戈美拉汀(agomelatine)同时具有激动褪黑素受体作用及5-羟色胺 $2\\mathrm{C}$ 受体拮抗作用,可改善患者的人睡困难等症状,缩短睡眠潜伏期,改善睡眠效率,增加N3期睡眠,无药物依赖性且同时有抗抑郁的作用,尤其适用于失眠合并抑郁情绪的患者[83],但乙型肝炎/丙型肝炎病毒携带者、肝功能损害者禁用(B级证据,II级推荐)[84]  
+
+(四)抗组胺H1受体药物  
+
+抗组胺H1受体药物,可穿过血脑屏障,与脑部的H1受体结合,作为非处方药物用于妊娠呕吐的治疗,通过对中枢神经活动的抑制起到镇静催眠作用,也可改善妊娠患者的失眠,应慎用于重症肌无力及青光眼的患者,可能加重妄,甚至增加死亡率[85]。  
+
+多西拉敏:乙醇胺类的H1抗组胺药,具有镇静作用,可缩短睡眠潜伏期,用于急性失眠的治疗[\"]推荐剂量为 $7.5{\\sim}25.0\\ \\mathrm{mg}$ ,达峰时间为 $2\\;\\mathrm{h}$ ,半衰期约10 h。多西拉敏作为非处方药,对孕早期妇女进行的充分严格的对照研究中未见其对胎儿产生损害,因此可以在妊娠期使用(B级证据,I级推荐)[86-87]  
+
+苯海拉明:为乙醇胺的衍生物。苯海拉明作为非处方H1抗组胺药,用于妊娠呕吐的治疗,也可改善妊娠患者的失眠,推荐剂量为睡前口服 $25{\\sim}50~\\mathrm{mg}$(B级证据,I级推荐)[78.88]。  
+
+(五)具有镇静作用的抗抑郁药物  
+
+1.多塞平:小剂量多塞平 $\\left(3{\\sim}6\\mathrm{~mg/d}\\right)$ 空腹服用,因其半衰期受食物影响而明显延迟(B级证据,I级推荐)\"}。具有明显的抗组胺作用,用于治疗以睡眠维持困难为特征的失眠。可以改善成年和老年慢性失眠患者的睡眠,闭角型青光眼或尿潴留患者慎用。  
+
+2.曲唑酮:小剂量曲唑酮 $(25{\\sim}150\\mathrm{~mg/d})$ ),睡前$^{1\\mathrm{~h~}}$ 给药,可拮抗5-羟色胺2A受体、中枢 $\\upalpha1$ 受体和H1受体,缩短睡眠潜伏期,减少睡眠中觉醒次数,增加睡眠维持时间,能增加慢波睡眠,从而发挥镇静催眠作用,不会造成白天困倦[90-2]。曲唑酮可提高患者主观睡眠质量,失眠患者耐受性良好(A级证据,II级推荐)[93]  
+
+3.米氮平:米氮平 $3.75{\\sim}15.00\\ \\mathrm{mg}$ 能快速镇静,改善睡眠,增加慢波睡眠,有助于睡眠持续,对REM睡眠潜伏期及REM睡眠持续时间影响较小,适用于浅睡眠增加、早醒及失眠伴焦虑抑郁的患者(C级证据,II级推荐)9-95]。但可引起或加重RLS、噩梦,其半衰期长,易出现白天困倦,长期应用易出现锥体外系不良反应[96-97]  
+
+(六)抗抑郁药物与BZRAs联合应用  
+
+失眠患者常伴有抑郁焦虑,二者互为因果。选择性5-羟色胺再摄取抑制剂(selective serotoninreuptake inhibitor,SSRI)通过治疗抑郁和焦虑改善失眠,在用药初期可能有激越反应,部分SSRI能够延长睡眠潜伏期,增加睡眠中的觉醒时间,减少睡眠总时间和降低睡眠效率,减少慢波睡眠,增加某serotonin‐norepinephrine  reup  
+
+早期联合应用SSRI、5-羟色胺去甲肾上腺素再摄取抑制剂(serotonin-norepinephrine reuptakeinhibitor,SNRI)和短效BZRAs(如唑吡坦、佐匹克隆或右佐匹克隆)可快速缓解失眠,提高患者对SSRI、SNRI的依存性[98-9]。盐酸曲唑酮可以改善睡眠结构和睡眠连续性,和短效BZRAs(如唑吡坦、佐匹克隆或者右佐匹克隆)联合使用提高依存性[10]多塞平、小剂量米氮平具有镇静作用,一般不需要联用 类药物(级证据,级推荐)[]。  
+
+(七)具有镇静作用的抗精神病药  
+
+部分抗精神病药物因抗组胺机制而具有镇静作用,如:喹硫平、奥氮平、氯氮平等,这些药物能够增加总睡眠时间、改善睡眠结构、减少睡眠中觉醒时间。考虑到其不良反应,尚缺乏循证医学证据,不建议无精神疾病的失眠患者使用此类药物(D级证据,I级推荐)。在具有镇静作用的抗精神病药物中,首选小剂量喹硫平,其镇静效果较好,安全性dexmedetom C
+
+"""
+response = """
+// 节点更新
+MERGE (n:Disease {name: '失眠'})
+SET 
+    n.description = coalesce(n.description, '尽管有合适的睡眠机会和睡眠环境,依然对睡眠时间和睡眠质量感到不满意'),
+    n.severity = coalesce(n.severity, '中等');
+
+MERGE (n:Symptom {name: '人睡困难'})
+SET 
+    n.description = coalesce(n.description, '入睡困难或者睡眠维持障碍'),
+    n.severity = coalesce(n.severity, '严重'),
+    n.frequency = coalesce(n.frequency, '每周至少出现3次');
+
+MERGE (n:Symptom {name: '早醒'})
+SET 
+    n.description = coalesce(n.description, '在期望时间较早醒来'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '每周至少出现3次');
+
+MERGE (n:Symptom {name: '疲劳'})
+SET 
+    n.description = coalesce(n.description, '日间疲劳感'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '持续出现');
+
+MERGE (n:Symptom {name: '情绪低落'})
+SET 
+    n.description = coalesce(n.description, '情绪不佳，易激惹'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '持续出现');
+
+MERGE (n:Symptom {name: '认知障碍'})
+SET 
+    n.description = coalesce(n.description, '注意力或记忆损害'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '持续出现');
+
+MERGE (n:NonDrugTreatment {name: '睡眠卫生教育'})
+SET 
+    n.description = coalesce(n.description, '建立良好的睡眠卫生习惯'),
+    n.duration = coalesce(n.duration, '持续'),
+    n.frequency = coalesce(n.frequency, '根据需要'),
+    n.contraindication = coalesce(n.contraindication, '无'),
+    n.equipment = coalesce(n.equipment, '无');
+
+MERGE (n:NonDrugTreatment {name: '认知行为疗法'})
+SET 
+    n.description = coalesce(n.description, '纠正失眠患者错误的睡眠认知与不恰当的行为因素'),
+    n.duration = coalesce(n.duration, '需多次参与'),
+    n.frequency = coalesce(n.frequency, '根据需要'),
+    n.contraindication = coalesce(n.contraindication, '无'),
+    n.equipment = coalesce(n.equipment, '无');
+
+MERGE (n:Examination {name: '多导睡眠监测'})
+SET 
+    n.description = coalesce(n.description, '用于失眠的鉴别诊断和疗效评估'),
+    n.method = coalesce(n.method, '多导睡眠监测'),
+    n.requirement = coalesce(n.requirement, '无特殊要求');
+
+MERGE (n:Examination {name: '睡眠日记'})
+SET 
+    n.description = coalesce(n.description, '记录每日上床时间，共享睡眠质量'),
+    n.method = coalesce(n.method, '自我报告'),
+    n.requirement = coalesce(n.requirement, '1-2周');
+
+// 关系更新
+MATCH (from) WHERE from.name = '人睡困难'
+MATCH (to) WHERE to.name = '失眠'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.95),
+    r.frequency = coalesce(r.frequency, '每周至少出现3次'),
+    r.severity = coalesce(r.severity, '严重');
+
+MATCH (from) WHERE from.name = '早醒'
+MATCH (to) WHERE to.name = '失眠'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.9),
+    r.frequency = coalesce(r.frequency, '每周至少出现3次'),
+    r.severity = coalesce(r.severity, '中等');
+
+MATCH (from) WHERE from.name = '疲劳'
+MATCH (to) WHERE to.name = '失眠'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.85),
+    r.frequency = coalesce(r.frequency, '持续出现'),
+    r.severity = coalesce(r.severity, '中等');
+
+MATCH (from) WHERE from.name = '情绪低落'
+MATCH (to) WHERE to.name = '失眠'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.8),
+    r.frequency = coalesce(r.frequency, '持续出现'),
+    r.severity = coalesce(r.severity, '中等');
+
+MATCH (from) WHERE from.name = '认知障碍'
+MATCH (to) WHERE to.name = '失眠'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.75),
+    r.frequency = coalesce(r.frequency, '持续出现'),
+    r.severity = coalesce(r.severity, '中等');
+
+MATCH (from) WHERE from.name = '失眠'
+MATCH (to) WHERE to.name = '睡眠卫生教育'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.9),
+    r.priority = coalesce(r.priority, '高'),
+    r.stage = coalesce(r.stage, '初始治疗');
+
+MATCH (from) WHERE from.name = '失眠'
+MATCH (to) WHERE to.name = '认知行为疗法'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.95),
+    r.priority = coalesce(r.priority, '高'),
+    r.stage = coalesce(r.stage, '初始治疗');
+
+MATCH (from) WHERE from.name = '失眠'
+MATCH (to) WHERE to.name = '多导睡眠监测'
+MERGE (from)-[r:REQUIRES_EXAM]->(to)
+SET 
+    r.priority = coalesce(r.priority, '高'),
+    r.mandatory = coalesce(r.mandatory, 'true');
+
+MATCH (from) WHERE from.name = '失眠'
+MATCH (to) WHERE to.name = '睡眠日记'
+MERGE (from)-[r:REQUIRES_EXAM]->(to)
+SET 
+    r.priority = coalesce(r.priority, '中'),
+    r.mandatory = coalesce(r.mandatory, 'false');
+
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-27 20:08:16"
 message = """
 
 [隶属文件名]
@@ -159,296 +431,86 @@ response = """
 // 节点更新
 MERGE (n:Disease {name: '失眠'})
 SET 
-    n.description = coalesce(n.description, '睡眠困难或睡眠质量差的状态'),
-    n.category = coalesce(n.category, '睡眠障碍'),
-    n.severity = coalesce(n.severity, '严重');
-
-MERGE (n:Disease {name: '抑郁症'})
-SET 
-    n.description = coalesce(n.description, '一种影响情绪、思维和行为的心理疾病'),
-    n.category = coalesce(n.category, '心理疾病'),
-    n.severity = coalesce(n.severity, '中');
-
-MERGE (n:DrugTreatment {name: '异丙酚'})
-SET 
-    n.description = coalesce(n.description, '通过增强GABA功能抑制N-甲基-D-天冬氨酸受体，调节睡眠平衡'),
-    n.dosage = coalesce(n.dosage, '根据医生建议'),
-    n.frequency = coalesce(n.frequency, '根据需要'),
-    n.duration = coalesce(n.duration, '短期'),
-    n.route = coalesce(n.route, '静脉输注'),
-    n.contraindication = coalesce(n.contraindication, '无');
-
-MERGE (n:NonDrugTreatment {name: 'CBT-I'})
-SET 
-    n.description = coalesce(n.description, '认知行为疗法，改善失眠症状'),
-    n.duration = coalesce(n.duration, '长期'),
-    n.frequency = coalesce(n.frequency, '根据需要'),
-    n.contraindication = coalesce(n.contraindication, '无'),
-    n.equipment = coalesce(n.equipment, '无');
-
-MERGE (n:NonDrugTreatment {name: '肌肉放松'})
-SET 
-    n.description = coalesce(n.description, '增强放松，改善睡眠质量'),
-    n.duration = coalesce(n.duration, '短期'),
-    n.frequency = coalesce(n.frequency, '根据需要'),
-    n.contraindication = coalesce(n.contraindication, '无'),
-    n.equipment = coalesce(n.equipment, '无');
-
-// 关系更新
-MATCH (from) WHERE from.name = '失眠'
-MATCH (to) WHERE to.name = '异丙酚'
-MERGE (from)-[r:TREATED_BY]->(to)
-SET 
-    r.effectiveness = coalesce(r.effectiveness, 0.75),
-    r.priority = coalesce(r.priority, '高'),
-    r.stage = coalesce(r.stage, '联合治疗');
-
-MATCH (from) WHERE from.name = '失眠'
-MATCH (to) WHERE to.name = 'CBT-I'
-MERGE (from)-[r:TREATED_BY]->(to)
-SET 
-    r.effectiveness = coalesce(r.effectiveness, 0.9),
-    r.priority = coalesce(r.priority, '高'),
-    r.stage = coalesce(r.stage, '心理治疗');
-
-MATCH (from) WHERE from.name = '失眠'
-MATCH (to) WHERE to.name = '肌肉放松'
-MERGE (from)-[r:TREATED_BY]->(to)
-SET 
-    r.effectiveness = coalesce(r.effectiveness, 0.8),
-    r.priority = coalesce(r.priority, '中'),
-    r.stage = coalesce(r.stage, '非药物治疗');
-
-MATCH (from) WHERE from.name = '失眠'
-MATCH (to) WHERE to.name = '抑郁症'
-MERGE (from)-[r:INDICATES]->(to)
-SET 
-    r.confidence = coalesce(r.confidence, 0.9),
-    r.frequency = coalesce(r.frequency, '常见'),
-    r.severity = coalesce(r.severity, '严重');
-
-MATCH (from) WHERE from.name = '失眠'
-MATCH (to) WHERE to.name = '抑郁症'
-MERGE (from)-[r:MAY_CAUSE]->(to)
-SET 
-    r.probability = coalesce(r.probability, 0.7),
-    r.timeframe = coalesce(r.timeframe, '长期');
-
-"""
-
-[[message_pairs]]
-timestamp = "2024-12-19 00:08:18"
-message = """
-
-[隶属文件名]
-中国成人失眠诊断与治疗指南（2023版） (2).md
-[隶属文件分块名]
-中国成人失眠诊断与治疗指南（2023版） (2)/001-中国成人失眠诊断与治疗指南2023版.md
-[文本块]
-# 中国成人失眠诊断与治疗指南(2023版)
-中华医学会神经病学分会睡眠障碍学组  
-
-通信作者:王玉平,首都医科大学宣武医院神经内科,北京100053,Email:wangyuping01@sina.cn  
-
-【摘要】失眠是最为常见的睡眠问题之一。《中国成人失眠诊断与治疗指南(2023版)》是结合了前版指南使用经验和当前具体国情,参考了国内外相关研究进展、新药和新型诊疗方法的应用,依照循证医学证据及时制订的。本指南主要的变化包括:(1)更新了失眠的临床评估内容;(2)更新了失眠药物治疗和心理治疗的相关推荐意见;(3)新增了失眠的中国民族医药治疗推荐意见;(4)新增了青少年及儿童等特殊人群以及伴有或共病其他疾病人群失眠的治疗推荐意见。新版指南在内容上更丰富,且科学性和实用性更强,更具临床指导价值。 Y  
-
-【关键词】失眠;诊断;治疗;指南
-# Chinese guideline for diagnosis and treatment of insomnia (2023)
-Chinese Society of Sleep Disorders  
-
-失眠(insomnia)是最为常见的睡眠问题之一。失眠患病率因不同的调查人群、方法和诊断标准而变化很大。2017年发表的一项包含17项研究的荟萃分析结果显示,我国普通人群有临床意义的失眠Insomnia Scale AIS 15%QualityIndex,PSQI)或阿森斯失眠量表(AthensInsomnia Scale,AIS)评估为 $15\\%^{[1]}$ 。在全球  
-
-COVID-19大流行期间,数百万人的睡眠受到影响,有报道全球失眠症状的患病率为 $20\\%{\\sim}45\\%^{\\left[2\\right]}$ 。我国一项在线调查结果显示,COVID-19大流行期间的失眠患病率为 $29.2\\%^{[3]}$ 。长期失眠影响个体的正常生活和工作,增加罹患各种健康问题的风险。严重的睡眠缺失会降低患者的工作效率和警觉水平,甚至有可能引发恶性意外事故,造成巨大损失[4-5]为规范国内失眠的诊断和治疗,相关领域的专家于2006年发表了《中国失眠定义、诊断及药物治疗专家共识(草案)》6,进而于2012年在循证医学框架内经过广泛讨论推出《中国成人失眠诊断与治疗指南》7,并于2018年发表了更新版的《中国成人失眠诊断与治疗指南(2017版)》8}。该系列共识、指南为临床医师提供了越来越全面、规范、具有操作性的成人失眠诊疗方案。近年来,随着失眠相应新型治疗药物的上市、新型诊疗方法的出现和临床研究证据的不断积累,国内针对失眠的临床诊疗经验也在不断丰富,这些变化促成了本次修订工作。  
-
-本修订版由中华医学会神经病学分会睡眠障碍学组牵头,并组织相关专家,结合国内失眠诊疗实践的现状,经广泛讨论后形成。 电
-# 修订说明和适用范围
-专家组参考国际失眠相关指南和临床实践标准[9-21],回顾2017年9月至2023年8月新发表的文献资料,结合前版指南使用经验和当前具体国情,依照循证医学证据提出失眠的诊断和治疗推荐意见。作为2017版指南的替代更新版本,本指南主要的变化包括:(1)更新了失眠的临床评估内容;(2)根据新的证据和我国国情更新了失眠药物治疗和心理治疗的相关推荐意见;(3)新增了失眠的中国民族医药治疗推荐意见;(4)新增了青少年及儿童等特殊人群以及伴有或共病其他疾病人群失眠的治疗推荐意见。本指南的目标人群为成人和6岁及以上的青少年儿童,不包括6岁以下人群。本指南适用于所有的临床医师,旨在提供易于临床操作且符合我国国情的失眠诊疗规范。指南是针对临床特定问题进行广泛医疗实践后的总结,即使是较低级别的推荐,所涉及的临床实践仍强于单一的个人经验,理应成为临床实践的重要指导;在使用过程中应结合患者具体病情,评估潜在风险,实施个体化的精准医学诊疗。
-# 证据等级与推荐强度
-本指南的证据等级和推荐强度基于中华医学会发布的《中国制订/修订临床诊疗指南的指导原则(2022版)》22],参考牛津循证医学中心2011年的证据等级标准(0CEBM 2011版)进行证据分级[23]。证据等级分为“高(A)、中(B)、低(C)、极低(D)”四级,推荐强度分为“强(I)、弱(II)”二级(表1)。专家小组成员对于每一条意见的推荐方向及推荐强度进行投票表决,至少获得 $80\\%$ 以上参与者的认可方形成最终推荐意见。
-# 失眠的定义
-失眠是指尽管有合适的睡眠机会和睡眠环境,依然对睡眠时间和(或)睡眠质量感到不满意,并且影响日间功能或引起躯体不适的一种主观体验。失眠达到一定的频率和持续时间,并且达到影响日常生活的程度(本文所涉及的失眠,是作为一种疾病并且需要进行干预的)。主要症状表现为人睡困难(成人人睡潜伏期超过 $30\\;\\mathrm{min}$ )、睡眠维持障碍(整夜觉醒次数 $^{\\geqslant2}$ 次)、早醒、睡眠质量下降和总睡眠时间减少(通常少于 $6.5\\;\\mathrm{h}$ ),症状每周至少出现3次,并且必须伴有日间功能障碍或日间的痛苦体验。失眠引起的日间功能障碍主要包括疲劳、情绪低落或易激惹、躯体不适、认知障碍、焦虑情绪等[2。部分人群虽然睡眠时间较短(如短睡眠者),但没有与失眠有关的日间损害症状,不应被诊断为失眠。如果失眠是由于其他睡眠-觉醒障碍、精神障碍、其他医学情况或某种物质或药物引起的,也不应诊断为失眠,只有当失眠是临床关注的独立症状时,才诊断为失眠[4] 。目前大多诊断标准已放弃原发性、继发性失眠的诊断,因为人们认识到,失眠不仅是其他躯体或精神障碍的伴随症状,也是一种独立的疾病,值得在临床实践中予以具体考虑。失眠可能更多地作为一种与躯体或精神障碍并存的症状,而不是以孤立的形式出现[25]  
-
-Table 1  Evidence quality grading and recommendation strength[23]   
-表1证据质量分级和推荐强度[23]
-# 失眠的临床评估
-失眠的临床评估包括病史采集、体格检查、主观评估和客观评估等手段[26]。对于每一例患者都应仔细进行病史采集和体格检查。鉴别诊断和疗效评估可以纳入主观评估和客观评估方法。  
-
-一、病史采集和体格检查  
-
-病史采集:详细的病史采集应包括:(1)失眠表现形式:人睡情况、夜间觉醒次数、早醒及睡眠中异常动作和行为情况;日间功能损害是否有精神和体力状态、工作和学习情况,有无日间思睡。(2)失眠程度:平均每周失眠的次数,每晚总睡眠时间、觉醒次数、每次觉醒持续时间、最后醒来的时间等。(3)病程:失眠持续时间及症状波动性。(4)失眠诱发和加重-缓解因素:是否有心理应激事件,如工作学习压力、生活变故、长期情绪不好等;睡眠环境与人睡关联因素:睡眠环境的噪声、床褥舒适度、频繁变更睡眠条件等影响因素。(5)睡眠觉醒节律:询问和评价作息时间表,每天上床和最后觉醒、起床时间,是否午睡、倒班等。(6)治疗情况:曾接受的治疗方法、药物种类和剂量以及疗效,是否存在药物或物质依赖。(7)其他:系统回顾,明确是否存在情绪障碍、神经系统、心血管系统、呼吸系统、消化系统、内分泌系统、泌尿生殖系统等疾病以及其他各种类型躯体疾病。  
-
-体格检查:了解身体状况和精神状态,包括常规体格检查、神经系统检查和精神心理状态的唔谈。
-# 二、主观评估
-
-# (一)睡眠日记
-睡眠日记是失眠评估的重要组成部分[27]。由患者本人或家人协助完成为期1\\~2周的睡眠日记,记录每日上床时间,估计睡眠潜伏期,记录夜间觉醒次数以及每次觉醒的时间,记录从上床开始到起床之间的总卧床时间,根据早晨觉醒时间估计实际睡眠时间,计算睡眠效率「(实际睡眠时间/卧床时间 $\\times100\\%$ ],记录夜间异常症状(异常呼吸、行为和运动等),记录日间精力与社会功能受影响程度的自我体验,记录午休情况、日间用药和饮料品种。睡眠日记是全面了解患者的睡眠及日间状况的有用工具。
-# (二)量表测评
-辅助失眠诊断与鉴别诊断的自评与他评量表包括:(1)PSQI;(2)失眠严重程度指数(InsomniaSeverityIndex,ISI);(3)爱泼沃斯思睡量表(Epworth Sleepiness Scale,ESS);(4)睡前觉醒状态量表(Pre-Sleep Arousal Scale,PSAS);(5)疲劳严重程度量表(Fatigue Severity Scale,FSS);(6)清晨型与夜晚型睡眠问卷(MorningandEveningQuestionnaire,MEQ);(7)简明健康调查问卷(ShortForm-36Health Survey,SF-36);(8)睡眠信念和态度量表(Dysfunctional Beliefs and Attitudes about SleepScale,DBAS);(9)情绪评估:汉密尔顿焦虑量表(Hamilton Anxiety Scale,HAMA),汉密尔顿抑郁量表(Hamilton Depression Scale,HAMD),贝克抑郁量表(Beck Depression Inventory,BDI)、状态-特质焦虑问卷(State-Trait Anxiety Inventory,STAI)、广泛性焦虑障碍量表(Generalized Anxiety Disorder Scale,GAD-7)。接诊医生可根据患者具体情况选用。
-# 三、客观评估
-1.多导睡眠监测(polysomnography,PSG)多次睡眠潜伏期试验(multiple sleeplatency test,MSLT):整夜PSG主要用于失眠的鉴别诊断和疗效评估,如周期性肢体运动障碍、睡眠呼吸暂停、快速眼动睡眠期行为障碍等,尤其是对药物或者心理治疗反应不佳的患者[28]。MSLT用于鉴别发作性睡病和其他可导致日间睡眠增多的疾病[29]  
-
-2.体动记录仪(actigraph):体动记录仪佩戴简单方便,是一种监测身体活动和休息-活动周期的非侵入性方法。在睡眠医学中,它被用于评估昼夜节律、睡眠-觉醒节律和休息时间,用于昼夜节律失调性睡眠觉醒障碍(circadian rhythm sleepwakedisorders,CRSWDs)的鉴别诊断,也可以在无PSG条件时作为替代手段评估患者夜间总睡眠时间和睡眠模式,但需要注意其并不能提供详细的睡眠分期信息3,也用于针对失眠的认知行为治疗(cognitive behavioral therapy for insomnia, CBT-I)时的有效检测补充手段。  
-
-3.可穿戴设备(含远程监测设备):近年来新兴的可穿戴设备以及远程监测设备改进了体动记录仪的缺点,保留了便携性,可进行多参数监测[31]  
-
-4.神经影像:必要的影像学检查(CT、磁共振成像)可有助于排除其他疾病,如颅内肿瘤、脑血管疾病等,功能磁共振成像可进行失眠的临床研究,并可为无创神经调控治疗精准定位刺激部位[32-33]  
-
-5.实验室检查:实验室检查是排除系统性疾病以及寻找失眠病因的重要工具,可根据患者情况进行血常规、甲状腺功能、肝肾功能、血红蛋白、铁蛋白、维生素 B12、维生素D等检查[34-7]
-# 失眠的分类诊断与鉴别诊断
-国际睡眠障碍分类第三版(InternationalClassification of Sleep Disorders, third edition,ICSD-3)将失眠分为三类,即慢性失眠、短期失眠和其他失眠[38]。慢性失眠的诊断标准见表2。该标准将失眠 ${\\geqslant}3$ 个月作为慢性失眠的持续时间标准,发作频次 $\\geqslant3$ 次/周失眠作为最低频次标准,同时存在 $^{\\geqslant1}$ 项与夜间睡眠紊乱相关的日间症状,并排除了仅仅主诉有睡眠质量差、醒后无恢复感的患者符合A、B、C和F项,而睡眠素乱和相关日间症状持续不足3个月的,则诊断为短期失眠。其他失眠适用于具备睡眠起始困难和维持困难的失眠症状但不符合慢性失眠或短期失眠诊断标准的罕见情况,可临时使用这一诊断,但由于缺少特异性,建议谨慎使用。有些患者失眠症状反复出现,应按照每次出现失眠持续的时间来判定是否属于慢性失眠。  
-
-表2慢性失眠的诊断标准[38  
-
-Table 2  Diagnostic criteria for chronic insomnia必须同时符合A\\~F项标准A患者报告,或患者的父母、照护者观察到下列1条或多条:(1)睡眠起始困难;(2)睡眠维持困难;(3)比期望时间过早醒来;(4)在合适的作息时间点不愿上床;(5)没有父母或照护者干预入睡困难B患者报告,或患者的父母、照护者观察到下列与夜间睡眠困难相关的1条或多条:(1)疲劳、不适;(2)注意力或记忆损害;(3)社交、家务、职业或学业能力损害;(4)情绪紊乱/激惹;(5)日间瞌睡;(6)行为问题,如活动过度、冲动、攻击;(7)动机、精力、工作主动性下降;(8)易发错误、事故;(9)关切或不满足睡眠C 单纯的睡眠机会不当(没有足够时间用于睡眠)或环境不当(环境并非安全、黑暗、安静和舒适)不能解释报告的睡眠/觉醒主诉D 每周至少出现3次睡眠紊乱和相关日间症状E睡眠素乱和相关日间症状至少已存在3个月F睡眠/觉醒困难不能由其他睡眠障碍更好地解释  
-
-多数失眠患者可同时存在抑郁、焦虑和(或)躯体化症状,且存在着密切且复杂的关系。失眠与抑郁同时存在的患者包括:失眠伴抑郁症状、失眠与抑郁共病、躯体疾病等伴发的失眠与抑郁;失眠与焦虑同时存在的患者包括:失眠伴焦虑症状、失眠与焦虑共病、躯体疾病等伴发的失眠与焦虑;失眠与躯体化症状同时存在的患者包括:失眠伴躯体化症状、失眠与躯体化症状共病、躯体疾病等伴发的失眠与躯体化症状。对于失眠伴抑郁/焦虑/躯体化症状的患者,失眠是患者的主要临床诊断,控制失眠症状可改善上述症状;对于失眠与抑郁/焦虑/躯体化症状共病的患者,失眠和抑郁/焦虑/躯体化症状均达到了疾病诊断标准,失眠与上述症状的起病和病情演变相对独立;对于躯体疾病等伴发的失眠与抑郁/焦虑/躯体化症状患者,躯体疾病相关的心理应激及脑功能、神经生化、内分泌等改变均可引起失眠和上述症状。  
-
-失眠需要与精神障碍、躯体疾病、药物或物质滥用,以及其他类型的睡眠障碍相鉴别。需要鉴别的其他睡眠障碍类型包括:睡眠相关呼吸障碍、不宁腿综合征(restless legs syndrome,RLS)周期性肢体运动障碍、昼夜节律失调性睡眠觉醒障碍、环境性睡眠困难、睡眠不足综合征、短睡眠者等。确定失眠诊断时还应针对可以确定的精神或躯体障碍给予相应的诊断  
-
-优秀实践声明(GoodPracticeStatement,GPS):(1)诊断失眠时,应进行睡眠质量、睡眠信念和态度、日间症状、情绪等量表评估,以便全面了解患者的总体情况;(2)如有可能,在首次系统评估前最好记录睡眠日记;(3)诊断失眠时应关注共存的其他疾病和症状,并给予相应的诊断;(4)鉴别其他睡眠障碍如睡眠相关呼吸障碍、周期性肢体运动障碍时应进行PSG;失眠患者接受合理干预后疗效反应不理想时,应进行PSG排除其他类型睡眠障碍;失眠患者伴随日间过度思睡,特别是在需要鉴别发作性睡病时,应当同时进行PSG和MSLT。
-# 失眠的治疗
-一、总体目标和干预策略  
-
-1.总体目标:(1)改善睡眠质量和(或)增加有效睡眠时间;(2)防止短期失眠转化成慢性失眠;(3)减少与失眠相关的躯体症状或与精神疾病共病的风险;(4)恢复日间社会功能,提高生活质量;(5)尽可能避免包括药物在内的各种干预方式带来的负面效应。  
-
-2.干预方式:失眠的干预方式主要包括药物治疗、心理治疗、物理治疗和中国民族医药治疗等。  
-
-药物治疗失眠的短期疗效已经被临床试验所证实,但是长期应用仍需承担药物不良反应、成瘾性等潜在风险。心理治疗主要包括睡眠卫生教育和CBT-I。应强调睡眠卫生教育的重要性,在建立良好睡眠卫生习惯的基础上,开展其他治疗手段。CBT-I能够有效纠正失眠患者错误的睡眠认知与不恰当的行为因素,有利于消除心理及生理性高觉醒,增强人睡驱动力,重建正确的睡眠觉醒认知模式,持续改善失眠患者的临床症状[39]。数字CBT-I也同样可以达到一定的治疗效果。近年来物理治疗如光照疗法、经颅电刺激(transcranialelectricalstimulation,TES)、经颅磁刺激(transcranialmagneticstimulation,TMS)、经颅电磁联合刺激、生物反馈治疗等在失眠治疗中被广泛应用,饮食疗法、芳香疗法、按摩、顺势疗法等,可作为选择的补充治疗方式。中医治疗失眠的历史悠久,尚需现代循证医学模式进行评估。  
-
-3.不同类型失眠的干预策略:对短期失眠患者应该积极寻找并消除可能的诱发因素,同时积极处置失眠症状。短期失眠患者在无法完成CBT-I时应早期应用药物治疗,药物可能与CBT-I的疗效相当。药物治疗能发挥良好的催眠效能,快速消除失眠症状,避免病程迁延[9,25]。对慢性失眠患者首先需要进行详细的病情评估,在建立良好睡眠卫生习惯的基础上,选择相应的治疗方法,对于长期用药的患者,需要定期进行医学评估,防范可能发生的不良反应[。  
-
-二、失眠的药物治疗  
-
-(一)苯二氮草受体激动剂(benzodiazepine receptor agonists , BZRAs)  
-
-s non‐BZDs 䓬BZDs)、非苯二氮草类药物(non-benzodiazepinedrugs,non-BZDs)和新型苯二氮草受体激动剂。BZDs于20世纪60年代开始使用,可非选择性激动$\\upgamma.$ 氨基丁酸受体A上不同的 $\\upgamma$ 亚基,具有镇静、催眠、抗焦虑、肌肉松弛和抗惊厥的药理作用。20世纪80年代以来,non-BZDs应用于临床治疗失眠,其选择性激动 $\\upgamma$ 氨基丁酸受体A上的 $\\upalpha_{1}$ 亚基,发挥催眠作用,不良反应较BZDs小[40]。  
-
-1.BZDs:可改善失眠患者的人睡困难,增加总睡眠时间。三唑仑属于短半衰期催眠药物,由于其成瘾性和逆行性遗忘发生率高,已被我国列为一类精神药品管理。国内常用于治疗失眠的BZDs还包括艾司唑仑、阿普唑仑、劳拉西泮、地西泮、奥沙西泮、氯硝西泮,其中艾司唑仑是美国食品药品监督管理局(FDA)唯一批准用于失眠治疗的BZDs。BZDs不良反应包括:日间困倦、头昏、肌张力减低、跌倒和认知功能减退等。持续使用BZDs后,突然停药可能会出现戒断症状和反跳性失眠,需逐步减停。需考虑有物质滥用史的失眠患者的潜在药物滥用风险。肝肾功能损害、重症肌无力、路易体痴呆、中重度阻塞性睡眠呼吸暂停(obstructive sleepapnea,OSA)患者禁用BZDs(A级证据,I级推荐)[41-43]  
-
-2.non-BZDs:主要包括唑吡坦、扎来普隆、右佐匹克隆和佐匹克隆。扎来普隆半衰期小于1h,适用于治疗人睡困难44] 。唑吡坦半衰期小于 $0.7\\mathrm{\\sim}$$3.5\\;\\mathrm{h}$ ,能够快速诱导睡眠,治疗人睡困难和睡眠维持障碍,使用时应防护跌倒及异态睡眠的发生。右佐匹克隆和佐匹克隆半衰期小于 $^\\textrm{\\scriptsize6h}$ ,比唑吡坦有更好的睡眠维持作用。长期应用时,扎来普隆对认知和心理运动的影响少于唑吡坦和佐匹克隆[45-46]  
-
-non-BZDs 与 BZDs 催眠疗效类似[47-48] ,但是药物依赖的风险较传统BZDs低。由于 non-BZDs半衰期相对较短,次日残余效应低,一般不产生日间困倦,因此 non-BZDs治疗失眠安全、有效,无严重药物不良反应(A级证据,I级推荐)[4-52]  
-
-3.新型苯二氮草受体激动剂地达西尼(dimdazenil):为 $\\upgamma$ 氨基丁酸A型( $\\upgamma$ -aminobutyricacid type A, $\\mathrm{GABA_{A}}$ )受体的部分正向别构调节剂,选择性作用于 $\\upalpha_{1}$ 亚基,部分激动 $\\mathrm{GABA_{A}}$ 受体。地达西尼达峰时间约 $^{1\\mathrm{~h~}}$ ,半衰期约 $4~\\mathrm{{h}}$ ,适用于人睡困难和睡眠维持困难,可以改善日间疲劳,不影响N日2间功能[ ]。地达西尼治疗失眠的研A究结果显示,其能缩短人睡时间和增加总睡眠时间,增加N2期睡眠,改善日间思睡[57(短期应用A级证据,I级推荐)。
-# (二)双食欲素受体拮抗剂
-食欲素(orexins)可分为两种神经肽:食欲素A[也称下丘脑分泌素-1(hypocretin-1)]和食欲素B[也称下丘脑分泌素-2(hypocretin-2)]。食欲素受体有两种,分别为食欲素1型受体(OX1R)和食欲antagonist DORA3 种双重食欲素受体拮抗剂(dual orexin receptorantagonist,DORA)药物包括:苏沃雷生(suvorexant)、莱博雷生(lemborexant)和达利雷生(daridorexant)。DORA能显著改善患者的主观人睡时间、总睡眠时间、延长快速眼球运动(rapid eyemovement,REM)睡眠持续时间,改善睡眠结构和睡眠质量[59-60]。常见的不良事件是头痛( $\\,\\!\\!\\,10\\%\\,,$ 思睡 $7\\%$ )和疲劳 $(5\\%)^{[61.62]}$ ,少于 $2\\%$ 的患者出现睡眠瘫痪和睡眠幻觉。DORA无次日残留,对认知及呼吸影响小,均可应用于有轻中度慢性阻塞性肺病(chronic obstructive pulmonary disease , COPD)和阻塞性睡眠呼吸暂停综合征(obstructive sleep apneasyndrome,OSAS)的失眠患者。其中,有证据表明莱博雷生对重度COPD和OSA患者的呼吸功能无负面影响[63-68]。目前尚无证据表明 DORA 导致药物依赖,可以长期应用,停药不出现显著的反跳性失眠[69-7]  
-
-苏沃雷生剂量为 $10~\\mathrm{mg}$ 或 $20~\\mathrm{mg}$ ,睡前口服,达峰时间一般为 $2.0{\\sim}3.5\\,\\mathrm{h}$ ,半衰期为 $12{\\sim}15\\ \\mathrm{h}^{[8]}$ 。其主要的不良反应是次日日间思睡[B]。苏沃I雷生可治疗阿尔茨海默病患者的失眠及急性脑卒中患者的主观失眠,不引起妄74-75。  
-
-莱博雷生剂量为 $5~\\mathrm{mg}$ 或 $10~\\mathrm{mg}$ ,达峰时间一般为 $1{\\sim}3~\\mathrm{h}$ ,半衰期为 $17{\\sim}19\\mathrm{~h~}$ 。莱博雷生可以明显提高睡眠效率,缩短睡眠潜伏期和失眠患者的睡眠后觉醒时间,安全性和耐受性良好(A级证据,I级推荐)[76-78] 8 h  
-
-达利雷生剂量为 $25~\\mathrm{mg}$ 或 $50~\\mathrm{mg}$ ,睡前 $30\\ \\mathrm{min}$口服,达峰时间一般为 $1{\\sim}2~\\mathrm{h}$ ,半衰期为 $^{8\\mathrm{~h~}}$ ,常用剂量为 $50~\\mathrm{mg}$ ,特殊人群每日 $25~\\mathrm{mg}$ $50~\\mathrm{mg}$ 达利雷生可改善夜间睡眠和日间功能,日间思睡发生比例低(A级证据,I级推荐)[79-80]
-# (三)褪黑素和褪黑素受体激动剂
-褪黑素与睡眠-觉醒周期的调节有关。褪黑素仅用于昼夜节律失调型睡眠觉醒障碍,如昼夜节律延迟综合征及时差变化所致失眠的短期应用,不建议作为常规药物治疗失眠。褪黑素缓释片( $2\\;\\mathrm{mg})$在欧洲被批准用于55岁以上中老年人群失眠的治疗(B级证据,I级推荐)[\"]。褪黑素有头痛、思睡、胃肠反应、血压变化、情绪低落等不良反应,长期使用褪黑素可影响内源性褪黑素的分泌,大剂量褪黑素( $10~\\mathrm{mg/d}$ 以上)可抑制性激素分泌。常用给药方法和剂量是入睡时间前的 $2{\\sim}3\\mathrm{~h~}$ 服用 $0.3{\\sim}5.0\\ \\mathrm{mg}$  
-
-褪黑素受体激动剂包括雷美替胺(ramelteon,又译雷美尔通)和特斯美尔通(tasimelteon,又译他司美琼)。褪黑素受体激动剂通过激动褪黑素受体,发挥催眠作用,其可缩短睡眠潜伏期、提高睡眠效率、增加总睡眠时间,用于昼夜节律失调所致的以人睡困难为主要表现的失眠(A级证据,II级推[, ] COPD无戒断症状及无呼吸抑制作用,次日残留作用少,适合用于合并存在睡眠呼吸障碍及COPD的失眠患者。特斯美尔通是唯一一个被美国FDA批准用于非 $24~\\mathrm{h}$ 昼夜节律睡眠障碍治疗的药物。阿戈美拉汀(agomelatine)同时具有激动褪黑素受体作用及5-羟色胺 $2\\mathrm{C}$ 受体拮抗作用,可改善患者的人睡困难等症状,缩短睡眠潜伏期,改善睡眠效率,增加N3期睡眠,无药物依赖性且同时有抗抑郁的作用,尤其适用于失眠合并抑郁情绪的患者[83],但乙型肝炎/丙型肝炎病毒携带者、肝功能损害者禁用(B级证据,II级推荐)[84]  
-
-(四)抗组胺H1受体药物  
-
-抗组胺H1受体药物,可穿过血脑屏障,与脑部的H1受体结合,作为非处方药物用于妊娠呕吐的治疗,通过对中枢神经活动的抑制起到镇静催眠作用,也可改善妊娠患者的失眠,应慎用于重症肌无力及青光眼的患者,可能加重妄,甚至增加死亡率[85]。  
-
-多西拉敏:乙醇胺类的H1抗组胺药,具有镇静作用,可缩短睡眠潜伏期,用于急性失眠的治疗[\"]推荐剂量为 $7.5{\\sim}25.0\\ \\mathrm{mg}$ ,达峰时间为 $2\\;\\mathrm{h}$ ,半衰期约10 h。多西拉敏作为非处方药,对孕早期妇女进行的充分严格的对照研究中未见其对胎儿产生损害,因此可以在妊娠期使用(B级证据,I级推荐)[86-87]  
-
-苯海拉明:为乙醇胺的衍生物。苯海拉明作为非处方H1抗组胺药,用于妊娠呕吐的治疗,也可改善妊娠患者的失眠,推荐剂量为睡前口服 $25{\\sim}50~\\mathrm{mg}$(B级证据,I级推荐)[78.88]。  
-
-(五)具有镇静作用的抗抑郁药物  
-
-1.多塞平:小剂量多塞平 $\\left(3{\\sim}6\\mathrm{~mg/d}\\right)$ 空腹服用,因其半衰期受食物影响而明显延迟(B级证据,I级推荐)\"}。具有明显的抗组胺作用,用于治疗以睡眠维持困难为特征的失眠。可以改善成年和老年慢性失眠患者的睡眠,闭角型青光眼或尿潴留患者慎用。  
-
-2.曲唑酮:小剂量曲唑酮 $(25{\\sim}150\\mathrm{~mg/d})$ ),睡前$^{1\\mathrm{~h~}}$ 给药,可拮抗5-羟色胺2A受体、中枢 $\\upalpha1$ 受体和H1受体,缩短睡眠潜伏期,减少睡眠中觉醒次数,增加睡眠维持时间,能增加慢波睡眠,从而发挥镇静催眠作用,不会造成白天困倦[90-2]。曲唑酮可提高患者主观睡眠质量,失眠患者耐受性良好(A级证据,II级推荐)[93]  
-
-3.米氮平:米氮平 $3.75{\\sim}15.00\\ \\mathrm{mg}$ 能快速镇静,改善睡眠,增加慢波睡眠,有助于睡眠持续,对REM睡眠潜伏期及REM睡眠持续时间影响较小,适用于浅睡眠增加、早醒及失眠伴焦虑抑郁的患者(C级证据,II级推荐)9-95]。但可引起或加重RLS、噩梦,其半衰期长,易出现白天困倦,长期应用易出现锥体外系不良反应[96-97]  
-
-(六)抗抑郁药物与BZRAs联合应用  
-
-失眠患者常伴有抑郁焦虑,二者互为因果。选择性5-羟色胺再摄取抑制剂(selective serotoninreuptake inhibitor,SSRI)通过治疗抑郁和焦虑改善失眠,在用药初期可能有激越反应,部分SSRI能够延长睡眠潜伏期,增加睡眠中的觉醒时间,减少睡眠总时间和降低睡眠效率,减少慢波睡眠,增加某serotonin‐norepinephrine  reup  
-
-早期联合应用SSRI、5-羟色胺去甲肾上腺素再摄取抑制剂(serotonin-norepinephrine reuptakeinhibitor,SNRI)和短效BZRAs(如唑吡坦、佐匹克隆或右佐匹克隆)可快速缓解失眠,提高患者对SSRI、SNRI的依存性[98-9]。盐酸曲唑酮可以改善睡眠结构和睡眠连续性,和短效BZRAs(如唑吡坦、佐匹克隆或者右佐匹克隆)联合使用提高依存性[10]多塞平、小剂量米氮平具有镇静作用,一般不需要联用 类药物(级证据,级推荐)[]。  
-
-(七)具有镇静作用的抗精神病药  
-
-部分抗精神病药物因抗组胺机制而具有镇静作用,如:喹硫平、奥氮平、氯氮平等,这些药物能够增加总睡眠时间、改善睡眠结构、减少睡眠中觉醒时间。考虑到其不良反应,尚缺乏循证医学证据,不建议无精神疾病的失眠患者使用此类药物(D级证据,I级推荐)。在具有镇静作用的抗精神病药物中,首选小剂量喹硫平,其镇静效果较好,安全性dexmedetom C
-
-"""
-response = """
-// 节点更新
-MERGE (n:Disease {name: '失眠'})
-SET 
-    n.description = coalesce(n.description, '尽管有合适的睡眠机会和环境，仍对睡眠质量感到不满意'),
-    n.category = coalesce(n.category, '睡眠障碍'),
-    n.severity = coalesce(n.severity, '严重');
+    n.description = coalesce(n.description, '一种常见的睡眠障碍，表现为入睡困难、睡眠维持困难或睡眠质量不佳'),
+    n.severity = coalesce(n.severity, '中等');
 
 MERGE (n:Symptom {name: '入睡困难'})
 SET 
-    n.description = coalesce(n.description, '人睡潜伏期超过30分钟'),
-    n.severity = coalesce(n.severity, '中'),
-    n.frequency = coalesce(n.frequency, '每周至少出现3次');
+    n.description = coalesce(n.description, '睡前很难入睡，常需较长时间才能进入睡眠状态'),
+    n.severity = coalesce(n.severity, '严重'),
+    n.frequency = coalesce(n.frequency, '常见');
 
 MERGE (n:Symptom {name: '睡眠维持困难'})
 SET 
-    n.description = coalesce(n.description, '整夜觉醒次数≥2次'),
-    n.severity = coalesce(n.severity, '中'),
-    n.frequency = coalesce(n.frequency, '每周至少出现3次');
+    n.description = coalesce(n.description, '在夜间多次觉醒，并且难以再次入睡'),
+    n.severity = coalesce(n.severity, '严重'),
+    n.frequency = coalesce(n.frequency, '常见');
 
-MERGE (n:Symptom {name: '早醒'})
+MERGE (n:Symptom {name: '睡眠质量不佳'})
 SET 
-    n.description = coalesce(n.description, '比期望时间过早醒来'),
-    n.severity = coalesce(n.severity, '中'),
-    n.frequency = coalesce(n.frequency, '每周至少出现3次');
+    n.description = coalesce(n.description, '睡眠不够深，常感到疲倦'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '常见');
 
-MERGE (n:Symptom {name: '总睡眠时间减少'})
+MERGE (n:DrugTreatment {name: '右美托咪定'})
 SET 
-    n.description = coalesce(n.description, '通常少于6.5小时'),
-    n.severity = coalesce(n.severity, '中'),
-    n.frequency = coalesce(n.frequency, '每周至少出现3次');
-
-MERGE (n:Symptom {name: '睡眠质量下降'})
-SET 
-    n.description = coalesce(n.description, '主观感受的睡眠质量降低'),
-    n.severity = coalesce(n.severity, '中'),
-    n.frequency = coalesce(n.frequency, '每周至少出现3次');
-
-MERGE (n:DrugTreatment {name: '苯二氮草受体激动剂'})
-SET 
-    n.description = coalesce(n.description, '药物用于治疗失眠的短期疗效'),
-    n.dosage = coalesce(n.dosage, '根据医生建议'),
+    n.description = coalesce(n.description, '一种α2肾上腺素能受体激动剂，能显著改善睡眠效率'),
+    n.dosage = coalesce(n.dosage, '根据医师指示'),
     n.frequency = coalesce(n.frequency, '根据需要'),
-    n.duration = coalesce(n.duration, '短期'),
-    n.route = coalesce(n.route, '口服'),
-    n.contraindication = coalesce(n.contraindication, '重度呼吸衰竭');
+    n.duration = coalesce(n.duration, '根据病情'),
+    n.route = coalesce(n.route, '静脉输注'),
+    n.contraindication = coalesce(n.contraindication, '麻醉科医师评估');
 
-MERGE (n:DrugTreatment {name: '非苯二氮草类药物'})
+MERGE (n:DrugTreatment {name: '异丙酚'})
 SET 
-    n.description = coalesce(n.description, '选择性激动GABA受体，安全有效'),
-    n.dosage = coalesce(n.dosage, '根据医生建议'),
+    n.description = coalesce(n.description, '通过增强GABA功能来调节睡眠平衡，改善抑郁'),
+    n.dosage = coalesce(n.dosage, '根据医师指示'),
     n.frequency = coalesce(n.frequency, '根据需要'),
-    n.duration = coalesce(n.duration, '短期'),
-    n.route = coalesce(n.route, '口服'),
-    n.contraindication = coalesce(n.contraindication, '重度呼吸衰竭');
+    n.duration = coalesce(n.duration, '根据病情'),
+    n.route = coalesce(n.route, '静脉输注'),
+    n.contraindication = coalesce(n.contraindication, '无');
 
-MERGE (n:NonDrugTreatment {name: '认知行为疗法'})
+MERGE (n:NonDrugTreatment {name: '认知行为治疗（CBT-I）'})
 SET 
-    n.description = coalesce(n.description, 'CBT-I'),
-    n.duration = coalesce(n.duration, '短期'),
-    n.frequency = coalesce(n.frequency, '根据需要'),
+    n.description = coalesce(n.description, '一种心理干预方法，通过改变患者信念系统来改善睡眠'),
+    n.duration = coalesce(n.duration, '根据需要'),
+    n.frequency = coalesce(n.frequency, '通常为6-8次治疗'),
     n.contraindication = coalesce(n.contraindication, '无'),
     n.equipment = coalesce(n.equipment, '无');
 
-MERGE (n:Complication {name: '焦虑'})
+MERGE (n:NonDrugTreatment {name: '光照治疗'})
 SET 
-    n.description = coalesce(n.description, '与失眠共病，影响日常功能'),
-    n.severity = coalesce(n.severity, '中');
+    n.description = coalesce(n.description, '通过调节松果体褪黑素分泌改善睡眠质量'),
+    n.duration = coalesce(n.duration, '持续30分钟至2小时'),
+    n.frequency = coalesce(n.frequency, '根据需要'),
+    n.contraindication = coalesce(n.contraindication, '光敏性患者需谨慎'),
+    n.equipment = coalesce(n.equipment, '光疗仪');
 
-MERGE (n:Complication {name: '抑郁'})
+MERGE (n:NonDrugTreatment {name: '声音治疗'})
 SET 
-    n.description = coalesce(n.description, '与失眠共病，影响日常功能'),
-    n.severity = coalesce(n.severity, '重');
+    n.description = coalesce(n.description, '通过音乐或噪声影响脑波频率改善睡眠质量'),
+    n.duration = coalesce(n.duration, '不限'),
+    n.frequency = coalesce(n.frequency, '根据需要'),
+    n.contraindication = coalesce(n.contraindication, '对声音敏感者需谨慎'),
+    n.equipment = coalesce(n.equipment, '音乐装置');
 
-MERGE (n:Examination {name: '多导睡眠监测'})
+MERGE (n:RiskFactor {name: '年龄因素'})
 SET 
-    n.description = coalesce(n.description, '整夜PSG主要用于失眠的鉴别诊断和疗效评估'),
+    n.type = coalesce(n.type, '现病史'),
+    n.description = coalesce(n.description, '年龄增长与睡眠质量下降相关'),
+    n.impact_level = coalesce(n.impact_level, '中等');
+
+MERGE (n:RiskFactor {name: '心理因素'})
+SET 
+    n.type = coalesce(n.type, '现病史'),
+    n.description = coalesce(n.description, '焦虑和抑郁等心理状态可能导致失眠'),
+    n.impact_level = coalesce(n.impact_level, '重');
+
+MERGE (n:Examination {name: '睡眠监测'})
+SET 
+    n.description = coalesce(n.description, '通过多导睡眠图检查评估睡眠障碍'),
     n.method = coalesce(n.method, '多导睡眠监测'),
-    n.requirement = coalesce(n.requirement, '需进行设备监测');
+    n.requirement = coalesce(n.requirement, '在安静环境中进行');
 
 // 关系更新
 MATCH (from) WHERE from.name = '失眠'
@@ -463,74 +525,74 @@ MATCH (from) WHERE from.name = '失眠'
 MATCH (to) WHERE to.name = '睡眠维持困难'
 MERGE (from)-[r:INDICATES]->(to)
 SET 
-    r.confidence = coalesce(r.confidence, 0.95),
+    r.confidence = coalesce(r.confidence, 0.9),
     r.frequency = coalesce(r.frequency, '常见'),
     r.severity = coalesce(r.severity, '严重');
 
 MATCH (from) WHERE from.name = '失眠'
-MATCH (to) WHERE to.name = '早醒'
+MATCH (to) WHERE to.name = '睡眠质量不佳'
 MERGE (from)-[r:INDICATES]->(to)
 SET 
-    r.confidence = coalesce(r.confidence, 0.9),
+    r.confidence = coalesce(r.confidence, 0.8),
     r.frequency = coalesce(r.frequency, '常见'),
-    r.severity = coalesce(r.severity, '中');
+    r.severity = coalesce(r.severity, '中等');
 
 MATCH (from) WHERE from.name = '失眠'
-MATCH (to) WHERE to.name = '总睡眠时间减少'
-MERGE (from)-[r:INDICATES]->(to)
-SET 
-    r.confidence = coalesce(r.confidence, 0.9),
-    r.frequency = coalesce(r.frequency, '常见'),
-    r.severity = coalesce(r.severity, '中');
-
-MATCH (from) WHERE from.name = '失眠'
-MATCH (to) WHERE to.name = '睡眠质量下降'
-MERGE (from)-[r:INDICATES]->(to)
-SET 
-    r.confidence = coalesce(r.confidence, 0.9),
-    r.frequency = coalesce(r.frequency, '常见'),
-    r.severity = coalesce(r.severity, '中');
-
-MATCH (from) WHERE from.name = '失眠'
-MATCH (to) WHERE to.name = '苯二氮草受体激动剂'
+MATCH (to) WHERE to.name = '右美托咪定'
 MERGE (from)-[r:TREATED_BY]->(to)
 SET 
     r.effectiveness = coalesce(r.effectiveness, 0.85),
     r.priority = coalesce(r.priority, '高'),
-    r.stage = coalesce(r.stage, '初始治疗');
+    r.stage = coalesce(r.stage, '重症失眠治疗');
 
 MATCH (from) WHERE from.name = '失眠'
-MATCH (to) WHERE to.name = '非苯二氮草类药物'
-MERGE (from)-[r:TREATED_BY]->(to)
-SET 
-    r.effectiveness = coalesce(r.effectiveness, 0.85),
-    r.priority = coalesce(r.priority, '高'),
-    r.stage = coalesce(r.stage, '初始治疗');
-
-MATCH (from) WHERE from.name = '失眠'
-MATCH (to) WHERE to.name = '认知行为疗法'
+MATCH (to) WHERE to.name = '异丙酚'
 MERGE (from)-[r:TREATED_BY]->(to)
 SET 
     r.effectiveness = coalesce(r.effectiveness, 0.75),
     r.priority = coalesce(r.priority, '中'),
-    r.stage = coalesce(r.stage, '联合治疗');
+    r.stage = coalesce(r.stage, '辅助治疗');
 
 MATCH (from) WHERE from.name = '失眠'
-MATCH (to) WHERE to.name = '焦虑'
-MERGE (from)-[r:MAY_CAUSE]->(to)
+MATCH (to) WHERE to.name = '认知行为治疗（CBT-I）'
+MERGE (from)-[r:TREATED_BY]->(to)
 SET 
-    r.probability = coalesce(r.probability, 0.6),
-    r.timeframe = coalesce(r.timeframe, '长期');
+    r.effectiveness = coalesce(r.effectiveness, 0.9),
+    r.priority = coalesce(r.priority, '高'),
+    r.stage = coalesce(r.stage, '初始治疗');
 
 MATCH (from) WHERE from.name = '失眠'
-MATCH (to) WHERE to.name = '抑郁'
-MERGE (from)-[r:MAY_CAUSE]->(to)
+MATCH (to) WHERE to.name = '光照治疗'
+MERGE (from)-[r:TREATED_BY]->(to)
 SET 
-    r.probability = coalesce(r.probability, 0.7),
-    r.timeframe = coalesce(r.timeframe, '长期');
+    r.effectiveness = coalesce(r.effectiveness, 0.7),
+    r.priority = coalesce(r.priority, '中'),
+    r.stage = coalesce(r.stage, '辅助治疗');
 
 MATCH (from) WHERE from.name = '失眠'
-MATCH (to) WHERE to.name = '多导睡眠监测'
+MATCH (to) WHERE to.name = '声音治疗'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.65),
+    r.priority = coalesce(r.priority, '中'),
+    r.stage = coalesce(r.stage, '辅助治疗');
+
+MATCH (from) WHERE from.name = '失眠'
+MATCH (to) WHERE to.name = '年龄因素'
+MERGE (from)-[r:INFLUENCED_BY]->(to)
+SET 
+    r.impact_level = coalesce(r.impact_level, '中等'),
+    r.evidence_level = coalesce(r.evidence_level, 'B级');
+
+MATCH (from) WHERE from.name = '失眠'
+MATCH (to) WHERE to.name = '心理因素'
+MERGE (from)-[r:INFLUENCED_BY]->(to)
+SET 
+    r.impact_level = coalesce(r.impact_level, '重'),
+    r.evidence_level = coalesce(r.evidence_level, 'A级');
+
+MATCH (from) WHERE from.name = '失眠'
+MATCH (to) WHERE to.name = '睡眠监测'
 MERGE (from)-[r:REQUIRES_EXAM]->(to)
 SET 
     r.priority = coalesce(r.priority, '高'),
@@ -539,7 +601,7 @@ SET
 """
 
 [[message_pairs]]
-timestamp = "2024-12-19 00:08:19"
+timestamp = "2024-12-27 20:08:24"
 message = """
 
 [隶属文件名]
@@ -581,71 +643,141 @@ RLS共存时多认为RLS是失眠原因,部分患者因主 诉失眠就诊而易
 """
 response = """
 // 节点更新
-MERGE (n:Disease {name: '失眠'});
+MERGE (n:Disease {name: '失眠'})
+SET 
+    n.description = coalesce(n.description, '一种常见的睡眠障碍'),
+    n.severity = coalesce(n.severity, '中等');
 
 MERGE (n:Disease {name: '阻塞性睡眠呼吸暂停'})
 SET 
-    n.code = coalesce(n.code, 'OSA');
+    n.description = coalesce(n.description, '一种睡眠中呼吸反复暂停的疾病'),
+    n.severity = coalesce(n.severity, '中等');
 
-MERGE (n:Disease {name: '周期性肢体运动障碍'})
+MERGE (n:Disease {name: '快速眼动睡眠行为障碍'})
 SET 
-    n.code = coalesce(n.code, 'RLS');
+    n.description = coalesce(n.description, '在快速眼动睡眠期表现出的异常行为症状'),
+    n.severity = coalesce(n.severity, '中等');
 
-MERGE (n:Disease {name: '反复噩梦'});
+MERGE (n:Disease {name: '不宁腿综合征'})
+SET 
+    n.description = coalesce(n.description, '在静止时感到不适，伴随迫使移腿的感觉'),
+    n.severity = coalesce(n.severity, '中等');
 
-MERGE (n:Disease {name: '脑血管病'});
+MERGE (n:Disease {name: '抑郁症'})
+SET 
+    n.description = coalesce(n.description, '一种影响情绪的严重精神障碍'),
+    n.severity = coalesce(n.severity, '严重');
+
+MERGE (n:Disease {name: '焦虑症'})
+SET 
+    n.description = coalesce(n.description, '一种以焦虑和过度担心为特征的精神障碍'),
+    n.severity = coalesce(n.severity, '中等');
 
 MERGE (n:Disease {name: '慢性阻塞性肺疾病'})
 SET 
-    n.code = coalesce(n.code, 'COPD');
+    n.description = coalesce(n.description, '一种逐渐加重的肺部疾病，影响呼吸'),
+    n.severity = coalesce(n.severity, '中等');
 
-MERGE (n:Disease {name: '2型糖尿病'});
+MERGE (n:Disease {name: '脑血管疾病'})
+SET 
+    n.description = coalesce(n.description, '影响脑血液供应的疾病'),
+    n.severity = coalesce(n.severity, '中等');
 
-MERGE (n:Disease {name: '心血管疾病'});
+MERGE (n:Symptom {name: '睡眠片段化'})
+SET 
+    n.description = coalesce(n.description, '睡眠中频繁醒来或短暂觉醒'),
+    n.severity = coalesce(n.severity, '严重'),
+    n.frequency = coalesce(n.frequency, '频繁');
 
-MERGE (n:Disease {name: '焦虑症'});
+MERGE (n:Symptom {name: '日间功能损害'})
+SET 
+    n.description = coalesce(n.description, '白天因缺乏睡眠导致的功能受损'),
+    n.severity = coalesce(n.severity, '严重'),
+    n.frequency = coalesce(n.frequency, '常见');
 
-MERGE (n:Disease {name: '抑郁症'});
+MERGE (n:Symptom {name: '失眠症状'})
+SET 
+    n.description = coalesce(n.description, '夜间入睡困难或睡眠维持困难'),
+    n.severity = coalesce(n.severity, '严重'),
+    n.frequency = coalesce(n.frequency, '常见');
+
+MERGE (n:Symptom {name: '焦虑'})
+SET 
+    n.description = coalesce(n.description, '过度的担心和不安'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '常见');
+
+MERGE (n:Symptom {name: '抑郁'})
+SET 
+    n.description = coalesce(n.description, '情绪低落或缺乏兴趣'),
+    n.severity = coalesce(n.severity, '严重'),
+    n.frequency = coalesce(n.frequency, '常见');
+
+MERGE (n:Symptom {name: '疲劳'})
+SET 
+    n.description = coalesce(n.description, '缺乏能量和精力'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '常见');
+
+MERGE (n:Symptom {name: '呼吸困难'})
+SET 
+    n.description = coalesce(n.description, '在睡眠中或日间感到呼吸困难'),
+    n.severity = coalesce(n.severity, '严重'),
+    n.frequency = coalesce(n.frequency, '常见');
+
+MERGE (n:Symptom {name: '夜间腿痉挛'})
+SET 
+    n.description = coalesce(n.description, '夜间腿部肌肉突然收缩造成痛感'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '偶尔');
 
 // 关系更新
 MATCH (from) WHERE from.name = '失眠'
-MATCH (to) WHERE to.name = '阻塞性睡眠呼吸暂停'
+MATCH (to) WHERE to.name = '睡眠片段化'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.9),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '严重');
+
+MATCH (from) WHERE from.name = '失眠'
+MATCH (to) WHERE to.name = '日间功能损害'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.95),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '严重');
+
+MATCH (from) WHERE from.name = '失眠'
+MATCH (to) WHERE to.name = '失眠症状'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.9),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '严重');
+
+MATCH (from) WHERE from.name = '抑郁症'
+MATCH (to) WHERE to.name = '焦虑'
 MERGE (from)-[r:INDICATES]->(to)
 SET 
     r.confidence = coalesce(r.confidence, 0.85),
     r.frequency = coalesce(r.frequency, '常见'),
     r.severity = coalesce(r.severity, '严重');
 
-MATCH (from) WHERE from.name = '失眠'
-MATCH (to) WHERE to.name = '周期性肢体运动障碍'
+MATCH (from) WHERE from.name = '抑郁症'
+MATCH (to) WHERE to.name = '抑郁'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.85),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '严重');
+
+MATCH (from) WHERE from.name = '慢性阻塞性肺疾病'
+MATCH (to) WHERE to.name = '疲劳'
 MERGE (from)-[r:INDICATES]->(to)
 SET 
     r.confidence = coalesce(r.confidence, 0.8),
     r.frequency = coalesce(r.frequency, '常见'),
-    r.severity = coalesce(r.severity, '中');
-
-MATCH (from) WHERE from.name = '失眠'
-MATCH (to) WHERE to.name = '反复噩梦'
-MERGE (from)-[r:INDICATES]->(to)
-SET 
-    r.confidence = coalesce(r.confidence, 0.75),
-    r.frequency = coalesce(r.frequency, '偶发'),
-    r.severity = coalesce(r.severity, '轻');
-
-MATCH (from) WHERE from.name = '失眠'
-MATCH (to) WHERE to.name = '焦虑症'
-MERGE (from)-[r:INDICATES]->(to)
-SET 
-    r.confidence = coalesce(r.confidence, 0.8),
-    r.frequency = coalesce(r.frequency, '偶发'),
-    r.severity = coalesce(r.severity, '轻');
-
-MATCH (from) WHERE from.name = '失眠'
-MATCH (to) WHERE to.name = '抑郁症'
-MERGE (from)-[r:INDICATES]->(to)
-SET 
-    r.confidence = coalesce(r.confidence, 0.75),
-    r.frequency = coalesce(r.frequency, '常见'),
-    r.severity = coalesce(r.severity, '中');
+    r.severity = coalesce(r.severity, '严重');
 
 """

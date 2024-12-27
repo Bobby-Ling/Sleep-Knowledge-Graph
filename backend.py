@@ -787,6 +787,7 @@ def submit_query(session_id):
                 # if symptom["name"] in symptom_names:
                 if symptom["internal_name"] in symptom_names:
                     internal_names.append(symptom["internal_name"])
+                    internal_names.extend(symptom['alias'])
                     related_scales.update(symptom["related_scales"])
 
         related_scales_index: list[int] = []

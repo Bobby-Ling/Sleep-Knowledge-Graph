@@ -1,87 +1,10 @@
 [metadata]
 file_name = "认知功能损害患者睡眠障碍评估和管理的专家共识.md"
-processed_at = "2024-12-19 00:12:18"
+processed_at = "2024-12-27 20:09:32"
 total_pairs = 2
 
 [[message_pairs]]
-timestamp = "2024-12-19 00:08:59"
-message = """
-
-[隶属文件名]
-认知功能损害患者睡眠障碍评估和管理的专家共识.md
-[隶属文件分块名]
-认知功能损害患者睡眠障碍评估和管理的专家共识/002-一诊断与评估.md
-[文本块]
-# (一)诊断与评估
-CRSWDs在认知功能损害的MCI期或更早阶段出现,呈现:睡眠明显片段化,觉醒次数增加;NREM减少大于REM减少;夜间徘徊不睡、人睡及维持困难。睡眠时相变化主要为不规则睡眠-觉醒节律、睡眠-觉醒时相延迟障碍及睡眠-觉醒时相提前障碍。认知功能损害患者在出现CRSWDs的同时,常有 $90\\%$ 的患者伴有精神行为异常及昼夜节律的变化,其中最突出的精神行为异常为日落综合征。  
-
-CRSWDs的诊断需要调查人睡和起床时间,包括至少1周睡眠日记,并记录治疗睡眠障碍的具体方法及药物剂量。ACT检测结果对于诊断有重要作用。一些昼夜节律的生理指标(如微光褪黑激素分泌、最低核心体温)是确认CRSWDs 的辅助工具。鉴别诊断CRSWDs需考虑痴呆患者其他的精神行为症状,如抑郁、淡漠与焦虑[48]  
-
-根据ICSD-3对CRSWDs的诊断标准:  
-
-1.睡眠-觉醒紊乱(ISWRD)诊断必须同时满足以下所有标准:A.患者长期反复 $24\\,\\mathrm{~h~}$ 内不规则睡眠-觉醒发作,在计划的睡眠时间内失眠、在日间过度思睡(或需小睡)或两者均有;B.症状持续 $\\geqslant3$ 个月; $\\mathrm{C}.\\geqslant7\\mathrm{~d~}$ 的睡眠日志或ACT监测显示无主睡眠期,在 $24\\,\\mathrm{~h~}$ 内有多次(至少 $\\geqslant3$ 次)不规则睡眠;D.排除其他睡眠障碍、内科或神经精神疾病、药物与物质使用情况。  
-
-2.睡眠-觉醒时相延迟障碍(DSWPD)诊断必须同时满足以下所有标准:A.主要睡眠-觉醒时间较期望的或所需要的睡眠-觉醒时间显著延迟(患者或照料者证实长期反复在期望或要求的时间人睡或觉醒困难);B.症状持续 $\\geqslant3$ 个月;C.若允许自然睡眠,则睡眠质量和时间正常且与年龄匹配,但仍为推迟的 $24\\,\\mathrm{~h~}$ 睡眠-觉醒节律;D.至少7d(最好14 d)的睡眠日记或ACT监测显示睡眠时相一贯延迟(监测时段应连续并包括工作/学习日及休息日);E.睡眠-觉醒障碍不能用其他类型睡眠障碍、内科和神经或精神疾病、药物与物质使用解释。  
-
-3.内在昼夜节律性睡眠-觉醒障碍(ASWPD)诊断必须同时满足以下所有标准:A.要睡眠-觉醒时间较期望或需要的时间提前;B.症状 $\\geqslant3$ 个月;C.如果允许自然醒,除睡眠-觉醒时间提前外,患者睡眠质量及时间可获改善;D.至少7d的睡眠日记或ACT监测显示睡眠时段总是稳定提前(监测时段应连续并包括工作/学习日及休息日);E.睡眠-觉醒障碍不能用其他类型睡眠障碍、内科疾病、神经疾病或精神疾病、药物或物质使用解释[39]
-# 【推荐意见】
-1.在照料者配合下,仔细调查白天人睡和觉醒时间以评估CRSWDs(IA级)。  
-
-2.至少连续记录7d的睡眠日记和(或)使用7d ACT 检测以确诊CRSWDs(IIIB 级)。  
-
-3.中文版清晨型与夜晚型问卷可以评估睡眠时相类型,并鉴别睡眠-觉醒模式和CRSWDs(IB 级)。  
-
-4.时相标记(如核心体温、褪黑激素)可能有助  
-
-于诊断(IIIC级)。
-# (二)管理与治疗
-CRSWDs的首选治疗是非药物疗法,管理措施包括:光照治疗与褪黑素应用相结合,并通过体育锻炼、增加社交活动帮助患者建立规律的睡眠-觉醒节律。蓝光治疗有助于睡眠维持障碍和睡眠时相提前的痴呆患者,而清晨光照有利于睡眠时相延迟的患者;傍晚强光照射可改善痴呆患者夜间睡眠质量和减少日间思睡[4950]。运动有益于认知功能损害患者的整体健康与睡眠,推荐患者参与一些力所能及、规律的运动。鼓励照料者增加患者白天日光照射的时间。日落综合征的治疗也需基于患者生活方式和环境的调整[49] 。  
-
-药物治疗应坚持小剂量、短期用药原则,并避免应用BZDs药物。有研究表明,外源性褪黑素对于重置生理性睡眠-觉醒周期作用有效,但在下午 $1\\sim$2点使用褪黑素对睡眠时相提前的痴呆患者有效。褪黑素和光照治疗可以稳定睡眠-觉醒节律,缩短痴呆和PD患者人睡时间[51]
-# 【推荐意见】
-1.蓝光治疗可改善认知功能损害患者的睡眠维持障碍和睡眠时相提前,而清晨光照治疗有助于治疗睡眠时相延迟(IIIC级)。  
-
-2.傍晚光照治疗可增加患者夜间睡眠时间并减少日间思睡(IIIC级)。3.褪黑素和光照结合治疗对于痴呆和 PD 患者有效(IIB级)。4.患者睡眠时应避免暴露在光线下,鼓励患者增加日间自然光照和体育活动(IIB级)。5.下午1~2点应用褪黑素,可改善痴呆患者的ASWPD症状(IIIIC级)。6.日落综合征的治疗也基于患者的生活方式和环境的改变(IIB级)。  
-
-7.镇静催眠药原则上不用于治疗痴呆患者的CRSWDs(I A 级)。
-# 十、中医药治疗
-中医着眼于在整体观念指导下,根据具体情况进行辨证施治。目前针对认知功能损害患者睡眠障碍的治疗仅有少数报道,例如养血清脑颗粒可改善PD 患者 EDS[52-53],络氧疗法可增加伴发失眠的痴呆患者的睡眠时间[54]。目前,该领域尚缺乏大样本、多中心的随机、双盲、安慰剂、对照的临床研究。
-
-"""
-response = """
-// 节点更新
-MERGE (n:Disease {name: '认知功能损害'});
-
-MERGE (n:Disease {name: 'CRSWDs'})
-SET 
-    n.description = coalesce(n.description, '睡眠-觉醒障碍'),
-    n.severity = coalesce(n.severity, '中');
-
-MERGE (n:Complication {name: '精神行为异常'})
-SET 
-    n.description = coalesce(n.description, '伴随宿主认知功能损害的精神行为异常'),
-    n.severity = coalesce(n.severity, '中');
-
-// 关系更新
-MATCH (from) WHERE from.name = '认知功能损害'
-MATCH (to) WHERE to.name = 'CRSWDs'
-MERGE (from)-[r:INDICATES]->(to)
-SET 
-    r.confidence = coalesce(r.confidence, 0.9),
-    r.frequency = coalesce(r.frequency, '常见'),
-    r.severity = coalesce(r.severity, '严重');
-
-MATCH (from) WHERE from.name = '认知功能损害'
-MATCH (to) WHERE to.name = '精神行为异常'
-MERGE (from)-[r:MAY_CAUSE]->(to)
-SET 
-    r.probability = coalesce(r.probability, 0.9),
-    r.timeframe = coalesce(r.timeframe, '长期');
-
-"""
-
-[[message_pairs]]
-timestamp = "2024-12-19 00:09:03"
+timestamp = "2024-12-27 20:08:25"
 message = """
 
 [隶属文件名]
@@ -319,57 +242,63 @@ $44\\%$ AD患者存在CRSWDs, $40\\%$ AD患者伴有日落综合征,上述症状
 """
 response = """
 // 节点更新
-MERGE (n:Disease {name: '认知功能损害'});
-
-MERGE (n:Disease {name: '轻度认知功能损害'})
+MERGE (n:Disease {name: '认知功能损害'})
 SET 
-    n.code = coalesce(n.code, 'MCI');
+    n.description = coalesce(n.description, '包括轻度认知功能损害和痴呆，主要症状为认知能力下降'),
+    n.severity = coalesce(n.severity, '中等');
 
-MERGE (n:Disease {name: '痴呆'});
-
-MERGE (n:Disease {name: '阿尔茨海默病'})
+MERGE (n:Disease {name: '痴呆'})
 SET 
-    n.code = coalesce(n.code, 'AD');
+    n.description = coalesce(n.description, '主要包括阿尔茨海默病、血管性痴呆等，表现为记忆与认知功能的逐渐下降'),
+    n.severity = coalesce(n.severity, '严重');
 
-MERGE (n:Disease {name: '血管性痴呆'})
+MERGE (n:Symptom {name: '失眠'})
 SET 
-    n.code = coalesce(n.code, 'VaD');
+    n.description = coalesce(n.description, '睡眠难以入睡或维持的症状'),
+    n.severity = coalesce(n.severity, '重度'),
+    n.frequency = coalesce(n.frequency, '常见');
 
-MERGE (n:Disease {name: '额颞叶变性'})
+MERGE (n:Symptom {name: '日间过度思睡'})
 SET 
-    n.code = coalesce(n.code, 'FTLD/FTD');
+    n.description = coalesce(n.description, '白天感到过度瞌睡，难以保持清醒'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '常见');
 
-MERGE (n:Disease {name: '路易体痴呆'})
+MERGE (n:Symptom {name: '睡眠呼吸障碍'})
 SET 
-    n.code = coalesce(n.code, 'LBD');
+    n.description = coalesce(n.description, '包括阻塞性睡眠呼吸暂停等'),
+    n.severity = coalesce(n.severity, '重度'),
+    n.frequency = coalesce(n.frequency, '常见');
 
-MERGE (n:Disease {name: '帕金森病痴呆'})
+MERGE (n:Symptom {name: '异态睡眠'})
 SET 
-    n.code = coalesce(n.code, 'PDD');
+    n.description = coalesce(n.description, '快速眼球运动睡眠期的行为异常'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '偶尔');
 
-MERGE (n:Disease {name: '失眠'});
-
-MERGE (n:Disease {name: '日间过度思睡'})
+MERGE (n:Symptom {name: '不宁腿综合征'})
 SET 
-    n.code = coalesce(n.code, 'EDS');
+    n.description = coalesce(n.description, '腿部有不舒服的感觉，导致想要活动'),
+    n.severity = coalesce(n.severity, '轻度'),
+    n.frequency = coalesce(n.frequency, '偶尔');
 
-MERGE (n:Disease {name: '睡眠呼吸障碍'})
+MERGE (n:Symptom {name: '周期性肢体运动'})
 SET 
-    n.code = coalesce(n.code, 'SDB');
+    n.description = coalesce(n.description, '在睡眠中反复性的腿部运动'),
+    n.severity = coalesce(n.severity, '轻度'),
+    n.frequency = coalesce(n.frequency, '偶尔');
 
-MERGE (n:Disease {name: '异态睡眠'});
-
-MERGE (n:Disease {name: '不宁腿综合征'})
+MERGE (n:Symptom {name: '昼夜节律失调性睡眠-觉醒障碍'})
 SET 
-    n.code = coalesce(n.code, 'RLS');
+    n.description = coalesce(n.description, '生物钟与社会生活的脱节'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '常见');
 
-MERGE (n:Disease {name: '周期性肢体运动'})
+MERGE (n:Examination {name: '多导睡眠监测'})
 SET 
-    n.code = coalesce(n.code, 'PLMs');
-
-MERGE (n:Disease {name: '昼夜节律失调性睡眠-觉醒障碍'})
-SET 
-    n.code = coalesce(n.code, 'CRSWDs');
+    n.description = coalesce(n.description, '通过监测睡眠状态来诊断睡眠障碍'),
+    n.method = coalesce(n.method, '多导睡眠监测'),
+    n.requirement = coalesce(n.requirement, '住院观察');
 
 // 关系更新
 MATCH (from) WHERE from.name = '认知功能损害'
@@ -378,97 +307,185 @@ MERGE (from)-[r:INDICATES]->(to)
 SET 
     r.confidence = coalesce(r.confidence, 0.9),
     r.frequency = coalesce(r.frequency, '常见'),
-    r.severity = coalesce(r.severity, '严重');
+    r.severity = coalesce(r.severity, '中等');
 
 MATCH (from) WHERE from.name = '认知功能损害'
 MATCH (to) WHERE to.name = '日间过度思睡'
 MERGE (from)-[r:INDICATES]->(to)
 SET 
-    r.confidence = coalesce(r.confidence, 0.85),
-    r.frequency = coalesce(r.frequency, '频繁'),
-    r.severity = coalesce(r.severity, '中');
+    r.confidence = coalesce(r.confidence, 0.95),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '中等');
 
 MATCH (from) WHERE from.name = '认知功能损害'
 MATCH (to) WHERE to.name = '睡眠呼吸障碍'
 MERGE (from)-[r:INDICATES]->(to)
 SET 
-    r.confidence = coalesce(r.confidence, 0.88),
+    r.confidence = coalesce(r.confidence, 0.85),
     r.frequency = coalesce(r.frequency, '常见'),
-    r.severity = coalesce(r.severity, '中');
+    r.severity = coalesce(r.severity, '重度');
 
 MATCH (from) WHERE from.name = '认知功能损害'
 MATCH (to) WHERE to.name = '异态睡眠'
 MERGE (from)-[r:INDICATES]->(to)
 SET 
-    r.confidence = coalesce(r.confidence, 0.7),
-    r.frequency = coalesce(r.frequency, '少见'),
-    r.severity = coalesce(r.severity, '轻');
+    r.confidence = coalesce(r.confidence, 0.8),
+    r.frequency = coalesce(r.frequency, '偶尔'),
+    r.severity = coalesce(r.severity, '中等');
 
 MATCH (from) WHERE from.name = '认知功能损害'
 MATCH (to) WHERE to.name = '不宁腿综合征'
 MERGE (from)-[r:INDICATES]->(to)
 SET 
-    r.confidence = coalesce(r.confidence, 0.8),
-    r.frequency = coalesce(r.frequency, '偶发'),
-    r.severity = coalesce(r.severity, '轻');
+    r.confidence = coalesce(r.confidence, 0.7),
+    r.frequency = coalesce(r.frequency, '偶尔'),
+    r.severity = coalesce(r.severity, '轻度');
 
 MATCH (from) WHERE from.name = '认知功能损害'
 MATCH (to) WHERE to.name = '周期性肢体运动'
 MERGE (from)-[r:INDICATES]->(to)
 SET 
-    r.confidence = coalesce(r.confidence, 0.75),
-    r.frequency = coalesce(r.frequency, '罕见'),
-    r.severity = coalesce(r.severity, '轻');
+    r.confidence = coalesce(r.confidence, 0.7),
+    r.frequency = coalesce(r.frequency, '偶尔'),
+    r.severity = coalesce(r.severity, '轻度');
 
 MATCH (from) WHERE from.name = '认知功能损害'
 MATCH (to) WHERE to.name = '昼夜节律失调性睡眠-觉醒障碍'
 MERGE (from)-[r:INDICATES]->(to)
 SET 
-    r.confidence = coalesce(r.confidence, 0.65),
-    r.frequency = coalesce(r.frequency, '存在'),
-    r.severity = coalesce(r.severity, '轻');
-
-MATCH (from) WHERE from.name = '阿尔茨海默病'
-MATCH (to) WHERE to.name = '失眠'
-MERGE (from)-[r:MAY_CAUSE]->(to)
-SET 
-    r.probability = coalesce(r.probability, 0.6),
-    r.timeframe = coalesce(r.timeframe, '长期');
+    r.confidence = coalesce(r.confidence, 0.75),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '中等');
 
 MATCH (from) WHERE from.name = '认知功能损害'
-MATCH (to) WHERE to.name = '阿尔茨海默病'
-MERGE (from)-[r:INFLUENCED_BY]->(to)
+MATCH (to) WHERE to.name = '多导睡眠监测'
+MERGE (from)-[r:REQUIRES_EXAM]->(to)
 SET 
-    r.impact_level = coalesce(r.impact_level, '高'),
-    r.evidence_level = coalesce(r.evidence_level, '强');
+    r.priority = coalesce(r.priority, '高'),
+    r.mandatory = coalesce(r.mandatory, 'true');
 
-MATCH (from) WHERE from.name = '认知功能损害'
-MATCH (to) WHERE to.name = '血管性痴呆'
-MERGE (from)-[r:INFLUENCED_BY]->(to)
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-27 20:08:28"
+message = """
+
+[隶属文件名]
+认知功能损害患者睡眠障碍评估和管理的专家共识.md
+[隶属文件分块名]
+认知功能损害患者睡眠障碍评估和管理的专家共识/002-一诊断与评估.md
+[文本块]
+# (一)诊断与评估
+CRSWDs在认知功能损害的MCI期或更早阶段出现,呈现:睡眠明显片段化,觉醒次数增加;NREM减少大于REM减少;夜间徘徊不睡、人睡及维持困难。睡眠时相变化主要为不规则睡眠-觉醒节律、睡眠-觉醒时相延迟障碍及睡眠-觉醒时相提前障碍。认知功能损害患者在出现CRSWDs的同时,常有 $90\\%$ 的患者伴有精神行为异常及昼夜节律的变化,其中最突出的精神行为异常为日落综合征。  
+
+CRSWDs的诊断需要调查人睡和起床时间,包括至少1周睡眠日记,并记录治疗睡眠障碍的具体方法及药物剂量。ACT检测结果对于诊断有重要作用。一些昼夜节律的生理指标(如微光褪黑激素分泌、最低核心体温)是确认CRSWDs 的辅助工具。鉴别诊断CRSWDs需考虑痴呆患者其他的精神行为症状,如抑郁、淡漠与焦虑[48]  
+
+根据ICSD-3对CRSWDs的诊断标准:  
+
+1.睡眠-觉醒紊乱(ISWRD)诊断必须同时满足以下所有标准:A.患者长期反复 $24\\,\\mathrm{~h~}$ 内不规则睡眠-觉醒发作,在计划的睡眠时间内失眠、在日间过度思睡(或需小睡)或两者均有;B.症状持续 $\\geqslant3$ 个月; $\\mathrm{C}.\\geqslant7\\mathrm{~d~}$ 的睡眠日志或ACT监测显示无主睡眠期,在 $24\\,\\mathrm{~h~}$ 内有多次(至少 $\\geqslant3$ 次)不规则睡眠;D.排除其他睡眠障碍、内科或神经精神疾病、药物与物质使用情况。  
+
+2.睡眠-觉醒时相延迟障碍(DSWPD)诊断必须同时满足以下所有标准:A.主要睡眠-觉醒时间较期望的或所需要的睡眠-觉醒时间显著延迟(患者或照料者证实长期反复在期望或要求的时间人睡或觉醒困难);B.症状持续 $\\geqslant3$ 个月;C.若允许自然睡眠,则睡眠质量和时间正常且与年龄匹配,但仍为推迟的 $24\\,\\mathrm{~h~}$ 睡眠-觉醒节律;D.至少7d(最好14 d)的睡眠日记或ACT监测显示睡眠时相一贯延迟(监测时段应连续并包括工作/学习日及休息日);E.睡眠-觉醒障碍不能用其他类型睡眠障碍、内科和神经或精神疾病、药物与物质使用解释。  
+
+3.内在昼夜节律性睡眠-觉醒障碍(ASWPD)诊断必须同时满足以下所有标准:A.要睡眠-觉醒时间较期望或需要的时间提前;B.症状 $\\geqslant3$ 个月;C.如果允许自然醒,除睡眠-觉醒时间提前外,患者睡眠质量及时间可获改善;D.至少7d的睡眠日记或ACT监测显示睡眠时段总是稳定提前(监测时段应连续并包括工作/学习日及休息日);E.睡眠-觉醒障碍不能用其他类型睡眠障碍、内科疾病、神经疾病或精神疾病、药物或物质使用解释[39]
+# 【推荐意见】
+1.在照料者配合下,仔细调查白天人睡和觉醒时间以评估CRSWDs(IA级)。  
+
+2.至少连续记录7d的睡眠日记和(或)使用7d ACT 检测以确诊CRSWDs(IIIB 级)。  
+
+3.中文版清晨型与夜晚型问卷可以评估睡眠时相类型,并鉴别睡眠-觉醒模式和CRSWDs(IB 级)。  
+
+4.时相标记(如核心体温、褪黑激素)可能有助  
+
+于诊断(IIIC级)。
+# (二)管理与治疗
+CRSWDs的首选治疗是非药物疗法,管理措施包括:光照治疗与褪黑素应用相结合,并通过体育锻炼、增加社交活动帮助患者建立规律的睡眠-觉醒节律。蓝光治疗有助于睡眠维持障碍和睡眠时相提前的痴呆患者,而清晨光照有利于睡眠时相延迟的患者;傍晚强光照射可改善痴呆患者夜间睡眠质量和减少日间思睡[4950]。运动有益于认知功能损害患者的整体健康与睡眠,推荐患者参与一些力所能及、规律的运动。鼓励照料者增加患者白天日光照射的时间。日落综合征的治疗也需基于患者生活方式和环境的调整[49] 。  
+
+药物治疗应坚持小剂量、短期用药原则,并避免应用BZDs药物。有研究表明,外源性褪黑素对于重置生理性睡眠-觉醒周期作用有效,但在下午 $1\\sim$2点使用褪黑素对睡眠时相提前的痴呆患者有效。褪黑素和光照治疗可以稳定睡眠-觉醒节律,缩短痴呆和PD患者人睡时间[51]
+# 【推荐意见】
+1.蓝光治疗可改善认知功能损害患者的睡眠维持障碍和睡眠时相提前,而清晨光照治疗有助于治疗睡眠时相延迟(IIIC级)。  
+
+2.傍晚光照治疗可增加患者夜间睡眠时间并减少日间思睡(IIIC级)。3.褪黑素和光照结合治疗对于痴呆和 PD 患者有效(IIB级)。4.患者睡眠时应避免暴露在光线下,鼓励患者增加日间自然光照和体育活动(IIB级)。5.下午1~2点应用褪黑素,可改善痴呆患者的ASWPD症状(IIIIC级)。6.日落综合征的治疗也基于患者的生活方式和环境的改变(IIB级)。  
+
+7.镇静催眠药原则上不用于治疗痴呆患者的CRSWDs(I A 级)。
+# 十、中医药治疗
+中医着眼于在整体观念指导下,根据具体情况进行辨证施治。目前针对认知功能损害患者睡眠障碍的治疗仅有少数报道,例如养血清脑颗粒可改善PD 患者 EDS[52-53],络氧疗法可增加伴发失眠的痴呆患者的睡眠时间[54]。目前,该领域尚缺乏大样本、多中心的随机、双盲、安慰剂、对照的临床研究。
+
+"""
+response = """
+// 节点更新
+MERGE (n:Disease {name: 'CRSWDs'})
 SET 
-    r.impact_level = coalesce(r.impact_level, '中'),
-    r.evidence_level = coalesce(r.evidence_level, '中');
+    n.description = coalesce(n.description, '认知功能损害患者的睡眠障碍类型'),
+    n.severity = coalesce(n.severity, '严重');
 
-MATCH (from) WHERE from.name = '认知功能损害'
-MATCH (to) WHERE to.name = '额颞叶变性'
-MERGE (from)-[r:INFLUENCED_BY]->(to)
+MERGE (n:Symptom {name: '睡眠明显片段化'})
 SET 
-    r.impact_level = coalesce(r.impact_level, '中'),
-    r.evidence_level = coalesce(r.evidence_level, '中');
+    n.description = coalesce(n.description, '患者夜间的睡眠质量下降，睡眠时常被打断'),
+    n.severity = coalesce(n.severity, '严重'),
+    n.frequency = coalesce(n.frequency, '频繁');
 
-MATCH (from) WHERE from.name = '血管性痴呆'
-MATCH (to) WHERE to.name = '日间过度思睡'
-MERGE (from)-[r:MAY_CAUSE]->(to)
+MERGE (n:Symptom {name: '觉醒次数增加'})
 SET 
-    r.probability = coalesce(r.probability, 0.5),
-    r.timeframe = coalesce(r.timeframe, '长期');
+    n.description = coalesce(n.description, '夜间被唤醒的频率高，影响睡眠质量'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '频繁');
 
-MATCH (from) WHERE from.name = '认知功能损害'
-MATCH (to) WHERE to.name = '日间过度思睡'
+MERGE (n:Symptom {name: '夜间徘徊不睡'})
+SET 
+    n.description = coalesce(n.description, '患者夜间活动频繁，难以维持睡眠'),
+    n.severity = coalesce(n.severity, '严重'),
+    n.frequency = coalesce(n.frequency, '常见');
+
+MERGE (n:Symptom {name: '人睡及维持困难'})
+SET 
+    n.description = coalesce(n.description, '患者入睡和维持睡眠的困难'),
+    n.severity = coalesce(n.severity, '严重'),
+    n.frequency = coalesce(n.frequency, '较常见');
+
+MERGE (n:Examination {name: 'ACT检测'})
+SET 
+    n.description = coalesce(n.description, '可客观评估患者的睡眠和觉醒状态的检测方法'),
+    n.method = coalesce(n.method, '活动监测'),
+    n.requirement = coalesce(n.requirement, '至少使用7天');
+
+// 关系更新
+MATCH (from) WHERE from.name = '睡眠明显片段化'
+MATCH (to) WHERE to.name = 'CRSWDs'
 MERGE (from)-[r:INDICATES]->(to)
 SET 
-    r.confidence = coalesce(r.confidence, 0.8),
+    r.confidence = coalesce(r.confidence, 0.95),
+    r.frequency = coalesce(r.frequency, '频繁'),
+    r.severity = coalesce(r.severity, '严重');
+
+MATCH (from) WHERE from.name = '觉醒次数增加'
+MATCH (to) WHERE to.name = 'CRSWDs'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.9),
+    r.frequency = coalesce(r.frequency, '频繁'),
+    r.severity = coalesce(r.severity, '中等');
+
+MATCH (from) WHERE from.name = '夜间徘徊不睡'
+MATCH (to) WHERE to.name = 'CRSWDs'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.9),
     r.frequency = coalesce(r.frequency, '常见'),
     r.severity = coalesce(r.severity, '严重');
+
+MATCH (from) WHERE from.name = '人睡及维持困难'
+MATCH (to) WHERE to.name = 'CRSWDs'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.9),
+    r.frequency = coalesce(r.frequency, '较常见'),
+    r.severity = coalesce(r.severity, '严重');
+
+MATCH (from) WHERE from.name = 'CRSWDs'
+MATCH (to) WHERE to.name = 'ACT检测'
+MERGE (from)-[r:REQUIRES_EXAM]->(to)
+SET 
+    r.priority = coalesce(r.priority, '高'),
+    r.mandatory = coalesce(r.mandatory, 'true');
 
 """

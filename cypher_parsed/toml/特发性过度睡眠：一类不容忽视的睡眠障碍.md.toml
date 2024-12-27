@@ -1,10 +1,10 @@
 [metadata]
 file_name = "特发性过度睡眠：一类不容忽视的睡眠障碍.md"
-processed_at = "2024-12-19 00:12:18"
+processed_at = "2024-12-27 20:09:32"
 total_pairs = 1
 
 [[message_pairs]]
-timestamp = "2024-12-19 00:09:02"
+timestamp = "2024-12-27 20:08:23"
 message = """
 
 [隶属文件名]
@@ -73,122 +73,90 @@ response = """
 // 节点更新
 MERGE (n:Disease {name: '特发性过度睡眠'})
 SET 
-    n.code = coalesce(n.code, 'IH'),
-    n.description = coalesce(n.description, '一种慢性中枢性嗜睡疾病，主要表现为正常或延长的睡眠时间但白天过度嗜睡。'),
-    n.category = coalesce(n.category, '睡眠障碍'),
-    n.severity = coalesce(n.severity, '中度');
+    n.description = coalesce(n.description, '一种慢性中枢性嗜睡疾病,主要表现为尽管睡眠时间正常或延长,但白天仍会出现过度嗜睡'),
+    n.severity = coalesce(n.severity, '中等');
 
-MERGE (n:Symptom {name: '过度嗜睡'})
+MERGE (n:Symptom {name: '日间过度嗜睡'})
 SET 
-    n.description = coalesce(n.description, '尽管睡眠时间正常或延长，白天仍会出现过度嗜睡。'),
+    n.description = coalesce(n.description, '白天感到过度困倦'),
+    n.severity = coalesce(n.severity, '严重'),
+    n.frequency = coalesce(n.frequency, '常见');
+
+MERGE (n:Symptom {name: '夜间睡眠时间延长'})
+SET 
+    n.description = coalesce(n.description, '成人患者典型睡眠时间为10小时以上'),
     n.severity = coalesce(n.severity, '严重'),
     n.frequency = coalesce(n.frequency, '常见');
 
 MERGE (n:Symptom {name: '睡眠惰性'})
 SET 
-    n.description = coalesce(n.description, '醒后难以快速清醒，类似醉酒样的感觉。'),
-    n.severity = coalesce(n.severity, '中度'),
+    n.description = coalesce(n.description, '醒后感到疲倦和难以快速清醒的状态'),
+    n.severity = coalesce(n.severity, '中等'),
     n.frequency = coalesce(n.frequency, '常见');
 
-MERGE (n:Symptom {name: '认知功能障碍'})
+MERGE (n:Symptom {name: '认知功能受损'})
 SET 
-    n.description = coalesce(n.description, '包括记忆力减退、注意力不集中和常忘记事情。'),
-    n.severity = coalesce(n.severity, '轻度'),
+    n.description = coalesce(n.description, '注意力不集中、记忆力减退等表现'),
+    n.severity = coalesce(n.severity, '中等'),
     n.frequency = coalesce(n.frequency, '常见');
 
-MERGE (n:NonDrugTreatment {name: '认知行为治疗'})
+MERGE (n:Examination {name: '多导睡眠监测'})
 SET 
-    n.description = coalesce(n.description, '通过心理干预改善患者对疾病的认识和应对能力。'),
-    n.duration = coalesce(n.duration, '长期'),
-    n.frequency = coalesce(n.frequency, '根据需要'),
-    n.contraindication = coalesce(n.contraindication, '无'),
-    n.equipment = coalesce(n.equipment, '光照疗法设备');
+    n.description = coalesce(n.description, '用于诊断过度睡眠障碍的检查'),
+    n.method = coalesce(n.method, '多导睡眠监测'),
+    n.requirement = coalesce(n.requirement, '在安静环境中进行监测');
 
-MERGE (n:NonDrugTreatment {name: '健康教育'})
+MERGE (n:Examination {name: '多次睡眠潜伏期测试'})
 SET 
-    n.description = coalesce(n.description, '对患者进行疾病知识和健康指导。'),
-    n.duration = coalesce(n.duration, '长期'),
-    n.frequency = coalesce(n.frequency, '定期'),
-    n.contraindication = coalesce(n.contraindication, '无'),
-    n.equipment = coalesce(n.equipment, '无');
-
-MERGE (n:Complication {name: '抑郁症状'})
-SET 
-    n.description = coalesce(n.description, '患者可能出现抑郁相关的情绪变化。'),
-    n.severity = coalesce(n.severity, '严重');
-
-MERGE (n:Complication {name: '头痛'})
-SET 
-    n.description = coalesce(n.description, '常见的伴随症状，可能是偏头痛或紧张型头痛。'),
-    n.severity = coalesce(n.severity, '中度');
+    n.description = coalesce(n.description, '评估患者的日间嗜睡程度'),
+    n.method = coalesce(n.method, '测试患者入睡的潜伏期'),
+    n.requirement = coalesce(n.requirement, '在安静的环境中进行');
 
 // 关系更新
-MATCH (from) WHERE from.name = '特发性过度睡眠'
-MATCH (to) WHERE to.name = '过度嗜睡'
+MATCH (from) WHERE from.name = '日间过度嗜睡'
+MATCH (to) WHERE to.name = '特发性过度睡眠'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.9),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '严重');
+
+MATCH (from) WHERE from.name = '夜间睡眠时间延长'
+MATCH (to) WHERE to.name = '特发性过度睡眠'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.95),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '严重');
+
+MATCH (from) WHERE from.name = '睡眠惰性'
+MATCH (to) WHERE to.name = '特发性过度睡眠'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.85),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '中等');
+
+MATCH (from) WHERE from.name = '认知功能受损'
+MATCH (to) WHERE to.name = '特发性过度睡眠'
 MERGE (from)-[r:INDICATES]->(to)
 SET 
     r.confidence = coalesce(r.confidence, 0.8),
     r.frequency = coalesce(r.frequency, '常见'),
-    r.severity = coalesce(r.severity, '严重');
+    r.severity = coalesce(r.severity, '中等');
 
 MATCH (from) WHERE from.name = '特发性过度睡眠'
-MATCH (to) WHERE to.name = '睡眠惰性'
-MERGE (from)-[r:INDICATES]->(to)
-SET 
-    r.confidence = coalesce(r.confidence, 0.7),
-    r.frequency = coalesce(r.frequency, '常见'),
-    r.severity = coalesce(r.severity, '中度');
-
-MATCH (from) WHERE from.name = '特发性过度睡眠'
-MATCH (to) WHERE to.name = '认知功能障碍'
-MERGE (from)-[r:INDICATES]->(to)
-SET 
-    r.confidence = coalesce(r.confidence, 0.6),
-    r.frequency = coalesce(r.frequency, '常见'),
-    r.severity = coalesce(r.severity, '轻度');
-
-MATCH (from) WHERE from.name = '特发性过度睡眠'
-MATCH (to) WHERE to.name = 'e1'
+MATCH (to) WHERE to.name = '多导睡眠监测'
 MERGE (from)-[r:REQUIRES_EXAM]->(to)
 SET 
     r.priority = coalesce(r.priority, '高'),
     r.mandatory = coalesce(r.mandatory, 'true');
 
 MATCH (from) WHERE from.name = '特发性过度睡眠'
-MATCH (to) WHERE to.name = 'e2'
+MATCH (to) WHERE to.name = '多次睡眠潜伏期测试'
 MERGE (from)-[r:REQUIRES_EXAM]->(to)
 SET 
-    r.priority = coalesce(r.priority, '高'),
-    r.mandatory = coalesce(r.mandatory, 'true');
-
-MATCH (from) WHERE from.name = '特发性过度睡眠'
-MATCH (to) WHERE to.name = '认知行为治疗'
-MERGE (from)-[r:TREATED_BY]->(to)
-SET 
-    r.effectiveness = coalesce(r.effectiveness, 0.75),
-    r.priority = coalesce(r.priority, '高'),
-    r.stage = coalesce(r.stage, '初始治疗');
-
-MATCH (from) WHERE from.name = '特发性过度睡眠'
-MATCH (to) WHERE to.name = '健康教育'
-MERGE (from)-[r:TREATED_BY]->(to)
-SET 
-    r.effectiveness = coalesce(r.effectiveness, 0.7),
     r.priority = coalesce(r.priority, '中'),
-    r.stage = coalesce(r.stage, '常规治疗');
-
-MATCH (from) WHERE from.name = '特发性过度睡眠'
-MATCH (to) WHERE to.name = '抑郁症状'
-MERGE (from)-[r:MAY_CAUSE]->(to)
-SET 
-    r.probability = coalesce(r.probability, 0.5),
-    r.timeframe = coalesce(r.timeframe, '长期');
-
-MATCH (from) WHERE from.name = '特发性过度睡眠'
-MATCH (to) WHERE to.name = '头痛'
-MERGE (from)-[r:MAY_CAUSE]->(to)
-SET 
-    r.probability = coalesce(r.probability, 0.4),
-    r.timeframe = coalesce(r.timeframe, '长期');
+    r.mandatory = coalesce(r.mandatory, 'false');
 
 """

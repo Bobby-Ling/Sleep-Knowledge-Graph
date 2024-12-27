@@ -1,10 +1,10 @@
 [metadata]
 file_name = "中国不宁腿综合征的诊断与治疗指南（2021版）.md"
-processed_at = "2024-12-19 00:12:18"
+processed_at = "2024-12-27 20:09:32"
 total_pairs = 2
 
 [[message_pairs]]
-timestamp = "2024-12-19 00:08:15"
+timestamp = "2024-12-27 20:08:31"
 message = """
 
 [隶属文件名]
@@ -216,72 +216,69 @@ response = """
 // 节点更新
 MERGE (n:Disease {name: '不宁腿综合征'})
 SET 
-    n.description = coalesce(n.description, '感觉运动障碍性疾病'),
-    n.category = coalesce(n.category, '神经系统疾病');
+    n.description = coalesce(n.description, '一种感觉运动障碍性疾病，主要表现为强烈的活动腿的欲望，通常在休息时加重'),
+    n.severity = coalesce(n.severity, '中等');
 
-MERGE (n:Disease {name: '失眠'})
+MERGE (n:Symptom {name: '腿部不适感'})
 SET 
-    n.description = coalesce(n.description, '睡眠质量下降，难以入睡或维持睡眠的状态'),
-    n.category = coalesce(n.category, '睡眠障碍');
+    n.description = coalesce(n.description, '迫切想移动肢体的冲动，通常伴随各种不适感如蚁爬感、灼烧感等'),
+    n.severity = coalesce(n.severity, '严重'),
+    n.frequency = coalesce(n.frequency, '夜间');
 
-MERGE (n:Disease {name: '抑郁'})
+MERGE (n:Symptom {name: '失眠'})
 SET 
-    n.description = coalesce(n.description, '情绪低落伴随其他功能受损的精神疾病'),
-    n.category = coalesce(n.category, '精神疾病');
+    n.description = coalesce(n.description, '夜间睡眠困难'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '频繁');
 
-MERGE (n:Disease {name: '焦虑'})
+MERGE (n:Symptom {name: '焦虑'})
 SET 
-    n.description = coalesce(n.description, '过度担忧与焦躁不安的情绪障碍'),
-    n.category = coalesce(n.category, '精神疾病');
+    n.description = coalesce(n.description, '因RLS导致的不断担忧'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '常见');
 
-MERGE (n:Disease {name: '帕金森病'})
+MERGE (n:Examination {name: '多导睡眠监测'})
 SET 
-    n.description = coalesce(n.description, '影响运动协调的神经系统疾病'),
-    n.category = coalesce(n.category, '神经系统疾病');
+    n.description = coalesce(n.description, '用于检测睡眠中周期性肢体运动'),
+    n.method = coalesce(n.method, 'PSG'),
+    n.requirement = coalesce(n.requirement, '患者需在医院进行观察');
 
 // 关系更新
+MATCH (from) WHERE from.name = '不宁腿综合征'
+MATCH (to) WHERE to.name = '腿部不适感'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.9),
+    r.frequency = coalesce(r.frequency, '夜间'),
+    r.severity = coalesce(r.severity, '严重');
+
 MATCH (from) WHERE from.name = '不宁腿综合征'
 MATCH (to) WHERE to.name = '失眠'
 MERGE (from)-[r:INDICATES]->(to)
 SET 
-    r.confidence = coalesce(r.confidence, 0.9),
-    r.frequency = coalesce(r.frequency, '常见'),
-    r.severity = coalesce(r.severity, '严重');
-
-MATCH (from) WHERE from.name = '不宁腿综合征'
-MATCH (to) WHERE to.name = '抑郁'
-MERGE (from)-[r:INDICATES]->(to)
-SET 
     r.confidence = coalesce(r.confidence, 0.85),
-    r.frequency = coalesce(r.frequency, '常见'),
+    r.frequency = coalesce(r.frequency, '频繁'),
     r.severity = coalesce(r.severity, '中等');
 
 MATCH (from) WHERE from.name = '不宁腿综合征'
 MATCH (to) WHERE to.name = '焦虑'
 MERGE (from)-[r:INDICATES]->(to)
 SET 
-    r.confidence = coalesce(r.confidence, 0.85),
+    r.confidence = coalesce(r.confidence, 0.75),
     r.frequency = coalesce(r.frequency, '常见'),
     r.severity = coalesce(r.severity, '中等');
 
 MATCH (from) WHERE from.name = '不宁腿综合征'
-MATCH (to) WHERE to.name = '帕金森病'
-MERGE (from)-[r:INFLUENCED_BY]->(to)
+MATCH (to) WHERE to.name = '多导睡眠监测'
+MERGE (from)-[r:REQUIRES_EXAM]->(to)
 SET 
-    r.impact_level = coalesce(r.impact_level, '高'),
-    r.evidence_level = coalesce(r.evidence_level, '强');
-
-MATCH (from) WHERE from.name = '帕金森病'
-MATCH (to) WHERE to.name = '不宁腿综合征'
-MERGE (from)-[r:MAY_CAUSE]->(to)
-SET 
-    r.probability = coalesce(r.probability, 0.7),
-    r.timeframe = coalesce(r.timeframe, '长期');
+    r.priority = coalesce(r.priority, '高'),
+    r.mandatory = coalesce(r.mandatory, 'true');
 
 """
 
 [[message_pairs]]
-timestamp = "2024-12-19 00:08:19"
+timestamp = "2024-12-27 20:08:38"
 message = """
 
 [隶属文件名]
@@ -395,26 +392,39 @@ response = """
 // 节点更新
 MERGE (n:Disease {name: '不宁腿综合征'})
 SET 
-    n.description = coalesce(n.description, '一种以腿部不适和强烈的运动冲动为特征的神经系统疾病');
+    n.description = coalesce(n.description, '一种导致患者感到腿部不适的神经系统疾病'),
+    n.severity = coalesce(n.severity, '中等');
 
 MERGE (n:Symptom {name: '腿部不适'})
 SET 
-    n.description = coalesce(n.description, '患者在静止时感到不适，伴随强烈的运动冲动'),
+    n.description = coalesce(n.description, '在休息状态下感觉到腿部不适'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '常见');
+
+MERGE (n:Symptom {name: '夜间睡眠质量下降'})
+SET 
+    n.description = coalesce(n.description, '睡眠中频繁觉醒，导致深度睡眠减少'),
     n.severity = coalesce(n.severity, '严重'),
+    n.frequency = coalesce(n.frequency, '常见');
+
+MERGE (n:Symptom {name: '情绪障碍'})
+SET 
+    n.description = coalesce(n.description, '由于睡眠不足导致的情绪低落'),
+    n.severity = coalesce(n.severity, '中等'),
     n.frequency = coalesce(n.frequency, '常见');
 
 MERGE (n:NonDrugTreatment {name: '适当体育锻炼'})
 SET 
     n.description = coalesce(n.description, '通过渐进式有氧运动改善腿部不适症状'),
-    n.duration = coalesce(n.duration, '长期'),
-    n.frequency = coalesce(n.frequency, '每周'),
+    n.duration = coalesce(n.duration, '持续'),
+    n.frequency = coalesce(n.frequency, '每周几次'),
     n.contraindication = coalesce(n.contraindication, '无'),
     n.equipment = coalesce(n.equipment, '无');
 
 MERGE (n:NonDrugTreatment {name: '物理疗法'})
 SET 
-    n.description = coalesce(n.description, '通过气动压缩装置和激光光疗法提高睡眠质量'),
-    n.duration = coalesce(n.duration, '短期'),
+    n.description = coalesce(n.description, '使用气动压缩装置等来减轻临床症状'),
+    n.duration = coalesce(n.duration, '持续'),
     n.frequency = coalesce(n.frequency, '根据需要'),
     n.contraindication = coalesce(n.contraindication, '无'),
     n.equipment = coalesce(n.equipment, '气动压缩装置');
@@ -422,105 +432,36 @@ SET
 MERGE (n:NonDrugTreatment {name: '针灸疗法'})
 SET 
     n.description = coalesce(n.description, '通过针灸改善RLS症状及睡眠质量'),
-    n.duration = coalesce(n.duration, '短期'),
+    n.duration = coalesce(n.duration, '持续'),
     n.frequency = coalesce(n.frequency, '根据需要'),
     n.contraindication = coalesce(n.contraindication, '无'),
-    n.equipment = coalesce(n.equipment, '针灸针');
+    n.equipment = coalesce(n.equipment, '针具');
 
-MERGE (n:NonDrugTreatment {name: '健康教育'})
+MERGE (n:Examination {name: '多导睡眠监测'})
 SET 
-    n.description = coalesce(n.description, '提高对RLS的认知和管理能力'),
-    n.duration = coalesce(n.duration, '长期'),
-    n.frequency = coalesce(n.frequency, '根据需要'),
-    n.contraindication = coalesce(n.contraindication, '无'),
-    n.equipment = coalesce(n.equipment, '无');
-
-MERGE (n:DrugTreatment {name: '多巴胺受体激动剂'})
-SET 
-    n.description = coalesce(n.description, '用于缓解RLS症状的药物'),
-    n.dosage = coalesce(n.dosage, '根据医生建议'),
-    n.frequency = coalesce(n.frequency, '根据需要'),
-    n.duration = coalesce(n.duration, '短期'),
-    n.route = coalesce(n.route, '口服'),
-    n.contraindication = coalesce(n.contraindication, '无');
-
-MERGE (n:Disease {name: '失眠'})
-SET 
-    n.description = coalesce(n.description, '一种睡眠障碍，表现为入睡困难或维持睡眠困难');
-
-MERGE (n:Disease {name: '阻塞性睡眠呼吸暂停'})
-SET 
-    n.description = coalesce(n.description, '一种临床表现为睡眠期间反复呼吸暂停的疾病');
-
-MERGE (n:DrugTreatment {name: '短效GABA活性催眠药'})
-SET 
-    n.description = coalesce(n.description, '用于改善失眠的药物'),
-    n.dosage = coalesce(n.dosage, '根据医生建议'),
-    n.frequency = coalesce(n.frequency, '根据需要'),
-    n.duration = coalesce(n.duration, '短期'),
-    n.route = coalesce(n.route, '口服'),
-    n.contraindication = coalesce(n.contraindication, '无');
-
-MERGE (n:DrugTreatment {name: '氯硝西泮'})
-SET 
-    n.description = coalesce(n.description, '用于改善RLS但在OSA患者中可能恶化病情'),
-    n.dosage = coalesce(n.dosage, '根据医生建议'),
-    n.frequency = coalesce(n.frequency, '根据需要'),
-    n.duration = coalesce(n.duration, '长期'),
-    n.route = coalesce(n.route, '口服'),
-    n.contraindication = coalesce(n.contraindication, '阻塞性睡眠呼吸暂停');
+    n.description = coalesce(n.description, '用于诊断RLS的监测方法'),
+    n.method = coalesce(n.method, '在医院进行多导睡眠监测'),
+    n.requirement = coalesce(n.requirement, '保持安静和舒适');
 
 // 关系更新
-MATCH (from) WHERE from.name = '不宁腿综合征'
-MATCH (to) WHERE to.name = '腿部不适'
+MATCH (from) WHERE from.name = '腿部不适'
+MATCH (to) WHERE to.name = '不宁腿综合征'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.95),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '中等');
+
+MATCH (from) WHERE from.name = '夜间睡眠质量下降'
+MATCH (to) WHERE to.name = '不宁腿综合征'
 MERGE (from)-[r:INDICATES]->(to)
 SET 
     r.confidence = coalesce(r.confidence, 0.9),
     r.frequency = coalesce(r.frequency, '常见'),
     r.severity = coalesce(r.severity, '严重');
 
-MATCH (from) WHERE from.name = '不宁腿综合征'
-MATCH (to) WHERE to.name = '适当体育锻炼'
-MERGE (from)-[r:TREATED_BY]->(to)
-SET 
-    r.effectiveness = coalesce(r.effectiveness, 0.8),
-    r.priority = coalesce(r.priority, '高'),
-    r.stage = coalesce(r.stage, '初始治疗');
-
-MATCH (from) WHERE from.name = '不宁腿综合征'
-MATCH (to) WHERE to.name = '物理疗法'
-MERGE (from)-[r:TREATED_BY]->(to)
-SET 
-    r.effectiveness = coalesce(r.effectiveness, 0.85),
-    r.priority = coalesce(r.priority, '高'),
-    r.stage = coalesce(r.stage, '初始治疗');
-
-MATCH (from) WHERE from.name = '不宁腿综合征'
-MATCH (to) WHERE to.name = '针灸疗法'
-MERGE (from)-[r:TREATED_BY]->(to)
-SET 
-    r.effectiveness = coalesce(r.effectiveness, 0.75),
-    r.priority = coalesce(r.priority, '中'),
-    r.stage = coalesce(r.stage, '联合治疗');
-
-MATCH (from) WHERE from.name = '不宁腿综合征'
-MATCH (to) WHERE to.name = '健康教育'
-MERGE (from)-[r:TREATED_BY]->(to)
-SET 
-    r.effectiveness = coalesce(r.effectiveness, 0.7),
-    r.priority = coalesce(r.priority, '中'),
-    r.stage = coalesce(r.stage, '基础治疗');
-
-MATCH (from) WHERE from.name = '不宁腿综合征'
-MATCH (to) WHERE to.name = '多巴胺受体激动剂'
-MERGE (from)-[r:TREATED_BY]->(to)
-SET 
-    r.effectiveness = coalesce(r.effectiveness, 0.9),
-    r.priority = coalesce(r.priority, '高'),
-    r.stage = coalesce(r.stage, '药物治疗');
-
-MATCH (from) WHERE from.name = '不宁腿综合征'
-MATCH (to) WHERE to.name = '失眠'
+MATCH (from) WHERE from.name = '情绪障碍'
+MATCH (to) WHERE to.name = '不宁腿综合征'
 MERGE (from)-[r:INDICATES]->(to)
 SET 
     r.confidence = coalesce(r.confidence, 0.85),
@@ -528,41 +469,34 @@ SET
     r.severity = coalesce(r.severity, '中等');
 
 MATCH (from) WHERE from.name = '不宁腿综合征'
-MATCH (to) WHERE to.name = '阻塞性睡眠呼吸暂停'
-MERGE (from)-[r:INDICATES]->(to)
-SET 
-    r.confidence = coalesce(r.confidence, 0.75),
-    r.frequency = coalesce(r.frequency, '少见'),
-    r.severity = coalesce(r.severity, '重');
-
-MATCH (from) WHERE from.name = '不宁腿综合征'
-MATCH (to) WHERE to.name = '失眠'
-MERGE (from)-[r:MAY_CAUSE]->(to)
-SET 
-    r.probability = coalesce(r.probability, 0.6),
-    r.timeframe = coalesce(r.timeframe, '长期');
-
-MATCH (from) WHERE from.name = '不宁腿综合征'
-MATCH (to) WHERE to.name = '阻塞性睡眠呼吸暂停'
-MERGE (from)-[r:MAY_CAUSE]->(to)
-SET 
-    r.probability = coalesce(r.probability, 0.4),
-    r.timeframe = coalesce(r.timeframe, '长期');
-
-MATCH (from) WHERE from.name = '不宁腿综合征'
-MATCH (to) WHERE to.name = '短效GABA活性催眠药'
+MATCH (to) WHERE to.name = '适当体育锻炼'
 MERGE (from)-[r:TREATED_BY]->(to)
 SET 
     r.effectiveness = coalesce(r.effectiveness, 0.8),
-    r.priority = coalesce(r.priority, '高'),
-    r.stage = coalesce(r.stage, '联合治疗');
+    r.priority = coalesce(r.priority, '中'),
+    r.stage = coalesce(r.stage, '初始治疗');
 
 MATCH (from) WHERE from.name = '不宁腿综合征'
-MATCH (to) WHERE to.name = '氯硝西泮'
+MATCH (to) WHERE to.name = '物理疗法'
 MERGE (from)-[r:TREATED_BY]->(to)
 SET 
-    r.effectiveness = coalesce(r.effectiveness, 0.2),
+    r.effectiveness = coalesce(r.effectiveness, 0.75),
+    r.priority = coalesce(r.priority, '中'),
+    r.stage = coalesce(r.stage, '对症支持治疗');
+
+MATCH (from) WHERE from.name = '不宁腿综合征'
+MATCH (to) WHERE to.name = '针灸疗法'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.7),
     r.priority = coalesce(r.priority, '低'),
-    r.stage = coalesce(r.stage, '禁忌');
+    r.stage = coalesce(r.stage, '对症支持治疗');
+
+MATCH (from) WHERE from.name = '不宁腿综合征'
+MATCH (to) WHERE to.name = '多导睡眠监测'
+MERGE (from)-[r:REQUIRES_EXAM]->(to)
+SET 
+    r.priority = coalesce(r.priority, '高'),
+    r.mandatory = coalesce(r.mandatory, 'true');
 
 """

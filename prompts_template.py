@@ -1,4 +1,7 @@
 # %%
+import tiktoken
+
+
 CYPHER_CONSTRAINT_SCHEMA = """
 // 创建唯一性约束
 CREATE CONSTRAINT disease_name IF NOT EXISTS
@@ -281,16 +284,33 @@ API_COMMAND_MSG = f"""
 {CYPHER_SCHEMA}
 [关系抽取说明]
 抽取主题侧重与睡眠相关;
-抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Disease Symptom Treatment Complication
+抽取时请重点关注[CYPHER_SCHEMA]中的这些实体节点: Symptom Disease Treatment Complication
 以及这些关系INDICATES TREATED_BY INDICATES REQUIRES_EXAM;
-文本可能很长很长, 请尽你可能抽取全部实体和关系; 也可以适当结合[文本块]进行推理然后生成一些, 但是请务必保证逻辑合理性.
-[示例输出]
-MERGE (d1:Disease {{name: "失眠"}})
-MERGE (d2:Disease {{name: "阻塞性睡眠呼吸暂停", short_name: "OSA"}})
-MERGE (d1)-[:INDICATES {{confidence: 0.9, frequency: "常见", severity: "严重"}}]->(d2)
-MERGE (d1)-[:TREATED_BY {{effectiveness: 0.85, priority: "高", stage: "初始治疗"}}]->(:NonDrugTreatment {{name: "CBT-I", description: "认知行为疗法", duration: "短期", frequency: "根据需要", contraindication: "无", equipment: "无"}})
-MERGE (d1)-[:TREATED_BY {{effectiveness: 0.7, priority: "中", stage: "联合治疗"}}]->(:DrugTreatment {{name: "BZRAs", description: "苯二氮草类药物", dosage: "根据医生建议", frequency: "根据需要", duration: "短期", route: "口服", contraindication: "重度呼吸衰竭"}})
-MERGE (d2)-[:MAY_CAUSE {{probability: 0.6, timeframe: "长期"}}]->(d1)
+文本可能很长很长, 请尽你可能抽取全部实体和关系; 
+请务必保证逻辑合理性;
+请尽量区分Symptom和Disease, 因为最终的查询依靠Symptom列表, 比如"抗癫痫药物相关嗜睡"和"昼夜节律失调性睡眠觉醒障碍"属于疾病(Disease)而非症状(Symptom);
+请根据医学惯例适当规范化name的描述, 比如"人睡前幻觉"应该为"睡前幻觉"
+[示例输出一]
+MERGE (d1:Disease {{name: "快动眼睡眠行为障碍", description: "一种在快动眼睡眠期表现出的异常行为症状", severity: "中等"}})
+MERGE (s1:Symptom {{name: "夜间手舞足蹈", description: "反复在夜间出现手舞足蹈的行为", severity: "严重", frequency: "频繁"}})
+MERGE (s2:Symptom {{name: "做噩梦", description: "夜间出现噩梦的现象", severity: "中等", frequency: "几乎每天"}})
+MERGE (s3:Symptom {{name: "梦话", description: "夜间说梦话的表现", severity: "轻微", frequency: "频繁"}})
+MERGE (s1)-[:INDICATES {{confidence: 0.9, frequency: "频繁", severity: "严重"}}]->(d1)
+MERGE (s2)-[:INDICATES {{confidence: 0.9, frequency: "几乎每天", severity: "中等"}}]->(d1)
+MERGE (s3)-[:INDICATES {{confidence: 0.8, frequency: "频繁", severity: "轻微"}}]->(d1)
+MERGE (e1:Examination {{name: "PSG检查", description: "多导睡眠图检查，用于诊断睡眠障碍", method: "多导睡眠监测", requirement: "在安静环境中进行"}})
+MERGE (e2:Examination {{name: "MRI", description: "核磁共振成像，用于排查神经系统问题", method: "核磁共振扫描", requirement: "在扫描前保持放松"}})
+MERGE (d1)-[:REQUIRES_EXAM {{priority: "高", mandatory: true}}]->(e1)
+MERGE (d1)-[:REQUIRES_EXAM {{priority: "中", mandatory: false}}]->(e2)
+MERGE (d1)-[:TREATED_BY {{effectiveness: 0.75, priority: "高", stage: "对症支持治疗"}}]->(:NonDrugTreatment {{name: "对症支持治疗", description: "通过改善多梦等症状来支持患者", duration: "短期", frequency: "根据需要", contraindication: "无", equipment: "无"}})
+[示例输出二]
+MERGE (d1:Disease {{name: "睡眠呼吸暂停低通气综合征"}})
+MERGE (s1:Symptom {{name: "打鼾", description: "夜间睡眠时发出声响", severity: "中等", frequency: "常见"}})
+MERGE (s2:Symptom {{name: "日间嗜睡", description: "白天感到过度困倦", severity: "严重", frequency: "常见"}})
+MERGE (d1)-[:INDICATES {{confidence: 0.95, frequency: "常见", severity: "中等"}}]->(s1)
+MERGE (d1)-[:INDICATES {{confidence: 0.9, frequency: "常见", severity: "严重"}}]->(s2)
+MERGE (d1)-[:REQUIRES_EXAM {{priority: "高", mandatory: true}}]->(:Examination {{name: "PSG检查", description: "多导睡眠监测", method: "睡眠观察", requirement: "住院观察"}})
+MERGE (d1)-[:TREATED_BY {{effectiveness: 0.8, priority: "高", stage: "初始治疗"}}]->(:NonDrugTreatment {{name: "无创呼吸机辅助通气", description: "通过呼吸机支持患者呼吸", duration: "持续", frequency: "根据需要", contraindication: "无", equipment: "呼吸机"}})
 """
 
 API_PAYLOAD_TEMPLATE = """
@@ -305,36 +325,36 @@ API_PAYLOAD_TEMPLATE = """
 DEMO_MSG = COMMAND_TEMPLATE.format(
     "睡眠相关的节律性运动障碍的临床特点.md",
     "001",
-    """# 一、流行病学及概述  
+    """# 一、流行病学及概述
 
-SRMD是指重复、刻板和节律性的大组肌群(尤其是头和颈部)的运动,多发生在人睡时和睡眠中,少数发生在早晨将醒时,由撞头、摇头、身体前后摆动及身体旋转等复杂而固定模式的异常运动组成. 发作的频率为 $0.\;5\sim2.\;0$ 次/s,持续时间通常不超过 $15\,\mathrm{\min}$ . 亦有人称之为睡中撞头、夜间摇头. 绝大多数研究认为男女发病率没有差异,仅有个别报道在成年患者中存在男性优势. 关于SRMD的发病率,不同年龄段,其发病率差别较大,ICSD-3及其他研究显示 $59\%$ 的婴幼儿在9个月时会出现一些节律性运动,18个月时患病率降至 $33\%$ ,症状通常在4岁以后逐渐好转或消失,到5岁时患病率仅为 $5\%$ [26]. 成年 SRMD 患病有如下 3 种情况:婴幼儿时期发病且症状持续至成年;婴幼儿时期患有SRMD,随后自愈,成年后再次复发;青春期或成年后首次出现SRMD,后者又称为迟发型或晚发型SRMD[7].   
+SRMD是指重复、刻板和节律性的大组肌群(尤其是头和颈部)的运动,多发生在人睡时和睡眠中,少数发生在早晨将醒时,由撞头、摇头、身体前后摆动及身体旋转等复杂而固定模式的异常运动组成. 发作的频率为 $0.\;5\sim2.\;0$ 次/s,持续时间通常不超过 $15\,\mathrm{\min}$ . 亦有人称之为睡中撞头、夜间摇头. 绝大多数研究认为男女发病率没有差异,仅有个别报道在成年患者中存在男性优势. 关于SRMD的发病率,不同年龄段,其发病率差别较大,ICSD-3及其他研究显示 $59\%$ 的婴幼儿在9个月时会出现一些节律性运动,18个月时患病率降至 $33\%$ ,症状通常在4岁以后逐渐好转或消失,到5岁时患病率仅为 $5\%$ [26]. 成年 SRMD 患病有如下 3 种情况:婴幼儿时期发病且症状持续至成年;婴幼儿时期患有SRMD,随后自愈,成年后再次复发;青春期或成年后首次出现SRMD,后者又称为迟发型或晚发型SRMD[7].
     """,
 )
 
 DEMO_API_PAYLOAD = API_PAYLOAD_TEMPLATE.format(
     "《成年人阻塞性睡眠呼吸暂停低通气综合征筛查: 美国预防临床服务指南工作组推荐声明》解读.md",
     "《成年人阻塞性睡眠呼吸暂停低通气综合征筛查: 美国预防临床服务指南工作组推荐声明》解读/012-35-潜在的干预措施.md",
-    """# 潜在的干预措施  
+    """# 潜在的干预措施
 
-USPSTF推荐不仅关注成年人OSAHS的筛查和识别, 还强调了潜在的干预措施, 以帮助患者管理和治疗这一疾病. USPSTF推荐的干预措施包含但不仅限于以下几种. 
+USPSTF推荐不仅关注成年人OSAHS的筛查和识别, 还强调了潜在的干预措施, 以帮助患者管理和治疗这一疾病. USPSTF推荐的干预措施包含但不仅限于以下几种.
 
-## 体质量管理和生活方式改变  
-1. **体质量管理**: 肥胖是OSAHS的主要危险因素之一. 对于肥胖或超重的患者, 重要的干预措施之一是体质量管理, 包括饮食控制和适度的体育锻炼, 旨在减轻体质量. 即使是适度的体质量减轻也可以显著改善OSAHS症状, 包括减轻打鼾和减少呼吸暂停的发生次数. 
-   
-2. **生活方式改变**: 除了体质量管理, 生活方式改变也可以对OSAHS患者产生积极影响, 包括戒烟、限制酒精摄入、避免晚餐过量饮食、规律作息和改进睡眠环境等. 这些生活方式可能影响OSAHS的严重程度和发生频率. 医生可以为患者提供支持和指导, 以帮助他们在日常生活中实施这些建议. 
+## 体质量管理和生活方式改变
+1. **体质量管理**: 肥胖是OSAHS的主要危险因素之一. 对于肥胖或超重的患者, 重要的干预措施之一是体质量管理, 包括饮食控制和适度的体育锻炼, 旨在减轻体质量. 即使是适度的体质量减轻也可以显著改善OSAHS症状, 包括减轻打鼾和减少呼吸暂停的发生次数.
 
-## 正压通气(PAP)治疗  
-1. **PAP设备**: 对于确诊为OSAHS的患者, 特别是那些症状较为严重的患者, PAP设备是一种有效的治疗方法. 最常见的PAP设备是持续气道正压通气(CPAP). 这些设备通过面罩或鼻罩提供气道正压, 防止气道坍塌, 确保患者在夜间呼吸通畅. 这一治疗方法通常能够显著减少呼吸暂停的发生, 改善氧饱和度, 减轻日间嗜睡和提高生活质量. 
-   
-2. **自动调节压力正压通气(APAP)设备**: 可以根据患者的呼吸情况进行调整, 以提供更个性化的治疗. APAP设备能够动态调整气道正压, 以适应不同睡眠阶段的需要, 提供更加舒适和有效的治疗. 
+2. **生活方式改变**: 除了体质量管理, 生活方式改变也可以对OSAHS患者产生积极影响, 包括戒烟、限制酒精摄入、避免晚餐过量饮食、规律作息和改进睡眠环境等. 这些生活方式可能影响OSAHS的严重程度和发生频率. 医生可以为患者提供支持和指导, 以帮助他们在日常生活中实施这些建议.
 
-这些干预措施的目标是减轻OSAHS症状、改善患者的生活质量, 并降低与OSAHS相关的全身性健康风险. 在确定患者的治疗方案时, 医生应综合考虑患者的临床情况、病情严重程度和个体差异, 以提供最佳的医疗服务. 通过这些干预措施的实施, 可以帮助患者更好地管理OSAHS, 降低疾病负担, 提高其未来的生活质量. 
+## 正压通气(PAP)治疗
+1. **PAP设备**: 对于确诊为OSAHS的患者, 特别是那些症状较为严重的患者, PAP设备是一种有效的治疗方法. 最常见的PAP设备是持续气道正压通气(CPAP). 这些设备通过面罩或鼻罩提供气道正压, 防止气道坍塌, 确保患者在夜间呼吸通畅. 这一治疗方法通常能够显著减少呼吸暂停的发生, 改善氧饱和度, 减轻日间嗜睡和提高生活质量.
 
-此外, USPSTF推荐提出未来需要聚焦于以下几方面的临床研究: 
-1. 针对无症状人群OSAHS筛查的设计研究, 探索OSAHS筛查对患者重要结局事件(例如死亡、心血管疾病事件、车祸事故、生活质量等)的影响; 
-2. 在社区人群中, 尤其是在未被识别OSAHS或症状轻微的人群中, 评估筛查工具的准确性; 
-3. 开发准确的风险评估工具, 识别最有可能从OSAHS筛查中受益的人群; 
-4. 针对OSAHS自然进程的研究, 尤其是关于从轻度OSAHS进展至重度OSAHS方面的研究, 以及OSAHS被早期识别及治疗的临床获益方面的研究. 
+2. **自动调节压力正压通气(APAP)设备**: 可以根据患者的呼吸情况进行调整, 以提供更个性化的治疗. APAP设备能够动态调整气道正压, 以适应不同睡眠阶段的需要, 提供更加舒适和有效的治疗.
+
+这些干预措施的目标是减轻OSAHS症状、改善患者的生活质量, 并降低与OSAHS相关的全身性健康风险. 在确定患者的治疗方案时, 医生应综合考虑患者的临床情况、病情严重程度和个体差异, 以提供最佳的医疗服务. 通过这些干预措施的实施, 可以帮助患者更好地管理OSAHS, 降低疾病负担, 提高其未来的生活质量.
+
+此外, USPSTF推荐提出未来需要聚焦于以下几方面的临床研究:
+1. 针对无症状人群OSAHS筛查的设计研究, 探索OSAHS筛查对患者重要结局事件(例如死亡、心血管疾病事件、车祸事故、生活质量等)的影响;
+2. 在社区人群中, 尤其是在未被识别OSAHS或症状轻微的人群中, 评估筛查工具的准确性;
+3. 开发准确的风险评估工具, 识别最有可能从OSAHS筛查中受益的人群;
+4. 针对OSAHS自然进程的研究, 尤其是关于从轻度OSAHS进展至重度OSAHS方面的研究, 以及OSAHS被早期识别及治疗的临床获益方面的研究.
 """
 )
 
@@ -343,12 +363,12 @@ DEMO_API_COMMAND = API_COMMAND_MSG + DEMO_API_PAYLOAD
 CHAT_SYSTEM_MSG = """
 [角色任务]
 你是一名医疗睡眠助手, 用于基层医疗分诊, 具备记忆能力(我会给你提供相关上下文);
-我会在第一次消息中(本系统消息不会提供)给你提供一个基于neo4j知识图谱、量表、病历等信息的json格式[患者分析结果], 这个结果很重要, 
+我会在第一次消息中(本系统消息不会提供)给你提供一个基于neo4j知识图谱、量表、病历等信息的json格式[患者分析结果], 这个结果很重要,
 在后续对话中请根据这个[患者分析结果], 并参考我在[知识库]中提供的文本和用户输入, 回答用户咨询, 帮助用户解决睡眠问题, 提供相关的建议和解决方案等;
 
 [回答需求]
 1. 专业性
-你需要以专业的态度和能力为用户提供建议, 确保建议的有效性和可靠性. 
+你需要以专业的态度和能力为用户提供建议, 确保建议的有效性和可靠性.
 你可以在第一次对话中获取获取[患者分析结果]的json.
 2. 第一条会话之后应该以面对患者的口吻回答.
 """
@@ -493,7 +513,16 @@ MEDICAL_HISTORY_EXTRACTOR_SYSTEM_MSG = """
 """
 
 GEN_FOLLOWUP_SYSTEM_MSG = """
-请你根据我提供的历史记录和用户的最近一次输入意图生成三条追问, 示例输出如下:
+请你根据我提供的历史记录和用户的最近一次输入意图生成三条追问, 
+比如, 用户可能问这样的问题:
+我的详细症状是什么?
+我可能的疾病是什么?
+我应该采用哪些药物治疗和非药物治疗?
+我应该进行哪些测试?
+我应该去哪些科室检查?
+我下一步应该怎么做?
+...
+示例输出如下:
 (请严格遵循下面的格式, 包括json间的换行符)
 {
     "content": "我应该采用哪些药物治疗和非药物治疗?"
@@ -511,6 +540,8 @@ GEN_FOLLOWUP_SYSTEM_MSG = """
 
 # %%
 if __name__ == "__main__":
+    encoding = tiktoken.get_encoding("cl100k_base")
+    print(len(encoding.encode(API_COMMAND_MSG)))
     print(DEMO_API_COMMAND)
 
 # %%

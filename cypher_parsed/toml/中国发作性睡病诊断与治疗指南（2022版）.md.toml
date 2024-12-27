@@ -1,10 +1,310 @@
 [metadata]
 file_name = "中国发作性睡病诊断与治疗指南（2022版）.md"
-processed_at = "2024-12-19 00:12:18"
+processed_at = "2024-12-27 20:09:32"
 total_pairs = 2
 
 [[message_pairs]]
-timestamp = "2024-12-19 00:09:25"
+timestamp = "2024-12-27 20:08:38"
+message = """
+
+[隶属文件名]
+中国发作性睡病诊断与治疗指南（2022版）.md
+[隶属文件分块名]
+中国发作性睡病诊断与治疗指南（2022版）/002-一EDS的治疗.md
+[文本块]
+# (一)EDS的治疗
+治疗EDS的首选药物是替洛利生(pitolisant)、莫达非尼(modafinil)、 $\\upgamma\\cdot$ 羟丁酸钠(gamma-hydroxybutyrate,sodiumoxybate),其他药物包括阿莫达非尼(armodafinil)、哌甲酯缓释片(methylphenidate)索林非妥(solriamfetol)、马吲哚(mazindol)等。EDS治疗推荐药物和意见见表1。  
+
+1.替洛利生(I级推荐,A级证据):替洛利生作为首选药物,是新型组胺 $\\mathrm{H}_{3}$ 受体拮抗剂/反向激动剂,通过增加中枢神经系统内源性组胺和其他兴奋性神经递质,如乙酰胆碱、多巴胺、去甲肾上腺素的释放,达到改善EDS和猝倒的作用,并于2016年和2019年先后在欧盟和美国被批准用于治疗发作性睡病,属于非精神管控的、发作性睡病EDS的治疗药物]。临床研究结果显示,替洛利生能显著降低ESS 评分[62-63]。长达5年的研究验证,该药物长期疗效稳定,具有良好的耐受性和安全性[64]  
+
+替洛利生需要按照向上滴定方案用药,根据个体患者的反应和耐受性使用最低有效剂量,最大剂量不得超过 $36\\;\\mathrm{mg/d}$ 。替洛利生随早餐单次服用,吸收良好且迅速,血浆浓度在给药后大约 $^{3\\textrm{h}}$ 达峰,半衰期为 $10{\\sim}12\\,\\mathrm{h}$ ,常用剂量为 $18{\\sim}36~\\mathrm{mg/d}$ 。常见的不良反应包括失眠、头痛、恶心、焦虑等。通过评估用药的风险与获益,可以考虑推荐替洛利生用于儿童EDS的临床应用[13]  
+
+2.莫达非尼(I级推荐,A级证据):莫达非尼1998 $65\\%{\\sim}90\\%$ 的EDS 症状[65]。莫达非尼于1980年首次在法国应用于治疗发作性睡病,1998年通过美国食品与药物管理局(FDA)批准,用于治疗发作性睡病、轮班工作和OSA的思睡症状。莫达非尼药理作用包括3方面[65-66]:低亲和性阻断多巴胺转运体再摄取蛋白,增强中枢-皮质-边缘系统多巴胺能神经传递;增强大脑皮质和脑干胆碱能和谷氨酸能神经兴奋性活动;增加丘脑结节乳头核的Hcrt依赖性组胺能神经传递。但目前研究没有发现莫达非尼可以改善猝倒发作。  
+
+表1日间过度思睡治疗推荐意见 Table 1  Therapy recommendations for excessive daytime sleepiness   
+
+注:推荐级别分为I、II、IIII3个级别,证据级别分为 A、B、C、D 4个级别[根据推荐意见分级的体系,即 GRADE(Grades ofRecommendation,Assessment,Development and Evaluation)分级体系修订];\"来源于国家药品监督管理局(www.nmpa.gov.cn)  
+
+莫达非尼口服吸收良好,半衰期为 $9{\\sim}14\\;\\mathrm{h}$ ,服5 50\\~100 mg 200\\~疗发作性睡病的初始剂量为每天 $100~\\mathrm{mg}$ ,此后每5天增加 $50{\\sim}100~\\mathrm{mg}$ ,直至达到标准剂量 $200\\sim$$400~\\mathrm{mg^{[67]}}$ 。通常建议在早晨顿服 $200~\\mathrm{mg}$ ,如果仍残留思睡症状,可逐渐增量至 $400~\\mathrm{mg/d}$ ,分2次在早晨和中午服药。  
+
+常见的不良反应有头痛、神经质、胃肠道反应、鼻炎样症状、血压升高、食欲降低、体重减轻等[67-68],缓慢增加剂量可减少不良反应。莫达非尼可能存在潜在的滥用性和心理依赖性\"]。阿莫达非尼为莫达非尼的R型异构体。  
+
+$3.\\upgamma.$ -羟丁酸钠(I级推荐,A级证据):产生于中枢神经系统,是两种羟丁酸受体亚型的神经递质。大剂量用药对 $\\upgamma.$ 氨基丁酸B型受体起作用。多项研究结果表明, $\\upgamma$ -羟丁酸钠能显著改善发作性睡病1型和2型患者的EDS、猝倒和疾病严重程度[, 4]0。0 无mg论主观评估( )或客观评估(或MWT), $\\upgamma\\cdot$ -羟丁酸钠治疗过度思睡的单药疗效优于单用 $400~\\mathrm{mg}$ 的莫达非尼。  
+
+$\\upgamma.$ -羟丁酸钠能够通过改善夜间睡眠不安,从而达到缓解EDS的作用。由于半衰期短、起效快,需要晚上睡前服用,并建议夜间加服1次。常见的不良反应包括恶心、头晕、夜间遗尿、头痛、胸部不适和睡眠障碍,睡眠呼吸障碍也有报道。足量服用会引引起快速镇静和记忆缺失,大剂量会引发呼吸抑制和死亡。  
+
+4.马吲哚(I级推荐,A级证据):为非苯丙胺类精神振奋剂,主要通过大脑中隔区产生拟交感神经作用。马吲哚最初用于治疗单纯性肥胖,1975年首次用于治疗发作性睡病,使 $85\\%$ 的患者EDS症状得到改善,并减少 $50\\%$ 的猝倒发作。最近一项针对难治性发作性睡病的研究发现,马吲哚对莫达非尼、哌甲酯和 $\\upgamma\\cdot$ -羟丁酸钠耐药的患者的过度思睡症状的改善率达 $60\\%$ ,亦可明显缓解猝倒发作[]。马吲哚常见不良反应包括口干、心悸、厌食、紧张和头痛等。  
+
+5.索林非妥(I级推荐,C级证据):是一种具有双重作用的多巴胺和去甲肾上腺素再摄取抑制剂 dopamine and norepinephrine reuptake inhibitors ,DNRIs),已被证实用于治疗成人与发作性睡病相关的EDS,可改善觉醒,推荐每日服药1次,清醒状态下用药。因为有干扰睡眠的可能,因此避免在人睡前 $^{9\\textrm{h}}$ 内服药;起始应用剂量为 $75~\\mathrm{mg}$ ,最大剂量为 $150~\\mathrm{mg}$ ;根据疗效和耐受性,索林非妥增加1倍剂量至少每隔3天;常见的不良事件包括头痛、食欲下降、失眠、恶心和胸部不适,大多数为轻度或中度严重程度。  
+
+6.哌甲酯(II级推荐,C级证据):为苯丙胺类精神振奋剂,可以改善发作性睡病患者大部分的过度思睡症状,作用机制类似于安非他明类药物[68]。哌甲酯主要经肝脏代谢,代谢产物无药理活性。哌甲酯缓释片起始每日1次 $18~\\mathrm{mg}$ ,早晨口服,最大剂量不超过每日 $54~\\mathrm{mg}$ 。常见的不良反应包括胃肠道反应、头痛、头晕、失眠、无力、高血压、体重减轻等;罕见的不良反应为精神疾病;青光眼、焦虑症、癫痫或抽动-秽语综合征患者慎用;禁用于高血压、胸痛、心律失常、二尖瓣脱垂、心室肥厚、心绞痛和急性心肌梗死患者[10]。哌甲酯存在潜在的滥用性[68]  
+
+$15\\%{\\sim}35\\%$ 的患者对精神振奋剂单药治疗效果不佳,根据药物治疗剂量和时间增加剂量或联合用药来优化疗效。替洛利生可联合莫达非尼或其他EDS治疗药物的长期疗效和安全性已得到临床研究验证。莫达非尼 $200{\\sim}300~\\mathrm{mg/d}$ 可加用 $5\\!\\sim\\!10~\\mathrm{mg}$的哌甲酯普通片或马吲哚,联合用药必须在临床严密监测下使用,其安全性尚无临床研究证据。
+# (二)猝倒的治疗
+目前推荐的抗猝倒药物主要为替洛利生、羟丁酸钠和抗抑郁剂(三环类、文拉法辛)。三环类抗抑郁剂(tricyclic antidepressants,TCAs)、选择性5-羟色胺再摄取抑制剂类(selective serotonin reuptakeinhibitors,SSRIs)通常不具有很强的促醒效应,而替洛利生及羟丁酸钠可同时改善猝倒和EDS。选择性5-羟色胺与去甲肾上腺素再摄取抑制剂类(selective serotonin and norepinephrine reuptakeinhibitors,SNRIs)和选择性去甲肾上腺素再摄取抑制 剂(selective noradrenaline reuptake inhibitors ,NaRIs)则具有一定的促醒作用。这些药物也可联合使用。猝倒的推荐药物和意见见表2。  
+
+抗抑郁剂治疗猝倒起效迅速,但停药后易出现猝倒症状反弹[\"。即便是长期服用缓释型抗抑郁剂,也可能在中断治疗的次日发生猝倒症状反弹,症状反弹甚至可持续数天。抗抑郁剂治疗猝倒时也可能出现耐药现象,此时增加剂量或更换药物可  
+
+能会有所帮助。  
+
+1.替洛利生(I级推荐,A级证据):替洛利生也可显著改善猝倒发作,临床研究结果显示,替洛利生7周的治疗可以使每周猝倒发作减少$75\\%^{[62.63]}$ 。替洛利生不会刺激与药物滥用有关的伏隔核多巴胺的释放,在临床试验中未发现戒断症状。  
+
+2.羟丁酸钠(I级推荐,A级证据):羟丁酸钠可降低猝倒发生率的短期和长期疗效在随机对照试验中得到证实。羟丁酸钠可降低猝倒发作的效果与剂量有关,用药 $4.5\\,,6.0\\,,7.5\\,,9.0\\,\\mathrm{g}/\\mathrm{d}$ 的效果不同, $9.0\\ \\mathrm{g/d}$ 为最有效剂量。但部分患者无法耐受$9.0\\ \\mathrm{g/d}$ ,临床实践中的普遍剂量为 $6.0\\;\\mathrm{g/d}$ 。一般羟丁酸钠治疗4周后改善猝倒发作,需要至少3个月发挥最大疗效[72]  
+
+3.SNRIs(III级推荐,C级证据):SNRIs主要包括文拉法辛、去甲基文拉法辛和度洛西汀。SNRIs能有效抑制5-羟色胺和去甲肾上腺素的再摄取,对多巴胺再摄取也有一定抑制作用。文拉法辛是临床上治疗猝倒、人睡前幻觉和睡眠瘫痪的治疗药物37.5 mg $^\\textrm{\\scriptsize5h}$ ,每日需2\\~3次服药。文拉法辛缓释片适用于治疗日间猝倒发作,起始剂量为$37.5~\\mathrm{mg}$ ,早饭后顿服,缓慢增加至有效剂量( $75\\mathrm{\\sim}$$225~\\mathrm{mg/d}\\,,$ )。由于文拉法辛具有较强的去甲肾上腺素能作用,因此可导致血压升高和心率加快。去甲基文拉法辛是文拉法辛经肝脏代谢后的产物,其抗猝倒效果可能优于文拉法辛及其他的抗抑郁药物,不良反应有恶心、头晕、食欲下降、易怒、失眠、体重增加、性功能障碍、多汗、腹泻、便秘等[13,68,74]  
+
+度洛西汀的药理机制与文拉法辛类似6,半衰期更长(约为 $12\\,\\mathrm{{h}}$ ),对肝脏损害小。有研究报道度洛西汀治疗发作性睡病猝倒发作有效。度洛西汀的有效治疗剂量为 $20{\\sim}40~\\mathrm{mg/d}$ ,最大剂量为 $60~\\mathrm{mg/d}.$  
+
+Table 2  Therapy recommendations for cataplexy   
+表2猝倒治疗的推荐意见  
+
+注:推荐级别分为I、II、III3个级别,证据级别分为A、B、C、D 4个级别[根据推荐意见分级的体系,即GRADE(Grades ofRecommendation,Assessment,Development andEyaluation)分级体系修订];“来源于国家药品监督管理局(www.nmpa.gov.cn)  
+
+4.TCAs(II级推荐,C级证据):TCAs用于治疗猝倒发作,对入睡前幻觉和睡眠瘫痪均有效[6,但也可能会导致RBD的产生。这类药物包括:氯米帕明、去甲阿米替林和丙咪嗪。由于TCAs具有抑制5-羟色胺再摄取、拮抗胆碱能、拮抗组胺和阻断$\\alpha{-1}$ 肾上腺素能效应,因此存在诸多不良反应,如便秘、视力模糊、口干、心脏传导阻滞、镇静、直立性低血压及性功能障碍等。  
+
+5.SSRIs(II级推荐,C级证据):帕罗西汀、氟西汀、舍曲林和西酞普兰对于治疗猝倒发作有一定疗效,相比 TCAs 和 SNRIs 疗效较弱[68]。帕罗西汀常见不良反应为恶心、厌食、便秘、头痛、乏力、性功能障碍等,偶见体位性低血压等。  
+
+6.NaRIs(II级推荐,C级证据):瑞波西汀为选择性去甲肾上腺素再摄取抑制剂[75],具有很弱的5-羟色胺再摄取抑制作用,主要提高中枢神经系统去甲肾上腺素活性,可减少猝倒发作的频率及严重程度。小样本研究结果显示,经瑞波西汀(最高剂量 $10\\;\\mathrm{mg/d}\\;$ )治疗后,患者ESS评分下降 $48\\%$ , MSLT的睡眠潜伏期改善 $54\\%$ ,猝倒发作显著减少[]。瑞波西汀常见不良反应为失眠、多汗、头晕、便秘、直立性低血压、性功能障碍和排尿困难等。  
+
+阿托莫西汀(II级推荐,C级证据)可选择性抑制去甲肾上腺素的突触前转运,增强去甲肾上腺素功能,半衰期较短 $(4{\\sim}5\\mathrm{~h~})$ )。有研究报道阿托莫西汀治疗发作性睡病的猝倒和日间过度睡眠均有效[7]。阿托莫西汀有效治疗剂量为 $10{\\sim}60~\\mathrm{mg/d}$ ,最大剂量为 $80~\\mathrm{mg/d}$ ,常见不良反应为食欲减退、尿潴留、便秘等,需监测血压和心率等。  
+
+Therapy recommendations fo  
+
+吲哚。  
+
+抗抑郁剂的停药反应:抗抑郁剂治疗猝倒的过程中,突然减量或停药会导致猝倒发作时间延长、频率增加、严重程度增高,甚至出现猝倒持续状态。  
+
+(三)人睡前幻觉和睡眠瘫痪的治疗  
+
+最新研究结果提示,替洛利生(I级推荐,A级证据)和 $\\upgamma$ -羟丁酸钠(I级推荐,A级证据)对人睡前幻觉和睡眠瘫痪有明确改善作用,推荐用于这两种症状的治疗[,III,]。入睡D前幻觉和S睡SR眠Is瘫痪III与REM睡眠期有关,缩短REM睡眠的抗抑郁剂如三环类抗抑郁剂(III级推荐,D级证据)、SSRIs(III级推荐,D级证据)及SNRIs(III级推荐,D级证据)均可改善人睡前幻觉和睡眠瘫痪[10,68],考虑到三环类药物不良反应,推荐使用SSRIs和SNRIs类药物,如氟西汀文拉法辛等。如合并猝倒,可考虑参考猝倒的治疗药物。人睡前幻觉和睡眠瘫痪的治疗推荐药物和意见见表3。  
+
+(四)夜间睡眠紊乱的治疗  
+
+1.夜间睡眠不安的治疗:治疗推荐药物和意见见表4。  
+
+$\\upgamma.$ -羟丁酸钠(I级推荐,A级证据)是目前唯一被证实对于治疗发作性睡病夜间睡眠不安有确切疗效的药物[13]。大量随机对照研究证实 $\\upgamma\\cdot$ 羟丁酸钠能治疗发作性睡病的所有症状,对于猝倒、EDS、夜间睡眠不安等均有确切疗效17-78]。 $\\upgamma\\cdot$ 羟丁酸钠可能会增加睡眠呼吸障碍或肺换气不足的风险,对可能存在这些基础疾病的患者,在服用 $\\upgamma\\cdot$ -羟丁酸钠前需进行nPSG和血二氧化碳监测。必要时可先行气道正压辅助呼吸,改善通气功能后再给予 $\\upgamma.$ -羟丁酸钠治疗[79]。  
+
+巴氯芬(III级推荐,D级证据)推荐用于成人和儿童出现的夜间睡眠不安[3]。巴氯芬可改善慢波睡眠,减少睡眠片段化,但证据较少,需要进一步研究评估其在改善睡眠中的作用[80]  
+
+Table 3  Therapy recommendations for hypnagogic hallucinations and sleep paralysis   
+表3人睡前幻觉和睡眠瘫痪治疗的推荐意见  
+
+注:推荐级别分为I、II、IIII3个级别,证据级别分为A、B、C、D4个级别[根据推荐意见分级的体系,即GRADE(Grades ofRecommendation,Assessment,Development andEvaluation)分级体系修订];来源于国家药品监督管理局(www.nmpa.gov.cn)  
+
+Table 4  Therapy recommendations for disturbed nocturnal sleep   
+表4睡眠不安治疗的推荐意见  
+
+注:推荐级别分为I、II、III3个级别,证据级别分为 $\\mathrm{A,B,C,D4}$ 个级别[根据推荐意见分级的评估、制订及评价,即GRADE(Grades ofRecommendation,Assessment,Development and Evaluation)分级体系修订];\"来源于国家药品监督管理局(www.nmpa.gov.cn)  
+
+此外,用于治疗失眠障碍的新型苯二氮草类药物(唑吡坦、佐匹克隆、右佐匹克隆)以及褪黑素也可用来治疗发作性睡病患者的夜间睡眠不安[10,\"],考虑到苯二氮草类药物的不良反应,不建议长期使用[3]对于夜间睡眠不安、合并EDS和猝倒的成人和儿童患者,可以首先考虑单用 $\\upgamma\\cdot$ -羟丁酸钠,或者联合使用$\\upgamma.$ -羟丁酸钠和(或)文拉法辛/氯米帕明,以及替洛利生等一线促醒剂[13]  
+
+2.0SA的治疗:推荐对所有超重患者鼓励其减轻体重,保持戒烟酒等健康的生活方式;无创气道正压通气是一线治疗方式;应用口腔矫治器和对有手术指征的患者进行手术治疗,也有一定的效果[79,8]]  
+
+3.RBD的治疗:不建议应用氯硝安定,可尝试VED使用褪黑素或褪黑素受体激动剂。  
+
+如合并猝倒,可考虑参考猝倒的治疗药物,并推荐对患者进行定期的抑郁/焦虑评估。  
+
+4.不宁腿综合征的治疗:推荐普拉克索作为不宁腿综合征的首选治疗,其他可选药物有罗匹尼罗、罗替高汀、加巴喷丁等}。值得注意的是,不宁腿症状可能在应用抗猝倒的抗抑郁药物后加重。  
+
+(五)其他症状的治疗  
+
+1.抑郁状态和焦虑状态:在认知行为治疗的基础上,推荐使用镇静作用小的抗抑郁剂如SSRIs、SNRIs 治疗。  
+
+2.精神病样症状:建议精神科排除相关精神疾病,选择适当的药物干预,注意增加体重的不良反应。(六)特定人群的治疗  
+
+1.儿童发作性睡病的治疗:我国发作性睡病发病的高峰年龄为8\\~12岁[,考虑对儿童患者学业和身心发育的影响,需要积极治疗。在推荐日间规律小睡、认知行为治疗的同时,谨慎用药,在处方前,临床医师应充分考虑获益和潜在的风险。具体用药推荐参考表1\\~4,药物的常规用法用量可参考表5。  
+
+r therapy of narcolepsy后,详细询问其他药物使用情况,以便充分评价发作性睡病治疗药物的价值。注意中枢兴奋类药物可能诱发和加重某些心血管事件。对有呼吸系统基础疾病的老年患者,应该注意 $\\upgamma.$ -羟丁酸钠导致的呼吸抑制作用。  
+
+表5发作性睡病治疗药物常规用法用量  
+
+3.孕产妇发作性睡病治疗的注意事项:怀孕期发作性睡病的治疗,一般不主张用药,若发作性睡病症状所引起的风险高于致畸或流产的风险,推荐选用替洛利生、 $\\upgamma\\cdot$ -羟丁酸钠、氟西汀、文拉法辛或氯米帕明。由于分娩过程中存在发生猝倒持续状态的风险,故推荐选择剖宫产手术[83]。哺乳期一般不主张用药,对于必须服用药物控制症状的哺乳期患者,建议停止母乳喂养[3]
+
+"""
+response = """
+// 节点更新
+MERGE (n:Disease {name: '发作性睡病'})
+SET 
+    n.description = coalesce(n.description, '一种导致白天过度嗜睡和猝倒的神经系统疾病'),
+    n.severity = coalesce(n.severity, '严重');
+
+MERGE (n:Symptom {name: '日间过度嗜睡'})
+SET 
+    n.description = coalesce(n.description, '白天感到过度的困倦'),
+    n.severity = coalesce(n.severity, '严重'),
+    n.frequency = coalesce(n.frequency, '常见');
+
+MERGE (n:Symptom {name: '猝倒'})
+SET 
+    n.description = coalesce(n.description, '突发的肌肉无力与意识丧失'),
+    n.severity = coalesce(n.severity, '严重'),
+    n.frequency = coalesce(n.frequency, '间歇性');
+
+MERGE (n:Symptom {name: '夜间睡眠不安'})
+SET 
+    n.description = coalesce(n.description, '夜间睡眠质量差'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '常见');
+
+MERGE (n:Symptom {name: '人睡前幻觉'})
+SET 
+    n.description = coalesce(n.description, '入睡时出现的幻觉'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '间歇性');
+
+MERGE (n:Symptom {name: '睡眠瘫痪'})
+SET 
+    n.description = coalesce(n.description, '入睡或醒来时的身体暂时无法动弹'),
+    n.severity = coalesce(n.severity, '中等'),
+    n.frequency = coalesce(n.frequency, '偶见');
+
+MERGE (n:DrugTreatment {name: '替洛利生'})
+SET 
+    n.description = coalesce(n.description, '新型组胺H3受体拮抗剂/反向激动剂，用于改善EDS和猝倒'),
+    n.dosage = coalesce(n.dosage, '最高36 mg/d'),
+    n.frequency = coalesce(n.frequency, '每天一次'),
+    n.duration = coalesce(n.duration, '长期'),
+    n.route = coalesce(n.route, '口服'),
+    n.contraindication = coalesce(n.contraindication, '严重不良反应患者禁用');
+
+MERGE (n:DrugTreatment {name: '莫达非尼'})
+SET 
+    n.description = coalesce(n.description, '用于治疗发作性睡病的首选药物，增强中枢神经的唤醒作用'),
+    n.dosage = coalesce(n.dosage, '100~400 mg/d'),
+    n.frequency = coalesce(n.frequency, '每天一次到两次'),
+    n.duration = coalesce(n.duration, '长期疗程'),
+    n.route = coalesce(n.route, '口服'),
+    n.contraindication = coalesce(n.contraindication, '精神病患者慎用');
+
+MERGE (n:DrugTreatment {name: 'γ-羟丁酸钠'})
+SET 
+    n.description = coalesce(n.description, '神经递质，改善EDS和夜间睡眠不安症状'),
+    n.dosage = coalesce(n.dosage, '400~6000 mg'),
+    n.frequency = coalesce(n.frequency, '根据患者反应调整'),
+    n.duration = coalesce(n.duration, '长期疗程'),
+    n.route = coalesce(n.route, '口服'),
+    n.contraindication = coalesce(n.contraindication, '呼吸抑制风险');
+
+MERGE (n:DrugTreatment {name: '索林非妥'})
+SET 
+    n.description = coalesce(n.description, '双重作用的多巴胺和去甲肾上腺素再摄取抑制剂，用于改善发作性睡病相关症状'),
+    n.dosage = coalesce(n.dosage, '75~150 mg/d'),
+    n.frequency = coalesce(n.frequency, '每天一次'),
+    n.duration = coalesce(n.duration, '长期疗程'),
+    n.route = coalesce(n.route, '口服'),
+    n.contraindication = coalesce(n.contraindication, '睡前8小时内禁用');
+
+MERGE (n:DrugTreatment {name: '马吲哚'})
+SET 
+    n.description = coalesce(n.description, '非苯丙胺类精神振奋剂，用于改善发作性睡病患者的EDS'),
+    n.dosage = coalesce(n.dosage, '最大剂量约为\" + \"75 mg/d'),
+    n.frequency = coalesce(n.frequency, '根据需要调整'),
+    n.duration = coalesce(n.duration, '长期疗程'),
+    n.route = coalesce(n.route, '口服'),
+    n.contraindication = coalesce(n.contraindication, '心脏病患者慎用');
+
+MERGE (n:DrugTreatment {name: '阿莫达非尼'})
+SET 
+    n.description = coalesce(n.description, '莫达非尼的R型异构体，用于治疗日间嗜睡'),
+    n.dosage = coalesce(n.dosage, '100~400 mg/d'),
+    n.frequency = coalesce(n.frequency, '每天一次到两次'),
+    n.duration = coalesce(n.duration, '长期疗程'),
+    n.route = coalesce(n.route, '口服'),
+    n.contraindication = coalesce(n.contraindication, '习惯性滥用者禁用');
+
+// 关系更新
+MATCH (from) WHERE from.name = '发作性睡病'
+MATCH (to) WHERE to.name = '日间过度嗜睡'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.95),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '严重');
+
+MATCH (from) WHERE from.name = '发作性睡病'
+MATCH (to) WHERE to.name = '猝倒'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.9),
+    r.frequency = coalesce(r.frequency, '间歇性'),
+    r.severity = coalesce(r.severity, '严重');
+
+MATCH (from) WHERE from.name = '发作性睡病'
+MATCH (to) WHERE to.name = '夜间睡眠不安'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.85),
+    r.frequency = coalesce(r.frequency, '常见'),
+    r.severity = coalesce(r.severity, '中等');
+
+MATCH (from) WHERE from.name = '发作性睡病'
+MATCH (to) WHERE to.name = '人睡前幻觉'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.8),
+    r.frequency = coalesce(r.frequency, '间歇性'),
+    r.severity = coalesce(r.severity, '中等');
+
+MATCH (from) WHERE from.name = '发作性睡病'
+MATCH (to) WHERE to.name = '睡眠瘫痪'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.75),
+    r.frequency = coalesce(r.frequency, '偶见'),
+    r.severity = coalesce(r.severity, '中等');
+
+MATCH (from) WHERE from.name = '发作性睡病'
+MATCH (to) WHERE to.name = '替洛利生'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.95),
+    r.priority = coalesce(r.priority, '高'),
+    r.stage = coalesce(r.stage, '改善EDS');
+
+MATCH (from) WHERE from.name = '发作性睡病'
+MATCH (to) WHERE to.name = '莫达非尼'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.9),
+    r.priority = coalesce(r.priority, '高'),
+    r.stage = coalesce(r.stage, '改善EDS和猝倒');
+
+MATCH (from) WHERE from.name = '发作性睡病'
+MATCH (to) WHERE to.name = 'γ-羟丁酸钠'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.85),
+    r.priority = coalesce(r.priority, '中'),
+    r.stage = coalesce(r.stage, '改善EDS');
+
+MATCH (from) WHERE from.name = '发作性睡病'
+MATCH (to) WHERE to.name = '索林非妥'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.8),
+    r.priority = coalesce(r.priority, '中'),
+    r.stage = coalesce(r.stage, '改善EDS');
+
+MATCH (from) WHERE from.name = '发作性睡病'
+MATCH (to) WHERE to.name = '马吲哚'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.75),
+    r.priority = coalesce(r.priority, '中'),
+    r.stage = coalesce(r.stage, '改善EDS');
+
+MATCH (from) WHERE from.name = '发作性睡病'
+MATCH (to) WHERE to.name = '阿莫达非尼'
+MERGE (from)-[r:TREATED_BY]->(to)
+SET 
+    r.effectiveness = coalesce(r.effectiveness, 0.7),
+    r.priority = coalesce(r.priority, '低'),
+    r.stage = coalesce(r.stage, '改善EDS');
+
+"""
+
+[[message_pairs]]
+timestamp = "2024-12-27 20:08:42"
 message = """
 
 [隶属文件名]
@@ -186,322 +486,104 @@ response = """
 // 节点更新
 MERGE (n:Disease {name: '发作性睡病'})
 SET 
-    n.description = coalesce(n.description, '一种神经内科的罕见病'),
-    n.category = coalesce(n.category, '睡眠障碍'),
-    n.severity = coalesce(n.severity, '中');
+    n.description = coalesce(n.description, '一种神经内科的罕见病，主要特征包括日间过度思睡、猝倒、人睡前幻觉和睡眠瘫痪'),
+    n.severity = coalesce(n.severity, '中等');
 
 MERGE (n:Symptom {name: '日间过度思睡'})
 SET 
-    n.description = coalesce(n.description, '白天难以遏制的困倦或睡眠反复发作'),
-    n.severity = coalesce(n.severity, '严重'),
-    n.frequency = coalesce(n.frequency, '每日均会发生');
-
-MERGE (n:Symptom {name: '猝倒'})
-SET 
-    n.description = coalesce(n.description, '发作性睡病1型最具特征性的临床表现'),
+    n.description = coalesce(n.description, '患者在日常生活中难以控制的困倦感'),
     n.severity = coalesce(n.severity, '严重'),
     n.frequency = coalesce(n.frequency, '频繁');
 
+MERGE (n:Symptom {name: '猝倒'})
+SET 
+    n.description = coalesce(n.description, '患者在清醒状态下突然失去肌肉张力'),
+    n.severity = coalesce(n.severity, '严重'),
+    n.frequency = coalesce(n.frequency, '常见');
+
 MERGE (n:Symptom {name: '人睡前幻觉'})
 SET 
-    n.description = coalesce(n.description, '发生于觉醒-睡眠转换期的一种梦境样体验'),
-    n.severity = coalesce(n.severity, '中'),
+    n.description = coalesce(n.description, '在入睡前的幻觉体验'),
+    n.severity = coalesce(n.severity, '中等'),
     n.frequency = coalesce(n.frequency, '常见');
 
 MERGE (n:Symptom {name: '睡眠瘫痪'})
 SET 
-    n.description = coalesce(n.description, '意识清醒但无法自主活动或讲话'),
-    n.severity = coalesce(n.severity, '中'),
+    n.description = coalesce(n.description, '在入睡或醒来时无法自主活动或讲话的状态'),
+    n.severity = coalesce(n.severity, '中等'),
     n.frequency = coalesce(n.frequency, '常见');
 
 MERGE (n:Symptom {name: '夜间睡眠紊乱'})
 SET 
-    n.description = coalesce(n.description, '反复夜间睡眠中断、觉醒次数增多'),
-    n.severity = coalesce(n.severity, '中'),
+    n.description = coalesce(n.description, '夜间睡眠频繁中断'),
+    n.severity = coalesce(n.severity, '中等'),
     n.frequency = coalesce(n.frequency, '常见');
 
-MERGE (n:NonDrugTreatment {name: '日间规律小睡'})
+MERGE (n:Examination {name: '脑脊液Hcrt-1检测'})
 SET 
-    n.description = coalesce(n.description, '通过日间规律小睡改善觉醒水平'),
-    n.duration = coalesce(n.duration, '长期'),
-    n.frequency = coalesce(n.frequency, '每日'),
-    n.contraindication = coalesce(n.contraindication, '无'),
-    n.equipment = coalesce(n.equipment, '无');
+    n.description = coalesce(n.description, '用于确认发作性睡病1型的脑脊液Hcrt-1浓度检测'),
+    n.method = coalesce(n.method, '脑脊液检测'),
+    n.requirement = coalesce(n.requirement, '患者有相关症状');
 
-MERGE (n:NonDrugTreatment {name: '睡眠卫生习惯'})
+MERGE (n:Examination {name: '多次睡眠潜伏期试验'})
 SET 
-    n.description = coalesce(n.description, '维持有利于睡眠的环境'),
-    n.duration = coalesce(n.duration, '长期'),
-    n.frequency = coalesce(n.frequency, '每日'),
-    n.contraindication = coalesce(n.contraindication, '无'),
-    n.equipment = coalesce(n.equipment, '无');
-
-MERGE (n:DrugTreatment {name: '兴奋性药物'})
-SET 
-    n.description = coalesce(n.description, '用于改善日间过度思睡症状'),
-    n.dosage = coalesce(n.dosage, '根据医生建议'),
-    n.frequency = coalesce(n.frequency, '根据需要'),
-    n.duration = coalesce(n.duration, '长期'),
-    n.route = coalesce(n.route, '口服'),
-    n.contraindication = coalesce(n.contraindication, '怀孕');
-
-MERGE (n:Complication {name: '认知功能损害'})
-SET 
-    n.description = coalesce(n.description, '包括工作记忆、执行功能和持续注意力缺陷'),
-    n.severity = coalesce(n.severity, '中');
-
-MERGE (n:Complication {name: '抑郁症'})
-SET 
-    n.description = coalesce(n.description, '可能与发作性睡病并存'),
-    n.severity = coalesce(n.severity, '中');
+    n.description = coalesce(n.description, '用于评估日间过度思睡的严重程度'),
+    n.method = coalesce(n.method, '小睡测试'),
+    n.requirement = coalesce(n.requirement, '需保证前夜睡眠时间大于6小时');
 
 // 关系更新
-MATCH (from) WHERE from.name = '发作性睡病'
-MATCH (to) WHERE to.name = '日间过度思睡'
+MATCH (from) WHERE from.name = '日间过度思睡'
+MATCH (to) WHERE to.name = '发作性睡病'
+MERGE (from)-[r:INDICATES]->(to)
+SET 
+    r.confidence = coalesce(r.confidence, 0.95),
+    r.frequency = coalesce(r.frequency, '频繁'),
+    r.severity = coalesce(r.severity, '严重');
+
+MATCH (from) WHERE from.name = '猝倒'
+MATCH (to) WHERE to.name = '发作性睡病'
 MERGE (from)-[r:INDICATES]->(to)
 SET 
     r.confidence = coalesce(r.confidence, 0.95),
     r.frequency = coalesce(r.frequency, '常见'),
     r.severity = coalesce(r.severity, '严重');
 
-MATCH (from) WHERE from.name = '发作性睡病'
-MATCH (to) WHERE to.name = '猝倒'
-MERGE (from)-[r:INDICATES]->(to)
-SET 
-    r.confidence = coalesce(r.confidence, 0.9),
-    r.frequency = coalesce(r.frequency, '常见'),
-    r.severity = coalesce(r.severity, '严重');
-
-MATCH (from) WHERE from.name = '发作性睡病'
-MATCH (to) WHERE to.name = '人睡前幻觉'
+MATCH (from) WHERE from.name = '人睡前幻觉'
+MATCH (to) WHERE to.name = '发作性睡病'
 MERGE (from)-[r:INDICATES]->(to)
 SET 
     r.confidence = coalesce(r.confidence, 0.85),
     r.frequency = coalesce(r.frequency, '常见'),
-    r.severity = coalesce(r.severity, '中');
+    r.severity = coalesce(r.severity, '中等');
 
-MATCH (from) WHERE from.name = '发作性睡病'
-MATCH (to) WHERE to.name = '睡眠瘫痪'
+MATCH (from) WHERE from.name = '睡眠瘫痪'
+MATCH (to) WHERE to.name = '发作性睡病'
 MERGE (from)-[r:INDICATES]->(to)
 SET 
-    r.confidence = coalesce(r.confidence, 0.8),
+    r.confidence = coalesce(r.confidence, 0.85),
     r.frequency = coalesce(r.frequency, '常见'),
-    r.severity = coalesce(r.severity, '中');
+    r.severity = coalesce(r.severity, '中等');
 
-MATCH (from) WHERE from.name = '发作性睡病'
-MATCH (to) WHERE to.name = '夜间睡眠紊乱'
+MATCH (from) WHERE from.name = '夜间睡眠紊乱'
+MATCH (to) WHERE to.name = '发作性睡病'
 MERGE (from)-[r:INDICATES]->(to)
 SET 
     r.confidence = coalesce(r.confidence, 0.75),
     r.frequency = coalesce(r.frequency, '常见'),
-    r.severity = coalesce(r.severity, '中');
+    r.severity = coalesce(r.severity, '中等');
 
 MATCH (from) WHERE from.name = '发作性睡病'
-MATCH (to) WHERE to.name = '日间规律小睡'
-MERGE (from)-[r:TREATED_BY]->(to)
+MATCH (to) WHERE to.name = '脑脊液Hcrt-1检测'
+MERGE (from)-[r:REQUIRES_EXAM]->(to)
 SET 
-    r.effectiveness = coalesce(r.effectiveness, 0.85),
     r.priority = coalesce(r.priority, '高'),
-    r.stage = coalesce(r.stage, '初始治疗');
+    r.mandatory = coalesce(r.mandatory, 'true');
 
 MATCH (from) WHERE from.name = '发作性睡病'
-MATCH (to) WHERE to.name = '睡眠卫生习惯'
-MERGE (from)-[r:TREATED_BY]->(to)
+MATCH (to) WHERE to.name = '多次睡眠潜伏期试验'
+MERGE (from)-[r:REQUIRES_EXAM]->(to)
 SET 
-    r.effectiveness = coalesce(r.effectiveness, 0.8),
     r.priority = coalesce(r.priority, '高'),
-    r.stage = coalesce(r.stage, '基础治疗');
-
-MATCH (from) WHERE from.name = '发作性睡病'
-MATCH (to) WHERE to.name = '兴奋性药物'
-MERGE (from)-[r:TREATED_BY]->(to)
-SET 
-    r.effectiveness = coalesce(r.effectiveness, 0.75),
-    r.priority = coalesce(r.priority, '高'),
-    r.stage = coalesce(r.stage, '药物控制');
-
-MATCH (from) WHERE from.name = '发作性睡病'
-MATCH (to) WHERE to.name = '认知功能损害'
-MERGE (from)-[r:MAY_CAUSE]->(to)
-SET 
-    r.probability = coalesce(r.probability, 0.5),
-    r.timeframe = coalesce(r.timeframe, '长期');
-
-MATCH (from) WHERE from.name = '发作性睡病'
-MATCH (to) WHERE to.name = '抑郁症'
-MERGE (from)-[r:MAY_CAUSE]->(to)
-SET 
-    r.probability = coalesce(r.probability, 0.4),
-    r.timeframe = coalesce(r.timeframe, '长期');
-
-"""
-
-[[message_pairs]]
-timestamp = "2024-12-19 00:09:38"
-message = """
-
-[隶属文件名]
-中国发作性睡病诊断与治疗指南（2022版）.md
-[隶属文件分块名]
-中国发作性睡病诊断与治疗指南（2022版）/002-一EDS的治疗.md
-[文本块]
-# (一)EDS的治疗
-治疗EDS的首选药物是替洛利生(pitolisant)、莫达非尼(modafinil)、 $\\upgamma\\cdot$ 羟丁酸钠(gamma-hydroxybutyrate,sodiumoxybate),其他药物包括阿莫达非尼(armodafinil)、哌甲酯缓释片(methylphenidate)索林非妥(solriamfetol)、马吲哚(mazindol)等。EDS治疗推荐药物和意见见表1。  
-
-1.替洛利生(I级推荐,A级证据):替洛利生作为首选药物,是新型组胺 $\\mathrm{H}_{3}$ 受体拮抗剂/反向激动剂,通过增加中枢神经系统内源性组胺和其他兴奋性神经递质,如乙酰胆碱、多巴胺、去甲肾上腺素的释放,达到改善EDS和猝倒的作用,并于2016年和2019年先后在欧盟和美国被批准用于治疗发作性睡病,属于非精神管控的、发作性睡病EDS的治疗药物]。临床研究结果显示,替洛利生能显著降低ESS 评分[62-63]。长达5年的研究验证,该药物长期疗效稳定,具有良好的耐受性和安全性[64]  
-
-替洛利生需要按照向上滴定方案用药,根据个体患者的反应和耐受性使用最低有效剂量,最大剂量不得超过 $36\\;\\mathrm{mg/d}$ 。替洛利生随早餐单次服用,吸收良好且迅速,血浆浓度在给药后大约 $^{3\\textrm{h}}$ 达峰,半衰期为 $10{\\sim}12\\,\\mathrm{h}$ ,常用剂量为 $18{\\sim}36~\\mathrm{mg/d}$ 。常见的不良反应包括失眠、头痛、恶心、焦虑等。通过评估用药的风险与获益,可以考虑推荐替洛利生用于儿童EDS的临床应用[13]  
-
-2.莫达非尼(I级推荐,A级证据):莫达非尼1998 $65\\%{\\sim}90\\%$ 的EDS 症状[65]。莫达非尼于1980年首次在法国应用于治疗发作性睡病,1998年通过美国食品与药物管理局(FDA)批准,用于治疗发作性睡病、轮班工作和OSA的思睡症状。莫达非尼药理作用包括3方面[65-66]:低亲和性阻断多巴胺转运体再摄取蛋白,增强中枢-皮质-边缘系统多巴胺能神经传递;增强大脑皮质和脑干胆碱能和谷氨酸能神经兴奋性活动;增加丘脑结节乳头核的Hcrt依赖性组胺能神经传递。但目前研究没有发现莫达非尼可以改善猝倒发作。  
-
-表1日间过度思睡治疗推荐意见 Table 1  Therapy recommendations for excessive daytime sleepiness   
-
-注:推荐级别分为I、II、IIII3个级别,证据级别分为 A、B、C、D 4个级别[根据推荐意见分级的体系,即 GRADE(Grades ofRecommendation,Assessment,Development and Evaluation)分级体系修订];\"来源于国家药品监督管理局(www.nmpa.gov.cn)  
-
-莫达非尼口服吸收良好,半衰期为 $9{\\sim}14\\;\\mathrm{h}$ ,服5 50\\~100 mg 200\\~疗发作性睡病的初始剂量为每天 $100~\\mathrm{mg}$ ,此后每5天增加 $50{\\sim}100~\\mathrm{mg}$ ,直至达到标准剂量 $200\\sim$$400~\\mathrm{mg^{[67]}}$ 。通常建议在早晨顿服 $200~\\mathrm{mg}$ ,如果仍残留思睡症状,可逐渐增量至 $400~\\mathrm{mg/d}$ ,分2次在早晨和中午服药。  
-
-常见的不良反应有头痛、神经质、胃肠道反应、鼻炎样症状、血压升高、食欲降低、体重减轻等[67-68],缓慢增加剂量可减少不良反应。莫达非尼可能存在潜在的滥用性和心理依赖性\"]。阿莫达非尼为莫达非尼的R型异构体。  
-
-$3.\\upgamma.$ -羟丁酸钠(I级推荐,A级证据):产生于中枢神经系统,是两种羟丁酸受体亚型的神经递质。大剂量用药对 $\\upgamma.$ 氨基丁酸B型受体起作用。多项研究结果表明, $\\upgamma$ -羟丁酸钠能显著改善发作性睡病1型和2型患者的EDS、猝倒和疾病严重程度[, 4]0。0 无mg论主观评估( )或客观评估(或MWT), $\\upgamma\\cdot$ -羟丁酸钠治疗过度思睡的单药疗效优于单用 $400~\\mathrm{mg}$ 的莫达非尼。  
-
-$\\upgamma.$ -羟丁酸钠能够通过改善夜间睡眠不安,从而达到缓解EDS的作用。由于半衰期短、起效快,需要晚上睡前服用,并建议夜间加服1次。常见的不良反应包括恶心、头晕、夜间遗尿、头痛、胸部不适和睡眠障碍,睡眠呼吸障碍也有报道。足量服用会引引起快速镇静和记忆缺失,大剂量会引发呼吸抑制和死亡。  
-
-4.马吲哚(I级推荐,A级证据):为非苯丙胺类精神振奋剂,主要通过大脑中隔区产生拟交感神经作用。马吲哚最初用于治疗单纯性肥胖,1975年首次用于治疗发作性睡病,使 $85\\%$ 的患者EDS症状得到改善,并减少 $50\\%$ 的猝倒发作。最近一项针对难治性发作性睡病的研究发现,马吲哚对莫达非尼、哌甲酯和 $\\upgamma\\cdot$ -羟丁酸钠耐药的患者的过度思睡症状的改善率达 $60\\%$ ,亦可明显缓解猝倒发作[]。马吲哚常见不良反应包括口干、心悸、厌食、紧张和头痛等。  
-
-5.索林非妥(I级推荐,C级证据):是一种具有双重作用的多巴胺和去甲肾上腺素再摄取抑制剂 dopamine and norepinephrine reuptake inhibitors ,DNRIs),已被证实用于治疗成人与发作性睡病相关的EDS,可改善觉醒,推荐每日服药1次,清醒状态下用药。因为有干扰睡眠的可能,因此避免在人睡前 $^{9\\textrm{h}}$ 内服药;起始应用剂量为 $75~\\mathrm{mg}$ ,最大剂量为 $150~\\mathrm{mg}$ ;根据疗效和耐受性,索林非妥增加1倍剂量至少每隔3天;常见的不良事件包括头痛、食欲下降、失眠、恶心和胸部不适,大多数为轻度或中度严重程度。  
-
-6.哌甲酯(II级推荐,C级证据):为苯丙胺类精神振奋剂,可以改善发作性睡病患者大部分的过度思睡症状,作用机制类似于安非他明类药物[68]。哌甲酯主要经肝脏代谢,代谢产物无药理活性。哌甲酯缓释片起始每日1次 $18~\\mathrm{mg}$ ,早晨口服,最大剂量不超过每日 $54~\\mathrm{mg}$ 。常见的不良反应包括胃肠道反应、头痛、头晕、失眠、无力、高血压、体重减轻等;罕见的不良反应为精神疾病;青光眼、焦虑症、癫痫或抽动-秽语综合征患者慎用;禁用于高血压、胸痛、心律失常、二尖瓣脱垂、心室肥厚、心绞痛和急性心肌梗死患者[10]。哌甲酯存在潜在的滥用性[68]  
-
-$15\\%{\\sim}35\\%$ 的患者对精神振奋剂单药治疗效果不佳,根据药物治疗剂量和时间增加剂量或联合用药来优化疗效。替洛利生可联合莫达非尼或其他EDS治疗药物的长期疗效和安全性已得到临床研究验证。莫达非尼 $200{\\sim}300~\\mathrm{mg/d}$ 可加用 $5\\!\\sim\\!10~\\mathrm{mg}$的哌甲酯普通片或马吲哚,联合用药必须在临床严密监测下使用,其安全性尚无临床研究证据。
-# (二)猝倒的治疗
-目前推荐的抗猝倒药物主要为替洛利生、羟丁酸钠和抗抑郁剂(三环类、文拉法辛)。三环类抗抑郁剂(tricyclic antidepressants,TCAs)、选择性5-羟色胺再摄取抑制剂类(selective serotonin reuptakeinhibitors,SSRIs)通常不具有很强的促醒效应,而替洛利生及羟丁酸钠可同时改善猝倒和EDS。选择性5-羟色胺与去甲肾上腺素再摄取抑制剂类(selective serotonin and norepinephrine reuptakeinhibitors,SNRIs)和选择性去甲肾上腺素再摄取抑制 剂(selective noradrenaline reuptake inhibitors ,NaRIs)则具有一定的促醒作用。这些药物也可联合使用。猝倒的推荐药物和意见见表2。  
-
-抗抑郁剂治疗猝倒起效迅速,但停药后易出现猝倒症状反弹[\"。即便是长期服用缓释型抗抑郁剂,也可能在中断治疗的次日发生猝倒症状反弹,症状反弹甚至可持续数天。抗抑郁剂治疗猝倒时也可能出现耐药现象,此时增加剂量或更换药物可  
-
-能会有所帮助。  
-
-1.替洛利生(I级推荐,A级证据):替洛利生也可显著改善猝倒发作,临床研究结果显示,替洛利生7周的治疗可以使每周猝倒发作减少$75\\%^{[62.63]}$ 。替洛利生不会刺激与药物滥用有关的伏隔核多巴胺的释放,在临床试验中未发现戒断症状。  
-
-2.羟丁酸钠(I级推荐,A级证据):羟丁酸钠可降低猝倒发生率的短期和长期疗效在随机对照试验中得到证实。羟丁酸钠可降低猝倒发作的效果与剂量有关,用药 $4.5\\,,6.0\\,,7.5\\,,9.0\\,\\mathrm{g}/\\mathrm{d}$ 的效果不同, $9.0\\ \\mathrm{g/d}$ 为最有效剂量。但部分患者无法耐受$9.0\\ \\mathrm{g/d}$ ,临床实践中的普遍剂量为 $6.0\\;\\mathrm{g/d}$ 。一般羟丁酸钠治疗4周后改善猝倒发作,需要至少3个月发挥最大疗效[72]  
-
-3.SNRIs(III级推荐,C级证据):SNRIs主要包括文拉法辛、去甲基文拉法辛和度洛西汀。SNRIs能有效抑制5-羟色胺和去甲肾上腺素的再摄取,对多巴胺再摄取也有一定抑制作用。文拉法辛是临床上治疗猝倒、人睡前幻觉和睡眠瘫痪的治疗药物37.5 mg $^\\textrm{\\scriptsize5h}$ ,每日需2\\~3次服药。文拉法辛缓释片适用于治疗日间猝倒发作,起始剂量为$37.5~\\mathrm{mg}$ ,早饭后顿服,缓慢增加至有效剂量( $75\\mathrm{\\sim}$$225~\\mathrm{mg/d}\\,,$ )。由于文拉法辛具有较强的去甲肾上腺素能作用,因此可导致血压升高和心率加快。去甲基文拉法辛是文拉法辛经肝脏代谢后的产物,其抗猝倒效果可能优于文拉法辛及其他的抗抑郁药物,不良反应有恶心、头晕、食欲下降、易怒、失眠、体重增加、性功能障碍、多汗、腹泻、便秘等[13,68,74]  
-
-度洛西汀的药理机制与文拉法辛类似6,半衰期更长(约为 $12\\,\\mathrm{{h}}$ ),对肝脏损害小。有研究报道度洛西汀治疗发作性睡病猝倒发作有效。度洛西汀的有效治疗剂量为 $20{\\sim}40~\\mathrm{mg/d}$ ,最大剂量为 $60~\\mathrm{mg/d}.$  
-
-Table 2  Therapy recommendations for cataplexy   
-表2猝倒治疗的推荐意见  
-
-注:推荐级别分为I、II、III3个级别,证据级别分为A、B、C、D 4个级别[根据推荐意见分级的体系,即GRADE(Grades ofRecommendation,Assessment,Development andEyaluation)分级体系修订];“来源于国家药品监督管理局(www.nmpa.gov.cn)  
-
-4.TCAs(II级推荐,C级证据):TCAs用于治疗猝倒发作,对入睡前幻觉和睡眠瘫痪均有效[6,但也可能会导致RBD的产生。这类药物包括:氯米帕明、去甲阿米替林和丙咪嗪。由于TCAs具有抑制5-羟色胺再摄取、拮抗胆碱能、拮抗组胺和阻断$\\alpha{-1}$ 肾上腺素能效应,因此存在诸多不良反应,如便秘、视力模糊、口干、心脏传导阻滞、镇静、直立性低血压及性功能障碍等。  
-
-5.SSRIs(II级推荐,C级证据):帕罗西汀、氟西汀、舍曲林和西酞普兰对于治疗猝倒发作有一定疗效,相比 TCAs 和 SNRIs 疗效较弱[68]。帕罗西汀常见不良反应为恶心、厌食、便秘、头痛、乏力、性功能障碍等,偶见体位性低血压等。  
-
-6.NaRIs(II级推荐,C级证据):瑞波西汀为选择性去甲肾上腺素再摄取抑制剂[75],具有很弱的5-羟色胺再摄取抑制作用,主要提高中枢神经系统去甲肾上腺素活性,可减少猝倒发作的频率及严重程度。小样本研究结果显示,经瑞波西汀(最高剂量 $10\\;\\mathrm{mg/d}\\;$ )治疗后,患者ESS评分下降 $48\\%$ , MSLT的睡眠潜伏期改善 $54\\%$ ,猝倒发作显著减少[]。瑞波西汀常见不良反应为失眠、多汗、头晕、便秘、直立性低血压、性功能障碍和排尿困难等。  
-
-阿托莫西汀(II级推荐,C级证据)可选择性抑制去甲肾上腺素的突触前转运,增强去甲肾上腺素功能,半衰期较短 $(4{\\sim}5\\mathrm{~h~})$ )。有研究报道阿托莫西汀治疗发作性睡病的猝倒和日间过度睡眠均有效[7]。阿托莫西汀有效治疗剂量为 $10{\\sim}60~\\mathrm{mg/d}$ ,最大剂量为 $80~\\mathrm{mg/d}$ ,常见不良反应为食欲减退、尿潴留、便秘等,需监测血压和心率等。  
-
-Therapy recommendations fo  
-
-吲哚。  
-
-抗抑郁剂的停药反应:抗抑郁剂治疗猝倒的过程中,突然减量或停药会导致猝倒发作时间延长、频率增加、严重程度增高,甚至出现猝倒持续状态。  
-
-(三)人睡前幻觉和睡眠瘫痪的治疗  
-
-最新研究结果提示,替洛利生(I级推荐,A级证据)和 $\\upgamma$ -羟丁酸钠(I级推荐,A级证据)对人睡前幻觉和睡眠瘫痪有明确改善作用,推荐用于这两种症状的治疗[,III,]。入睡D前幻觉和S睡SR眠Is瘫痪III与REM睡眠期有关,缩短REM睡眠的抗抑郁剂如三环类抗抑郁剂(III级推荐,D级证据)、SSRIs(III级推荐,D级证据)及SNRIs(III级推荐,D级证据)均可改善人睡前幻觉和睡眠瘫痪[10,68],考虑到三环类药物不良反应,推荐使用SSRIs和SNRIs类药物,如氟西汀文拉法辛等。如合并猝倒,可考虑参考猝倒的治疗药物。人睡前幻觉和睡眠瘫痪的治疗推荐药物和意见见表3。  
-
-(四)夜间睡眠紊乱的治疗  
-
-1.夜间睡眠不安的治疗:治疗推荐药物和意见见表4。  
-
-$\\upgamma.$ -羟丁酸钠(I级推荐,A级证据)是目前唯一被证实对于治疗发作性睡病夜间睡眠不安有确切疗效的药物[13]。大量随机对照研究证实 $\\upgamma\\cdot$ 羟丁酸钠能治疗发作性睡病的所有症状,对于猝倒、EDS、夜间睡眠不安等均有确切疗效17-78]。 $\\upgamma\\cdot$ 羟丁酸钠可能会增加睡眠呼吸障碍或肺换气不足的风险,对可能存在这些基础疾病的患者,在服用 $\\upgamma\\cdot$ -羟丁酸钠前需进行nPSG和血二氧化碳监测。必要时可先行气道正压辅助呼吸,改善通气功能后再给予 $\\upgamma.$ -羟丁酸钠治疗[79]。  
-
-巴氯芬(III级推荐,D级证据)推荐用于成人和儿童出现的夜间睡眠不安[3]。巴氯芬可改善慢波睡眠,减少睡眠片段化,但证据较少,需要进一步研究评估其在改善睡眠中的作用[80]  
-
-Table 3  Therapy recommendations for hypnagogic hallucinations and sleep paralysis   
-表3人睡前幻觉和睡眠瘫痪治疗的推荐意见  
-
-注:推荐级别分为I、II、IIII3个级别,证据级别分为A、B、C、D4个级别[根据推荐意见分级的体系,即GRADE(Grades ofRecommendation,Assessment,Development andEvaluation)分级体系修订];来源于国家药品监督管理局(www.nmpa.gov.cn)  
-
-Table 4  Therapy recommendations for disturbed nocturnal sleep   
-表4睡眠不安治疗的推荐意见  
-
-注:推荐级别分为I、II、III3个级别,证据级别分为 $\\mathrm{A,B,C,D4}$ 个级别[根据推荐意见分级的评估、制订及评价,即GRADE(Grades ofRecommendation,Assessment,Development and Evaluation)分级体系修订];\"来源于国家药品监督管理局(www.nmpa.gov.cn)  
-
-此外,用于治疗失眠障碍的新型苯二氮草类药物(唑吡坦、佐匹克隆、右佐匹克隆)以及褪黑素也可用来治疗发作性睡病患者的夜间睡眠不安[10,\"],考虑到苯二氮草类药物的不良反应,不建议长期使用[3]对于夜间睡眠不安、合并EDS和猝倒的成人和儿童患者,可以首先考虑单用 $\\upgamma\\cdot$ -羟丁酸钠,或者联合使用$\\upgamma.$ -羟丁酸钠和(或)文拉法辛/氯米帕明,以及替洛利生等一线促醒剂[13]  
-
-2.0SA的治疗:推荐对所有超重患者鼓励其减轻体重,保持戒烟酒等健康的生活方式;无创气道正压通气是一线治疗方式;应用口腔矫治器和对有手术指征的患者进行手术治疗,也有一定的效果[79,8]]  
-
-3.RBD的治疗:不建议应用氯硝安定,可尝试VED使用褪黑素或褪黑素受体激动剂。  
-
-如合并猝倒,可考虑参考猝倒的治疗药物,并推荐对患者进行定期的抑郁/焦虑评估。  
-
-4.不宁腿综合征的治疗:推荐普拉克索作为不宁腿综合征的首选治疗,其他可选药物有罗匹尼罗、罗替高汀、加巴喷丁等}。值得注意的是,不宁腿症状可能在应用抗猝倒的抗抑郁药物后加重。  
-
-(五)其他症状的治疗  
-
-1.抑郁状态和焦虑状态:在认知行为治疗的基础上,推荐使用镇静作用小的抗抑郁剂如SSRIs、SNRIs 治疗。  
-
-2.精神病样症状:建议精神科排除相关精神疾病,选择适当的药物干预,注意增加体重的不良反应。(六)特定人群的治疗  
-
-1.儿童发作性睡病的治疗:我国发作性睡病发病的高峰年龄为8\\~12岁[,考虑对儿童患者学业和身心发育的影响,需要积极治疗。在推荐日间规律小睡、认知行为治疗的同时,谨慎用药,在处方前,临床医师应充分考虑获益和潜在的风险。具体用药推荐参考表1\\~4,药物的常规用法用量可参考表5。  
-
-r therapy of narcolepsy后,详细询问其他药物使用情况,以便充分评价发作性睡病治疗药物的价值。注意中枢兴奋类药物可能诱发和加重某些心血管事件。对有呼吸系统基础疾病的老年患者,应该注意 $\\upgamma.$ -羟丁酸钠导致的呼吸抑制作用。  
-
-表5发作性睡病治疗药物常规用法用量  
-
-3.孕产妇发作性睡病治疗的注意事项:怀孕期发作性睡病的治疗,一般不主张用药,若发作性睡病症状所引起的风险高于致畸或流产的风险,推荐选用替洛利生、 $\\upgamma\\cdot$ -羟丁酸钠、氟西汀、文拉法辛或氯米帕明。由于分娩过程中存在发生猝倒持续状态的风险,故推荐选择剖宫产手术[83]。哺乳期一般不主张用药,对于必须服用药物控制症状的哺乳期患者,建议停止母乳喂养[3]
-
-"""
-response = """
-// 节点更新
-MERGE (n:Disease {name: '发作性睡病'})
-SET 
-    n.description = coalesce(n.description, '一种以日间过度嗜睡和睡眠发作为主要特征的睡眠障碍'),
-    n.category = coalesce(n.category, '睡眠障碍'),
-    n.severity = coalesce(n.severity, '中');
-
-MERGE (n:Symptom {name: '日间过度嗜睡'})
-SET 
-    n.description = coalesce(n.description, '患者在醒着时出现过度困倦的状态'),
-    n.severity = coalesce(n.severity, '中'),
-    n.frequency = coalesce(n.frequency, '常见');
-
-MERGE (n:Symptom {name: '猝倒'})
-SET 
-    n.description = coalesce(n.description, '突发性的肌肉无力，通常受到情绪刺激的影响'),
-    n.severity = coalesce(n.severity, '严重'),
-    n.frequency = coalesce(n.frequency, '少见');
-
-MERGE (n:Disease {name: '晕厥'})
-SET 
-    n.description = coalesce(n.description, '由于大脑缺血导致的短暂丧失意识及肌肉张力下降'),
-    n.category = coalesce(n.category, '疾病'),
-    n.severity = coalesce(n.severity, '中');
-
-// 关系更新
-MATCH (from) WHERE from.name = '发作性睡病'
-MATCH (to) WHERE to.name = '日间过度嗜睡'
-MERGE (from)-[r:INDICATES]->(to)
-SET 
-    r.confidence = coalesce(r.confidence, 0.95),
-    r.frequency = coalesce(r.frequency, '常见'),
-    r.severity = coalesce(r.severity, '中');
-
-MATCH (from) WHERE from.name = '发作性睡病'
-MATCH (to) WHERE to.name = '猝倒'
-MERGE (from)-[r:INDICATES]->(to)
-SET 
-    r.confidence = coalesce(r.confidence, 0.85),
-    r.frequency = coalesce(r.frequency, '较少'),
-    r.severity = coalesce(r.severity, '严重');
-
-MATCH (from) WHERE from.name = '发作性睡病'
-MATCH (to) WHERE to.name = '晕厥'
-MERGE (from)-[r:MAY_CAUSE]->(to)
-SET 
-    r.probability = coalesce(r.probability, 0.5),
-    r.timeframe = coalesce(r.timeframe, '长期');
+    r.mandatory = coalesce(r.mandatory, 'true');
 
 """

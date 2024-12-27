@@ -3,51 +3,69 @@
         "category": "睡眠结构症状",
         "symptoms": [
             {
-                "name": "很难入睡",
-                "internal_name": "入睡困难",
-                "description": "难以入睡或入睡时间过长",
-                "related_scales": ["PSQI", "AISI"]
+                "name": "失眠",
+                "alias": [
+                    "失眠症状",
+                    "睡眠差",
+                    "睡眠质量差"
+                ],
+                "description": "表现为夜间入睡困难、睡眠维持困难或清晨早醒，导致白天困倦或功能损害。",
+                "related_scales": [
+                    "PSQI",
+                    "AISI",
+                    "HAMD"
+                ],
+                "internal_name": "失眠"
             },
             {
-                "name": "总是睡不够就醒",
-                "internal_name": "早醒",
-                "description": "比预期醒得更早且无法再入睡",
-                "related_scales": ["PSQI", "AISI"]
+                "name": "入睡困难",
+                "alias": [
+                    "人睡困难"
+                ],
+                "description": "难以在晚上及时入睡，经常需要长时间等待才能入睡。",
+                "related_scales": [
+                    "PSQI",
+                    "AISI"
+                ],
+                "internal_name": "入睡困难"
             },
             {
-                "name": "频繁醒来",
-                "internal_name": "夜醒",
-                "description": "夜间频繁醒来",
-                "related_scales": ["PSQI", "AISI"]
+                "name": "早醒",
+                "alias": [],
+                "description": "比期望的起床时间醒来早，并且难以再次入睡。",
+                "related_scales": [
+                    "PSQI",
+                    "HAMD"
+                ],
+                "internal_name": "早醒"
             },
             {
-                "name": "睡眠时间不稳定",
-                "internal_name": "睡眠量差异",
-                "description": "实际睡眠时间与期望睡眠时间存在明显差异",
-                "related_scales": ["PSQI"]
-            }
-        ]
-    },
-    {
-        "category": "日间症状",
-        "symptoms": [
-            {
-                "name": "白天总想睡觉",
-                "internal_name": "日间过度思睡",
-                "description": "白天感觉特别容易犯困",
-                "related_scales": ["ESS", "PSQI"]
+                "name": "夜间觉醒",
+                "alias": [
+                    "频繁醒来"
+                ],
+                "description": "夜间频繁醒来或难以再次入睡，导致持续的睡眠中断。",
+                "related_scales": [
+                    "PSQI",
+                    "AISI"
+                ],
+                "internal_name": "夜间觉醒"
             },
             {
-                "name": "睡醒后还是很累",
-                "internal_name": "醒后困倦",
-                "description": "醒来后仍感觉疲惫",
-                "related_scales": ["ESS", "PSQI"]
-            },
-            {
-                "name": "白天没精神",
-                "internal_name": "白天精神差",
-                "description": "日间精力不足",
-                "related_scales": ["ESS", "PSQI"]
+                "name": "日间思睡",
+                "alias": [
+                    "日间嗜睡",
+                    "日间过度嗜睡",
+                    "白天疲乏",
+                    "白天瞌睡",
+                    "白天没精神"
+                ],
+                "description": "白天表现为过度困倦或易于入睡的状态，严重影响日常功能。",
+                "related_scales": [
+                    "ESS",
+                    "PSQI"
+                ],
+                "internal_name": "日间思睡"
             }
         ]
     },
@@ -55,22 +73,39 @@
         "category": "呼吸相关症状",
         "symptoms": [
             {
-                "name": "经常打呼噜",
-                "internal_name": "习惯性打鼾",
-                "description": "经常性打鼾",
-                "related_scales": ["StopBang"]
+                "name": "打鼾",
+                "alias": [],
+                "description": "夜间睡眠时发出明显的鼾声，可能 indicar 睡眠呼吸障碍。",
+                "related_scales": [
+                    "StopBang",
+                    "PSQI"
+                ],
+                "internal_name": "打鼾"
             },
             {
-                "name": "睡觉时呼吸会突然停止",
-                "internal_name": "睡眠呼吸暂停",
-                "description": "睡眠时呼吸短暂停止",
-                "related_scales": ["StopBang"]
+                "name": "呼吸暂停",
+                "alias": [
+                    "睡眠呼吸障碍",
+                    "夜间呼吸暂停"
+                ],
+                "description": "在夜间睡眠中出现反复的呼吸暂停或憋气现象。",
+                "related_scales": [
+                    "StopBang"
+                ],
+                "internal_name": "呼吸暂停"
             },
             {
-                "name": "呼吸不顺畅",
-                "internal_name": "血氧饱和度下降",
-                "description": "血氧水平降低",
-                "related_scales": ["StopBang"]
+                "name": "憋醒",
+                "alias": [
+                    "夜间憋气",
+                    "窒息感"
+                ],
+                "description": "夜间睡觉时突然由于呼吸困难而憋醒，通常伴有惊恐感。",
+                "related_scales": [
+                    "StopBang",
+                    "PSQI"
+                ],
+                "internal_name": "憋醒"
             }
         ]
     },
@@ -78,22 +113,39 @@
         "category": "精神情绪症状",
         "symptoms": [
             {
-                "name": "感到心情低落",
-                "internal_name": "情绪低落",
-                "description": "感到沮丧或心情低落",
-                "related_scales": ["HAMD"]
+                "name": "情绪低落",
+                "alias": [
+                    "情绪障碍"
+                ],
+                "description": "表现为持续的情绪低沉，通常伴随对活动兴趣的缺乏和能量降低。",
+                "related_scales": [
+                    "HAMD",
+                    "PSQI"
+                ],
+                "internal_name": "情绪低落"
             },
             {
-                "name": "容易发脾气",
-                "internal_name": "烦躁",
-                "description": "容易感到烦躁不安",
-                "related_scales": ["HAMA"]
+                "name": "持续性焦虑",
+                "alias": [
+                    "焦虑",
+                    "紧张焦虑"
+                ],
+                "description": "长期对生活事件或未来的不确定性的过度担忧，可能影响睡眠。",
+                "related_scales": [
+                    "HAMA",
+                    "PSQI"
+                ],
+                "internal_name": "持续性焦虑"
             },
             {
-                "name": "总是很紧张",
-                "internal_name": "紧张不安",
-                "description": "感到焦虑紧张",
-                "related_scales": ["HAMA"]
+                "name": "情绪波动",
+                "alias": [],
+                "description": "表现为脾气暴躁或情绪变化无常，可能与睡眠不足相关。",
+                "related_scales": [
+                    "HAMD",
+                    "PSQI"
+                ],
+                "internal_name": "情绪波动"
             }
         ]
     },
@@ -101,22 +153,40 @@
         "category": "异常行为症状",
         "symptoms": [
             {
-                "name": "睡觉时手脚乱动",
-                "internal_name": "夜间手舞足蹈",
-                "description": "睡眠中出现异常动作",
-                "related_scales": ["RBDSQ"]
+                "name": "梦游",
+                "alias": [],
+                "description": "夜间表现为无意识的行走、站立或完成一些动作，醒后对事件毫无记忆。",
+                "related_scales": [
+                    "RBDSQ",
+                    "PSQI"
+                ],
+                "internal_name": "梦游"
             },
             {
-                "name": "做梦时会动手动脚",
-                "internal_name": "梦境相关行为",
-                "description": "做梦时伴有相应的肢体动作",
-                "related_scales": ["RBDSQ"]
+                "name": "噩梦",
+                "alias": [
+                    "夜间噩梦",
+                    "做噩梦"
+                ],
+                "description": "夜间频繁经历恐怖梦境，可能导致中途觉醒和情绪波动。",
+                "related_scales": [
+                    "PSQI",
+                    "HAMD"
+                ],
+                "internal_name": "噩梦"
             },
             {
-                "name": "睡觉时会做出伤人动作",
-                "internal_name": "暴力行为",
-                "description": "睡眠中出现攻击性行为",
-                "related_scales": ["RBDSQ"]
+                "name": "REM睡眠行为障碍",
+                "alias": [
+                    "异态睡眠",
+                    "拳打脚踢",
+                    "夜间手舞足蹈"
+                ],
+                "description": "在快速眼动期的异常行为如喊叫、肢体乱动，可导致自我或他人伤害。",
+                "related_scales": [
+                    "RBDSQ"
+                ],
+                "internal_name": "REM睡眠行为障碍"
             }
         ]
     },
@@ -124,16 +194,39 @@
         "category": "肢体症状",
         "symptoms": [
             {
-                "name": "躺下时腿部不舒服想动",
-                "internal_name": "不宁腿综合征",
-                "description": "休息时腿部感觉不适需要活动",
-                "related_scales": ["IRLSSG"]
+                "name": "不宁腿综合征",
+                "alias": [
+                    "腿部不适",
+                    "下肢不适"
+                ],
+                "description": "休息时腿部出现不适感，通过移动身体能暂时缓解，但影响入睡。",
+                "related_scales": [
+                    "IRLSSG",
+                    "PSQI"
+                ],
+                "internal_name": "不宁腿综合征"
             },
             {
-                "name": "肌肉紧绷",
-                "internal_name": "肌张力增高",
-                "description": "肌肉紧张度增加",
-                "related_scales": ["IRLSSG"]
+                "name": "肢体抖动",
+                "alias": [
+                    "夜间睡眠腿动"
+                ],
+                "description": "夜间或睡眠中出现双腿的不自主抖动或抽动，可能干扰睡眠质量。",
+                "related_scales": [
+                    "IRLSSG"
+                ],
+                "internal_name": "肢体抖动"
+            },
+            {
+                "name": "下肢乏力",
+                "alias": [
+                    "下肢无力"
+                ],
+                "description": "感觉下肢软弱无力或疲劳，可能对行动造成阻碍。",
+                "related_scales": [
+                    "IRLSSG"
+                ],
+                "internal_name": "下肢乏力"
             }
         ]
     }
