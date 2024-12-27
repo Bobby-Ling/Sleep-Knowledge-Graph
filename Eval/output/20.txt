@@ -1,0 +1,1 @@
+{'sample_symptom': ['记忆力下降', '行动迟缓', '近记忆力差', '计算力差', '时间定向力差', '空间定向力差'], 'label_disease': ['多系统萎缩', '路易体痴呆', '阿尔茨海默症', '血管性痴呆'], 'label_treatment': ['改善行动迟缓和认知治疗', '脑电治疗', '加强看护'], 'response': '{"related_scales": [], "related_scales_index": [], "result": [[]]}'}

@@ -1,0 +1,1 @@
+{'sample_symptom': ['白天嗜睡', '睡眠瘫痪'], 'label_disease': ['发作性睡病', '假性癫痫发作'], 'label_treatment': ['脑电图检查', 'PSG+MSLT检查', '健康教育'], 'response': '{"related_scales": [], "related_scales_index": [], "result": [[]]}'}

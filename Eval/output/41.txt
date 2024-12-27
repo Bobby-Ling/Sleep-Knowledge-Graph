@@ -1,0 +1,1 @@
+{'sample_symptom': ['夜间梦游', '多梦', '噩梦', '说梦话'], 'label_disease': ['睡眠障碍', '睡眠相关呼吸障碍SRBD', '高血压病', '冠心病', '心肌梗死', '心律失常'], 'label_treatment': ['神经内科护理常规', '动态监测血压等生命体征', '完善入院后必要的辅助检查', '如PSG、视频脑电'], 'response': '{"related_scales": [], "related_scales_index": [], "result": [[]]}'}

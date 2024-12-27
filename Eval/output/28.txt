@@ -1,0 +1,1 @@
+{'sample_symptom': ['记忆力下降', '肢体抖动', '起床困难'], 'label_disease': ['阿尔茨海默病', '冠状动脉粥样硬化性心脏病', '高血压病3级', '特发性震颤', '路易体痴呆'], 'label_treatment': ['MRI检查', '改善认知等对症支持治疗', '加强看护', '防止走失', '跌倒等意外发生'], 'response': '{"related_scales": [], "related_scales_index": [], "result": [[]]}'}

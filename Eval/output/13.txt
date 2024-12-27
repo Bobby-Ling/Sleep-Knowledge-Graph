@@ -1,0 +1,1 @@
+{'sample_symptom': ['记忆力下降', '不喜欢与人交流', '自言自语', '睡眠多'], 'label_disease': ['认知障碍', '肝功能不全', '双侧大脑半球变性疾病'], 'label_treatment': ['进一步完善相关辅助检查', '如海马MRI、头颅MR', '美金刚改善认知、肝爽颗粒保肝', '健康宣教', '普食', '24小时留陪', '防跌倒'], 'response': '{"related_scales": [], "related_scales_index": [], "result": [[]]}'}

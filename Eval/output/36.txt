@@ -1,0 +1,1 @@
+{'sample_symptom': ['夜间憋气、憋醒', '睡眠障碍', '白天无思睡'], 'label_disease': ['睡眠呼吸暂停低通气综合征', '睡眠障碍', '发作性睡病'], 'label_treatment': ['睡眠呼吸监测', '完善相关辅助检查', '健康宣教', '低盐低脂饮食', '24小时留陪', '防跌倒', '密切观察患者病情变化', '及时调整医嘱'], 'response': '{"related_scales": [], "related_scales_index": [], "result": [[]]}'}

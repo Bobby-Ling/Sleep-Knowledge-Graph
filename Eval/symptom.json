@@ -1,0 +1,182 @@
+[
+  {
+    "category": "睡眠结构症状",
+    "symptoms": [
+      {
+        "description": "难以入睡或入睡时间过长",
+        "internal_name": "入睡困难",
+        "name": "很难入睡",
+        "related_scales": [
+          "PSQI",
+          "AISI"
+        ]
+      },
+      {
+        "description": "比预期醒得更早且无法再入睡",
+        "internal_name": "早醒",
+        "name": "总是睡不够就醒",
+        "related_scales": [
+          "PSQI",
+          "AISI"
+        ]
+      },
+      {
+        "description": "夜间频繁醒来",
+        "internal_name": "夜醒",
+        "name": "频繁醒来",
+        "related_scales": [
+          "PSQI",
+          "AISI"
+        ]
+      },
+      {
+        "description": "实际睡眠时间与期望睡眠时间存在明显差异",
+        "internal_name": "睡眠量差异",
+        "name": "睡眠时间不稳定",
+        "related_scales": [
+          "PSQI"
+        ]
+      }
+    ]
+  },
+  {
+    "category": "日间症状",
+    "symptoms": [
+      {
+        "description": "白天感觉特别容易犯困",
+        "internal_name": "日间过度思睡",
+        "name": "白天总想睡觉",
+        "related_scales": [
+          "ESS",
+          "PSQI"
+        ]
+      },
+      {
+        "description": "醒来后仍感觉疲惫",
+        "internal_name": "醒后困倦",
+        "name": "睡醒后还是很累",
+        "related_scales": [
+          "ESS",
+          "PSQI"
+        ]
+      },
+      {
+        "description": "日间精力不足",
+        "internal_name": "白天精神差",
+        "name": "白天没精神",
+        "related_scales": [
+          "ESS",
+          "PSQI"
+        ]
+      }
+    ]
+  },
+  {
+    "category": "呼吸相关症状",
+    "symptoms": [
+      {
+        "description": "经常性打鼾",
+        "internal_name": "习惯性打鼾",
+        "name": "经常打呼噜",
+        "related_scales": [
+          "StopBang"
+        ]
+      },
+      {
+        "description": "睡眠时呼吸短暂停止",
+        "internal_name": "睡眠呼吸暂停",
+        "name": "睡觉时呼吸会突然停止",
+        "related_scales": [
+          "StopBang"
+        ]
+      },
+      {
+        "description": "血氧水平降低",
+        "internal_name": "血氧饱和度下降",
+        "name": "呼吸不顺畅",
+        "related_scales": [
+          "StopBang"
+        ]
+      }
+    ]
+  },
+  {
+    "category": "精神情绪症状",
+    "symptoms": [
+      {
+        "description": "感到沮丧或心情低落",
+        "internal_name": "情绪低落",
+        "name": "感到心情低落",
+        "related_scales": [
+          "HAMD"
+        ]
+      },
+      {
+        "description": "容易感到烦躁不安",
+        "internal_name": "烦躁",
+        "name": "容易发脾气",
+        "related_scales": [
+          "HAMA"
+        ]
+      },
+      {
+        "description": "感到焦虑紧张",
+        "internal_name": "紧张不安",
+        "name": "总是很紧张",
+        "related_scales": [
+          "HAMA"
+        ]
+      }
+    ]
+  },
+  {
+    "category": "异常行为症状",
+    "symptoms": [
+      {
+        "description": "睡眠中出现异常动作",
+        "internal_name": "夜间手舞足蹈",
+        "name": "睡觉时手脚乱动",
+        "related_scales": [
+          "RBDSQ"
+        ]
+      },
+      {
+        "description": "做梦时伴有相应的肢体动作",
+        "internal_name": "梦境相关行为",
+        "name": "做梦时会动手动脚",
+        "related_scales": [
+          "RBDSQ"
+        ]
+      },
+      {
+        "description": "睡眠中出现攻击性行为",
+        "internal_name": "暴力行为",
+        "name": "睡觉时会做出伤人动作",
+        "related_scales": [
+          "RBDSQ"
+        ]
+      }
+    ]
+  },
+  {
+    "category": "肢体症状",
+    "symptoms": [
+      {
+        "description": "休息时腿部感觉不适需要活动",
+        "internal_name": "不宁腿综合征",
+        "name": "躺下时腿部不舒服想动",
+        "related_scales": [
+          "IRLSSG"
+        ]
+      },
+      {
+        "description": "肌肉紧张度增加",
+        "internal_name": "肌张力增高",
+        "name": "肌肉紧绷",
+        "related_scales": [
+          "IRLSSG"
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,1 @@
+{'sample_symptom': ['记忆力下降', '反应迟钝'], 'label_disease': ['脑梗死', '认知障碍', '血管性痴呆', '脑梗死后遗症', '阿尔茨海默病', '酒精性脑病'], 'label_treatment': ['改善认知', '抗血小板', '改善循环', '营养神经', '降脂稳定斑块', '磁共振', '动脉彩超', '心电图', '脑电图'], 'response': '{"related_scales": [], "related_scales_index": [], "result": [[]]}'}

@@ -1,0 +1,1 @@
+{'sample_symptom': ['记忆力下降', '夜间睡眠差'], 'label_disease': ['轻度认知障碍', '腔隙性脑梗死', '阿尔茨海默病'], 'label_treatment': ['海马平扫检查', '改善认知及睡眠对症治疗', 'PSG检查'], 'response': '{"related_scales": [], "related_scales_index": [], "result": [[]]}'}
