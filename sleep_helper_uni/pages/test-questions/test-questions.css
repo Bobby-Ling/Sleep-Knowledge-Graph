@@ -1,0 +1,276 @@
+/* pages/questionnaire/questionnaire.wxss */
+.page-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f6f9fc 0%, #edf2f7 100%);
+    padding: 30rpx 0;
+}
+
+.header {
+    padding: 40rpx 40rpx 60rpx;
+    text-align: center;
+}
+
+.main-title {
+    font-size: 44rpx;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 16rpx;
+    letter-spacing: 2rpx;
+}
+
+.sub-title {
+    font-size: 28rpx;
+    color: #718096;
+    letter-spacing: 1rpx;
+    text-align: left;
+}
+
+.questions-container {
+    padding: 0 30rpx;
+}
+
+.question-card {
+    background: white;
+    border-radius: 24rpx;
+    padding: 40rpx 30rpx;
+    margin-bottom: 40rpx;
+    box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.question-card:active {
+    transform: scale(0.98);
+}
+
+.question-number {
+    font-size: 24rpx;
+    font-weight: 600;
+    color: #5a67d8;
+    text-transform: uppercase;
+    letter-spacing: 1rpx;
+    margin-bottom: 20rpx;
+}
+
+.question-content {
+    font-size: 32rpx;
+    color: #2d3748;
+    line-height: 1.5;
+    margin-bottom: 40rpx;
+    font-weight: 500;
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20rpx;
+    padding: 10rpx 0;
+}
+
+.option-card {
+    background: #f7fafc;
+    border: 2rpx solid #e2e8f0;
+    border-radius: 16rpx;
+    padding: 24rpx 20rpx;
+    text-align: center;
+    font-size: 28rpx;
+    color: #4a5568;
+    transition: all 0.3s ease;
+}
+
+.option-card.selected {
+    background: #5a67d8;
+    border-color: #5a67d8;
+    color: white;
+    box-shadow: 0 4rpx 12rpx rgba(90, 103, 216, 0.2);
+    transform: translateY(-2rpx);
+}
+
+.option-card:active {
+    transform: scale(0.95);
+}
+
+.footer {
+    padding: 40rpx 30rpx;
+    position: sticky;
+    bottom: 0;
+}
+
+.submit-button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 28rpx;
+    border-radius: 16rpx;
+    text-align: center;
+    color: white;
+    font-size: 32rpx;
+    font-weight: 600;
+    letter-spacing: 2rpx;
+    box-shadow: 0 4rpx 20rpx rgba(102, 126, 234, 0.3);
+    transition: all 0.3s ease;
+}
+
+.submit-button:active {
+    transform: scale(0.98);
+    box-shadow: 0 2rpx 10rpx rgba(102, 126, 234, 0.2);
+}
+
+/* 文本输入相关样式 */
+.text-input-container {
+    margin-top: 20rpx;
+    padding: 0 20rpx;
+}
+
+.text-input {
+    width: 100%;
+    min-height: 200rpx;
+    background: #fff;
+    border-radius: 16rpx;
+    padding: 20rpx;
+    font-size: 28rpx;
+    line-height: 1.6;
+    color: #333;
+    box-sizing: border-box;
+    border: 2rpx solid #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+.text-input:focus {
+    border-color: #007aff;
+    box-shadow: 0 0 8rpx rgba(0, 122, 255, 0.1);
+}
+
+/* Picker 相关样式 */
+.picker-container {
+    margin: 20rpx 0;
+}
+
+.picker-value {
+    background: #f7fafc;
+    padding: 24rpx 32rpx;
+    border-radius: 16rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2rpx solid #e2e8f0;
+    transition: all 0.3s ease;
+    font-size: 28rpx;
+    color: #2d3748;
+}
+
+.picker-value:active {
+    background: #edf2f7;
+}
+
+.picker-arrow {
+    width: 32rpx;
+    height: 32rpx;
+    transition: transform 0.3s ease;
+}
+
+.placeholder {
+    color: #a0aec0;
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20rpx);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.question-card {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.question-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+.question-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+.question-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+.question-card:nth-child(4) {
+    animation-delay: 0.4s;
+}
+.question-card:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+/* 深色模式适配 */
+@media (prefers-color-scheme: dark) {
+    .page-container {
+        background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+    }
+
+    .main-title {
+        color: #f7fafc;
+    }
+
+    .sub-title {
+        color: #a0aec0;
+    }
+
+    .question-card {
+        background: #2d3748;
+        box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.2);
+    }
+
+    .question-content {
+        color: #f7fafc;
+    }
+
+    .option-card {
+        background: #4a5568;
+        border-color: #2d3748;
+        color: #f7fafc;
+    }
+
+    .picker-value {
+        background: #4a5568;
+        border-color: #2d3748;
+        color: #f7fafc;
+    }
+
+    .picker-value:active {
+        background: #2d3748;
+    }
+
+    .placeholder {
+        color: #718096;
+    }
+
+    .text-input {
+        background: #4a5568;
+        border-color: #2d3748;
+        color: #f7fafc;
+    }
+
+    .text-input:focus {
+        border-color: #4299e1;
+        box-shadow: 0 0 8rpx rgba(66, 153, 225, 0.2);
+    }
+}
+
+/* 适配横屏和 iPad */
+@media screen and (min-width: 768px) {
+    .questions-container {
+        max-width: 800rpx;
+        margin: 0 auto;
+    }
+
+    .option-card {
+        padding: 32rpx 24rpx;
+        font-size: 32rpx;
+    }
+
+    .picker-value {
+        padding: 32rpx 40rpx;
+        font-size: 32rpx;
+    }
+}

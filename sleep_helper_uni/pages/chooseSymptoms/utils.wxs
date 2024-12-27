@@ -1,0 +1,10 @@
+// utils.wxs 添加新的工具函数
+module.exports = {
+  isSelected: function(selectedSymptoms, symptomName) {
+    return selectedSymptoms.indexOf(symptomName) !== -1;
+  },
+  getTagClass: function(index) {
+    var classes = ['tag-0', 'tag-1', 'tag-2', 'tag-3', 'tag-4'];
+    return classes[index % classes.length];
+  }
+};

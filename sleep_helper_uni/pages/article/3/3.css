@@ -1,0 +1,94 @@
+.container {
+    padding: 20rpx;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+}
+
+.header {
+    text-align: center;
+    padding: 30rpx 0;
+    margin-bottom: 30rpx;
+}
+
+.title {
+    font-size: 36rpx;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.myth-list {
+    padding: 0 10rpx;
+}
+
+.myth-item {
+    background: #ffffff;
+    border-radius: 12rpx;
+    margin-bottom: 20rpx;
+    overflow: hidden;
+    box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+.myth-header {
+    padding: 25rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    border-bottom: 1rpx solid #eee;
+}
+
+.myth-title {
+    font-size: 30rpx;
+    color: #34495e;
+    font-weight: 500;
+    flex: 1;
+    padding-right: 20rpx;
+}
+
+.myth-toggle {
+    width: 40rpx;
+    height: 40rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.myth-toggle.expanded {
+    transform: rotate(180deg);
+}
+
+.myth-content {
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease-out;
+    background: #f8f9fa;
+}
+
+.myth-content.expanded {
+    padding: 25rpx;
+    max-height: 1000rpx;
+}
+
+.truth-text {
+    font-size: 28rpx;
+    color: #596275;
+    line-height: 1.6;
+}
+
+.myth-number {
+    background: #3498db;
+    color: white;
+    padding: 4rpx 12rpx;
+    border-radius: 6rpx;
+    font-size: 24rpx;
+    margin-right: 15rpx;
+}
+
+.footer {
+    text-align: center;
+    padding: 30rpx;
+    color: #7f8c8d;
+    font-size: 24rpx;
+}

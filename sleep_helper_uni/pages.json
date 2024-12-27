@@ -1,0 +1,189 @@
+{
+	"pages": [
+		{
+			"path": "pages/index/index",
+			"style": {
+				"usingComponents": {}
+			}
+		},
+		{
+			"path": "pages/diagnosis/diagnosis",
+			"style": {
+				"usingComponents": {
+					"progress-bar": "/components/progress-bar/progress-bar"
+				}
+			}
+		},
+		{
+			"path": "pages/knowledge/knowledge",
+			"style": {
+				"usingComponents": {}
+			}
+		},
+		{
+			"path": "pages/record/record",
+			"style": {
+				"usingComponents": {}
+			}
+		},
+		{
+			"path": "pages/consult/consult",
+			"style": {
+				"usingComponents": {}
+			}
+		},
+		{
+			"path": "pages/quickTest/quickTest",
+			"style": {
+				"usingComponents": {}
+			}
+		},
+		{
+			"path": "pages/mine/mine",
+			"style": {
+				"usingComponents": {}
+			}
+		},
+		{
+			"path": "pages/report/report",
+			"style": {
+				"usingComponents": {}
+			}
+		},
+		{
+			"path": "pages/test-questions/test-questions",
+			"style": {
+				"usingComponents": {
+					"progress-bar": "/components/progress-bar/progress-bar"
+				}
+			}
+		},
+		{
+			"path": "pages/aiconsult/aiconsult",
+			"style": {
+				"usingComponents": {}
+			}
+		},
+		{
+			"path": "pages/article/1",
+			"style": {
+				"usingComponents": {}
+			}
+		},
+		{
+			"path": "pages/article/1/1",
+			"style": {
+				"usingComponents": {}
+			}
+		},
+		{
+			"path": "pages/article/2/2",
+			"style": {
+				"usingComponents": {}
+			}
+		},
+		{
+			"path": "pages/article/3/3",
+			"style": {
+				"usingComponents": {}
+			}
+		},
+		{
+			"path": "pages/knowledgeDetail/1/1",
+			"style": {
+				"usingComponents": {}
+			}
+		},
+		{
+			"path": "pages/knowledgeDetail/2/2",
+			"style": {
+				"usingComponents": {}
+			}
+		},
+		{
+			"path": "pages/knowledgeDetail/3/3",
+			"style": {
+				"usingComponents": {}
+			}
+		},
+		{
+			"path": "pages/test-report/1/1",
+			"style": {
+				"usingComponents": {}
+			}
+		},
+		{
+			"path": "pages/chooseSymptoms/chooseSymptoms",
+			"style": {
+				"usingComponents": {
+					"progress-bar": "/components/progress-bar/progress-bar"
+				}
+			}
+		},
+		{
+			"path": "pages/diagnosisResult/diagnosisResult",
+			"style": {
+				"usingComponents": {
+					"progress-bar": "/components/progress-bar/progress-bar"
+				}
+			}
+		},
+		{
+			"path": "pages/analysis_all/analysis_all",
+			"style": {
+				"usingComponents": {
+					"progress-bar": "/components/progress-bar/progress-bar"
+				}
+			}
+		},
+		{
+			"path": "components/progress-bar/progress-bar",
+			"style": {
+				"component": true,
+				"usingComponents": {}
+			}
+		},
+		{
+			"path": "pages/upload/upload",
+			"style": {
+				"usingComponents": {
+					"progress-bar": "/components/progress-bar/progress-bar"
+				}
+			}
+		}
+	],
+	"tabBar": {
+		"color": "#999999",
+		"selectedColor": "#4A6FEB",
+		"backgroundColor": "#ffffff",
+		"borderStyle": "white",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"text": "首页",
+				"iconPath": "static/images/home-active.png",
+				"selectedIconPath": "static/images/home-active.png"
+			},
+			{
+				"pagePath": "pages/aiconsult/aiconsult",
+				"text": "AI问诊",
+				"iconPath": "static/images/aiconsult.png",
+				"selectedIconPath": "static/images/aiconsult.png"
+			},
+			{
+				"pagePath": "pages/mine/mine",
+				"text": "我的",
+				"iconPath": "static/images/mine.png",
+				"selectedIconPath": "static/images/mine.png"
+			}
+		]
+	},
+	"lazyCodeLoading": "requiredComponents",
+	"globalStyle": {
+		"backgroundTextStyle": "light",
+		"navigationBarBackgroundColor": "#fff",
+		"navigationBarTitleText": "",
+		"navigationBarTextStyle": "black"
+	},
+	"subPackages": []
+}

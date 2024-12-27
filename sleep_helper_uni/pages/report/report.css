@@ -1,0 +1,267 @@
+.container {
+    min-height: 100vh;
+    background-color: #f5f6fa;
+}
+
+.header {
+    margin-top: -200rpx;
+    padding: 40rpx 100rpx;
+    color: #ffffff;
+}
+
+.header-content {
+    padding: 50rpx;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 30rpx;
+}
+
+.test-info {
+    margin-bottom: 30rpx;
+}
+
+.test-type {
+    display: block;
+    font-size: 36rpx;
+    font-weight: bold;
+    margin-bottom: 10rpx;
+}
+
+.test-date {
+    font-size: 26rpx;
+    opacity: 0.8;
+}
+
+.score-section {
+    display: flex;
+    align-items: center;
+    gap: 30rpx;
+}
+
+.score-circle {
+    width: 140rpx;
+    height: 140rpx;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.score-number {
+    font-size: 48rpx;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.score-label {
+    font-size: 24rpx;
+    opacity: 0.8;
+}
+
+.score-result {
+    font-size: 40rpx;
+    font-weight: bold;
+}
+
+.content {
+    padding: 30rpx;
+}
+
+.section {
+    margin-bottom: 40rpx;
+}
+
+.section-title {
+    font-size: 32rpx;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 20rpx;
+}
+
+.analysis-card {
+    background-color: #ffffff;
+    border-radius: 20rpx;
+    padding: 30rpx;
+}
+
+.analysis-summary {
+    font-size: 28rpx;
+    color: #666666;
+    line-height: 1.6;
+    margin-bottom: 30rpx;
+}
+
+.factors-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20rpx;
+}
+
+.factor-item {
+    background-color: #f8f9fc;
+    border-radius: 16rpx;
+    padding: 20rpx;
+}
+
+.factor-score {
+    margin-bottom: 10rpx;
+}
+
+.factor-score .number {
+    font-size: 36rpx;
+    font-weight: bold;
+    color: #4a6feb;
+}
+
+.factor-score .label {
+    font-size: 24rpx;
+    color: #999999;
+    margin-left: 4rpx;
+}
+
+.factor-name {
+    display: block;
+    font-size: 28rpx;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 8rpx;
+}
+
+.factor-desc {
+    font-size: 24rpx;
+    color: #666666;
+    line-height: 1.4;
+}
+
+.suggestions-list {
+    background-color: #ffffff;
+    border-radius: 20rpx;
+}
+
+.suggestion-item {
+    padding: 30rpx;
+    display: flex;
+    align-items: center;
+    border-bottom: 2rpx solid #f5f6fa;
+}
+
+.suggestion-item:last-child {
+    border-bottom: none;
+}
+
+.suggestion-content {
+    flex: 1;
+}
+
+.suggestion-title {
+    display: block;
+    font-size: 28rpx;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 8rpx;
+}
+
+.suggestion-desc {
+    font-size: 26rpx;
+    color: #666666;
+    line-height: 1.4;
+}
+
+.arrow-icon {
+    width: 32rpx;
+    height: 32rpx;
+    margin-left: 20rpx;
+}
+
+.trend-chart {
+    background: #ffffff;
+    border-radius: 20rpx;
+    padding: 30rpx;
+    position: relative;
+}
+
+.line-chart {
+    width: 100%;
+    height: 1000rpx;
+    margin-bottom: 30rpx;
+}
+
+.chart-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 20rpx 0;
+}
+
+.chart-bar {
+    width: 40rpx;
+    background: #e0e7ff;
+    border-radius: 20rpx;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bar-score {
+    font-size: 24rpx;
+    color: #666;
+    margin-top: -30rpx;
+}
+
+.bar-date {
+    font-size: 24rpx;
+    color: #999;
+    position: absolute;
+    bottom: -40rpx;
+    transform: rotate(-45deg);
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    padding: 20rpx 30rpx;
+    box-shadow: 0 -4rpx 20rpx rgba(0, 0, 0, 0.05);
+}
+
+.action-buttons {
+    display: flex;
+    gap: 20rpx;
+    margin-bottom: 20rpx;
+}
+
+.export-btn,
+.share-btn {
+    flex: 1;
+    height: 80rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10rpx;
+    background-color: #f5f6fa;
+    border-radius: 40rpx;
+    font-size: 28rpx;
+    color: #666666;
+}
+
+.export-btn image,
+.share-btn image {
+    width: 32rpx;
+    height: 32rpx;
+}
+
+.new-test-btn {
+    width: 100%;
+    height: 88rpx;
+    border-radius: 44rpx;
+    color: #ffffff;
+    font-size: 32rpx;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

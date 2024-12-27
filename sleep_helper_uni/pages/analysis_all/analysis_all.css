@@ -1,0 +1,786 @@
+/* 基础容器样式 */
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background: #f5f6fa;
+}
+
+/* 加载动画样式 */
+.loading-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #f5f6fa;
+}
+
+.loading-spinner {
+    width: 64rpx;
+    height: 64rpx;
+    border: 6rpx solid #f3f3f3;
+    border-top: 6rpx solid #304c69;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20rpx;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-text {
+    color: #666;
+    font-size: 28rpx;
+}
+
+/* 返回按钮样式 */
+.back-button {
+    position: fixed;
+    bottom: 40rpx; /* 改为bottom定位 */
+    left: 40rpx; /* 改为right定位 */
+    display: flex;
+    align-items: center;
+    padding: 12rpx 24rpx;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 100rpx;
+    box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.15);
+    z-index: 999;
+    /* 添加过渡效果 */
+    transition: all 0.3s ease;
+}
+
+/* 添加悬停效果 */
+.back-button:active {
+    transform: translateY(2rpx);
+    box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+.back-icon {
+    width: 32rpx;
+    height: 32rpx;
+    margin-right: 8rpx;
+}
+
+/* 标签栏样式 */
+.tab-header {
+    background: #fff;
+    box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.tab-scroll {
+    white-space: nowrap;
+    padding: 20rpx 0;
+}
+
+.tab-bar {
+    display: flex;
+    padding: 0 20rpx;
+}
+
+.tab-item {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20rpx 40rpx;
+    position: relative;
+    transition: all 0.3s;
+}
+
+.tab-icon {
+    width: 48rpx;
+    height: 48rpx;
+    margin-bottom: 8rpx;
+    transition: all 0.3s;
+}
+
+.tab-title {
+    font-size: 28rpx;
+    color: #666;
+    transition: color 0.3s;
+}
+
+.tab-item.active .tab-title {
+    color: #007aff;
+    font-weight: 500;
+}
+
+.tab-item.active .tab-icon {
+    transform: scale(1.1);
+}
+
+.tab-line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40rpx;
+    height: 4rpx;
+    background: #007aff;
+    border-radius: 2rpx;
+}
+
+/* 内容区域样式 */
+.content-swiper {
+    height: calc(100vh - 180rpx);
+    margin-top: 180rpx;
+}
+
+.tab-content {
+    height: 100%;
+    padding: 30rpx;
+    box-sizing: border-box;
+}
+
+/* 个人资料卡片样式 */
+.profile-card {
+    background: linear-gradient(135deg, #7f7fd5, #86a8e7, #91eae4);
+    border-radius: 24rpx;
+    padding: 40rpx;
+    margin-bottom: 30rpx;
+    box-shadow: 0 4rpx 20rpx rgba(0, 122, 255, 0.2);
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+}
+
+.avatar {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 60rpx;
+    border: 4rpx solid rgba(255, 255, 255, 0.3);
+    margin-right: 24rpx;
+}
+
+.profile-info {
+    color: #fff;
+}
+
+.profile-name {
+    font-size: 40rpx;
+    font-weight: 600;
+    margin-bottom: 8rpx;
+    display: block;
+}
+
+.profile-basic {
+    font-size: 28rpx;
+    opacity: 0.9;
+}
+
+/* 卡片通用样式 */
+.section-card {
+    background: #fff;
+    border-radius: 24rpx;
+    padding: 32rpx;
+    margin-bottom: 30rpx;
+    box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
+}
+
+.section-title {
+    font-size: 32rpx;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 24rpx;
+    display: flex;
+    align-items: center;
+}
+
+.section-icon {
+    width: 40rpx;
+    height: 40rpx;
+    margin-right: 12rpx;
+}
+
+/* 信息列表样式 */
+.info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20rpx;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16rpx 0;
+    border-bottom: 1rpx solid #f0f0f0;
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    color: #666;
+    font-size: 28rpx;
+}
+
+.info-value {
+    color: #333;
+    font-size: 28rpx;
+    font-weight: 500;
+}
+
+/* 标签样式 */
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16rpx;
+}
+
+.tag {
+    padding: 12rpx 24rpx;
+    border-radius: 100rpx;
+    font-size: 26rpx;
+    font-weight: 500;
+}
+
+.tag-0 {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+.tag-1 {
+    background: #f3e5f5;
+    color: #7b1fa2;
+}
+.tag-2 {
+    background: #e8f5e9;
+    color: #388e3c;
+}
+.tag-3 {
+    background: #fff3e0;
+    color: #f57c00;
+}
+.tag-4 {
+    background: #fce4ec;
+    color: #c2185b;
+}
+
+/* 症状卡片样式 */
+.symptom-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300rpx, 1fr));
+    gap: 24rpx;
+}
+
+.symptom-card {
+    background: #fff;
+    border-radius: 20rpx;
+    padding: 24rpx;
+    box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
+}
+
+.symptom-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16rpx;
+}
+
+.symptom-name {
+    font-size: 32rpx;
+    font-weight: 600;
+    color: #333;
+}
+
+.severity-tag {
+    padding: 6rpx 20rpx;
+    border-radius: 100rpx;
+    font-size: 24rpx;
+    font-weight: 500;
+    border: 1rpx solid rgba(0, 0, 0, 0.1);
+    background: #f8fafc;
+    color: #64748b;
+    display: inline-flex;
+    align-items: center;
+    box-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.05);
+}
+
+.severity-light {
+    background: #e8f5e9;
+    color: #388e3c;
+}
+.severity-medium {
+    background: #fff3e0;
+    color: #f57c00;
+}
+.severity-serious {
+    background: #ffebee;
+    color: #d32f2f;
+}
+
+.detail-row {
+    display: flex;
+    align-items: center;
+    margin-top: 12rpx;
+    font-size: 26rpx;
+    color: #666;
+}
+
+.detail-icon {
+    width: 32rpx;
+    height: 32rpx;
+    margin-right: 8rpx;
+}
+
+/* 疾病卡片样式 */
+.disease-card {
+    background: #fff;
+    border-radius: 24rpx;
+    margin-bottom: 30rpx;
+    box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+.disease-header {
+    padding: 32rpx;
+    background: linear-gradient(135deg, #f6f7ff 0%, #fff 100%);
+}
+
+.disease-title-area {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16rpx;
+}
+
+.disease-name {
+    font-size: 36rpx;
+    font-weight: 600;
+    color: #333;
+    margin-right: 16rpx;
+}
+
+.disease-description {
+    font-size: 28rpx;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* 治疗方案样式 */
+.treatment-section {
+    padding: 32rpx;
+}
+
+.treatment-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24rpx;
+    margin-top: 16rpx;
+}
+
+.treatment-icon {
+    width: 40rpx;
+    height: 40rpx;
+    margin-right: 12rpx;
+}
+
+/* 药物卡片样式 */
+.drugs-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300rpx, 1fr));
+    gap: 20rpx;
+}
+
+.drug-card {
+    background: #f8f9ff;
+    border-radius: 16rpx;
+    padding: 24rpx;
+    transition: all 0.3s ease;
+}
+
+.drug-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16rpx;
+}
+
+.drug-name {
+    font-size: 30rpx;
+    font-weight: 600;
+    color: #333;
+}
+
+.drug-tag {
+    background: #e3f2fd;
+    color: #1976d2;
+    padding: 4rpx 16rpx;
+    border-radius: 8rpx;
+    font-size: 24rpx;
+}
+
+/* 检查建议样式 */
+.exam-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300rpx, 1fr));
+    gap: 24rpx;
+}
+
+.exam-card {
+    border-radius: 20rpx;
+    padding: 32rpx;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.bg-0 {
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+}
+.bg-1 {
+    background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+}
+.bg-2 {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+}
+.bg-3 {
+    background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+}
+.bg-4 {
+    background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
+}
+
+.exam-icon {
+    width: 80rpx;
+    height: 80rpx;
+    margin-bottom: 16rpx;
+}
+
+.exam-name {
+    font-size: 32rpx;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8rpx;
+    display: block;
+}
+
+.exam-purpose {
+    font-size: 26rpx;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* 科室建议样式 */
+.department-card {
+    background: #f8f9ff;
+    border-radius: 16rpx;
+    padding: 24rpx;
+    margin-bottom: 16rpx;
+}
+
+.department-name {
+    font-size: 32rpx;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8rpx;
+    display: block;
+}
+
+.department-purpose {
+    font-size: 26rpx;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* 治疗计划列表样式 */
+.plan-list,
+.suggestion-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16rpx;
+}
+
+.plan-item,
+.suggestion-item {
+    display: flex;
+    align-items: flex-start;
+    font-size: 28rpx;
+    color: #333;
+    line-height: 1.6;
+}
+
+.plan-dot,
+.suggestion-dot {
+    color: #007aff;
+    margin-right: 12rpx;
+    font-size: 36rpx;
+    line-height: 1;
+}
+
+/* 错误状态样式 */
+.error-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #f5f6fa;
+    padding: 0 40rpx;
+}
+
+.error-text {
+    color: #666;
+    font-size: 28rpx;
+    margin: 20rpx 0 40rpx;
+}
+
+.retry-btn {
+    background: #007aff;
+    color: #fff;
+    padding: 20rpx 60rpx;
+    border-radius: 100rpx;
+    font-size: 28rpx;
+}
+
+.retry-btn:active {
+    background: #0056b3;
+}
+
+/* 动画效果 */
+.drug-card:hover,
+.exam-card:hover,
+.department-card:hover {
+    transform: translateY(-2rpx);
+    box-shadow: 0 6rpx 20rpx rgba(0, 0, 0, 0.1);
+}
+
+/* 响应式调整 */
+@media screen and (max-width: 375px) {
+    .tab-content {
+        padding: 20rpx;
+    }
+
+    .section-card {
+        padding: 24rpx;
+    }
+
+    .profile-card {
+        padding: 30rpx;
+    }
+
+    .drug-card,
+    .exam-card,
+    .department-card {
+        padding: 20rpx;
+    }
+}
+
+/* 非药物治疗卡片样式 */
+.therapy-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300rpx, 1fr));
+    gap: 20rpx;
+    margin-top: 16rpx;
+}
+
+.therapy-card {
+    background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+    border-radius: 16rpx;
+    padding: 24rpx;
+    box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+    border: 1rpx solid rgba(0, 122, 255, 0.1);
+}
+
+.therapy-card:hover {
+    transform: translateY(-2rpx);
+    box-shadow: 0 6rpx 16rpx rgba(0, 0, 0, 0.1);
+}
+
+.therapy-name {
+    font-size: 30rpx;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 12rpx;
+    display: block;
+    position: relative;
+    padding-left: 24rpx;
+}
+
+.therapy-name::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8rpx;
+    height: 24rpx;
+    background: #007aff;
+    border-radius: 4rpx;
+}
+
+.therapy-description {
+    font-size: 26rpx;
+    color: #666;
+    line-height: 1.6;
+    display: block;
+    padding-left: 24rpx;
+}
+
+/* 文本通用样式优化 */
+text {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* 标题文本样式 */
+text.title {
+    font-size: 34rpx;
+    font-weight: 600;
+    color: #333;
+    display: block;
+    margin-bottom: 16rpx;
+    line-height: 1.4;
+}
+
+/* 副标题文本样式 */
+text.subtitle {
+    font-size: 30rpx;
+    font-weight: 500;
+    color: #444;
+    display: block;
+    margin-bottom: 12rpx;
+    line-height: 1.4;
+}
+
+/* 正文文本样式 */
+text.body {
+    font-size: 28rpx;
+    color: #666;
+    line-height: 1.6;
+    display: block;
+    margin-bottom: 8rpx;
+}
+
+/* 说明文本样式 */
+text.caption {
+    font-size: 24rpx;
+    color: #888;
+    line-height: 1.4;
+    display: block;
+}
+
+/* 强调文本样式 */
+text.emphasis {
+    color: #007aff;
+    font-weight: 500;
+}
+
+/* 警告文本样式 */
+text.warning {
+    color: #ff6b6b;
+    font-weight: 500;
+}
+
+/* 成功文本样式 */
+text.success {
+    color: #2ed573;
+    font-weight: 500;
+}
+
+/* 带图标的文本样式 */
+.text-with-icon {
+    display: flex;
+    align-items: center;
+    gap: 8rpx;
+}
+
+.text-with-icon image {
+    width: 32rpx;
+    height: 32rpx;
+}
+
+/* 可点击文本样式 */
+.text-clickable {
+    color: #007aff;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* 文本溢出处理 */
+.text-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* 多行文本溢出处理 */
+.text-ellipsis-2 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+.drug-description {
+    font-size: 26rpx;
+    color: #64748b;
+    line-height: 1.6;
+    margin-top: 8rpx;
+    padding-left: 16rpx;
+    border-left: 4rpx solid #e2e8f0;
+    display: block;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+/* 在CSS文件末尾添加 */
+.ai-float-btn {
+    position: fixed;
+    bottom: 40rpx;
+    right: 40rpx;
+    display: flex;
+    align-items: center;
+    padding: 16rpx 32rpx;
+    background: linear-gradient(135deg, #007aff, #3b95ff);
+    border-radius: 100rpx;
+    box-shadow: 0 4rpx 16rpx rgba(0, 122, 255, 0.3);
+    z-index: 999;
+    transition: all 0.3s ease;
+}
+
+.ai-float-btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 2rpx 8rpx rgba(0, 122, 255, 0.2);
+}
+
+.ai-icon {
+    width: 48rpx;
+    height: 48rpx;
+    margin-right: 12rpx;
+}
+
+.ai-text {
+    color: #fff;
+    font-size: 28rpx;
+    font-weight: 500;
+}
+
+/* 适配横屏和 iPad */
+@media screen and (min-width: 768px) {
+    .ai-float-btn {
+        bottom: 60rpx;
+        left: 60rpx;
+        padding: 20rpx 40rpx;
+    }
+
+    .ai-icon {
+        width: 56rpx;
+        height: 56rpx;
+    }
+
+    .ai-text {
+        font-size: 32rpx;
+    }
+}

@@ -1,0 +1,257 @@
+.container {
+    min-height: 100vh;
+    background-color: #f5f6fa;
+}
+
+.header {
+    padding: 40rpx 150rpx;
+    background-color: #ffffff;
+}
+
+.title {
+    font-size: 40rpx;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 30rpx;
+}
+
+.search-bar {
+    margin-top: 20rpx;
+    display: flex;
+    align-items: center;
+    background-color: #f5f6fa;
+    padding: 16rpx 24rpx;
+    border-radius: 30rpx;
+}
+
+.search-bar icon {
+    margin-right: 10rpx;
+    color: #999999;
+}
+
+.search-bar input {
+    flex: 1;
+    font-size: 28rpx;
+    color: #333333;
+}
+
+.content {
+    padding: 30rpx;
+}
+
+.test-types {
+    display: flex;
+    flex-direction: column;
+    gap: 20rpx;
+    margin-bottom: 40rpx;
+}
+
+.test-card {
+    background-color: #ffffff;
+    border-radius: 20rpx;
+    padding: 30rpx;
+    display: flex;
+    align-items: center;
+    gap: 20rpx;
+    position: relative;
+    border: 2rpx solid transparent;
+}
+
+.test-icon {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 20rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.test-icon image {
+    width: 60rpx;
+    height: 60rpx;
+}
+
+.test-info {
+    flex: 1;
+}
+
+.test-title {
+    font-size: 32rpx;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 8rpx;
+}
+
+.test-desc {
+    font-size: 26rpx;
+    color: #666666;
+    margin-bottom: 12rpx;
+}
+
+.test-meta {
+    display: flex;
+    gap: 20rpx;
+}
+
+.test-meta text {
+    font-size: 24rpx;
+    color: #999999;
+}
+
+.start-btn {
+    padding: 12rpx 30rpx;
+    border-radius: 30rpx;
+    color: #ffffff;
+    font-size: 26rpx;
+}
+
+.section {
+    margin-bottom: 40rpx;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20rpx;
+}
+
+.section-title {
+    font-size: 32rpx;
+    font-weight: bold;
+    color: #333333;
+}
+
+.view-all {
+    font-size: 26rpx;
+    color: #666666;
+}
+
+.reports-list {
+    display: flex;
+    gap: 20rpx;
+    overflow-x: auto;
+    padding-bottom: 10rpx;
+}
+
+.report-card {
+    background-color: #ffffff;
+    border-radius: 20rpx;
+    min-width: 280rpx;
+    overflow: hidden;
+}
+
+.report-header {
+    padding: 20rpx;
+    display: flex;
+    flex-direction: column;
+    gap: 8rpx;
+}
+
+.report-type {
+    font-size: 28rpx;
+    font-weight: bold;
+    color: #333333;
+}
+
+.report-date {
+    font-size: 24rpx;
+    color: #666666;
+}
+
+.report-content {
+    padding: 20rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12rpx;
+}
+
+.score-circle {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    border: 4rpx solid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.score-number {
+    font-size: 36rpx;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.score-label {
+    font-size: 24rpx;
+    color: #666666;
+}
+
+.report-result {
+    font-size: 28rpx;
+    font-weight: bold;
+}
+
+.tips-list {
+    background-color: #ffffff;
+    border-radius: 20rpx;
+    padding: 20rpx;
+}
+
+.tip-item {
+    display: flex;
+    align-items: center;
+    gap: 20rpx;
+    padding: 20rpx;
+    border-bottom: 2rpx solid #f5f6fa;
+}
+
+.tip-item:last-child {
+    border-bottom: none;
+}
+
+.tip-icon {
+    width: 60rpx;
+    height: 60rpx;
+}
+
+.tip-content {
+    flex: 1;
+}
+
+.tip-title {
+    font-size: 28rpx;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 8rpx;
+}
+
+.tip-desc {
+    font-size: 26rpx;
+    color: #666666;
+}
+
+.share-btn {
+    position: fixed;
+    bottom: 40rpx;
+    right: 40rpx;
+    background-color: #4a6feb;
+    border-radius: 40rpx;
+    padding: 20rpx 40rpx;
+    display: flex;
+    align-items: center;
+    gap: 10rpx;
+    box-shadow: 0 4rpx 20rpx rgba(74, 111, 235, 0.2);
+}
+
+.share-btn image {
+    width: 32rpx;
+    height: 32rpx;
+}
+
+.share-btn text {
+    color: #ffffff;
+    font-size: 28rpx;
+}

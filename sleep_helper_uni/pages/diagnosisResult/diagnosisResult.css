@@ -1,0 +1,397 @@
+/* diagnosisResult.wxss */
+.container {
+    padding: 20rpx;
+}
+
+/* 问卷部分样式 */
+.questionnaire-section {
+    margin: 20rpx 0 30rpx;
+    background: #fff;
+    border-radius: 20rpx;
+    padding: 24rpx;
+    box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+}
+
+.questionnaire-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20rpx;
+    padding: 0 10rpx;
+}
+
+.header-content {
+    flex: 1;
+}
+
+.header-title {
+    font-size: 32rpx;
+    font-weight: 600;
+    color: #333;
+    display: block;
+    margin-bottom: 8rpx;
+}
+
+.header-subtitle {
+    font-size: 24rpx;
+    color: #666;
+    display: block;
+}
+
+.header-icon {
+    font-size: 40rpx;
+    margin-left: 20rpx;
+}
+
+.questionnaire-scroll {
+    width: 100%;
+    white-space: nowrap;
+}
+
+.questionnaire-list {
+    display: inline-flex;
+    padding: 10rpx 0;
+}
+
+.questionnaire-card {
+    position: relative;
+    width: 240rpx;
+    height: 160rpx;
+    margin-right: 20rpx;
+    border-radius: 16rpx;
+    background: linear-gradient(135deg, #4a90e2, #64b5f6);
+    overflow: hidden;
+    box-shadow: 0 4rpx 12rpx rgba(74, 144, 226, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.questionnaire-card:active {
+    transform: scale(0.98);
+}
+
+.card-content {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    padding: 20rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-decoration {
+    position: absolute;
+    right: -20rpx;
+    bottom: -20rpx;
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.questionnaire-icon {
+    width: 48rpx;
+    height: 48rpx;
+    border-radius: 12rpx;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12rpx;
+}
+
+.icon-text {
+    color: #fff;
+    font-size: 24rpx;
+    font-weight: 500;
+}
+
+.questionnaire-name {
+    color: #fff;
+    font-size: 28rpx;
+    font-weight: 500;
+    margin-bottom: 12rpx;
+}
+
+.start-text {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 24rpx;
+    display: flex;
+    align-items: center;
+    margin-bottom: 30rpx;
+}
+
+.start-text::after {
+    content: '›';
+    margin-left: 4rpx;
+    font-size: 28rpx;
+}
+
+/* 诊断结果部分样式 */
+.loading {
+    text-align: center;
+    padding: 40rpx;
+    color: #666;
+    font-size: 28rpx;
+}
+
+.disease-card {
+    background: #fff;
+    border-radius: 20rpx;
+    padding: 30rpx;
+    margin-bottom: 30rpx;
+    box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.disease-card:active {
+    transform: translateY(2rpx);
+}
+
+.disease-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16rpx;
+}
+
+.disease-name {
+    font-size: 32rpx;
+    font-weight: bold;
+    color: #333;
+}
+
+.match-percentage {
+    color: #4a90e2;
+    font-size: 28rpx;
+    font-weight: 500;
+}
+
+.disease-description {
+    font-size: 26rpx;
+    color: #666;
+    line-height: 1.6;
+    margin: 16rpx 0;
+}
+
+.section-title {
+    font-size: 28rpx;
+    color: #666;
+    margin: 24rpx 0 16rpx;
+    font-weight: bold;
+    position: relative;
+    padding-left: 16rpx;
+}
+
+.section-title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4rpx;
+    height: 24rpx;
+    background: #4a90e2;
+    border-radius: 2rpx;
+}
+
+.matched-symptoms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12rpx;
+    margin-bottom: 20rpx;
+}
+
+.symptom-tag {
+    background: #e8f4ff;
+    color: #4a90e2;
+    padding: 8rpx 16rpx;
+    border-radius: 100rpx;
+    font-size: 24rpx;
+    transition: all 0.3s ease;
+}
+
+.symptom-tag:active {
+    transform: scale(0.95);
+    background: #d0e8ff;
+}
+
+.treatment-item {
+    background: #f8f8f8;
+    padding: 20rpx;
+    border-radius: 12rpx;
+    margin-bottom: 16rpx;
+    transition: all 0.3s ease;
+}
+
+.treatment-item:active {
+    transform: scale(0.99);
+    background: #f0f0f0;
+}
+
+.treatment-name {
+    font-size: 26rpx;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8rpx;
+}
+
+.treatment-detail {
+    font-size: 24rpx;
+    color: #666;
+    line-height: 1.6;
+}
+
+.examination-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 16rpx 0;
+    border-bottom: 1rpx solid #efefef;
+}
+
+.examination-item:last-child {
+    border-bottom: none;
+}
+
+.examination-info {
+    flex: 1;
+}
+
+.examination-name {
+    font-size: 26rpx;
+    color: #333;
+    font-weight: 500;
+    margin-bottom: 8rpx;
+}
+
+.examination-desc {
+    font-size: 24rpx;
+    color: #666;
+    line-height: 1.6;
+}
+
+.severity-indicator {
+    display: inline-block;
+    padding: 6rpx 16rpx;
+    border-radius: 6rpx;
+    font-size: 24rpx;
+    margin: 12rpx 0;
+    font-weight: 500;
+}
+
+.severity-low {
+    background: #e8f5e9;
+    color: #4caf50;
+}
+
+.severity-medium {
+    background: #fff3e0;
+    color: #ff9800;
+}
+
+.severity-high {
+    background: #ffebee;
+    color: #f44336;
+}
+
+/* 深色模式适配 */
+@media (prefers-color-scheme: dark) {
+    .container {
+        background: #1a1a1a;
+    }
+
+    .questionnaire-section {
+        background: #2c2c2c;
+    }
+
+    .header-title {
+        color: #fff;
+    }
+
+    .header-subtitle {
+        color: #999;
+    }
+
+    .questionnaire-card {
+        background: linear-gradient(135deg, #2c5282, #4a5568);
+    }
+
+    .disease-card {
+        background: #2c2c2c;
+    }
+
+    .disease-name {
+        color: #fff;
+    }
+
+    .disease-description {
+        color: #999;
+    }
+
+    .treatment-item {
+        background: #333;
+    }
+
+    .treatment-name {
+        color: #fff;
+    }
+
+    .treatment-detail {
+        color: #999;
+    }
+
+    .examination-name {
+        color: #fff;
+    }
+
+    .examination-desc {
+        color: #999;
+    }
+
+    .examination-item {
+        border-bottom-color: #333;
+    }
+
+    .symptom-tag {
+        background: rgba(74, 144, 226, 0.15);
+        color: #64b5f6;
+    }
+
+    .severity-low {
+        background: rgba(76, 175, 80, 0.15);
+        color: #81c784;
+    }
+
+    .severity-medium {
+        background: rgba(255, 152, 0, 0.15);
+        color: #ffb74d;
+    }
+
+    .severity-high {
+        background: rgba(244, 67, 54, 0.15);
+        color: #e57373;
+    }
+}
+
+/* 响应式调整 */
+@media screen and (max-width: 375px) {
+    .questionnaire-card {
+        width: 220rpx;
+        height: 150rpx;
+    }
+
+    .header-title {
+        font-size: 30rpx;
+    }
+
+    .disease-name {
+        font-size: 30rpx;
+    }
+}
+
+/* 添加滚动条样式 */
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    background: transparent;
+}

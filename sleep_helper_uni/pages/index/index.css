@@ -1,0 +1,167 @@
+.container {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f8fafc;
+    padding-bottom: 40rpx;
+}
+
+/* 状态栏 */
+.status-bar {
+    width: 100%;
+    height: 88rpx;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.04);
+}
+
+.status-bar-title {
+    font-size: 34rpx;
+    font-weight: 600;
+    color: #1a1a1a;
+    letter-spacing: 1rpx;
+}
+
+/* 轮播图 */
+.banner {
+    width: 100%;
+    height: 500rpx;
+    margin-top: 88rpx;
+    box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
+}
+
+.banner image {
+    width: 100%;
+    height: 100%;
+    border-radius: 0 0 24rpx 24rpx;
+}
+
+/* 功能区 */
+.function-area {
+    margin: 30rpx 24rpx;
+    padding: 32rpx 20rpx;
+    background-color: #ffffff;
+    border-radius: 24rpx;
+    box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.04);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24rpx;
+}
+
+.function-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16rpx 0;
+    transition: transform 0.2s;
+}
+
+.function-item:active {
+    transform: scale(0.95);
+}
+
+.function-item image {
+    width: 88rpx;
+    height: 88rpx;
+    margin-bottom: 12rpx;
+}
+
+.function-item text {
+    font-size: 26rpx;
+    color: #333333;
+    font-weight: 500;
+}
+
+/* 快速检测入口 */
+.quick-test {
+    margin: 24rpx;
+    padding: 32rpx;
+    background: linear-gradient(135deg, #7f7fd5, #86a8e7, #91eae4);
+    border-radius: 24rpx;
+    color: #ffffff;
+    box-shadow: 0 4rpx 16rpx rgba(134, 168, 231, 0.3);
+    transition: transform 0.2s;
+}
+
+.quick-test:active {
+    transform: scale(0.98);
+}
+
+.quick-test-title {
+    font-size: 34rpx;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 12rpx;
+}
+
+.quick-test-desc {
+    font-size: 26rpx;
+    opacity: 0.9;
+}
+
+/* 知识卡片区域 */
+.knowledge-cards {
+    padding: 0 24rpx;
+    margin-top: 30rpx;
+}
+
+.card-title {
+    font-size: 32rpx;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 24rpx;
+    padding-left: 12rpx;
+    border-left: 6rpx solid #7f7fd5;
+}
+
+.cards-container {
+    width: 100%;
+    white-space: nowrap;
+    padding: 10rpx 0 30rpx 0;
+    scroll-behavior: smooth;
+}
+
+.knowledge-card {
+    display: inline-block;
+    width: 300rpx;
+    margin-right: 20rpx;
+    background-color: #ffffff;
+    border-radius: 16rpx;
+    overflow: hidden;
+    box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s;
+    vertical-align: top;
+}
+
+.knowledge-card:last-child {
+    margin-right: 24rpx;
+}
+
+.knowledge-card:active {
+    transform: scale(0.98);
+}
+
+.knowledge-card image {
+    width: 300rpx;
+    height: 180rpx;
+    object-fit: cover;
+}
+
+.knowledge-card text {
+    display: block;
+    padding: 16rpx 20rpx;
+    font-size: 28rpx;
+    color: #333333;
+    line-height: 1.5;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    height: 88rpx;
+}

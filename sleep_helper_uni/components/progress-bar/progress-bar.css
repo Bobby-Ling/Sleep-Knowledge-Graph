@@ -1,0 +1,255 @@
+/* progress-bar.wxss */
+.nav-container {
+    width: 100%;
+    background: #fff;
+    padding: 20rpx 24rpx;
+    box-sizing: border-box;
+    box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+}
+
+.progress-bar {
+    position: relative;
+    padding: 32rpx 0;
+}
+
+.progress-track {
+    position: absolute;
+    top: 52rpx;
+    left: 8%;
+    width: 84%;
+    height: 4rpx;
+    background: #e2e8f0;
+    border-radius: 4rpx;
+}
+
+.progress-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: linear-gradient(90deg, #2563eb, #3b82f6);
+    border-radius: 4rpx;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 8rpx rgba(37, 99, 235, 0.3);
+}
+
+.steps-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20rpx;
+}
+
+.step-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    flex: 1;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.step-circle {
+    width: 40rpx;
+    height: 40rpx;
+    border-radius: 50%;
+    background: #fff;
+    border: 2rpx solid #cbd5e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12rpx;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 22rpx;
+    color: #718096;
+    box-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.05);
+}
+
+.step-label {
+    font-size: 22rpx;
+    color: #718096;
+    transition: all 0.3s ease;
+    text-align: center;
+    white-space: nowrap;
+    transform: scale(0.9);
+}
+
+.step-item.completed .step-circle {
+    background: #3b82f6;
+    border-color: #3b82f6;
+    color: #fff;
+    box-shadow: 0 2rpx 8rpx rgba(59, 130, 246, 0.3);
+}
+
+.step-item.completed .step-label {
+    color: #3b82f6;
+}
+
+.step-item.current .step-circle {
+    width: 48rpx;
+    height: 48rpx;
+    background: #fff;
+    border: 3rpx solid #3b82f6;
+    color: #3b82f6;
+    box-shadow: 0 0 0 6rpx rgba(59, 130, 246, 0.2);
+    transform: scale(1.2);
+    font-weight: bold;
+}
+
+.step-item.current .step-label {
+    color: #3b82f6;
+    transform: scale(1);
+    font-weight: bold;
+    font-size: 26rpx;
+}
+
+.check-icon {
+    font-size: 24rpx;
+    font-weight: bold;
+}
+
+.control-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16rpx;
+    margin-top: 32rpx;
+    padding: 0 8rpx;
+}
+
+.btn {
+    height: 76rpx;
+    padding: 0 36rpx;
+    font-size: 28rpx;
+    border-radius: 38rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8rpx;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.2s ease;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 60%);
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    transition: transform 0.5s ease-out, opacity 0.3s ease-out;
+}
+
+.btn:active::after {
+    transform: translate(-50%, -50%) scale(2);
+    opacity: 1;
+}
+
+.btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32rpx;
+    height: 32rpx;
+}
+
+.prev,
+.skip {
+    min-width: 160rpx;
+    background: #f8fafc;
+    border: 1rpx solid #e2e8f0;
+    color: #475569;
+}
+
+.prev:active,
+.skip:active {
+    background: #e5e7eb;
+    transform: scale(0.98);
+}
+
+.next {
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+    min-width: 200rpx;
+    color: white;
+    font-weight: 500;
+    border: none;
+    box-shadow: 0 4rpx 12rpx rgba(37, 99, 235, 0.2);
+}
+
+.next:active {
+    transform: scale(0.98);
+    box-shadow: 0 1rpx 2rpx rgba(37, 99, 235, 0.2);
+}
+
+.btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+    box-shadow: none;
+}
+
+/* 暗色模式适配 */
+@media (prefers-color-scheme: dark) {
+    .nav-container {
+        background: #1a202c;
+    }
+
+    .progress-track {
+        background: #2d3748;
+    }
+
+    .step-circle {
+        background: #2d3748;
+        border-color: #4a5568;
+    }
+
+    .step-label {
+        color: #a0aec0;
+    }
+
+    .prev,
+    .skip {
+        background: #2d3748;
+        color: #e2e8f0;
+        border-color: #4a5568;
+    }
+
+    .prev:active,
+    .skip:active {
+        background: #374151;
+    }
+
+    .next {
+        background: linear-gradient(135deg, #1d4ed8, #2563eb);
+    }
+
+    .btn.disabled {
+        background: #1f2937;
+        color: #6b7280;
+    }
+
+    .step-item.current .step-circle {
+        background: #2d3748;
+    }
+}
+
+/* 响应式调整 */
+@media screen and (max-width: 375px) {
+    .nav-container {
+        padding: 16rpx 20rpx;
+    }
+
+    .btn {
+        height: 70rpx;
+        font-size: 26rpx;
+        padding: 0 32rpx;
+    }
+
+    .step-label {
+        font-size: 20rpx;
+    }
+}
