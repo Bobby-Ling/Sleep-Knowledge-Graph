@@ -8,7 +8,7 @@
 /Google/
 processing_state*.json
 __pycache__/
-/test/
+/backups/
 *.log
 /scale_output/
 temp.py
