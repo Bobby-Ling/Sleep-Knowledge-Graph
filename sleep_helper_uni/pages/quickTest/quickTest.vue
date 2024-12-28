@@ -75,7 +75,7 @@
 
         <!-- 分享按钮 -->
         <view class="share-btn" @tap="shareTest">
-            <image src="/static/assets/icons/share.png"></image>
+            <image src="https://6d65-mental-miniapp-9gg5j9ahdeb719a2-1322861354.tcb.qcloud.la/assets/icons/share.png?sign=6efd0bc37cdc7506b0021bebc407921f&t=1735286992"></image>
             <text>分享给好友</text>
         </view>
     </view>
@@ -92,7 +92,7 @@ export default {
                     desc: '睡眠障碍的自我评估',
                     duration: '约2分钟',
                     questions: 8,
-                    icon: '/static/assets/icons/insomnia.png',
+                    icon: 'https://6d65-mental-miniapp-9gg5j9ahdeb719a2-1322861354.tcb.qcloud.la/assets/icons/insomnia.png?sign=78b4c8b0a91bae785d826a3da45cd40b&t=1735287082',
                     color: '#4A6FEB'
                 },
                 {
@@ -101,7 +101,7 @@ export default {
                     desc: '评估您的瞌睡情况',
                     duration: '约2分钟',
                     questions: 8,
-                    icon: '/static/assets/icons/quality.png',
+                    icon: 'https://6d65-mental-miniapp-9gg5j9ahdeb719a2-1322861354.tcb.qcloud.la/assets/icons/quality.png?sign=9ec87685212acda8d2d17b1ebca8acca&t=1735287095',
                     color: '#FF7D54'
                 },
                 {
@@ -110,7 +110,7 @@ export default {
                     desc: '检测您当前的焦虑症状',
                     duration: '约4分钟',
                     questions: 12,
-                    icon: '/static/assets/icons/habit.png',
+                    icon: 'https://6d65-mental-miniapp-9gg5j9ahdeb719a2-1322861354.tcb.qcloud.la/assets/icons/habit.png?sign=ac286bd2a27d52ed5f4ba368ec8d69b5&t=1735287106',
                     color: '#45C479'
                 },
                 {
@@ -119,7 +119,7 @@ export default {
                     desc: '评估您当前的抑郁症状',
                     duration: '约5分钟',
                     questions: 17,
-                    icon: '/static/assets/icons/depression.png',
+                    icon: 'https://6d65-mental-miniapp-9gg5j9ahdeb719a2-1322861354.tcb.qcloud.la/assets/icons/depression.png?sign=f6ddc05591e0da633087503a21da4f2b&t=1735287174',
                     color: '#FFB347'
                 },
                 {
@@ -128,7 +128,7 @@ export default {
                     desc: '评估您是否存在不宁腿症状',
                     duration: '约3分钟',
                     questions: 10,
-                    icon: '/static/assets/icons/restless_legs.png',
+                    icon: 'https://6d65-mental-miniapp-9gg5j9ahdeb719a2-1322861354.tcb.qcloud.la/assets/icons/restless_legs.png?sign=cb680a9d65059cff7c18d67a5b99748f&t=1735287434',
                     color: '#76D7C4'
                 },
                 {
@@ -137,7 +137,7 @@ export default {
                     desc: '评估您的睡眠质量',
                     duration: '约5分钟',
                     questions: 19,
-                    icon: '/static/assets/icons/sleep_quality.png',
+                    icon: 'https://6d65-mental-miniapp-9gg5j9ahdeb719a2-1322861354.tcb.qcloud.la/assets/icons/sleep_quality.png?sign=914c98b1c8ca1894d4682e4cd46054ff&t=1735287449',
                     color: '#9B59B6'
                 },
                 {
@@ -146,7 +146,7 @@ export default {
                     desc: '评估您是否存在快速眼动睡眠行为障碍',
                     duration: '约3分钟',
                     questions: 6,
-                    icon: '/static/assets/icons/rbd.png',
+                    icon: 'https://6d65-mental-miniapp-9gg5j9ahdeb719a2-1322861354.tcb.qcloud.la/assets/icons/rbd.png?sign=0ec93fe4adf3416c844681622e9cc06c&t=1735287461',
                     color: '#F39C12'
                 },
                 {
@@ -155,7 +155,7 @@ export default {
                     desc: '评估您睡眠呼吸暂停的风险',
                     duration: '约4分钟',
                     questions: 8,
-                    icon: '/static/assets/icons/sleep_apnea.png',
+                    icon: 'https://6d65-mental-miniapp-9gg5j9ahdeb719a2-1322861354.tcb.qcloud.la/assets/icons/sleep_apnea.png?sign=6ec866dfdc6b50816fef1b64df84df57&t=1735287473',
                     color: '#E74C3C'
                 }
             ],
@@ -188,7 +188,7 @@ export default {
                     id: 2,
                     title: '创造良好环境',
                     content: '保持安静、黑暗、适温的睡眠环境',
-                    icon: '/static/assets/icons/environment.png'
+                    icon: 'https://6d65-mental-miniapp-9gg5j9ahdeb719a2-1322861354.tcb.qcloud.la/assets/icons/environment.png?sign=fc1545f4ab32ddcf6ffa1aee7b5ab6d3&t=1735286896'
                 },
                 {
                     id: 3,

@@ -64,7 +64,11 @@
 
                         <view class="section-card">
                             <view class="section-title">
-                                <image class="section-icon" src="/static/assets/icons/symptoms.png" mode="aspectFit"></image>
+                                <image
+                                    class="section-icon"
+                                    src="https://6d65-mental-miniapp-9gg5j9ahdeb719a2-1322861354.tcb.qcloud.la/assets/icons/symptoms.png?sign=0e194cef93ce9a11ba86d228e953c77e&t=1735287638"
+                                    mode="aspectFit"
+                                ></image>
                                 <text>主诉症状</text>
                             </view>
                             <view class="tag-list">
@@ -86,7 +90,7 @@
                                     <view
                                         :class="
                                             'severity-tag ' +
-                                            (item.severity === '轻度' || item.severity === '无' || item.severity === '轻'
+                                            (item.severity === '轻度' || item.severity === '无' || item.severity === '轻' || item.severity === '轻微'
                                                 ? 'severity-light'
                                                 : item.severity === '中' || item.severity === '中等'
                                                 ? 'severity-medium'
@@ -130,7 +134,11 @@
                                 <!-- 药物治疗 -->
                                 <block v-if="item.treatments.drugs.length > 0">
                                     <view class="treatment-title">
-                                        <image class="treatment-icon" src="/static/assets/icons/user.png" mode="aspectFit"></image>
+                                        <image
+                                            class="treatment-icon"
+                                            src="https://6d65-mental-miniapp-9gg5j9ahdeb719a2-1322861354.tcb.qcloud.la/assets/icons/user.png?sign=fd81da8ef82b0dc196669b03c5a88fb4&t=1735287653"
+                                            mode="aspectFit"
+                                        ></image>
                                         <text>药物治疗方案</text>
                                     </view>
                                     <view class="drugs-container">
@@ -160,7 +168,11 @@
                                 <!-- 非药物治疗 -->
                                 <block v-if="item.treatments.non_drug.length > 0">
                                     <view class="treatment-title">
-                                        <image class="treatment-icon" src="/static/assets/icons/user.png" mode="aspectFit"></image>
+                                        <image
+                                            class="treatment-icon"
+                                            src="https://6d65-mental-miniapp-9gg5j9ahdeb719a2-1322861354.tcb.qcloud.la/assets/icons/user.png?sign=fd81da8ef82b0dc196669b03c5a88fb4&t=1735287653"
+                                            mode="aspectFit"
+                                        ></image>
                                         <text>非药物治疗方案</text>
                                     </view>
                                     <view class="therapy-container">
@@ -200,7 +212,11 @@
                         <view class="plan-section">
                             <view class="section-card">
                                 <view class="section-title">
-                                    <image class="section-icon" src="/static/assets/icons/exam.png" mode="aspectFit"></image>
+                                    <image
+                                        class="section-icon"
+                                        src="https://6d65-mental-miniapp-9gg5j9ahdeb719a2-1322861354.tcb.qcloud.la/assets/icons/exam.png?sign=87a31873fc4610bb53f7c826dcbcdaa4&t=1735287625"
+                                        mode="aspectFit"
+                                    ></image>
                                     <text>就诊建议</text>
                                 </view>
                                 <view class="department-card" v-for="(item, index) in analysis.recommended_departments" :key="index">
@@ -212,7 +228,11 @@
 
                             <view class="section-card">
                                 <view class="section-title">
-                                    <image class="section-icon" src="/static/assets/icons/treatment.png" mode="aspectFit"></image>
+                                    <image
+                                        class="section-icon"
+                                        src="https://6d65-mental-miniapp-9gg5j9ahdeb719a2-1322861354.tcb.qcloud.la/assets/icons/treatment.png?sign=792bb0b6d4916c7aa2421f45fdd53d66&t=1735287662"
+                                        mode="aspectFit"
+                                    ></image>
                                     <text>治疗计划</text>
                                 </view>
                                 <view class="plan-list">
@@ -226,7 +246,11 @@
 
                             <view class="section-card">
                                 <view class="section-title">
-                                    <image class="section-icon" src="/static/assets/icons/environment.png" mode="aspectFit"></image>
+                                    <image
+                                        class="section-icon"
+                                        src="https://6d65-mental-miniapp-9gg5j9ahdeb719a2-1322861354.tcb.qcloud.la/assets/icons/environment.png?sign=fc1545f4ab32ddcf6ffa1aee7b5ab6d3&t=1735286896"
+                                        mode="aspectFit"
+                                    ></image>
                                     <text>生活建议</text>
                                 </view>
                                 <view class="suggestion-list">
@@ -271,23 +295,23 @@ export default {
             tabs: [
                 {
                     title: '基本信息',
-                    icon: '/static/assets/icons/user.png'
+                    icon: 'https://6d65-mental-miniapp-9gg5j9ahdeb719a2-1322861354.tcb.qcloud.la/assets/icons/user.png?sign=fd81da8ef82b0dc196669b03c5a88fb4&t=1735287653'
                 },
                 {
                     title: '症状分析',
-                    icon: '/static/assets/icons/symptoms.png'
+                    icon: 'https://6d65-mental-miniapp-9gg5j9ahdeb719a2-1322861354.tcb.qcloud.la/assets/icons/symptoms.png?sign=0e194cef93ce9a11ba86d228e953c77e&t=1735287638'
                 },
                 {
                     title: '疾病分析',
-                    icon: '/static/assets/icons/disease.png'
+                    icon: 'https://6d65-mental-miniapp-9gg5j9ahdeb719a2-1322861354.tcb.qcloud.la/assets/icons/disease.png?sign=4ad20cc89485b3931b63e878b38b1889&t=1735287614'
                 },
                 {
                     title: '检查建议',
-                    icon: '/static/assets/icons/exam.png'
+                    icon: 'https://6d65-mental-miniapp-9gg5j9ahdeb719a2-1322861354.tcb.qcloud.la/assets/icons/exam.png?sign=87a31873fc4610bb53f7c826dcbcdaa4&t=1735287625'
                 },
                 {
                     title: '治疗方案',
-                    icon: '/static/assets/icons/treatment.png'
+                    icon: 'https://6d65-mental-miniapp-9gg5j9ahdeb719a2-1322861354.tcb.qcloud.la/assets/icons/treatment.png?sign=792bb0b6d4916c7aa2421f45fdd53d66&t=1735287662'
                 }
             ],
 

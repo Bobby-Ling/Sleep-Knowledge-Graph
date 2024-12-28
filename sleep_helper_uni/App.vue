@@ -19,13 +19,8 @@ export default {
         const logs = uni.getStorageSync('logs') || [];
         logs.unshift(Date.now());
         uni.setStorageSync('logs', logs);
-
-        // 登录
-        uni.login({
-            success: (res) => {
-                // 发送 res.code 到后台换取 openId, sessionKey, unionId
-            }
-        });
+        this.globalData.session_id = this.globalData.generateUUID();
+        console.log('启动成功，用户的session_id为', this.globalData.session_id);
     },
     globalData: {
         userInfo: null,
@@ -44,6 +39,17 @@ export default {
         symptoms: [],
         selectedAnswers: [],
         schema_name: null,
+        relatedScalesIndex: [],
+        indexNext: 0,
+        session_id: '',
+
+        generateUUID: function () {
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+                var r = (Math.random() * 16) | 0;
+                var v = c == 'x' ? r : (r & 3) | 8;
+                return v.toString(16);
+            });
+        },
 
         checkAndSetTabBar: function () {
             console.log(uni.getStorageSync('isShow'));

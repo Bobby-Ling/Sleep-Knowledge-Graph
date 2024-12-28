@@ -12,6 +12,19 @@
                 </view>
             </view>
 
+            <!-- <view class="upload-section">
+    <view class="upload-options">
+      <button class="upload-btn camera" bindtap="chooseImageFromCamera">
+        <view class="btn-icon">📸</view>
+        <text>拍照上传</text>
+      </button>
+      <button class="upload-btn album" bindtap="chooseImageFromAlbum">
+        <view class="btn-icon">🖼️</view>
+        <text>从相册选择</text>
+      </button>
+    </view>
+  </view> -->
+
             <view class="upload-section">
                 <view class="upload-options">
                     <button class="upload-btn camera" @tap="chooseImageFromCamera">
@@ -22,6 +35,17 @@
                         <view class="btn-icon">🖼️</view>
                         <text>从相册选择</text>
                     </button>
+                </view>
+
+                <view class="test-images" v-if="!uploadSuccess">
+                    <view class="section-title">测试用例（点击上传）</view>
+                    <view class="test-images-grid">
+                        <view class="test-image-btn" @tap="uploadTestImage" :data-index="index" hover-class="btn-hover" v-for="(item, index) in testImages" :key="index">
+                            <image :src="item.src" mode="aspectFit"></image>
+
+                            <text>{{ item.name }}</text>
+                        </view>
+                    </view>
                 </view>
             </view>
 
@@ -157,6 +181,19 @@ export default {
             uploading: false,
             uploadSuccess: false,
             sessionId: '',
+
+            testImages: [
+                {
+                    name: '测试图片1',
+                    src: '/static/assets/test/1.png'
+                },
+                {
+                    name: '测试图片2',
+                    src: '/static/assets/test/2.png'
+                }
+                // 可以继续添加更多测试图片...
+            ],
+
             name: '',
             gender: '',
             age: '',
@@ -181,6 +218,12 @@ export default {
 
         chooseImageFromAlbum: function () {
             this.chooseImage('album');
+        },
+
+        uploadTestImage: function (e) {
+            const index = e.currentTarget.dataset.index;
+            const imageUrl = this.testImages[index].src;
+            this.uploadFile(imageUrl);
         },
 
         chooseImage: function (source) {

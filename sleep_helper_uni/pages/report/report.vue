@@ -67,11 +67,15 @@
         <view class="footer">
             <view class="action-buttons">
                 <button class="export-btn" @tap="exportReport">
-                    <image src="/static/assets/icons/export.png"></image>
+                    <image
+                        src="https://6d65-mental-miniapp-9gg5j9ahdeb719a2-1322861354.tcb.qcloud.la/assets/icons/export.png?sign=87644dc333dcbd61cd05d95b2f228b98&t=1735286948"
+                    ></image>
                     <text>导出报告</text>
                 </button>
                 <button class="share-btn" open-type="share">
-                    <image src="/static/assets/icons/share.png"></image>
+                    <image
+                        src="https://6d65-mental-miniapp-9gg5j9ahdeb719a2-1322861354.tcb.qcloud.la/assets/icons/share.png?sign=6efd0bc37cdc7506b0021bebc407921f&t=1735286992"
+                    ></image>
                     <text>分享报告</text>
                 </button>
             </view>

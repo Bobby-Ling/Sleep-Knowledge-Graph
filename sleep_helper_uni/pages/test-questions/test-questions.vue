@@ -108,7 +108,7 @@ export default {
             currentStep: 2,
 
             // 添加测试模式标志
-            testMode: true,
+            testMode: false,
 
             // 设置为true开启测试模式，false关闭
             // 测试时统一选择的选项值
@@ -242,6 +242,9 @@ export default {
             app.globalData.indexNext += 1;
             // 跳转到诊断页面
             uni.navigateTo({
+                url: '/pages/diagnosis/diagnosis'
+            });
+            uni.switchTab({
                 url: '/pages/diagnosis/diagnosis'
             });
         }

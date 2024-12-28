@@ -93,25 +93,25 @@ export default {
                 {
                     id: 1,
                     name: '睡眠障碍',
-                    icon: '/static/assets/icons/disorder.png',
+                    icon: 'https://6d65-mental-miniapp-9gg5j9ahdeb719a2-1322861354.tcb.qcloud.la/assets/icons/disorder.png?sign=4cccac6d66040d1da33217a27ec57655&t=1735286556',
                     color: '#4A6FEB'
                 },
                 {
                     id: 2,
                     name: '睡眠习惯',
-                    icon: '/static/assets/icons/sleephabit.png',
+                    icon: 'https://6d65-mental-miniapp-9gg5j9ahdeb719a2-1322861354.tcb.qcloud.la/assets/icons/sleephabit.png?sign=ab1f08944f3215a3f98bc4776fe29da2&t=1735286520',
                     color: '#FF7D54'
                 },
                 {
                     id: 3,
                     name: '专业问诊',
-                    icon: '/static/assets/icons/doctor.png',
+                    icon: 'https://6d65-mental-miniapp-9gg5j9ahdeb719a2-1322861354.tcb.qcloud.la/assets/icons/doctor.png?sign=bda046f55bd2b0282bb2749b31824fbd&t=1735286491',
                     color: '#45C479'
                 },
                 {
                     id: 4,
                     name: '其他咨询',
-                    icon: '/static/assets/icons/other.png',
+                    icon: 'https://6d65-mental-miniapp-9gg5j9ahdeb719a2-1322861354.tcb.qcloud.la/assets/icons/other.png?sign=c1673e6f711a52e3c1322c2e634b3f60&t=1735286538',
                     color: '#9B6FF9'
                 }
             ],

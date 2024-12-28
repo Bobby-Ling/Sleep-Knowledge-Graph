@@ -69,7 +69,7 @@
                                 <view class="prediction-bar">
                                     <view class="prediction-progress" :style="'width: ' + item.probability * 100 + '%'"></view>
                                     <text class="prediction-label">{{ item.diagnosis }}</text>
-                                    <text class="prediction-probability">{{ item.probability * 100 }}%</text>
+                                    <text class="prediction-probability">{{ item.probability }}</text>
                                 </view>
                             </view>
                         </view>

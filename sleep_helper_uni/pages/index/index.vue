@@ -29,7 +29,7 @@
 
         <!-- 主要功能区 -->
         <view class="function-area">
-            <view class="function-item" @tap="navigateToDiagnosis">
+            <view class="function-item" v-if="isShow" @tap="navigateToDiagnosis">
                 <image src="/static/images/diagnosis.png"></image>
                 <text>量表诊断</text>
             </view>
@@ -48,7 +48,7 @@
         </view>
 
         <!-- 快速检测入口 -->
-        <view class="quick-test" @tap="startQuickTest">
+        <view class="quick-test" v-if="isShow" @tap="startQuickTest">
             <text class="quick-test-title">快速睡眠评估</text>
             <text class="quick-test-desc">仅需6分钟，快速了解您的睡眠状况</text>
         </view>

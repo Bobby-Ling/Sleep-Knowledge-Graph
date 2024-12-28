@@ -119,20 +119,45 @@ export default {
             }
         };
     },
-    onLoad() {
-        // 获取全局的session_id
-        const app = getApp();
-        this.setData(
-            {
-                session_id: app.globalData.session_id
-            },
-            () => {
-                // 在session_id设置完成后再初始化聊天和获取历史消息
-                this.initChat();
-                this.getHistoryMessages();
-            }
-        );
-    },
+    // onLoad() {
+    //     const app = getApp();
+    //     this.setData(
+    //         {
+    //             session_id: app.globalData.session_id
+    //         },
+    //         () => {
+    //             console.log('initing chat');
+    //             this.initChat()
+    //                 .then(() => {
+    //                     console.log('chat ok');
+    //                     return this.getHistoryMessages();
+    //                 })
+    //                 .then(() => {
+    //                     console.log('messages ok');
+    //                 })
+    //                 .catch((error) => {
+    //                     console.error('Error in initialization:', error);
+    //                 });
+    //         }
+    //     );
+    // },
+	async onLoad() {
+	    const app = getApp();
+	    this.setData({
+	        session_id: app.globalData.session_id
+	    });
+	    
+	    try {
+	        console.log('initing chat');
+	        await this.initChat();
+	        console.log('chat ok');
+	        
+	        await this.getHistoryMessages();
+	        console.log('messages ok');
+	    } catch (error) {
+	        console.error('Error in initialization:', error);
+	    }
+	},
     methods: {
         initChat() {
             uni.request({
@@ -237,26 +262,26 @@ export default {
                 expandedDocs
             });
         },
-	
+
 
         sendMessage(content = null) {
 			const sendStreamRequest = (url, messageContent, callbacks) => {
 			    const xhr = new XMLHttpRequest();
 			    let buffer = '';
-			    
+
 			    xhr.open('POST', url, true);
 			    xhr.setRequestHeader('Content-Type', 'application/json');
-			    
+
 			    // 处理数据流
 			    xhr.onprogress = function(event) {
 			        const chunk = xhr.responseText.substr(xhr.seenBytes || 0);
 			        xhr.seenBytes = xhr.responseText.length;
-			        
+
 			        buffer += chunk;
 			        while (buffer.includes('\n\n')) {
 			            const [message, ...rest] = buffer.split('\n\n');
 			            buffer = rest.join('\n\n');
-			            
+
 			            if (message.startsWith('data: ')) {
 			                const data = message.slice(6);
 			                if (data === '[DONE]') {
@@ -266,7 +291,7 @@ export default {
 			                    });
 			                    return;
 			                }
-			                
+
 			                try {
 			                    const parsedData = JSON.parse(data);
 			                    const messages = [...callbacks.messages];
@@ -291,7 +316,7 @@ export default {
 			            }
 			        }
 			    };
-			    
+
 			    // 请求完成
 			    xhr.onload = function() {
 			        if (xhr.status >= 200 && xhr.status < 300) {
@@ -303,7 +328,7 @@ export default {
 			            });
 			        }
 			    };
-			    
+
 			    // 请求错误
 			    xhr.onerror = function() {
 			        callbacks.fail({
@@ -311,17 +336,17 @@ export default {
 			            statusText: xhr.statusText
 			        });
 			    };
-			    
+
 			    // 请求完成（无论成功失败）
 			    xhr.onloadend = function() {
 			        callbacks.complete();
 			    };
-			    
+
 			    // 发送请求
 			    xhr.send(JSON.stringify({
 			        content: messageContent
 			    }));
-			    
+
 			    // 返回xhr对象，以便可以在需要时中断请求
 			    return xhr;
 			}
@@ -394,7 +419,7 @@ export default {
 					}
 				);
 			};
-			
+
 			// 使用示例：
 			const that = this;
 			const requestTask = sendStreamRequest(
