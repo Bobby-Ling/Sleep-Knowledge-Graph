@@ -1,0 +1,68 @@
+<mxfile host="Electron" modified="2024-12-28T21:34:39.486Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.4.0 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="scrJTYcQpgHkBYrPeUOR" version="24.4.0" type="device">
+  <diagram name="第 1 页" id="9DJKsH8oNxRj0c7MGwzA">
+    <mxGraphModel dx="964" dy="676" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="fq9c-w7qRF0JqducomCq-52" value="&lt;span style=&quot;font-size: 16px;&quot;&gt;AI问诊&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="300" y="598.25" width="149" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fq9c-w7qRF0JqducomCq-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="fq9c-w7qRF0JqducomCq-11" target="fq9c-w7qRF0JqducomCq-24" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="240" y="360" />
+              <mxPoint x="240" y="424" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="EGvbU2kp5TG46oHHmqM8-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="fq9c-w7qRF0JqducomCq-11">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="140" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fq9c-w7qRF0JqducomCq-11" value="neo4j 知识图谱&lt;div&gt;查询结果&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="20" y="340" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="EGvbU2kp5TG46oHHmqM8-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="fq9c-w7qRF0JqducomCq-14" target="fq9c-w7qRF0JqducomCq-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fq9c-w7qRF0JqducomCq-14" value="量表的评估" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="20" y="401" width="120" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="fq9c-w7qRF0JqducomCq-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="fq9c-w7qRF0JqducomCq-21" target="fq9c-w7qRF0JqducomCq-24" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="240" y="490" />
+              <mxPoint x="240" y="424" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fq9c-w7qRF0JqducomCq-21" value="得到症状和病史" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="20" y="470" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="EGvbU2kp5TG46oHHmqM8-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="fq9c-w7qRF0JqducomCq-24" target="fq9c-w7qRF0JqducomCq-52">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="EGvbU2kp5TG46oHHmqM8-11" value="将分析结果作为已知数据供问答" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="EGvbU2kp5TG46oHHmqM8-10">
+          <mxGeometry x="-0.0748" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fq9c-w7qRF0JqducomCq-24" value="综合整理得到分析结果" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="314.5" y="401" width="120" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="EGvbU2kp5TG46oHHmqM8-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="fq9c-w7qRF0JqducomCq-42" target="fq9c-w7qRF0JqducomCq-52">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="EGvbU2kp5TG46oHHmqM8-9" value="参考睡眠健康知识数据库" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="EGvbU2kp5TG46oHHmqM8-8">
+          <mxGeometry x="-0.127" y="-4" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fq9c-w7qRF0JqducomCq-42" value="睡眠文献向量数据库" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="20" y="593.25" width="130" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
