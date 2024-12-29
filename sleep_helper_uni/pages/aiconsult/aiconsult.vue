@@ -159,8 +159,8 @@ export default {
 	    }
 	},
     methods: {
-        initChat() {
-            uni.request({
+        async initChat() {
+            await uni.request({
                 url: `${this.baseUrl}/chat/${this.session_id}/init`,
                 method: 'POST',
                 data: {
@@ -202,9 +202,9 @@ export default {
             // )
         },
 
-        getHistoryMessages() {
+        async getHistoryMessages() {
             let that = this;
-            uni.request({
+            await uni.request({
                 url: `${this.baseUrl}/chat/${this.session_id}/messages`,
                 method: 'GET',
                 header: {
